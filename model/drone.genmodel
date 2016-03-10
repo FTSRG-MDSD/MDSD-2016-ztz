@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/hu.bme.mdsd.ztz.model/src" modelPluginID="hu.bme.mdsd.ztz.model"
+    modelName="Drone" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>drone.ecore</foreignModel>
+  <genPackages prefix="Drone" disposableProviderFactory="true" ecorePackage="drone.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="drone.ecore#//TaskStatus"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="drone.ecore#//TaskExecutionStatus"/>
+    <genClasses ecoreClass="drone.ecore#//Mission">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Mission/tasks"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//Task">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Task/mission"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Task/descriptor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Task/execution"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Task/requisite"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Task/requirement"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//TaskDescriptor">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskDescriptor/areaobjects"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskDescriptor/property"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//Place">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Place/coordinates"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//AreaObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//AreaObject/places"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//Coordinate"/>
+    <genClasses ecoreClass="drone.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//Parameter/key"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//Robot">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/position"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/size"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/batteries"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/devices"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/reachable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/object"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/equipments"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//Property/value"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//TaskExecution">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskExecution/executors"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//ReachableRobot"/>
+    <genClasses ecoreClass="drone.ecore#//TaskRequirement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/task"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//Size"/>
+    <genClasses ecoreClass="drone.ecore#//Battery"/>
+    <genClasses ecoreClass="drone.ecore#//Device"/>
+    <genClasses ecoreClass="drone.ecore#//DistanceDimension"/>
+    <genClasses ecoreClass="drone.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//DetectedObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//DetectedObject/object"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//DetectedObject/obstacle"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//Equipment"/>
+  </genPackages>
+</genmodel:GenModel>
