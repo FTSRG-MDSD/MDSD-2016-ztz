@@ -5,38 +5,40 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" lowerBound="1" upperBound="-1"
         eType="#//Task" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="estimatedTime" unique="false"
-        eType="#//MeasureValue"/>
+        eType="#//MeasureValue" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" lowerBound="1"
         eType="#//Mission"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="1"
-        eType="#//TaskDescriptor"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="execution" eType="#//TaskExecution"/>
+        eType="#//TaskDescriptor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="execution" eType="#//TaskExecution"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" lowerBound="1"
         eType="#//TaskRequirement" containment="true" eOpposite="#//TaskRequirement/task"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//TaskStatus"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="estimatedTime" unique="false"
-        eType="#//MeasureValue"/>
+        eType="#//MeasureValue" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskDescriptor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
         eType="#//AreaObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property"/>
+        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Position">
     <eStructuralFeatures xsi:type="ecore:EReference" name="coordinates" upperBound="-1"
-        eType="#//Coordinate"/>
+        eType="#//Coordinate" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property"/>
+        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AreaObject" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="positions" upperBound="-1"
-        eType="#//Position"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="size" unique="false" eType="#//Size"/>
+        eType="#//Position" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="size" unique="false" eType="#//Size"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property"/>
+        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Coordinate">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="latitude" unique="false"
@@ -48,25 +50,30 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//PropertyValue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//PropertyValue"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Robot">
+  <eClassifiers xsi:type="ecore:EClass" name="Robot" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="position" lowerBound="1"
-        eType="#//Position"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="size" lowerBound="1" eType="#//Size"/>
+        eType="#//Position" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="size" lowerBound="1" eType="#//Size"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="batteries" upperBound="-1"
-        eType="#//Battery"/>
+        eType="#//Battery" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="collaborations" upperBound="-1"
-        eType="#//RobotCollaboration"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="objects" upperBound="-1"
-        eType="#//DetectedObject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="equipments" eType="#//Equipment"/>
+        eType="#//RobotCollaboration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="detectedObjects" upperBound="-1"
+        eType="#//DetectedObject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="equipments" eType="#//Equipment"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="communicationRange" eType="#//MeasureValue"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="weight" eType="#//MeasureValue"/>
+        eType="#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="communicationRange" eType="#//MeasureValue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="weight" eType="#//MeasureValue"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" eType="#//Mission"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringProperty" eSuperTypes="#//PropertyValue">
@@ -76,12 +83,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="executors" lowerBound="1"
         upperBound="-1" eType="#//Robot"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="executionTime" unique="false"
-        eType="#//MeasureValue"/>
+        eType="#//MeasureValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" unique="false"
+        lowerBound="1" eType="#//TaskExecutionStatus"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RobotCollaboration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="collaborator" lowerBound="1"
         eType="#//Robot"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="availabilityRange" eType="#//MeasureValue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="availabilityRange" eType="#//MeasureValue"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskRequirement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="task" unique="false" lowerBound="1"
@@ -91,9 +101,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="participants" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property"/>
+        eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredActions" upperBound="-1"
-        eType="#//RequiredAction"/>
+        eType="#//RequiredAction" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RequiredAction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" unique="false"
@@ -106,19 +116,22 @@
     <eLiterals name="Obligatory" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Size">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="width" eType="#//MeasureValue"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="height" eType="#//MeasureValue"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="length" eType="#//MeasureValue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="width" lowerBound="1" eType="#//MeasureValue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="height" lowerBound="1"
+        eType="#//MeasureValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="length" lowerBound="1"
+        eType="#//MeasureValue" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Battery">
     <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" unique="false"
-        lowerBound="1" eType="#//MeasureValue"/>
+        lowerBound="1" eType="#//MeasureValue" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="voltage" unique="false"
-        lowerBound="1" eType="#//MeasureValue"/>
+        lowerBound="1" eType="#//MeasureValue" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rechargeTime" unique="false"
-        lowerBound="1" eType="#//MeasureValue"/>
+        lowerBound="1" eType="#//MeasureValue" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property"/>
+        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -135,15 +148,15 @@
     <eLiterals name="InProgress" value="3"/>
     <eLiterals name="Waiting" value="4"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Equipment">
+  <eClassifiers xsi:type="ecore:EClass" name="Equipment" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property"/>
+        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property"/>
+        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MeasureValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
@@ -157,14 +170,25 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MeasureDimension" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="conversions" upperBound="-1"
-        eType="#//MeasureConversion"/>
+        eType="#//MeasureConversion" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MeasureProperty" eSuperTypes="#//PropertyValue">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//MeasureValue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//MeasureValue"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyValue" abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EEnum" name="TaskStatus">
     <eLiterals name="Ready"/>
     <eLiterals name="Finished" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RobotMissionContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="missions" upperBound="-1"
+        eType="#//Mission" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="robots" upperBound="-1"
+        eType="#//Robot" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="measureDimensions" upperBound="-1"
+        eType="#//MeasureDimension" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="areaObjects" upperBound="-1"
+        eType="#//AreaObject" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
