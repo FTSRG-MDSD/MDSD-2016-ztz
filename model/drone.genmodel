@@ -67,6 +67,9 @@
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/communicationRange"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/weight"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/mission"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/actions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/capability"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/communicationAction"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//StringProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//StringProperty/value"/>
@@ -85,11 +88,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/prerequisite"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//TaskRequirement/participants"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/properties"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/requiredActions"/>
-    </genClasses>
-    <genClasses ecoreClass="drone.ecore#//RequiredAction">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//RequiredAction/condition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//RequiredAction/action"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/requiredCapability"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Size">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Size/width"/>
@@ -110,11 +109,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//DetectedObject/obstacle"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Equipment">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Equipment/actions"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Equipment/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Equipment/capability"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Action">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Action/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Action/currentTask"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//MeasureValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//MeasureValue/value"/>
@@ -136,6 +136,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/robots"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/measureDimensions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/areaObjects"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/capability"/>
     </genClasses>
+    <genClasses ecoreClass="drone.ecore#//Capability"/>
   </genPackages>
 </genmodel:GenModel>
