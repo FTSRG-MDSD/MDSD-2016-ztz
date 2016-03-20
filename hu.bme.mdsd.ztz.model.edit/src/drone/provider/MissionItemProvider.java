@@ -14,8 +14,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -47,31 +45,8 @@ public class MissionItemProvider extends NamedElementItemProvider {
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addEstimatedTimePropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
-        }
-
-        /**
-         * This adds a property descriptor for the Estimated Time feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addEstimatedTimePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Mission_estimatedTime_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Mission_estimatedTime_feature", "_UI_Mission_type"),
-                                 DronePackage.Literals.MISSION__ESTIMATED_TIME,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
         }
 
         /**

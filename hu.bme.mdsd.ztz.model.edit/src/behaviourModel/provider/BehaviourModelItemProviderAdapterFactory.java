@@ -15,6 +15,7 @@ import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -31,7 +32,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BehaviourModelItemProviderAdapterFactory extends BehaviourModelAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier {
+public class BehaviourModelItemProviderAdapterFactory extends BehaviourModelAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
         /**
          * This keeps track of the root adapter factory that delegates to this adapter factory.
          * <!-- begin-user-doc -->
@@ -275,6 +276,20 @@ public class BehaviourModelItemProviderAdapterFactory extends BehaviourModelAdap
                 if (parentAdapterFactory != null) {
                         parentAdapterFactory.fireNotifyChanged(notification);
                 }
+        }
+
+        /**
+         * This disposes all of the item providers created by this factory. 
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void dispose() {
+                if (unicastItemProvider != null) unicastItemProvider.dispose();
+                if (multicastItemProvider != null) multicastItemProvider.dispose();
+                if (broadcastItemProvider != null) broadcastItemProvider.dispose();
+                if (communicationActionItemProvider != null) communicationActionItemProvider.dispose();
+                if (messageItemProvider != null) messageItemProvider.dispose();
         }
 
 }

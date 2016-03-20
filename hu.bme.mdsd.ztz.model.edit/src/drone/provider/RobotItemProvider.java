@@ -49,154 +49,12 @@ public class RobotItemProvider extends NamedElementItemProvider {
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addPositionPropertyDescriptor(object);
-                        addSizePropertyDescriptor(object);
-                        addBatteriesPropertyDescriptor(object);
-                        addCollaborationsPropertyDescriptor(object);
-                        addDetectedObjectsPropertyDescriptor(object);
-                        addEquipmentsPropertyDescriptor(object);
                         addTasksPropertyDescriptor(object);
-                        addPropertiesPropertyDescriptor(object);
-                        addCommunicationRangePropertyDescriptor(object);
-                        addWeightPropertyDescriptor(object);
                         addMissionPropertyDescriptor(object);
-                        addActionsPropertyDescriptor(object);
                         addCapabilityPropertyDescriptor(object);
                         addCommunicationActionPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
-        }
-
-        /**
-         * This adds a property descriptor for the Position feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addPositionPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_position_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_position_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__POSITION,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Size feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addSizePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_size_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_size_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__SIZE,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Batteries feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addBatteriesPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_batteries_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_batteries_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__BATTERIES,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Collaborations feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addCollaborationsPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_collaborations_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_collaborations_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__COLLABORATIONS,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Detected Objects feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addDetectedObjectsPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_detectedObjects_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_detectedObjects_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__DETECTED_OBJECTS,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Equipments feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addEquipmentsPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_equipments_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_equipments_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__EQUIPMENTS,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
         }
 
         /**
@@ -222,72 +80,6 @@ public class RobotItemProvider extends NamedElementItemProvider {
         }
 
         /**
-         * This adds a property descriptor for the Properties feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addPropertiesPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_properties_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_properties_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__PROPERTIES,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Communication Range feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addCommunicationRangePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_communicationRange_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_communicationRange_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__COMMUNICATION_RANGE,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Weight feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addWeightPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_weight_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_weight_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__WEIGHT,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
          * This adds a property descriptor for the Mission feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -301,28 +93,6 @@ public class RobotItemProvider extends NamedElementItemProvider {
                                  getString("_UI_Robot_mission_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_Robot_mission_feature", "_UI_Robot_type"),
                                  DronePackage.Literals.ROBOT__MISSION,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Actions feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addActionsPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_actions_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_actions_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__ACTIONS,
                                  true,
                                  false,
                                  true,
@@ -393,6 +163,7 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         childrenFeatures.add(DronePackage.Literals.ROBOT__COLLABORATIONS);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__DETECTED_OBJECTS);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__EQUIPMENTS);
+                        childrenFeatures.add(DronePackage.Literals.ROBOT__PROPERTIES);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__COMMUNICATION_RANGE);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__WEIGHT);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__ACTIONS);
@@ -457,6 +228,7 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         case DronePackage.ROBOT__COLLABORATIONS:
                         case DronePackage.ROBOT__DETECTED_OBJECTS:
                         case DronePackage.ROBOT__EQUIPMENTS:
+                        case DronePackage.ROBOT__PROPERTIES:
                         case DronePackage.ROBOT__COMMUNICATION_RANGE:
                         case DronePackage.ROBOT__WEIGHT:
                         case DronePackage.ROBOT__ACTIONS:
@@ -506,6 +278,11 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         (createChildParameter
                                 (DronePackage.Literals.ROBOT__EQUIPMENTS,
                                  DroneFactory.eINSTANCE.createEquipment()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (DronePackage.Literals.ROBOT__PROPERTIES,
+                                 DroneFactory.eINSTANCE.createProperty()));
 
                 newChildDescriptors.add
                         (createChildParameter

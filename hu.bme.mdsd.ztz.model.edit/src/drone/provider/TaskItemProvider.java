@@ -48,102 +48,9 @@ public class TaskItemProvider extends NamedElementItemProvider {
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addMissionPropertyDescriptor(object);
-                        addDescriptorPropertyDescriptor(object);
-                        addExecutionPropertyDescriptor(object);
-                        addRequirementPropertyDescriptor(object);
                         addStatusPropertyDescriptor(object);
-                        addEstimatedTimePropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
-        }
-
-        /**
-         * This adds a property descriptor for the Mission feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addMissionPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Task_mission_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Task_mission_feature", "_UI_Task_type"),
-                                 DronePackage.Literals.TASK__MISSION,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Descriptor feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addDescriptorPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Task_descriptor_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Task_descriptor_feature", "_UI_Task_type"),
-                                 DronePackage.Literals.TASK__DESCRIPTOR,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Execution feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addExecutionPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Task_execution_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Task_execution_feature", "_UI_Task_type"),
-                                 DronePackage.Literals.TASK__EXECUTION,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Requirement feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addRequirementPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Task_requirement_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Task_requirement_feature", "_UI_Task_type"),
-                                 DronePackage.Literals.TASK__REQUIREMENT,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
         }
 
         /**
@@ -164,28 +71,6 @@ public class TaskItemProvider extends NamedElementItemProvider {
                                  false,
                                  false,
                                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Estimated Time feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addEstimatedTimePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Task_estimatedTime_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Task_estimatedTime_feature", "_UI_Task_type"),
-                                 DronePackage.Literals.TASK__ESTIMATED_TIME,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
                                  null,
                                  null));
         }

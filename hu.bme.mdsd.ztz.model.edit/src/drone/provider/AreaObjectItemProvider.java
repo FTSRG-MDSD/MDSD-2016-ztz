@@ -14,8 +14,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -47,77 +45,8 @@ public class AreaObjectItemProvider extends NamedElementItemProvider {
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addPositionsPropertyDescriptor(object);
-                        addSizePropertyDescriptor(object);
-                        addPropertiesPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
-        }
-
-        /**
-         * This adds a property descriptor for the Positions feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addPositionsPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_AreaObject_positions_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_AreaObject_positions_feature", "_UI_AreaObject_type"),
-                                 DronePackage.Literals.AREA_OBJECT__POSITIONS,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Size feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addSizePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_AreaObject_size_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_AreaObject_size_feature", "_UI_AreaObject_type"),
-                                 DronePackage.Literals.AREA_OBJECT__SIZE,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Properties feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addPropertiesPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_AreaObject_properties_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_AreaObject_properties_feature", "_UI_AreaObject_type"),
-                                 DronePackage.Literals.AREA_OBJECT__PROPERTIES,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
         }
 
         /**
@@ -132,7 +61,9 @@ public class AreaObjectItemProvider extends NamedElementItemProvider {
         public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
                 if (childrenFeatures == null) {
                         super.getChildrenFeatures(object);
+                        childrenFeatures.add(DronePackage.Literals.AREA_OBJECT__POSITIONS);
                         childrenFeatures.add(DronePackage.Literals.AREA_OBJECT__SIZE);
+                        childrenFeatures.add(DronePackage.Literals.AREA_OBJECT__PROPERTIES);
                 }
                 return childrenFeatures;
         }
@@ -188,7 +119,9 @@ public class AreaObjectItemProvider extends NamedElementItemProvider {
                 updateChildren(notification);
 
                 switch (notification.getFeatureID(AreaObject.class)) {
+                        case DronePackage.AREA_OBJECT__POSITIONS:
                         case DronePackage.AREA_OBJECT__SIZE:
+                        case DronePackage.AREA_OBJECT__PROPERTIES:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -208,8 +141,18 @@ public class AreaObjectItemProvider extends NamedElementItemProvider {
 
                 newChildDescriptors.add
                         (createChildParameter
+                                (DronePackage.Literals.AREA_OBJECT__POSITIONS,
+                                 DroneFactory.eINSTANCE.createPosition()));
+
+                newChildDescriptors.add
+                        (createChildParameter
                                 (DronePackage.Literals.AREA_OBJECT__SIZE,
                                  DroneFactory.eINSTANCE.createSize()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (DronePackage.Literals.AREA_OBJECT__PROPERTIES,
+                                 DroneFactory.eINSTANCE.createProperty()));
         }
 
 }

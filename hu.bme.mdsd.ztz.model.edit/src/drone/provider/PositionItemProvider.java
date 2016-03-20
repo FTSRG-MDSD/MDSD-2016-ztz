@@ -16,8 +16,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -62,54 +60,8 @@ public class PositionItemProvider
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addCoordinatesPropertyDescriptor(object);
-                        addPropertiesPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
-        }
-
-        /**
-         * This adds a property descriptor for the Coordinates feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addCoordinatesPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Position_coordinates_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Position_coordinates_feature", "_UI_Position_type"),
-                                 DronePackage.Literals.POSITION__COORDINATES,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Properties feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addPropertiesPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Position_properties_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Position_properties_feature", "_UI_Position_type"),
-                                 DronePackage.Literals.POSITION__PROPERTIES,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
         }
 
         /**
@@ -125,6 +77,7 @@ public class PositionItemProvider
                 if (childrenFeatures == null) {
                         super.getChildrenFeatures(object);
                         childrenFeatures.add(DronePackage.Literals.POSITION__COORDINATES);
+                        childrenFeatures.add(DronePackage.Literals.POSITION__PROPERTIES);
                 }
                 return childrenFeatures;
         }
@@ -178,6 +131,7 @@ public class PositionItemProvider
 
                 switch (notification.getFeatureID(Position.class)) {
                         case DronePackage.POSITION__COORDINATES:
+                        case DronePackage.POSITION__PROPERTIES:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -199,6 +153,11 @@ public class PositionItemProvider
                         (createChildParameter
                                 (DronePackage.Literals.POSITION__COORDINATES,
                                  DroneFactory.eINSTANCE.createCoordinate()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (DronePackage.Literals.POSITION__PROPERTIES,
+                                 DroneFactory.eINSTANCE.createProperty()));
         }
 
         /**

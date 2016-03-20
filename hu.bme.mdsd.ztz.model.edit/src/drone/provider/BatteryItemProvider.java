@@ -16,8 +16,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -62,100 +60,8 @@ public class BatteryItemProvider
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addCapacityPropertyDescriptor(object);
-                        addVoltagePropertyDescriptor(object);
-                        addRechargeTimePropertyDescriptor(object);
-                        addPropertiesPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
-        }
-
-        /**
-         * This adds a property descriptor for the Capacity feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addCapacityPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Battery_capacity_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Battery_capacity_feature", "_UI_Battery_type"),
-                                 DronePackage.Literals.BATTERY__CAPACITY,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Voltage feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addVoltagePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Battery_voltage_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Battery_voltage_feature", "_UI_Battery_type"),
-                                 DronePackage.Literals.BATTERY__VOLTAGE,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Recharge Time feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addRechargeTimePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Battery_rechargeTime_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Battery_rechargeTime_feature", "_UI_Battery_type"),
-                                 DronePackage.Literals.BATTERY__RECHARGE_TIME,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Properties feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addPropertiesPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Battery_properties_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Battery_properties_feature", "_UI_Battery_type"),
-                                 DronePackage.Literals.BATTERY__PROPERTIES,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
         }
 
         /**
@@ -173,6 +79,7 @@ public class BatteryItemProvider
                         childrenFeatures.add(DronePackage.Literals.BATTERY__CAPACITY);
                         childrenFeatures.add(DronePackage.Literals.BATTERY__VOLTAGE);
                         childrenFeatures.add(DronePackage.Literals.BATTERY__RECHARGE_TIME);
+                        childrenFeatures.add(DronePackage.Literals.BATTERY__PROPERTIES);
                 }
                 return childrenFeatures;
         }
@@ -228,6 +135,7 @@ public class BatteryItemProvider
                         case DronePackage.BATTERY__CAPACITY:
                         case DronePackage.BATTERY__VOLTAGE:
                         case DronePackage.BATTERY__RECHARGE_TIME:
+                        case DronePackage.BATTERY__PROPERTIES:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -259,6 +167,11 @@ public class BatteryItemProvider
                         (createChildParameter
                                 (DronePackage.Literals.BATTERY__RECHARGE_TIME,
                                  DroneFactory.eINSTANCE.createMeasureValue()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (DronePackage.Literals.BATTERY__PROPERTIES,
+                                 DroneFactory.eINSTANCE.createProperty()));
         }
 
         /**

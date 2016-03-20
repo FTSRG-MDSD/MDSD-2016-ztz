@@ -63,7 +63,6 @@ public class RobotCollaborationItemProvider
                         super.getPropertyDescriptors(object);
 
                         addCollaboratorPropertyDescriptor(object);
-                        addAvailabilityRangePropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -82,28 +81,6 @@ public class RobotCollaborationItemProvider
                                  getString("_UI_RobotCollaboration_collaborator_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_RobotCollaboration_collaborator_feature", "_UI_RobotCollaboration_type"),
                                  DronePackage.Literals.ROBOT_COLLABORATION__COLLABORATOR,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Availability Range feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addAvailabilityRangePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_RobotCollaboration_availabilityRange_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_RobotCollaboration_availabilityRange_feature", "_UI_RobotCollaboration_type"),
-                                 DronePackage.Literals.ROBOT_COLLABORATION__AVAILABILITY_RANGE,
                                  true,
                                  false,
                                  true,

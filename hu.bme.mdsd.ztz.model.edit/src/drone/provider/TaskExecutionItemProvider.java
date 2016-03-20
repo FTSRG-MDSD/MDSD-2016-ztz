@@ -65,7 +65,6 @@ public class TaskExecutionItemProvider
                         super.getPropertyDescriptors(object);
 
                         addExecutorsPropertyDescriptor(object);
-                        addExecutionTimePropertyDescriptor(object);
                         addStatusPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
@@ -85,28 +84,6 @@ public class TaskExecutionItemProvider
                                  getString("_UI_TaskExecution_executors_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_TaskExecution_executors_feature", "_UI_TaskExecution_type"),
                                  DronePackage.Literals.TASK_EXECUTION__EXECUTORS,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Execution Time feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addExecutionTimePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_TaskExecution_executionTime_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_TaskExecution_executionTime_feature", "_UI_TaskExecution_type"),
-                                 DronePackage.Literals.TASK_EXECUTION__EXECUTION_TIME,
                                  true,
                                  false,
                                  true,
