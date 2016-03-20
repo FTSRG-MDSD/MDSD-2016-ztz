@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated drone -->
+      <package
+            uri="http://www.mdsd.hu/drone"
+            class="drone.DronePackage"
+            genModel="model/drone.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated drone -->
+      <package
+            uri="http://www.mdsd.hu/behaviour"
+            class="behaviourModel.BehaviourModelPackage"
+            genModel="model/drone.genmodel"/>
+   </extension>
+
+</plugin>
