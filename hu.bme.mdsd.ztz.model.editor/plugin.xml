@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated drone -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="drone.presentation.DroneModelWizardID"
+            name="%_UI_DroneModelWizard_label"
+            class="drone.presentation.DroneModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DroneModelFile.gif">
+         <description>%_UI_DroneModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated drone -->
+      <editor
+            id="drone.presentation.DroneEditorID"
+            name="%_UI_DroneEditor_label"
+            icon="icons/full/obj16/DroneModelFile.gif"
+            extensions="drone"
+            class="drone.presentation.DroneEditor"
+            contributorClass="drone.presentation.DroneActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated drone -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="behaviourModel.presentation.BehaviourModelModelWizardID"
+            name="%_UI_BehaviourModelModelWizard_label"
+            class="behaviourModel.presentation.BehaviourModelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/BehaviourModelModelFile.gif">
+         <description>%_UI_BehaviourModelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated drone -->
+      <editor
+            id="behaviourModel.presentation.BehaviourModelEditorID"
+            name="%_UI_BehaviourModelEditor_label"
+            icon="icons/full/obj16/BehaviourModelModelFile.gif"
+            extensions="behaviourmodel"
+            class="behaviourModel.presentation.BehaviourModelEditor"
+            contributorClass="behaviourModel.presentation.BehaviourModelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
