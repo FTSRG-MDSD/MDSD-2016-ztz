@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link drone.impl.TaskRequirementImpl#getPrerequisite <em>Prerequisite</em>}</li>
  *   <li>{@link drone.impl.TaskRequirementImpl#getParticipants <em>Participants</em>}</li>
  *   <li>{@link drone.impl.TaskRequirementImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link drone.impl.TaskRequirementImpl#getRequiredCapability <em>Required Capability</em>}</li>
+ *   <li>{@link drone.impl.TaskRequirementImpl#getRequiredCapabilities <em>Required Capabilities</em>}</li>
  * </ul>
  *
  * @generated
@@ -85,14 +85,14 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
         protected EList<Property> properties;
 
         /**
-         * The cached value of the '{@link #getRequiredCapability() <em>Required Capability</em>}' reference list.
+         * The cached value of the '{@link #getRequiredCapabilities() <em>Required Capabilities</em>}' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getRequiredCapability()
+         * @see #getRequiredCapabilities()
          * @generated
          * @ordered
          */
-        protected EList<Capability> requiredCapability;
+        protected EList<Capability> requiredCapabilities;
 
         /**
          * <!-- begin-user-doc -->
@@ -230,11 +230,11 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * <!-- end-user-doc -->
          * @generated
          */
-        public EList<Capability> getRequiredCapability() {
-                if (requiredCapability == null) {
-                        requiredCapability = new EObjectResolvingEList<Capability>(Capability.class, this, DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITY);
+        public EList<Capability> getRequiredCapabilities() {
+                if (requiredCapabilities == null) {
+                        requiredCapabilities = new EObjectResolvingEList<Capability>(Capability.class, this, DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES);
                 }
-                return requiredCapability;
+                return requiredCapabilities;
         }
 
         /**
@@ -300,8 +300,8 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
                                 return getParticipants();
                         case DronePackage.TASK_REQUIREMENT__PROPERTIES:
                                 return getProperties();
-                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITY:
-                                return getRequiredCapability();
+                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
+                                return getRequiredCapabilities();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -328,9 +328,9 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
                                 getProperties().clear();
                                 getProperties().addAll((Collection<? extends Property>)newValue);
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITY:
-                                getRequiredCapability().clear();
-                                getRequiredCapability().addAll((Collection<? extends Capability>)newValue);
+                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
+                                getRequiredCapabilities().clear();
+                                getRequiredCapabilities().addAll((Collection<? extends Capability>)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -356,8 +356,8 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
                         case DronePackage.TASK_REQUIREMENT__PROPERTIES:
                                 getProperties().clear();
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITY:
-                                getRequiredCapability().clear();
+                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
+                                getRequiredCapabilities().clear();
                                 return;
                 }
                 super.eUnset(featureID);
@@ -379,8 +379,8 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
                                 return participants != PARTICIPANTS_EDEFAULT;
                         case DronePackage.TASK_REQUIREMENT__PROPERTIES:
                                 return properties != null && !properties.isEmpty();
-                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITY:
-                                return requiredCapability != null && !requiredCapability.isEmpty();
+                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
+                                return requiredCapabilities != null && !requiredCapabilities.isEmpty();
                 }
                 return super.eIsSet(featureID);
         }

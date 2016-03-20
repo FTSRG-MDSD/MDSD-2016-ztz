@@ -16,8 +16,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -62,31 +60,8 @@ public class RobotMissionContainerItemProvider
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addCapabilityPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
-        }
-
-        /**
-         * This adds a property descriptor for the Capability feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addCapabilityPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_RobotMissionContainer_capability_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_RobotMissionContainer_capability_feature", "_UI_RobotMissionContainer_type"),
-                                 DronePackage.Literals.ROBOT_MISSION_CONTAINER__CAPABILITY,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
         }
 
         /**
@@ -105,7 +80,7 @@ public class RobotMissionContainerItemProvider
                         childrenFeatures.add(DronePackage.Literals.ROBOT_MISSION_CONTAINER__ROBOTS);
                         childrenFeatures.add(DronePackage.Literals.ROBOT_MISSION_CONTAINER__MEASURE_DIMENSIONS);
                         childrenFeatures.add(DronePackage.Literals.ROBOT_MISSION_CONTAINER__AREA_OBJECTS);
-                        childrenFeatures.add(DronePackage.Literals.ROBOT_MISSION_CONTAINER__CAPABILITY);
+                        childrenFeatures.add(DronePackage.Literals.ROBOT_MISSION_CONTAINER__CAPABILITIES);
                 }
                 return childrenFeatures;
         }
@@ -162,7 +137,7 @@ public class RobotMissionContainerItemProvider
                         case DronePackage.ROBOT_MISSION_CONTAINER__ROBOTS:
                         case DronePackage.ROBOT_MISSION_CONTAINER__MEASURE_DIMENSIONS:
                         case DronePackage.ROBOT_MISSION_CONTAINER__AREA_OBJECTS:
-                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITY:
+                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -202,7 +177,7 @@ public class RobotMissionContainerItemProvider
 
                 newChildDescriptors.add
                         (createChildParameter
-                                (DronePackage.Literals.ROBOT_MISSION_CONTAINER__CAPABILITY,
+                                (DronePackage.Literals.ROBOT_MISSION_CONTAINER__CAPABILITIES,
                                  DroneFactory.eINSTANCE.createCapability()));
         }
 

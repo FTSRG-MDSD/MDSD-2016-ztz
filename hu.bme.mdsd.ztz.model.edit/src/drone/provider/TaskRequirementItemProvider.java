@@ -64,7 +64,7 @@ public class TaskRequirementItemProvider
                         addPrerequisitePropertyDescriptor(object);
                         addParticipantsPropertyDescriptor(object);
                         addPropertiesPropertyDescriptor(object);
-                        addRequiredCapabilityPropertyDescriptor(object);
+                        addRequiredCapabilitiesPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -158,19 +158,19 @@ public class TaskRequirementItemProvider
         }
 
         /**
-         * This adds a property descriptor for the Required Capability feature.
+         * This adds a property descriptor for the Required Capabilities feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        protected void addRequiredCapabilityPropertyDescriptor(Object object) {
+        protected void addRequiredCapabilitiesPropertyDescriptor(Object object) {
                 itemPropertyDescriptors.add
                         (createItemPropertyDescriptor
                                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                                  getResourceLocator(),
-                                 getString("_UI_TaskRequirement_requiredCapability_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_requiredCapability_feature", "_UI_TaskRequirement_type"),
-                                 DronePackage.Literals.TASK_REQUIREMENT__REQUIRED_CAPABILITY,
+                                 getString("_UI_TaskRequirement_requiredCapabilities_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_requiredCapabilities_feature", "_UI_TaskRequirement_type"),
+                                 DronePackage.Literals.TASK_REQUIREMENT__REQUIRED_CAPABILITIES,
                                  true,
                                  false,
                                  true,

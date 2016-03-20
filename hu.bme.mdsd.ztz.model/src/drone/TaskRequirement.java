@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link drone.TaskRequirement#getPrerequisite <em>Prerequisite</em>}</li>
  *   <li>{@link drone.TaskRequirement#getParticipants <em>Participants</em>}</li>
  *   <li>{@link drone.TaskRequirement#getProperties <em>Properties</em>}</li>
- *   <li>{@link drone.TaskRequirement#getRequiredCapability <em>Required Capability</em>}</li>
+ *   <li>{@link drone.TaskRequirement#getRequiredCapabilities <em>Required Capabilities</em>}</li>
  * </ul>
  *
  * @see drone.DronePackage#getTaskRequirement()
@@ -124,19 +124,19 @@ public interface TaskRequirement extends EObject {
         EList<Property> getProperties();
 
         /**
-         * Returns the value of the '<em><b>Required Capability</b></em>' reference list.
+         * Returns the value of the '<em><b>Required Capabilities</b></em>' reference list.
          * The list contents are of type {@link drone.Capability}.
          * <!-- begin-user-doc -->
          * <p>
-         * If the meaning of the '<em>Required Capability</em>' reference list isn't clear,
+         * If the meaning of the '<em>Required Capabilities</em>' reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Required Capability</em>' reference list.
-         * @see drone.DronePackage#getTaskRequirement_RequiredCapability()
+         * @return the value of the '<em>Required Capabilities</em>' reference list.
+         * @see drone.DronePackage#getTaskRequirement_RequiredCapabilities()
          * @model
          * @generated
          */
-        EList<Capability> getRequiredCapability();
+        EList<Capability> getRequiredCapabilities();
 
 } // TaskRequirement

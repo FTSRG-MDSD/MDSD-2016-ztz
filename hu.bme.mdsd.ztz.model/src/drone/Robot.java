@@ -283,7 +283,7 @@ public interface Robot extends NamedElement {
          * <!-- end-user-doc -->
          * @return the value of the '<em>Actions</em>' containment reference list.
          * @see drone.DronePackage#getRobot_Actions()
-         * @model containment="true" required="true"
+         * @model containment="true"
          * @generated
          */
         EList<Action> getActions();

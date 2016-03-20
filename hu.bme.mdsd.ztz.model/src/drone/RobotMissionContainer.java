@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link drone.RobotMissionContainer#getRobots <em>Robots</em>}</li>
  *   <li>{@link drone.RobotMissionContainer#getMeasureDimensions <em>Measure Dimensions</em>}</li>
  *   <li>{@link drone.RobotMissionContainer#getAreaObjects <em>Area Objects</em>}</li>
- *   <li>{@link drone.RobotMissionContainer#getCapability <em>Capability</em>}</li>
+ *   <li>{@link drone.RobotMissionContainer#getCapabilities <em>Capabilities</em>}</li>
  * </ul>
  *
  * @see drone.DronePackage#getRobotMissionContainer()
@@ -92,19 +92,19 @@ public interface RobotMissionContainer extends EObject {
         EList<AreaObject> getAreaObjects();
 
         /**
-         * Returns the value of the '<em><b>Capability</b></em>' containment reference list.
+         * Returns the value of the '<em><b>Capabilities</b></em>' containment reference list.
          * The list contents are of type {@link drone.Capability}.
          * <!-- begin-user-doc -->
          * <p>
-         * If the meaning of the '<em>Capability</em>' containment reference list isn't clear,
+         * If the meaning of the '<em>Capabilities</em>' containment reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Capability</em>' containment reference list.
-         * @see drone.DronePackage#getRobotMissionContainer_Capability()
+         * @return the value of the '<em>Capabilities</em>' containment reference list.
+         * @see drone.DronePackage#getRobotMissionContainer_Capabilities()
          * @model containment="true"
          * @generated
          */
-        EList<Capability> getCapability();
+        EList<Capability> getCapabilities();
 
 } // RobotMissionContainer

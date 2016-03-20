@@ -221,6 +221,7 @@ public class DroneSwitch<T> extends Switch<T> {
                         case DronePackage.CAPABILITY: {
                                 Capability capability = (Capability)theEObject;
                                 T result = caseCapability(capability);
+                                if (result == null) result = caseNamedElement(capability);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }

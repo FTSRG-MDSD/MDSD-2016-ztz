@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link drone.impl.RobotMissionContainerImpl#getRobots <em>Robots</em>}</li>
  *   <li>{@link drone.impl.RobotMissionContainerImpl#getMeasureDimensions <em>Measure Dimensions</em>}</li>
  *   <li>{@link drone.impl.RobotMissionContainerImpl#getAreaObjects <em>Area Objects</em>}</li>
- *   <li>{@link drone.impl.RobotMissionContainerImpl#getCapability <em>Capability</em>}</li>
+ *   <li>{@link drone.impl.RobotMissionContainerImpl#getCapabilities <em>Capabilities</em>}</li>
  * </ul>
  *
  * @generated
@@ -83,14 +83,14 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
         protected EList<AreaObject> areaObjects;
 
         /**
-         * The cached value of the '{@link #getCapability() <em>Capability</em>}' containment reference list.
+         * The cached value of the '{@link #getCapabilities() <em>Capabilities</em>}' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getCapability()
+         * @see #getCapabilities()
          * @generated
          * @ordered
          */
-        protected EList<Capability> capability;
+        protected EList<Capability> capabilities;
 
         /**
          * <!-- begin-user-doc -->
@@ -164,11 +164,11 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
          * <!-- end-user-doc -->
          * @generated
          */
-        public EList<Capability> getCapability() {
-                if (capability == null) {
-                        capability = new EObjectContainmentEList<Capability>(Capability.class, this, DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITY);
+        public EList<Capability> getCapabilities() {
+                if (capabilities == null) {
+                        capabilities = new EObjectContainmentEList<Capability>(Capability.class, this, DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES);
                 }
-                return capability;
+                return capabilities;
         }
 
         /**
@@ -187,8 +187,8 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                                 return ((InternalEList<?>)getMeasureDimensions()).basicRemove(otherEnd, msgs);
                         case DronePackage.ROBOT_MISSION_CONTAINER__AREA_OBJECTS:
                                 return ((InternalEList<?>)getAreaObjects()).basicRemove(otherEnd, msgs);
-                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITY:
-                                return ((InternalEList<?>)getCapability()).basicRemove(otherEnd, msgs);
+                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
+                                return ((InternalEList<?>)getCapabilities()).basicRemove(otherEnd, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -209,8 +209,8 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                                 return getMeasureDimensions();
                         case DronePackage.ROBOT_MISSION_CONTAINER__AREA_OBJECTS:
                                 return getAreaObjects();
-                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITY:
-                                return getCapability();
+                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
+                                return getCapabilities();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -240,9 +240,9 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                                 getAreaObjects().clear();
                                 getAreaObjects().addAll((Collection<? extends AreaObject>)newValue);
                                 return;
-                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITY:
-                                getCapability().clear();
-                                getCapability().addAll((Collection<? extends Capability>)newValue);
+                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
+                                getCapabilities().clear();
+                                getCapabilities().addAll((Collection<? extends Capability>)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -268,8 +268,8 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                         case DronePackage.ROBOT_MISSION_CONTAINER__AREA_OBJECTS:
                                 getAreaObjects().clear();
                                 return;
-                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITY:
-                                getCapability().clear();
+                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
+                                getCapabilities().clear();
                                 return;
                 }
                 super.eUnset(featureID);
@@ -291,8 +291,8 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                                 return measureDimensions != null && !measureDimensions.isEmpty();
                         case DronePackage.ROBOT_MISSION_CONTAINER__AREA_OBJECTS:
                                 return areaObjects != null && !areaObjects.isEmpty();
-                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITY:
-                                return capability != null && !capability.isEmpty();
+                        case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
+                                return capabilities != null && !capabilities.isEmpty();
                 }
                 return super.eIsSet(featureID);
         }

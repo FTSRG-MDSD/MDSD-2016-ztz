@@ -93,8 +93,6 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
         @Override
         public Object createFromString(EDataType eDataType, String initialValue) {
                 switch (eDataType.getClassifierID()) {
-                        case DronePackage.CONDITION:
-                                return createConditionFromString(eDataType, initialValue);
                         case DronePackage.TASK_EXECUTION_STATUS:
                                 return createTaskExecutionStatusFromString(eDataType, initialValue);
                         case DronePackage.TASK_STATUS:
@@ -112,8 +110,6 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
         @Override
         public String convertToString(EDataType eDataType, Object instanceValue) {
                 switch (eDataType.getClassifierID()) {
-                        case DronePackage.CONDITION:
-                                return convertConditionToString(eDataType, instanceValue);
                         case DronePackage.TASK_EXECUTION_STATUS:
                                 return convertTaskExecutionStatusToString(eDataType, instanceValue);
                         case DronePackage.TASK_STATUS:
@@ -351,26 +347,6 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
         public Capability createCapability() {
                 CapabilityImpl capability = new CapabilityImpl();
                 return capability;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public Condition createConditionFromString(EDataType eDataType, String initialValue) {
-                Condition result = Condition.get(initialValue);
-                if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-                return result;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public String convertConditionToString(EDataType eDataType, Object instanceValue) {
-                return instanceValue == null ? null : instanceValue.toString();
         }
 
         /**
