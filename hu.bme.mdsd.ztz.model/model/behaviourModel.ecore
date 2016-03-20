@@ -3,24 +3,24 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="behaviourModel" nsURI="http://www.mdsd.hu/behaviour" nsPrefix="behaviourModel">
   <eClassifiers xsi:type="ecore:EClass" name="Unicast" eSuperTypes="#//CommunicationAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="robotToNotify" lowerBound="1"
-        eType="ecore:EClass ../model/drone.ecore#//Robot"/>
+        eType="ecore:EClass drone.ecore#//Robot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Multicast" eSuperTypes="#//CommunicationAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="robotsToNotify" upperBound="-1"
-        eType="ecore:EClass ../model/drone.ecore#//Robot"/>
+        eType="ecore:EClass drone.ecore#//Robot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Broadcast" eSuperTypes="#//CommunicationAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="robotsToNotify" upperBound="-1"
-        eType="ecore:EClass ../model/drone.ecore#//Robot"/>
+        eType="ecore:EClass drone.ecore#//Robot"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CommunicationAction" eSuperTypes="../model/drone.ecore#//Action">
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationAction" eSuperTypes="drone.ecore#//Action">
     <eStructuralFeatures xsi:type="ecore:EReference" name="messages" lowerBound="1"
         eType="#//Message" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Message">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="ecore:EClass ../model/drone.ecore#//Property"/>
+        eType="ecore:EClass drone.ecore#//Property"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
-        eType="ecore:EClass ../model/drone.ecore#//Task"/>
+        eType="ecore:EClass drone.ecore#//Task"/>
   </eClassifiers>
 </ecore:EPackage>

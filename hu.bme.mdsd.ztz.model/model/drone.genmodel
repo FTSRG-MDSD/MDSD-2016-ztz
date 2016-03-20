@@ -86,7 +86,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/prerequisite"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//TaskRequirement/participants"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/properties"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/requiredCapability"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/requiredCapabilities"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Size">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Size/width"/>
@@ -134,26 +134,28 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/robots"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/measureDimensions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/areaObjects"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/capability"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/capabilities"/>
     </genClasses>
-    <genClasses ecoreClass="drone.ecore#//Capability"/>
+    <genClasses ecoreClass="drone.ecore#//Capability">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Capability/properties"/>
+    </genClasses>
   </genPackages>
-  <genPackages prefix="BehaviourModel" ecorePackage="../behaviourModel/behaviourModel.ecore#/">
-    <genClasses ecoreClass="../behaviourModel/behaviourModel.ecore#//Unicast">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../behaviourModel/behaviourModel.ecore#//Unicast/robotToNotify"/>
+  <genPackages prefix="BehaviourModel" ecorePackage="behaviourModel.ecore#/">
+    <genClasses ecoreClass="behaviourModel.ecore#//Unicast">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviourModel.ecore#//Unicast/robotToNotify"/>
     </genClasses>
-    <genClasses ecoreClass="../behaviourModel/behaviourModel.ecore#//Multicast">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../behaviourModel/behaviourModel.ecore#//Multicast/robotsToNotify"/>
+    <genClasses ecoreClass="behaviourModel.ecore#//Multicast">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviourModel.ecore#//Multicast/robotsToNotify"/>
     </genClasses>
-    <genClasses ecoreClass="../behaviourModel/behaviourModel.ecore#//Broadcast">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../behaviourModel/behaviourModel.ecore#//Broadcast/robotsToNotify"/>
+    <genClasses ecoreClass="behaviourModel.ecore#//Broadcast">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviourModel.ecore#//Broadcast/robotsToNotify"/>
     </genClasses>
-    <genClasses ecoreClass="../behaviourModel/behaviourModel.ecore#//CommunicationAction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../behaviourModel/behaviourModel.ecore#//CommunicationAction/messages"/>
+    <genClasses ecoreClass="behaviourModel.ecore#//CommunicationAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviourModel.ecore#//CommunicationAction/messages"/>
     </genClasses>
-    <genClasses ecoreClass="../behaviourModel/behaviourModel.ecore#//Message">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../behaviourModel/behaviourModel.ecore#//Message/properties"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../behaviourModel/behaviourModel.ecore#//Message/tasks"/>
+    <genClasses ecoreClass="behaviourModel.ecore#//Message">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviourModel.ecore#//Message/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviourModel.ecore#//Message/tasks"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
