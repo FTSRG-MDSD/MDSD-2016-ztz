@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,16 +39,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class TaskImpl extends NamedElementImpl implements Task {
-        /**
-         * The cached value of the '{@link #getMission() <em>Mission</em>}' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getMission()
-         * @generated
-         * @ordered
-         */
-        protected Mission mission;
-
         /**
          * The cached value of the '{@link #getDescriptor() <em>Descriptor</em>}' containment reference.
          * <!-- begin-user-doc -->
@@ -133,15 +124,8 @@ public class TaskImpl extends NamedElementImpl implements Task {
          * @generated
          */
         public Mission getMission() {
-                if (mission != null && mission.eIsProxy()) {
-                        InternalEObject oldMission = (InternalEObject)mission;
-                        mission = (Mission)eResolveProxy(oldMission);
-                        if (mission != oldMission) {
-                                if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.TASK__MISSION, oldMission, mission));
-                        }
-                }
-                return mission;
+                if (eContainerFeatureID() != DronePackage.TASK__MISSION) return null;
+                return (Mission)eInternalContainer();
         }
 
         /**
@@ -149,8 +133,9 @@ public class TaskImpl extends NamedElementImpl implements Task {
          * <!-- end-user-doc -->
          * @generated
          */
-        public Mission basicGetMission() {
-                return mission;
+        public NotificationChain basicSetMission(Mission newMission, NotificationChain msgs) {
+                msgs = eBasicSetContainer((InternalEObject)newMission, DronePackage.TASK__MISSION, msgs);
+                return msgs;
         }
 
         /**
@@ -159,10 +144,19 @@ public class TaskImpl extends NamedElementImpl implements Task {
          * @generated
          */
         public void setMission(Mission newMission) {
-                Mission oldMission = mission;
-                mission = newMission;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK__MISSION, oldMission, mission));
+                if (newMission != eInternalContainer() || (eContainerFeatureID() != DronePackage.TASK__MISSION && newMission != null)) {
+                        if (EcoreUtil.isAncestor(this, newMission))
+                                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                        NotificationChain msgs = null;
+                        if (eInternalContainer() != null)
+                                msgs = eBasicRemoveFromContainer(msgs);
+                        if (newMission != null)
+                                msgs = ((InternalEObject)newMission).eInverseAdd(this, DronePackage.MISSION__TASKS, Mission.class, msgs);
+                        msgs = basicSetMission(newMission, msgs);
+                        if (msgs != null) msgs.dispatch();
+                }
+                else if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK__MISSION, newMission, newMission));
         }
 
         /**
@@ -198,9 +192,9 @@ public class TaskImpl extends NamedElementImpl implements Task {
                 if (newDescriptor != descriptor) {
                         NotificationChain msgs = null;
                         if (descriptor != null)
-                                msgs = ((InternalEObject)descriptor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__DESCRIPTOR, null, msgs);
+                                msgs = ((InternalEObject)descriptor).eInverseRemove(this, DronePackage.TASK_DESCRIPTOR__TASK, TaskDescriptor.class, msgs);
                         if (newDescriptor != null)
-                                msgs = ((InternalEObject)newDescriptor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__DESCRIPTOR, null, msgs);
+                                msgs = ((InternalEObject)newDescriptor).eInverseAdd(this, DronePackage.TASK_DESCRIPTOR__TASK, TaskDescriptor.class, msgs);
                         msgs = basicSetDescriptor(newDescriptor, msgs);
                         if (msgs != null) msgs.dispatch();
                 }
@@ -241,9 +235,9 @@ public class TaskImpl extends NamedElementImpl implements Task {
                 if (newExecution != execution) {
                         NotificationChain msgs = null;
                         if (execution != null)
-                                msgs = ((InternalEObject)execution).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__EXECUTION, null, msgs);
+                                msgs = ((InternalEObject)execution).eInverseRemove(this, DronePackage.TASK_EXECUTION__TASK, TaskExecution.class, msgs);
                         if (newExecution != null)
-                                msgs = ((InternalEObject)newExecution).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__EXECUTION, null, msgs);
+                                msgs = ((InternalEObject)newExecution).eInverseAdd(this, DronePackage.TASK_EXECUTION__TASK, TaskExecution.class, msgs);
                         msgs = basicSetExecution(newExecution, msgs);
                         if (msgs != null) msgs.dispatch();
                 }
@@ -366,6 +360,18 @@ public class TaskImpl extends NamedElementImpl implements Task {
         @Override
         public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
+                        case DronePackage.TASK__MISSION:
+                                if (eInternalContainer() != null)
+                                        msgs = eBasicRemoveFromContainer(msgs);
+                                return basicSetMission((Mission)otherEnd, msgs);
+                        case DronePackage.TASK__DESCRIPTOR:
+                                if (descriptor != null)
+                                        msgs = ((InternalEObject)descriptor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__DESCRIPTOR, null, msgs);
+                                return basicSetDescriptor((TaskDescriptor)otherEnd, msgs);
+                        case DronePackage.TASK__EXECUTION:
+                                if (execution != null)
+                                        msgs = ((InternalEObject)execution).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__EXECUTION, null, msgs);
+                                return basicSetExecution((TaskExecution)otherEnd, msgs);
                         case DronePackage.TASK__REQUIREMENT:
                                 if (requirement != null)
                                         msgs = ((InternalEObject)requirement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__REQUIREMENT, null, msgs);
@@ -382,6 +388,8 @@ public class TaskImpl extends NamedElementImpl implements Task {
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
+                        case DronePackage.TASK__MISSION:
+                                return basicSetMission(null, msgs);
                         case DronePackage.TASK__DESCRIPTOR:
                                 return basicSetDescriptor(null, msgs);
                         case DronePackage.TASK__EXECUTION:
@@ -400,11 +408,24 @@ public class TaskImpl extends NamedElementImpl implements Task {
          * @generated
          */
         @Override
+        public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+                switch (eContainerFeatureID()) {
+                        case DronePackage.TASK__MISSION:
+                                return eInternalContainer().eInverseRemove(this, DronePackage.MISSION__TASKS, Mission.class, msgs);
+                }
+                return super.eBasicRemoveFromContainerFeature(msgs);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
                 switch (featureID) {
                         case DronePackage.TASK__MISSION:
-                                if (resolve) return getMission();
-                                return basicGetMission();
+                                return getMission();
                         case DronePackage.TASK__DESCRIPTOR:
                                 return getDescriptor();
                         case DronePackage.TASK__EXECUTION:
@@ -488,7 +509,7 @@ public class TaskImpl extends NamedElementImpl implements Task {
         public boolean eIsSet(int featureID) {
                 switch (featureID) {
                         case DronePackage.TASK__MISSION:
-                                return mission != null;
+                                return getMission() != null;
                         case DronePackage.TASK__DESCRIPTOR:
                                 return descriptor != null;
                         case DronePackage.TASK__EXECUTION:

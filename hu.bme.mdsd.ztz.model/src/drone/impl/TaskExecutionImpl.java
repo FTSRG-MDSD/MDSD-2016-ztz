@@ -5,6 +5,7 @@ package drone.impl;
 import drone.DronePackage;
 import drone.MeasureValue;
 import drone.Robot;
+import drone.Task;
 import drone.TaskExecution;
 import drone.TaskExecutionStatus;
 
@@ -22,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +36,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link drone.impl.TaskExecutionImpl#getExecutors <em>Executors</em>}</li>
  *   <li>{@link drone.impl.TaskExecutionImpl#getExecutionTime <em>Execution Time</em>}</li>
  *   <li>{@link drone.impl.TaskExecutionImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link drone.impl.TaskExecutionImpl#getTask <em>Task</em>}</li>
  * </ul>
  *
  * @generated
@@ -179,13 +182,86 @@ public class TaskExecutionImpl extends MinimalEObjectImpl.Container implements T
          * <!-- end-user-doc -->
          * @generated
          */
+        public Task getTask() {
+                if (eContainerFeatureID() != DronePackage.TASK_EXECUTION__TASK) return null;
+                return (Task)eInternalContainer();
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public NotificationChain basicSetTask(Task newTask, NotificationChain msgs) {
+                msgs = eBasicSetContainer((InternalEObject)newTask, DronePackage.TASK_EXECUTION__TASK, msgs);
+                return msgs;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setTask(Task newTask) {
+                if (newTask != eInternalContainer() || (eContainerFeatureID() != DronePackage.TASK_EXECUTION__TASK && newTask != null)) {
+                        if (EcoreUtil.isAncestor(this, newTask))
+                                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                        NotificationChain msgs = null;
+                        if (eInternalContainer() != null)
+                                msgs = eBasicRemoveFromContainer(msgs);
+                        if (newTask != null)
+                                msgs = ((InternalEObject)newTask).eInverseAdd(this, DronePackage.TASK__EXECUTION, Task.class, msgs);
+                        msgs = basicSetTask(newTask, msgs);
+                        if (msgs != null) msgs.dispatch();
+                }
+                else if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK_EXECUTION__TASK, newTask, newTask));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+                switch (featureID) {
+                        case DronePackage.TASK_EXECUTION__TASK:
+                                if (eInternalContainer() != null)
+                                        msgs = eBasicRemoveFromContainer(msgs);
+                                return basicSetTask((Task)otherEnd, msgs);
+                }
+                return super.eInverseAdd(otherEnd, featureID, msgs);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
                         case DronePackage.TASK_EXECUTION__EXECUTION_TIME:
                                 return basicSetExecutionTime(null, msgs);
+                        case DronePackage.TASK_EXECUTION__TASK:
+                                return basicSetTask(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+                switch (eContainerFeatureID()) {
+                        case DronePackage.TASK_EXECUTION__TASK:
+                                return eInternalContainer().eInverseRemove(this, DronePackage.TASK__EXECUTION, Task.class, msgs);
+                }
+                return super.eBasicRemoveFromContainerFeature(msgs);
         }
 
         /**
@@ -202,6 +278,8 @@ public class TaskExecutionImpl extends MinimalEObjectImpl.Container implements T
                                 return getExecutionTime();
                         case DronePackage.TASK_EXECUTION__STATUS:
                                 return getStatus();
+                        case DronePackage.TASK_EXECUTION__TASK:
+                                return getTask();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -225,6 +303,9 @@ public class TaskExecutionImpl extends MinimalEObjectImpl.Container implements T
                         case DronePackage.TASK_EXECUTION__STATUS:
                                 setStatus((TaskExecutionStatus)newValue);
                                 return;
+                        case DronePackage.TASK_EXECUTION__TASK:
+                                setTask((Task)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -246,6 +327,9 @@ public class TaskExecutionImpl extends MinimalEObjectImpl.Container implements T
                         case DronePackage.TASK_EXECUTION__STATUS:
                                 setStatus(STATUS_EDEFAULT);
                                 return;
+                        case DronePackage.TASK_EXECUTION__TASK:
+                                setTask((Task)null);
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -264,6 +348,8 @@ public class TaskExecutionImpl extends MinimalEObjectImpl.Container implements T
                                 return executionTime != null;
                         case DronePackage.TASK_EXECUTION__STATUS:
                                 return status != STATUS_EDEFAULT;
+                        case DronePackage.TASK_EXECUTION__TASK:
+                                return getTask() != null;
                 }
                 return super.eIsSet(featureID);
         }

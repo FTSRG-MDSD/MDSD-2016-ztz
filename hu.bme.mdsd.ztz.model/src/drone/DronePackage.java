@@ -169,7 +169,7 @@ public interface DronePackage extends EPackage {
         int TASK__NAME = NAMED_ELEMENT__NAME;
 
         /**
-         * The feature id for the '<em><b>Mission</b></em>' reference.
+         * The feature id for the '<em><b>Mission</b></em>' container reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -269,13 +269,22 @@ public interface DronePackage extends EPackage {
         int TASK_DESCRIPTOR__PROPERTIES = 1;
 
         /**
+         * The feature id for the '<em><b>Task</b></em>' container reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_DESCRIPTOR__TASK = 2;
+
+        /**
          * The number of structural features of the '<em>Task Descriptor</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_DESCRIPTOR_FEATURE_COUNT = 2;
+        int TASK_DESCRIPTOR_FEATURE_COUNT = 3;
 
         /**
          * The number of operations of the '<em>Task Descriptor</em>' class.
@@ -763,13 +772,22 @@ public interface DronePackage extends EPackage {
         int TASK_EXECUTION__STATUS = 2;
 
         /**
+         * The feature id for the '<em><b>Task</b></em>' container reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_EXECUTION__TASK = 3;
+
+        /**
          * The number of structural features of the '<em>Task Execution</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_EXECUTION_FEATURE_COUNT = 3;
+        int TASK_EXECUTION_FEATURE_COUNT = 4;
 
         /**
          * The number of operations of the '<em>Task Execution</em>' class.
@@ -1515,10 +1533,10 @@ public interface DronePackage extends EPackage {
         EClass getTask();
 
         /**
-         * Returns the meta object for the reference '{@link drone.Task#getMission <em>Mission</em>}'.
+         * Returns the meta object for the container reference '{@link drone.Task#getMission <em>Mission</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Mission</em>'.
+         * @return the meta object for the container reference '<em>Mission</em>'.
          * @see drone.Task#getMission()
          * @see #getTask()
          * @generated
@@ -1611,6 +1629,17 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EReference getTaskDescriptor_Properties();
+
+        /**
+         * Returns the meta object for the container reference '{@link drone.TaskDescriptor#getTask <em>Task</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the container reference '<em>Task</em>'.
+         * @see drone.TaskDescriptor#getTask()
+         * @see #getTaskDescriptor()
+         * @generated
+         */
+        EReference getTaskDescriptor_Task();
 
         /**
          * Returns the meta object for class '{@link drone.Position <em>Position</em>}'.
@@ -1989,6 +2018,17 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EAttribute getTaskExecution_Status();
+
+        /**
+         * Returns the meta object for the container reference '{@link drone.TaskExecution#getTask <em>Task</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the container reference '<em>Task</em>'.
+         * @see drone.TaskExecution#getTask()
+         * @see #getTaskExecution()
+         * @generated
+         */
+        EReference getTaskExecution_Task();
 
         /**
          * Returns the meta object for class '{@link drone.RobotCollaboration <em>Robot Collaboration</em>}'.
@@ -2582,7 +2622,7 @@ public interface DronePackage extends EPackage {
                 EClass TASK = eINSTANCE.getTask();
 
                 /**
-                 * The meta object literal for the '<em><b>Mission</b></em>' reference feature.
+                 * The meta object literal for the '<em><b>Mission</b></em>' container reference feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
@@ -2654,6 +2694,14 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EReference TASK_DESCRIPTOR__PROPERTIES = eINSTANCE.getTaskDescriptor_Properties();
+
+                /**
+                 * The meta object literal for the '<em><b>Task</b></em>' container reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_DESCRIPTOR__TASK = eINSTANCE.getTaskDescriptor_Task();
 
                 /**
                  * The meta object literal for the '{@link drone.impl.PositionImpl <em>Position</em>}' class.
@@ -2948,6 +2996,14 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EAttribute TASK_EXECUTION__STATUS = eINSTANCE.getTaskExecution_Status();
+
+                /**
+                 * The meta object literal for the '<em><b>Task</b></em>' container reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_EXECUTION__TASK = eINSTANCE.getTaskExecution_Task();
 
                 /**
                  * The meta object literal for the '{@link drone.impl.RobotCollaborationImpl <em>Robot Collaboration</em>}' class.

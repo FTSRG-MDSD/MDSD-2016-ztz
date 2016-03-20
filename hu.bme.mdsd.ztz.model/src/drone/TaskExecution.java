@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link drone.TaskExecution#getExecutors <em>Executors</em>}</li>
  *   <li>{@link drone.TaskExecution#getExecutionTime <em>Execution Time</em>}</li>
  *   <li>{@link drone.TaskExecution#getStatus <em>Status</em>}</li>
+ *   <li>{@link drone.TaskExecution#getTask <em>Task</em>}</li>
  * </ul>
  *
  * @see drone.DronePackage#getTaskExecution()
@@ -95,5 +96,33 @@ public interface TaskExecution extends EObject {
          * @generated
          */
         void setStatus(TaskExecutionStatus value);
+
+        /**
+         * Returns the value of the '<em><b>Task</b></em>' container reference.
+         * It is bidirectional and its opposite is '{@link drone.Task#getExecution <em>Execution</em>}'.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Task</em>' container reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Task</em>' container reference.
+         * @see #setTask(Task)
+         * @see drone.DronePackage#getTaskExecution_Task()
+         * @see drone.Task#getExecution
+         * @model opposite="execution" transient="false"
+         * @generated
+         */
+        Task getTask();
+
+        /**
+         * Sets the value of the '{@link drone.TaskExecution#getTask <em>Task</em>}' container reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Task</em>' container reference.
+         * @see #getTask()
+         * @generated
+         */
+        void setTask(Task value);
 
 } // TaskExecution

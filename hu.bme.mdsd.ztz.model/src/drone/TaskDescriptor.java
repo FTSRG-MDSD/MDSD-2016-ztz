@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link drone.TaskDescriptor#getTargets <em>Targets</em>}</li>
  *   <li>{@link drone.TaskDescriptor#getProperties <em>Properties</em>}</li>
+ *   <li>{@link drone.TaskDescriptor#getTask <em>Task</em>}</li>
  * </ul>
  *
  * @see drone.DronePackage#getTaskDescriptor()
@@ -55,5 +56,33 @@ public interface TaskDescriptor extends EObject {
          * @generated
          */
         EList<Property> getProperties();
+
+        /**
+         * Returns the value of the '<em><b>Task</b></em>' container reference.
+         * It is bidirectional and its opposite is '{@link drone.Task#getDescriptor <em>Descriptor</em>}'.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Task</em>' container reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Task</em>' container reference.
+         * @see #setTask(Task)
+         * @see drone.DronePackage#getTaskDescriptor_Task()
+         * @see drone.Task#getDescriptor
+         * @model opposite="descriptor" transient="false"
+         * @generated
+         */
+        Task getTask();
+
+        /**
+         * Sets the value of the '{@link drone.TaskDescriptor#getTask <em>Task</em>}' container reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Task</em>' container reference.
+         * @see #getTask()
+         * @generated
+         */
+        void setTask(Task value);
 
 } // TaskDescriptor

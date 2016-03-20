@@ -25,6 +25,7 @@ public interface Mission extends NamedElement {
         /**
          * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.
          * The list contents are of type {@link drone.Task}.
+         * It is bidirectional and its opposite is '{@link drone.Task#getMission <em>Mission</em>}'.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Tasks</em>' containment reference list isn't clear,
@@ -33,7 +34,8 @@ public interface Mission extends NamedElement {
          * <!-- end-user-doc -->
          * @return the value of the '<em>Tasks</em>' containment reference list.
          * @see drone.DronePackage#getMission_Tasks()
-         * @model containment="true" required="true"
+         * @see drone.Task#getMission
+         * @model opposite="mission" containment="true" required="true"
          * @generated
          */
         EList<Task> getTasks();

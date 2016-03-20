@@ -26,26 +26,28 @@ package drone;
  */
 public interface Task extends NamedElement {
         /**
-         * Returns the value of the '<em><b>Mission</b></em>' reference.
+         * Returns the value of the '<em><b>Mission</b></em>' container reference.
+         * It is bidirectional and its opposite is '{@link drone.Mission#getTasks <em>Tasks</em>}'.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Mission</em>' reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Mission</em>' reference.
+         * @return the value of the '<em>Mission</em>' container reference.
          * @see #setMission(Mission)
          * @see drone.DronePackage#getTask_Mission()
-         * @model required="true"
+         * @see drone.Mission#getTasks
+         * @model opposite="tasks" required="true" transient="false"
          * @generated
          */
         Mission getMission();
 
         /**
-         * Sets the value of the '{@link drone.Task#getMission <em>Mission</em>}' reference.
+         * Sets the value of the '{@link drone.Task#getMission <em>Mission</em>}' container reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Mission</em>' reference.
+         * @param value the new value of the '<em>Mission</em>' container reference.
          * @see #getMission()
          * @generated
          */
@@ -53,6 +55,7 @@ public interface Task extends NamedElement {
 
         /**
          * Returns the value of the '<em><b>Descriptor</b></em>' containment reference.
+         * It is bidirectional and its opposite is '{@link drone.TaskDescriptor#getTask <em>Task</em>}'.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Descriptor</em>' containment reference isn't clear,
@@ -62,7 +65,8 @@ public interface Task extends NamedElement {
          * @return the value of the '<em>Descriptor</em>' containment reference.
          * @see #setDescriptor(TaskDescriptor)
          * @see drone.DronePackage#getTask_Descriptor()
-         * @model containment="true" required="true"
+         * @see drone.TaskDescriptor#getTask
+         * @model opposite="task" containment="true" required="true"
          * @generated
          */
         TaskDescriptor getDescriptor();
@@ -79,6 +83,7 @@ public interface Task extends NamedElement {
 
         /**
          * Returns the value of the '<em><b>Execution</b></em>' containment reference.
+         * It is bidirectional and its opposite is '{@link drone.TaskExecution#getTask <em>Task</em>}'.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Execution</em>' containment reference isn't clear,
@@ -88,7 +93,8 @@ public interface Task extends NamedElement {
          * @return the value of the '<em>Execution</em>' containment reference.
          * @see #setExecution(TaskExecution)
          * @see drone.DronePackage#getTask_Execution()
-         * @model containment="true"
+         * @see drone.TaskExecution#getTask
+         * @model opposite="task" containment="true"
          * @generated
          */
         TaskExecution getExecution();

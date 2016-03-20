@@ -3,17 +3,17 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="drone" nsURI="http://www.mdsd.hu/drone" nsPrefix="drone">
   <eClassifiers xsi:type="ecore:EClass" name="Mission" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" lowerBound="1" upperBound="-1"
-        eType="#//Task" containment="true"/>
+        eType="#//Task" containment="true" eOpposite="#//Task/mission"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="estimatedTime" unique="false"
         eType="#//MeasureValue" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" lowerBound="1"
-        eType="#//Mission"/>
+        eType="#//Mission" eOpposite="#//Mission/tasks"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="1"
-        eType="#//TaskDescriptor" containment="true"/>
+        eType="#//TaskDescriptor" containment="true" eOpposite="#//TaskDescriptor/task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="execution" eType="#//TaskExecution"
-        containment="true"/>
+        containment="true" eOpposite="#//TaskExecution/task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" lowerBound="1"
         eType="#//TaskRequirement" containment="true" eOpposite="#//TaskRequirement/task"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//TaskStatus"/>
@@ -25,6 +25,7 @@
         eType="#//AreaObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" eType="#//Task" eOpposite="#//Task/descriptor"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Position">
     <eStructuralFeatures xsi:type="ecore:EReference" name="coordinates" upperBound="-1"
@@ -91,6 +92,7 @@
         eType="#//MeasureValue" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" unique="false"
         lowerBound="1" eType="#//TaskExecutionStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" eType="#//Task" eOpposite="#//Task/execution"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RobotCollaboration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="collaborator" lowerBound="1"

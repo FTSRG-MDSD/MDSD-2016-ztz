@@ -5,10 +5,12 @@ package drone.impl;
 import drone.AreaObject;
 import drone.DronePackage;
 import drone.Property;
+import drone.Task;
 import drone.TaskDescriptor;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,10 +18,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -32,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link drone.impl.TaskDescriptorImpl#getTargets <em>Targets</em>}</li>
  *   <li>{@link drone.impl.TaskDescriptorImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link drone.impl.TaskDescriptorImpl#getTask <em>Task</em>}</li>
  * </ul>
  *
  * @generated
@@ -105,13 +110,86 @@ public class TaskDescriptorImpl extends MinimalEObjectImpl.Container implements 
          * <!-- end-user-doc -->
          * @generated
          */
+        public Task getTask() {
+                if (eContainerFeatureID() != DronePackage.TASK_DESCRIPTOR__TASK) return null;
+                return (Task)eInternalContainer();
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public NotificationChain basicSetTask(Task newTask, NotificationChain msgs) {
+                msgs = eBasicSetContainer((InternalEObject)newTask, DronePackage.TASK_DESCRIPTOR__TASK, msgs);
+                return msgs;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setTask(Task newTask) {
+                if (newTask != eInternalContainer() || (eContainerFeatureID() != DronePackage.TASK_DESCRIPTOR__TASK && newTask != null)) {
+                        if (EcoreUtil.isAncestor(this, newTask))
+                                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                        NotificationChain msgs = null;
+                        if (eInternalContainer() != null)
+                                msgs = eBasicRemoveFromContainer(msgs);
+                        if (newTask != null)
+                                msgs = ((InternalEObject)newTask).eInverseAdd(this, DronePackage.TASK__DESCRIPTOR, Task.class, msgs);
+                        msgs = basicSetTask(newTask, msgs);
+                        if (msgs != null) msgs.dispatch();
+                }
+                else if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK_DESCRIPTOR__TASK, newTask, newTask));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+                switch (featureID) {
+                        case DronePackage.TASK_DESCRIPTOR__TASK:
+                                if (eInternalContainer() != null)
+                                        msgs = eBasicRemoveFromContainer(msgs);
+                                return basicSetTask((Task)otherEnd, msgs);
+                }
+                return super.eInverseAdd(otherEnd, featureID, msgs);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
                         case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
                                 return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+                        case DronePackage.TASK_DESCRIPTOR__TASK:
+                                return basicSetTask(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+                switch (eContainerFeatureID()) {
+                        case DronePackage.TASK_DESCRIPTOR__TASK:
+                                return eInternalContainer().eInverseRemove(this, DronePackage.TASK__DESCRIPTOR, Task.class, msgs);
+                }
+                return super.eBasicRemoveFromContainerFeature(msgs);
         }
 
         /**
@@ -126,6 +204,8 @@ public class TaskDescriptorImpl extends MinimalEObjectImpl.Container implements 
                                 return getTargets();
                         case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
                                 return getProperties();
+                        case DronePackage.TASK_DESCRIPTOR__TASK:
+                                return getTask();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -147,6 +227,9 @@ public class TaskDescriptorImpl extends MinimalEObjectImpl.Container implements 
                                 getProperties().clear();
                                 getProperties().addAll((Collection<? extends Property>)newValue);
                                 return;
+                        case DronePackage.TASK_DESCRIPTOR__TASK:
+                                setTask((Task)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -165,6 +248,9 @@ public class TaskDescriptorImpl extends MinimalEObjectImpl.Container implements 
                         case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
                                 getProperties().clear();
                                 return;
+                        case DronePackage.TASK_DESCRIPTOR__TASK:
+                                setTask((Task)null);
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -181,6 +267,8 @@ public class TaskDescriptorImpl extends MinimalEObjectImpl.Container implements 
                                 return targets != null && !targets.isEmpty();
                         case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
                                 return properties != null && !properties.isEmpty();
+                        case DronePackage.TASK_DESCRIPTOR__TASK:
+                                return getTask() != null;
                 }
                 return super.eIsSet(featureID);
         }

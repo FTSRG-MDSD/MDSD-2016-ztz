@@ -18,8 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -83,7 +82,7 @@ public class MissionImpl extends NamedElementImpl implements Mission {
          */
         public EList<Task> getTasks() {
                 if (tasks == null) {
-                        tasks = new EObjectContainmentEList<Task>(Task.class, this, DronePackage.MISSION__TASKS);
+                        tasks = new EObjectContainmentWithInverseEList<Task>(Task.class, this, DronePackage.MISSION__TASKS, DronePackage.TASK__MISSION);
                 }
                 return tasks;
         }
@@ -129,6 +128,21 @@ public class MissionImpl extends NamedElementImpl implements Mission {
                 }
                 else if (eNotificationRequired())
                         eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.MISSION__ESTIMATED_TIME, newEstimatedTime, newEstimatedTime));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @SuppressWarnings("unchecked")
+        @Override
+        public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+                switch (featureID) {
+                        case DronePackage.MISSION__TASKS:
+                                return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
+                }
+                return super.eInverseAdd(otherEnd, featureID, msgs);
         }
 
         /**
