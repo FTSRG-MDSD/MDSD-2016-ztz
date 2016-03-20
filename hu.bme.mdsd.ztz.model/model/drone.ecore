@@ -76,8 +76,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="weight" eType="#//MeasureValue"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" eType="#//Mission"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" lowerBound="1"
-        upperBound="-1" eType="#//Action" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//Action" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capability" eType="#//Capability"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="communicationAction" upperBound="-1"
         eType="ecore:EClass ../behaviourModel/behaviourModel.ecore#//CommunicationAction"/>
@@ -109,12 +109,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="requiredCapability" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requiredCapabilities" upperBound="-1"
         eType="#//Capability"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Condition">
-    <eLiterals name="Optional"/>
-    <eLiterals name="Obligatory" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Size">
     <eStructuralFeatures xsi:type="ecore:EReference" name="width" lowerBound="1" eType="#//MeasureValue"
@@ -191,8 +187,11 @@
         eType="#//MeasureDimension" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="areaObjects" upperBound="-1"
         eType="#//AreaObject" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
         eType="#//Capability" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//Property"/>
+  </eClassifiers>
 </ecore:EPackage>

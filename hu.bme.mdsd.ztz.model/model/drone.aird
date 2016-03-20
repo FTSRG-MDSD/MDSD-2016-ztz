@@ -2370,6 +2370,7 @@
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_pwwq0O6yEeWiz_Dvb-pu_w" description="_dA6yEOYVEeWtrtcnSjKfkw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_pwwq0e6yEeWiz_Dvb-pu_w" showIcon="false">
             <customFeatures>labelSize</customFeatures>
+            <labelFormat>bold</labelFormat>
           </centerLabelStyle>
           <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_pwwq0u6yEeWiz_Dvb-pu_w" showIcon="false" labelColor="39,76,114">
             <customFeatures>labelSize</customFeatures>
