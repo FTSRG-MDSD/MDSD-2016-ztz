@@ -137,7 +137,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/capabilities"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Capability">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Capability/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Capability/properties"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="BehaviourModel" disposableProviderFactory="true" ecorePackage="behaviourModel.ecore#/">

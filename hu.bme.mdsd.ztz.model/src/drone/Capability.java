@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
 public interface Capability extends NamedElement {
 
         /**
-         * Returns the value of the '<em><b>Properties</b></em>' reference list.
+         * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
          * The list contents are of type {@link drone.Property}.
          * <!-- begin-user-doc -->
          * <p>
@@ -31,9 +31,9 @@ public interface Capability extends NamedElement {
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Properties</em>' reference list.
+         * @return the value of the '<em>Properties</em>' containment reference list.
          * @see drone.DronePackage#getCapability_Properties()
-         * @model
+         * @model containment="true"
          * @generated
          */
         EList<Property> getProperties();

@@ -1451,7 +1451,7 @@ public interface DronePackage extends EPackage {
         int CAPABILITY__NAME = NAMED_ELEMENT__NAME;
 
         /**
-         * The feature id for the '<em><b>Properties</b></em>' reference list.
+         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -2541,10 +2541,10 @@ public interface DronePackage extends EPackage {
         EClass getCapability();
 
         /**
-         * Returns the meta object for the reference list '{@link drone.Capability#getProperties <em>Properties</em>}'.
+         * Returns the meta object for the containment reference list '{@link drone.Capability#getProperties <em>Properties</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the reference list '<em>Properties</em>'.
+         * @return the meta object for the containment reference list '<em>Properties</em>'.
          * @see drone.Capability#getProperties()
          * @see #getCapability()
          * @generated
@@ -3421,7 +3421,7 @@ public interface DronePackage extends EPackage {
                 EClass CAPABILITY = eINSTANCE.getCapability();
 
                 /**
-                 * The meta object literal for the '<em><b>Properties</b></em>' reference list feature.
+                 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated

@@ -1525,7 +1525,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobotMissionContainer_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, RobotMissionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getCapability_Properties(), this.getProperty(), null, "properties", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getCapability_Properties(), this.getProperty(), null, "properties", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 // Initialize enums and add enum literals
                 initEEnum(taskExecutionStatusEEnum, TaskExecutionStatus.class, "TaskExecutionStatus");

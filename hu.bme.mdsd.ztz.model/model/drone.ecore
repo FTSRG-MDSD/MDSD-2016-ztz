@@ -192,6 +192,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property"/>
+        eType="#//Property" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

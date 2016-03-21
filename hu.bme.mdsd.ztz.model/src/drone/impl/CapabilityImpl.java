@@ -7,9 +7,12 @@ import drone.DronePackage;
 
 import drone.Property;
 import java.util.Collection;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +29,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class CapabilityImpl extends NamedElementImpl implements Capability {
         /**
-         * The cached value of the '{@link #getProperties() <em>Properties</em>}' reference list.
+         * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getProperties()
@@ -61,9 +64,23 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
          */
         public EList<Property> getProperties() {
                 if (properties == null) {
-                        properties = new EObjectResolvingEList<Property>(Property.class, this, DronePackage.CAPABILITY__PROPERTIES);
+                        properties = new EObjectContainmentEList<Property>(Property.class, this, DronePackage.CAPABILITY__PROPERTIES);
                 }
                 return properties;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+                switch (featureID) {
+                        case DronePackage.CAPABILITY__PROPERTIES:
+                                return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+                }
+                return super.eInverseRemove(otherEnd, featureID, msgs);
         }
 
         /**
