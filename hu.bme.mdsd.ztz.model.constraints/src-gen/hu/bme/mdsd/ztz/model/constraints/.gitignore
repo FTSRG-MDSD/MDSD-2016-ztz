@@ -22,3 +22,11 @@
 /.IncorrectWaitingTaskMatcher.java._trace
 /.IsNotWaitingTaskMatch.java._trace
 /.IsNotWaitingTaskMatcher.java._trace
+/.SameCollaboratorRobotMatch.java._trace
+/.SameCollaboratorRobotMatcher.java._trace
+/.GetAreaObjectsMatch.java._trace
+/.GetAreaObjectsMatcher.java._trace
+/.OneDetectedObjectMatch.java._trace
+/.OneDetectedObjectMatcher.java._trace
+/.GetDetectedAreaObjectsMatch.java._trace
+/.GetDetectedAreaObjectsMatcher.java._trace

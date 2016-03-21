@@ -110,8 +110,34 @@ pattern isNotWaitingTask(task:Task) {
 	Task.requirement.prerequisite.status(task, preStatus);
 	Task.status(task, taskStatus);
 	check(preStatus != hu.bme.mdsd.ztz.model.drone.TaskStatus.FINISHED && 
-		taskStatus != hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus.WAITING
+		taskStatus != hu.bme.mdsd.ztz.model.drone.TaskStatus.WAITING
 	);
+}
+
+
+@Constraint(
+	key = {"robot"},
+	severity = "error",
+	message = "The collaboration of $robot$ refers to itself!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern sameCollaboratorRobot(robot:Robot) {
+	Robot.collaborations.collaborator(robot, robot);
+}
+
+
+@Constraint(
+	key = {"detected1", "object"},
+	severity = "error",
+	message = "$object$ is detected more than once by the same robot!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern oneDetectedObject(object: AreaObject, detected1: DetectedObject) {
+	Robot.detectedObjects(robot, detected1);
+	Robot.detectedObjects(robot, detected2);
+	detected1 != detected2;
+	DetectedObject.object(detected1, object);
+	DetectedObject.object(detected2, object);
 }
 
 

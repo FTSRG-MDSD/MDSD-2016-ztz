@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
 import hu.bme.mdsd.ztz.model.constraints.IsNotWaitingTaskMatch;
 import hu.bme.mdsd.ztz.model.constraints.IsNotWaitingTaskMatcher;
-import hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus;
 import hu.bme.mdsd.ztz.model.drone.TaskStatus;
 import java.util.Arrays;
 import java.util.List;
@@ -123,7 +122,7 @@ public final class IsNotWaitingTaskQuerySpecification extends BaseGeneratedEMFQu
       		PVariable var__virtual_3_ = body.getOrCreateVariableByName(".virtual{3}");
       		new TypeConstraint(body, new FlatTuple(var_task, var__virtual_3_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/drone", "Task", "status")));
       		new Equality(body, var__virtual_3_, var_taskStatus);
-      		// 	check(preStatus != hu.bme.mdsd.ztz.model.drone.TaskStatus.FINISHED && 		taskStatus != hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus.WAITING	)
+      		// 	check(preStatus != hu.bme.mdsd.ztz.model.drone.TaskStatus.FINISHED && 		taskStatus != hu.bme.mdsd.ztz.model.drone.TaskStatus.WAITING	)
       		new ExpressionEvaluation(body, new IExpressionEvaluator() {
       		                            
       		                            @Override
@@ -171,7 +170,7 @@ public final class IsNotWaitingTaskQuerySpecification extends BaseGeneratedEMFQu
     if (!_notEquals) {
       _and = false;
     } else {
-      boolean _notEquals_1 = (!Objects.equal(taskStatus, TaskExecutionStatus.WAITING));
+      boolean _notEquals_1 = (!Objects.equal(taskStatus, TaskStatus.WAITING));
       _and = _notEquals_1;
     }
     return _and;

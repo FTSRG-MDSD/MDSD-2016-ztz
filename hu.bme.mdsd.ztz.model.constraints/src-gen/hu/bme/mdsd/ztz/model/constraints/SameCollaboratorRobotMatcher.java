@@ -1,8 +1,8 @@
 package hu.bme.mdsd.ztz.model.constraints;
 
-import hu.bme.mdsd.ztz.model.constraints.IsNotWaitingTaskMatch;
-import hu.bme.mdsd.ztz.model.constraints.util.IsNotWaitingTaskQuerySpecification;
-import hu.bme.mdsd.ztz.model.drone.Task;
+import hu.bme.mdsd.ztz.model.constraints.SameCollaboratorRobotMatch;
+import hu.bme.mdsd.ztz.model.constraints.util.SameCollaboratorRobotQuerySpecification;
+import hu.bme.mdsd.ztz.model.drone.Robot;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,38 +17,34 @@ import org.eclipse.incquery.runtime.matchers.tuple.Tuple;
 import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
 
 /**
- * Generated pattern matcher API of the hu.bme.mdsd.ztz.model.constraints.isNotWaitingTask pattern,
+ * Generated pattern matcher API of the hu.bme.mdsd.ztz.model.constraints.sameCollaboratorRobot pattern,
  * providing pattern-specific query methods.
  * 
  * <p>Use the pattern matcher on a given model via {@link #on(IncQueryEngine)},
  * e.g. in conjunction with {@link IncQueryEngine#on(Notifier)}.
  * 
- * <p>Matches of the pattern will be represented as {@link IsNotWaitingTaskMatch}.
+ * <p>Matches of the pattern will be represented as {@link SameCollaboratorRobotMatch}.
  * 
  * <p>Original source:
  * <code><pre>
  * {@literal @}Constraint(
- * 	key = {"task"},
+ * 	key = {"robot"},
  * 	severity = "error",
- * 	message = "$task$ must be waiting when its prerequisite is not finished!",
+ * 	message = "The collaboration of $robot$ refers to itself!",
  * 	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
  * )
- * pattern isNotWaitingTask(task:Task) {
- * 	Task.requirement.prerequisite.status(task, preStatus);
- * 	Task.status(task, taskStatus);
- * 	check(preStatus != hu.bme.mdsd.ztz.model.drone.TaskStatus.FINISHED && 
- * 		taskStatus != hu.bme.mdsd.ztz.model.drone.TaskStatus.WAITING
- * 	);
+ * pattern sameCollaboratorRobot(robot:Robot) {
+ * 	Robot.collaborations.collaborator(robot, robot);
  * }
  * </pre></code>
  * 
- * @see IsNotWaitingTaskMatch
- * @see IsNotWaitingTaskProcessor
- * @see IsNotWaitingTaskQuerySpecification
+ * @see SameCollaboratorRobotMatch
+ * @see SameCollaboratorRobotProcessor
+ * @see SameCollaboratorRobotQuerySpecification
  * 
  */
 @SuppressWarnings("all")
-public class IsNotWaitingTaskMatcher extends BaseMatcher<IsNotWaitingTaskMatch> {
+public class SameCollaboratorRobotMatcher extends BaseMatcher<SameCollaboratorRobotMatch> {
   /**
    * Initializes the pattern matcher within an existing EMF-IncQuery engine.
    * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
@@ -57,19 +53,19 @@ public class IsNotWaitingTaskMatcher extends BaseMatcher<IsNotWaitingTaskMatch> 
    * @throws IncQueryException if an error occurs during pattern matcher creation
    * 
    */
-  public static IsNotWaitingTaskMatcher on(final IncQueryEngine engine) throws IncQueryException {
+  public static SameCollaboratorRobotMatcher on(final IncQueryEngine engine) throws IncQueryException {
     // check if matcher already exists
-    IsNotWaitingTaskMatcher matcher = engine.getExistingMatcher(querySpecification());
+    SameCollaboratorRobotMatcher matcher = engine.getExistingMatcher(querySpecification());
     if (matcher == null) {
-    	matcher = new IsNotWaitingTaskMatcher(engine);
+    	matcher = new SameCollaboratorRobotMatcher(engine);
     	// do not have to "put" it into engine.matchers, reportMatcherInitialized() will take care of it
     }
     return matcher;
   }
   
-  private final static int POSITION_TASK = 0;
+  private final static int POSITION_ROBOT = 0;
   
-  private final static Logger LOGGER = IncQueryLoggingUtil.getLogger(IsNotWaitingTaskMatcher.class);
+  private final static Logger LOGGER = IncQueryLoggingUtil.getLogger(SameCollaboratorRobotMatcher.class);
   
   /**
    * Initializes the pattern matcher over a given EMF model root (recommended: Resource or ResourceSet).
@@ -84,7 +80,7 @@ public class IsNotWaitingTaskMatcher extends BaseMatcher<IsNotWaitingTaskMatch> 
    * 
    */
   @Deprecated
-  public IsNotWaitingTaskMatcher(final Notifier emfRoot) throws IncQueryException {
+  public SameCollaboratorRobotMatcher(final Notifier emfRoot) throws IncQueryException {
     this(IncQueryEngine.on(emfRoot));
   }
   
@@ -98,110 +94,110 @@ public class IsNotWaitingTaskMatcher extends BaseMatcher<IsNotWaitingTaskMatch> 
    * 
    */
   @Deprecated
-  public IsNotWaitingTaskMatcher(final IncQueryEngine engine) throws IncQueryException {
+  public SameCollaboratorRobotMatcher(final IncQueryEngine engine) throws IncQueryException {
     super(engine, querySpecification());
   }
   
   /**
    * Returns the set of all matches of the pattern that conform to the given fixed values of some parameters.
-   * @param pTask the fixed value of pattern parameter task, or null if not bound.
-   * @return matches represented as a IsNotWaitingTaskMatch object.
+   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @return matches represented as a SameCollaboratorRobotMatch object.
    * 
    */
-  public Collection<IsNotWaitingTaskMatch> getAllMatches(final Task pTask) {
-    return rawGetAllMatches(new Object[]{pTask});
+  public Collection<SameCollaboratorRobotMatch> getAllMatches(final Robot pRobot) {
+    return rawGetAllMatches(new Object[]{pRobot});
   }
   
   /**
    * Returns an arbitrarily chosen match of the pattern that conforms to the given fixed values of some parameters.
    * Neither determinism nor randomness of selection is guaranteed.
-   * @param pTask the fixed value of pattern parameter task, or null if not bound.
-   * @return a match represented as a IsNotWaitingTaskMatch object, or null if no match is found.
+   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @return a match represented as a SameCollaboratorRobotMatch object, or null if no match is found.
    * 
    */
-  public IsNotWaitingTaskMatch getOneArbitraryMatch(final Task pTask) {
-    return rawGetOneArbitraryMatch(new Object[]{pTask});
+  public SameCollaboratorRobotMatch getOneArbitraryMatch(final Robot pRobot) {
+    return rawGetOneArbitraryMatch(new Object[]{pRobot});
   }
   
   /**
    * Indicates whether the given combination of specified pattern parameters constitute a valid pattern match,
    * under any possible substitution of the unspecified parameters (if any).
-   * @param pTask the fixed value of pattern parameter task, or null if not bound.
+   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
    * @return true if the input is a valid (partial) match of the pattern.
    * 
    */
-  public boolean hasMatch(final Task pTask) {
-    return rawHasMatch(new Object[]{pTask});
+  public boolean hasMatch(final Robot pRobot) {
+    return rawHasMatch(new Object[]{pRobot});
   }
   
   /**
    * Returns the number of all matches of the pattern that conform to the given fixed values of some parameters.
-   * @param pTask the fixed value of pattern parameter task, or null if not bound.
+   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
    * @return the number of pattern matches found.
    * 
    */
-  public int countMatches(final Task pTask) {
-    return rawCountMatches(new Object[]{pTask});
+  public int countMatches(final Robot pRobot) {
+    return rawCountMatches(new Object[]{pRobot});
   }
   
   /**
    * Executes the given processor on each match of the pattern that conforms to the given fixed values of some parameters.
-   * @param pTask the fixed value of pattern parameter task, or null if not bound.
+   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
    * @param processor the action that will process each pattern match.
    * 
    */
-  public void forEachMatch(final Task pTask, final IMatchProcessor<? super IsNotWaitingTaskMatch> processor) {
-    rawForEachMatch(new Object[]{pTask}, processor);
+  public void forEachMatch(final Robot pRobot, final IMatchProcessor<? super SameCollaboratorRobotMatch> processor) {
+    rawForEachMatch(new Object[]{pRobot}, processor);
   }
   
   /**
    * Executes the given processor on an arbitrarily chosen match of the pattern that conforms to the given fixed values of some parameters.
    * Neither determinism nor randomness of selection is guaranteed.
-   * @param pTask the fixed value of pattern parameter task, or null if not bound.
+   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
    * @param processor the action that will process the selected match.
    * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
    * 
    */
-  public boolean forOneArbitraryMatch(final Task pTask, final IMatchProcessor<? super IsNotWaitingTaskMatch> processor) {
-    return rawForOneArbitraryMatch(new Object[]{pTask}, processor);
+  public boolean forOneArbitraryMatch(final Robot pRobot, final IMatchProcessor<? super SameCollaboratorRobotMatch> processor) {
+    return rawForOneArbitraryMatch(new Object[]{pRobot}, processor);
   }
   
   /**
    * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
-   * @param pTask the fixed value of pattern parameter task, or null if not bound.
+   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
    * @return the (partial) match object.
    * 
    */
-  public IsNotWaitingTaskMatch newMatch(final Task pTask) {
-    return IsNotWaitingTaskMatch.newMatch(pTask);
+  public SameCollaboratorRobotMatch newMatch(final Robot pRobot) {
+    return SameCollaboratorRobotMatch.newMatch(pRobot);
   }
   
   /**
-   * Retrieve the set of values that occur in matches for task.
+   * Retrieve the set of values that occur in matches for robot.
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  protected Set<Task> rawAccumulateAllValuesOftask(final Object[] parameters) {
-    Set<Task> results = new HashSet<Task>();
-    rawAccumulateAllValues(POSITION_TASK, parameters, results);
+  protected Set<Robot> rawAccumulateAllValuesOfrobot(final Object[] parameters) {
+    Set<Robot> results = new HashSet<Robot>();
+    rawAccumulateAllValues(POSITION_ROBOT, parameters, results);
     return results;
   }
   
   /**
-   * Retrieve the set of values that occur in matches for task.
+   * Retrieve the set of values that occur in matches for robot.
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<Task> getAllValuesOftask() {
-    return rawAccumulateAllValuesOftask(emptyArray());
+  public Set<Robot> getAllValuesOfrobot() {
+    return rawAccumulateAllValuesOfrobot(emptyArray());
   }
   
   @Override
-  protected IsNotWaitingTaskMatch tupleToMatch(final Tuple t) {
+  protected SameCollaboratorRobotMatch tupleToMatch(final Tuple t) {
     try {
-    	return IsNotWaitingTaskMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Task) t.get(POSITION_TASK));
+    	return SameCollaboratorRobotMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) t.get(POSITION_ROBOT));
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in tuple not properly typed!",e);
     	return null;
@@ -209,9 +205,9 @@ public class IsNotWaitingTaskMatcher extends BaseMatcher<IsNotWaitingTaskMatch> 
   }
   
   @Override
-  protected IsNotWaitingTaskMatch arrayToMatch(final Object[] match) {
+  protected SameCollaboratorRobotMatch arrayToMatch(final Object[] match) {
     try {
-    	return IsNotWaitingTaskMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Task) match[POSITION_TASK]);
+    	return SameCollaboratorRobotMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_ROBOT]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -219,9 +215,9 @@ public class IsNotWaitingTaskMatcher extends BaseMatcher<IsNotWaitingTaskMatch> 
   }
   
   @Override
-  protected IsNotWaitingTaskMatch arrayToMatchMutable(final Object[] match) {
+  protected SameCollaboratorRobotMatch arrayToMatchMutable(final Object[] match) {
     try {
-    	return IsNotWaitingTaskMatch.newMutableMatch((hu.bme.mdsd.ztz.model.drone.Task) match[POSITION_TASK]);
+    	return SameCollaboratorRobotMatch.newMutableMatch((hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_ROBOT]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -233,7 +229,7 @@ public class IsNotWaitingTaskMatcher extends BaseMatcher<IsNotWaitingTaskMatch> 
    * @throws IncQueryException if the pattern definition could not be loaded
    * 
    */
-  public static IQuerySpecification<IsNotWaitingTaskMatcher> querySpecification() throws IncQueryException {
-    return IsNotWaitingTaskQuerySpecification.instance();
+  public static IQuerySpecification<SameCollaboratorRobotMatcher> querySpecification() throws IncQueryException {
+    return SameCollaboratorRobotQuerySpecification.instance();
   }
 }

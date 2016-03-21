@@ -20,3 +20,11 @@
 /.IncorrectWaitingTaskQuerySpecification.java._trace
 /.IsNotWaitingTaskProcessor.java._trace
 /.IsNotWaitingTaskQuerySpecification.java._trace
+/.SameCollaboratorRobotProcessor.java._trace
+/.SameCollaboratorRobotQuerySpecification.java._trace
+/.GetAreaObjectsProcessor.java._trace
+/.GetAreaObjectsQuerySpecification.java._trace
+/.OneDetectedObjectProcessor.java._trace
+/.OneDetectedObjectQuerySpecification.java._trace
+/.GetDetectedAreaObjectsProcessor.java._trace
+/.GetDetectedAreaObjectsQuerySpecification.java._trace
