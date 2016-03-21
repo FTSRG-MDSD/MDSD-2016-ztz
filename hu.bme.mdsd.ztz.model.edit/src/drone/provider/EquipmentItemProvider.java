@@ -46,25 +46,25 @@ public class EquipmentItemProvider extends NamedElementItemProvider {
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addCapabilityPropertyDescriptor(object);
+                        addFacilitatePropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
 
         /**
-         * This adds a property descriptor for the Capability feature.
+         * This adds a property descriptor for the Facilitate feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        protected void addCapabilityPropertyDescriptor(Object object) {
+        protected void addFacilitatePropertyDescriptor(Object object) {
                 itemPropertyDescriptors.add
                         (createItemPropertyDescriptor
                                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                                  getResourceLocator(),
-                                 getString("_UI_Equipment_capability_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Equipment_capability_feature", "_UI_Equipment_type"),
-                                 DronePackage.Literals.EQUIPMENT__CAPABILITY,
+                                 getString("_UI_Equipment_facilitate_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Equipment_facilitate_feature", "_UI_Equipment_type"),
+                                 DronePackage.Literals.EQUIPMENT__FACILITATE,
                                  true,
                                  false,
                                  true,

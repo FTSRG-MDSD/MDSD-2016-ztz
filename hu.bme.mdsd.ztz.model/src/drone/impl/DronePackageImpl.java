@@ -1012,7 +1012,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getEquipment_Capability() {
+        public EReference getEquipment_Facilitate() {
                 return (EReference)equipmentEClass.getEStructuralFeatures().get(1);
         }
 
@@ -1371,7 +1371,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
 
                 equipmentEClass = createEClass(EQUIPMENT);
                 createEReference(equipmentEClass, EQUIPMENT__PROPERTIES);
-                createEReference(equipmentEClass, EQUIPMENT__CAPABILITY);
+                createEReference(equipmentEClass, EQUIPMENT__FACILITATE);
 
                 actionEClass = createEClass(ACTION);
                 createEReference(actionEClass, ACTION__PROPERTIES);
@@ -1546,7 +1546,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
 
                 initEClass(equipmentEClass, Equipment.class, "Equipment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getEquipment_Properties(), this.getProperty(), null, "properties", null, 0, -1, Equipment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getEquipment_Capability(), this.getCapability(), null, "capability", null, 0, 1, Equipment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getEquipment_Facilitate(), this.getCapability(), null, "facilitate", null, 0, -1, Equipment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getAction_Properties(), this.getProperty(), null, "properties", null, 0, -1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

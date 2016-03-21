@@ -110,7 +110,7 @@
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Equipment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Equipment/properties"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Equipment/capability"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Equipment/facilitate"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Action">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Action/properties"/>

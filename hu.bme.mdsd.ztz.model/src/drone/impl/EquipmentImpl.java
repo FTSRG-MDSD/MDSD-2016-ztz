@@ -8,18 +8,14 @@ import drone.Equipment;
 import drone.Property;
 
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -31,7 +27,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link drone.impl.EquipmentImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link drone.impl.EquipmentImpl#getCapability <em>Capability</em>}</li>
+ *   <li>{@link drone.impl.EquipmentImpl#getFacilitate <em>Facilitate</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,14 +44,14 @@ public class EquipmentImpl extends NamedElementImpl implements Equipment {
         protected EList<Property> properties;
 
         /**
-         * The cached value of the '{@link #getCapability() <em>Capability</em>}' reference.
+         * The cached value of the '{@link #getFacilitate() <em>Facilitate</em>}' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getCapability()
+         * @see #getFacilitate()
          * @generated
          * @ordered
          */
-        protected Capability capability;
+        protected EList<Capability> facilitate;
 
         /**
          * <!-- begin-user-doc -->
@@ -93,37 +89,11 @@ public class EquipmentImpl extends NamedElementImpl implements Equipment {
          * <!-- end-user-doc -->
          * @generated
          */
-        public Capability getCapability() {
-                if (capability != null && capability.eIsProxy()) {
-                        InternalEObject oldCapability = (InternalEObject)capability;
-                        capability = (Capability)eResolveProxy(oldCapability);
-                        if (capability != oldCapability) {
-                                if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.EQUIPMENT__CAPABILITY, oldCapability, capability));
-                        }
+        public EList<Capability> getFacilitate() {
+                if (facilitate == null) {
+                        facilitate = new EObjectResolvingEList<Capability>(Capability.class, this, DronePackage.EQUIPMENT__FACILITATE);
                 }
-                return capability;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public Capability basicGetCapability() {
-                return capability;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setCapability(Capability newCapability) {
-                Capability oldCapability = capability;
-                capability = newCapability;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.EQUIPMENT__CAPABILITY, oldCapability, capability));
+                return facilitate;
         }
 
         /**
@@ -150,9 +120,8 @@ public class EquipmentImpl extends NamedElementImpl implements Equipment {
                 switch (featureID) {
                         case DronePackage.EQUIPMENT__PROPERTIES:
                                 return getProperties();
-                        case DronePackage.EQUIPMENT__CAPABILITY:
-                                if (resolve) return getCapability();
-                                return basicGetCapability();
+                        case DronePackage.EQUIPMENT__FACILITATE:
+                                return getFacilitate();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -170,8 +139,9 @@ public class EquipmentImpl extends NamedElementImpl implements Equipment {
                                 getProperties().clear();
                                 getProperties().addAll((Collection<? extends Property>)newValue);
                                 return;
-                        case DronePackage.EQUIPMENT__CAPABILITY:
-                                setCapability((Capability)newValue);
+                        case DronePackage.EQUIPMENT__FACILITATE:
+                                getFacilitate().clear();
+                                getFacilitate().addAll((Collection<? extends Capability>)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -188,8 +158,8 @@ public class EquipmentImpl extends NamedElementImpl implements Equipment {
                         case DronePackage.EQUIPMENT__PROPERTIES:
                                 getProperties().clear();
                                 return;
-                        case DronePackage.EQUIPMENT__CAPABILITY:
-                                setCapability((Capability)null);
+                        case DronePackage.EQUIPMENT__FACILITATE:
+                                getFacilitate().clear();
                                 return;
                 }
                 super.eUnset(featureID);
@@ -205,8 +175,8 @@ public class EquipmentImpl extends NamedElementImpl implements Equipment {
                 switch (featureID) {
                         case DronePackage.EQUIPMENT__PROPERTIES:
                                 return properties != null && !properties.isEmpty();
-                        case DronePackage.EQUIPMENT__CAPABILITY:
-                                return capability != null;
+                        case DronePackage.EQUIPMENT__FACILITATE:
+                                return facilitate != null && !facilitate.isEmpty();
                 }
                 return super.eIsSet(featureID);
         }

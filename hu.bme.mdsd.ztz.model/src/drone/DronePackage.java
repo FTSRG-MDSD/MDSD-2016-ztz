@@ -1129,13 +1129,13 @@ public interface DronePackage extends EPackage {
         int EQUIPMENT__PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
         /**
-         * The feature id for the '<em><b>Capability</b></em>' reference.
+         * The feature id for the '<em><b>Facilitate</b></em>' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int EQUIPMENT__CAPABILITY = NAMED_ELEMENT_FEATURE_COUNT + 1;
+        int EQUIPMENT__FACILITATE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
         /**
          * The number of structural features of the '<em>Equipment</em>' class.
@@ -2384,15 +2384,15 @@ public interface DronePackage extends EPackage {
         EReference getEquipment_Properties();
 
         /**
-         * Returns the meta object for the reference '{@link drone.Equipment#getCapability <em>Capability</em>}'.
+         * Returns the meta object for the reference list '{@link drone.Equipment#getFacilitate <em>Facilitate</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Capability</em>'.
-         * @see drone.Equipment#getCapability()
+         * @return the meta object for the reference list '<em>Facilitate</em>'.
+         * @see drone.Equipment#getFacilitate()
          * @see #getEquipment()
          * @generated
          */
-        EReference getEquipment_Capability();
+        EReference getEquipment_Facilitate();
 
         /**
          * Returns the meta object for class '{@link drone.Action <em>Action</em>}'.
@@ -3343,12 +3343,12 @@ public interface DronePackage extends EPackage {
                 EReference EQUIPMENT__PROPERTIES = eINSTANCE.getEquipment_Properties();
 
                 /**
-                 * The meta object literal for the '<em><b>Capability</b></em>' reference feature.
+                 * The meta object literal for the '<em><b>Facilitate</b></em>' reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
-                EReference EQUIPMENT__CAPABILITY = eINSTANCE.getEquipment_Capability();
+                EReference EQUIPMENT__FACILITATE = eINSTANCE.getEquipment_Facilitate();
 
                 /**
                  * The meta object literal for the '{@link drone.impl.ActionImpl <em>Action</em>}' class.
