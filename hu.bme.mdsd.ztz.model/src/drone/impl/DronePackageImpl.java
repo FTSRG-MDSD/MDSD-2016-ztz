@@ -715,6 +715,15 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
+        public EReference getRobot_Execute() {
+                return (EReference)robotEClass.getEStructuralFeatures().get(15);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         public EClass getStringProperty() {
                 return stringPropertyEClass;
         }
@@ -1329,6 +1338,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEReference(robotEClass, ROBOT__CAPABILITIES);
                 createEReference(robotEClass, ROBOT__COMMUNICATION_ACTION);
                 createEReference(robotEClass, ROBOT__CAPABILITY_PROPERTIES);
+                createEReference(robotEClass, ROBOT__EXECUTE);
 
                 stringPropertyEClass = createEClass(STRING_PROPERTY);
                 createEAttribute(stringPropertyEClass, STRING_PROPERTY__VALUE);
@@ -1504,12 +1514,13 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobot_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CommunicationAction(), theBehaviourModelPackage.getCommunicationAction(), null, "communicationAction", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CapabilityProperties(), this.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getRobot_Execute(), this.getTaskExecution(), this.getTaskExecution_Executors(), "execute", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(stringPropertyEClass, StringProperty.class, "StringProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEAttribute(getStringProperty_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(taskExecutionEClass, TaskExecution.class, "TaskExecution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getTaskExecution_Executors(), this.getRobot(), null, "executors", null, 1, -1, TaskExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getTaskExecution_Executors(), this.getRobot(), this.getRobot_Execute(), "executors", null, 1, -1, TaskExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskExecution_ExecutionTime(), this.getMeasureValue(), null, "executionTime", null, 0, 1, TaskExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEAttribute(getTaskExecution_Status(), this.getTaskExecutionStatus(), "status", null, 1, 1, TaskExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskExecution_Task(), this.getTask(), this.getTask_Execution(), "task", null, 0, 1, TaskExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

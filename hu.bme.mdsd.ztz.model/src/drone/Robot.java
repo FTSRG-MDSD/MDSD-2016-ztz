@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link drone.Robot#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link drone.Robot#getCommunicationAction <em>Communication Action</em>}</li>
  *   <li>{@link drone.Robot#getCapabilityProperties <em>Capability Properties</em>}</li>
+ *   <li>{@link drone.Robot#getExecute <em>Execute</em>}</li>
  * </ul>
  *
  * @see drone.DronePackage#getRobot()
@@ -326,5 +327,33 @@ public interface Robot extends NamedElement {
          * @generated
          */
         EList<CapabilityProperties> getCapabilityProperties();
+
+        /**
+         * Returns the value of the '<em><b>Execute</b></em>' reference.
+         * It is bidirectional and its opposite is '{@link drone.TaskExecution#getExecutors <em>Executors</em>}'.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Execute</em>' reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Execute</em>' reference.
+         * @see #setExecute(TaskExecution)
+         * @see drone.DronePackage#getRobot_Execute()
+         * @see drone.TaskExecution#getExecutors
+         * @model opposite="executors"
+         * @generated
+         */
+        TaskExecution getExecute();
+
+        /**
+         * Sets the value of the '{@link drone.Robot#getExecute <em>Execute</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Execute</em>' reference.
+         * @see #getExecute()
+         * @generated
+         */
+        void setExecute(TaskExecution value);
 
 } // Robot

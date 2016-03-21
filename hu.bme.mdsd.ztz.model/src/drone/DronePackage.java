@@ -661,13 +661,22 @@ public interface DronePackage extends EPackage {
         int ROBOT__CAPABILITY_PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 14;
 
         /**
+         * The feature id for the '<em><b>Execute</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ROBOT__EXECUTE = NAMED_ELEMENT_FEATURE_COUNT + 15;
+
+        /**
          * The number of structural features of the '<em>Robot</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int ROBOT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 15;
+        int ROBOT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 16;
 
         /**
          * The number of operations of the '<em>Robot</em>' class.
@@ -2030,6 +2039,17 @@ public interface DronePackage extends EPackage {
         EReference getRobot_CapabilityProperties();
 
         /**
+         * Returns the meta object for the reference '{@link drone.Robot#getExecute <em>Execute</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Execute</em>'.
+         * @see drone.Robot#getExecute()
+         * @see #getRobot()
+         * @generated
+         */
+        EReference getRobot_Execute();
+
+        /**
          * Returns the meta object for class '{@link drone.StringProperty <em>String Property</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -3059,6 +3079,14 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EReference ROBOT__CAPABILITY_PROPERTIES = eINSTANCE.getRobot_CapabilityProperties();
+
+                /**
+                 * The meta object literal for the '<em><b>Execute</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ROBOT__EXECUTE = eINSTANCE.getRobot_Execute();
 
                 /**
                  * The meta object literal for the '{@link drone.impl.StringPropertyImpl <em>String Property</em>}' class.

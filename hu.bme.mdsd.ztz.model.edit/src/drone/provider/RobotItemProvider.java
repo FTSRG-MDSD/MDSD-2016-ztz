@@ -53,6 +53,7 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         addMissionPropertyDescriptor(object);
                         addCapabilitiesPropertyDescriptor(object);
                         addCommunicationActionPropertyDescriptor(object);
+                        addExecutePropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -137,6 +138,28 @@ public class RobotItemProvider extends NamedElementItemProvider {
                                  getString("_UI_Robot_communicationAction_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_Robot_communicationAction_feature", "_UI_Robot_type"),
                                  DronePackage.Literals.ROBOT__COMMUNICATION_ACTION,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
+                                 null,
+                                 null));
+        }
+
+        /**
+         * This adds a property descriptor for the Execute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addExecutePropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_Robot_execute_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_execute_feature", "_UI_Robot_type"),
+                                 DronePackage.Literals.ROBOT__EXECUTE,
                                  true,
                                  false,
                                  true,

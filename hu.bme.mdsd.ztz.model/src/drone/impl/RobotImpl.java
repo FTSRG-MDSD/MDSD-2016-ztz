@@ -20,6 +20,7 @@ import drone.RobotCollaboration;
 import drone.Size;
 import drone.Task;
 
+import drone.TaskExecution;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -59,6 +60,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link drone.impl.RobotImpl#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link drone.impl.RobotImpl#getCommunicationAction <em>Communication Action</em>}</li>
  *   <li>{@link drone.impl.RobotImpl#getCapabilityProperties <em>Capability Properties</em>}</li>
+ *   <li>{@link drone.impl.RobotImpl#getExecute <em>Execute</em>}</li>
  * </ul>
  *
  * @generated
@@ -213,6 +215,16 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @ordered
          */
         protected EList<CapabilityProperties> capabilityProperties;
+
+        /**
+         * The cached value of the '{@link #getExecute() <em>Execute</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getExecute()
+         * @generated
+         * @ordered
+         */
+        protected TaskExecution execute;
 
         /**
          * <!-- begin-user-doc -->
@@ -568,6 +580,82 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * <!-- end-user-doc -->
          * @generated
          */
+        public TaskExecution getExecute() {
+                if (execute != null && execute.eIsProxy()) {
+                        InternalEObject oldExecute = (InternalEObject)execute;
+                        execute = (TaskExecution)eResolveProxy(oldExecute);
+                        if (execute != oldExecute) {
+                                if (eNotificationRequired())
+                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.ROBOT__EXECUTE, oldExecute, execute));
+                        }
+                }
+                return execute;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public TaskExecution basicGetExecute() {
+                return execute;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public NotificationChain basicSetExecute(TaskExecution newExecute, NotificationChain msgs) {
+                TaskExecution oldExecute = execute;
+                execute = newExecute;
+                if (eNotificationRequired()) {
+                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__EXECUTE, oldExecute, newExecute);
+                        if (msgs == null) msgs = notification; else msgs.add(notification);
+                }
+                return msgs;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setExecute(TaskExecution newExecute) {
+                if (newExecute != execute) {
+                        NotificationChain msgs = null;
+                        if (execute != null)
+                                msgs = ((InternalEObject)execute).eInverseRemove(this, DronePackage.TASK_EXECUTION__EXECUTORS, TaskExecution.class, msgs);
+                        if (newExecute != null)
+                                msgs = ((InternalEObject)newExecute).eInverseAdd(this, DronePackage.TASK_EXECUTION__EXECUTORS, TaskExecution.class, msgs);
+                        msgs = basicSetExecute(newExecute, msgs);
+                        if (msgs != null) msgs.dispatch();
+                }
+                else if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__EXECUTE, newExecute, newExecute));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+                switch (featureID) {
+                        case DronePackage.ROBOT__EXECUTE:
+                                if (execute != null)
+                                        msgs = ((InternalEObject)execute).eInverseRemove(this, DronePackage.TASK_EXECUTION__EXECUTORS, TaskExecution.class, msgs);
+                                return basicSetExecute((TaskExecution)otherEnd, msgs);
+                }
+                return super.eInverseAdd(otherEnd, featureID, msgs);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -593,6 +681,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 return ((InternalEList<?>)getCapabilityProperties()).basicRemove(otherEnd, msgs);
+                        case DronePackage.ROBOT__EXECUTE:
+                                return basicSetExecute(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -636,6 +726,9 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return getCommunicationAction();
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 return getCapabilityProperties();
+                        case DronePackage.ROBOT__EXECUTE:
+                                if (resolve) return getExecute();
+                                return basicGetExecute();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -704,6 +797,9 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 getCapabilityProperties().clear();
                                 getCapabilityProperties().addAll((Collection<? extends CapabilityProperties>)newValue);
                                 return;
+                        case DronePackage.ROBOT__EXECUTE:
+                                setExecute((TaskExecution)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -761,6 +857,9 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 getCapabilityProperties().clear();
                                 return;
+                        case DronePackage.ROBOT__EXECUTE:
+                                setExecute((TaskExecution)null);
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -803,6 +902,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return communicationAction != null && !communicationAction.isEmpty();
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 return capabilityProperties != null && !capabilityProperties.isEmpty();
+                        case DronePackage.ROBOT__EXECUTE:
+                                return execute != null;
                 }
                 return super.eIsSet(featureID);
         }

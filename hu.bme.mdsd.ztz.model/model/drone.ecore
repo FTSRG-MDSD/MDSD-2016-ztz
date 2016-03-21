@@ -84,13 +84,15 @@
         eType="ecore:EClass behaviourModel.ecore#//CommunicationAction"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProperties" upperBound="-1"
         eType="#//CapabilityProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="execute" eType="#//TaskExecution"
+        eOpposite="#//TaskExecution/executors"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringProperty" eSuperTypes="#//PropertyValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskExecution">
     <eStructuralFeatures xsi:type="ecore:EReference" name="executors" lowerBound="1"
-        upperBound="-1" eType="#//Robot"/>
+        upperBound="-1" eType="#//Robot" eOpposite="#//Robot/execute"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="executionTime" unique="false"
         eType="#//MeasureValue" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" unique="false"

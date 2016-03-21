@@ -29,6 +29,7 @@ public interface TaskExecution extends EObject {
         /**
          * Returns the value of the '<em><b>Executors</b></em>' reference list.
          * The list contents are of type {@link drone.Robot}.
+         * It is bidirectional and its opposite is '{@link drone.Robot#getExecute <em>Execute</em>}'.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Executors</em>' reference list isn't clear,
@@ -37,7 +38,8 @@ public interface TaskExecution extends EObject {
          * <!-- end-user-doc -->
          * @return the value of the '<em>Executors</em>' reference list.
          * @see drone.DronePackage#getTaskExecution_Executors()
-         * @model required="true"
+         * @see drone.Robot#getExecute
+         * @model opposite="execute" required="true"
          * @generated
          */
         EList<Robot> getExecutors();

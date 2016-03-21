@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,7 +108,7 @@ public class TaskExecutionImpl extends MinimalEObjectImpl.Container implements T
          */
         public EList<Robot> getExecutors() {
                 if (executors == null) {
-                        executors = new EObjectResolvingEList<Robot>(Robot.class, this, DronePackage.TASK_EXECUTION__EXECUTORS);
+                        executors = new EObjectWithInverseResolvingEList<Robot>(Robot.class, this, DronePackage.TASK_EXECUTION__EXECUTORS, DronePackage.ROBOT__EXECUTE);
                 }
                 return executors;
         }
@@ -223,9 +223,12 @@ public class TaskExecutionImpl extends MinimalEObjectImpl.Container implements T
          * <!-- end-user-doc -->
          * @generated
          */
+        @SuppressWarnings("unchecked")
         @Override
         public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
+                        case DronePackage.TASK_EXECUTION__EXECUTORS:
+                                return ((InternalEList<InternalEObject>)(InternalEList<?>)getExecutors()).basicAdd(otherEnd, msgs);
                         case DronePackage.TASK_EXECUTION__TASK:
                                 if (eInternalContainer() != null)
                                         msgs = eBasicRemoveFromContainer(msgs);
@@ -242,6 +245,8 @@ public class TaskExecutionImpl extends MinimalEObjectImpl.Container implements T
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
+                        case DronePackage.TASK_EXECUTION__EXECUTORS:
+                                return ((InternalEList<?>)getExecutors()).basicRemove(otherEnd, msgs);
                         case DronePackage.TASK_EXECUTION__EXECUTION_TIME:
                                 return basicSetExecutionTime(null, msgs);
                         case DronePackage.TASK_EXECUTION__TASK:
