@@ -688,7 +688,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_Capability() {
+        public EReference getRobot_Capabilities() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(12);
         }
 
@@ -1326,7 +1326,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEReference(robotEClass, ROBOT__WEIGHT);
                 createEReference(robotEClass, ROBOT__MISSION);
                 createEReference(robotEClass, ROBOT__ACTIONS);
-                createEReference(robotEClass, ROBOT__CAPABILITY);
+                createEReference(robotEClass, ROBOT__CAPABILITIES);
                 createEReference(robotEClass, ROBOT__COMMUNICATION_ACTION);
                 createEReference(robotEClass, ROBOT__CAPABILITY_PROPERTIES);
 
@@ -1501,7 +1501,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobot_Weight(), this.getMeasureValue(), null, "weight", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Mission(), this.getMission(), null, "mission", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Actions(), this.getAction(), null, "actions", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getRobot_Capability(), this.getCapability(), null, "capability", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getRobot_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CommunicationAction(), theBehaviourModelPackage.getCommunicationAction(), null, "communicationAction", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CapabilityProperties(), this.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

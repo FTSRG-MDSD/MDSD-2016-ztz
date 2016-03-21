@@ -634,13 +634,13 @@ public interface DronePackage extends EPackage {
         int ROBOT__ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 11;
 
         /**
-         * The feature id for the '<em><b>Capability</b></em>' reference.
+         * The feature id for the '<em><b>Capabilities</b></em>' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int ROBOT__CAPABILITY = NAMED_ELEMENT_FEATURE_COUNT + 12;
+        int ROBOT__CAPABILITIES = NAMED_ELEMENT_FEATURE_COUNT + 12;
 
         /**
          * The feature id for the '<em><b>Communication Action</b></em>' reference list.
@@ -1997,15 +1997,15 @@ public interface DronePackage extends EPackage {
         EReference getRobot_Actions();
 
         /**
-         * Returns the meta object for the reference '{@link drone.Robot#getCapability <em>Capability</em>}'.
+         * Returns the meta object for the reference list '{@link drone.Robot#getCapabilities <em>Capabilities</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Capability</em>'.
-         * @see drone.Robot#getCapability()
+         * @return the meta object for the reference list '<em>Capabilities</em>'.
+         * @see drone.Robot#getCapabilities()
          * @see #getRobot()
          * @generated
          */
-        EReference getRobot_Capability();
+        EReference getRobot_Capabilities();
 
         /**
          * Returns the meta object for the reference list '{@link drone.Robot#getCommunicationAction <em>Communication Action</em>}'.
@@ -3037,12 +3037,12 @@ public interface DronePackage extends EPackage {
                 EReference ROBOT__ACTIONS = eINSTANCE.getRobot_Actions();
 
                 /**
-                 * The meta object literal for the '<em><b>Capability</b></em>' reference feature.
+                 * The meta object literal for the '<em><b>Capabilities</b></em>' reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
-                EReference ROBOT__CAPABILITY = eINSTANCE.getRobot_Capability();
+                EReference ROBOT__CAPABILITIES = eINSTANCE.getRobot_Capabilities();
 
                 /**
                  * The meta object literal for the '<em><b>Communication Action</b></em>' reference list feature.

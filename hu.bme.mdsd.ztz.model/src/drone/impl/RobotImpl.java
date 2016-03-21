@@ -56,7 +56,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link drone.impl.RobotImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link drone.impl.RobotImpl#getMission <em>Mission</em>}</li>
  *   <li>{@link drone.impl.RobotImpl#getActions <em>Actions</em>}</li>
- *   <li>{@link drone.impl.RobotImpl#getCapability <em>Capability</em>}</li>
+ *   <li>{@link drone.impl.RobotImpl#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link drone.impl.RobotImpl#getCommunicationAction <em>Communication Action</em>}</li>
  *   <li>{@link drone.impl.RobotImpl#getCapabilityProperties <em>Capability Properties</em>}</li>
  * </ul>
@@ -185,14 +185,14 @@ public class RobotImpl extends NamedElementImpl implements Robot {
         protected EList<Action> actions;
 
         /**
-         * The cached value of the '{@link #getCapability() <em>Capability</em>}' reference.
+         * The cached value of the '{@link #getCapabilities() <em>Capabilities</em>}' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getCapability()
+         * @see #getCapabilities()
          * @generated
          * @ordered
          */
-        protected Capability capability;
+        protected EList<Capability> capabilities;
 
         /**
          * The cached value of the '{@link #getCommunicationAction() <em>Communication Action</em>}' reference list.
@@ -563,37 +563,11 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * <!-- end-user-doc -->
          * @generated
          */
-        public Capability getCapability() {
-                if (capability != null && capability.eIsProxy()) {
-                        InternalEObject oldCapability = (InternalEObject)capability;
-                        capability = (Capability)eResolveProxy(oldCapability);
-                        if (capability != oldCapability) {
-                                if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.ROBOT__CAPABILITY, oldCapability, capability));
-                        }
+        public EList<Capability> getCapabilities() {
+                if (capabilities == null) {
+                        capabilities = new EObjectResolvingEList<Capability>(Capability.class, this, DronePackage.ROBOT__CAPABILITIES);
                 }
-                return capability;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public Capability basicGetCapability() {
-                return capability;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setCapability(Capability newCapability) {
-                Capability oldCapability = capability;
-                capability = newCapability;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__CAPABILITY, oldCapability, capability));
+                return capabilities;
         }
 
         /**
@@ -687,9 +661,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return basicGetMission();
                         case DronePackage.ROBOT__ACTIONS:
                                 return getActions();
-                        case DronePackage.ROBOT__CAPABILITY:
-                                if (resolve) return getCapability();
-                                return basicGetCapability();
+                        case DronePackage.ROBOT__CAPABILITIES:
+                                return getCapabilities();
                         case DronePackage.ROBOT__COMMUNICATION_ACTION:
                                 return getCommunicationAction();
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
@@ -749,8 +722,9 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 getActions().clear();
                                 getActions().addAll((Collection<? extends Action>)newValue);
                                 return;
-                        case DronePackage.ROBOT__CAPABILITY:
-                                setCapability((Capability)newValue);
+                        case DronePackage.ROBOT__CAPABILITIES:
+                                getCapabilities().clear();
+                                getCapabilities().addAll((Collection<? extends Capability>)newValue);
                                 return;
                         case DronePackage.ROBOT__COMMUNICATION_ACTION:
                                 getCommunicationAction().clear();
@@ -808,8 +782,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__ACTIONS:
                                 getActions().clear();
                                 return;
-                        case DronePackage.ROBOT__CAPABILITY:
-                                setCapability((Capability)null);
+                        case DronePackage.ROBOT__CAPABILITIES:
+                                getCapabilities().clear();
                                 return;
                         case DronePackage.ROBOT__COMMUNICATION_ACTION:
                                 getCommunicationAction().clear();
@@ -853,8 +827,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return mission != null;
                         case DronePackage.ROBOT__ACTIONS:
                                 return actions != null && !actions.isEmpty();
-                        case DronePackage.ROBOT__CAPABILITY:
-                                return capability != null;
+                        case DronePackage.ROBOT__CAPABILITIES:
+                                return capabilities != null && !capabilities.isEmpty();
                         case DronePackage.ROBOT__COMMUNICATION_ACTION:
                                 return communicationAction != null && !communicationAction.isEmpty();
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:

@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link drone.Robot#getWeight <em>Weight</em>}</li>
  *   <li>{@link drone.Robot#getMission <em>Mission</em>}</li>
  *   <li>{@link drone.Robot#getActions <em>Actions</em>}</li>
- *   <li>{@link drone.Robot#getCapability <em>Capability</em>}</li>
+ *   <li>{@link drone.Robot#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link drone.Robot#getCommunicationAction <em>Communication Action</em>}</li>
  *   <li>{@link drone.Robot#getCapabilityProperties <em>Capability Properties</em>}</li>
  * </ul>
@@ -290,30 +290,20 @@ public interface Robot extends NamedElement {
         EList<Action> getActions();
 
         /**
-         * Returns the value of the '<em><b>Capability</b></em>' reference.
+         * Returns the value of the '<em><b>Capabilities</b></em>' reference list.
+         * The list contents are of type {@link drone.Capability}.
          * <!-- begin-user-doc -->
          * <p>
-         * If the meaning of the '<em>Capability</em>' reference isn't clear,
+         * If the meaning of the '<em>Capabilities</em>' reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Capability</em>' reference.
-         * @see #setCapability(Capability)
-         * @see drone.DronePackage#getRobot_Capability()
+         * @return the value of the '<em>Capabilities</em>' reference list.
+         * @see drone.DronePackage#getRobot_Capabilities()
          * @model
          * @generated
          */
-        Capability getCapability();
-
-        /**
-         * Sets the value of the '{@link drone.Robot#getCapability <em>Capability</em>}' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Capability</em>' reference.
-         * @see #getCapability()
-         * @generated
-         */
-        void setCapability(Capability value);
+        EList<Capability> getCapabilities();
 
         /**
          * Returns the value of the '<em><b>Communication Action</b></em>' reference list.

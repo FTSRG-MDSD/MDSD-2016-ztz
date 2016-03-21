@@ -51,7 +51,7 @@ public class RobotItemProvider extends NamedElementItemProvider {
 
                         addTasksPropertyDescriptor(object);
                         addMissionPropertyDescriptor(object);
-                        addCapabilityPropertyDescriptor(object);
+                        addCapabilitiesPropertyDescriptor(object);
                         addCommunicationActionPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
@@ -102,19 +102,19 @@ public class RobotItemProvider extends NamedElementItemProvider {
         }
 
         /**
-         * This adds a property descriptor for the Capability feature.
+         * This adds a property descriptor for the Capabilities feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        protected void addCapabilityPropertyDescriptor(Object object) {
+        protected void addCapabilitiesPropertyDescriptor(Object object) {
                 itemPropertyDescriptors.add
                         (createItemPropertyDescriptor
                                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                                  getResourceLocator(),
-                                 getString("_UI_Robot_capability_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_capability_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__CAPABILITY,
+                                 getString("_UI_Robot_capabilities_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_capabilities_feature", "_UI_Robot_type"),
+                                 DronePackage.Literals.ROBOT__CAPABILITIES,
                                  true,
                                  false,
                                  true,

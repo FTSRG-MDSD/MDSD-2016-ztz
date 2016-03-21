@@ -65,7 +65,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/weight"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/mission"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/actions"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/capability"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/capabilities"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/communicationAction"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/capabilityProperties"/>
     </genClasses>
