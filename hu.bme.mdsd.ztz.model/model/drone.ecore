@@ -81,6 +81,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="capability" eType="#//Capability"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="communicationAction" upperBound="-1"
         eType="ecore:EClass behaviourModel.ecore#//CommunicationAction"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProperties" upperBound="-1"
+        eType="#//CapabilityProperties" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringProperty" eSuperTypes="#//PropertyValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -111,6 +113,8 @@
         eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredCapabilities" upperBound="-1"
         eType="#//Capability"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProperties" upperBound="-1"
+        eType="#//CapabilityProperties" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Size">
     <eStructuralFeatures xsi:type="ecore:EReference" name="width" lowerBound="1" eType="#//MeasureValue"
@@ -190,8 +194,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
         eType="#//Capability" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CapabilityProperties">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" lowerBound="1"
+        eType="#//Capability"/>
   </eClassifiers>
 </ecore:EPackage>

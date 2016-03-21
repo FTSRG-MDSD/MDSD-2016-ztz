@@ -652,13 +652,22 @@ public interface DronePackage extends EPackage {
         int ROBOT__COMMUNICATION_ACTION = NAMED_ELEMENT_FEATURE_COUNT + 13;
 
         /**
+         * The feature id for the '<em><b>Capability Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ROBOT__CAPABILITY_PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 14;
+
+        /**
          * The number of structural features of the '<em>Robot</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int ROBOT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 14;
+        int ROBOT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 15;
 
         /**
          * The number of operations of the '<em>Robot</em>' class.
@@ -900,13 +909,22 @@ public interface DronePackage extends EPackage {
         int TASK_REQUIREMENT__REQUIRED_CAPABILITIES = 4;
 
         /**
+         * The feature id for the '<em><b>Capability Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__CAPABILITY_PROPERTIES = 5;
+
+        /**
          * The number of structural features of the '<em>Task Requirement</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_REQUIREMENT_FEATURE_COUNT = 5;
+        int TASK_REQUIREMENT_FEATURE_COUNT = 6;
 
         /**
          * The number of operations of the '<em>Task Requirement</em>' class.
@@ -1451,22 +1469,13 @@ public interface DronePackage extends EPackage {
         int CAPABILITY__NAME = NAMED_ELEMENT__NAME;
 
         /**
-         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int CAPABILITY__PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-        /**
          * The number of structural features of the '<em>Capability</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int CAPABILITY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+        int CAPABILITY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
         /**
          * The number of operations of the '<em>Capability</em>' class.
@@ -1478,6 +1487,52 @@ public interface DronePackage extends EPackage {
         int CAPABILITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
+         * The meta object id for the '{@link drone.impl.CapabilityPropertiesImpl <em>Capability Properties</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see drone.impl.CapabilityPropertiesImpl
+         * @see drone.impl.DronePackageImpl#getCapabilityProperties()
+         * @generated
+         */
+        int CAPABILITY_PROPERTIES = 25;
+
+        /**
+         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int CAPABILITY_PROPERTIES__PROPERTIES = 0;
+
+        /**
+         * The feature id for the '<em><b>Capability</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int CAPABILITY_PROPERTIES__CAPABILITY = 1;
+
+        /**
+         * The number of structural features of the '<em>Capability Properties</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int CAPABILITY_PROPERTIES_FEATURE_COUNT = 2;
+
+        /**
+         * The number of operations of the '<em>Capability Properties</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int CAPABILITY_PROPERTIES_OPERATION_COUNT = 0;
+
+        /**
          * The meta object id for the '{@link drone.TaskExecutionStatus <em>Task Execution Status</em>}' enum.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1485,7 +1540,7 @@ public interface DronePackage extends EPackage {
          * @see drone.impl.DronePackageImpl#getTaskExecutionStatus()
          * @generated
          */
-        int TASK_EXECUTION_STATUS = 25;
+        int TASK_EXECUTION_STATUS = 26;
 
         /**
          * The meta object id for the '{@link drone.TaskStatus <em>Task Status</em>}' enum.
@@ -1495,7 +1550,7 @@ public interface DronePackage extends EPackage {
          * @see drone.impl.DronePackageImpl#getTaskStatus()
          * @generated
          */
-        int TASK_STATUS = 26;
+        int TASK_STATUS = 27;
 
 
         /**
@@ -1964,6 +2019,17 @@ public interface DronePackage extends EPackage {
         EReference getRobot_CommunicationAction();
 
         /**
+         * Returns the meta object for the containment reference list '{@link drone.Robot#getCapabilityProperties <em>Capability Properties</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Capability Properties</em>'.
+         * @see drone.Robot#getCapabilityProperties()
+         * @see #getRobot()
+         * @generated
+         */
+        EReference getRobot_CapabilityProperties();
+
+        /**
          * Returns the meta object for class '{@link drone.StringProperty <em>String Property</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2134,6 +2200,17 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EReference getTaskRequirement_RequiredCapabilities();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link drone.TaskRequirement#getCapabilityProperties <em>Capability Properties</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Capability Properties</em>'.
+         * @see drone.TaskRequirement#getCapabilityProperties()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_CapabilityProperties();
 
         /**
          * Returns the meta object for class '{@link drone.Size <em>Size</em>}'.
@@ -2541,15 +2618,36 @@ public interface DronePackage extends EPackage {
         EClass getCapability();
 
         /**
-         * Returns the meta object for the containment reference list '{@link drone.Capability#getProperties <em>Properties</em>}'.
+         * Returns the meta object for class '{@link drone.CapabilityProperties <em>Capability Properties</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Capability Properties</em>'.
+         * @see drone.CapabilityProperties
+         * @generated
+         */
+        EClass getCapabilityProperties();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link drone.CapabilityProperties#getProperties <em>Properties</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @return the meta object for the containment reference list '<em>Properties</em>'.
-         * @see drone.Capability#getProperties()
-         * @see #getCapability()
+         * @see drone.CapabilityProperties#getProperties()
+         * @see #getCapabilityProperties()
          * @generated
          */
-        EReference getCapability_Properties();
+        EReference getCapabilityProperties_Properties();
+
+        /**
+         * Returns the meta object for the reference '{@link drone.CapabilityProperties#getCapability <em>Capability</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Capability</em>'.
+         * @see drone.CapabilityProperties#getCapability()
+         * @see #getCapabilityProperties()
+         * @generated
+         */
+        EReference getCapabilityProperties_Capability();
 
         /**
          * Returns the meta object for enum '{@link drone.TaskExecutionStatus <em>Task Execution Status</em>}'.
@@ -2955,6 +3053,14 @@ public interface DronePackage extends EPackage {
                 EReference ROBOT__COMMUNICATION_ACTION = eINSTANCE.getRobot_CommunicationAction();
 
                 /**
+                 * The meta object literal for the '<em><b>Capability Properties</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ROBOT__CAPABILITY_PROPERTIES = eINSTANCE.getRobot_CapabilityProperties();
+
+                /**
                  * The meta object literal for the '{@link drone.impl.StringPropertyImpl <em>String Property</em>}' class.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -3089,6 +3195,14 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EReference TASK_REQUIREMENT__REQUIRED_CAPABILITIES = eINSTANCE.getTaskRequirement_RequiredCapabilities();
+
+                /**
+                 * The meta object literal for the '<em><b>Capability Properties</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__CAPABILITY_PROPERTIES = eINSTANCE.getTaskRequirement_CapabilityProperties();
 
                 /**
                  * The meta object literal for the '{@link drone.impl.SizeImpl <em>Size</em>}' class.
@@ -3421,12 +3535,30 @@ public interface DronePackage extends EPackage {
                 EClass CAPABILITY = eINSTANCE.getCapability();
 
                 /**
+                 * The meta object literal for the '{@link drone.impl.CapabilityPropertiesImpl <em>Capability Properties</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see drone.impl.CapabilityPropertiesImpl
+                 * @see drone.impl.DronePackageImpl#getCapabilityProperties()
+                 * @generated
+                 */
+                EClass CAPABILITY_PROPERTIES = eINSTANCE.getCapabilityProperties();
+
+                /**
                  * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
-                EReference CAPABILITY__PROPERTIES = eINSTANCE.getCapability_Properties();
+                EReference CAPABILITY_PROPERTIES__PROPERTIES = eINSTANCE.getCapabilityProperties_Properties();
+
+                /**
+                 * The meta object literal for the '<em><b>Capability</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference CAPABILITY_PROPERTIES__CAPABILITY = eINSTANCE.getCapabilityProperties_Capability();
 
                 /**
                  * The meta object literal for the '{@link drone.TaskExecutionStatus <em>Task Execution Status</em>}' enum.

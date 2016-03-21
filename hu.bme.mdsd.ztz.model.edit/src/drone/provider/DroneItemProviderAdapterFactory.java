@@ -601,6 +601,29 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
         }
 
         /**
+         * This keeps track of the one adapter used for all {@link drone.CapabilityProperties} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected CapabilityPropertiesItemProvider capabilityPropertiesItemProvider;
+
+        /**
+         * This creates an adapter for a {@link drone.CapabilityProperties}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createCapabilityPropertiesAdapter() {
+                if (capabilityPropertiesItemProvider == null) {
+                        capabilityPropertiesItemProvider = new CapabilityPropertiesItemProvider(this);
+                }
+
+                return capabilityPropertiesItemProvider;
+        }
+
+        /**
          * This returns the root adapter factory that contains this factory.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -722,6 +745,7 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
                 if (measurePropertyItemProvider != null) measurePropertyItemProvider.dispose();
                 if (robotMissionContainerItemProvider != null) robotMissionContainerItemProvider.dispose();
                 if (capabilityItemProvider != null) capabilityItemProvider.dispose();
+                if (capabilityPropertiesItemProvider != null) capabilityPropertiesItemProvider.dispose();
         }
 
 }

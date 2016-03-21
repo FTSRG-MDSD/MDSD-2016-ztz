@@ -67,6 +67,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/actions"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/capability"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/communicationAction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/capabilityProperties"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//StringProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//StringProperty/value"/>
@@ -87,6 +88,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//TaskRequirement/participants"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/properties"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/requiredCapabilities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/capabilityProperties"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Size">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Size/width"/>
@@ -136,8 +138,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/areaObjects"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/capabilities"/>
     </genClasses>
-    <genClasses ecoreClass="drone.ecore#//Capability">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Capability/properties"/>
+    <genClasses ecoreClass="drone.ecore#//Capability"/>
+    <genClasses ecoreClass="drone.ecore#//CapabilityProperties">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//CapabilityProperties/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//CapabilityProperties/capability"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="BehaviourModel" disposableProviderFactory="true" ecorePackage="behaviourModel.ecore#/">

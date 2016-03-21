@@ -167,6 +167,7 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         childrenFeatures.add(DronePackage.Literals.ROBOT__COMMUNICATION_RANGE);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__WEIGHT);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__ACTIONS);
+                        childrenFeatures.add(DronePackage.Literals.ROBOT__CAPABILITY_PROPERTIES);
                 }
                 return childrenFeatures;
         }
@@ -232,6 +233,7 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         case DronePackage.ROBOT__COMMUNICATION_RANGE:
                         case DronePackage.ROBOT__WEIGHT:
                         case DronePackage.ROBOT__ACTIONS:
+                        case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -318,6 +320,11 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         (createChildParameter
                                 (DronePackage.Literals.ROBOT__ACTIONS,
                                  BehaviourModelFactory.eINSTANCE.createBroadcast()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (DronePackage.Literals.ROBOT__CAPABILITY_PROPERTIES,
+                                 DroneFactory.eINSTANCE.createCapabilityProperties()));
         }
 
         /**

@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link drone.TaskRequirement#getParticipants <em>Participants</em>}</li>
  *   <li>{@link drone.TaskRequirement#getProperties <em>Properties</em>}</li>
  *   <li>{@link drone.TaskRequirement#getRequiredCapabilities <em>Required Capabilities</em>}</li>
+ *   <li>{@link drone.TaskRequirement#getCapabilityProperties <em>Capability Properties</em>}</li>
  * </ul>
  *
  * @see drone.DronePackage#getTaskRequirement()
@@ -138,5 +139,21 @@ public interface TaskRequirement extends EObject {
          * @generated
          */
         EList<Capability> getRequiredCapabilities();
+
+        /**
+         * Returns the value of the '<em><b>Capability Properties</b></em>' containment reference list.
+         * The list contents are of type {@link drone.CapabilityProperties}.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Capability Properties</em>' containment reference list isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Capability Properties</em>' containment reference list.
+         * @see drone.DronePackage#getTaskRequirement_CapabilityProperties()
+         * @model containment="true"
+         * @generated
+         */
+        EList<CapabilityProperties> getCapabilityProperties();
 
 } // TaskRequirement

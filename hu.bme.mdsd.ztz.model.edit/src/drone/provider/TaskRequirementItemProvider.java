@@ -148,6 +148,7 @@ public class TaskRequirementItemProvider
                 if (childrenFeatures == null) {
                         super.getChildrenFeatures(object);
                         childrenFeatures.add(DronePackage.Literals.TASK_REQUIREMENT__PROPERTIES);
+                        childrenFeatures.add(DronePackage.Literals.TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
                 }
                 return childrenFeatures;
         }
@@ -205,6 +206,7 @@ public class TaskRequirementItemProvider
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                                 return;
                         case DronePackage.TASK_REQUIREMENT__PROPERTIES:
+                        case DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -226,6 +228,11 @@ public class TaskRequirementItemProvider
                         (createChildParameter
                                 (DronePackage.Literals.TASK_REQUIREMENT__PROPERTIES,
                                  DroneFactory.eINSTANCE.createProperty()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (DronePackage.Literals.TASK_REQUIREMENT__CAPABILITY_PROPERTIES,
+                                 DroneFactory.eINSTANCE.createCapabilityProperties()));
         }
 
         /**

@@ -29,6 +29,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link drone.Robot#getActions <em>Actions</em>}</li>
  *   <li>{@link drone.Robot#getCapability <em>Capability</em>}</li>
  *   <li>{@link drone.Robot#getCommunicationAction <em>Communication Action</em>}</li>
+ *   <li>{@link drone.Robot#getCapabilityProperties <em>Capability Properties</em>}</li>
  * </ul>
  *
  * @see drone.DronePackage#getRobot()
@@ -329,5 +330,21 @@ public interface Robot extends NamedElement {
          * @generated
          */
         EList<CommunicationAction> getCommunicationAction();
+
+        /**
+         * Returns the value of the '<em><b>Capability Properties</b></em>' containment reference list.
+         * The list contents are of type {@link drone.CapabilityProperties}.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Capability Properties</em>' containment reference list isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Capability Properties</em>' containment reference list.
+         * @see drone.DronePackage#getRobot_CapabilityProperties()
+         * @model containment="true"
+         * @generated
+         */
+        EList<CapabilityProperties> getCapabilityProperties();
 
 } // Robot

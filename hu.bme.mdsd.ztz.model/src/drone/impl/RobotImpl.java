@@ -7,6 +7,7 @@ import behaviourModel.CommunicationAction;
 import drone.Action;
 import drone.Battery;
 import drone.Capability;
+import drone.CapabilityProperties;
 import drone.DetectedObject;
 import drone.DronePackage;
 import drone.Equipment;
@@ -57,6 +58,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link drone.impl.RobotImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link drone.impl.RobotImpl#getCapability <em>Capability</em>}</li>
  *   <li>{@link drone.impl.RobotImpl#getCommunicationAction <em>Communication Action</em>}</li>
+ *   <li>{@link drone.impl.RobotImpl#getCapabilityProperties <em>Capability Properties</em>}</li>
  * </ul>
  *
  * @generated
@@ -201,6 +203,16 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @ordered
          */
         protected EList<CommunicationAction> communicationAction;
+
+        /**
+         * The cached value of the '{@link #getCapabilityProperties() <em>Capability Properties</em>}' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getCapabilityProperties()
+         * @generated
+         * @ordered
+         */
+        protected EList<CapabilityProperties> capabilityProperties;
 
         /**
          * <!-- begin-user-doc -->
@@ -601,6 +613,18 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * <!-- end-user-doc -->
          * @generated
          */
+        public EList<CapabilityProperties> getCapabilityProperties() {
+                if (capabilityProperties == null) {
+                        capabilityProperties = new EObjectContainmentEList<CapabilityProperties>(CapabilityProperties.class, this, DronePackage.ROBOT__CAPABILITY_PROPERTIES);
+                }
+                return capabilityProperties;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -624,6 +648,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return basicSetWeight(null, msgs);
                         case DronePackage.ROBOT__ACTIONS:
                                 return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
+                        case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
+                                return ((InternalEList<?>)getCapabilityProperties()).basicRemove(otherEnd, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -666,6 +692,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return basicGetCapability();
                         case DronePackage.ROBOT__COMMUNICATION_ACTION:
                                 return getCommunicationAction();
+                        case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
+                                return getCapabilityProperties();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -728,6 +756,10 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 getCommunicationAction().clear();
                                 getCommunicationAction().addAll((Collection<? extends CommunicationAction>)newValue);
                                 return;
+                        case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
+                                getCapabilityProperties().clear();
+                                getCapabilityProperties().addAll((Collection<? extends CapabilityProperties>)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -782,6 +814,9 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__COMMUNICATION_ACTION:
                                 getCommunicationAction().clear();
                                 return;
+                        case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
+                                getCapabilityProperties().clear();
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -822,6 +857,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return capability != null;
                         case DronePackage.ROBOT__COMMUNICATION_ACTION:
                                 return communicationAction != null && !communicationAction.isEmpty();
+                        case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
+                                return capabilityProperties != null && !capabilityProperties.isEmpty();
                 }
                 return super.eIsSet(featureID);
         }

@@ -80,6 +80,7 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
                         case DronePackage.MEASURE_PROPERTY: return createMeasureProperty();
                         case DronePackage.ROBOT_MISSION_CONTAINER: return createRobotMissionContainer();
                         case DronePackage.CAPABILITY: return createCapability();
+                        case DronePackage.CAPABILITY_PROPERTIES: return createCapabilityProperties();
                         default:
                                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
                 }
@@ -347,6 +348,16 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
         public Capability createCapability() {
                 CapabilityImpl capability = new CapabilityImpl();
                 return capability;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public CapabilityProperties createCapabilityProperties() {
+                CapabilityPropertiesImpl capabilityProperties = new CapabilityPropertiesImpl();
+                return capabilityProperties;
         }
 
         /**

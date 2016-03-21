@@ -10,6 +10,7 @@ import drone.Action;
 import drone.AreaObject;
 import drone.Battery;
 import drone.Capability;
+import drone.CapabilityProperties;
 import drone.Coordinate;
 import drone.DetectedObject;
 import drone.DroneFactory;
@@ -225,6 +226,13 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * @generated
          */
         private EClass capabilityEClass = null;
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        private EClass capabilityPropertiesEClass = null;
 
         /**
          * <!-- begin-user-doc -->
@@ -698,6 +706,15 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
+        public EReference getRobot_CapabilityProperties() {
+                return (EReference)robotEClass.getEStructuralFeatures().get(14);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         public EClass getStringProperty() {
                 return stringPropertyEClass;
         }
@@ -835,6 +852,15 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          */
         public EReference getTaskRequirement_RequiredCapabilities() {
                 return (EReference)taskRequirementEClass.getEStructuralFeatures().get(4);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getTaskRequirement_CapabilityProperties() {
+                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(5);
         }
 
         /**
@@ -1184,8 +1210,26 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getCapability_Properties() {
-                return (EReference)capabilityEClass.getEStructuralFeatures().get(0);
+        public EClass getCapabilityProperties() {
+                return capabilityPropertiesEClass;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getCapabilityProperties_Properties() {
+                return (EReference)capabilityPropertiesEClass.getEStructuralFeatures().get(0);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getCapabilityProperties_Capability() {
+                return (EReference)capabilityPropertiesEClass.getEStructuralFeatures().get(1);
         }
 
         /**
@@ -1284,6 +1328,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEReference(robotEClass, ROBOT__ACTIONS);
                 createEReference(robotEClass, ROBOT__CAPABILITY);
                 createEReference(robotEClass, ROBOT__COMMUNICATION_ACTION);
+                createEReference(robotEClass, ROBOT__CAPABILITY_PROPERTIES);
 
                 stringPropertyEClass = createEClass(STRING_PROPERTY);
                 createEAttribute(stringPropertyEClass, STRING_PROPERTY__VALUE);
@@ -1304,6 +1349,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEAttribute(taskRequirementEClass, TASK_REQUIREMENT__PARTICIPANTS);
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__PROPERTIES);
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__REQUIRED_CAPABILITIES);
+                createEReference(taskRequirementEClass, TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
 
                 sizeEClass = createEClass(SIZE);
                 createEReference(sizeEClass, SIZE__WIDTH);
@@ -1355,7 +1401,10 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEReference(robotMissionContainerEClass, ROBOT_MISSION_CONTAINER__CAPABILITIES);
 
                 capabilityEClass = createEClass(CAPABILITY);
-                createEReference(capabilityEClass, CAPABILITY__PROPERTIES);
+
+                capabilityPropertiesEClass = createEClass(CAPABILITY_PROPERTIES);
+                createEReference(capabilityPropertiesEClass, CAPABILITY_PROPERTIES__PROPERTIES);
+                createEReference(capabilityPropertiesEClass, CAPABILITY_PROPERTIES__CAPABILITY);
 
                 // Create enums
                 taskExecutionStatusEEnum = createEEnum(TASK_EXECUTION_STATUS);
@@ -1454,6 +1503,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobot_Actions(), this.getAction(), null, "actions", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Capability(), this.getCapability(), null, "capability", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CommunicationAction(), theBehaviourModelPackage.getCommunicationAction(), null, "communicationAction", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getRobot_CapabilityProperties(), this.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(stringPropertyEClass, StringProperty.class, "StringProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEAttribute(getStringProperty_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1474,6 +1524,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEAttribute(getTaskRequirement_Participants(), ecorePackage.getEInt(), "participants", null, 1, 1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskRequirement_Properties(), this.getProperty(), null, "properties", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskRequirement_RequiredCapabilities(), this.getCapability(), null, "requiredCapabilities", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getTaskRequirement_CapabilityProperties(), this.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(sizeEClass, Size.class, "Size", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getSize_Width(), this.getMeasureValue(), null, "width", null, 1, 1, Size.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1525,7 +1576,10 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobotMissionContainer_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, RobotMissionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getCapability_Properties(), this.getProperty(), null, "properties", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+                initEClass(capabilityPropertiesEClass, CapabilityProperties.class, "CapabilityProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+                initEReference(getCapabilityProperties_Properties(), this.getProperty(), null, "properties", null, 0, -1, CapabilityProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getCapabilityProperties_Capability(), this.getCapability(), null, "capability", null, 1, 1, CapabilityProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 // Initialize enums and add enum literals
                 initEEnum(taskExecutionStatusEEnum, TaskExecutionStatus.class, "TaskExecutionStatus");
