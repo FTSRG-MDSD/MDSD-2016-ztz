@@ -65,8 +65,8 @@
         eType="#//RobotCollaboration" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="detectedObjects" upperBound="-1"
         eType="#//DetectedObject" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="equipments" eType="#//Equipment"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="equipments" upperBound="-1"
+        eType="#//Equipment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"

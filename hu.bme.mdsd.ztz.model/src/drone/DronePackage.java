@@ -571,7 +571,7 @@ public interface DronePackage extends EPackage {
         int ROBOT__DETECTED_OBJECTS = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
         /**
-         * The feature id for the '<em><b>Equipments</b></em>' containment reference.
+         * The feature id for the '<em><b>Equipments</b></em>' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -1920,10 +1920,10 @@ public interface DronePackage extends EPackage {
         EReference getRobot_DetectedObjects();
 
         /**
-         * Returns the meta object for the containment reference '{@link drone.Robot#getEquipments <em>Equipments</em>}'.
+         * Returns the meta object for the containment reference list '{@link drone.Robot#getEquipments <em>Equipments</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Equipments</em>'.
+         * @return the meta object for the containment reference list '<em>Equipments</em>'.
          * @see drone.Robot#getEquipments()
          * @see #getRobot()
          * @generated
@@ -2981,7 +2981,7 @@ public interface DronePackage extends EPackage {
                 EReference ROBOT__DETECTED_OBJECTS = eINSTANCE.getRobot_DetectedObjects();
 
                 /**
-                 * The meta object literal for the '<em><b>Equipments</b></em>' containment reference feature.
+                 * The meta object literal for the '<em><b>Equipments</b></em>' containment reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated

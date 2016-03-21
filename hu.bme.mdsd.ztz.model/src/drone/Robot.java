@@ -138,30 +138,20 @@ public interface Robot extends NamedElement {
         EList<DetectedObject> getDetectedObjects();
 
         /**
-         * Returns the value of the '<em><b>Equipments</b></em>' containment reference.
+         * Returns the value of the '<em><b>Equipments</b></em>' containment reference list.
+         * The list contents are of type {@link drone.Equipment}.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Equipments</em>' containment reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Equipments</em>' containment reference.
-         * @see #setEquipments(Equipment)
+         * @return the value of the '<em>Equipments</em>' containment reference list.
          * @see drone.DronePackage#getRobot_Equipments()
          * @model containment="true"
          * @generated
          */
-        Equipment getEquipments();
-
-        /**
-         * Sets the value of the '{@link drone.Robot#getEquipments <em>Equipments</em>}' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Equipments</em>' containment reference.
-         * @see #getEquipments()
-         * @generated
-         */
-        void setEquipments(Equipment value);
+        EList<Equipment> getEquipments();
 
         /**
          * Returns the value of the '<em><b>Tasks</b></em>' reference list.

@@ -115,14 +115,14 @@ public class RobotImpl extends NamedElementImpl implements Robot {
         protected EList<DetectedObject> detectedObjects;
 
         /**
-         * The cached value of the '{@link #getEquipments() <em>Equipments</em>}' containment reference.
+         * The cached value of the '{@link #getEquipments() <em>Equipments</em>}' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getEquipments()
          * @generated
          * @ordered
          */
-        protected Equipment equipments;
+        protected EList<Equipment> equipments;
 
         /**
          * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
@@ -360,42 +360,11 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * <!-- end-user-doc -->
          * @generated
          */
-        public Equipment getEquipments() {
+        public EList<Equipment> getEquipments() {
+                if (equipments == null) {
+                        equipments = new EObjectContainmentEList<Equipment>(Equipment.class, this, DronePackage.ROBOT__EQUIPMENTS);
+                }
                 return equipments;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public NotificationChain basicSetEquipments(Equipment newEquipments, NotificationChain msgs) {
-                Equipment oldEquipments = equipments;
-                equipments = newEquipments;
-                if (eNotificationRequired()) {
-                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__EQUIPMENTS, oldEquipments, newEquipments);
-                        if (msgs == null) msgs = notification; else msgs.add(notification);
-                }
-                return msgs;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setEquipments(Equipment newEquipments) {
-                if (newEquipments != equipments) {
-                        NotificationChain msgs = null;
-                        if (equipments != null)
-                                msgs = ((InternalEObject)equipments).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.ROBOT__EQUIPMENTS, null, msgs);
-                        if (newEquipments != null)
-                                msgs = ((InternalEObject)newEquipments).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DronePackage.ROBOT__EQUIPMENTS, null, msgs);
-                        msgs = basicSetEquipments(newEquipments, msgs);
-                        if (msgs != null) msgs.dispatch();
-                }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__EQUIPMENTS, newEquipments, newEquipments));
         }
 
         /**
@@ -613,7 +582,7 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__DETECTED_OBJECTS:
                                 return ((InternalEList<?>)getDetectedObjects()).basicRemove(otherEnd, msgs);
                         case DronePackage.ROBOT__EQUIPMENTS:
-                                return basicSetEquipments(null, msgs);
+                                return ((InternalEList<?>)getEquipments()).basicRemove(otherEnd, msgs);
                         case DronePackage.ROBOT__PROPERTIES:
                                 return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
                         case DronePackage.ROBOT__COMMUNICATION_RANGE:
@@ -699,7 +668,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 getDetectedObjects().addAll((Collection<? extends DetectedObject>)newValue);
                                 return;
                         case DronePackage.ROBOT__EQUIPMENTS:
-                                setEquipments((Equipment)newValue);
+                                getEquipments().clear();
+                                getEquipments().addAll((Collection<? extends Equipment>)newValue);
                                 return;
                         case DronePackage.ROBOT__TASKS:
                                 getTasks().clear();
@@ -762,7 +732,7 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 getDetectedObjects().clear();
                                 return;
                         case DronePackage.ROBOT__EQUIPMENTS:
-                                setEquipments((Equipment)null);
+                                getEquipments().clear();
                                 return;
                         case DronePackage.ROBOT__TASKS:
                                 getTasks().clear();
@@ -814,7 +784,7 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__DETECTED_OBJECTS:
                                 return detectedObjects != null && !detectedObjects.isEmpty();
                         case DronePackage.ROBOT__EQUIPMENTS:
-                                return equipments != null;
+                                return equipments != null && !equipments.isEmpty();
                         case DronePackage.ROBOT__TASKS:
                                 return tasks != null && !tasks.isEmpty();
                         case DronePackage.ROBOT__PROPERTIES:
