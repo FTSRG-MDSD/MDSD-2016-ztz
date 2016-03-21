@@ -141,3 +141,48 @@ pattern oneDetectedObject(object: AreaObject, detected1: DetectedObject) {
 }
 
 
+@Constraint (
+	key = {"robot", "task"},
+	severity = "error",
+	message = "$robot$ is not capable of executing linked task: $task$, capability of $capability$ is missing!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern robotCannotExecuteTask(robot: Robot, task: Task, capability: Capability) {
+	Task.execution.executors(task, robot);
+	Task.requirement.requiredCapabilities(task, capability);
+	neg find robotHasCapability(robot, capability);
+}
+
+pattern robotHasCapability(robot: Robot, capability: Capability) {
+	Robot.capabilities(robot, capability);
+}
+
+@Constraint (
+	key = {"robot", "task"},
+	severity = "error",
+	message = "$robot$ is executing unlinked task: $task$!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern robotExecutingUnlinkedTask(robot: Robot, task: Task) {
+	Robot.execute(robot, taskExecution);
+	Task.execution(task, taskExecution);
+	neg find robotHasTask(robot, task);
+}
+
+pattern robotHasTask(robot: Robot, task: Task) {
+	Robot.tasks(robot, task);
+}
+
+@Constraint (
+	key = {"robot"},
+	severity = "warning",
+	message = "$robot$ does not have any batteries!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern noBattery(robot: Robot) {
+	neg find robotHasBattery(robot, _);
+}
+
+pattern robotHasBattery(robot: Robot, battery: Battery) {
+	Robot.batteries(robot, battery);
+}
