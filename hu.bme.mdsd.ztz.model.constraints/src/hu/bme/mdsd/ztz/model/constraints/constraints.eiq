@@ -1,0 +1,17 @@
+package hu.bme.mdsd.ztz.model.constraints
+
+import "http://www.mdsd.hu/drone"
+
+@Constraint(
+	key = {"measure"},
+	severity = "error", 
+	message = "$measure$ has the same converted measure!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern sameMeasure(measure: MeasureDimension, convertedMeasure: MeasureDimension) {
+	MeasureDimension.conversions.dimension(measure, convertedMeasure);
+	convertedMeasure == measure;
+}
+
+
+
