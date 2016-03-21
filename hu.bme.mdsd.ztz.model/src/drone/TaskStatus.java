@@ -36,7 +36,15 @@ public enum TaskStatus implements Enumerator {
          * @generated
          * @ordered
          */
-        FINISHED(1, "Finished", "Finished");
+        FINISHED(1, "Finished", "Finished"), /**
+         * The '<em><b>Waiting</b></em>' literal object.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #WAITING_VALUE
+         * @generated
+         * @ordered
+         */
+        WAITING(2, "Waiting", "Waiting");
 
         /**
          * The '<em><b>Ready</b></em>' literal value.
@@ -69,6 +77,21 @@ public enum TaskStatus implements Enumerator {
         public static final int FINISHED_VALUE = 1;
 
         /**
+         * The '<em><b>Waiting</b></em>' literal value.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of '<em><b>Waiting</b></em>' literal object isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @see #WAITING
+         * @model name="Waiting"
+         * @generated
+         * @ordered
+         */
+        public static final int WAITING_VALUE = 2;
+
+        /**
          * An array of all the '<em><b>Task Status</b></em>' enumerators.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -78,6 +101,7 @@ public enum TaskStatus implements Enumerator {
                 new TaskStatus[] {
                         READY,
                         FINISHED,
+                        WAITING,
                 };
 
         /**
@@ -136,6 +160,7 @@ public enum TaskStatus implements Enumerator {
                 switch (value) {
                         case READY_VALUE: return READY;
                         case FINISHED_VALUE: return FINISHED;
+                        case WAITING_VALUE: return WAITING;
                 }
                 return null;
         }

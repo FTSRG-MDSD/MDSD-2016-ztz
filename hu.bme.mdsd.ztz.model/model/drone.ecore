@@ -183,6 +183,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="TaskStatus">
     <eLiterals name="Ready"/>
     <eLiterals name="Finished" value="1"/>
+    <eLiterals name="Waiting" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RobotMissionContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="missions" upperBound="-1"

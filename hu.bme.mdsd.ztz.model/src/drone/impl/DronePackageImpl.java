@@ -1592,6 +1592,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEEnum(taskStatusEEnum, TaskStatus.class, "TaskStatus");
                 addEEnumLiteral(taskStatusEEnum, TaskStatus.READY);
                 addEEnumLiteral(taskStatusEEnum, TaskStatus.FINISHED);
+                addEEnumLiteral(taskStatusEEnum, TaskStatus.WAITING);
 
                 // Create resource
                 createResource(eNS_URI);

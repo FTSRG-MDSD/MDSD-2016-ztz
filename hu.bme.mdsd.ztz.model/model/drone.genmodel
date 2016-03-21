@@ -16,6 +16,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="drone.ecore#//TaskStatus">
       <genEnumLiterals ecoreEnumLiteral="drone.ecore#//TaskStatus/Ready"/>
       <genEnumLiterals ecoreEnumLiteral="drone.ecore#//TaskStatus/Finished"/>
+      <genEnumLiterals ecoreEnumLiteral="drone.ecore#//TaskStatus/Waiting"/>
     </genEnums>
     <genClasses ecoreClass="drone.ecore#//Mission">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Mission/tasks"/>
