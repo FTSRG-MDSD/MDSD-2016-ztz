@@ -61,6 +61,11 @@
       <height value="0.56" dimension="//@measureDimensions.2"/>
       <length value="1.1" dimension="//@measureDimensions.2"/>
     </size>
+    <collaborations collaborator="//@robots.1">
+      <availabilityRange value="500.0" dimension="//@measureDimensions.2"/>
+    </collaborations>
+    <equipments name="Propeller" facilitate="//@capabilities.0 //@capabilities.2"/>
+    <equipments name="Hand" facilitate="//@capabilities.1"/>
     <communicationRange value="500.0" dimension="//@measureDimensions.2"/>
     <weight value="8.76" dimension="//@measureDimensions.5"/>
     <capabilityProperties capability="//@capabilities.0">
@@ -70,6 +75,18 @@
         </value>
       </properties>
     </capabilityProperties>
+  </robots>
+  <robots name="Bob">
+    <position>
+      <coordinates latitude="23.045" longitude="127.86" altitude="131.0"/>
+    </position>
+    <size>
+      <width value="0.89" dimension="//@measureDimensions.2"/>
+      <height value="0.56" dimension="//@measureDimensions.2"/>
+      <length value="1.1" dimension="//@measureDimensions.2"/>
+    </size>
+    <equipments name="Hand" facilitate="//@capabilities.1"/>
+    <communicationRange value="600.0" dimension="//@measureDimensions.2"/>
   </robots>
   <measureDimensions name="Second"/>
   <measureDimensions name="Minute">
