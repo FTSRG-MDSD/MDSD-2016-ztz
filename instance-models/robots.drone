@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drone:RobotMissionContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:drone="http://www.mdsd.hu/drone">
+  <missions name="LiftingMission">
+    <tasks name="Ascend" status="Finished">
+      <descriptor/>
+      <execution executors="//@robots.0" status="Finished"/>
+      <requirement participants="1" requiredCapabilities="//@capabilities.0 //@capabilities.2">
+        <capabilityProperties capability="//@capabilities.0">
+          <properties key="MaxFlyingHeight">
+            <value xsi:type="drone:MeasureProperty">
+              <value value="1000.0" dimension="//@measureDimensions.2"/>
+            </value>
+          </properties>
+        </capabilityProperties>
+      </requirement>
+    </tasks>
+    <tasks name="Approach">
+      <descriptor targets="//@areaObjects.0"/>
+      <execution executors="//@robots.0" status="InProgress"/>
+      <requirement prerequisite="//@missions.0/@tasks.0" participants="1" requiredCapabilities="//@capabilities.0">
+        <capabilityProperties capability="//@capabilities.0">
+          <properties key="MaxFlyingHeight">
+            <value xsi:type="drone:MeasureProperty">
+              <value value="1000.0" dimension="//@measureDimensions.2"/>
+            </value>
+          </properties>
+        </capabilityProperties>
+      </requirement>
+    </tasks>
+    <tasks name="Lift">
+      <descriptor targets="//@areaObjects.0"/>
+      <requirement prerequisite="//@missions.0/@tasks.1" participants="1" requiredCapabilities="//@capabilities.0 //@capabilities.1">
+        <capabilityProperties capability="//@capabilities.0">
+          <properties key="MaxFlyingHeight">
+            <value xsi:type="drone:MeasureProperty">
+              <value value="1000.0" dimension="//@measureDimensions.2"/>
+            </value>
+          </properties>
+        </capabilityProperties>
+        <capabilityProperties capability="//@capabilities.1">
+          <properties key="MaxLiftingWeight">
+            <value xsi:type="drone:MeasureProperty">
+              <value value="20.0" dimension="//@measureDimensions.5"/>
+            </value>
+          </properties>
+        </capabilityProperties>
+      </requirement>
+    </tasks>
+    <tasks name="Deliver">
+      <descriptor targets="//@areaObjects.1 //@areaObjects.0"/>
+      <requirement prerequisite="//@missions.0/@tasks.2" participants="1"/>
+    </tasks>
+    <estimatedTime dimension="//@measureDimensions.0"/>
+  </missions>
+  <robots name="Frank 007" capabilities="//@capabilities.2 //@capabilities.0 //@capabilities.1">
+    <position>
+      <coordinates latitude="23.01" longitude="127.86" altitude="131.34"/>
+    </position>
+    <size>
+      <width value="0.89" dimension="//@measureDimensions.2"/>
+      <height value="0.56" dimension="//@measureDimensions.2"/>
+      <length value="1.1" dimension="//@measureDimensions.2"/>
+    </size>
+    <communicationRange value="500.0" dimension="//@measureDimensions.2"/>
+    <weight value="8.76" dimension="//@measureDimensions.5"/>
+    <capabilityProperties capability="//@capabilities.0">
+      <properties key="MaxFlyingHeight">
+        <value xsi:type="drone:MeasureProperty">
+          <value value="1300.0" dimension="//@measureDimensions.2"/>
+        </value>
+      </properties>
+    </capabilityProperties>
+  </robots>
+  <measureDimensions name="Second"/>
+  <measureDimensions name="Minute">
+    <conversions rate="60.0" dimension="//@measureDimensions.0"/>
+  </measureDimensions>
+  <measureDimensions name="Meter"/>
+  <measureDimensions name="Kilometer">
+    <conversions rate="1000.0" dimension="//@measureDimensions.2"/>
+  </measureDimensions>
+  <measureDimensions name="Gram"/>
+  <measureDimensions name="Kilogram">
+    <conversions rate="1000.0" dimension="//@measureDimensions.4"/>
+  </measureDimensions>
+  <areaObjects name="Box">
+    <positions>
+      <coordinates latitude="23.01" longitude="127.23" altitude="132.01"/>
+    </positions>
+    <size>
+      <width value="0.8" dimension="//@measureDimensions.2"/>
+      <height value="0.76" dimension="//@measureDimensions.2"/>
+      <length value="1.0" dimension="//@measureDimensions.2"/>
+    </size>
+    <properties key="Weight">
+      <value xsi:type="drone:MeasureProperty">
+        <value value="15.6" dimension="//@measureDimensions.5"/>
+      </value>
+    </properties>
+    <properties key="Material">
+      <value xsi:type="drone:StringProperty" value="Wood"/>
+    </properties>
+  </areaObjects>
+  <areaObjects name="Destination">
+    <positions>
+      <coordinates latitude="23.01" longitude="123.6" altitude="132.31"/>
+    </positions>
+  </areaObjects>
+  <capabilities name="Flying"/>
+  <capabilities name="Lifting"/>
+  <capabilities name="Ascending"/>
+</drone:RobotMissionContainer>
