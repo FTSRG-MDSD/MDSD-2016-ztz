@@ -12,9 +12,9 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="drone.presentation.DroneModelWizardID"
+            id="hu.bme.mdsd.ztz.model.drone.presentation.DroneModelWizardID"
             name="%_UI_DroneModelWizard_label"
-            class="drone.presentation.DroneModelWizard"
+            class="hu.bme.mdsd.ztz.model.drone.presentation.DroneModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/DroneModelFile.gif">
          <description>%_UI_DroneModelWizard_description</description>
@@ -25,12 +25,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated drone -->
       <editor
-            id="drone.presentation.DroneEditorID"
+            id="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
             name="%_UI_DroneEditor_label"
             icon="icons/full/obj16/DroneModelFile.gif"
             extensions="drone"
-            class="drone.presentation.DroneEditor"
-            contributorClass="drone.presentation.DroneActionBarContributor">
+            class="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditor"
+            contributorClass="hu.bme.mdsd.ztz.model.drone.presentation.DroneActionBarContributor">
       </editor>
    </extension>
 
@@ -40,9 +40,9 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="behaviourModel.presentation.BehaviourModelModelWizardID"
+            id="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelModelWizardID"
             name="%_UI_BehaviourModelModelWizard_label"
-            class="behaviourModel.presentation.BehaviourModelModelWizard"
+            class="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/BehaviourModelModelFile.gif">
          <description>%_UI_BehaviourModelModelWizard_description</description>
@@ -53,13 +53,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated drone -->
       <editor
-            id="behaviourModel.presentation.BehaviourModelEditorID"
+            id="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelEditorID"
             name="%_UI_BehaviourModelEditor_label"
             icon="icons/full/obj16/BehaviourModelModelFile.gif"
             extensions="behaviourmodel"
-            class="behaviourModel.presentation.BehaviourModelEditor"
-            contributorClass="behaviourModel.presentation.BehaviourModelActionBarContributor">
+            class="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelEditor"
+            contributorClass="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelActionBarContributor">
       </editor>
    </extension>
-
 </plugin>

@@ -10,7 +10,7 @@
       <!-- @generated drone -->
       <factory
             uri="http://www.mdsd.hu/drone"
-            class="drone.provider.DroneItemProviderAdapterFactory"
+            class="hu.bme.mdsd.ztz.model.drone.provider.DroneItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -23,7 +23,7 @@
       <!-- @generated drone -->
       <factory
             uri="http://www.mdsd.hu/behaviour"
-            class="behaviourModel.provider.BehaviourModelItemProviderAdapterFactory"
+            class="hu.bme.mdsd.ztz.model.behaviourModel.provider.BehaviourModelItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -31,5 +31,4 @@
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
-
 </plugin>

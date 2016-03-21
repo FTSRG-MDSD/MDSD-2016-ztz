@@ -5,7 +5,8 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>drone.ecore</foreignModel>
-  <genPackages prefix="Drone" disposableProviderFactory="true" ecorePackage="drone.ecore#/">
+  <genPackages prefix="Drone" basePackage="hu.bme.mdsd.ztz.model" disposableProviderFactory="true"
+      ecorePackage="drone.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="drone.ecore#//TaskExecutionStatus">
       <genEnumLiterals ecoreEnumLiteral="drone.ecore#//TaskExecutionStatus/Ready"/>
       <genEnumLiterals ecoreEnumLiteral="drone.ecore#//TaskExecutionStatus/Finished"/>
@@ -146,7 +147,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//CapabilityProperties/capability"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="BehaviourModel" disposableProviderFactory="true" ecorePackage="behaviourModel.ecore#/">
+  <genPackages prefix="BehaviourModel" basePackage="hu.bme.mdsd.ztz.model" disposableProviderFactory="true"
+      ecorePackage="behaviourModel.ecore#/">
     <genClasses ecoreClass="behaviourModel.ecore#//Unicast">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviourModel.ecore#//Unicast/robotToNotify"/>
     </genClasses>

@@ -4,12 +4,12 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: hu.bme.mdsd.ztz.model.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: drone.provider.DroneEditPlugin$Implementation
+Bundle-Activator: hu.bme.mdsd.ztz.model.drone.provider.DroneEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: behaviourModel.provider,
- drone.provider
+Export-Package: hu.bme.mdsd.ztz.model.behaviourModel.provider,
+ hu.bme.mdsd.ztz.model.drone.provider
 Require-Bundle: org.eclipse.core.runtime,
  hu.bme.mdsd.ztz.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport

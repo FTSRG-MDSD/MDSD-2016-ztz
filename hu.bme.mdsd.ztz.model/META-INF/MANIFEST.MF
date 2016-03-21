@@ -10,9 +10,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: behaviourModel,
- behaviourModel.impl,
- behaviourModel.util,
- drone,
- drone.impl,
- drone.util
+Export-Package: 
+ hu.bme.mdsd.ztz.model.behaviourModel,
+ hu.bme.mdsd.ztz.model.behaviourModel.impl,
+ hu.bme.mdsd.ztz.model.behaviourModel.util,
+ hu.bme.mdsd.ztz.model.drone,
+ hu.bme.mdsd.ztz.model.drone.impl,
+ hu.bme.mdsd.ztz.model.drone.util

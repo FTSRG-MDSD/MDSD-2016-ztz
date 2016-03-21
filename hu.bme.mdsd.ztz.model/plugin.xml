@@ -10,7 +10,7 @@
       <!-- @generated drone -->
       <package
             uri="http://www.mdsd.hu/drone"
-            class="drone.DronePackage"
+            class="hu.bme.mdsd.ztz.model.drone.DronePackage"
             genModel="model/drone.genmodel"/>
    </extension>
 
@@ -18,8 +18,7 @@
       <!-- @generated drone -->
       <package
             uri="http://www.mdsd.hu/behaviour"
-            class="behaviourModel.BehaviourModelPackage"
+            class="hu.bme.mdsd.ztz.model.behaviourModel.BehaviourModelPackage"
             genModel="model/drone.genmodel"/>
    </extension>
-
 </plugin>
