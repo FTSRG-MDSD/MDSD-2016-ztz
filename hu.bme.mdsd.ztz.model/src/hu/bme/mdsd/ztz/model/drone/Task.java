@@ -167,29 +167,30 @@ public interface Task extends NamedElement {
         void setStatus(TaskStatus value);
 
         /**
-         * Returns the value of the '<em><b>Estimated Time</b></em>' containment reference.
+         * Returns the value of the '<em><b>Estimated Time</b></em>' reference.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Estimated Time</em>' containment reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Estimated Time</em>' containment reference.
-         * @see #setEstimatedTime(MeasureValue)
+         * @return the value of the '<em>Estimated Time</em>' reference.
+         * @see #isSetEstimatedTime()
          * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTask_EstimatedTime()
-         * @model containment="true"
+         * @model unsettable="true" transient="true" changeable="false" volatile="true" derived="true"
+         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.estimatedTime'"
          * @generated
          */
         MeasureValue getEstimatedTime();
 
         /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Task#getEstimatedTime <em>Estimated Time</em>}' containment reference.
+         * Returns whether the value of the '{@link hu.bme.mdsd.ztz.model.drone.Task#getEstimatedTime <em>Estimated Time</em>}' reference is set.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Estimated Time</em>' containment reference.
+         * @return whether the value of the '<em>Estimated Time</em>' reference is set.
          * @see #getEstimatedTime()
          * @generated
          */
-        void setEstimatedTime(MeasureValue value);
+        boolean isSetEstimatedTime();
 
 } // Task

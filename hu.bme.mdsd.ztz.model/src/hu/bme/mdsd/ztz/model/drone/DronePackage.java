@@ -215,7 +215,7 @@ public interface DronePackage extends EPackage {
         int TASK__STATUS = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
         /**
-         * The feature id for the '<em><b>Estimated Time</b></em>' containment reference.
+         * The feature id for the '<em><b>Estimated Time</b></em>' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -1670,10 +1670,10 @@ public interface DronePackage extends EPackage {
         EAttribute getTask_Status();
 
         /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.Task#getEstimatedTime <em>Estimated Time</em>}'.
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.Task#getEstimatedTime <em>Estimated Time</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Estimated Time</em>'.
+         * @return the meta object for the reference '<em>Estimated Time</em>'.
          * @see hu.bme.mdsd.ztz.model.drone.Task#getEstimatedTime()
          * @see #getTask()
          * @generated
@@ -2810,7 +2810,7 @@ public interface DronePackage extends EPackage {
                 EAttribute TASK__STATUS = eINSTANCE.getTask_Status();
 
                 /**
-                 * The meta object literal for the '<em><b>Estimated Time</b></em>' containment reference feature.
+                 * The meta object literal for the '<em><b>Estimated Time</b></em>' reference feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated

@@ -1483,7 +1483,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getTask_Execution(), this.getTaskExecution(), this.getTaskExecution_Task(), "execution", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTask_Requirement(), this.getTaskRequirement(), this.getTaskRequirement_Task(), "requirement", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEAttribute(getTask_Status(), this.getTaskStatus(), "status", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTask_EstimatedTime(), this.getMeasureValue(), null, "estimatedTime", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getTask_EstimatedTime(), this.getMeasureValue(), null, "estimatedTime", null, 0, 1, Task.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
                 initEClass(taskDescriptorEClass, TaskDescriptor.class, "TaskDescriptor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getTaskDescriptor_Targets(), this.getAreaObject(), null, "targets", null, 0, -1, TaskDescriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1650,6 +1650,12 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          */
         protected void createOrgAnnotations() {
                 String source = "org.eclipse.incquery.querybasedfeature";	
+                addAnnotation
+                  (getTask_EstimatedTime(), 
+                   source, 
+                   new String[] {
+                         "patternFQN", "hu.bme.mdsd.ztz.model.derived.estimatedTime"
+                   });	
                 addAnnotation
                   (getRobot_Mission(), 
                    source, 

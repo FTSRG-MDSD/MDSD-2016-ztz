@@ -21,7 +21,12 @@
         eType="#//TaskRequirement" containment="true" eOpposite="#//TaskRequirement/task"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//TaskStatus"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="estimatedTime" unique="false"
-        eType="#//MeasureValue" containment="true"/>
+        eType="#//MeasureValue" changeable="false" volatile="true" transient="true"
+        unsettable="true" derived="true">
+      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
+        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.estimatedTime"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskDescriptor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"

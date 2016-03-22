@@ -1,8 +1,10 @@
 package hu.bme.mdsd.ztz.model.derived;
 
 import hu.bme.mdsd.ztz.model.derived.DescriptorMatcher;
+import hu.bme.mdsd.ztz.model.derived.EstimatedTimeMatcher;
 import hu.bme.mdsd.ztz.model.derived.MissionMatcher;
 import hu.bme.mdsd.ztz.model.derived.util.DescriptorQuerySpecification;
+import hu.bme.mdsd.ztz.model.derived.util.EstimatedTimeQuerySpecification;
 import hu.bme.mdsd.ztz.model.derived.util.MissionQuerySpecification;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedPatternGroup;
@@ -18,6 +20,7 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * <p> From package hu.bme.mdsd.ztz.model.derived, the group contains the definition of the following patterns: <ul>
  * <li>mission</li>
  * <li>descriptor</li>
+ * <li>estimatedTime</li>
  * </ul>
  * 
  * @see IPatternGroup
@@ -44,6 +47,7 @@ public final class DerivedFeatures extends BaseGeneratedPatternGroup {
   private DerivedFeatures() throws IncQueryException {
     querySpecifications.add(MissionQuerySpecification.instance());
     querySpecifications.add(DescriptorQuerySpecification.instance());
+    querySpecifications.add(EstimatedTimeQuerySpecification.instance());
   }
   
   public MissionQuerySpecification getMission() throws IncQueryException {
@@ -60,5 +64,13 @@ public final class DerivedFeatures extends BaseGeneratedPatternGroup {
   
   public DescriptorMatcher getDescriptor(final IncQueryEngine engine) throws IncQueryException {
     return DescriptorMatcher.on(engine);
+  }
+  
+  public EstimatedTimeQuerySpecification getEstimatedTime() throws IncQueryException {
+    return EstimatedTimeQuerySpecification.instance();
+  }
+  
+  public EstimatedTimeMatcher getEstimatedTime(final IncQueryEngine engine) throws IncQueryException {
+    return EstimatedTimeMatcher.on(engine);
   }
 }

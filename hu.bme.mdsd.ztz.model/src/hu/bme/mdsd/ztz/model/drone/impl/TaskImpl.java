@@ -15,6 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -91,14 +92,14 @@ public class TaskImpl extends NamedElementImpl implements Task {
         protected TaskStatus status = STATUS_EDEFAULT;
 
         /**
-         * The cached value of the '{@link #getEstimatedTime() <em>Estimated Time</em>}' containment reference.
+         * The cached setting delegate for the '{@link #getEstimatedTime() <em>Estimated Time</em>}' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getEstimatedTime()
          * @generated
          * @ordered
          */
-        protected MeasureValue estimatedTime;
+        protected EStructuralFeature.Internal.SettingDelegate ESTIMATED_TIME__ESETTING_DELEGATE = ((EStructuralFeature.Internal)DronePackage.Literals.TASK__ESTIMATED_TIME).getSettingDelegate();
 
         /**
          * <!-- begin-user-doc -->
@@ -316,7 +317,7 @@ public class TaskImpl extends NamedElementImpl implements Task {
          * @generated
          */
         public MeasureValue getEstimatedTime() {
-                return estimatedTime;
+                return (MeasureValue)ESTIMATED_TIME__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
         }
 
         /**
@@ -324,14 +325,8 @@ public class TaskImpl extends NamedElementImpl implements Task {
          * <!-- end-user-doc -->
          * @generated
          */
-        public NotificationChain basicSetEstimatedTime(MeasureValue newEstimatedTime, NotificationChain msgs) {
-                MeasureValue oldEstimatedTime = estimatedTime;
-                estimatedTime = newEstimatedTime;
-                if (eNotificationRequired()) {
-                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DronePackage.TASK__ESTIMATED_TIME, oldEstimatedTime, newEstimatedTime);
-                        if (msgs == null) msgs = notification; else msgs.add(notification);
-                }
-                return msgs;
+        public MeasureValue basicGetEstimatedTime() {
+                return (MeasureValue)ESTIMATED_TIME__ESETTING_DELEGATE.dynamicGet(this, null, 0, false, false);
         }
 
         /**
@@ -339,18 +334,8 @@ public class TaskImpl extends NamedElementImpl implements Task {
          * <!-- end-user-doc -->
          * @generated
          */
-        public void setEstimatedTime(MeasureValue newEstimatedTime) {
-                if (newEstimatedTime != estimatedTime) {
-                        NotificationChain msgs = null;
-                        if (estimatedTime != null)
-                                msgs = ((InternalEObject)estimatedTime).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__ESTIMATED_TIME, null, msgs);
-                        if (newEstimatedTime != null)
-                                msgs = ((InternalEObject)newEstimatedTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__ESTIMATED_TIME, null, msgs);
-                        msgs = basicSetEstimatedTime(newEstimatedTime, msgs);
-                        if (msgs != null) msgs.dispatch();
-                }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK__ESTIMATED_TIME, newEstimatedTime, newEstimatedTime));
+        public boolean isSetEstimatedTime() {
+                return ESTIMATED_TIME__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
         }
 
         /**
@@ -397,8 +382,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
                                 return basicSetExecution(null, msgs);
                         case DronePackage.TASK__REQUIREMENT:
                                 return basicSetRequirement(null, msgs);
-                        case DronePackage.TASK__ESTIMATED_TIME:
-                                return basicSetEstimatedTime(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -436,7 +419,8 @@ public class TaskImpl extends NamedElementImpl implements Task {
                         case DronePackage.TASK__STATUS:
                                 return getStatus();
                         case DronePackage.TASK__ESTIMATED_TIME:
-                                return getEstimatedTime();
+                                if (resolve) return getEstimatedTime();
+                                return basicGetEstimatedTime();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -463,9 +447,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
                                 return;
                         case DronePackage.TASK__STATUS:
                                 setStatus((TaskStatus)newValue);
-                                return;
-                        case DronePackage.TASK__ESTIMATED_TIME:
-                                setEstimatedTime((MeasureValue)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -494,9 +475,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
                         case DronePackage.TASK__STATUS:
                                 setStatus(STATUS_EDEFAULT);
                                 return;
-                        case DronePackage.TASK__ESTIMATED_TIME:
-                                setEstimatedTime((MeasureValue)null);
-                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -520,7 +498,7 @@ public class TaskImpl extends NamedElementImpl implements Task {
                         case DronePackage.TASK__STATUS:
                                 return status != STATUS_EDEFAULT;
                         case DronePackage.TASK__ESTIMATED_TIME:
-                                return estimatedTime != null;
+                                return isSetEstimatedTime();
                 }
                 return super.eIsSet(featureID);
         }
