@@ -3,7 +3,9 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="behaviour" nsURI="http://www.mdsd.hu/behaviour" nsPrefix="behaviour">
   <eClassifiers xsi:type="ecore:EClass" name="BehaviourContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicRobots" upperBound="-1"
-        eType="#//DynamicRobot"/>
+        eType="#//DynamicRobot" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taskExecutions" upperBound="-1"
+        eType="#//TaskExecution" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Message">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"

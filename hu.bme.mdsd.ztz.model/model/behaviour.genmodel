@@ -25,7 +25,8 @@
       <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//TaskExecutionStatus/Waiting"/>
     </genEnums>
     <genClasses ecoreClass="behaviour.ecore#//BehaviourContainer">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/dynamicRobots"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/dynamicRobots"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/taskExecutions"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//Message">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/tasks"/>

@@ -229,6 +229,15 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          * <!-- end-user-doc -->
          * @generated
          */
+        public EReference getBehaviourContainer_TaskExecutions() {
+                return (EReference)behaviourContainerEClass.getEStructuralFeatures().get(1);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         public EClass getMessage() {
                 return messageEClass;
         }
@@ -641,6 +650,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 // Create classes and their features
                 behaviourContainerEClass = createEClass(BEHAVIOUR_CONTAINER);
                 createEReference(behaviourContainerEClass, BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS);
+                createEReference(behaviourContainerEClass, BEHAVIOUR_CONTAINER__TASK_EXECUTIONS);
 
                 messageEClass = createEClass(MESSAGE);
                 createEReference(messageEClass, MESSAGE__TASKS);
@@ -737,7 +747,8 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
 
                 // Initialize classes, features, and operations; add parameters
                 initEClass(behaviourContainerEClass, BehaviourContainer.class, "BehaviourContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getBehaviourContainer_DynamicRobots(), this.getDynamicRobot(), null, "dynamicRobots", null, 0, -1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getBehaviourContainer_DynamicRobots(), this.getDynamicRobot(), null, "dynamicRobots", null, 0, -1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getBehaviourContainer_TaskExecutions(), this.getTaskExecution(), null, "taskExecutions", null, 0, -1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getMessage_Tasks(), this.getTaskExecution(), null, "tasks", null, 0, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

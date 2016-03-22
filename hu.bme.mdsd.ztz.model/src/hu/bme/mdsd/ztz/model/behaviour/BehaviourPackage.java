@@ -70,7 +70,7 @@ public interface BehaviourPackage extends EPackage {
         int BEHAVIOUR_CONTAINER = 0;
 
         /**
-         * The feature id for the '<em><b>Dynamic Robots</b></em>' reference list.
+         * The feature id for the '<em><b>Dynamic Robots</b></em>' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -79,13 +79,22 @@ public interface BehaviourPackage extends EPackage {
         int BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS = 0;
 
         /**
+         * The feature id for the '<em><b>Task Executions</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BEHAVIOUR_CONTAINER__TASK_EXECUTIONS = 1;
+
+        /**
          * The number of structural features of the '<em>Container</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int BEHAVIOUR_CONTAINER_FEATURE_COUNT = 1;
+        int BEHAVIOUR_CONTAINER_FEATURE_COUNT = 2;
 
         /**
          * The number of operations of the '<em>Container</em>' class.
@@ -770,15 +779,26 @@ public interface BehaviourPackage extends EPackage {
         EClass getBehaviourContainer();
 
         /**
-         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getDynamicRobots <em>Dynamic Robots</em>}'.
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getDynamicRobots <em>Dynamic Robots</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the reference list '<em>Dynamic Robots</em>'.
+         * @return the meta object for the containment reference list '<em>Dynamic Robots</em>'.
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getDynamicRobots()
          * @see #getBehaviourContainer()
          * @generated
          */
         EReference getBehaviourContainer_DynamicRobots();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getTaskExecutions <em>Task Executions</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Task Executions</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getTaskExecutions()
+         * @see #getBehaviourContainer()
+         * @generated
+         */
+        EReference getBehaviourContainer_TaskExecutions();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.Message <em>Message</em>}'.
@@ -1273,12 +1293,20 @@ public interface BehaviourPackage extends EPackage {
                 EClass BEHAVIOUR_CONTAINER = eINSTANCE.getBehaviourContainer();
 
                 /**
-                 * The meta object literal for the '<em><b>Dynamic Robots</b></em>' reference list feature.
+                 * The meta object literal for the '<em><b>Dynamic Robots</b></em>' containment reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
                 EReference BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS = eINSTANCE.getBehaviourContainer_DynamicRobots();
+
+                /**
+                 * The meta object literal for the '<em><b>Task Executions</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference BEHAVIOUR_CONTAINER__TASK_EXECUTIONS = eINSTANCE.getBehaviourContainer_TaskExecutions();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl <em>Message</em>}' class.
