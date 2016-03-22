@@ -5,7 +5,6 @@ package hu.bme.mdsd.ztz.model.drone.impl;
 import hu.bme.mdsd.ztz.model.drone.*;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -66,14 +65,10 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
                         case DronePackage.PROPERTY: return createProperty();
                         case DronePackage.ROBOT: return createRobot();
                         case DronePackage.STRING_PROPERTY: return createStringProperty();
-                        case DronePackage.TASK_EXECUTION: return createTaskExecution();
-                        case DronePackage.ROBOT_COLLABORATION: return createRobotCollaboration();
                         case DronePackage.TASK_REQUIREMENT: return createTaskRequirement();
                         case DronePackage.SIZE: return createSize();
                         case DronePackage.BATTERY: return createBattery();
-                        case DronePackage.DETECTED_OBJECT: return createDetectedObject();
                         case DronePackage.EQUIPMENT: return createEquipment();
-                        case DronePackage.ACTION: return createAction();
                         case DronePackage.MEASURE_VALUE: return createMeasureValue();
                         case DronePackage.MEASURE_CONVERSION: return createMeasureConversion();
                         case DronePackage.MEASURE_DIMENSION: return createMeasureDimension();
@@ -83,40 +78,6 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
                         case DronePackage.CAPABILITY_PROPERTIES: return createCapabilityProperties();
                         default:
                                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-                }
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public Object createFromString(EDataType eDataType, String initialValue) {
-                switch (eDataType.getClassifierID()) {
-                        case DronePackage.TASK_EXECUTION_STATUS:
-                                return createTaskExecutionStatusFromString(eDataType, initialValue);
-                        case DronePackage.TASK_STATUS:
-                                return createTaskStatusFromString(eDataType, initialValue);
-                        default:
-                                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-                }
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public String convertToString(EDataType eDataType, Object instanceValue) {
-                switch (eDataType.getClassifierID()) {
-                        case DronePackage.TASK_EXECUTION_STATUS:
-                                return convertTaskExecutionStatusToString(eDataType, instanceValue);
-                        case DronePackage.TASK_STATUS:
-                                return convertTaskStatusToString(eDataType, instanceValue);
-                        default:
-                                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
                 }
         }
 
@@ -215,26 +176,6 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
          * <!-- end-user-doc -->
          * @generated
          */
-        public TaskExecution createTaskExecution() {
-                TaskExecutionImpl taskExecution = new TaskExecutionImpl();
-                return taskExecution;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public RobotCollaboration createRobotCollaboration() {
-                RobotCollaborationImpl robotCollaboration = new RobotCollaborationImpl();
-                return robotCollaboration;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         public TaskRequirement createTaskRequirement() {
                 TaskRequirementImpl taskRequirement = new TaskRequirementImpl();
                 return taskRequirement;
@@ -265,29 +206,9 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
          * <!-- end-user-doc -->
          * @generated
          */
-        public DetectedObject createDetectedObject() {
-                DetectedObjectImpl detectedObject = new DetectedObjectImpl();
-                return detectedObject;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         public Equipment createEquipment() {
                 EquipmentImpl equipment = new EquipmentImpl();
                 return equipment;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public Action createAction() {
-                ActionImpl action = new ActionImpl();
-                return action;
         }
 
         /**
@@ -358,46 +279,6 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
         public CapabilityProperties createCapabilityProperties() {
                 CapabilityPropertiesImpl capabilityProperties = new CapabilityPropertiesImpl();
                 return capabilityProperties;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public TaskExecutionStatus createTaskExecutionStatusFromString(EDataType eDataType, String initialValue) {
-                TaskExecutionStatus result = TaskExecutionStatus.get(initialValue);
-                if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-                return result;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public String convertTaskExecutionStatusToString(EDataType eDataType, Object instanceValue) {
-                return instanceValue == null ? null : instanceValue.toString();
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public TaskStatus createTaskStatusFromString(EDataType eDataType, String initialValue) {
-                TaskStatus result = TaskStatus.get(initialValue);
-                if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-                return result;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public String convertTaskStatusToString(EDataType eDataType, Object instanceValue) {
-                return instanceValue == null ? null : instanceValue.toString();
         }
 
         /**

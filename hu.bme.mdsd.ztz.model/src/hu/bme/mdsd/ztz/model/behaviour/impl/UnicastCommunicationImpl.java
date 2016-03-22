@@ -3,9 +3,8 @@
 package hu.bme.mdsd.ztz.model.behaviour.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
-
-import hu.bme.mdsd.ztz.model.drone.Robot;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -36,7 +35,7 @@ public class UnicastCommunicationImpl extends CommunicationActionImpl implements
          * @generated
          * @ordered
          */
-        protected Robot target;
+        protected DynamicRobot target;
 
         /**
          * <!-- begin-user-doc -->
@@ -62,10 +61,10 @@ public class UnicastCommunicationImpl extends CommunicationActionImpl implements
          * <!-- end-user-doc -->
          * @generated
          */
-        public Robot getTarget() {
+        public DynamicRobot getTarget() {
                 if (target != null && target.eIsProxy()) {
                         InternalEObject oldTarget = (InternalEObject)target;
-                        target = (Robot)eResolveProxy(oldTarget);
+                        target = (DynamicRobot)eResolveProxy(oldTarget);
                         if (target != oldTarget) {
                                 if (eNotificationRequired())
                                         eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.UNICAST_COMMUNICATION__TARGET, oldTarget, target));
@@ -79,7 +78,7 @@ public class UnicastCommunicationImpl extends CommunicationActionImpl implements
          * <!-- end-user-doc -->
          * @generated
          */
-        public Robot basicGetTarget() {
+        public DynamicRobot basicGetTarget() {
                 return target;
         }
 
@@ -88,8 +87,8 @@ public class UnicastCommunicationImpl extends CommunicationActionImpl implements
          * <!-- end-user-doc -->
          * @generated
          */
-        public void setTarget(Robot newTarget) {
-                Robot oldTarget = target;
+        public void setTarget(DynamicRobot newTarget) {
+                DynamicRobot oldTarget = target;
                 target = newTarget;
                 if (eNotificationRequired())
                         eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.UNICAST_COMMUNICATION__TARGET, oldTarget, target));
@@ -119,7 +118,7 @@ public class UnicastCommunicationImpl extends CommunicationActionImpl implements
         public void eSet(int featureID, Object newValue) {
                 switch (featureID) {
                         case BehaviourPackage.UNICAST_COMMUNICATION__TARGET:
-                                setTarget((Robot)newValue);
+                                setTarget((DynamicRobot)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -134,7 +133,7 @@ public class UnicastCommunicationImpl extends CommunicationActionImpl implements
         public void eUnset(int featureID) {
                 switch (featureID) {
                         case BehaviourPackage.UNICAST_COMMUNICATION__TARGET:
-                                setTarget((Robot)null);
+                                setTarget((DynamicRobot)null);
                                 return;
                 }
                 super.eUnset(featureID);

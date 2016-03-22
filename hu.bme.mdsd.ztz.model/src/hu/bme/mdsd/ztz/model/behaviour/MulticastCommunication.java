@@ -2,8 +2,6 @@
  */
 package hu.bme.mdsd.ztz.model.behaviour;
 
-import hu.bme.mdsd.ztz.model.drone.Robot;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -25,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
 public interface MulticastCommunication extends CommunicationAction {
         /**
          * Returns the value of the '<em><b>Targets</b></em>' reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Robot}.
+         * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot}.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Targets</em>' reference list isn't clear,
@@ -37,6 +35,6 @@ public interface MulticastCommunication extends CommunicationAction {
          * @model required="true"
          * @generated
          */
-        EList<Robot> getTargets();
+        EList<DynamicRobot> getTargets();
 
 } // MulticastCommunication

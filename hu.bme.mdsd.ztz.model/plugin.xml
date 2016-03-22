@@ -7,19 +7,19 @@
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated drone -->
-      <package
-            uri="http://www.mdsd.hu/drone"
-            class="hu.bme.mdsd.ztz.model.drone.DronePackage"
-            genModel="model/drone.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated behaviour -->
       <package
             uri="http://www.mdsd.hu/behaviour"
             class="hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage"
             genModel="model/behaviour.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated drone -->
+      <package
+            uri="http://www.mdsd.hu/drone"
+            class="hu.bme.mdsd.ztz.model.drone.DronePackage"
+            genModel="model/drone.genmodel"/>
    </extension>
 
 </plugin>

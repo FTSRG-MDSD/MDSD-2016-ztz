@@ -103,24 +103,6 @@ public interface DroneFactory extends EFactory {
         StringProperty createStringProperty();
 
         /**
-         * Returns a new object of class '<em>Task Execution</em>'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return a new object of class '<em>Task Execution</em>'.
-         * @generated
-         */
-        TaskExecution createTaskExecution();
-
-        /**
-         * Returns a new object of class '<em>Robot Collaboration</em>'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return a new object of class '<em>Robot Collaboration</em>'.
-         * @generated
-         */
-        RobotCollaboration createRobotCollaboration();
-
-        /**
          * Returns a new object of class '<em>Task Requirement</em>'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -148,15 +130,6 @@ public interface DroneFactory extends EFactory {
         Battery createBattery();
 
         /**
-         * Returns a new object of class '<em>Detected Object</em>'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return a new object of class '<em>Detected Object</em>'.
-         * @generated
-         */
-        DetectedObject createDetectedObject();
-
-        /**
          * Returns a new object of class '<em>Equipment</em>'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -164,15 +137,6 @@ public interface DroneFactory extends EFactory {
          * @generated
          */
         Equipment createEquipment();
-
-        /**
-         * Returns a new object of class '<em>Action</em>'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return a new object of class '<em>Action</em>'.
-         * @generated
-         */
-        Action createAction();
 
         /**
          * Returns a new object of class '<em>Measure Value</em>'.

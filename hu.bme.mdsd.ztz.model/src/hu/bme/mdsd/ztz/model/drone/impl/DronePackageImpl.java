@@ -2,15 +2,11 @@
  */
 package hu.bme.mdsd.ztz.model.drone.impl;
 
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
-import hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl;
-import hu.bme.mdsd.ztz.model.drone.Action;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.Battery;
 import hu.bme.mdsd.ztz.model.drone.Capability;
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
 import hu.bme.mdsd.ztz.model.drone.Coordinate;
-import hu.bme.mdsd.ztz.model.drone.DetectedObject;
 import hu.bme.mdsd.ztz.model.drone.DroneFactory;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Equipment;
@@ -24,20 +20,15 @@ import hu.bme.mdsd.ztz.model.drone.Position;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyValue;
 import hu.bme.mdsd.ztz.model.drone.Robot;
-import hu.bme.mdsd.ztz.model.drone.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
 import hu.bme.mdsd.ztz.model.drone.Size;
 import hu.bme.mdsd.ztz.model.drone.StringProperty;
 import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
-import hu.bme.mdsd.ztz.model.drone.TaskExecution;
-import hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus;
 import hu.bme.mdsd.ztz.model.drone.TaskRequirement;
-import hu.bme.mdsd.ztz.model.drone.TaskStatus;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -118,20 +109,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        private EClass taskExecutionEClass = null;
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        private EClass robotCollaborationEClass = null;
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         private EClass taskRequirementEClass = null;
 
         /**
@@ -160,21 +137,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        private EClass detectedObjectEClass = null;
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         private EClass equipmentEClass = null;
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        private EClass actionEClass = null;
 
         /**
          * <!-- begin-user-doc -->
@@ -233,20 +196,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
         private EClass capabilityPropertiesEClass = null;
 
         /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        private EEnum taskExecutionStatusEEnum = null;
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        private EEnum taskStatusEEnum = null;
-
-        /**
          * Creates an instance of the model <b>Package</b>, registered with
          * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
          * package URI value.
@@ -292,16 +241,11 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
 
                 isInited = true;
 
-                // Obtain or create and register interdependencies
-                BehaviourPackageImpl theBehaviourPackage = (BehaviourPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BehaviourPackage.eNS_URI) instanceof BehaviourPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BehaviourPackage.eNS_URI) : BehaviourPackage.eINSTANCE);
-
                 // Create package meta-data objects
                 theDronePackage.createPackageContents();
-                theBehaviourPackage.createPackageContents();
 
                 // Initialize created meta-data
                 theDronePackage.initializePackageContents();
-                theBehaviourPackage.initializePackageContents();
 
                 // Mark meta-data to indicate it can't be changed
                 theDronePackage.freeze();
@@ -328,15 +272,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          */
         public EReference getMission_Tasks() {
                 return (EReference)missionEClass.getEStructuralFeatures().get(0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getMission_EstimatedTime() {
-                return (EReference)missionEClass.getEStructuralFeatures().get(1);
         }
 
         /**
@@ -371,35 +306,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getTask_Execution() {
-                return (EReference)taskEClass.getEStructuralFeatures().get(2);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         public EReference getTask_Requirement() {
-                return (EReference)taskEClass.getEStructuralFeatures().get(3);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EAttribute getTask_Status() {
-                return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTask_EstimatedTime() {
-                return (EReference)taskEClass.getEStructuralFeatures().get(5);
+                return (EReference)taskEClass.getEStructuralFeatures().get(2);
         }
 
         /**
@@ -605,7 +513,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_Collaborations() {
+        public EReference getRobot_Equipments() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(3);
         }
 
@@ -614,7 +522,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_DetectedObjects() {
+        public EReference getRobot_Tasks() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(4);
         }
 
@@ -623,7 +531,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_Equipments() {
+        public EReference getRobot_Properties() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(5);
         }
 
@@ -632,7 +540,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_Tasks() {
+        public EReference getRobot_CommunicationRange() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(6);
         }
 
@@ -641,7 +549,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_Properties() {
+        public EReference getRobot_Weight() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(7);
         }
 
@@ -650,7 +558,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_CommunicationRange() {
+        public EReference getRobot_Mission() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(8);
         }
 
@@ -659,7 +567,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_Weight() {
+        public EReference getRobot_Capabilities() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(9);
         }
 
@@ -668,53 +576,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_Mission() {
-                return (EReference)robotEClass.getEStructuralFeatures().get(10);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getRobot_Actions() {
-                return (EReference)robotEClass.getEStructuralFeatures().get(11);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getRobot_Capabilities() {
-                return (EReference)robotEClass.getEStructuralFeatures().get(12);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         public EReference getRobot_CapabilityProperties() {
-                return (EReference)robotEClass.getEStructuralFeatures().get(13);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getRobot_Execute() {
-                return (EReference)robotEClass.getEStructuralFeatures().get(14);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getRobot_MessageRepository() {
-                return (EReference)robotEClass.getEStructuralFeatures().get(15);
+                return (EReference)robotEClass.getEStructuralFeatures().get(10);
         }
 
         /**
@@ -733,78 +596,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          */
         public EAttribute getStringProperty_Value() {
                 return (EAttribute)stringPropertyEClass.getEStructuralFeatures().get(0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EClass getTaskExecution() {
-                return taskExecutionEClass;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTaskExecution_Executors() {
-                return (EReference)taskExecutionEClass.getEStructuralFeatures().get(0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTaskExecution_ExecutionTime() {
-                return (EReference)taskExecutionEClass.getEStructuralFeatures().get(1);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EAttribute getTaskExecution_Status() {
-                return (EAttribute)taskExecutionEClass.getEStructuralFeatures().get(2);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTaskExecution_Task() {
-                return (EReference)taskExecutionEClass.getEStructuralFeatures().get(3);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EClass getRobotCollaboration() {
-                return robotCollaborationEClass;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getRobotCollaboration_Collaborator() {
-                return (EReference)robotCollaborationEClass.getEStructuralFeatures().get(0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getRobotCollaboration_AvailabilityRange() {
-                return (EReference)robotCollaborationEClass.getEStructuralFeatures().get(1);
         }
 
         /**
@@ -983,33 +774,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EClass getDetectedObject() {
-                return detectedObjectEClass;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getDetectedObject_Object() {
-                return (EReference)detectedObjectEClass.getEStructuralFeatures().get(0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EAttribute getDetectedObject_Obstacle() {
-                return (EAttribute)detectedObjectEClass.getEStructuralFeatures().get(1);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         public EClass getEquipment() {
                 return equipmentEClass;
         }
@@ -1030,33 +794,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          */
         public EReference getEquipment_Facilitate() {
                 return (EReference)equipmentEClass.getEStructuralFeatures().get(1);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EClass getAction() {
-                return actionEClass;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getAction_Properties() {
-                return (EReference)actionEClass.getEStructuralFeatures().get(0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getAction_CurrentTask() {
-                return (EReference)actionEClass.getEStructuralFeatures().get(1);
         }
 
         /**
@@ -1253,24 +990,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EEnum getTaskExecutionStatus() {
-                return taskExecutionStatusEEnum;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EEnum getTaskStatus() {
-                return taskStatusEEnum;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         public DroneFactory getDroneFactory() {
                 return (DroneFactory)getEFactoryInstance();
         }
@@ -1296,15 +1015,11 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 // Create classes and their features
                 missionEClass = createEClass(MISSION);
                 createEReference(missionEClass, MISSION__TASKS);
-                createEReference(missionEClass, MISSION__ESTIMATED_TIME);
 
                 taskEClass = createEClass(TASK);
                 createEReference(taskEClass, TASK__MISSION);
                 createEReference(taskEClass, TASK__DESCRIPTOR);
-                createEReference(taskEClass, TASK__EXECUTION);
                 createEReference(taskEClass, TASK__REQUIREMENT);
-                createEAttribute(taskEClass, TASK__STATUS);
-                createEReference(taskEClass, TASK__ESTIMATED_TIME);
 
                 taskDescriptorEClass = createEClass(TASK_DESCRIPTOR);
                 createEReference(taskDescriptorEClass, TASK_DESCRIPTOR__TARGETS);
@@ -1333,32 +1048,17 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEReference(robotEClass, ROBOT__POSITION);
                 createEReference(robotEClass, ROBOT__SIZE);
                 createEReference(robotEClass, ROBOT__BATTERIES);
-                createEReference(robotEClass, ROBOT__COLLABORATIONS);
-                createEReference(robotEClass, ROBOT__DETECTED_OBJECTS);
                 createEReference(robotEClass, ROBOT__EQUIPMENTS);
                 createEReference(robotEClass, ROBOT__TASKS);
                 createEReference(robotEClass, ROBOT__PROPERTIES);
                 createEReference(robotEClass, ROBOT__COMMUNICATION_RANGE);
                 createEReference(robotEClass, ROBOT__WEIGHT);
                 createEReference(robotEClass, ROBOT__MISSION);
-                createEReference(robotEClass, ROBOT__ACTIONS);
                 createEReference(robotEClass, ROBOT__CAPABILITIES);
                 createEReference(robotEClass, ROBOT__CAPABILITY_PROPERTIES);
-                createEReference(robotEClass, ROBOT__EXECUTE);
-                createEReference(robotEClass, ROBOT__MESSAGE_REPOSITORY);
 
                 stringPropertyEClass = createEClass(STRING_PROPERTY);
                 createEAttribute(stringPropertyEClass, STRING_PROPERTY__VALUE);
-
-                taskExecutionEClass = createEClass(TASK_EXECUTION);
-                createEReference(taskExecutionEClass, TASK_EXECUTION__EXECUTORS);
-                createEReference(taskExecutionEClass, TASK_EXECUTION__EXECUTION_TIME);
-                createEAttribute(taskExecutionEClass, TASK_EXECUTION__STATUS);
-                createEReference(taskExecutionEClass, TASK_EXECUTION__TASK);
-
-                robotCollaborationEClass = createEClass(ROBOT_COLLABORATION);
-                createEReference(robotCollaborationEClass, ROBOT_COLLABORATION__COLLABORATOR);
-                createEReference(robotCollaborationEClass, ROBOT_COLLABORATION__AVAILABILITY_RANGE);
 
                 taskRequirementEClass = createEClass(TASK_REQUIREMENT);
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__TASK);
@@ -1383,17 +1083,9 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 namedElementEClass = createEClass(NAMED_ELEMENT);
                 createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
-                detectedObjectEClass = createEClass(DETECTED_OBJECT);
-                createEReference(detectedObjectEClass, DETECTED_OBJECT__OBJECT);
-                createEAttribute(detectedObjectEClass, DETECTED_OBJECT__OBSTACLE);
-
                 equipmentEClass = createEClass(EQUIPMENT);
                 createEReference(equipmentEClass, EQUIPMENT__PROPERTIES);
                 createEReference(equipmentEClass, EQUIPMENT__FACILITATE);
-
-                actionEClass = createEClass(ACTION);
-                createEReference(actionEClass, ACTION__PROPERTIES);
-                createEReference(actionEClass, ACTION__CURRENT_TASK);
 
                 measureValueEClass = createEClass(MEASURE_VALUE);
                 createEAttribute(measureValueEClass, MEASURE_VALUE__VALUE);
@@ -1423,10 +1115,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 capabilityPropertiesEClass = createEClass(CAPABILITY_PROPERTIES);
                 createEReference(capabilityPropertiesEClass, CAPABILITY_PROPERTIES__PROPERTIES);
                 createEReference(capabilityPropertiesEClass, CAPABILITY_PROPERTIES__CAPABILITY);
-
-                // Create enums
-                taskExecutionStatusEEnum = createEEnum(TASK_EXECUTION_STATUS);
-                taskStatusEEnum = createEEnum(TASK_STATUS);
         }
 
         /**
@@ -1452,9 +1140,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 setNsPrefix(eNS_PREFIX);
                 setNsURI(eNS_URI);
 
-                // Obtain other dependent packages
-                BehaviourPackage theBehaviourPackage = (BehaviourPackage)EPackage.Registry.INSTANCE.getEPackage(BehaviourPackage.eNS_URI);
-
                 // Create type parameters
 
                 // Set bounds for type parameters
@@ -1473,15 +1158,11 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 // Initialize classes, features, and operations; add parameters
                 initEClass(missionEClass, Mission.class, "Mission", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getMission_Tasks(), this.getTask(), this.getTask_Mission(), "tasks", null, 1, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getMission_EstimatedTime(), this.getMeasureValue(), null, "estimatedTime", null, 0, 1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getTask_Mission(), this.getMission(), this.getMission_Tasks(), "mission", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTask_Descriptor(), this.getTaskDescriptor(), this.getTaskDescriptor_Task(), "descriptor", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTask_Execution(), this.getTaskExecution(), this.getTaskExecution_Task(), "execution", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTask_Requirement(), this.getTaskRequirement(), this.getTaskRequirement_Task(), "requirement", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEAttribute(getTask_Status(), this.getTaskStatus(), "status", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTask_EstimatedTime(), this.getMeasureValue(), null, "estimatedTime", null, 0, 1, Task.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
                 initEClass(taskDescriptorEClass, TaskDescriptor.class, "TaskDescriptor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getTaskDescriptor_Targets(), this.getAreaObject(), null, "targets", null, 0, -1, TaskDescriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1510,32 +1191,17 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobot_Position(), this.getPosition(), null, "position", null, 1, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Size(), this.getSize(), null, "size", null, 1, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Batteries(), this.getBattery(), null, "batteries", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getRobot_Collaborations(), this.getRobotCollaboration(), null, "collaborations", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getRobot_DetectedObjects(), this.getDetectedObject(), null, "detectedObjects", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Equipments(), this.getEquipment(), null, "equipments", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Tasks(), this.getTask(), null, "tasks", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Properties(), this.getProperty(), null, "properties", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CommunicationRange(), this.getMeasureValue(), null, "communicationRange", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Weight(), this.getMeasureValue(), null, "weight", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Mission(), this.getMission(), null, "mission", null, 0, 1, Robot.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-                initEReference(getRobot_Actions(), this.getAction(), null, "actions", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CapabilityProperties(), this.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getRobot_Execute(), this.getTaskExecution(), this.getTaskExecution_Executors(), "execute", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getRobot_MessageRepository(), theBehaviourPackage.getMessageRepository(), theBehaviourPackage.getMessageRepository_Robot(), "messageRepository", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(stringPropertyEClass, StringProperty.class, "StringProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEAttribute(getStringProperty_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-                initEClass(taskExecutionEClass, TaskExecution.class, "TaskExecution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getTaskExecution_Executors(), this.getRobot(), this.getRobot_Execute(), "executors", null, 1, -1, TaskExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTaskExecution_ExecutionTime(), this.getMeasureValue(), null, "executionTime", null, 0, 1, TaskExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEAttribute(getTaskExecution_Status(), this.getTaskExecutionStatus(), "status", null, 1, 1, TaskExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTaskExecution_Task(), this.getTask(), this.getTask_Execution(), "task", null, 0, 1, TaskExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-                initEClass(robotCollaborationEClass, RobotCollaboration.class, "RobotCollaboration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getRobotCollaboration_Collaborator(), this.getRobot(), null, "collaborator", null, 1, 1, RobotCollaboration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getRobotCollaboration_AvailabilityRange(), this.getMeasureValue(), null, "availabilityRange", null, 0, 1, RobotCollaboration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(taskRequirementEClass, TaskRequirement.class, "TaskRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getTaskRequirement_Task(), this.getTask(), this.getTask_Requirement(), "task", null, 1, 1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1560,17 +1226,9 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-                initEClass(detectedObjectEClass, DetectedObject.class, "DetectedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getDetectedObject_Object(), this.getAreaObject(), null, "object", null, 1, 1, DetectedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEAttribute(getDetectedObject_Obstacle(), ecorePackage.getEBoolean(), "obstacle", null, 0, 1, DetectedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
                 initEClass(equipmentEClass, Equipment.class, "Equipment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getEquipment_Properties(), this.getProperty(), null, "properties", null, 0, -1, Equipment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getEquipment_Facilitate(), this.getCapability(), null, "facilitate", null, 0, -1, Equipment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-                initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getAction_Properties(), this.getProperty(), null, "properties", null, 0, -1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getAction_CurrentTask(), this.getTask(), null, "currentTask", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(measureValueEClass, MeasureValue.class, "MeasureValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEAttribute(getMeasureValue_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, MeasureValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1601,27 +1259,12 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getCapabilityProperties_Properties(), this.getProperty(), null, "properties", null, 0, -1, CapabilityProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getCapabilityProperties_Capability(), this.getCapability(), null, "capability", null, 1, 1, CapabilityProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-                // Initialize enums and add enum literals
-                initEEnum(taskExecutionStatusEEnum, TaskExecutionStatus.class, "TaskExecutionStatus");
-                addEEnumLiteral(taskExecutionStatusEEnum, TaskExecutionStatus.READY);
-                addEEnumLiteral(taskExecutionStatusEEnum, TaskExecutionStatus.FINISHED);
-                addEEnumLiteral(taskExecutionStatusEEnum, TaskExecutionStatus.SUSPENDED);
-                addEEnumLiteral(taskExecutionStatusEEnum, TaskExecutionStatus.IN_PROGRESS);
-                addEEnumLiteral(taskExecutionStatusEEnum, TaskExecutionStatus.WAITING);
-
-                initEEnum(taskStatusEEnum, TaskStatus.class, "TaskStatus");
-                addEEnumLiteral(taskStatusEEnum, TaskStatus.READY);
-                addEEnumLiteral(taskStatusEEnum, TaskStatus.FINISHED);
-                addEEnumLiteral(taskStatusEEnum, TaskStatus.WAITING);
-
                 // Create resource
                 createResource(eNS_URI);
 
                 // Create annotations
                 // http://www.eclipse.org/emf/2002/Ecore
                 createEcoreAnnotations();
-                // org.eclipse.incquery.querybasedfeature
-                createOrgAnnotations();
         }
 
         /**
@@ -1637,34 +1280,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                    source, 
                    new String[] {
                          "settingDelegates", "org.eclipse.incquery.querybasedfeature"
-                   });
-        }
-
-        /**
-         * Initializes the annotations for <b>org.eclipse.incquery.querybasedfeature</b>.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void createOrgAnnotations() {
-                String source = "org.eclipse.incquery.querybasedfeature";	
-                addAnnotation
-                  (getTask_EstimatedTime(), 
-                   source, 
-                   new String[] {
-                         "patternFQN", "hu.bme.mdsd.ztz.model.derived.estimatedTime"
-                   });	
-                addAnnotation
-                  (getRobot_Mission(), 
-                   source, 
-                   new String[] {
-                         "patternFQN", "hu.bme.mdsd.ztz.model.derived.mission"
-                   });	
-                addAnnotation
-                  (getTaskRequirement_Descriptor(), 
-                   source, 
-                   new String[] {
-                         "patternFQN", "hu.bme.mdsd.ztz.model.derived.descriptor"
                    });
         }
 

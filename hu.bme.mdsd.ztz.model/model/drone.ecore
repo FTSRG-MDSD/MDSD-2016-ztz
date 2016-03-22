@@ -7,26 +7,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="Mission" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" lowerBound="1" upperBound="-1"
         eType="#//Task" containment="true" eOpposite="#//Task/mission"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="estimatedTime" unique="false"
-        eType="#//MeasureValue" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" lowerBound="1"
         eType="#//Mission" eOpposite="#//Mission/tasks"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="1"
         eType="#//TaskDescriptor" containment="true" eOpposite="#//TaskDescriptor/task"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="execution" eType="#//TaskExecution"
-        containment="true" eOpposite="#//TaskExecution/task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" lowerBound="1"
         eType="#//TaskRequirement" containment="true" eOpposite="#//TaskRequirement/task"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//TaskStatus"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="estimatedTime" unique="false"
-        eType="#//MeasureValue" changeable="false" volatile="true" transient="true"
-        unsettable="true" derived="true">
-      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
-        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.estimatedTime"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskDescriptor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
@@ -69,10 +57,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="batteries" upperBound="-1"
         eType="#//Battery" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborations" upperBound="-1"
-        eType="#//RobotCollaboration" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="detectedObjects" upperBound="-1"
-        eType="#//DetectedObject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="equipments" upperBound="-1"
         eType="#//Equipment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
@@ -84,39 +68,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="weight" eType="#//MeasureValue"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" eType="#//Mission"
-        changeable="false" volatile="true" transient="true" unsettable="true" derived="true">
-      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
-        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.mission"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
-        eType="#//Action" containment="true"/>
+        changeable="false" volatile="true" transient="true" unsettable="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
         eType="#//Capability"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProperties" upperBound="-1"
         eType="#//CapabilityProperties" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="execute" eType="#//TaskExecution"
-        eOpposite="#//TaskExecution/executors"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="messageRepository" eType="ecore:EClass behaviour.ecore#//MessageRepository"
-        eOpposite="behaviour.ecore#//MessageRepository/robot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringProperty" eSuperTypes="#//PropertyValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskExecution">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="executors" lowerBound="1"
-        upperBound="-1" eType="#//Robot" eOpposite="#//Robot/execute"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="executionTime" unique="false"
-        eType="#//MeasureValue" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" unique="false"
-        lowerBound="1" eType="#//TaskExecutionStatus"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="task" eType="#//Task" eOpposite="#//Task/execution"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RobotCollaboration">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborator" lowerBound="1"
-        eType="#//Robot"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="availabilityRange" eType="#//MeasureValue"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskRequirement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="task" unique="false" lowerBound="1"
@@ -132,11 +91,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProperties" upperBound="-1"
         eType="#//CapabilityProperties" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" eType="#//TaskDescriptor"
-        changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
-        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.descriptor"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+        changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Size">
     <eStructuralFeatures xsi:type="ecore:EReference" name="width" lowerBound="1" eType="#//MeasureValue"
@@ -159,28 +114,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DetectedObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="object" lowerBound="1"
-        eType="#//AreaObject"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obstacle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="TaskExecutionStatus">
-    <eLiterals name="Ready"/>
-    <eLiterals name="Finished" value="1"/>
-    <eLiterals name="Suspended" value="2"/>
-    <eLiterals name="InProgress" value="3"/>
-    <eLiterals name="Waiting" value="4"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Equipment" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="facilitate" upperBound="-1"
         eType="#//Capability"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Action">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="currentTask" eType="#//Task"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MeasureValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
@@ -201,11 +139,6 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyValue" abstract="true" interface="true"/>
-  <eClassifiers xsi:type="ecore:EEnum" name="TaskStatus">
-    <eLiterals name="Ready"/>
-    <eLiterals name="Finished" value="1"/>
-    <eLiterals name="Waiting" value="2"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RobotMissionContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="missions" upperBound="-1"
         eType="#//Mission" containment="true"/>

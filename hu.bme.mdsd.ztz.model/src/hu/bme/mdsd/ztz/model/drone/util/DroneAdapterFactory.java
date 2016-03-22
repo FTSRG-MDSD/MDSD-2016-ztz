@@ -104,14 +104,6 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
                                 return createStringPropertyAdapter();
                         }
                         @Override
-                        public Adapter caseTaskExecution(TaskExecution object) {
-                                return createTaskExecutionAdapter();
-                        }
-                        @Override
-                        public Adapter caseRobotCollaboration(RobotCollaboration object) {
-                                return createRobotCollaborationAdapter();
-                        }
-                        @Override
                         public Adapter caseTaskRequirement(TaskRequirement object) {
                                 return createTaskRequirementAdapter();
                         }
@@ -128,16 +120,8 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
                                 return createNamedElementAdapter();
                         }
                         @Override
-                        public Adapter caseDetectedObject(DetectedObject object) {
-                                return createDetectedObjectAdapter();
-                        }
-                        @Override
                         public Adapter caseEquipment(Equipment object) {
                                 return createEquipmentAdapter();
-                        }
-                        @Override
-                        public Adapter caseAction(Action object) {
-                                return createActionAdapter();
                         }
                         @Override
                         public Adapter caseMeasureValue(MeasureValue object) {
@@ -318,34 +302,6 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
         }
 
         /**
-         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.TaskExecution <em>Task Execution</em>}'.
-         * <!-- begin-user-doc -->
-         * This default implementation returns null so that we can easily ignore cases;
-         * it's useful to ignore a case when inheritance will catch all the cases anyway.
-         * <!-- end-user-doc -->
-         * @return the new adapter.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecution
-         * @generated
-         */
-        public Adapter createTaskExecutionAdapter() {
-                return null;
-        }
-
-        /**
-         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.RobotCollaboration <em>Robot Collaboration</em>}'.
-         * <!-- begin-user-doc -->
-         * This default implementation returns null so that we can easily ignore cases;
-         * it's useful to ignore a case when inheritance will catch all the cases anyway.
-         * <!-- end-user-doc -->
-         * @return the new adapter.
-         * @see hu.bme.mdsd.ztz.model.drone.RobotCollaboration
-         * @generated
-         */
-        public Adapter createRobotCollaborationAdapter() {
-                return null;
-        }
-
-        /**
          * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement <em>Task Requirement</em>}'.
          * <!-- begin-user-doc -->
          * This default implementation returns null so that we can easily ignore cases;
@@ -402,20 +358,6 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
         }
 
         /**
-         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.DetectedObject <em>Detected Object</em>}'.
-         * <!-- begin-user-doc -->
-         * This default implementation returns null so that we can easily ignore cases;
-         * it's useful to ignore a case when inheritance will catch all the cases anyway.
-         * <!-- end-user-doc -->
-         * @return the new adapter.
-         * @see hu.bme.mdsd.ztz.model.drone.DetectedObject
-         * @generated
-         */
-        public Adapter createDetectedObjectAdapter() {
-                return null;
-        }
-
-        /**
          * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.Equipment <em>Equipment</em>}'.
          * <!-- begin-user-doc -->
          * This default implementation returns null so that we can easily ignore cases;
@@ -426,20 +368,6 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
          * @generated
          */
         public Adapter createEquipmentAdapter() {
-                return null;
-        }
-
-        /**
-         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.Action <em>Action</em>}'.
-         * <!-- begin-user-doc -->
-         * This default implementation returns null so that we can easily ignore cases;
-         * it's useful to ignore a case when inheritance will catch all the cases anyway.
-         * <!-- end-user-doc -->
-         * @return the new adapter.
-         * @see hu.bme.mdsd.ztz.model.drone.Action
-         * @generated
-         */
-        public Adapter createActionAdapter() {
                 return null;
         }
 

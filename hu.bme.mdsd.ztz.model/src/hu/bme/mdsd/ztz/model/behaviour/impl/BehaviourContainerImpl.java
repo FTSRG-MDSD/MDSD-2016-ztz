@@ -4,22 +4,17 @@ package hu.bme.mdsd.ztz.model.behaviour.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
-import hu.bme.mdsd.ztz.model.behaviour.CommunicationAction;
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 
-import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,32 +24,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getCommunicationActions <em>Communication Actions</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getMessageRepositories <em>Message Repositories</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getDynamicRobots <em>Dynamic Robots</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class BehaviourContainerImpl extends MinimalEObjectImpl.Container implements BehaviourContainer {
         /**
-         * The cached value of the '{@link #getCommunicationActions() <em>Communication Actions</em>}' containment reference list.
+         * The cached value of the '{@link #getDynamicRobots() <em>Dynamic Robots</em>}' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getCommunicationActions()
+         * @see #getDynamicRobots()
          * @generated
          * @ordered
          */
-        protected EList<CommunicationAction> communicationActions;
-
-        /**
-         * The cached value of the '{@link #getMessageRepositories() <em>Message Repositories</em>}' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getMessageRepositories()
-         * @generated
-         * @ordered
-         */
-        protected EList<MessageRepository> messageRepositories;
+        protected EList<DynamicRobot> dynamicRobots;
 
         /**
          * <!-- begin-user-doc -->
@@ -80,39 +64,11 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
          * <!-- end-user-doc -->
          * @generated
          */
-        public EList<CommunicationAction> getCommunicationActions() {
-                if (communicationActions == null) {
-                        communicationActions = new EObjectContainmentEList<CommunicationAction>(CommunicationAction.class, this, BehaviourPackage.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS);
+        public EList<DynamicRobot> getDynamicRobots() {
+                if (dynamicRobots == null) {
+                        dynamicRobots = new EObjectResolvingEList<DynamicRobot>(DynamicRobot.class, this, BehaviourPackage.BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS);
                 }
-                return communicationActions;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EList<MessageRepository> getMessageRepositories() {
-                if (messageRepositories == null) {
-                        messageRepositories = new EObjectContainmentEList<MessageRepository>(MessageRepository.class, this, BehaviourPackage.BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES);
-                }
-                return messageRepositories;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-                switch (featureID) {
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS:
-                                return ((InternalEList<?>)getCommunicationActions()).basicRemove(otherEnd, msgs);
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES:
-                                return ((InternalEList<?>)getMessageRepositories()).basicRemove(otherEnd, msgs);
-                }
-                return super.eInverseRemove(otherEnd, featureID, msgs);
+                return dynamicRobots;
         }
 
         /**
@@ -123,10 +79,8 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
                 switch (featureID) {
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS:
-                                return getCommunicationActions();
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES:
-                                return getMessageRepositories();
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS:
+                                return getDynamicRobots();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -140,13 +94,9 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
         @Override
         public void eSet(int featureID, Object newValue) {
                 switch (featureID) {
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS:
-                                getCommunicationActions().clear();
-                                getCommunicationActions().addAll((Collection<? extends CommunicationAction>)newValue);
-                                return;
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES:
-                                getMessageRepositories().clear();
-                                getMessageRepositories().addAll((Collection<? extends MessageRepository>)newValue);
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS:
+                                getDynamicRobots().clear();
+                                getDynamicRobots().addAll((Collection<? extends DynamicRobot>)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -160,11 +110,8 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
         @Override
         public void eUnset(int featureID) {
                 switch (featureID) {
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS:
-                                getCommunicationActions().clear();
-                                return;
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES:
-                                getMessageRepositories().clear();
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS:
+                                getDynamicRobots().clear();
                                 return;
                 }
                 super.eUnset(featureID);
@@ -178,10 +125,8 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
         @Override
         public boolean eIsSet(int featureID) {
                 switch (featureID) {
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS:
-                                return communicationActions != null && !communicationActions.isEmpty();
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES:
-                                return messageRepositories != null && !messageRepositories.isEmpty();
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS:
+                                return dynamicRobots != null && !dynamicRobots.isEmpty();
                 }
                 return super.eIsSet(featureID);
         }

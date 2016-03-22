@@ -4,9 +4,10 @@ package hu.bme.mdsd.ztz.model.behaviour.provider;
 
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
-
 import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
+
 import hu.bme.mdsd.ztz.model.drone.provider.NamedElementItemProvider;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -24,8 +25,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MessageRepositoryItemProvider 
-        extends NamedElementItemProvider {
+public class MessageRepositoryItemProvider extends NamedElementItemProvider {
         /**
          * This constructs an instance from a factory and a notifier.
          * <!-- begin-user-doc -->
@@ -47,33 +47,10 @@ public class MessageRepositoryItemProvider
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addRobotPropertyDescriptor(object);
                         addReceivedMessagesPropertyDescriptor(object);
                         addSendedMessagesPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
-        }
-
-        /**
-         * This adds a property descriptor for the Robot feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addRobotPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_MessageRepository_robot_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_MessageRepository_robot_feature", "_UI_MessageRepository_type"),
-                                 BehaviourPackage.Literals.MESSAGE_REPOSITORY__ROBOT,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
         }
 
         /**

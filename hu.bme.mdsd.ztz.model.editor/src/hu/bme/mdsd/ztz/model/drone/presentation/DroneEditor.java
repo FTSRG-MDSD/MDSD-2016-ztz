@@ -155,7 +155,7 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import hu.bme.mdsd.ztz.model.drone.provider.DroneItemProviderAdapterFactory;
-import hu.bme.mdsd.ztz.model.behaviour.provider.BehaviourItemProviderAdapterFactory;
+
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 
@@ -702,7 +702,6 @@ public class DroneEditor
 
                 adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
                 adapterFactory.addAdapterFactory(new DroneItemProviderAdapterFactory());
-                adapterFactory.addAdapterFactory(new BehaviourItemProviderAdapterFactory());
                 adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
                 // Create the command stack that will notify this editor as commands are executed.

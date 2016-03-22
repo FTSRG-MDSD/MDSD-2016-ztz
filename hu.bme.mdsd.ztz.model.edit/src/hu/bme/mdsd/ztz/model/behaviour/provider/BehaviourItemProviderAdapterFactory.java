@@ -210,6 +210,121 @@ public class BehaviourItemProviderAdapterFactory extends BehaviourAdapterFactory
         }
 
         /**
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.behaviour.Action} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected ActionItemProvider actionItemProvider;
+
+        /**
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.Action}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createActionAdapter() {
+                if (actionItemProvider == null) {
+                        actionItemProvider = new ActionItemProvider(this);
+                }
+
+                return actionItemProvider;
+        }
+
+        /**
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected TaskExecutionItemProvider taskExecutionItemProvider;
+
+        /**
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createTaskExecutionAdapter() {
+                if (taskExecutionItemProvider == null) {
+                        taskExecutionItemProvider = new TaskExecutionItemProvider(this);
+                }
+
+                return taskExecutionItemProvider;
+        }
+
+        /**
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected RobotCollaborationItemProvider robotCollaborationItemProvider;
+
+        /**
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createRobotCollaborationAdapter() {
+                if (robotCollaborationItemProvider == null) {
+                        robotCollaborationItemProvider = new RobotCollaborationItemProvider(this);
+                }
+
+                return robotCollaborationItemProvider;
+        }
+
+        /**
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.behaviour.DetectedObject} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected DetectedObjectItemProvider detectedObjectItemProvider;
+
+        /**
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.DetectedObject}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createDetectedObjectAdapter() {
+                if (detectedObjectItemProvider == null) {
+                        detectedObjectItemProvider = new DetectedObjectItemProvider(this);
+                }
+
+                return detectedObjectItemProvider;
+        }
+
+        /**
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected DynamicRobotItemProvider dynamicRobotItemProvider;
+
+        /**
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createDynamicRobotAdapter() {
+                if (dynamicRobotItemProvider == null) {
+                        dynamicRobotItemProvider = new DynamicRobotItemProvider(this);
+                }
+
+                return dynamicRobotItemProvider;
+        }
+
+        /**
          * This returns the root adapter factory that contains this factory.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -314,6 +429,11 @@ public class BehaviourItemProviderAdapterFactory extends BehaviourAdapterFactory
                 if (multicastCommunicationItemProvider != null) multicastCommunicationItemProvider.dispose();
                 if (broadcastCommunicationItemProvider != null) broadcastCommunicationItemProvider.dispose();
                 if (messageRepositoryItemProvider != null) messageRepositoryItemProvider.dispose();
+                if (actionItemProvider != null) actionItemProvider.dispose();
+                if (taskExecutionItemProvider != null) taskExecutionItemProvider.dispose();
+                if (robotCollaborationItemProvider != null) robotCollaborationItemProvider.dispose();
+                if (detectedObjectItemProvider != null) detectedObjectItemProvider.dispose();
+                if (dynamicRobotItemProvider != null) dynamicRobotItemProvider.dispose();
         }
 
 }

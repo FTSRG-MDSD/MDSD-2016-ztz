@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Mission#getTasks <em>Tasks</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Mission#getEstimatedTime <em>Estimated Time</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getMission()
@@ -39,31 +38,5 @@ public interface Mission extends NamedElement {
          * @generated
          */
         EList<Task> getTasks();
-
-        /**
-         * Returns the value of the '<em><b>Estimated Time</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Estimated Time</em>' containment reference isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Estimated Time</em>' containment reference.
-         * @see #setEstimatedTime(MeasureValue)
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getMission_EstimatedTime()
-         * @model containment="true"
-         * @generated
-         */
-        MeasureValue getEstimatedTime();
-
-        /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Mission#getEstimatedTime <em>Estimated Time</em>}' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Estimated Time</em>' containment reference.
-         * @see #getEstimatedTime()
-         * @generated
-         */
-        void setEstimatedTime(MeasureValue value);
 
 } // Mission

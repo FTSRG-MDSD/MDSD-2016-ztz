@@ -63,7 +63,6 @@ public class MissionItemProvider extends NamedElementItemProvider {
                 if (childrenFeatures == null) {
                         super.getChildrenFeatures(object);
                         childrenFeatures.add(DronePackage.Literals.MISSION__TASKS);
-                        childrenFeatures.add(DronePackage.Literals.MISSION__ESTIMATED_TIME);
                 }
                 return childrenFeatures;
         }
@@ -120,7 +119,6 @@ public class MissionItemProvider extends NamedElementItemProvider {
 
                 switch (notification.getFeatureID(Mission.class)) {
                         case DronePackage.MISSION__TASKS:
-                        case DronePackage.MISSION__ESTIMATED_TIME:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -142,11 +140,6 @@ public class MissionItemProvider extends NamedElementItemProvider {
                         (createChildParameter
                                 (DronePackage.Literals.MISSION__TASKS,
                                  DroneFactory.eINSTANCE.createTask()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.MISSION__ESTIMATED_TIME,
-                                 DroneFactory.eINSTANCE.createMeasureValue()));
         }
 
 }

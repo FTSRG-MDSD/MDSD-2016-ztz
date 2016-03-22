@@ -4,9 +4,9 @@ package hu.bme.mdsd.ztz.model.behaviour;
 
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.Property;
-import hu.bme.mdsd.ztz.model.drone.Task;
 
 import java.util.Date;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface Message extends EObject {
         /**
          * Returns the value of the '<em><b>Tasks</b></em>' reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Task}.
+         * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution}.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Tasks</em>' reference list isn't clear,
@@ -45,7 +45,7 @@ public interface Message extends EObject {
          * @model
          * @generated
          */
-        EList<Task> getTasks();
+        EList<TaskExecution> getTasks();
 
         /**
          * Returns the value of the '<em><b>Timestamp</b></em>' attribute.

@@ -2,7 +2,7 @@
  */
 package hu.bme.mdsd.ztz.model.behaviour;
 
-import hu.bme.mdsd.ztz.model.drone.Action;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,12 +21,12 @@ import hu.bme.mdsd.ztz.model.drone.Action;
  * @model abstract="true"
  * @generated
  */
-public interface CommunicationAction extends Action {
+public interface CommunicationAction extends EObject {
         /**
          * Returns the value of the '<em><b>Message</b></em>' containment reference.
          * <!-- begin-user-doc -->
          * <p>
-         * If the meaning of the '<em>Message</em>' reference isn't clear,
+         * If the meaning of the '<em>Message</em>' containment reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
@@ -61,7 +61,7 @@ public interface CommunicationAction extends Action {
          * @see hu.bme.mdsd.ztz.model.behaviour.CommunicationType
          * @see #setType(CommunicationType)
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getCommunicationAction_Type()
-         * @model
+         * @model required="true"
          * @generated
          */
         CommunicationType getType();

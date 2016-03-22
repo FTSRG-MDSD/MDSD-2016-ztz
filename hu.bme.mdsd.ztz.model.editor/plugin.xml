@@ -7,33 +7,6 @@
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated drone -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="hu.bme.mdsd.ztz.model.drone.presentation.DroneModelWizardID"
-            name="%_UI_DroneModelWizard_label"
-            class="hu.bme.mdsd.ztz.model.drone.presentation.DroneModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/DroneModelFile.gif">
-         <description>%_UI_DroneModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated drone -->
-      <editor
-            id="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-            name="%_UI_DroneEditor_label"
-            icon="icons/full/obj16/DroneModelFile.gif"
-            extensions="drone"
-            class="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditor"
-            contributorClass="hu.bme.mdsd.ztz.model.drone.presentation.DroneActionBarContributor">
-      </editor>
-   </extension>
-   <extension point="org.eclipse.ui.newWizards">
       <!-- @generated behaviour -->
       <category
             id="org.eclipse.emf.ecore.Wizard.category.ID"
@@ -58,6 +31,33 @@
             extensions="behaviour"
             class="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditor"
             contributorClass="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourActionBarContributor">
+      </editor>
+   </extension>
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated drone -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="hu.bme.mdsd.ztz.model.drone.presentation.DroneModelWizardID"
+            name="%_UI_DroneModelWizard_label"
+            class="hu.bme.mdsd.ztz.model.drone.presentation.DroneModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DroneModelFile.gif">
+         <description>%_UI_DroneModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated drone -->
+      <editor
+            id="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+            name="%_UI_DroneEditor_label"
+            icon="icons/full/obj16/DroneModelFile.gif"
+            extensions="drone"
+            class="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditor"
+            contributorClass="hu.bme.mdsd.ztz.model.drone.presentation.DroneActionBarContributor">
       </editor>
    </extension>
 </plugin>

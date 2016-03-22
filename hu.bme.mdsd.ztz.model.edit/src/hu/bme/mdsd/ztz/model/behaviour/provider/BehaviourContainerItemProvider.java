@@ -3,8 +3,6 @@
 package hu.bme.mdsd.ztz.model.behaviour.provider;
 
 
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 
 import java.util.Collection;
@@ -15,8 +13,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -24,7 +21,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer} object.
@@ -61,39 +57,31 @@ public class BehaviourContainerItemProvider
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
+                        addDynamicRobotsPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
 
         /**
-         * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-         * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-         * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+         * This adds a property descriptor for the Dynamic Robots feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        @Override
-        public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-                if (childrenFeatures == null) {
-                        super.getChildrenFeatures(object);
-                        childrenFeatures.add(BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS);
-                        childrenFeatures.add(BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES);
-                }
-                return childrenFeatures;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        protected EStructuralFeature getChildFeature(Object object, Object child) {
-                // Check the type of the specified child object and return the proper feature to use for
-                // adding (see {@link AddCommand}) it as a child.
-
-                return super.getChildFeature(object, child);
+        protected void addDynamicRobotsPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_BehaviourContainer_dynamicRobots_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_BehaviourContainer_dynamicRobots_feature", "_UI_BehaviourContainer_type"),
+                                 BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
+                                 null,
+                                 null));
         }
 
         /**
@@ -129,13 +117,6 @@ public class BehaviourContainerItemProvider
         @Override
         public void notifyChanged(Notification notification) {
                 updateChildren(notification);
-
-                switch (notification.getFeatureID(BehaviourContainer.class)) {
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS:
-                        case BehaviourPackage.BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES:
-                                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                                return;
-                }
                 super.notifyChanged(notification);
         }
 
@@ -149,26 +130,6 @@ public class BehaviourContainerItemProvider
         @Override
         protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
                 super.collectNewChildDescriptors(newChildDescriptors, object);
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS,
-                                 BehaviourFactory.eINSTANCE.createUnicastCommunication()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS,
-                                 BehaviourFactory.eINSTANCE.createMulticastCommunication()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS,
-                                 BehaviourFactory.eINSTANCE.createBroadcastCommunication()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES,
-                                 BehaviourFactory.eINSTANCE.createMessageRepository()));
         }
 
         /**

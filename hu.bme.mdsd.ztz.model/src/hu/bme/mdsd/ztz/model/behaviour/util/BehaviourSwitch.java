@@ -4,8 +4,8 @@ package hu.bme.mdsd.ztz.model.behaviour.util;
 
 import hu.bme.mdsd.ztz.model.behaviour.*;
 
-import hu.bme.mdsd.ztz.model.drone.Action;
 import hu.bme.mdsd.ztz.model.drone.NamedElement;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -83,7 +83,6 @@ public class BehaviourSwitch<T> extends Switch<T> {
                         case BehaviourPackage.COMMUNICATION_ACTION: {
                                 CommunicationAction communicationAction = (CommunicationAction)theEObject;
                                 T result = caseCommunicationAction(communicationAction);
-                                if (result == null) result = caseAction(communicationAction);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -91,7 +90,6 @@ public class BehaviourSwitch<T> extends Switch<T> {
                                 UnicastCommunication unicastCommunication = (UnicastCommunication)theEObject;
                                 T result = caseUnicastCommunication(unicastCommunication);
                                 if (result == null) result = caseCommunicationAction(unicastCommunication);
-                                if (result == null) result = caseAction(unicastCommunication);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -99,7 +97,6 @@ public class BehaviourSwitch<T> extends Switch<T> {
                                 MulticastCommunication multicastCommunication = (MulticastCommunication)theEObject;
                                 T result = caseMulticastCommunication(multicastCommunication);
                                 if (result == null) result = caseCommunicationAction(multicastCommunication);
-                                if (result == null) result = caseAction(multicastCommunication);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -107,7 +104,6 @@ public class BehaviourSwitch<T> extends Switch<T> {
                                 BroadcastCommunication broadcastCommunication = (BroadcastCommunication)theEObject;
                                 T result = caseBroadcastCommunication(broadcastCommunication);
                                 if (result == null) result = caseCommunicationAction(broadcastCommunication);
-                                if (result == null) result = caseAction(broadcastCommunication);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -115,6 +111,36 @@ public class BehaviourSwitch<T> extends Switch<T> {
                                 MessageRepository messageRepository = (MessageRepository)theEObject;
                                 T result = caseMessageRepository(messageRepository);
                                 if (result == null) result = caseNamedElement(messageRepository);
+                                if (result == null) result = defaultCase(theEObject);
+                                return result;
+                        }
+                        case BehaviourPackage.ACTION: {
+                                Action action = (Action)theEObject;
+                                T result = caseAction(action);
+                                if (result == null) result = defaultCase(theEObject);
+                                return result;
+                        }
+                        case BehaviourPackage.TASK_EXECUTION: {
+                                TaskExecution taskExecution = (TaskExecution)theEObject;
+                                T result = caseTaskExecution(taskExecution);
+                                if (result == null) result = defaultCase(theEObject);
+                                return result;
+                        }
+                        case BehaviourPackage.ROBOT_COLLABORATION: {
+                                RobotCollaboration robotCollaboration = (RobotCollaboration)theEObject;
+                                T result = caseRobotCollaboration(robotCollaboration);
+                                if (result == null) result = defaultCase(theEObject);
+                                return result;
+                        }
+                        case BehaviourPackage.DETECTED_OBJECT: {
+                                DetectedObject detectedObject = (DetectedObject)theEObject;
+                                T result = caseDetectedObject(detectedObject);
+                                if (result == null) result = defaultCase(theEObject);
+                                return result;
+                        }
+                        case BehaviourPackage.DYNAMIC_ROBOT: {
+                                DynamicRobot dynamicRobot = (DynamicRobot)theEObject;
+                                T result = caseDynamicRobot(dynamicRobot);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -239,6 +265,66 @@ public class BehaviourSwitch<T> extends Switch<T> {
          * @generated
          */
         public T caseAction(Action object) {
+                return null;
+        }
+
+        /**
+         * Returns the result of interpreting the object as an instance of '<em>Task Execution</em>'.
+         * <!-- begin-user-doc -->
+         * This implementation returns null;
+         * returning a non-null result will terminate the switch.
+         * <!-- end-user-doc -->
+         * @param object the target of the switch.
+         * @return the result of interpreting the object as an instance of '<em>Task Execution</em>'.
+         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+         * @generated
+         */
+        public T caseTaskExecution(TaskExecution object) {
+                return null;
+        }
+
+        /**
+         * Returns the result of interpreting the object as an instance of '<em>Robot Collaboration</em>'.
+         * <!-- begin-user-doc -->
+         * This implementation returns null;
+         * returning a non-null result will terminate the switch.
+         * <!-- end-user-doc -->
+         * @param object the target of the switch.
+         * @return the result of interpreting the object as an instance of '<em>Robot Collaboration</em>'.
+         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+         * @generated
+         */
+        public T caseRobotCollaboration(RobotCollaboration object) {
+                return null;
+        }
+
+        /**
+         * Returns the result of interpreting the object as an instance of '<em>Detected Object</em>'.
+         * <!-- begin-user-doc -->
+         * This implementation returns null;
+         * returning a non-null result will terminate the switch.
+         * <!-- end-user-doc -->
+         * @param object the target of the switch.
+         * @return the result of interpreting the object as an instance of '<em>Detected Object</em>'.
+         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+         * @generated
+         */
+        public T caseDetectedObject(DetectedObject object) {
+                return null;
+        }
+
+        /**
+         * Returns the result of interpreting the object as an instance of '<em>Dynamic Robot</em>'.
+         * <!-- begin-user-doc -->
+         * This implementation returns null;
+         * returning a non-null result will terminate the switch.
+         * <!-- end-user-doc -->
+         * @param object the target of the switch.
+         * @return the result of interpreting the object as an instance of '<em>Dynamic Robot</em>'.
+         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+         * @generated
+         */
+        public T caseDynamicRobot(DynamicRobot object) {
                 return null;
         }
 

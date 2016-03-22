@@ -2,7 +2,6 @@
  */
 package hu.bme.mdsd.ztz.model.behaviour;
 
-import hu.bme.mdsd.ztz.model.drone.Robot;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +29,12 @@ public interface UnicastCommunication extends CommunicationAction {
          * </p>
          * <!-- end-user-doc -->
          * @return the value of the '<em>Target</em>' reference.
-         * @see #setTarget(Robot)
+         * @see #setTarget(DynamicRobot)
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getUnicastCommunication_Target()
          * @model required="true"
          * @generated
          */
-        Robot getTarget();
+        DynamicRobot getTarget();
 
         /**
          * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication#getTarget <em>Target</em>}' reference.
@@ -45,6 +44,6 @@ public interface UnicastCommunication extends CommunicationAction {
          * @see #getTarget()
          * @generated
          */
-        void setTarget(Robot value);
+        void setTarget(DynamicRobot value);
 
 } // UnicastCommunication

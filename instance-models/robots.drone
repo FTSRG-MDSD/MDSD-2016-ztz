@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<drone:RobotMissionContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:drone="http://www.mdsd.hu/drone">
+<drone:RobotMissionContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:behaviour="http://www.mdsd.hu/behaviour" xmlns:drone="http://www.mdsd.hu/drone">
   <missions name="LiftingMission">
-    <tasks name="Ascend" status="Finished">
+    <tasks name="Ascend">
       <descriptor/>
-      <execution executors="//@robots.0" status="Finished"/>
       <requirement participants="1" requiredCapabilities="//@capabilities.0 //@capabilities.2">
         <capabilityProperties capability="//@capabilities.0">
           <properties key="MaxFlyingHeight">
@@ -16,7 +15,6 @@
     </tasks>
     <tasks name="Approach">
       <descriptor targets="//@areaObjects.0"/>
-      <execution executors="//@robots.0" status="InProgress"/>
       <requirement prerequisite="//@missions.0/@tasks.0" participants="1" requiredCapabilities="//@capabilities.0">
         <capabilityProperties capability="//@capabilities.0">
           <properties key="MaxFlyingHeight">
@@ -50,7 +48,6 @@
       <descriptor targets="//@areaObjects.1 //@areaObjects.0"/>
       <requirement prerequisite="//@missions.0/@tasks.2" participants="1"/>
     </tasks>
-    <estimatedTime dimension="//@measureDimensions.0"/>
   </missions>
   <robots name="Frank 007" capabilities="//@capabilities.2 //@capabilities.0 //@capabilities.1">
     <position>
@@ -61,9 +58,6 @@
       <height value="0.56" dimension="//@measureDimensions.2"/>
       <length value="1.1" dimension="//@measureDimensions.2"/>
     </size>
-    <collaborations collaborator="//@robots.1">
-      <availabilityRange value="500.0" dimension="//@measureDimensions.2"/>
-    </collaborations>
     <equipments name="Propeller" facilitate="//@capabilities.0 //@capabilities.2"/>
     <equipments name="Hand" facilitate="//@capabilities.1"/>
     <communicationRange value="500.0" dimension="//@measureDimensions.2"/>

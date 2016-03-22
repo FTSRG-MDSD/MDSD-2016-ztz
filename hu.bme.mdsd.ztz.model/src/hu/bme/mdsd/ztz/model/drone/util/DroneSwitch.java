@@ -125,18 +125,6 @@ public class DroneSwitch<T> extends Switch<T> {
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
-                        case DronePackage.TASK_EXECUTION: {
-                                TaskExecution taskExecution = (TaskExecution)theEObject;
-                                T result = caseTaskExecution(taskExecution);
-                                if (result == null) result = defaultCase(theEObject);
-                                return result;
-                        }
-                        case DronePackage.ROBOT_COLLABORATION: {
-                                RobotCollaboration robotCollaboration = (RobotCollaboration)theEObject;
-                                T result = caseRobotCollaboration(robotCollaboration);
-                                if (result == null) result = defaultCase(theEObject);
-                                return result;
-                        }
                         case DronePackage.TASK_REQUIREMENT: {
                                 TaskRequirement taskRequirement = (TaskRequirement)theEObject;
                                 T result = caseTaskRequirement(taskRequirement);
@@ -161,22 +149,10 @@ public class DroneSwitch<T> extends Switch<T> {
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
-                        case DronePackage.DETECTED_OBJECT: {
-                                DetectedObject detectedObject = (DetectedObject)theEObject;
-                                T result = caseDetectedObject(detectedObject);
-                                if (result == null) result = defaultCase(theEObject);
-                                return result;
-                        }
                         case DronePackage.EQUIPMENT: {
                                 Equipment equipment = (Equipment)theEObject;
                                 T result = caseEquipment(equipment);
                                 if (result == null) result = caseNamedElement(equipment);
-                                if (result == null) result = defaultCase(theEObject);
-                                return result;
-                        }
-                        case DronePackage.ACTION: {
-                                Action action = (Action)theEObject;
-                                T result = caseAction(action);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -371,36 +347,6 @@ public class DroneSwitch<T> extends Switch<T> {
         }
 
         /**
-         * Returns the result of interpreting the object as an instance of '<em>Task Execution</em>'.
-         * <!-- begin-user-doc -->
-         * This implementation returns null;
-         * returning a non-null result will terminate the switch.
-         * <!-- end-user-doc -->
-         * @param object the target of the switch.
-         * @return the result of interpreting the object as an instance of '<em>Task Execution</em>'.
-         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-         * @generated
-         */
-        public T caseTaskExecution(TaskExecution object) {
-                return null;
-        }
-
-        /**
-         * Returns the result of interpreting the object as an instance of '<em>Robot Collaboration</em>'.
-         * <!-- begin-user-doc -->
-         * This implementation returns null;
-         * returning a non-null result will terminate the switch.
-         * <!-- end-user-doc -->
-         * @param object the target of the switch.
-         * @return the result of interpreting the object as an instance of '<em>Robot Collaboration</em>'.
-         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-         * @generated
-         */
-        public T caseRobotCollaboration(RobotCollaboration object) {
-                return null;
-        }
-
-        /**
          * Returns the result of interpreting the object as an instance of '<em>Task Requirement</em>'.
          * <!-- begin-user-doc -->
          * This implementation returns null;
@@ -461,21 +407,6 @@ public class DroneSwitch<T> extends Switch<T> {
         }
 
         /**
-         * Returns the result of interpreting the object as an instance of '<em>Detected Object</em>'.
-         * <!-- begin-user-doc -->
-         * This implementation returns null;
-         * returning a non-null result will terminate the switch.
-         * <!-- end-user-doc -->
-         * @param object the target of the switch.
-         * @return the result of interpreting the object as an instance of '<em>Detected Object</em>'.
-         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-         * @generated
-         */
-        public T caseDetectedObject(DetectedObject object) {
-                return null;
-        }
-
-        /**
          * Returns the result of interpreting the object as an instance of '<em>Equipment</em>'.
          * <!-- begin-user-doc -->
          * This implementation returns null;
@@ -487,21 +418,6 @@ public class DroneSwitch<T> extends Switch<T> {
          * @generated
          */
         public T caseEquipment(Equipment object) {
-                return null;
-        }
-
-        /**
-         * Returns the result of interpreting the object as an instance of '<em>Action</em>'.
-         * <!-- begin-user-doc -->
-         * This implementation returns null;
-         * returning a non-null result will terminate the switch.
-         * <!-- end-user-doc -->
-         * @param object the target of the switch.
-         * @return the result of interpreting the object as an instance of '<em>Action</em>'.
-         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-         * @generated
-         */
-        public T caseAction(Action object) {
                 return null;
         }
 

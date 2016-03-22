@@ -3,21 +3,17 @@
 package hu.bme.mdsd.ztz.model.drone.impl;
 
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
-import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Mission;
 import hu.bme.mdsd.ztz.model.drone.Task;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,7 +27,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.MissionImpl#getTasks <em>Tasks</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.MissionImpl#getEstimatedTime <em>Estimated Time</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,16 +41,6 @@ public class MissionImpl extends NamedElementImpl implements Mission {
          * @ordered
          */
         protected EList<Task> tasks;
-
-        /**
-         * The cached value of the '{@link #getEstimatedTime() <em>Estimated Time</em>}' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getEstimatedTime()
-         * @generated
-         * @ordered
-         */
-        protected MeasureValue estimatedTime;
 
         /**
          * <!-- begin-user-doc -->
@@ -93,49 +78,6 @@ public class MissionImpl extends NamedElementImpl implements Mission {
          * <!-- end-user-doc -->
          * @generated
          */
-        public MeasureValue getEstimatedTime() {
-                return estimatedTime;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public NotificationChain basicSetEstimatedTime(MeasureValue newEstimatedTime, NotificationChain msgs) {
-                MeasureValue oldEstimatedTime = estimatedTime;
-                estimatedTime = newEstimatedTime;
-                if (eNotificationRequired()) {
-                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DronePackage.MISSION__ESTIMATED_TIME, oldEstimatedTime, newEstimatedTime);
-                        if (msgs == null) msgs = notification; else msgs.add(notification);
-                }
-                return msgs;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setEstimatedTime(MeasureValue newEstimatedTime) {
-                if (newEstimatedTime != estimatedTime) {
-                        NotificationChain msgs = null;
-                        if (estimatedTime != null)
-                                msgs = ((InternalEObject)estimatedTime).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.MISSION__ESTIMATED_TIME, null, msgs);
-                        if (newEstimatedTime != null)
-                                msgs = ((InternalEObject)newEstimatedTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DronePackage.MISSION__ESTIMATED_TIME, null, msgs);
-                        msgs = basicSetEstimatedTime(newEstimatedTime, msgs);
-                        if (msgs != null) msgs.dispatch();
-                }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.MISSION__ESTIMATED_TIME, newEstimatedTime, newEstimatedTime));
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         @SuppressWarnings("unchecked")
         @Override
         public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -156,8 +98,6 @@ public class MissionImpl extends NamedElementImpl implements Mission {
                 switch (featureID) {
                         case DronePackage.MISSION__TASKS:
                                 return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
-                        case DronePackage.MISSION__ESTIMATED_TIME:
-                                return basicSetEstimatedTime(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -172,8 +112,6 @@ public class MissionImpl extends NamedElementImpl implements Mission {
                 switch (featureID) {
                         case DronePackage.MISSION__TASKS:
                                 return getTasks();
-                        case DronePackage.MISSION__ESTIMATED_TIME:
-                                return getEstimatedTime();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -191,9 +129,6 @@ public class MissionImpl extends NamedElementImpl implements Mission {
                                 getTasks().clear();
                                 getTasks().addAll((Collection<? extends Task>)newValue);
                                 return;
-                        case DronePackage.MISSION__ESTIMATED_TIME:
-                                setEstimatedTime((MeasureValue)newValue);
-                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -209,9 +144,6 @@ public class MissionImpl extends NamedElementImpl implements Mission {
                         case DronePackage.MISSION__TASKS:
                                 getTasks().clear();
                                 return;
-                        case DronePackage.MISSION__ESTIMATED_TIME:
-                                setEstimatedTime((MeasureValue)null);
-                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -226,8 +158,6 @@ public class MissionImpl extends NamedElementImpl implements Mission {
                 switch (featureID) {
                         case DronePackage.MISSION__TASKS:
                                 return tasks != null && !tasks.isEmpty();
-                        case DronePackage.MISSION__ESTIMATED_TIME:
-                                return estimatedTime != null;
                 }
                 return super.eIsSet(featureID);
         }

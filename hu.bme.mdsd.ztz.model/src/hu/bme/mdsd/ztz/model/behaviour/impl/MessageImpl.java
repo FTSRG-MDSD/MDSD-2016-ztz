@@ -4,21 +4,22 @@ package hu.bme.mdsd.ztz.model.behaviour.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.Property;
-import hu.bme.mdsd.ztz.model.drone.Task;
 
 import java.util.Collection;
-
 import java.util.Date;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -51,7 +52,8 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * @generated
          * @ordered
          */
-        protected EList<Task> tasks;
+        protected EList<TaskExecution> tasks;
+
         /**
          * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
          * <!-- begin-user-doc -->
@@ -61,6 +63,7 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * @ordered
          */
         protected static final Date TIMESTAMP_EDEFAULT = null;
+
         /**
          * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
          * <!-- begin-user-doc -->
@@ -70,6 +73,7 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * @ordered
          */
         protected Date timestamp = TIMESTAMP_EDEFAULT;
+
         /**
          * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
          * <!-- begin-user-doc -->
@@ -79,6 +83,7 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * @ordered
          */
         protected EList<Property> properties;
+
         /**
          * The cached value of the '{@link #getReferredObjects() <em>Referred Objects</em>}' reference list.
          * <!-- begin-user-doc -->
@@ -88,6 +93,7 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * @ordered
          */
         protected EList<AreaObject> referredObjects;
+
         /**
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -112,9 +118,9 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * <!-- end-user-doc -->
          * @generated
          */
-        public EList<Task> getTasks() {
+        public EList<TaskExecution> getTasks() {
                 if (tasks == null) {
-                        tasks = new EObjectResolvingEList<Task>(Task.class, this, BehaviourPackage.MESSAGE__TASKS);
+                        tasks = new EObjectResolvingEList<TaskExecution>(TaskExecution.class, this, BehaviourPackage.MESSAGE__TASKS);
                 }
                 return tasks;
         }
@@ -209,7 +215,7 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
                 switch (featureID) {
                         case BehaviourPackage.MESSAGE__TASKS:
                                 getTasks().clear();
-                                getTasks().addAll((Collection<? extends Task>)newValue);
+                                getTasks().addAll((Collection<? extends TaskExecution>)newValue);
                                 return;
                         case BehaviourPackage.MESSAGE__TIMESTAMP:
                                 setTimestamp((Date)newValue);

@@ -3,7 +3,6 @@
 package hu.bme.mdsd.ztz.model.behaviour;
 
 import hu.bme.mdsd.ztz.model.drone.NamedElement;
-import hu.bme.mdsd.ztz.model.drone.Robot;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -27,32 +26,32 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface MessageRepository extends NamedElement {
         /**
-         * Returns the value of the '<em><b>Robot</b></em>' reference.
-         * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository <em>Message Repository</em>}'.
+         * Returns the value of the '<em><b>Robot</b></em>' container reference.
+         * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getMessageRepository <em>Message Repository</em>}'.
          * <!-- begin-user-doc -->
          * <p>
-         * If the meaning of the '<em>Robot</em>' reference isn't clear,
+         * If the meaning of the '<em>Robot</em>' container reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Robot</em>' reference.
-         * @see #setRobot(Robot)
+         * @return the value of the '<em>Robot</em>' container reference.
+         * @see #setRobot(DynamicRobot)
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessageRepository_Robot()
-         * @see hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository
-         * @model opposite="messageRepository" required="true"
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getMessageRepository
+         * @model opposite="messageRepository" required="true" transient="false"
          * @generated
          */
-        Robot getRobot();
+        DynamicRobot getRobot();
 
         /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getRobot <em>Robot</em>}' reference.
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getRobot <em>Robot</em>}' container reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Robot</em>' reference.
+         * @param value the new value of the '<em>Robot</em>' container reference.
          * @see #getRobot()
          * @generated
          */
-        void setRobot(Robot value);
+        void setRobot(DynamicRobot value);
 
         /**
          * Returns the value of the '<em><b>Received Messages</b></em>' reference list.

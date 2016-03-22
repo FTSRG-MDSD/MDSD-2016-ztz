@@ -76,6 +76,51 @@ public interface BehaviourFactory extends EFactory {
         MessageRepository createMessageRepository();
 
         /**
+         * Returns a new object of class '<em>Action</em>'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return a new object of class '<em>Action</em>'.
+         * @generated
+         */
+        Action createAction();
+
+        /**
+         * Returns a new object of class '<em>Task Execution</em>'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return a new object of class '<em>Task Execution</em>'.
+         * @generated
+         */
+        TaskExecution createTaskExecution();
+
+        /**
+         * Returns a new object of class '<em>Robot Collaboration</em>'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return a new object of class '<em>Robot Collaboration</em>'.
+         * @generated
+         */
+        RobotCollaboration createRobotCollaboration();
+
+        /**
+         * Returns a new object of class '<em>Detected Object</em>'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return a new object of class '<em>Detected Object</em>'.
+         * @generated
+         */
+        DetectedObject createDetectedObject();
+
+        /**
+         * Returns a new object of class '<em>Dynamic Robot</em>'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return a new object of class '<em>Dynamic Robot</em>'.
+         * @generated
+         */
+        DynamicRobot createDynamicRobot();
+
+        /**
          * Returns the package supported by this factory.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

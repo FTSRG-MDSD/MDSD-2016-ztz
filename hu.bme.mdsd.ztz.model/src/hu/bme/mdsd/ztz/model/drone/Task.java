@@ -14,10 +14,7 @@ package hu.bme.mdsd.ztz.model.drone;
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Task#getMission <em>Mission</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Task#getDescriptor <em>Descriptor</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Task#getExecution <em>Execution</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Task#getRequirement <em>Requirement</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Task#getStatus <em>Status</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Task#getEstimatedTime <em>Estimated Time</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTask()
@@ -82,34 +79,6 @@ public interface Task extends NamedElement {
         void setDescriptor(TaskDescriptor value);
 
         /**
-         * Returns the value of the '<em><b>Execution</b></em>' containment reference.
-         * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.drone.TaskExecution#getTask <em>Task</em>}'.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Execution</em>' containment reference isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Execution</em>' containment reference.
-         * @see #setExecution(TaskExecution)
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTask_Execution()
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecution#getTask
-         * @model opposite="task" containment="true"
-         * @generated
-         */
-        TaskExecution getExecution();
-
-        /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Task#getExecution <em>Execution</em>}' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Execution</em>' containment reference.
-         * @see #getExecution()
-         * @generated
-         */
-        void setExecution(TaskExecution value);
-
-        /**
          * Returns the value of the '<em><b>Requirement</b></em>' containment reference.
          * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getTask <em>Task</em>}'.
          * <!-- begin-user-doc -->
@@ -136,61 +105,5 @@ public interface Task extends NamedElement {
          * @generated
          */
         void setRequirement(TaskRequirement value);
-
-        /**
-         * Returns the value of the '<em><b>Status</b></em>' attribute.
-         * The literals are from the enumeration {@link hu.bme.mdsd.ztz.model.drone.TaskStatus}.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Status</em>' attribute isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Status</em>' attribute.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskStatus
-         * @see #setStatus(TaskStatus)
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTask_Status()
-         * @model
-         * @generated
-         */
-        TaskStatus getStatus();
-
-        /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Task#getStatus <em>Status</em>}' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Status</em>' attribute.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskStatus
-         * @see #getStatus()
-         * @generated
-         */
-        void setStatus(TaskStatus value);
-
-        /**
-         * Returns the value of the '<em><b>Estimated Time</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Estimated Time</em>' reference isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Estimated Time</em>' reference.
-         * @see #isSetEstimatedTime()
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTask_EstimatedTime()
-         * @model unsettable="true" transient="true" changeable="false" volatile="true" derived="true"
-         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.estimatedTime'"
-         * @generated
-         */
-        MeasureValue getEstimatedTime();
-
-        /**
-         * Returns whether the value of the '{@link hu.bme.mdsd.ztz.model.drone.Task#getEstimatedTime <em>Estimated Time</em>}' reference is set.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return whether the value of the '<em>Estimated Time</em>' reference is set.
-         * @see #getEstimatedTime()
-         * @generated
-         */
-        boolean isSetEstimatedTime();
 
 } // Task

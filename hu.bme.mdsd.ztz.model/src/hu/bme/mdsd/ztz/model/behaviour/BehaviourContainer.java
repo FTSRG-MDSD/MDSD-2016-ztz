@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getCommunicationActions <em>Communication Actions</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getMessageRepositories <em>Message Repositories</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getDynamicRobots <em>Dynamic Robots</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getBehaviourContainer()
@@ -25,35 +24,19 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface BehaviourContainer extends EObject {
         /**
-         * Returns the value of the '<em><b>Communication Actions</b></em>' containment reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.CommunicationAction}.
+         * Returns the value of the '<em><b>Dynamic Robots</b></em>' reference list.
+         * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot}.
          * <!-- begin-user-doc -->
          * <p>
-         * If the meaning of the '<em>Communication Actions</em>' containment reference list isn't clear,
+         * If the meaning of the '<em>Dynamic Robots</em>' reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Communication Actions</em>' containment reference list.
-         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getBehaviourContainer_CommunicationActions()
-         * @model containment="true"
+         * @return the value of the '<em>Dynamic Robots</em>' reference list.
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getBehaviourContainer_DynamicRobots()
+         * @model
          * @generated
          */
-        EList<CommunicationAction> getCommunicationActions();
-
-        /**
-         * Returns the value of the '<em><b>Message Repositories</b></em>' containment reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository}.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Message Repositories</em>' containment reference list isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Message Repositories</em>' containment reference list.
-         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getBehaviourContainer_MessageRepositories()
-         * @model containment="true"
-         * @generated
-         */
-        EList<MessageRepository> getMessageRepositories();
+        EList<DynamicRobot> getDynamicRobots();
 
 } // BehaviourContainer

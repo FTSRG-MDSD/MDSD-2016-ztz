@@ -2,7 +2,6 @@
  */
 package hu.bme.mdsd.ztz.model.drone;
 
-import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -17,19 +16,14 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getPosition <em>Position</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getSize <em>Size</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getBatteries <em>Batteries</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getCollaborations <em>Collaborations</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getDetectedObjects <em>Detected Objects</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getEquipments <em>Equipments</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getTasks <em>Tasks</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getProperties <em>Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getCommunicationRange <em>Communication Range</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getWeight <em>Weight</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getMission <em>Mission</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getActions <em>Actions</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getCapabilityProperties <em>Capability Properties</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getExecute <em>Execute</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository <em>Message Repository</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot()
@@ -104,38 +98,6 @@ public interface Robot extends NamedElement {
          * @generated
          */
         EList<Battery> getBatteries();
-
-        /**
-         * Returns the value of the '<em><b>Collaborations</b></em>' containment reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.RobotCollaboration}.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Collaborations</em>' containment reference list isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Collaborations</em>' containment reference list.
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_Collaborations()
-         * @model containment="true"
-         * @generated
-         */
-        EList<RobotCollaboration> getCollaborations();
-
-        /**
-         * Returns the value of the '<em><b>Detected Objects</b></em>' containment reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.DetectedObject}.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Detected Objects</em>' containment reference list isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Detected Objects</em>' containment reference list.
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_DetectedObjects()
-         * @model containment="true"
-         * @generated
-         */
-        EList<DetectedObject> getDetectedObjects();
 
         /**
          * Returns the value of the '<em><b>Equipments</b></em>' containment reference list.
@@ -249,7 +211,6 @@ public interface Robot extends NamedElement {
          * @see #isSetMission()
          * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_Mission()
          * @model unsettable="true" transient="true" changeable="false" volatile="true" derived="true"
-         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.mission'"
          * @generated
          */
         Mission getMission();
@@ -263,22 +224,6 @@ public interface Robot extends NamedElement {
          * @generated
          */
         boolean isSetMission();
-
-        /**
-         * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Action}.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Actions</em>' containment reference list isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Actions</em>' containment reference list.
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_Actions()
-         * @model containment="true"
-         * @generated
-         */
-        EList<Action> getActions();
 
         /**
          * Returns the value of the '<em><b>Capabilities</b></em>' reference list.
@@ -311,61 +256,5 @@ public interface Robot extends NamedElement {
          * @generated
          */
         EList<CapabilityProperties> getCapabilityProperties();
-
-        /**
-         * Returns the value of the '<em><b>Execute</b></em>' reference.
-         * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.drone.TaskExecution#getExecutors <em>Executors</em>}'.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Execute</em>' reference isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Execute</em>' reference.
-         * @see #setExecute(TaskExecution)
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_Execute()
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecution#getExecutors
-         * @model opposite="executors"
-         * @generated
-         */
-        TaskExecution getExecute();
-
-        /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Robot#getExecute <em>Execute</em>}' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Execute</em>' reference.
-         * @see #getExecute()
-         * @generated
-         */
-        void setExecute(TaskExecution value);
-
-        /**
-         * Returns the value of the '<em><b>Message Repository</b></em>' reference.
-         * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getRobot <em>Robot</em>}'.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Message Repository</em>' reference isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Message Repository</em>' reference.
-         * @see #setMessageRepository(MessageRepository)
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_MessageRepository()
-         * @see hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getRobot
-         * @model opposite="robot"
-         * @generated
-         */
-        MessageRepository getMessageRepository();
-
-        /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository <em>Message Repository</em>}' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Message Repository</em>' reference.
-         * @see #getMessageRepository()
-         * @generated
-         */
-        void setMessageRepository(MessageRepository value);
 
 } // Robot

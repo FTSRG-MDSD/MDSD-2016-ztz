@@ -3,7 +3,6 @@
 package hu.bme.mdsd.ztz.model.drone.provider;
 
 
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.drone.DroneFactory;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Robot;
@@ -51,8 +50,6 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         addTasksPropertyDescriptor(object);
                         addMissionPropertyDescriptor(object);
                         addCapabilitiesPropertyDescriptor(object);
-                        addExecutePropertyDescriptor(object);
-                        addMessageRepositoryPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -124,50 +121,6 @@ public class RobotItemProvider extends NamedElementItemProvider {
         }
 
         /**
-         * This adds a property descriptor for the Execute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addExecutePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_execute_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_execute_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__EXECUTE,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Message Repository feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addMessageRepositoryPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_messageRepository_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_messageRepository_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__MESSAGE_REPOSITORY,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
          * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
          * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
          * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -182,13 +135,10 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         childrenFeatures.add(DronePackage.Literals.ROBOT__POSITION);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__SIZE);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__BATTERIES);
-                        childrenFeatures.add(DronePackage.Literals.ROBOT__COLLABORATIONS);
-                        childrenFeatures.add(DronePackage.Literals.ROBOT__DETECTED_OBJECTS);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__EQUIPMENTS);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__PROPERTIES);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__COMMUNICATION_RANGE);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__WEIGHT);
-                        childrenFeatures.add(DronePackage.Literals.ROBOT__ACTIONS);
                         childrenFeatures.add(DronePackage.Literals.ROBOT__CAPABILITY_PROPERTIES);
                 }
                 return childrenFeatures;
@@ -248,13 +198,10 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         case DronePackage.ROBOT__POSITION:
                         case DronePackage.ROBOT__SIZE:
                         case DronePackage.ROBOT__BATTERIES:
-                        case DronePackage.ROBOT__COLLABORATIONS:
-                        case DronePackage.ROBOT__DETECTED_OBJECTS:
                         case DronePackage.ROBOT__EQUIPMENTS:
                         case DronePackage.ROBOT__PROPERTIES:
                         case DronePackage.ROBOT__COMMUNICATION_RANGE:
                         case DronePackage.ROBOT__WEIGHT:
-                        case DronePackage.ROBOT__ACTIONS:
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
@@ -290,16 +237,6 @@ public class RobotItemProvider extends NamedElementItemProvider {
 
                 newChildDescriptors.add
                         (createChildParameter
-                                (DronePackage.Literals.ROBOT__COLLABORATIONS,
-                                 DroneFactory.eINSTANCE.createRobotCollaboration()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.ROBOT__DETECTED_OBJECTS,
-                                 DroneFactory.eINSTANCE.createDetectedObject()));
-
-                newChildDescriptors.add
-                        (createChildParameter
                                 (DronePackage.Literals.ROBOT__EQUIPMENTS,
                                  DroneFactory.eINSTANCE.createEquipment()));
 
@@ -317,26 +254,6 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         (createChildParameter
                                 (DronePackage.Literals.ROBOT__WEIGHT,
                                  DroneFactory.eINSTANCE.createMeasureValue()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.ROBOT__ACTIONS,
-                                 DroneFactory.eINSTANCE.createAction()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.ROBOT__ACTIONS,
-                                 BehaviourFactory.eINSTANCE.createUnicastCommunication()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.ROBOT__ACTIONS,
-                                 BehaviourFactory.eINSTANCE.createMulticastCommunication()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.ROBOT__ACTIONS,
-                                 BehaviourFactory.eINSTANCE.createBroadcastCommunication()));
 
                 newChildDescriptors.add
                         (createChildParameter

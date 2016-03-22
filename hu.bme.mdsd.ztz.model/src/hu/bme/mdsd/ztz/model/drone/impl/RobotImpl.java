@@ -2,13 +2,9 @@
  */
 package hu.bme.mdsd.ztz.model.drone.impl;
 
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
-import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
-import hu.bme.mdsd.ztz.model.drone.Action;
 import hu.bme.mdsd.ztz.model.drone.Battery;
 import hu.bme.mdsd.ztz.model.drone.Capability;
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
-import hu.bme.mdsd.ztz.model.drone.DetectedObject;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Equipment;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
@@ -16,10 +12,8 @@ import hu.bme.mdsd.ztz.model.drone.Mission;
 import hu.bme.mdsd.ztz.model.drone.Position;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.Robot;
-import hu.bme.mdsd.ztz.model.drone.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.drone.Size;
 import hu.bme.mdsd.ztz.model.drone.Task;
-import hu.bme.mdsd.ztz.model.drone.TaskExecution;
 
 import java.util.Collection;
 
@@ -29,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -49,19 +42,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getSize <em>Size</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getBatteries <em>Batteries</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getCollaborations <em>Collaborations</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getDetectedObjects <em>Detected Objects</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getEquipments <em>Equipments</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getTasks <em>Tasks</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getCommunicationRange <em>Communication Range</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getMission <em>Mission</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getCapabilityProperties <em>Capability Properties</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getExecute <em>Execute</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotImpl#getMessageRepository <em>Message Repository</em>}</li>
  * </ul>
  *
  * @generated
@@ -96,26 +84,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @ordered
          */
         protected EList<Battery> batteries;
-
-        /**
-         * The cached value of the '{@link #getCollaborations() <em>Collaborations</em>}' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getCollaborations()
-         * @generated
-         * @ordered
-         */
-        protected EList<RobotCollaboration> collaborations;
-
-        /**
-         * The cached value of the '{@link #getDetectedObjects() <em>Detected Objects</em>}' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getDetectedObjects()
-         * @generated
-         * @ordered
-         */
-        protected EList<DetectedObject> detectedObjects;
 
         /**
          * The cached value of the '{@link #getEquipments() <em>Equipments</em>}' containment reference list.
@@ -168,26 +136,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
         protected MeasureValue weight;
 
         /**
-         * The cached setting delegate for the '{@link #getMission() <em>Mission</em>}' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getMission()
-         * @generated
-         * @ordered
-         */
-        protected EStructuralFeature.Internal.SettingDelegate MISSION__ESETTING_DELEGATE = ((EStructuralFeature.Internal)DronePackage.Literals.ROBOT__MISSION).getSettingDelegate();
-
-        /**
-         * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getActions()
-         * @generated
-         * @ordered
-         */
-        protected EList<Action> actions;
-
-        /**
          * The cached value of the '{@link #getCapabilities() <em>Capabilities</em>}' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -206,26 +154,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @ordered
          */
         protected EList<CapabilityProperties> capabilityProperties;
-
-        /**
-         * The cached value of the '{@link #getExecute() <em>Execute</em>}' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getExecute()
-         * @generated
-         * @ordered
-         */
-        protected TaskExecution execute;
-
-        /**
-         * The cached value of the '{@link #getMessageRepository() <em>Message Repository</em>}' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getMessageRepository()
-         * @generated
-         * @ordered
-         */
-        protected MessageRepository messageRepository;
 
         /**
          * <!-- begin-user-doc -->
@@ -342,30 +270,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         batteries = new EObjectContainmentEList<Battery>(Battery.class, this, DronePackage.ROBOT__BATTERIES);
                 }
                 return batteries;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EList<RobotCollaboration> getCollaborations() {
-                if (collaborations == null) {
-                        collaborations = new EObjectContainmentEList<RobotCollaboration>(RobotCollaboration.class, this, DronePackage.ROBOT__COLLABORATIONS);
-                }
-                return collaborations;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EList<DetectedObject> getDetectedObjects() {
-                if (detectedObjects == null) {
-                        detectedObjects = new EObjectContainmentEList<DetectedObject>(DetectedObject.class, this, DronePackage.ROBOT__DETECTED_OBJECTS);
-                }
-                return detectedObjects;
         }
 
         /**
@@ -496,7 +400,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @generated
          */
         public Mission getMission() {
-                return (Mission)MISSION__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
+                Mission mission = basicGetMission();
+                return mission != null && mission.eIsProxy() ? (Mission)eResolveProxy((InternalEObject)mission) : mission;
         }
 
         /**
@@ -505,7 +410,10 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @generated
          */
         public Mission basicGetMission() {
-                return (Mission)MISSION__ESETTING_DELEGATE.dynamicGet(this, null, 0, false, false);
+                // TODO: implement this method to return the 'Mission' reference
+                // -> do not perform proxy resolution
+                // Ensure that you remove @generated or mark it @generated NOT
+                throw new UnsupportedOperationException();
         }
 
         /**
@@ -514,19 +422,9 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @generated
          */
         public boolean isSetMission() {
-                return MISSION__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EList<Action> getActions() {
-                if (actions == null) {
-                        actions = new EObjectContainmentEList<Action>(Action.class, this, DronePackage.ROBOT__ACTIONS);
-                }
-                return actions;
+                // TODO: implement this method to return whether the 'Mission' reference is set
+                // Ensure that you remove @generated or mark it @generated NOT
+                throw new UnsupportedOperationException();
         }
 
         /**
@@ -558,146 +456,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * <!-- end-user-doc -->
          * @generated
          */
-        public TaskExecution getExecute() {
-                if (execute != null && execute.eIsProxy()) {
-                        InternalEObject oldExecute = (InternalEObject)execute;
-                        execute = (TaskExecution)eResolveProxy(oldExecute);
-                        if (execute != oldExecute) {
-                                if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.ROBOT__EXECUTE, oldExecute, execute));
-                        }
-                }
-                return execute;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public TaskExecution basicGetExecute() {
-                return execute;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public NotificationChain basicSetExecute(TaskExecution newExecute, NotificationChain msgs) {
-                TaskExecution oldExecute = execute;
-                execute = newExecute;
-                if (eNotificationRequired()) {
-                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__EXECUTE, oldExecute, newExecute);
-                        if (msgs == null) msgs = notification; else msgs.add(notification);
-                }
-                return msgs;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setExecute(TaskExecution newExecute) {
-                if (newExecute != execute) {
-                        NotificationChain msgs = null;
-                        if (execute != null)
-                                msgs = ((InternalEObject)execute).eInverseRemove(this, DronePackage.TASK_EXECUTION__EXECUTORS, TaskExecution.class, msgs);
-                        if (newExecute != null)
-                                msgs = ((InternalEObject)newExecute).eInverseAdd(this, DronePackage.TASK_EXECUTION__EXECUTORS, TaskExecution.class, msgs);
-                        msgs = basicSetExecute(newExecute, msgs);
-                        if (msgs != null) msgs.dispatch();
-                }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__EXECUTE, newExecute, newExecute));
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public MessageRepository getMessageRepository() {
-                if (messageRepository != null && messageRepository.eIsProxy()) {
-                        InternalEObject oldMessageRepository = (InternalEObject)messageRepository;
-                        messageRepository = (MessageRepository)eResolveProxy(oldMessageRepository);
-                        if (messageRepository != oldMessageRepository) {
-                                if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.ROBOT__MESSAGE_REPOSITORY, oldMessageRepository, messageRepository));
-                        }
-                }
-                return messageRepository;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public MessageRepository basicGetMessageRepository() {
-                return messageRepository;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public NotificationChain basicSetMessageRepository(MessageRepository newMessageRepository, NotificationChain msgs) {
-                MessageRepository oldMessageRepository = messageRepository;
-                messageRepository = newMessageRepository;
-                if (eNotificationRequired()) {
-                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__MESSAGE_REPOSITORY, oldMessageRepository, newMessageRepository);
-                        if (msgs == null) msgs = notification; else msgs.add(notification);
-                }
-                return msgs;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setMessageRepository(MessageRepository newMessageRepository) {
-                if (newMessageRepository != messageRepository) {
-                        NotificationChain msgs = null;
-                        if (messageRepository != null)
-                                msgs = ((InternalEObject)messageRepository).eInverseRemove(this, BehaviourPackage.MESSAGE_REPOSITORY__ROBOT, MessageRepository.class, msgs);
-                        if (newMessageRepository != null)
-                                msgs = ((InternalEObject)newMessageRepository).eInverseAdd(this, BehaviourPackage.MESSAGE_REPOSITORY__ROBOT, MessageRepository.class, msgs);
-                        msgs = basicSetMessageRepository(newMessageRepository, msgs);
-                        if (msgs != null) msgs.dispatch();
-                }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__MESSAGE_REPOSITORY, newMessageRepository, newMessageRepository));
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-                switch (featureID) {
-                        case DronePackage.ROBOT__EXECUTE:
-                                if (execute != null)
-                                        msgs = ((InternalEObject)execute).eInverseRemove(this, DronePackage.TASK_EXECUTION__EXECUTORS, TaskExecution.class, msgs);
-                                return basicSetExecute((TaskExecution)otherEnd, msgs);
-                        case DronePackage.ROBOT__MESSAGE_REPOSITORY:
-                                if (messageRepository != null)
-                                        msgs = ((InternalEObject)messageRepository).eInverseRemove(this, BehaviourPackage.MESSAGE_REPOSITORY__ROBOT, MessageRepository.class, msgs);
-                                return basicSetMessageRepository((MessageRepository)otherEnd, msgs);
-                }
-                return super.eInverseAdd(otherEnd, featureID, msgs);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -707,10 +465,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return basicSetSize(null, msgs);
                         case DronePackage.ROBOT__BATTERIES:
                                 return ((InternalEList<?>)getBatteries()).basicRemove(otherEnd, msgs);
-                        case DronePackage.ROBOT__COLLABORATIONS:
-                                return ((InternalEList<?>)getCollaborations()).basicRemove(otherEnd, msgs);
-                        case DronePackage.ROBOT__DETECTED_OBJECTS:
-                                return ((InternalEList<?>)getDetectedObjects()).basicRemove(otherEnd, msgs);
                         case DronePackage.ROBOT__EQUIPMENTS:
                                 return ((InternalEList<?>)getEquipments()).basicRemove(otherEnd, msgs);
                         case DronePackage.ROBOT__PROPERTIES:
@@ -719,14 +473,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return basicSetCommunicationRange(null, msgs);
                         case DronePackage.ROBOT__WEIGHT:
                                 return basicSetWeight(null, msgs);
-                        case DronePackage.ROBOT__ACTIONS:
-                                return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 return ((InternalEList<?>)getCapabilityProperties()).basicRemove(otherEnd, msgs);
-                        case DronePackage.ROBOT__EXECUTE:
-                                return basicSetExecute(null, msgs);
-                        case DronePackage.ROBOT__MESSAGE_REPOSITORY:
-                                return basicSetMessageRepository(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -745,10 +493,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return getSize();
                         case DronePackage.ROBOT__BATTERIES:
                                 return getBatteries();
-                        case DronePackage.ROBOT__COLLABORATIONS:
-                                return getCollaborations();
-                        case DronePackage.ROBOT__DETECTED_OBJECTS:
-                                return getDetectedObjects();
                         case DronePackage.ROBOT__EQUIPMENTS:
                                 return getEquipments();
                         case DronePackage.ROBOT__TASKS:
@@ -762,18 +506,10 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__MISSION:
                                 if (resolve) return getMission();
                                 return basicGetMission();
-                        case DronePackage.ROBOT__ACTIONS:
-                                return getActions();
                         case DronePackage.ROBOT__CAPABILITIES:
                                 return getCapabilities();
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 return getCapabilityProperties();
-                        case DronePackage.ROBOT__EXECUTE:
-                                if (resolve) return getExecute();
-                                return basicGetExecute();
-                        case DronePackage.ROBOT__MESSAGE_REPOSITORY:
-                                if (resolve) return getMessageRepository();
-                                return basicGetMessageRepository();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -797,14 +533,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 getBatteries().clear();
                                 getBatteries().addAll((Collection<? extends Battery>)newValue);
                                 return;
-                        case DronePackage.ROBOT__COLLABORATIONS:
-                                getCollaborations().clear();
-                                getCollaborations().addAll((Collection<? extends RobotCollaboration>)newValue);
-                                return;
-                        case DronePackage.ROBOT__DETECTED_OBJECTS:
-                                getDetectedObjects().clear();
-                                getDetectedObjects().addAll((Collection<? extends DetectedObject>)newValue);
-                                return;
                         case DronePackage.ROBOT__EQUIPMENTS:
                                 getEquipments().clear();
                                 getEquipments().addAll((Collection<? extends Equipment>)newValue);
@@ -823,10 +551,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__WEIGHT:
                                 setWeight((MeasureValue)newValue);
                                 return;
-                        case DronePackage.ROBOT__ACTIONS:
-                                getActions().clear();
-                                getActions().addAll((Collection<? extends Action>)newValue);
-                                return;
                         case DronePackage.ROBOT__CAPABILITIES:
                                 getCapabilities().clear();
                                 getCapabilities().addAll((Collection<? extends Capability>)newValue);
@@ -834,12 +558,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 getCapabilityProperties().clear();
                                 getCapabilityProperties().addAll((Collection<? extends CapabilityProperties>)newValue);
-                                return;
-                        case DronePackage.ROBOT__EXECUTE:
-                                setExecute((TaskExecution)newValue);
-                                return;
-                        case DronePackage.ROBOT__MESSAGE_REPOSITORY:
-                                setMessageRepository((MessageRepository)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -862,12 +580,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__BATTERIES:
                                 getBatteries().clear();
                                 return;
-                        case DronePackage.ROBOT__COLLABORATIONS:
-                                getCollaborations().clear();
-                                return;
-                        case DronePackage.ROBOT__DETECTED_OBJECTS:
-                                getDetectedObjects().clear();
-                                return;
                         case DronePackage.ROBOT__EQUIPMENTS:
                                 getEquipments().clear();
                                 return;
@@ -883,20 +595,11 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__WEIGHT:
                                 setWeight((MeasureValue)null);
                                 return;
-                        case DronePackage.ROBOT__ACTIONS:
-                                getActions().clear();
-                                return;
                         case DronePackage.ROBOT__CAPABILITIES:
                                 getCapabilities().clear();
                                 return;
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 getCapabilityProperties().clear();
-                                return;
-                        case DronePackage.ROBOT__EXECUTE:
-                                setExecute((TaskExecution)null);
-                                return;
-                        case DronePackage.ROBOT__MESSAGE_REPOSITORY:
-                                setMessageRepository((MessageRepository)null);
                                 return;
                 }
                 super.eUnset(featureID);
@@ -916,10 +619,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return size != null;
                         case DronePackage.ROBOT__BATTERIES:
                                 return batteries != null && !batteries.isEmpty();
-                        case DronePackage.ROBOT__COLLABORATIONS:
-                                return collaborations != null && !collaborations.isEmpty();
-                        case DronePackage.ROBOT__DETECTED_OBJECTS:
-                                return detectedObjects != null && !detectedObjects.isEmpty();
                         case DronePackage.ROBOT__EQUIPMENTS:
                                 return equipments != null && !equipments.isEmpty();
                         case DronePackage.ROBOT__TASKS:
@@ -932,16 +631,10 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                                 return weight != null;
                         case DronePackage.ROBOT__MISSION:
                                 return isSetMission();
-                        case DronePackage.ROBOT__ACTIONS:
-                                return actions != null && !actions.isEmpty();
                         case DronePackage.ROBOT__CAPABILITIES:
                                 return capabilities != null && !capabilities.isEmpty();
                         case DronePackage.ROBOT__CAPABILITY_PROPERTIES:
                                 return capabilityProperties != null && !capabilityProperties.isEmpty();
-                        case DronePackage.ROBOT__EXECUTE:
-                                return execute != null;
-                        case DronePackage.ROBOT__MESSAGE_REPOSITORY:
-                                return messageRepository != null;
                 }
                 return super.eIsSet(featureID);
         }

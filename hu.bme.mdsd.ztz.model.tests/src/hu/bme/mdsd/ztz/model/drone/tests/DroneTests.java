@@ -31,7 +31,6 @@ public class DroneTests extends TestSuite {
          */
         public static Test suite() {
                 TestSuite suite = new DroneTests("drone Tests");
-                suite.addTestSuite(TaskTest.class);
                 suite.addTestSuite(RobotTest.class);
                 suite.addTestSuite(TaskRequirementTest.class);
                 return suite;

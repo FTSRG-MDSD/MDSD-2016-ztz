@@ -3,25 +3,26 @@
 package hu.bme.mdsd.ztz.model.behaviour.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 
-import hu.bme.mdsd.ztz.model.drone.DronePackage;
-import hu.bme.mdsd.ztz.model.drone.Robot;
-
 import hu.bme.mdsd.ztz.model.drone.impl.NamedElementImpl;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,16 +40,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * @generated
  */
 public class MessageRepositoryImpl extends NamedElementImpl implements MessageRepository {
-        /**
-         * The cached value of the '{@link #getRobot() <em>Robot</em>}' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getRobot()
-         * @generated
-         * @ordered
-         */
-        protected Robot robot;
-
         /**
          * The cached value of the '{@link #getReceivedMessages() <em>Received Messages</em>}' reference list.
          * <!-- begin-user-doc -->
@@ -93,16 +84,9 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
          * <!-- end-user-doc -->
          * @generated
          */
-        public Robot getRobot() {
-                if (robot != null && robot.eIsProxy()) {
-                        InternalEObject oldRobot = (InternalEObject)robot;
-                        robot = (Robot)eResolveProxy(oldRobot);
-                        if (robot != oldRobot) {
-                                if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.MESSAGE_REPOSITORY__ROBOT, oldRobot, robot));
-                        }
-                }
-                return robot;
+        public DynamicRobot getRobot() {
+                if (eContainerFeatureID() != BehaviourPackage.MESSAGE_REPOSITORY__ROBOT) return null;
+                return (DynamicRobot)eInternalContainer();
         }
 
         /**
@@ -110,22 +94,8 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
          * <!-- end-user-doc -->
          * @generated
          */
-        public Robot basicGetRobot() {
-                return robot;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public NotificationChain basicSetRobot(Robot newRobot, NotificationChain msgs) {
-                Robot oldRobot = robot;
-                robot = newRobot;
-                if (eNotificationRequired()) {
-                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourPackage.MESSAGE_REPOSITORY__ROBOT, oldRobot, newRobot);
-                        if (msgs == null) msgs = notification; else msgs.add(notification);
-                }
+        public NotificationChain basicSetRobot(DynamicRobot newRobot, NotificationChain msgs) {
+                msgs = eBasicSetContainer((InternalEObject)newRobot, BehaviourPackage.MESSAGE_REPOSITORY__ROBOT, msgs);
                 return msgs;
         }
 
@@ -134,13 +104,15 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
          * <!-- end-user-doc -->
          * @generated
          */
-        public void setRobot(Robot newRobot) {
-                if (newRobot != robot) {
+        public void setRobot(DynamicRobot newRobot) {
+                if (newRobot != eInternalContainer() || (eContainerFeatureID() != BehaviourPackage.MESSAGE_REPOSITORY__ROBOT && newRobot != null)) {
+                        if (EcoreUtil.isAncestor(this, newRobot))
+                                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
                         NotificationChain msgs = null;
-                        if (robot != null)
-                                msgs = ((InternalEObject)robot).eInverseRemove(this, DronePackage.ROBOT__MESSAGE_REPOSITORY, Robot.class, msgs);
+                        if (eInternalContainer() != null)
+                                msgs = eBasicRemoveFromContainer(msgs);
                         if (newRobot != null)
-                                msgs = ((InternalEObject)newRobot).eInverseAdd(this, DronePackage.ROBOT__MESSAGE_REPOSITORY, Robot.class, msgs);
+                                msgs = ((InternalEObject)newRobot).eInverseAdd(this, BehaviourPackage.DYNAMIC_ROBOT__MESSAGE_REPOSITORY, DynamicRobot.class, msgs);
                         msgs = basicSetRobot(newRobot, msgs);
                         if (msgs != null) msgs.dispatch();
                 }
@@ -181,9 +153,9 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
         public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
                         case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
-                                if (robot != null)
-                                        msgs = ((InternalEObject)robot).eInverseRemove(this, DronePackage.ROBOT__MESSAGE_REPOSITORY, Robot.class, msgs);
-                                return basicSetRobot((Robot)otherEnd, msgs);
+                                if (eInternalContainer() != null)
+                                        msgs = eBasicRemoveFromContainer(msgs);
+                                return basicSetRobot((DynamicRobot)otherEnd, msgs);
                 }
                 return super.eInverseAdd(otherEnd, featureID, msgs);
         }
@@ -208,11 +180,24 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
          * @generated
          */
         @Override
+        public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+                switch (eContainerFeatureID()) {
+                        case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
+                                return eInternalContainer().eInverseRemove(this, BehaviourPackage.DYNAMIC_ROBOT__MESSAGE_REPOSITORY, DynamicRobot.class, msgs);
+                }
+                return super.eBasicRemoveFromContainerFeature(msgs);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
                 switch (featureID) {
                         case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
-                                if (resolve) return getRobot();
-                                return basicGetRobot();
+                                return getRobot();
                         case BehaviourPackage.MESSAGE_REPOSITORY__RECEIVED_MESSAGES:
                                 return getReceivedMessages();
                         case BehaviourPackage.MESSAGE_REPOSITORY__SENDED_MESSAGES:
@@ -231,7 +216,7 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
         public void eSet(int featureID, Object newValue) {
                 switch (featureID) {
                         case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
-                                setRobot((Robot)newValue);
+                                setRobot((DynamicRobot)newValue);
                                 return;
                         case BehaviourPackage.MESSAGE_REPOSITORY__RECEIVED_MESSAGES:
                                 getReceivedMessages().clear();
@@ -254,7 +239,7 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
         public void eUnset(int featureID) {
                 switch (featureID) {
                         case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
-                                setRobot((Robot)null);
+                                setRobot((DynamicRobot)null);
                                 return;
                         case BehaviourPackage.MESSAGE_REPOSITORY__RECEIVED_MESSAGES:
                                 getReceivedMessages().clear();
@@ -275,7 +260,7 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
         public boolean eIsSet(int featureID) {
                 switch (featureID) {
                         case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
-                                return robot != null;
+                                return getRobot() != null;
                         case BehaviourPackage.MESSAGE_REPOSITORY__RECEIVED_MESSAGES:
                                 return receivedMessages != null && !receivedMessages.isEmpty();
                         case BehaviourPackage.MESSAGE_REPOSITORY__SENDED_MESSAGES:

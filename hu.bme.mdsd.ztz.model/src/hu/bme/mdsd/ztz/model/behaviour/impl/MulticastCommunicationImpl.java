@@ -3,9 +3,8 @@
 package hu.bme.mdsd.ztz.model.behaviour.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
-
-import hu.bme.mdsd.ztz.model.drone.Robot;
 
 import java.util.Collection;
 
@@ -37,7 +36,7 @@ public class MulticastCommunicationImpl extends CommunicationActionImpl implemen
          * @generated
          * @ordered
          */
-        protected EList<Robot> targets;
+        protected EList<DynamicRobot> targets;
 
         /**
          * <!-- begin-user-doc -->
@@ -63,9 +62,9 @@ public class MulticastCommunicationImpl extends CommunicationActionImpl implemen
          * <!-- end-user-doc -->
          * @generated
          */
-        public EList<Robot> getTargets() {
+        public EList<DynamicRobot> getTargets() {
                 if (targets == null) {
-                        targets = new EObjectResolvingEList<Robot>(Robot.class, this, BehaviourPackage.MULTICAST_COMMUNICATION__TARGETS);
+                        targets = new EObjectResolvingEList<DynamicRobot>(DynamicRobot.class, this, BehaviourPackage.MULTICAST_COMMUNICATION__TARGETS);
                 }
                 return targets;
         }
@@ -95,7 +94,7 @@ public class MulticastCommunicationImpl extends CommunicationActionImpl implemen
                 switch (featureID) {
                         case BehaviourPackage.MULTICAST_COMMUNICATION__TARGETS:
                                 getTargets().clear();
-                                getTargets().addAll((Collection<? extends Robot>)newValue);
+                                getTargets().addAll((Collection<? extends DynamicRobot>)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);

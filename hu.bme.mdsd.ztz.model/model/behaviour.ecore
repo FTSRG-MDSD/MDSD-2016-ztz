@@ -2,14 +2,12 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="behaviour" nsURI="http://www.mdsd.hu/behaviour" nsPrefix="behaviour">
   <eClassifiers xsi:type="ecore:EClass" name="BehaviourContainer">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="communicationActions" upperBound="-1"
-        eType="#//CommunicationAction" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="messageRepositories" upperBound="-1"
-        eType="#//MessageRepository" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicRobots" upperBound="-1"
+        eType="#//DynamicRobot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Message">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
-        eType="ecore:EClass drone.ecore#//Task"/>
+        eType="#//TaskExecution"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
@@ -17,34 +15,86 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="referredObjects" upperBound="-1"
         eType="ecore:EClass drone.ecore#//AreaObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CommunicationAction" abstract="true"
-      eSuperTypes="drone.ecore#//Action">
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationAction" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="message" lowerBound="1"
         eType="#//Message" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//CommunicationType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//CommunicationType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnicastCommunication" eSuperTypes="#//CommunicationAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass drone.ecore#//Robot"/>
+        eType="#//DynamicRobot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MulticastCommunication" eSuperTypes="#//CommunicationAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
-        upperBound="-1" eType="ecore:EClass drone.ecore#//Robot"/>
+        upperBound="-1" eType="#//DynamicRobot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BroadcastCommunication" eSuperTypes="#//CommunicationAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
-        upperBound="-1" eType="ecore:EClass drone.ecore#//Robot"/>
+        upperBound="-1" eType="#//DynamicRobot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CommunicationType">
     <eLiterals name="Synchronous"/>
     <eLiterals name="Asynchronous" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageRepository" eSuperTypes="drone.ecore#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="robot" lowerBound="1" eType="ecore:EClass drone.ecore#//Robot"
-        eOpposite="drone.ecore#//Robot/messageRepository"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="robot" lowerBound="1" eType="#//DynamicRobot"
+        eOpposite="#//DynamicRobot/messageRepository"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="receivedMessages" upperBound="-1"
         eType="#//Message"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sendedMessages" upperBound="-1"
         eType="#//Message"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RobotStatus">
+    <eLiterals name="Ready" value="1"/>
+    <eLiterals name="TurnedOff" value="2"/>
+    <eLiterals name="Waiting" value="3"/>
+    <eLiterals name="Executing" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="ecore:EClass drone.ecore#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentTask" eType="#//TaskExecution"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskExecution">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executors" upperBound="-1"
+        eType="#//DynamicRobot"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executionTime" unique="false"
+        eType="ecore:EClass drone.ecore#//MeasureValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" unique="false"
+        lowerBound="1" eType="#//TaskExecutionStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1" eType="ecore:EClass drone.ecore#//Task"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RobotCollaboration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborator" lowerBound="1"
+        eType="#//DynamicRobot"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="availabilityRange" eType="ecore:EClass drone.ecore#//MeasureValue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="ecore:EClass drone.ecore#//Property" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TaskExecutionStatus">
+    <eLiterals name="Ready"/>
+    <eLiterals name="Finished" value="1"/>
+    <eLiterals name="Suspended" value="2"/>
+    <eLiterals name="InProgress" value="3"/>
+    <eLiterals name="Waiting" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DetectedObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" lowerBound="1"
+        eType="ecore:EClass drone.ecore#//AreaObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obstacle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DynamicRobot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="robot" lowerBound="1" eType="ecore:EClass drone.ecore#//Robot"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="detectedObjects" upperBound="-1"
+        eType="#//DetectedObject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborations" eType="#//RobotCollaboration"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageRepository" eType="#//MessageRepository"
+        containment="true" eOpposite="#//MessageRepository/robot"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
+        eType="#//RobotStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//Action" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

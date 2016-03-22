@@ -11,9 +11,21 @@
       <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//CommunicationType/Synchronous"/>
       <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//CommunicationType/Asynchronous"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="behaviour.ecore#//RobotStatus">
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//RobotStatus/Ready"/>
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//RobotStatus/TurnedOff"/>
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//RobotStatus/Waiting"/>
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//RobotStatus/Executing"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="behaviour.ecore#//TaskExecutionStatus">
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//TaskExecutionStatus/Ready"/>
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//TaskExecutionStatus/Finished"/>
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//TaskExecutionStatus/Suspended"/>
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//TaskExecutionStatus/InProgress"/>
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//TaskExecutionStatus/Waiting"/>
+    </genEnums>
     <genClasses ecoreClass="behaviour.ecore#//BehaviourContainer">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/communicationActions"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/messageRepositories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/dynamicRobots"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//Message">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/tasks"/>
@@ -22,7 +34,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/referredObjects"/>
     </genClasses>
     <genClasses image="false" ecoreClass="behaviour.ecore#//CommunicationAction">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//CommunicationAction/message"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//CommunicationAction/message"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//CommunicationAction/type"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//UnicastCommunication">
@@ -35,9 +47,36 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//BroadcastCommunication/targets"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//MessageRepository">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/robot"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/robot"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/receivedMessages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/sendedMessages"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//Action">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//Action/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Action/currentTask"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//TaskExecution">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskExecution/executors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskExecution/executionTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//TaskExecution/status"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskExecution/task"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//RobotCollaboration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//RobotCollaboration/collaborator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//RobotCollaboration/availabilityRange"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//RobotCollaboration/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//DetectedObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//DetectedObject/object"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//DetectedObject/obstacle"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//DynamicRobot">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/robot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/detectedObjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/collaborations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/messageRepository"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//DynamicRobot/status"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/actions"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

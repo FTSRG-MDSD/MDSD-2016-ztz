@@ -15,9 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -48,54 +46,8 @@ public class TaskItemProvider extends NamedElementItemProvider {
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addStatusPropertyDescriptor(object);
-                        addEstimatedTimePropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
-        }
-
-        /**
-         * This adds a property descriptor for the Status feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addStatusPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Task_status_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Task_status_feature", "_UI_Task_type"),
-                                 DronePackage.Literals.TASK__STATUS,
-                                 true,
-                                 false,
-                                 false,
-                                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Estimated Time feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addEstimatedTimePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Task_estimatedTime_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Task_estimatedTime_feature", "_UI_Task_type"),
-                                 DronePackage.Literals.TASK__ESTIMATED_TIME,
-                                 false,
-                                 false,
-                                 false,
-                                 null,
-                                 null,
-                                 null));
         }
 
         /**
@@ -111,7 +63,6 @@ public class TaskItemProvider extends NamedElementItemProvider {
                 if (childrenFeatures == null) {
                         super.getChildrenFeatures(object);
                         childrenFeatures.add(DronePackage.Literals.TASK__DESCRIPTOR);
-                        childrenFeatures.add(DronePackage.Literals.TASK__EXECUTION);
                         childrenFeatures.add(DronePackage.Literals.TASK__REQUIREMENT);
                 }
                 return childrenFeatures;
@@ -168,11 +119,7 @@ public class TaskItemProvider extends NamedElementItemProvider {
                 updateChildren(notification);
 
                 switch (notification.getFeatureID(Task.class)) {
-                        case DronePackage.TASK__STATUS:
-                                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                                return;
                         case DronePackage.TASK__DESCRIPTOR:
-                        case DronePackage.TASK__EXECUTION:
                         case DronePackage.TASK__REQUIREMENT:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
@@ -195,11 +142,6 @@ public class TaskItemProvider extends NamedElementItemProvider {
                         (createChildParameter
                                 (DronePackage.Literals.TASK__DESCRIPTOR,
                                  DroneFactory.eINSTANCE.createTaskDescriptor()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.TASK__EXECUTION,
-                                 DroneFactory.eINSTANCE.createTaskExecution()));
 
                 newChildDescriptors.add
                         (createChildParameter

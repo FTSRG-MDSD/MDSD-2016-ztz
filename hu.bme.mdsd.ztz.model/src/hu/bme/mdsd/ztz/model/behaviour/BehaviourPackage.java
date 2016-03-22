@@ -3,6 +3,7 @@
 package hu.bme.mdsd.ztz.model.behaviour;
 
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -69,22 +70,13 @@ public interface BehaviourPackage extends EPackage {
         int BEHAVIOUR_CONTAINER = 0;
 
         /**
-         * The feature id for the '<em><b>Communication Actions</b></em>' containment reference list.
+         * The feature id for the '<em><b>Dynamic Robots</b></em>' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS = 0;
-
-        /**
-         * The feature id for the '<em><b>Message Repositories</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES = 1;
+        int BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS = 0;
 
         /**
          * The number of structural features of the '<em>Container</em>' class.
@@ -93,7 +85,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int BEHAVIOUR_CONTAINER_FEATURE_COUNT = 2;
+        int BEHAVIOUR_CONTAINER_FEATURE_COUNT = 1;
 
         /**
          * The number of operations of the '<em>Container</em>' class.
@@ -168,7 +160,6 @@ public interface BehaviourPackage extends EPackage {
          */
         int MESSAGE_OPERATION_COUNT = 0;
 
-
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.CommunicationActionImpl <em>Communication Action</em>}' class.
          * <!-- begin-user-doc -->
@@ -180,31 +171,13 @@ public interface BehaviourPackage extends EPackage {
         int COMMUNICATION_ACTION = 2;
 
         /**
-         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int COMMUNICATION_ACTION__PROPERTIES = DronePackage.ACTION__PROPERTIES;
-
-        /**
-         * The feature id for the '<em><b>Current Task</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int COMMUNICATION_ACTION__CURRENT_TASK = DronePackage.ACTION__CURRENT_TASK;
-
-        /**
          * The feature id for the '<em><b>Message</b></em>' containment reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int COMMUNICATION_ACTION__MESSAGE = DronePackage.ACTION_FEATURE_COUNT + 0;
+        int COMMUNICATION_ACTION__MESSAGE = 0;
 
         /**
          * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -213,7 +186,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int COMMUNICATION_ACTION__TYPE = DronePackage.ACTION_FEATURE_COUNT + 1;
+        int COMMUNICATION_ACTION__TYPE = 1;
 
         /**
          * The number of structural features of the '<em>Communication Action</em>' class.
@@ -222,7 +195,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int COMMUNICATION_ACTION_FEATURE_COUNT = DronePackage.ACTION_FEATURE_COUNT + 2;
+        int COMMUNICATION_ACTION_FEATURE_COUNT = 2;
 
         /**
          * The number of operations of the '<em>Communication Action</em>' class.
@@ -231,7 +204,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int COMMUNICATION_ACTION_OPERATION_COUNT = DronePackage.ACTION_OPERATION_COUNT + 0;
+        int COMMUNICATION_ACTION_OPERATION_COUNT = 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.UnicastCommunicationImpl <em>Unicast Communication</em>}' class.
@@ -242,24 +215,6 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         int UNICAST_COMMUNICATION = 3;
-
-        /**
-         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int UNICAST_COMMUNICATION__PROPERTIES = COMMUNICATION_ACTION__PROPERTIES;
-
-        /**
-         * The feature id for the '<em><b>Current Task</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int UNICAST_COMMUNICATION__CURRENT_TASK = COMMUNICATION_ACTION__CURRENT_TASK;
 
         /**
          * The feature id for the '<em><b>Message</b></em>' containment reference.
@@ -317,24 +272,6 @@ public interface BehaviourPackage extends EPackage {
         int MULTICAST_COMMUNICATION = 4;
 
         /**
-         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MULTICAST_COMMUNICATION__PROPERTIES = COMMUNICATION_ACTION__PROPERTIES;
-
-        /**
-         * The feature id for the '<em><b>Current Task</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MULTICAST_COMMUNICATION__CURRENT_TASK = COMMUNICATION_ACTION__CURRENT_TASK;
-
-        /**
          * The feature id for the '<em><b>Message</b></em>' containment reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -388,24 +325,6 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         int BROADCAST_COMMUNICATION = 5;
-
-        /**
-         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int BROADCAST_COMMUNICATION__PROPERTIES = COMMUNICATION_ACTION__PROPERTIES;
-
-        /**
-         * The feature id for the '<em><b>Current Task</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int BROADCAST_COMMUNICATION__CURRENT_TASK = COMMUNICATION_ACTION__CURRENT_TASK;
 
         /**
          * The feature id for the '<em><b>Message</b></em>' containment reference.
@@ -472,7 +391,7 @@ public interface BehaviourPackage extends EPackage {
         int MESSAGE_REPOSITORY__NAME = DronePackage.NAMED_ELEMENT__NAME;
 
         /**
-         * The feature id for the '<em><b>Robot</b></em>' reference.
+         * The feature id for the '<em><b>Robot</b></em>' container reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -517,6 +436,299 @@ public interface BehaviourPackage extends EPackage {
         int MESSAGE_REPOSITORY_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.ActionImpl <em>Action</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.ActionImpl
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getAction()
+         * @generated
+         */
+        int ACTION = 7;
+
+        /**
+         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ACTION__PROPERTIES = 0;
+
+        /**
+         * The feature id for the '<em><b>Current Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ACTION__CURRENT_TASK = 1;
+
+        /**
+         * The number of structural features of the '<em>Action</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ACTION_FEATURE_COUNT = 2;
+
+        /**
+         * The number of operations of the '<em>Action</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ACTION_OPERATION_COUNT = 0;
+
+        /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl <em>Task Execution</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getTaskExecution()
+         * @generated
+         */
+        int TASK_EXECUTION = 8;
+
+        /**
+         * The feature id for the '<em><b>Executors</b></em>' reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_EXECUTION__EXECUTORS = 0;
+
+        /**
+         * The feature id for the '<em><b>Execution Time</b></em>' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_EXECUTION__EXECUTION_TIME = 1;
+
+        /**
+         * The feature id for the '<em><b>Status</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_EXECUTION__STATUS = 2;
+
+        /**
+         * The feature id for the '<em><b>Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_EXECUTION__TASK = 3;
+
+        /**
+         * The number of structural features of the '<em>Task Execution</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_EXECUTION_FEATURE_COUNT = 4;
+
+        /**
+         * The number of operations of the '<em>Task Execution</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_EXECUTION_OPERATION_COUNT = 0;
+
+        /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.RobotCollaborationImpl <em>Robot Collaboration</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.RobotCollaborationImpl
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getRobotCollaboration()
+         * @generated
+         */
+        int ROBOT_COLLABORATION = 9;
+
+        /**
+         * The feature id for the '<em><b>Collaborator</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ROBOT_COLLABORATION__COLLABORATOR = 0;
+
+        /**
+         * The feature id for the '<em><b>Availability Range</b></em>' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ROBOT_COLLABORATION__AVAILABILITY_RANGE = 1;
+
+        /**
+         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ROBOT_COLLABORATION__PROPERTIES = 2;
+
+        /**
+         * The number of structural features of the '<em>Robot Collaboration</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ROBOT_COLLABORATION_FEATURE_COUNT = 3;
+
+        /**
+         * The number of operations of the '<em>Robot Collaboration</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ROBOT_COLLABORATION_OPERATION_COUNT = 0;
+
+        /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.DetectedObjectImpl <em>Detected Object</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.DetectedObjectImpl
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getDetectedObject()
+         * @generated
+         */
+        int DETECTED_OBJECT = 10;
+
+        /**
+         * The feature id for the '<em><b>Object</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DETECTED_OBJECT__OBJECT = 0;
+
+        /**
+         * The feature id for the '<em><b>Obstacle</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DETECTED_OBJECT__OBSTACLE = 1;
+
+        /**
+         * The number of structural features of the '<em>Detected Object</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DETECTED_OBJECT_FEATURE_COUNT = 2;
+
+        /**
+         * The number of operations of the '<em>Detected Object</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DETECTED_OBJECT_OPERATION_COUNT = 0;
+
+        /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.DynamicRobotImpl <em>Dynamic Robot</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.DynamicRobotImpl
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getDynamicRobot()
+         * @generated
+         */
+        int DYNAMIC_ROBOT = 11;
+
+        /**
+         * The feature id for the '<em><b>Robot</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT__ROBOT = 0;
+
+        /**
+         * The feature id for the '<em><b>Detected Objects</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT__DETECTED_OBJECTS = 1;
+
+        /**
+         * The feature id for the '<em><b>Collaborations</b></em>' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT__COLLABORATIONS = 2;
+
+        /**
+         * The feature id for the '<em><b>Message Repository</b></em>' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT__MESSAGE_REPOSITORY = 3;
+
+        /**
+         * The feature id for the '<em><b>Status</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT__STATUS = 4;
+
+        /**
+         * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT__ACTIONS = 5;
+
+        /**
+         * The number of structural features of the '<em>Dynamic Robot</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT_FEATURE_COUNT = 6;
+
+        /**
+         * The number of operations of the '<em>Dynamic Robot</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT_OPERATION_COUNT = 0;
+
+        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}' enum.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -524,7 +736,27 @@ public interface BehaviourPackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getCommunicationType()
          * @generated
          */
-        int COMMUNICATION_TYPE = 7;
+        int COMMUNICATION_TYPE = 12;
+
+        /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.RobotStatus <em>Robot Status</em>}' enum.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.RobotStatus
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getRobotStatus()
+         * @generated
+         */
+        int ROBOT_STATUS = 13;
+
+        /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus <em>Task Execution Status</em>}' enum.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getTaskExecutionStatus()
+         * @generated
+         */
+        int TASK_EXECUTION_STATUS = 14;
 
 
         /**
@@ -538,26 +770,15 @@ public interface BehaviourPackage extends EPackage {
         EClass getBehaviourContainer();
 
         /**
-         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getCommunicationActions <em>Communication Actions</em>}'.
+         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getDynamicRobots <em>Dynamic Robots</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the containment reference list '<em>Communication Actions</em>'.
-         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getCommunicationActions()
+         * @return the meta object for the reference list '<em>Dynamic Robots</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getDynamicRobots()
          * @see #getBehaviourContainer()
          * @generated
          */
-        EReference getBehaviourContainer_CommunicationActions();
-
-        /**
-         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getMessageRepositories <em>Message Repositories</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference list '<em>Message Repositories</em>'.
-         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getMessageRepositories()
-         * @see #getBehaviourContainer()
-         * @generated
-         */
-        EReference getBehaviourContainer_MessageRepositories();
+        EReference getBehaviourContainer_DynamicRobots();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.Message <em>Message</em>}'.
@@ -719,10 +940,10 @@ public interface BehaviourPackage extends EPackage {
         EClass getMessageRepository();
 
         /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getRobot <em>Robot</em>}'.
+         * Returns the meta object for the container reference '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getRobot <em>Robot</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Robot</em>'.
+         * @return the meta object for the container reference '<em>Robot</em>'.
          * @see hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getRobot()
          * @see #getMessageRepository()
          * @generated
@@ -752,6 +973,243 @@ public interface BehaviourPackage extends EPackage {
         EReference getMessageRepository_SendedMessages();
 
         /**
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.Action <em>Action</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Action</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.Action
+         * @generated
+         */
+        EClass getAction();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.Action#getProperties <em>Properties</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Properties</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.Action#getProperties()
+         * @see #getAction()
+         * @generated
+         */
+        EReference getAction_Properties();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTask <em>Current Task</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Current Task</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTask()
+         * @see #getAction()
+         * @generated
+         */
+        EReference getAction_CurrentTask();
+
+        /**
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution <em>Task Execution</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Task Execution</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecution
+         * @generated
+         */
+        EClass getTaskExecution();
+
+        /**
+         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getExecutors <em>Executors</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference list '<em>Executors</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getExecutors()
+         * @see #getTaskExecution()
+         * @generated
+         */
+        EReference getTaskExecution_Executors();
+
+        /**
+         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getExecutionTime <em>Execution Time</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference '<em>Execution Time</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getExecutionTime()
+         * @see #getTaskExecution()
+         * @generated
+         */
+        EReference getTaskExecution_ExecutionTime();
+
+        /**
+         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getStatus <em>Status</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the attribute '<em>Status</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getStatus()
+         * @see #getTaskExecution()
+         * @generated
+         */
+        EAttribute getTaskExecution_Status();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getTask <em>Task</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Task</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getTask()
+         * @see #getTaskExecution()
+         * @generated
+         */
+        EReference getTaskExecution_Task();
+
+        /**
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration <em>Robot Collaboration</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Robot Collaboration</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
+         * @generated
+         */
+        EClass getRobotCollaboration();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getCollaborator <em>Collaborator</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Collaborator</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getCollaborator()
+         * @see #getRobotCollaboration()
+         * @generated
+         */
+        EReference getRobotCollaboration_Collaborator();
+
+        /**
+         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getAvailabilityRange <em>Availability Range</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference '<em>Availability Range</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getAvailabilityRange()
+         * @see #getRobotCollaboration()
+         * @generated
+         */
+        EReference getRobotCollaboration_AvailabilityRange();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getProperties <em>Properties</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Properties</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getProperties()
+         * @see #getRobotCollaboration()
+         * @generated
+         */
+        EReference getRobotCollaboration_Properties();
+
+        /**
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.DetectedObject <em>Detected Object</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Detected Object</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DetectedObject
+         * @generated
+         */
+        EClass getDetectedObject();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.DetectedObject#getObject <em>Object</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Object</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DetectedObject#getObject()
+         * @see #getDetectedObject()
+         * @generated
+         */
+        EReference getDetectedObject_Object();
+
+        /**
+         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.behaviour.DetectedObject#isObstacle <em>Obstacle</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the attribute '<em>Obstacle</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DetectedObject#isObstacle()
+         * @see #getDetectedObject()
+         * @generated
+         */
+        EAttribute getDetectedObject_Obstacle();
+
+        /**
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot <em>Dynamic Robot</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Dynamic Robot</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
+         * @generated
+         */
+        EClass getDynamicRobot();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getRobot <em>Robot</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Robot</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getRobot()
+         * @see #getDynamicRobot()
+         * @generated
+         */
+        EReference getDynamicRobot_Robot();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getDetectedObjects <em>Detected Objects</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Detected Objects</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getDetectedObjects()
+         * @see #getDynamicRobot()
+         * @generated
+         */
+        EReference getDynamicRobot_DetectedObjects();
+
+        /**
+         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getCollaborations <em>Collaborations</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference '<em>Collaborations</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getCollaborations()
+         * @see #getDynamicRobot()
+         * @generated
+         */
+        EReference getDynamicRobot_Collaborations();
+
+        /**
+         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getMessageRepository <em>Message Repository</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference '<em>Message Repository</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getMessageRepository()
+         * @see #getDynamicRobot()
+         * @generated
+         */
+        EReference getDynamicRobot_MessageRepository();
+
+        /**
+         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getStatus <em>Status</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the attribute '<em>Status</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getStatus()
+         * @see #getDynamicRobot()
+         * @generated
+         */
+        EAttribute getDynamicRobot_Status();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getActions <em>Actions</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Actions</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getActions()
+         * @see #getDynamicRobot()
+         * @generated
+         */
+        EReference getDynamicRobot_Actions();
+
+        /**
          * Returns the meta object for enum '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -760,6 +1218,26 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         EEnum getCommunicationType();
+
+        /**
+         * Returns the meta object for enum '{@link hu.bme.mdsd.ztz.model.behaviour.RobotStatus <em>Robot Status</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for enum '<em>Robot Status</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.RobotStatus
+         * @generated
+         */
+        EEnum getRobotStatus();
+
+        /**
+         * Returns the meta object for enum '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus <em>Task Execution Status</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for enum '<em>Task Execution Status</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus
+         * @generated
+         */
+        EEnum getTaskExecutionStatus();
 
         /**
          * Returns the factory that creates the instances of the model.
@@ -795,20 +1273,12 @@ public interface BehaviourPackage extends EPackage {
                 EClass BEHAVIOUR_CONTAINER = eINSTANCE.getBehaviourContainer();
 
                 /**
-                 * The meta object literal for the '<em><b>Communication Actions</b></em>' containment reference list feature.
+                 * The meta object literal for the '<em><b>Dynamic Robots</b></em>' reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
-                EReference BEHAVIOUR_CONTAINER__COMMUNICATION_ACTIONS = eINSTANCE.getBehaviourContainer_CommunicationActions();
-
-                /**
-                 * The meta object literal for the '<em><b>Message Repositories</b></em>' containment reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference BEHAVIOUR_CONTAINER__MESSAGE_REPOSITORIES = eINSTANCE.getBehaviourContainer_MessageRepositories();
+                EReference BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS = eINSTANCE.getBehaviourContainer_DynamicRobots();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl <em>Message</em>}' class.
@@ -943,7 +1413,7 @@ public interface BehaviourPackage extends EPackage {
                 EClass MESSAGE_REPOSITORY = eINSTANCE.getMessageRepository();
 
                 /**
-                 * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+                 * The meta object literal for the '<em><b>Robot</b></em>' container reference feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
@@ -967,6 +1437,192 @@ public interface BehaviourPackage extends EPackage {
                 EReference MESSAGE_REPOSITORY__SENDED_MESSAGES = eINSTANCE.getMessageRepository_SendedMessages();
 
                 /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.ActionImpl <em>Action</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.ActionImpl
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getAction()
+                 * @generated
+                 */
+                EClass ACTION = eINSTANCE.getAction();
+
+                /**
+                 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ACTION__PROPERTIES = eINSTANCE.getAction_Properties();
+
+                /**
+                 * The meta object literal for the '<em><b>Current Task</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ACTION__CURRENT_TASK = eINSTANCE.getAction_CurrentTask();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl <em>Task Execution</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getTaskExecution()
+                 * @generated
+                 */
+                EClass TASK_EXECUTION = eINSTANCE.getTaskExecution();
+
+                /**
+                 * The meta object literal for the '<em><b>Executors</b></em>' reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_EXECUTION__EXECUTORS = eINSTANCE.getTaskExecution_Executors();
+
+                /**
+                 * The meta object literal for the '<em><b>Execution Time</b></em>' containment reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_EXECUTION__EXECUTION_TIME = eINSTANCE.getTaskExecution_ExecutionTime();
+
+                /**
+                 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EAttribute TASK_EXECUTION__STATUS = eINSTANCE.getTaskExecution_Status();
+
+                /**
+                 * The meta object literal for the '<em><b>Task</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_EXECUTION__TASK = eINSTANCE.getTaskExecution_Task();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.RobotCollaborationImpl <em>Robot Collaboration</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.RobotCollaborationImpl
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getRobotCollaboration()
+                 * @generated
+                 */
+                EClass ROBOT_COLLABORATION = eINSTANCE.getRobotCollaboration();
+
+                /**
+                 * The meta object literal for the '<em><b>Collaborator</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ROBOT_COLLABORATION__COLLABORATOR = eINSTANCE.getRobotCollaboration_Collaborator();
+
+                /**
+                 * The meta object literal for the '<em><b>Availability Range</b></em>' containment reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ROBOT_COLLABORATION__AVAILABILITY_RANGE = eINSTANCE.getRobotCollaboration_AvailabilityRange();
+
+                /**
+                 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ROBOT_COLLABORATION__PROPERTIES = eINSTANCE.getRobotCollaboration_Properties();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.DetectedObjectImpl <em>Detected Object</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.DetectedObjectImpl
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getDetectedObject()
+                 * @generated
+                 */
+                EClass DETECTED_OBJECT = eINSTANCE.getDetectedObject();
+
+                /**
+                 * The meta object literal for the '<em><b>Object</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference DETECTED_OBJECT__OBJECT = eINSTANCE.getDetectedObject_Object();
+
+                /**
+                 * The meta object literal for the '<em><b>Obstacle</b></em>' attribute feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EAttribute DETECTED_OBJECT__OBSTACLE = eINSTANCE.getDetectedObject_Obstacle();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.DynamicRobotImpl <em>Dynamic Robot</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.DynamicRobotImpl
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getDynamicRobot()
+                 * @generated
+                 */
+                EClass DYNAMIC_ROBOT = eINSTANCE.getDynamicRobot();
+
+                /**
+                 * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference DYNAMIC_ROBOT__ROBOT = eINSTANCE.getDynamicRobot_Robot();
+
+                /**
+                 * The meta object literal for the '<em><b>Detected Objects</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference DYNAMIC_ROBOT__DETECTED_OBJECTS = eINSTANCE.getDynamicRobot_DetectedObjects();
+
+                /**
+                 * The meta object literal for the '<em><b>Collaborations</b></em>' containment reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference DYNAMIC_ROBOT__COLLABORATIONS = eINSTANCE.getDynamicRobot_Collaborations();
+
+                /**
+                 * The meta object literal for the '<em><b>Message Repository</b></em>' containment reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference DYNAMIC_ROBOT__MESSAGE_REPOSITORY = eINSTANCE.getDynamicRobot_MessageRepository();
+
+                /**
+                 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EAttribute DYNAMIC_ROBOT__STATUS = eINSTANCE.getDynamicRobot_Status();
+
+                /**
+                 * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference DYNAMIC_ROBOT__ACTIONS = eINSTANCE.getDynamicRobot_Actions();
+
+                /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}' enum.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -975,6 +1631,26 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EEnum COMMUNICATION_TYPE = eINSTANCE.getCommunicationType();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.RobotStatus <em>Robot Status</em>}' enum.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.behaviour.RobotStatus
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getRobotStatus()
+                 * @generated
+                 */
+                EEnum ROBOT_STATUS = eINSTANCE.getRobotStatus();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus <em>Task Execution Status</em>}' enum.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getTaskExecutionStatus()
+                 * @generated
+                 */
+                EEnum TASK_EXECUTION_STATUS = eINSTANCE.getTaskExecutionStatus();
 
         }
 

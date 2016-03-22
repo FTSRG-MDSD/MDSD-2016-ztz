@@ -168,7 +168,6 @@ public interface TaskRequirement extends EObject {
          * @return the value of the '<em>Descriptor</em>' reference.
          * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTaskRequirement_Descriptor()
          * @model transient="true" changeable="false" volatile="true" derived="true"
-         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.descriptor'"
          * @generated
          */
         TaskDescriptor getDescriptor();

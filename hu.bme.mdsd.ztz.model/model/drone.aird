@@ -2,8 +2,8 @@
 <viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_bCiswOYIEeWtrtcnSjKfkw" selectedViews="_bFvKsOYIEeWtrtcnSjKfkw _tJLaQOqjEeW2ga0N-O80vg _tJ_SkOqjEeW2ga0N-O80vg _tM41kOqjEeW2ga0N-O80vg" version="10.1.0.201509162000">
   <semanticResources>drone.ecore</semanticResources>
   <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
-  <semanticResources>drone.genmodel</semanticResources>
   <semanticResources>behaviour.ecore</semanticResources>
+  <semanticResources>drone.genmodel</semanticResources>
   <semanticResources>behaviour.genmodel</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_bFvKsOYIEeWtrtcnSjKfkw">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_bGgmwOYIEeWtrtcnSjKfkw" name="drone">

@@ -4,8 +4,8 @@ package hu.bme.mdsd.ztz.model.behaviour.util;
 
 import hu.bme.mdsd.ztz.model.behaviour.*;
 
-import hu.bme.mdsd.ztz.model.drone.Action;
 import hu.bme.mdsd.ztz.model.drone.NamedElement;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -100,6 +100,22 @@ public class BehaviourAdapterFactory extends AdapterFactoryImpl {
                         @Override
                         public Adapter caseAction(Action object) {
                                 return createActionAdapter();
+                        }
+                        @Override
+                        public Adapter caseTaskExecution(TaskExecution object) {
+                                return createTaskExecutionAdapter();
+                        }
+                        @Override
+                        public Adapter caseRobotCollaboration(RobotCollaboration object) {
+                                return createRobotCollaborationAdapter();
+                        }
+                        @Override
+                        public Adapter caseDetectedObject(DetectedObject object) {
+                                return createDetectedObjectAdapter();
+                        }
+                        @Override
+                        public Adapter caseDynamicRobot(DynamicRobot object) {
+                                return createDynamicRobotAdapter();
                         }
                         @Override
                         public Adapter caseNamedElement(NamedElement object) {
@@ -224,16 +240,72 @@ public class BehaviourAdapterFactory extends AdapterFactoryImpl {
         }
 
         /**
-         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.Action <em>Action</em>}'.
+         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.behaviour.Action <em>Action</em>}'.
          * <!-- begin-user-doc -->
          * This default implementation returns null so that we can easily ignore cases;
          * it's useful to ignore a case when inheritance will catch all the cases anyway.
          * <!-- end-user-doc -->
          * @return the new adapter.
-         * @see hu.bme.mdsd.ztz.model.drone.Action
+         * @see hu.bme.mdsd.ztz.model.behaviour.Action
          * @generated
          */
         public Adapter createActionAdapter() {
+                return null;
+        }
+
+        /**
+         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution <em>Task Execution</em>}'.
+         * <!-- begin-user-doc -->
+         * This default implementation returns null so that we can easily ignore cases;
+         * it's useful to ignore a case when inheritance will catch all the cases anyway.
+         * <!-- end-user-doc -->
+         * @return the new adapter.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecution
+         * @generated
+         */
+        public Adapter createTaskExecutionAdapter() {
+                return null;
+        }
+
+        /**
+         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration <em>Robot Collaboration</em>}'.
+         * <!-- begin-user-doc -->
+         * This default implementation returns null so that we can easily ignore cases;
+         * it's useful to ignore a case when inheritance will catch all the cases anyway.
+         * <!-- end-user-doc -->
+         * @return the new adapter.
+         * @see hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
+         * @generated
+         */
+        public Adapter createRobotCollaborationAdapter() {
+                return null;
+        }
+
+        /**
+         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.behaviour.DetectedObject <em>Detected Object</em>}'.
+         * <!-- begin-user-doc -->
+         * This default implementation returns null so that we can easily ignore cases;
+         * it's useful to ignore a case when inheritance will catch all the cases anyway.
+         * <!-- end-user-doc -->
+         * @return the new adapter.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DetectedObject
+         * @generated
+         */
+        public Adapter createDetectedObjectAdapter() {
+                return null;
+        }
+
+        /**
+         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot <em>Dynamic Robot</em>}'.
+         * <!-- begin-user-doc -->
+         * This default implementation returns null so that we can easily ignore cases;
+         * it's useful to ignore a case when inheritance will catch all the cases anyway.
+         * <!-- end-user-doc -->
+         * @return the new adapter.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
+         * @generated
+         */
+        public Adapter createDynamicRobotAdapter() {
                 return null;
         }
 

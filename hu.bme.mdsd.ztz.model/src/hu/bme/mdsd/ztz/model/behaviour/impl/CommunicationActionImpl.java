@@ -7,15 +7,14 @@ import hu.bme.mdsd.ztz.model.behaviour.CommunicationAction;
 import hu.bme.mdsd.ztz.model.behaviour.CommunicationType;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 
-import hu.bme.mdsd.ztz.model.drone.impl.ActionImpl;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class CommunicationActionImpl extends ActionImpl implements CommunicationAction {
+public abstract class CommunicationActionImpl extends MinimalEObjectImpl.Container implements CommunicationAction {
         /**
          * The cached value of the '{@link #getMessage() <em>Message</em>}' containment reference.
          * <!-- begin-user-doc -->

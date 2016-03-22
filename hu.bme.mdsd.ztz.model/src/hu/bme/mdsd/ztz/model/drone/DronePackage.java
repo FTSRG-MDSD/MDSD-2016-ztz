@@ -4,7 +4,6 @@ package hu.bme.mdsd.ztz.model.drone;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -66,7 +65,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getNamedElement()
          * @generated
          */
-        int NAMED_ELEMENT = 14;
+        int NAMED_ELEMENT = 12;
 
         /**
          * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -124,22 +123,13 @@ public interface DronePackage extends EPackage {
         int MISSION__TASKS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
         /**
-         * The feature id for the '<em><b>Estimated Time</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MISSION__ESTIMATED_TIME = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-        /**
          * The number of structural features of the '<em>Mission</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int MISSION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+        int MISSION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
         /**
          * The number of operations of the '<em>Mission</em>' class.
@@ -188,40 +178,13 @@ public interface DronePackage extends EPackage {
         int TASK__DESCRIPTOR = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
         /**
-         * The feature id for the '<em><b>Execution</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK__EXECUTION = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-        /**
          * The feature id for the '<em><b>Requirement</b></em>' containment reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK__REQUIREMENT = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-        /**
-         * The feature id for the '<em><b>Status</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK__STATUS = NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-        /**
-         * The feature id for the '<em><b>Estimated Time</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK__ESTIMATED_TIME = NAMED_ELEMENT_FEATURE_COUNT + 5;
+        int TASK__REQUIREMENT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
         /**
          * The number of structural features of the '<em>Task</em>' class.
@@ -230,7 +193,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int TASK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
+        int TASK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
         /**
          * The number of operations of the '<em>Task</em>' class.
@@ -554,31 +517,13 @@ public interface DronePackage extends EPackage {
         int ROBOT__BATTERIES = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
         /**
-         * The feature id for the '<em><b>Collaborations</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT__COLLABORATIONS = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-        /**
-         * The feature id for the '<em><b>Detected Objects</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT__DETECTED_OBJECTS = NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-        /**
          * The feature id for the '<em><b>Equipments</b></em>' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int ROBOT__EQUIPMENTS = NAMED_ELEMENT_FEATURE_COUNT + 5;
+        int ROBOT__EQUIPMENTS = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
         /**
          * The feature id for the '<em><b>Tasks</b></em>' reference list.
@@ -587,7 +532,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ROBOT__TASKS = NAMED_ELEMENT_FEATURE_COUNT + 6;
+        int ROBOT__TASKS = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
         /**
          * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -596,7 +541,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ROBOT__PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 7;
+        int ROBOT__PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
         /**
          * The feature id for the '<em><b>Communication Range</b></em>' containment reference.
@@ -605,7 +550,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ROBOT__COMMUNICATION_RANGE = NAMED_ELEMENT_FEATURE_COUNT + 8;
+        int ROBOT__COMMUNICATION_RANGE = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
         /**
          * The feature id for the '<em><b>Weight</b></em>' containment reference.
@@ -614,7 +559,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ROBOT__WEIGHT = NAMED_ELEMENT_FEATURE_COUNT + 9;
+        int ROBOT__WEIGHT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
         /**
          * The feature id for the '<em><b>Mission</b></em>' reference.
@@ -623,16 +568,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ROBOT__MISSION = NAMED_ELEMENT_FEATURE_COUNT + 10;
-
-        /**
-         * The feature id for the '<em><b>Actions</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT__ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 11;
+        int ROBOT__MISSION = NAMED_ELEMENT_FEATURE_COUNT + 8;
 
         /**
          * The feature id for the '<em><b>Capabilities</b></em>' reference list.
@@ -641,7 +577,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ROBOT__CAPABILITIES = NAMED_ELEMENT_FEATURE_COUNT + 12;
+        int ROBOT__CAPABILITIES = NAMED_ELEMENT_FEATURE_COUNT + 9;
 
         /**
          * The feature id for the '<em><b>Capability Properties</b></em>' containment reference list.
@@ -650,25 +586,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ROBOT__CAPABILITY_PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 13;
-
-        /**
-         * The feature id for the '<em><b>Execute</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT__EXECUTE = NAMED_ELEMENT_FEATURE_COUNT + 14;
-
-        /**
-         * The feature id for the '<em><b>Message Repository</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT__MESSAGE_REPOSITORY = NAMED_ELEMENT_FEATURE_COUNT + 15;
+        int ROBOT__CAPABILITY_PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 10;
 
         /**
          * The number of structural features of the '<em>Robot</em>' class.
@@ -677,7 +595,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ROBOT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 16;
+        int ROBOT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 11;
 
         /**
          * The number of operations of the '<em>Robot</em>' class.
@@ -696,7 +614,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getPropertyValue()
          * @generated
          */
-        int PROPERTY_VALUE = 22;
+        int PROPERTY_VALUE = 18;
 
         /**
          * The number of structural features of the '<em>Property Value</em>' class.
@@ -754,116 +672,6 @@ public interface DronePackage extends EPackage {
         int STRING_PROPERTY_OPERATION_COUNT = PROPERTY_VALUE_OPERATION_COUNT + 0;
 
         /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.TaskExecutionImpl <em>Task Execution</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.impl.TaskExecutionImpl
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getTaskExecution()
-         * @generated
-         */
-        int TASK_EXECUTION = 9;
-
-        /**
-         * The feature id for the '<em><b>Executors</b></em>' reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_EXECUTION__EXECUTORS = 0;
-
-        /**
-         * The feature id for the '<em><b>Execution Time</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_EXECUTION__EXECUTION_TIME = 1;
-
-        /**
-         * The feature id for the '<em><b>Status</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_EXECUTION__STATUS = 2;
-
-        /**
-         * The feature id for the '<em><b>Task</b></em>' container reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_EXECUTION__TASK = 3;
-
-        /**
-         * The number of structural features of the '<em>Task Execution</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_EXECUTION_FEATURE_COUNT = 4;
-
-        /**
-         * The number of operations of the '<em>Task Execution</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_EXECUTION_OPERATION_COUNT = 0;
-
-        /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.RobotCollaborationImpl <em>Robot Collaboration</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.impl.RobotCollaborationImpl
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getRobotCollaboration()
-         * @generated
-         */
-        int ROBOT_COLLABORATION = 10;
-
-        /**
-         * The feature id for the '<em><b>Collaborator</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT_COLLABORATION__COLLABORATOR = 0;
-
-        /**
-         * The feature id for the '<em><b>Availability Range</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT_COLLABORATION__AVAILABILITY_RANGE = 1;
-
-        /**
-         * The number of structural features of the '<em>Robot Collaboration</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT_COLLABORATION_FEATURE_COUNT = 2;
-
-        /**
-         * The number of operations of the '<em>Robot Collaboration</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT_COLLABORATION_OPERATION_COUNT = 0;
-
-        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl <em>Task Requirement</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -871,7 +679,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getTaskRequirement()
          * @generated
          */
-        int TASK_REQUIREMENT = 11;
+        int TASK_REQUIREMENT = 9;
 
         /**
          * The feature id for the '<em><b>Task</b></em>' container reference.
@@ -962,7 +770,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getSize()
          * @generated
          */
-        int SIZE = 12;
+        int SIZE = 10;
 
         /**
          * The feature id for the '<em><b>Width</b></em>' containment reference.
@@ -1017,7 +825,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getBattery()
          * @generated
          */
-        int BATTERY = 13;
+        int BATTERY = 11;
 
         /**
          * The feature id for the '<em><b>Capacity</b></em>' containment reference.
@@ -1074,52 +882,6 @@ public interface DronePackage extends EPackage {
         int BATTERY_OPERATION_COUNT = 0;
 
         /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.DetectedObjectImpl <em>Detected Object</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DetectedObjectImpl
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getDetectedObject()
-         * @generated
-         */
-        int DETECTED_OBJECT = 15;
-
-        /**
-         * The feature id for the '<em><b>Object</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int DETECTED_OBJECT__OBJECT = 0;
-
-        /**
-         * The feature id for the '<em><b>Obstacle</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int DETECTED_OBJECT__OBSTACLE = 1;
-
-        /**
-         * The number of structural features of the '<em>Detected Object</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int DETECTED_OBJECT_FEATURE_COUNT = 2;
-
-        /**
-         * The number of operations of the '<em>Detected Object</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int DETECTED_OBJECT_OPERATION_COUNT = 0;
-
-        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.EquipmentImpl <em>Equipment</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1127,7 +889,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getEquipment()
          * @generated
          */
-        int EQUIPMENT = 16;
+        int EQUIPMENT = 13;
 
         /**
          * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1175,52 +937,6 @@ public interface DronePackage extends EPackage {
         int EQUIPMENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.ActionImpl <em>Action</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.impl.ActionImpl
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getAction()
-         * @generated
-         */
-        int ACTION = 17;
-
-        /**
-         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ACTION__PROPERTIES = 0;
-
-        /**
-         * The feature id for the '<em><b>Current Task</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ACTION__CURRENT_TASK = 1;
-
-        /**
-         * The number of structural features of the '<em>Action</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ACTION_FEATURE_COUNT = 2;
-
-        /**
-         * The number of operations of the '<em>Action</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ACTION_OPERATION_COUNT = 0;
-
-        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.MeasureValueImpl <em>Measure Value</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1228,7 +944,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureValue()
          * @generated
          */
-        int MEASURE_VALUE = 18;
+        int MEASURE_VALUE = 14;
 
         /**
          * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1274,7 +990,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureConversion()
          * @generated
          */
-        int MEASURE_CONVERSION = 19;
+        int MEASURE_CONVERSION = 15;
 
         /**
          * The feature id for the '<em><b>Rate</b></em>' attribute.
@@ -1320,7 +1036,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureDimension()
          * @generated
          */
-        int MEASURE_DIMENSION = 20;
+        int MEASURE_DIMENSION = 16;
 
         /**
          * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1366,7 +1082,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureProperty()
          * @generated
          */
-        int MEASURE_PROPERTY = 21;
+        int MEASURE_PROPERTY = 17;
 
         /**
          * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -1403,7 +1119,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getRobotMissionContainer()
          * @generated
          */
-        int ROBOT_MISSION_CONTAINER = 23;
+        int ROBOT_MISSION_CONTAINER = 19;
 
         /**
          * The feature id for the '<em><b>Missions</b></em>' containment reference list.
@@ -1476,7 +1192,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getCapability()
          * @generated
          */
-        int CAPABILITY = 24;
+        int CAPABILITY = 20;
 
         /**
          * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1513,7 +1229,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getCapabilityProperties()
          * @generated
          */
-        int CAPABILITY_PROPERTIES = 25;
+        int CAPABILITY_PROPERTIES = 21;
 
         /**
          * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -1551,26 +1267,6 @@ public interface DronePackage extends EPackage {
          */
         int CAPABILITY_PROPERTIES_OPERATION_COUNT = 0;
 
-        /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus <em>Task Execution Status</em>}' enum.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getTaskExecutionStatus()
-         * @generated
-         */
-        int TASK_EXECUTION_STATUS = 26;
-
-        /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.TaskStatus <em>Task Status</em>}' enum.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.TaskStatus
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getTaskStatus()
-         * @generated
-         */
-        int TASK_STATUS = 27;
-
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.Mission <em>Mission</em>}'.
@@ -1592,17 +1288,6 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EReference getMission_Tasks();
-
-        /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.Mission#getEstimatedTime <em>Estimated Time</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Estimated Time</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Mission#getEstimatedTime()
-         * @see #getMission()
-         * @generated
-         */
-        EReference getMission_EstimatedTime();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.Task <em>Task</em>}'.
@@ -1637,17 +1322,6 @@ public interface DronePackage extends EPackage {
         EReference getTask_Descriptor();
 
         /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.Task#getExecution <em>Execution</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Execution</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Task#getExecution()
-         * @see #getTask()
-         * @generated
-         */
-        EReference getTask_Execution();
-
-        /**
          * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.Task#getRequirement <em>Requirement</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1657,28 +1331,6 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EReference getTask_Requirement();
-
-        /**
-         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.drone.Task#getStatus <em>Status</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the attribute '<em>Status</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Task#getStatus()
-         * @see #getTask()
-         * @generated
-         */
-        EAttribute getTask_Status();
-
-        /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.Task#getEstimatedTime <em>Estimated Time</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Estimated Time</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Task#getEstimatedTime()
-         * @see #getTask()
-         * @generated
-         */
-        EReference getTask_EstimatedTime();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.TaskDescriptor <em>Task Descriptor</em>}'.
@@ -1917,28 +1569,6 @@ public interface DronePackage extends EPackage {
         EReference getRobot_Batteries();
 
         /**
-         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.drone.Robot#getCollaborations <em>Collaborations</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference list '<em>Collaborations</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Robot#getCollaborations()
-         * @see #getRobot()
-         * @generated
-         */
-        EReference getRobot_Collaborations();
-
-        /**
-         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.drone.Robot#getDetectedObjects <em>Detected Objects</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference list '<em>Detected Objects</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Robot#getDetectedObjects()
-         * @see #getRobot()
-         * @generated
-         */
-        EReference getRobot_DetectedObjects();
-
-        /**
          * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.drone.Robot#getEquipments <em>Equipments</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2005,17 +1635,6 @@ public interface DronePackage extends EPackage {
         EReference getRobot_Mission();
 
         /**
-         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.drone.Robot#getActions <em>Actions</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference list '<em>Actions</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Robot#getActions()
-         * @see #getRobot()
-         * @generated
-         */
-        EReference getRobot_Actions();
-
-        /**
          * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.drone.Robot#getCapabilities <em>Capabilities</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2038,28 +1657,6 @@ public interface DronePackage extends EPackage {
         EReference getRobot_CapabilityProperties();
 
         /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.Robot#getExecute <em>Execute</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Execute</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Robot#getExecute()
-         * @see #getRobot()
-         * @generated
-         */
-        EReference getRobot_Execute();
-
-        /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository <em>Message Repository</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Message Repository</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository()
-         * @see #getRobot()
-         * @generated
-         */
-        EReference getRobot_MessageRepository();
-
-        /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.StringProperty <em>String Property</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2079,92 +1676,6 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EAttribute getStringProperty_Value();
-
-        /**
-         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.TaskExecution <em>Task Execution</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for class '<em>Task Execution</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecution
-         * @generated
-         */
-        EClass getTaskExecution();
-
-        /**
-         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.drone.TaskExecution#getExecutors <em>Executors</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference list '<em>Executors</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecution#getExecutors()
-         * @see #getTaskExecution()
-         * @generated
-         */
-        EReference getTaskExecution_Executors();
-
-        /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.TaskExecution#getExecutionTime <em>Execution Time</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Execution Time</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecution#getExecutionTime()
-         * @see #getTaskExecution()
-         * @generated
-         */
-        EReference getTaskExecution_ExecutionTime();
-
-        /**
-         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.drone.TaskExecution#getStatus <em>Status</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the attribute '<em>Status</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecution#getStatus()
-         * @see #getTaskExecution()
-         * @generated
-         */
-        EAttribute getTaskExecution_Status();
-
-        /**
-         * Returns the meta object for the container reference '{@link hu.bme.mdsd.ztz.model.drone.TaskExecution#getTask <em>Task</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the container reference '<em>Task</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecution#getTask()
-         * @see #getTaskExecution()
-         * @generated
-         */
-        EReference getTaskExecution_Task();
-
-        /**
-         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.RobotCollaboration <em>Robot Collaboration</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for class '<em>Robot Collaboration</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.RobotCollaboration
-         * @generated
-         */
-        EClass getRobotCollaboration();
-
-        /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.RobotCollaboration#getCollaborator <em>Collaborator</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Collaborator</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.RobotCollaboration#getCollaborator()
-         * @see #getRobotCollaboration()
-         * @generated
-         */
-        EReference getRobotCollaboration_Collaborator();
-
-        /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.RobotCollaboration#getAvailabilityRange <em>Availability Range</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Availability Range</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.RobotCollaboration#getAvailabilityRange()
-         * @see #getRobotCollaboration()
-         * @generated
-         */
-        EReference getRobotCollaboration_AvailabilityRange();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement <em>Task Requirement</em>}'.
@@ -2372,38 +1883,6 @@ public interface DronePackage extends EPackage {
         EAttribute getNamedElement_Name();
 
         /**
-         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.DetectedObject <em>Detected Object</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for class '<em>Detected Object</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.DetectedObject
-         * @generated
-         */
-        EClass getDetectedObject();
-
-        /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.DetectedObject#getObject <em>Object</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Object</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.DetectedObject#getObject()
-         * @see #getDetectedObject()
-         * @generated
-         */
-        EReference getDetectedObject_Object();
-
-        /**
-         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.drone.DetectedObject#isObstacle <em>Obstacle</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the attribute '<em>Obstacle</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.DetectedObject#isObstacle()
-         * @see #getDetectedObject()
-         * @generated
-         */
-        EAttribute getDetectedObject_Obstacle();
-
-        /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.Equipment <em>Equipment</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2434,38 +1913,6 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EReference getEquipment_Facilitate();
-
-        /**
-         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.Action <em>Action</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for class '<em>Action</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Action
-         * @generated
-         */
-        EClass getAction();
-
-        /**
-         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.drone.Action#getProperties <em>Properties</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference list '<em>Properties</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Action#getProperties()
-         * @see #getAction()
-         * @generated
-         */
-        EReference getAction_Properties();
-
-        /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.Action#getCurrentTask <em>Current Task</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Current Task</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Action#getCurrentTask()
-         * @see #getAction()
-         * @generated
-         */
-        EReference getAction_CurrentTask();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.MeasureValue <em>Measure Value</em>}'.
@@ -2691,26 +2138,6 @@ public interface DronePackage extends EPackage {
         EReference getCapabilityProperties_Capability();
 
         /**
-         * Returns the meta object for enum '{@link hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus <em>Task Execution Status</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for enum '<em>Task Execution Status</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus
-         * @generated
-         */
-        EEnum getTaskExecutionStatus();
-
-        /**
-         * Returns the meta object for enum '{@link hu.bme.mdsd.ztz.model.drone.TaskStatus <em>Task Status</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for enum '<em>Task Status</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskStatus
-         * @generated
-         */
-        EEnum getTaskStatus();
-
-        /**
          * Returns the factory that creates the instances of the model.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2752,14 +2179,6 @@ public interface DronePackage extends EPackage {
                 EReference MISSION__TASKS = eINSTANCE.getMission_Tasks();
 
                 /**
-                 * The meta object literal for the '<em><b>Estimated Time</b></em>' containment reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference MISSION__ESTIMATED_TIME = eINSTANCE.getMission_EstimatedTime();
-
-                /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.TaskImpl <em>Task</em>}' class.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -2786,36 +2205,12 @@ public interface DronePackage extends EPackage {
                 EReference TASK__DESCRIPTOR = eINSTANCE.getTask_Descriptor();
 
                 /**
-                 * The meta object literal for the '<em><b>Execution</b></em>' containment reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK__EXECUTION = eINSTANCE.getTask_Execution();
-
-                /**
                  * The meta object literal for the '<em><b>Requirement</b></em>' containment reference feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
                 EReference TASK__REQUIREMENT = eINSTANCE.getTask_Requirement();
-
-                /**
-                 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EAttribute TASK__STATUS = eINSTANCE.getTask_Status();
-
-                /**
-                 * The meta object literal for the '<em><b>Estimated Time</b></em>' reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK__ESTIMATED_TIME = eINSTANCE.getTask_EstimatedTime();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.TaskDescriptorImpl <em>Task Descriptor</em>}' class.
@@ -3006,22 +2401,6 @@ public interface DronePackage extends EPackage {
                 EReference ROBOT__BATTERIES = eINSTANCE.getRobot_Batteries();
 
                 /**
-                 * The meta object literal for the '<em><b>Collaborations</b></em>' containment reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ROBOT__COLLABORATIONS = eINSTANCE.getRobot_Collaborations();
-
-                /**
-                 * The meta object literal for the '<em><b>Detected Objects</b></em>' containment reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ROBOT__DETECTED_OBJECTS = eINSTANCE.getRobot_DetectedObjects();
-
-                /**
                  * The meta object literal for the '<em><b>Equipments</b></em>' containment reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -3070,14 +2449,6 @@ public interface DronePackage extends EPackage {
                 EReference ROBOT__MISSION = eINSTANCE.getRobot_Mission();
 
                 /**
-                 * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ROBOT__ACTIONS = eINSTANCE.getRobot_Actions();
-
-                /**
                  * The meta object literal for the '<em><b>Capabilities</b></em>' reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -3092,22 +2463,6 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EReference ROBOT__CAPABILITY_PROPERTIES = eINSTANCE.getRobot_CapabilityProperties();
-
-                /**
-                 * The meta object literal for the '<em><b>Execute</b></em>' reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ROBOT__EXECUTE = eINSTANCE.getRobot_Execute();
-
-                /**
-                 * The meta object literal for the '<em><b>Message Repository</b></em>' reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ROBOT__MESSAGE_REPOSITORY = eINSTANCE.getRobot_MessageRepository();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.StringPropertyImpl <em>String Property</em>}' class.
@@ -3126,74 +2481,6 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EAttribute STRING_PROPERTY__VALUE = eINSTANCE.getStringProperty_Value();
-
-                /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.TaskExecutionImpl <em>Task Execution</em>}' class.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.TaskExecutionImpl
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getTaskExecution()
-                 * @generated
-                 */
-                EClass TASK_EXECUTION = eINSTANCE.getTaskExecution();
-
-                /**
-                 * The meta object literal for the '<em><b>Executors</b></em>' reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_EXECUTION__EXECUTORS = eINSTANCE.getTaskExecution_Executors();
-
-                /**
-                 * The meta object literal for the '<em><b>Execution Time</b></em>' containment reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_EXECUTION__EXECUTION_TIME = eINSTANCE.getTaskExecution_ExecutionTime();
-
-                /**
-                 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EAttribute TASK_EXECUTION__STATUS = eINSTANCE.getTaskExecution_Status();
-
-                /**
-                 * The meta object literal for the '<em><b>Task</b></em>' container reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_EXECUTION__TASK = eINSTANCE.getTaskExecution_Task();
-
-                /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.RobotCollaborationImpl <em>Robot Collaboration</em>}' class.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.RobotCollaborationImpl
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getRobotCollaboration()
-                 * @generated
-                 */
-                EClass ROBOT_COLLABORATION = eINSTANCE.getRobotCollaboration();
-
-                /**
-                 * The meta object literal for the '<em><b>Collaborator</b></em>' reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ROBOT_COLLABORATION__COLLABORATOR = eINSTANCE.getRobotCollaboration_Collaborator();
-
-                /**
-                 * The meta object literal for the '<em><b>Availability Range</b></em>' containment reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ROBOT_COLLABORATION__AVAILABILITY_RANGE = eINSTANCE.getRobotCollaboration_AvailabilityRange();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl <em>Task Requirement</em>}' class.
@@ -3356,32 +2643,6 @@ public interface DronePackage extends EPackage {
                 EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
                 /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.DetectedObjectImpl <em>Detected Object</em>}' class.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DetectedObjectImpl
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getDetectedObject()
-                 * @generated
-                 */
-                EClass DETECTED_OBJECT = eINSTANCE.getDetectedObject();
-
-                /**
-                 * The meta object literal for the '<em><b>Object</b></em>' reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference DETECTED_OBJECT__OBJECT = eINSTANCE.getDetectedObject_Object();
-
-                /**
-                 * The meta object literal for the '<em><b>Obstacle</b></em>' attribute feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EAttribute DETECTED_OBJECT__OBSTACLE = eINSTANCE.getDetectedObject_Obstacle();
-
-                /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.EquipmentImpl <em>Equipment</em>}' class.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -3406,32 +2667,6 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EReference EQUIPMENT__FACILITATE = eINSTANCE.getEquipment_Facilitate();
-
-                /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.ActionImpl <em>Action</em>}' class.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.ActionImpl
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getAction()
-                 * @generated
-                 */
-                EClass ACTION = eINSTANCE.getAction();
-
-                /**
-                 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ACTION__PROPERTIES = eINSTANCE.getAction_Properties();
-
-                /**
-                 * The meta object literal for the '<em><b>Current Task</b></em>' reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ACTION__CURRENT_TASK = eINSTANCE.getAction_CurrentTask();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.MeasureValueImpl <em>Measure Value</em>}' class.
@@ -3616,26 +2851,6 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EReference CAPABILITY_PROPERTIES__CAPABILITY = eINSTANCE.getCapabilityProperties_Capability();
-
-                /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus <em>Task Execution Status</em>}' enum.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getTaskExecutionStatus()
-                 * @generated
-                 */
-                EEnum TASK_EXECUTION_STATUS = eINSTANCE.getTaskExecutionStatus();
-
-                /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.TaskStatus <em>Task Status</em>}' enum.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.drone.TaskStatus
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getTaskStatus()
-                 * @generated
-                 */
-                EEnum TASK_STATUS = eINSTANCE.getTaskStatus();
 
         }
 

@@ -279,52 +279,6 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
         }
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.TaskExecution} instances.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected TaskExecutionItemProvider taskExecutionItemProvider;
-
-        /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.TaskExecution}.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public Adapter createTaskExecutionAdapter() {
-                if (taskExecutionItemProvider == null) {
-                        taskExecutionItemProvider = new TaskExecutionItemProvider(this);
-                }
-
-                return taskExecutionItemProvider;
-        }
-
-        /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.RobotCollaboration} instances.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected RobotCollaborationItemProvider robotCollaborationItemProvider;
-
-        /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.RobotCollaboration}.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public Adapter createRobotCollaborationAdapter() {
-                if (robotCollaborationItemProvider == null) {
-                        robotCollaborationItemProvider = new RobotCollaborationItemProvider(this);
-                }
-
-                return robotCollaborationItemProvider;
-        }
-
-        /**
          * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.TaskRequirement} instances.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -394,29 +348,6 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
         }
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.DetectedObject} instances.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected DetectedObjectItemProvider detectedObjectItemProvider;
-
-        /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.DetectedObject}.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public Adapter createDetectedObjectAdapter() {
-                if (detectedObjectItemProvider == null) {
-                        detectedObjectItemProvider = new DetectedObjectItemProvider(this);
-                }
-
-                return detectedObjectItemProvider;
-        }
-
-        /**
          * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Equipment} instances.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -437,29 +368,6 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
                 }
 
                 return equipmentItemProvider;
-        }
-
-        /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Action} instances.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected ActionItemProvider actionItemProvider;
-
-        /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Action}.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public Adapter createActionAdapter() {
-                if (actionItemProvider == null) {
-                        actionItemProvider = new ActionItemProvider(this);
-                }
-
-                return actionItemProvider;
         }
 
         /**
@@ -731,14 +639,10 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
                 if (propertyItemProvider != null) propertyItemProvider.dispose();
                 if (robotItemProvider != null) robotItemProvider.dispose();
                 if (stringPropertyItemProvider != null) stringPropertyItemProvider.dispose();
-                if (taskExecutionItemProvider != null) taskExecutionItemProvider.dispose();
-                if (robotCollaborationItemProvider != null) robotCollaborationItemProvider.dispose();
                 if (taskRequirementItemProvider != null) taskRequirementItemProvider.dispose();
                 if (sizeItemProvider != null) sizeItemProvider.dispose();
                 if (batteryItemProvider != null) batteryItemProvider.dispose();
-                if (detectedObjectItemProvider != null) detectedObjectItemProvider.dispose();
                 if (equipmentItemProvider != null) equipmentItemProvider.dispose();
-                if (actionItemProvider != null) actionItemProvider.dispose();
                 if (measureValueItemProvider != null) measureValueItemProvider.dispose();
                 if (measureConversionItemProvider != null) measureConversionItemProvider.dispose();
                 if (measureDimensionItemProvider != null) measureDimensionItemProvider.dispose();
