@@ -10,6 +10,7 @@ import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
 
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 
 import hu.bme.mdsd.ztz.model.drone.impl.NamedElementImpl;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -43,6 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.DynamicRobotImpl#getMessageRepository <em>Message Repository</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.DynamicRobotImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.DynamicRobotImpl#getActions <em>Actions</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.DynamicRobotImpl#getExecutedTasks <em>Executed Tasks</em>}</li>
  * </ul>
  *
  * @generated
@@ -117,6 +120,16 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
          * @ordered
          */
         protected EList<Action> actions;
+
+        /**
+         * The cached value of the '{@link #getExecutedTasks() <em>Executed Tasks</em>}' reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getExecutedTasks()
+         * @generated
+         * @ordered
+         */
+        protected EList<TaskExecution> executedTasks;
 
         /**
          * <!-- begin-user-doc -->
@@ -311,6 +324,18 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
          * <!-- end-user-doc -->
          * @generated
          */
+        public EList<TaskExecution> getExecutedTasks() {
+                if (executedTasks == null) {
+                        executedTasks = new EObjectResolvingEList<TaskExecution>(TaskExecution.class, this, BehaviourPackage.DYNAMIC_ROBOT__EXECUTED_TASKS);
+                }
+                return executedTasks;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -363,6 +388,8 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
                                 return getStatus();
                         case BehaviourPackage.DYNAMIC_ROBOT__ACTIONS:
                                 return getActions();
+                        case BehaviourPackage.DYNAMIC_ROBOT__EXECUTED_TASKS:
+                                return getExecutedTasks();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -396,6 +423,10 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
                                 getActions().clear();
                                 getActions().addAll((Collection<? extends Action>)newValue);
                                 return;
+                        case BehaviourPackage.DYNAMIC_ROBOT__EXECUTED_TASKS:
+                                getExecutedTasks().clear();
+                                getExecutedTasks().addAll((Collection<? extends TaskExecution>)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -426,6 +457,9 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
                         case BehaviourPackage.DYNAMIC_ROBOT__ACTIONS:
                                 getActions().clear();
                                 return;
+                        case BehaviourPackage.DYNAMIC_ROBOT__EXECUTED_TASKS:
+                                getExecutedTasks().clear();
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -450,6 +484,8 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
                                 return status != STATUS_EDEFAULT;
                         case BehaviourPackage.DYNAMIC_ROBOT__ACTIONS:
                                 return actions != null && !actions.isEmpty();
+                        case BehaviourPackage.DYNAMIC_ROBOT__EXECUTED_TASKS:
+                                return executedTasks != null && !executedTasks.isEmpty();
                 }
                 return super.eIsSet(featureID);
         }

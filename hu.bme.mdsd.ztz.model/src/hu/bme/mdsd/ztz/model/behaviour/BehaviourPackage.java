@@ -757,13 +757,22 @@ public interface BehaviourPackage extends EPackage {
         int DYNAMIC_ROBOT__ACTIONS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
         /**
+         * The feature id for the '<em><b>Executed Tasks</b></em>' reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT__EXECUTED_TASKS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+        /**
          * The number of structural features of the '<em>Dynamic Robot</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int DYNAMIC_ROBOT_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+        int DYNAMIC_ROBOT_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
 
         /**
          * The number of operations of the '<em>Dynamic Robot</em>' class.
@@ -1378,6 +1387,17 @@ public interface BehaviourPackage extends EPackage {
         EReference getDynamicRobot_Actions();
 
         /**
+         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getExecutedTasks <em>Executed Tasks</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference list '<em>Executed Tasks</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getExecutedTasks()
+         * @see #getDynamicRobot()
+         * @generated
+         */
+        EReference getDynamicRobot_ExecutedTasks();
+
+        /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement <em>Task Requirement</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1892,6 +1912,14 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference DYNAMIC_ROBOT__ACTIONS = eINSTANCE.getDynamicRobot_Actions();
+
+                /**
+                 * The meta object literal for the '<em><b>Executed Tasks</b></em>' reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference DYNAMIC_ROBOT__EXECUTED_TASKS = eINSTANCE.getDynamicRobot_ExecutedTasks();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl <em>Task Requirement</em>}' class.

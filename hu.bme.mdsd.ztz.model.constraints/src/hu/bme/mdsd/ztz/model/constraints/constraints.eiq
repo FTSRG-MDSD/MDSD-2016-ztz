@@ -133,7 +133,7 @@ pattern robotHasCapability(robot: DynamicRobot, capability: Capability) {
 //	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
 //)
 //pattern robotExecutingUnlinkedTask(robot: DynamicRobot, task: Task) {
-//	DynamicRobot.execute(robot, taskExecution);
+//	DynamicRobot.
 //	Task.execution(task, taskExecution);
 //	neg find robotHasTask(robot, task);
 //}

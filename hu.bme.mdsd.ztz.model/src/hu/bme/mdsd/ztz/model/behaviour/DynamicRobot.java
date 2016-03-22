@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getMessageRepository <em>Message Repository</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getStatus <em>Status</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getActions <em>Actions</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getExecutedTasks <em>Executed Tasks</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getDynamicRobot()
@@ -169,5 +170,21 @@ public interface DynamicRobot extends NamedElement {
          * @generated
          */
         EList<Action> getActions();
+
+        /**
+         * Returns the value of the '<em><b>Executed Tasks</b></em>' reference list.
+         * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution}.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Executed Tasks</em>' reference list isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Executed Tasks</em>' reference list.
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getDynamicRobot_ExecutedTasks()
+         * @model
+         * @generated
+         */
+        EList<TaskExecution> getExecutedTasks();
 
 } // DynamicRobot

@@ -103,6 +103,8 @@
         eType="#//RobotStatus"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executedTasks" upperBound="-1"
+        eType="#//TaskExecution"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskRequirement" eSuperTypes="drone.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="task" unique="false" lowerBound="1"

@@ -53,6 +53,7 @@ public class DynamicRobotItemProvider
 
                         addRobotPropertyDescriptor(object);
                         addStatusPropertyDescriptor(object);
+                        addExecutedTasksPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -97,6 +98,28 @@ public class DynamicRobotItemProvider
                                  false,
                                  false,
                                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                                 null,
+                                 null));
+        }
+
+        /**
+         * This adds a property descriptor for the Executed Tasks feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addExecutedTasksPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_DynamicRobot_executedTasks_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_DynamicRobot_executedTasks_feature", "_UI_DynamicRobot_type"),
+                                 BehaviourPackage.Literals.DYNAMIC_ROBOT__EXECUTED_TASKS,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
                                  null,
                                  null));
         }

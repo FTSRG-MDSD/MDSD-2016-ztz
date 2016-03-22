@@ -79,6 +79,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/messageRepository"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//DynamicRobot/status"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/actions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/executedTasks"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//TaskRequirement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/task"/>

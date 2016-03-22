@@ -615,6 +615,15 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          * <!-- end-user-doc -->
          * @generated
          */
+        public EReference getDynamicRobot_ExecutedTasks() {
+                return (EReference)dynamicRobotEClass.getEStructuralFeatures().get(6);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         public EClass getTaskRequirement() {
                 return taskRequirementEClass;
         }
@@ -792,6 +801,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 createEReference(dynamicRobotEClass, DYNAMIC_ROBOT__MESSAGE_REPOSITORY);
                 createEAttribute(dynamicRobotEClass, DYNAMIC_ROBOT__STATUS);
                 createEReference(dynamicRobotEClass, DYNAMIC_ROBOT__ACTIONS);
+                createEReference(dynamicRobotEClass, DYNAMIC_ROBOT__EXECUTED_TASKS);
 
                 taskRequirementEClass = createEClass(TASK_REQUIREMENT);
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__TASK);
@@ -904,6 +914,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 initEReference(getDynamicRobot_MessageRepository(), this.getMessageRepository(), this.getMessageRepository_Robot(), "messageRepository", null, 0, 1, DynamicRobot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEAttribute(getDynamicRobot_Status(), this.getRobotStatus(), "status", null, 1, 1, DynamicRobot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getDynamicRobot_Actions(), this.getAction(), null, "actions", null, 0, -1, DynamicRobot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getDynamicRobot_ExecutedTasks(), this.getTaskExecution(), null, "executedTasks", null, 0, -1, DynamicRobot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(taskRequirementEClass, TaskRequirement.class, "TaskRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getTaskRequirement_Task(), this.getTaskExecution(), null, "task", null, 1, 1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
