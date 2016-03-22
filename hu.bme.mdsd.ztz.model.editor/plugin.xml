@@ -33,32 +33,31 @@
             contributorClass="hu.bme.mdsd.ztz.model.drone.presentation.DroneActionBarContributor">
       </editor>
    </extension>
-
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated drone -->
+      <!-- @generated behaviour -->
       <category
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelModelWizardID"
-            name="%_UI_BehaviourModelModelWizard_label"
-            class="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelModelWizard"
+            id="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourModelWizardID"
+            name="%_UI_BehaviourModelWizard_label"
+            class="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/BehaviourModelModelFile.gif">
-         <description>%_UI_BehaviourModelModelWizard_description</description>
+            icon="icons/full/obj16/BehaviourModelFile.gif">
+         <description>%_UI_BehaviourModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
 
    <extension point="org.eclipse.ui.editors">
-      <!-- @generated drone -->
+      <!-- @generated behaviour -->
       <editor
-            id="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelEditorID"
-            name="%_UI_BehaviourModelEditor_label"
-            icon="icons/full/obj16/BehaviourModelModelFile.gif"
-            extensions="behaviourmodel"
-            class="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelEditor"
-            contributorClass="hu.bme.mdsd.ztz.model.behaviourModel.presentation.BehaviourModelActionBarContributor">
+            id="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+            name="%_UI_BehaviourEditor_label"
+            icon="icons/full/obj16/BehaviourModelFile.gif"
+            extensions="behaviour"
+            class="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditor"
+            contributorClass="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourActionBarContributor">
       </editor>
    </extension>
 </plugin>

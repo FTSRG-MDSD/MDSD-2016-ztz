@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/hu.bme.mdsd.ztz.model/src" modelPluginID="hu.bme.mdsd.ztz.model"
+    modelName="Behaviour" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    usedGenPackages="drone.genmodel#//drone" operationReflection="true" importOrganizing="true">
+  <foreignModel>behaviour.ecore</foreignModel>
+  <genPackages prefix="Behaviour" basePackage="hu.bme.mdsd.ztz.model" disposableProviderFactory="true"
+      ecorePackage="behaviour.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="behaviour.ecore#//CommunicationType">
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//CommunicationType/Synchronous"/>
+      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//CommunicationType/Asynchronous"/>
+    </genEnums>
+    <genClasses ecoreClass="behaviour.ecore#//BehaviourContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/communicationActions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/messageRepositories"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//Message">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/tasks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//Message/timestamp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/referredObjects"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="behaviour.ecore#//CommunicationAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//CommunicationAction/message"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//CommunicationAction/type"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//UnicastCommunication">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//UnicastCommunication/target"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//MulticastCommunication">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//MulticastCommunication/targets"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//BroadcastCommunication">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//BroadcastCommunication/targets"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//MessageRepository">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/robot"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/receivedMessages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/sendedMessages"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -170,7 +170,7 @@ public interface Task extends NamedElement {
          * Returns the value of the '<em><b>Estimated Time</b></em>' reference.
          * <!-- begin-user-doc -->
          * <p>
-         * If the meaning of the '<em>Estimated Time</em>' containment reference isn't clear,
+         * If the meaning of the '<em>Estimated Time</em>' reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->

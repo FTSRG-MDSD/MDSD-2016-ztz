@@ -2,10 +2,8 @@
  */
 package hu.bme.mdsd.ztz.model.drone.impl;
 
-import hu.bme.mdsd.ztz.model.behaviourModel.BehaviourModelPackage;
-
-import hu.bme.mdsd.ztz.model.behaviourModel.impl.BehaviourModelPackageImpl;
-
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
+import hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl;
 import hu.bme.mdsd.ztz.model.drone.Action;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.Battery;
@@ -295,15 +293,15 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 isInited = true;
 
                 // Obtain or create and register interdependencies
-                BehaviourModelPackageImpl theBehaviourModelPackage = (BehaviourModelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BehaviourModelPackage.eNS_URI) instanceof BehaviourModelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BehaviourModelPackage.eNS_URI) : BehaviourModelPackage.eINSTANCE);
+                BehaviourPackageImpl theBehaviourPackage = (BehaviourPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BehaviourPackage.eNS_URI) instanceof BehaviourPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BehaviourPackage.eNS_URI) : BehaviourPackage.eINSTANCE);
 
                 // Create package meta-data objects
                 theDronePackage.createPackageContents();
-                theBehaviourModelPackage.createPackageContents();
+                theBehaviourPackage.createPackageContents();
 
                 // Initialize created meta-data
                 theDronePackage.initializePackageContents();
-                theBehaviourModelPackage.initializePackageContents();
+                theBehaviourPackage.initializePackageContents();
 
                 // Mark meta-data to indicate it can't be changed
                 theDronePackage.freeze();
@@ -697,7 +695,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_CommunicationAction() {
+        public EReference getRobot_CapabilityProperties() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(13);
         }
 
@@ -706,7 +704,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_CapabilityProperties() {
+        public EReference getRobot_Execute() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(14);
         }
 
@@ -715,7 +713,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getRobot_Execute() {
+        public EReference getRobot_MessageRepository() {
                 return (EReference)robotEClass.getEStructuralFeatures().get(15);
         }
 
@@ -1345,9 +1343,9 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEReference(robotEClass, ROBOT__MISSION);
                 createEReference(robotEClass, ROBOT__ACTIONS);
                 createEReference(robotEClass, ROBOT__CAPABILITIES);
-                createEReference(robotEClass, ROBOT__COMMUNICATION_ACTION);
                 createEReference(robotEClass, ROBOT__CAPABILITY_PROPERTIES);
                 createEReference(robotEClass, ROBOT__EXECUTE);
+                createEReference(robotEClass, ROBOT__MESSAGE_REPOSITORY);
 
                 stringPropertyEClass = createEClass(STRING_PROPERTY);
                 createEAttribute(stringPropertyEClass, STRING_PROPERTY__VALUE);
@@ -1455,7 +1453,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 setNsURI(eNS_URI);
 
                 // Obtain other dependent packages
-                BehaviourModelPackage theBehaviourModelPackage = (BehaviourModelPackage)EPackage.Registry.INSTANCE.getEPackage(BehaviourModelPackage.eNS_URI);
+                BehaviourPackage theBehaviourPackage = (BehaviourPackage)EPackage.Registry.INSTANCE.getEPackage(BehaviourPackage.eNS_URI);
 
                 // Create type parameters
 
@@ -1522,9 +1520,9 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobot_Mission(), this.getMission(), null, "mission", null, 0, 1, Robot.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Actions(), this.getAction(), null, "actions", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getRobot_CommunicationAction(), theBehaviourModelPackage.getCommunicationAction(), null, "communicationAction", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CapabilityProperties(), this.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Execute(), this.getTaskExecution(), this.getTaskExecution_Executors(), "execute", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getRobot_MessageRepository(), theBehaviourPackage.getMessageRepository(), theBehaviourPackage.getMessageRepository_Robot(), "messageRepository", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(stringPropertyEClass, StringProperty.class, "StringProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEAttribute(getStringProperty_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

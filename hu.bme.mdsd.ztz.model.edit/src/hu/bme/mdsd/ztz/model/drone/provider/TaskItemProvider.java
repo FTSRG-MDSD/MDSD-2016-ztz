@@ -49,6 +49,7 @@ public class TaskItemProvider extends NamedElementItemProvider {
                         super.getPropertyDescriptors(object);
 
                         addStatusPropertyDescriptor(object);
+                        addEstimatedTimePropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -76,6 +77,28 @@ public class TaskItemProvider extends NamedElementItemProvider {
         }
 
         /**
+         * This adds a property descriptor for the Estimated Time feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addEstimatedTimePropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_Task_estimatedTime_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Task_estimatedTime_feature", "_UI_Task_type"),
+                                 DronePackage.Literals.TASK__ESTIMATED_TIME,
+                                 false,
+                                 false,
+                                 false,
+                                 null,
+                                 null,
+                                 null));
+        }
+
+        /**
          * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
          * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
          * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -90,7 +113,6 @@ public class TaskItemProvider extends NamedElementItemProvider {
                         childrenFeatures.add(DronePackage.Literals.TASK__DESCRIPTOR);
                         childrenFeatures.add(DronePackage.Literals.TASK__EXECUTION);
                         childrenFeatures.add(DronePackage.Literals.TASK__REQUIREMENT);
-                        childrenFeatures.add(DronePackage.Literals.TASK__ESTIMATED_TIME);
                 }
                 return childrenFeatures;
         }
@@ -152,7 +174,6 @@ public class TaskItemProvider extends NamedElementItemProvider {
                         case DronePackage.TASK__DESCRIPTOR:
                         case DronePackage.TASK__EXECUTION:
                         case DronePackage.TASK__REQUIREMENT:
-                        case DronePackage.TASK__ESTIMATED_TIME:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -184,11 +205,6 @@ public class TaskItemProvider extends NamedElementItemProvider {
                         (createChildParameter
                                 (DronePackage.Literals.TASK__REQUIREMENT,
                                  DroneFactory.eINSTANCE.createTaskRequirement()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.TASK__ESTIMATED_TIME,
-                                 DroneFactory.eINSTANCE.createMeasureValue()));
         }
 
 }

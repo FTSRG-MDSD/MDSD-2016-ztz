@@ -93,12 +93,12 @@
         eType="#//Action" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
         eType="#//Capability"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="communicationAction" upperBound="-1"
-        eType="ecore:EClass behaviourModel.ecore#//CommunicationAction"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProperties" upperBound="-1"
         eType="#//CapabilityProperties" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="execute" eType="#//TaskExecution"
         eOpposite="#//TaskExecution/executors"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageRepository" eType="ecore:EClass behaviour.ecore#//MessageRepository"
+        eOpposite="behaviour.ecore#//MessageRepository/robot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringProperty" eSuperTypes="#//PropertyValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

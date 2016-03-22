@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="behaviour" nsURI="http://www.mdsd.hu/behaviour" nsPrefix="behaviour">
+  <eClassifiers xsi:type="ecore:EClass" name="BehaviourContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="communicationActions" upperBound="-1"
+        eType="#//CommunicationAction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageRepositories" upperBound="-1"
+        eType="#//MessageRepository" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Message">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        eType="ecore:EClass drone.ecore#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="ecore:EClass drone.ecore#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referredObjects" upperBound="-1"
+        eType="ecore:EClass drone.ecore#//AreaObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationAction" abstract="true"
+      eSuperTypes="drone.ecore#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="message" lowerBound="1"
+        eType="#//Message" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//CommunicationType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnicastCommunication" eSuperTypes="#//CommunicationAction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="ecore:EClass drone.ecore#//Robot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MulticastCommunication" eSuperTypes="#//CommunicationAction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass drone.ecore#//Robot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BroadcastCommunication" eSuperTypes="#//CommunicationAction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass drone.ecore#//Robot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CommunicationType">
+    <eLiterals name="Synchronous"/>
+    <eLiterals name="Asynchronous" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageRepository" eSuperTypes="drone.ecore#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="robot" lowerBound="1" eType="ecore:EClass drone.ecore#//Robot"
+        eOpposite="drone.ecore#//Robot/messageRepository"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receivedMessages" upperBound="-1"
+        eType="#//Message"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sendedMessages" upperBound="-1"
+        eType="#//Message"/>
+  </eClassifiers>
+</ecore:EPackage>

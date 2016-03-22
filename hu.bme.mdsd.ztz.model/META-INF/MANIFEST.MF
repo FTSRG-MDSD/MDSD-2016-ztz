@@ -7,12 +7,13 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ hu.bme.mdsd.ztz.model;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: hu.bme.mdsd.ztz.model.behaviourModel,
- hu.bme.mdsd.ztz.model.behaviourModel.impl,
- hu.bme.mdsd.ztz.model.behaviourModel.util,
- hu.bme.mdsd.ztz.model.drone,
+Export-Package: hu.bme.mdsd.ztz.model.drone,
  hu.bme.mdsd.ztz.model.drone.impl,
- hu.bme.mdsd.ztz.model.drone.util
+ hu.bme.mdsd.ztz.model.drone.util,
+ hu.bme.mdsd.ztz.model.behaviour,
+ hu.bme.mdsd.ztz.model.behaviour.impl,
+ hu.bme.mdsd.ztz.model.behaviour.util

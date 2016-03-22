@@ -15,10 +15,11 @@
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated drone -->
+      <!-- @generated behaviour -->
       <package
             uri="http://www.mdsd.hu/behaviour"
-            class="hu.bme.mdsd.ztz.model.behaviourModel.BehaviourModelPackage"
-            genModel="model/drone.genmodel"/>
+            class="hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage"
+            genModel="model/behaviour.genmodel"/>
    </extension>
+
 </plugin>

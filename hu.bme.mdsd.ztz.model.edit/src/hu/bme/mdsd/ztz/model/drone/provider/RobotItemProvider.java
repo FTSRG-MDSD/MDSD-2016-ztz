@@ -3,8 +3,7 @@
 package hu.bme.mdsd.ztz.model.drone.provider;
 
 
-import hu.bme.mdsd.ztz.model.behaviourModel.BehaviourModelFactory;
-
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.drone.DroneFactory;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Robot;
@@ -52,8 +51,8 @@ public class RobotItemProvider extends NamedElementItemProvider {
                         addTasksPropertyDescriptor(object);
                         addMissionPropertyDescriptor(object);
                         addCapabilitiesPropertyDescriptor(object);
-                        addCommunicationActionPropertyDescriptor(object);
                         addExecutePropertyDescriptor(object);
+                        addMessageRepositoryPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -94,9 +93,9 @@ public class RobotItemProvider extends NamedElementItemProvider {
                                  getString("_UI_Robot_mission_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_Robot_mission_feature", "_UI_Robot_type"),
                                  DronePackage.Literals.ROBOT__MISSION,
-                                 true,
                                  false,
-                                 true,
+                                 false,
+                                 false,
                                  null,
                                  null,
                                  null));
@@ -125,28 +124,6 @@ public class RobotItemProvider extends NamedElementItemProvider {
         }
 
         /**
-         * This adds a property descriptor for the Communication Action feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addCommunicationActionPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Robot_communicationAction_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_communicationAction_feature", "_UI_Robot_type"),
-                                 DronePackage.Literals.ROBOT__COMMUNICATION_ACTION,
-                                 true,
-                                 false,
-                                 true,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
          * This adds a property descriptor for the Execute feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -160,6 +137,28 @@ public class RobotItemProvider extends NamedElementItemProvider {
                                  getString("_UI_Robot_execute_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_Robot_execute_feature", "_UI_Robot_type"),
                                  DronePackage.Literals.ROBOT__EXECUTE,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
+                                 null,
+                                 null));
+        }
+
+        /**
+         * This adds a property descriptor for the Message Repository feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addMessageRepositoryPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_Robot_messageRepository_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Robot_messageRepository_feature", "_UI_Robot_type"),
+                                 DronePackage.Literals.ROBOT__MESSAGE_REPOSITORY,
                                  true,
                                  false,
                                  true,
@@ -327,22 +326,17 @@ public class RobotItemProvider extends NamedElementItemProvider {
                 newChildDescriptors.add
                         (createChildParameter
                                 (DronePackage.Literals.ROBOT__ACTIONS,
-                                 BehaviourModelFactory.eINSTANCE.createCommunicationAction()));
+                                 BehaviourFactory.eINSTANCE.createUnicastCommunication()));
 
                 newChildDescriptors.add
                         (createChildParameter
                                 (DronePackage.Literals.ROBOT__ACTIONS,
-                                 BehaviourModelFactory.eINSTANCE.createUnicast()));
+                                 BehaviourFactory.eINSTANCE.createMulticastCommunication()));
 
                 newChildDescriptors.add
                         (createChildParameter
                                 (DronePackage.Literals.ROBOT__ACTIONS,
-                                 BehaviourModelFactory.eINSTANCE.createMulticast()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.ROBOT__ACTIONS,
-                                 BehaviourModelFactory.eINSTANCE.createBroadcast()));
+                                 BehaviourFactory.eINSTANCE.createBroadcastCommunication()));
 
                 newChildDescriptors.add
                         (createChildParameter

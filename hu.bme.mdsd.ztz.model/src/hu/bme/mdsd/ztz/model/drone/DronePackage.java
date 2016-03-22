@@ -644,22 +644,13 @@ public interface DronePackage extends EPackage {
         int ROBOT__CAPABILITIES = NAMED_ELEMENT_FEATURE_COUNT + 12;
 
         /**
-         * The feature id for the '<em><b>Communication Action</b></em>' reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int ROBOT__COMMUNICATION_ACTION = NAMED_ELEMENT_FEATURE_COUNT + 13;
-
-        /**
          * The feature id for the '<em><b>Capability Properties</b></em>' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int ROBOT__CAPABILITY_PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 14;
+        int ROBOT__CAPABILITY_PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 13;
 
         /**
          * The feature id for the '<em><b>Execute</b></em>' reference.
@@ -668,7 +659,16 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ROBOT__EXECUTE = NAMED_ELEMENT_FEATURE_COUNT + 15;
+        int ROBOT__EXECUTE = NAMED_ELEMENT_FEATURE_COUNT + 14;
+
+        /**
+         * The feature id for the '<em><b>Message Repository</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ROBOT__MESSAGE_REPOSITORY = NAMED_ELEMENT_FEATURE_COUNT + 15;
 
         /**
          * The number of structural features of the '<em>Robot</em>' class.
@@ -2027,17 +2027,6 @@ public interface DronePackage extends EPackage {
         EReference getRobot_Capabilities();
 
         /**
-         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.drone.Robot#getCommunicationAction <em>Communication Action</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference list '<em>Communication Action</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Robot#getCommunicationAction()
-         * @see #getRobot()
-         * @generated
-         */
-        EReference getRobot_CommunicationAction();
-
-        /**
          * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.drone.Robot#getCapabilityProperties <em>Capability Properties</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2058,6 +2047,17 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EReference getRobot_Execute();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository <em>Message Repository</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Message Repository</em>'.
+         * @see hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository()
+         * @see #getRobot()
+         * @generated
+         */
+        EReference getRobot_MessageRepository();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.StringProperty <em>String Property</em>}'.
@@ -3086,14 +3086,6 @@ public interface DronePackage extends EPackage {
                 EReference ROBOT__CAPABILITIES = eINSTANCE.getRobot_Capabilities();
 
                 /**
-                 * The meta object literal for the '<em><b>Communication Action</b></em>' reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference ROBOT__COMMUNICATION_ACTION = eINSTANCE.getRobot_CommunicationAction();
-
-                /**
                  * The meta object literal for the '<em><b>Capability Properties</b></em>' containment reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -3108,6 +3100,14 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EReference ROBOT__EXECUTE = eINSTANCE.getRobot_Execute();
+
+                /**
+                 * The meta object literal for the '<em><b>Message Repository</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ROBOT__MESSAGE_REPOSITORY = eINSTANCE.getRobot_MessageRepository();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.StringPropertyImpl <em>String Property</em>}' class.

@@ -7,8 +7,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: hu.bme.mdsd.ztz.model.behaviourModel.tests,
- hu.bme.mdsd.ztz.model.drone.tests
+Export-Package: hu.bme.mdsd.ztz.model.drone.tests,
+ hu.bme.mdsd.ztz.model.behaviour.tests
 Require-Bundle: org.eclipse.core.runtime,
  hu.bme.mdsd.ztz.model;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,

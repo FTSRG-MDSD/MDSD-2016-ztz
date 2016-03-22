@@ -2,8 +2,7 @@
  */
 package hu.bme.mdsd.ztz.model.drone;
 
-import hu.bme.mdsd.ztz.model.behaviourModel.CommunicationAction;
-
+import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -28,9 +27,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getMission <em>Mission</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getActions <em>Actions</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getCapabilities <em>Capabilities</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getCommunicationAction <em>Communication Action</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getCapabilityProperties <em>Capability Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getExecute <em>Execute</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository <em>Message Repository</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot()
@@ -298,22 +297,6 @@ public interface Robot extends NamedElement {
         EList<Capability> getCapabilities();
 
         /**
-         * Returns the value of the '<em><b>Communication Action</b></em>' reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviourModel.CommunicationAction}.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Communication Action</em>' reference list isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Communication Action</em>' reference list.
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_CommunicationAction()
-         * @model
-         * @generated
-         */
-        EList<CommunicationAction> getCommunicationAction();
-
-        /**
          * Returns the value of the '<em><b>Capability Properties</b></em>' containment reference list.
          * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.CapabilityProperties}.
          * <!-- begin-user-doc -->
@@ -356,5 +339,33 @@ public interface Robot extends NamedElement {
          * @generated
          */
         void setExecute(TaskExecution value);
+
+        /**
+         * Returns the value of the '<em><b>Message Repository</b></em>' reference.
+         * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getRobot <em>Robot</em>}'.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Message Repository</em>' reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Message Repository</em>' reference.
+         * @see #setMessageRepository(MessageRepository)
+         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_MessageRepository()
+         * @see hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getRobot
+         * @model opposite="robot"
+         * @generated
+         */
+        MessageRepository getMessageRepository();
+
+        /**
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Robot#getMessageRepository <em>Message Repository</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Message Repository</em>' reference.
+         * @see #getMessageRepository()
+         * @generated
+         */
+        void setMessageRepository(MessageRepository value);
 
 } // Robot

@@ -2,6 +2,7 @@
  */
 package hu.bme.mdsd.ztz.model.drone.provider;
 
+import hu.bme.mdsd.ztz.model.behaviour.provider.BehaviourEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -38,6 +39,7 @@ public final class DroneEditPlugin extends EMFPlugin {
         public DroneEditPlugin() {
                 super
                   (new ResourceLocator [] {
+                     BehaviourEditPlugin.INSTANCE,
                    });
         }
 
