@@ -66,7 +66,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="weight" eType="#//MeasureValue"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" eType="#//Mission"
-        changeable="false" volatile="true" transient="true" unsettable="true" derived="true"/>
+        changeable="false" volatile="true" transient="true" unsettable="true" derived="true">
+      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
+        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.mission"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
         eType="#//Capability"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProperties" upperBound="-1"
