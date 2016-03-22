@@ -2,11 +2,10 @@
  */
 package hu.bme.mdsd.ztz.model.behaviour;
 
+import hu.bme.mdsd.ztz.model.drone.NamedElement;
 import hu.bme.mdsd.ztz.model.drone.Property;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Action extends EObject {
+public interface Action extends NamedElement {
         /**
          * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
          * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Property}.

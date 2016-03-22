@@ -12,6 +12,7 @@ import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
 
 import hu.bme.mdsd.ztz.model.drone.Robot;
 
+import hu.bme.mdsd.ztz.model.drone.impl.NamedElementImpl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,8 +24,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -46,7 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class DynamicRobotImpl extends MinimalEObjectImpl.Container implements DynamicRobot {
+public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
         /**
          * The cached value of the '{@link #getRobot() <em>Robot</em>}' reference.
          * <!-- begin-user-doc -->

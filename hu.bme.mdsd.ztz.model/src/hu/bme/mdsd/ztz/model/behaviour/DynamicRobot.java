@@ -2,11 +2,10 @@
  */
 package hu.bme.mdsd.ztz.model.behaviour;
 
+import hu.bme.mdsd.ztz.model.drone.NamedElement;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DynamicRobot extends EObject {
+public interface DynamicRobot extends NamedElement {
         /**
          * Returns the value of the '<em><b>Robot</b></em>' reference.
          * <!-- begin-user-doc -->

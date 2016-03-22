@@ -117,6 +117,7 @@ public class BehaviourSwitch<T> extends Switch<T> {
                         case BehaviourPackage.ACTION: {
                                 Action action = (Action)theEObject;
                                 T result = caseAction(action);
+                                if (result == null) result = caseNamedElement(action);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -141,6 +142,7 @@ public class BehaviourSwitch<T> extends Switch<T> {
                         case BehaviourPackage.DYNAMIC_ROBOT: {
                                 DynamicRobot dynamicRobot = (DynamicRobot)theEObject;
                                 T result = caseDynamicRobot(dynamicRobot);
+                                if (result == null) result = caseNamedElement(dynamicRobot);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }

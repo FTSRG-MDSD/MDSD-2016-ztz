@@ -52,7 +52,7 @@
     <eLiterals name="Waiting" value="3"/>
     <eLiterals name="Executing" value="4"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Action">
+  <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="drone.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="ecore:EClass drone.ecore#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentTask" eType="#//TaskExecution"/>
@@ -86,7 +86,7 @@
         eType="ecore:EClass drone.ecore#//AreaObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="obstacle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DynamicRobot">
+  <eClassifiers xsi:type="ecore:EClass" name="DynamicRobot" eSuperTypes="drone.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="robot" lowerBound="1" eType="ecore:EClass drone.ecore#//Robot"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="detectedObjects" upperBound="-1"
         eType="#//DetectedObject" containment="true"/>

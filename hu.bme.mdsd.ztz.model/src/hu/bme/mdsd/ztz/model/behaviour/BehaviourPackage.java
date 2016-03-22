@@ -455,13 +455,22 @@ public interface BehaviourPackage extends EPackage {
         int ACTION = 7;
 
         /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ACTION__NAME = DronePackage.NAMED_ELEMENT__NAME;
+
+        /**
          * The feature id for the '<em><b>Properties</b></em>' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int ACTION__PROPERTIES = 0;
+        int ACTION__PROPERTIES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
         /**
          * The feature id for the '<em><b>Current Task</b></em>' reference.
@@ -470,7 +479,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ACTION__CURRENT_TASK = 1;
+        int ACTION__CURRENT_TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
         /**
          * The number of structural features of the '<em>Action</em>' class.
@@ -479,7 +488,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ACTION_FEATURE_COUNT = 2;
+        int ACTION_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
 
         /**
          * The number of operations of the '<em>Action</em>' class.
@@ -488,7 +497,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ACTION_OPERATION_COUNT = 0;
+        int ACTION_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl <em>Task Execution</em>}' class.
@@ -666,13 +675,22 @@ public interface BehaviourPackage extends EPackage {
         int DYNAMIC_ROBOT = 11;
 
         /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int DYNAMIC_ROBOT__NAME = DronePackage.NAMED_ELEMENT__NAME;
+
+        /**
          * The feature id for the '<em><b>Robot</b></em>' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int DYNAMIC_ROBOT__ROBOT = 0;
+        int DYNAMIC_ROBOT__ROBOT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
         /**
          * The feature id for the '<em><b>Detected Objects</b></em>' containment reference list.
@@ -681,7 +699,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int DYNAMIC_ROBOT__DETECTED_OBJECTS = 1;
+        int DYNAMIC_ROBOT__DETECTED_OBJECTS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
         /**
          * The feature id for the '<em><b>Collaborations</b></em>' containment reference.
@@ -690,7 +708,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int DYNAMIC_ROBOT__COLLABORATIONS = 2;
+        int DYNAMIC_ROBOT__COLLABORATIONS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
 
         /**
          * The feature id for the '<em><b>Message Repository</b></em>' containment reference.
@@ -699,7 +717,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int DYNAMIC_ROBOT__MESSAGE_REPOSITORY = 3;
+        int DYNAMIC_ROBOT__MESSAGE_REPOSITORY = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
         /**
          * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -708,7 +726,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int DYNAMIC_ROBOT__STATUS = 4;
+        int DYNAMIC_ROBOT__STATUS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
         /**
          * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -717,7 +735,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int DYNAMIC_ROBOT__ACTIONS = 5;
+        int DYNAMIC_ROBOT__ACTIONS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
         /**
          * The number of structural features of the '<em>Dynamic Robot</em>' class.
@@ -726,7 +744,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int DYNAMIC_ROBOT_FEATURE_COUNT = 6;
+        int DYNAMIC_ROBOT_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
 
         /**
          * The number of operations of the '<em>Dynamic Robot</em>' class.
@@ -735,7 +753,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int DYNAMIC_ROBOT_OPERATION_COUNT = 0;
+        int DYNAMIC_ROBOT_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}' enum.
