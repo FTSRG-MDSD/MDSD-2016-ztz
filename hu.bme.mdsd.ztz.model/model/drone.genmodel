@@ -13,7 +13,6 @@
     <genClasses ecoreClass="drone.ecore#//Task">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference drone.ecore#//Task/mission"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Task/descriptor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Task/requirement"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//TaskDescriptor">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskDescriptor/targets"/>
@@ -53,15 +52,6 @@
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//StringProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//StringProperty/value"/>
-    </genClasses>
-    <genClasses ecoreClass="drone.ecore#//TaskRequirement">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/task"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/prerequisite"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//TaskRequirement/participants"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/properties"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/requiredCapabilities"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/capabilityProperties"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference drone.ecore#//TaskRequirement/descriptor"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Size">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Size/width"/>

@@ -14,7 +14,6 @@ package hu.bme.mdsd.ztz.model.drone;
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Task#getMission <em>Mission</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Task#getDescriptor <em>Descriptor</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Task#getRequirement <em>Requirement</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTask()
@@ -77,33 +76,5 @@ public interface Task extends NamedElement {
          * @generated
          */
         void setDescriptor(TaskDescriptor value);
-
-        /**
-         * Returns the value of the '<em><b>Requirement</b></em>' containment reference.
-         * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getTask <em>Task</em>}'.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Requirement</em>' containment reference isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Requirement</em>' containment reference.
-         * @see #setRequirement(TaskRequirement)
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTask_Requirement()
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getTask
-         * @model opposite="task" containment="true" required="true"
-         * @generated
-         */
-        TaskRequirement getRequirement();
-
-        /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Task#getRequirement <em>Requirement</em>}' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Requirement</em>' containment reference.
-         * @see #getRequirement()
-         * @generated
-         */
-        void setRequirement(TaskRequirement value);
 
 } // Task

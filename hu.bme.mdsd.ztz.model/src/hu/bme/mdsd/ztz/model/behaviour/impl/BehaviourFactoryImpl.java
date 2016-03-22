@@ -68,6 +68,7 @@ public class BehaviourFactoryImpl extends EFactoryImpl implements BehaviourFacto
                         case BehaviourPackage.ROBOT_COLLABORATION: return createRobotCollaboration();
                         case BehaviourPackage.DETECTED_OBJECT: return createDetectedObject();
                         case BehaviourPackage.DYNAMIC_ROBOT: return createDynamicRobot();
+                        case BehaviourPackage.TASK_REQUIREMENT: return createTaskRequirement();
                         default:
                                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
                 }
@@ -219,6 +220,16 @@ public class BehaviourFactoryImpl extends EFactoryImpl implements BehaviourFacto
         public DynamicRobot createDynamicRobot() {
                 DynamicRobotImpl dynamicRobot = new DynamicRobotImpl();
                 return dynamicRobot;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public TaskRequirement createTaskRequirement() {
+                TaskRequirementImpl taskRequirement = new TaskRequirementImpl();
+                return taskRequirement;
         }
 
         /**

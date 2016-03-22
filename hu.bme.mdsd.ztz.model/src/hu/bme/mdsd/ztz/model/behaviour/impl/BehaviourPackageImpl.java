@@ -18,6 +18,7 @@ import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus;
+import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
@@ -120,6 +121,13 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          * @generated
          */
         private EClass dynamicRobotEClass = null;
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        private EClass taskRequirementEClass = null;
 
         /**
          * <!-- begin-user-doc -->
@@ -231,6 +239,15 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          */
         public EReference getBehaviourContainer_TaskExecutions() {
                 return (EReference)behaviourContainerEClass.getEStructuralFeatures().get(1);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getBehaviourContainer_TaskRequirements() {
+                return (EReference)behaviourContainerEClass.getEStructuralFeatures().get(2);
         }
 
         /**
@@ -598,6 +615,78 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          * <!-- end-user-doc -->
          * @generated
          */
+        public EClass getTaskRequirement() {
+                return taskRequirementEClass;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getTaskRequirement_Task() {
+                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(0);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getTaskRequirement_Prerequisite() {
+                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(1);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EAttribute getTaskRequirement_Participants() {
+                return (EAttribute)taskRequirementEClass.getEStructuralFeatures().get(2);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getTaskRequirement_Properties() {
+                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(3);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getTaskRequirement_RequiredCapabilities() {
+                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(4);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getTaskRequirement_CapabilityProperties() {
+                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(5);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getTaskRequirement_Descriptor() {
+                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(6);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         public EEnum getCommunicationType() {
                 return communicationTypeEEnum;
         }
@@ -651,6 +740,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 behaviourContainerEClass = createEClass(BEHAVIOUR_CONTAINER);
                 createEReference(behaviourContainerEClass, BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS);
                 createEReference(behaviourContainerEClass, BEHAVIOUR_CONTAINER__TASK_EXECUTIONS);
+                createEReference(behaviourContainerEClass, BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS);
 
                 messageEClass = createEClass(MESSAGE);
                 createEReference(messageEClass, MESSAGE__TASKS);
@@ -703,6 +793,15 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 createEAttribute(dynamicRobotEClass, DYNAMIC_ROBOT__STATUS);
                 createEReference(dynamicRobotEClass, DYNAMIC_ROBOT__ACTIONS);
 
+                taskRequirementEClass = createEClass(TASK_REQUIREMENT);
+                createEReference(taskRequirementEClass, TASK_REQUIREMENT__TASK);
+                createEReference(taskRequirementEClass, TASK_REQUIREMENT__PREREQUISITE);
+                createEAttribute(taskRequirementEClass, TASK_REQUIREMENT__PARTICIPANTS);
+                createEReference(taskRequirementEClass, TASK_REQUIREMENT__PROPERTIES);
+                createEReference(taskRequirementEClass, TASK_REQUIREMENT__REQUIRED_CAPABILITIES);
+                createEReference(taskRequirementEClass, TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
+                createEReference(taskRequirementEClass, TASK_REQUIREMENT__DESCRIPTOR);
+
                 // Create enums
                 communicationTypeEEnum = createEEnum(COMMUNICATION_TYPE);
                 robotStatusEEnum = createEEnum(ROBOT_STATUS);
@@ -747,11 +846,13 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 actionEClass.getESuperTypes().add(theDronePackage.getNamedElement());
                 taskExecutionEClass.getESuperTypes().add(theDronePackage.getNamedElement());
                 dynamicRobotEClass.getESuperTypes().add(theDronePackage.getNamedElement());
+                taskRequirementEClass.getESuperTypes().add(theDronePackage.getNamedElement());
 
                 // Initialize classes, features, and operations; add parameters
                 initEClass(behaviourContainerEClass, BehaviourContainer.class, "BehaviourContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getBehaviourContainer_DynamicRobots(), this.getDynamicRobot(), null, "dynamicRobots", null, 0, -1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getBehaviourContainer_TaskExecutions(), this.getTaskExecution(), null, "taskExecutions", null, 0, -1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getBehaviourContainer_TaskRequirements(), this.getTaskRequirement(), null, "taskRequirements", null, 0, -1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getMessage_Tasks(), this.getTaskExecution(), null, "tasks", null, 0, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -804,6 +905,15 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 initEAttribute(getDynamicRobot_Status(), this.getRobotStatus(), "status", null, 1, 1, DynamicRobot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getDynamicRobot_Actions(), this.getAction(), null, "actions", null, 0, -1, DynamicRobot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+                initEClass(taskRequirementEClass, TaskRequirement.class, "TaskRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+                initEReference(getTaskRequirement_Task(), this.getTaskExecution(), null, "task", null, 1, 1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getTaskRequirement_Prerequisite(), this.getTaskExecution(), null, "prerequisite", null, 0, 1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEAttribute(getTaskRequirement_Participants(), ecorePackage.getEInt(), "participants", null, 1, 1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getTaskRequirement_Properties(), theDronePackage.getProperty(), null, "properties", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getTaskRequirement_RequiredCapabilities(), theDronePackage.getCapability(), null, "requiredCapabilities", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getTaskRequirement_CapabilityProperties(), theDronePackage.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getTaskRequirement_Descriptor(), theDronePackage.getTaskDescriptor(), null, "descriptor", null, 0, 1, TaskRequirement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
                 // Initialize enums and add enum literals
                 initEEnum(communicationTypeEEnum, CommunicationType.class, "CommunicationType");
                 addEEnumLiteral(communicationTypeEEnum, CommunicationType.SYNCHRONOUS);
@@ -824,6 +934,26 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
 
                 // Create resource
                 createResource(eNS_URI);
+
+                // Create annotations
+                // org.eclipse.incquery.querybasedfeature
+                createOrgAnnotations();
+        }
+
+        /**
+         * Initializes the annotations for <b>org.eclipse.incquery.querybasedfeature</b>.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void createOrgAnnotations() {
+                String source = "org.eclipse.incquery.querybasedfeature";	
+                addAnnotation
+                  (getTaskRequirement_Descriptor(), 
+                   source, 
+                   new String[] {
+                         "patternFQN", "hu.bme.mdsd.ztz.model.derived.descriptor"
+                   });
         }
 
 } //BehaviourPackageImpl

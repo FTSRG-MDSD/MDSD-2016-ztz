@@ -27,6 +27,7 @@
     <genClasses ecoreClass="behaviour.ecore#//BehaviourContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/dynamicRobots"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/taskExecutions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/taskRequirements"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//Message">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/tasks"/>
@@ -78,6 +79,15 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/messageRepository"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//DynamicRobot/status"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="behaviour.ecore#//TaskRequirement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/task"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/prerequisite"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//TaskRequirement/participants"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/requiredCapabilities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/capabilityProperties"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/descriptor"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

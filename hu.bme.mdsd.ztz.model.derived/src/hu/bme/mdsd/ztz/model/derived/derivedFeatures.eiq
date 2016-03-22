@@ -14,8 +14,3 @@ pattern descriptor(sourceRequirement: TaskRequirement, targetDescriptor: TaskDes
 	Task.descriptor(task, targetDescriptor);
 }
 
-@QueryBasedFeature
-pattern estimatedTime(sourceTask:Task, targetMeasure: MeasureValue) {
-	Task.execution.executionTime(sourceTask, targetMeasure);
-	Task.estimatedTime(sourceTask, targetMeasure);
-}

@@ -1,11 +1,14 @@
 /**
  */
-package hu.bme.mdsd.ztz.model.drone.provider;
+package hu.bme.mdsd.ztz.model.behaviour.provider;
 
+
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
+import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 
 import hu.bme.mdsd.ztz.model.drone.DroneFactory;
-import hu.bme.mdsd.ztz.model.drone.DronePackage;
-import hu.bme.mdsd.ztz.model.drone.TaskRequirement;
+
+import hu.bme.mdsd.ztz.model.drone.provider.NamedElementItemProvider;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,30 +21,17 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link hu.bme.mdsd.ztz.model.drone.TaskRequirement} object.
+ * This is the item provider adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TaskRequirementItemProvider 
-        extends ItemProviderAdapter
-        implements
-                IEditingDomainItemProvider,
-                IStructuredItemContentProvider,
-                ITreeItemContentProvider,
-                IItemLabelProvider,
-                IItemPropertySource {
+public class TaskRequirementItemProvider extends NamedElementItemProvider {
         /**
          * This constructs an instance from a factory and a notifier.
          * <!-- begin-user-doc -->
@@ -63,12 +53,35 @@ public class TaskRequirementItemProvider
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
+                        addTaskPropertyDescriptor(object);
                         addPrerequisitePropertyDescriptor(object);
                         addParticipantsPropertyDescriptor(object);
                         addRequiredCapabilitiesPropertyDescriptor(object);
                         addDescriptorPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
+        }
+
+        /**
+         * This adds a property descriptor for the Task feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addTaskPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_TaskRequirement_task_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_task_feature", "_UI_TaskRequirement_type"),
+                                 BehaviourPackage.Literals.TASK_REQUIREMENT__TASK,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
+                                 null,
+                                 null));
         }
 
         /**
@@ -84,7 +97,7 @@ public class TaskRequirementItemProvider
                                  getResourceLocator(),
                                  getString("_UI_TaskRequirement_prerequisite_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_prerequisite_feature", "_UI_TaskRequirement_type"),
-                                 DronePackage.Literals.TASK_REQUIREMENT__PREREQUISITE,
+                                 BehaviourPackage.Literals.TASK_REQUIREMENT__PREREQUISITE,
                                  true,
                                  false,
                                  true,
@@ -106,7 +119,7 @@ public class TaskRequirementItemProvider
                                  getResourceLocator(),
                                  getString("_UI_TaskRequirement_participants_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_participants_feature", "_UI_TaskRequirement_type"),
-                                 DronePackage.Literals.TASK_REQUIREMENT__PARTICIPANTS,
+                                 BehaviourPackage.Literals.TASK_REQUIREMENT__PARTICIPANTS,
                                  true,
                                  false,
                                  false,
@@ -128,7 +141,7 @@ public class TaskRequirementItemProvider
                                  getResourceLocator(),
                                  getString("_UI_TaskRequirement_requiredCapabilities_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_requiredCapabilities_feature", "_UI_TaskRequirement_type"),
-                                 DronePackage.Literals.TASK_REQUIREMENT__REQUIRED_CAPABILITIES,
+                                 BehaviourPackage.Literals.TASK_REQUIREMENT__REQUIRED_CAPABILITIES,
                                  true,
                                  false,
                                  true,
@@ -150,7 +163,7 @@ public class TaskRequirementItemProvider
                                  getResourceLocator(),
                                  getString("_UI_TaskRequirement_descriptor_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_descriptor_feature", "_UI_TaskRequirement_type"),
-                                 DronePackage.Literals.TASK_REQUIREMENT__DESCRIPTOR,
+                                 BehaviourPackage.Literals.TASK_REQUIREMENT__DESCRIPTOR,
                                  false,
                                  false,
                                  false,
@@ -171,8 +184,8 @@ public class TaskRequirementItemProvider
         public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
                 if (childrenFeatures == null) {
                         super.getChildrenFeatures(object);
-                        childrenFeatures.add(DronePackage.Literals.TASK_REQUIREMENT__PROPERTIES);
-                        childrenFeatures.add(DronePackage.Literals.TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
+                        childrenFeatures.add(BehaviourPackage.Literals.TASK_REQUIREMENT__PROPERTIES);
+                        childrenFeatures.add(BehaviourPackage.Literals.TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
                 }
                 return childrenFeatures;
         }
@@ -209,8 +222,10 @@ public class TaskRequirementItemProvider
          */
         @Override
         public String getText(Object object) {
-                TaskRequirement taskRequirement = (TaskRequirement)object;
-                return getString("_UI_TaskRequirement_type") + " " + taskRequirement.getParticipants();
+                String label = ((TaskRequirement)object).getName();
+                return label == null || label.length() == 0 ?
+                        getString("_UI_TaskRequirement_type") :
+                        getString("_UI_TaskRequirement_type") + " " + label;
         }
         
 
@@ -226,11 +241,11 @@ public class TaskRequirementItemProvider
                 updateChildren(notification);
 
                 switch (notification.getFeatureID(TaskRequirement.class)) {
-                        case DronePackage.TASK_REQUIREMENT__PARTICIPANTS:
+                        case BehaviourPackage.TASK_REQUIREMENT__PARTICIPANTS:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__PROPERTIES:
-                        case DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -250,12 +265,12 @@ public class TaskRequirementItemProvider
 
                 newChildDescriptors.add
                         (createChildParameter
-                                (DronePackage.Literals.TASK_REQUIREMENT__PROPERTIES,
+                                (BehaviourPackage.Literals.TASK_REQUIREMENT__PROPERTIES,
                                  DroneFactory.eINSTANCE.createProperty()));
 
                 newChildDescriptors.add
                         (createChildParameter
-                                (DronePackage.Literals.TASK_REQUIREMENT__CAPABILITY_PROPERTIES,
+                                (BehaviourPackage.Literals.TASK_REQUIREMENT__CAPABILITY_PROPERTIES,
                                  DroneFactory.eINSTANCE.createCapabilityProperties()));
         }
 
@@ -267,7 +282,7 @@ public class TaskRequirementItemProvider
          */
         @Override
         public ResourceLocator getResourceLocator() {
-                return DroneEditPlugin.INSTANCE;
+                return BehaviourEditPlugin.INSTANCE;
         }
 
 }

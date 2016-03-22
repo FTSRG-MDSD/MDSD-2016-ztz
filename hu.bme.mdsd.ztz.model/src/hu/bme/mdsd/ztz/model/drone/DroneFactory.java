@@ -103,15 +103,6 @@ public interface DroneFactory extends EFactory {
         StringProperty createStringProperty();
 
         /**
-         * Returns a new object of class '<em>Task Requirement</em>'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return a new object of class '<em>Task Requirement</em>'.
-         * @generated
-         */
-        TaskRequirement createTaskRequirement();
-
-        /**
          * Returns a new object of class '<em>Size</em>'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

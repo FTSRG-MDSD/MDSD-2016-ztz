@@ -88,13 +88,22 @@ public interface BehaviourPackage extends EPackage {
         int BEHAVIOUR_CONTAINER__TASK_EXECUTIONS = 1;
 
         /**
+         * The feature id for the '<em><b>Task Requirements</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS = 2;
+
+        /**
          * The number of structural features of the '<em>Container</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int BEHAVIOUR_CONTAINER_FEATURE_COUNT = 2;
+        int BEHAVIOUR_CONTAINER_FEATURE_COUNT = 3;
 
         /**
          * The number of operations of the '<em>Container</em>' class.
@@ -765,6 +774,106 @@ public interface BehaviourPackage extends EPackage {
         int DYNAMIC_ROBOT_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl <em>Task Requirement</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getTaskRequirement()
+         * @generated
+         */
+        int TASK_REQUIREMENT = 12;
+
+        /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__NAME = DronePackage.NAMED_ELEMENT__NAME;
+
+        /**
+         * The feature id for the '<em><b>Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+        /**
+         * The feature id for the '<em><b>Prerequisite</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__PREREQUISITE = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+        /**
+         * The feature id for the '<em><b>Participants</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__PARTICIPANTS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+        /**
+         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__PROPERTIES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+        /**
+         * The feature id for the '<em><b>Required Capabilities</b></em>' reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__REQUIRED_CAPABILITIES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+        /**
+         * The feature id for the '<em><b>Capability Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__CAPABILITY_PROPERTIES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+        /**
+         * The feature id for the '<em><b>Descriptor</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__DESCRIPTOR = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+        /**
+         * The number of structural features of the '<em>Task Requirement</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
+
+        /**
+         * The number of operations of the '<em>Task Requirement</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}' enum.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -772,7 +881,7 @@ public interface BehaviourPackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getCommunicationType()
          * @generated
          */
-        int COMMUNICATION_TYPE = 12;
+        int COMMUNICATION_TYPE = 13;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.RobotStatus <em>Robot Status</em>}' enum.
@@ -782,7 +891,7 @@ public interface BehaviourPackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getRobotStatus()
          * @generated
          */
-        int ROBOT_STATUS = 13;
+        int ROBOT_STATUS = 14;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus <em>Task Execution Status</em>}' enum.
@@ -792,7 +901,7 @@ public interface BehaviourPackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getTaskExecutionStatus()
          * @generated
          */
-        int TASK_EXECUTION_STATUS = 14;
+        int TASK_EXECUTION_STATUS = 15;
 
 
         /**
@@ -826,6 +935,17 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         EReference getBehaviourContainer_TaskExecutions();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getTaskRequirements <em>Task Requirements</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Task Requirements</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getTaskRequirements()
+         * @see #getBehaviourContainer()
+         * @generated
+         */
+        EReference getBehaviourContainer_TaskRequirements();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.Message <em>Message</em>}'.
@@ -1257,6 +1377,93 @@ public interface BehaviourPackage extends EPackage {
         EReference getDynamicRobot_Actions();
 
         /**
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement <em>Task Requirement</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Task Requirement</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement
+         * @generated
+         */
+        EClass getTaskRequirement();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTask <em>Task</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Task</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTask()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_Task();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisite <em>Prerequisite</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Prerequisite</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisite()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_Prerequisite();
+
+        /**
+         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getParticipants <em>Participants</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the attribute '<em>Participants</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getParticipants()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EAttribute getTaskRequirement_Participants();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getProperties <em>Properties</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Properties</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getProperties()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_Properties();
+
+        /**
+         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getRequiredCapabilities <em>Required Capabilities</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference list '<em>Required Capabilities</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getRequiredCapabilities()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_RequiredCapabilities();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getCapabilityProperties <em>Capability Properties</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Capability Properties</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getCapabilityProperties()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_CapabilityProperties();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getDescriptor <em>Descriptor</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Descriptor</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getDescriptor()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_Descriptor();
+
+        /**
          * Returns the meta object for enum '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1334,6 +1541,14 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference BEHAVIOUR_CONTAINER__TASK_EXECUTIONS = eINSTANCE.getBehaviourContainer_TaskExecutions();
+
+                /**
+                 * The meta object literal for the '<em><b>Task Requirements</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS = eINSTANCE.getBehaviourContainer_TaskRequirements();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl <em>Message</em>}' class.
@@ -1676,6 +1891,72 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference DYNAMIC_ROBOT__ACTIONS = eINSTANCE.getDynamicRobot_Actions();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl <em>Task Requirement</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getTaskRequirement()
+                 * @generated
+                 */
+                EClass TASK_REQUIREMENT = eINSTANCE.getTaskRequirement();
+
+                /**
+                 * The meta object literal for the '<em><b>Task</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__TASK = eINSTANCE.getTaskRequirement_Task();
+
+                /**
+                 * The meta object literal for the '<em><b>Prerequisite</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__PREREQUISITE = eINSTANCE.getTaskRequirement_Prerequisite();
+
+                /**
+                 * The meta object literal for the '<em><b>Participants</b></em>' attribute feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EAttribute TASK_REQUIREMENT__PARTICIPANTS = eINSTANCE.getTaskRequirement_Participants();
+
+                /**
+                 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__PROPERTIES = eINSTANCE.getTaskRequirement_Properties();
+
+                /**
+                 * The meta object literal for the '<em><b>Required Capabilities</b></em>' reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__REQUIRED_CAPABILITIES = eINSTANCE.getTaskRequirement_RequiredCapabilities();
+
+                /**
+                 * The meta object literal for the '<em><b>Capability Properties</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__CAPABILITY_PROPERTIES = eINSTANCE.getTaskRequirement_CapabilityProperties();
+
+                /**
+                 * The meta object literal for the '<em><b>Descriptor</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__DESCRIPTOR = eINSTANCE.getTaskRequirement_Descriptor();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}' enum.

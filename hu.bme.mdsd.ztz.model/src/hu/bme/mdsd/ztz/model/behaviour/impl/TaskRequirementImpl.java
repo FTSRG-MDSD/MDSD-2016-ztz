@@ -1,14 +1,17 @@
 /**
  */
-package hu.bme.mdsd.ztz.model.drone.impl;
+package hu.bme.mdsd.ztz.model.behaviour.impl;
+
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
+import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 
 import hu.bme.mdsd.ztz.model.drone.Capability;
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
-import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Property;
-import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
-import hu.bme.mdsd.ztz.model.drone.TaskRequirement;
+
+import hu.bme.mdsd.ztz.model.drone.impl.NamedElementImpl;
 
 import java.util.Collection;
 
@@ -21,11 +24,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -36,18 +37,28 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getTask <em>Task</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getPrerequisite <em>Prerequisite</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getParticipants <em>Participants</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getRequiredCapabilities <em>Required Capabilities</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getCapabilityProperties <em>Capability Properties</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getTask <em>Task</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getPrerequisite <em>Prerequisite</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getParticipants <em>Participants</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getRequiredCapabilities <em>Required Capabilities</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getCapabilityProperties <em>Capability Properties</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getDescriptor <em>Descriptor</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements TaskRequirement {
+public class TaskRequirementImpl extends NamedElementImpl implements TaskRequirement {
+        /**
+         * The cached value of the '{@link #getTask() <em>Task</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getTask()
+         * @generated
+         * @ordered
+         */
+        protected TaskExecution task;
+
         /**
          * The cached value of the '{@link #getPrerequisite() <em>Prerequisite</em>}' reference.
          * <!-- begin-user-doc -->
@@ -56,7 +67,7 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * @generated
          * @ordered
          */
-        protected Task prerequisite;
+        protected TaskExecution prerequisite;
 
         /**
          * The default value of the '{@link #getParticipants() <em>Participants</em>}' attribute.
@@ -124,7 +135,7 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          */
         @Override
         protected EClass eStaticClass() {
-                return DronePackage.Literals.TASK_REQUIREMENT;
+                return BehaviourPackage.Literals.TASK_REQUIREMENT;
         }
 
         /**
@@ -132,40 +143,16 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * <!-- end-user-doc -->
          * @generated
          */
-        public Task getTask() {
-                if (eContainerFeatureID() != DronePackage.TASK_REQUIREMENT__TASK) return null;
-                return (Task)eInternalContainer();
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public NotificationChain basicSetTask(Task newTask, NotificationChain msgs) {
-                msgs = eBasicSetContainer((InternalEObject)newTask, DronePackage.TASK_REQUIREMENT__TASK, msgs);
-                return msgs;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setTask(Task newTask) {
-                if (newTask != eInternalContainer() || (eContainerFeatureID() != DronePackage.TASK_REQUIREMENT__TASK && newTask != null)) {
-                        if (EcoreUtil.isAncestor(this, newTask))
-                                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-                        NotificationChain msgs = null;
-                        if (eInternalContainer() != null)
-                                msgs = eBasicRemoveFromContainer(msgs);
-                        if (newTask != null)
-                                msgs = ((InternalEObject)newTask).eInverseAdd(this, DronePackage.TASK__REQUIREMENT, Task.class, msgs);
-                        msgs = basicSetTask(newTask, msgs);
-                        if (msgs != null) msgs.dispatch();
+        public TaskExecution getTask() {
+                if (task != null && task.eIsProxy()) {
+                        InternalEObject oldTask = (InternalEObject)task;
+                        task = (TaskExecution)eResolveProxy(oldTask);
+                        if (task != oldTask) {
+                                if (eNotificationRequired())
+                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.TASK_REQUIREMENT__TASK, oldTask, task));
+                        }
                 }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK_REQUIREMENT__TASK, newTask, newTask));
+                return task;
         }
 
         /**
@@ -173,13 +160,34 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * <!-- end-user-doc -->
          * @generated
          */
-        public Task getPrerequisite() {
+        public TaskExecution basicGetTask() {
+                return task;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setTask(TaskExecution newTask) {
+                TaskExecution oldTask = task;
+                task = newTask;
+                if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_REQUIREMENT__TASK, oldTask, task));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public TaskExecution getPrerequisite() {
                 if (prerequisite != null && prerequisite.eIsProxy()) {
                         InternalEObject oldPrerequisite = (InternalEObject)prerequisite;
-                        prerequisite = (Task)eResolveProxy(oldPrerequisite);
+                        prerequisite = (TaskExecution)eResolveProxy(oldPrerequisite);
                         if (prerequisite != oldPrerequisite) {
                                 if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.TASK_REQUIREMENT__PREREQUISITE, oldPrerequisite, prerequisite));
+                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE, oldPrerequisite, prerequisite));
                         }
                 }
                 return prerequisite;
@@ -190,7 +198,7 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * <!-- end-user-doc -->
          * @generated
          */
-        public Task basicGetPrerequisite() {
+        public TaskExecution basicGetPrerequisite() {
                 return prerequisite;
         }
 
@@ -199,11 +207,11 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * <!-- end-user-doc -->
          * @generated
          */
-        public void setPrerequisite(Task newPrerequisite) {
-                Task oldPrerequisite = prerequisite;
+        public void setPrerequisite(TaskExecution newPrerequisite) {
+                TaskExecution oldPrerequisite = prerequisite;
                 prerequisite = newPrerequisite;
                 if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK_REQUIREMENT__PREREQUISITE, oldPrerequisite, prerequisite));
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE, oldPrerequisite, prerequisite));
         }
 
         /**
@@ -224,7 +232,7 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
                 int oldParticipants = participants;
                 participants = newParticipants;
                 if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK_REQUIREMENT__PARTICIPANTS, oldParticipants, participants));
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_REQUIREMENT__PARTICIPANTS, oldParticipants, participants));
         }
 
         /**
@@ -234,7 +242,7 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          */
         public EList<Property> getProperties() {
                 if (properties == null) {
-                        properties = new EObjectContainmentEList<Property>(Property.class, this, DronePackage.TASK_REQUIREMENT__PROPERTIES);
+                        properties = new EObjectContainmentEList<Property>(Property.class, this, BehaviourPackage.TASK_REQUIREMENT__PROPERTIES);
                 }
                 return properties;
         }
@@ -246,7 +254,7 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          */
         public EList<Capability> getRequiredCapabilities() {
                 if (requiredCapabilities == null) {
-                        requiredCapabilities = new EObjectResolvingEList<Capability>(Capability.class, this, DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES);
+                        requiredCapabilities = new EObjectResolvingEList<Capability>(Capability.class, this, BehaviourPackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES);
                 }
                 return requiredCapabilities;
         }
@@ -258,7 +266,7 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          */
         public EList<CapabilityProperties> getCapabilityProperties() {
                 if (capabilityProperties == null) {
-                        capabilityProperties = new EObjectContainmentEList<CapabilityProperties>(CapabilityProperties.class, this, DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
+                        capabilityProperties = new EObjectContainmentEList<CapabilityProperties>(CapabilityProperties.class, this, BehaviourPackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
                 }
                 return capabilityProperties;
         }
@@ -291,29 +299,11 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * @generated
          */
         @Override
-        public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-                switch (featureID) {
-                        case DronePackage.TASK_REQUIREMENT__TASK:
-                                if (eInternalContainer() != null)
-                                        msgs = eBasicRemoveFromContainer(msgs);
-                                return basicSetTask((Task)otherEnd, msgs);
-                }
-                return super.eInverseAdd(otherEnd, featureID, msgs);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
-                        case DronePackage.TASK_REQUIREMENT__TASK:
-                                return basicSetTask(null, msgs);
-                        case DronePackage.TASK_REQUIREMENT__PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__PROPERTIES:
                                 return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
-                        case DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 return ((InternalEList<?>)getCapabilityProperties()).basicRemove(otherEnd, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -325,36 +315,23 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * @generated
          */
         @Override
-        public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-                switch (eContainerFeatureID()) {
-                        case DronePackage.TASK_REQUIREMENT__TASK:
-                                return eInternalContainer().eInverseRemove(this, DronePackage.TASK__REQUIREMENT, Task.class, msgs);
-                }
-                return super.eBasicRemoveFromContainerFeature(msgs);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
                 switch (featureID) {
-                        case DronePackage.TASK_REQUIREMENT__TASK:
-                                return getTask();
-                        case DronePackage.TASK_REQUIREMENT__PREREQUISITE:
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
+                                if (resolve) return getTask();
+                                return basicGetTask();
+                        case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE:
                                 if (resolve) return getPrerequisite();
                                 return basicGetPrerequisite();
-                        case DronePackage.TASK_REQUIREMENT__PARTICIPANTS:
+                        case BehaviourPackage.TASK_REQUIREMENT__PARTICIPANTS:
                                 return getParticipants();
-                        case DronePackage.TASK_REQUIREMENT__PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__PROPERTIES:
                                 return getProperties();
-                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
                                 return getRequiredCapabilities();
-                        case DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 return getCapabilityProperties();
-                        case DronePackage.TASK_REQUIREMENT__DESCRIPTOR:
+                        case BehaviourPackage.TASK_REQUIREMENT__DESCRIPTOR:
                                 if (resolve) return getDescriptor();
                                 return basicGetDescriptor();
                 }
@@ -370,24 +347,24 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
         @Override
         public void eSet(int featureID, Object newValue) {
                 switch (featureID) {
-                        case DronePackage.TASK_REQUIREMENT__TASK:
-                                setTask((Task)newValue);
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
+                                setTask((TaskExecution)newValue);
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__PREREQUISITE:
-                                setPrerequisite((Task)newValue);
+                        case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE:
+                                setPrerequisite((TaskExecution)newValue);
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__PARTICIPANTS:
+                        case BehaviourPackage.TASK_REQUIREMENT__PARTICIPANTS:
                                 setParticipants((Integer)newValue);
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__PROPERTIES:
                                 getProperties().clear();
                                 getProperties().addAll((Collection<? extends Property>)newValue);
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
                                 getRequiredCapabilities().clear();
                                 getRequiredCapabilities().addAll((Collection<? extends Capability>)newValue);
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 getCapabilityProperties().clear();
                                 getCapabilityProperties().addAll((Collection<? extends CapabilityProperties>)newValue);
                                 return;
@@ -403,22 +380,22 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
         @Override
         public void eUnset(int featureID) {
                 switch (featureID) {
-                        case DronePackage.TASK_REQUIREMENT__TASK:
-                                setTask((Task)null);
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
+                                setTask((TaskExecution)null);
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__PREREQUISITE:
-                                setPrerequisite((Task)null);
+                        case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE:
+                                setPrerequisite((TaskExecution)null);
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__PARTICIPANTS:
+                        case BehaviourPackage.TASK_REQUIREMENT__PARTICIPANTS:
                                 setParticipants(PARTICIPANTS_EDEFAULT);
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__PROPERTIES:
                                 getProperties().clear();
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
                                 getRequiredCapabilities().clear();
                                 return;
-                        case DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 getCapabilityProperties().clear();
                                 return;
                 }
@@ -433,19 +410,19 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
         @Override
         public boolean eIsSet(int featureID) {
                 switch (featureID) {
-                        case DronePackage.TASK_REQUIREMENT__TASK:
-                                return getTask() != null;
-                        case DronePackage.TASK_REQUIREMENT__PREREQUISITE:
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
+                                return task != null;
+                        case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE:
                                 return prerequisite != null;
-                        case DronePackage.TASK_REQUIREMENT__PARTICIPANTS:
+                        case BehaviourPackage.TASK_REQUIREMENT__PARTICIPANTS:
                                 return participants != PARTICIPANTS_EDEFAULT;
-                        case DronePackage.TASK_REQUIREMENT__PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__PROPERTIES:
                                 return properties != null && !properties.isEmpty();
-                        case DronePackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__REQUIRED_CAPABILITIES:
                                 return requiredCapabilities != null && !requiredCapabilities.isEmpty();
-                        case DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
+                        case BehaviourPackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 return capabilityProperties != null && !capabilityProperties.isEmpty();
-                        case DronePackage.TASK_REQUIREMENT__DESCRIPTOR:
+                        case BehaviourPackage.TASK_REQUIREMENT__DESCRIPTOR:
                                 return basicGetDescriptor() != null;
                 }
                 return super.eIsSet(featureID);

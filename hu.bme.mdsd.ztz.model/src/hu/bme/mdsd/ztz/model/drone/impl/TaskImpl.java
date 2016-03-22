@@ -6,8 +6,6 @@ import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Mission;
 import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
-import hu.bme.mdsd.ztz.model.drone.TaskRequirement;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -28,7 +26,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskImpl#getMission <em>Mission</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskImpl#getDescriptor <em>Descriptor</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskImpl#getRequirement <em>Requirement</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,16 +40,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
          * @ordered
          */
         protected TaskDescriptor descriptor;
-
-        /**
-         * The cached value of the '{@link #getRequirement() <em>Requirement</em>}' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getRequirement()
-         * @generated
-         * @ordered
-         */
-        protected TaskRequirement requirement;
 
         /**
          * <!-- begin-user-doc -->
@@ -162,49 +149,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
          * <!-- end-user-doc -->
          * @generated
          */
-        public TaskRequirement getRequirement() {
-                return requirement;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public NotificationChain basicSetRequirement(TaskRequirement newRequirement, NotificationChain msgs) {
-                TaskRequirement oldRequirement = requirement;
-                requirement = newRequirement;
-                if (eNotificationRequired()) {
-                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DronePackage.TASK__REQUIREMENT, oldRequirement, newRequirement);
-                        if (msgs == null) msgs = notification; else msgs.add(notification);
-                }
-                return msgs;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setRequirement(TaskRequirement newRequirement) {
-                if (newRequirement != requirement) {
-                        NotificationChain msgs = null;
-                        if (requirement != null)
-                                msgs = ((InternalEObject)requirement).eInverseRemove(this, DronePackage.TASK_REQUIREMENT__TASK, TaskRequirement.class, msgs);
-                        if (newRequirement != null)
-                                msgs = ((InternalEObject)newRequirement).eInverseAdd(this, DronePackage.TASK_REQUIREMENT__TASK, TaskRequirement.class, msgs);
-                        msgs = basicSetRequirement(newRequirement, msgs);
-                        if (msgs != null) msgs.dispatch();
-                }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK__REQUIREMENT, newRequirement, newRequirement));
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         @Override
         public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -216,10 +160,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
                                 if (descriptor != null)
                                         msgs = ((InternalEObject)descriptor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__DESCRIPTOR, null, msgs);
                                 return basicSetDescriptor((TaskDescriptor)otherEnd, msgs);
-                        case DronePackage.TASK__REQUIREMENT:
-                                if (requirement != null)
-                                        msgs = ((InternalEObject)requirement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.TASK__REQUIREMENT, null, msgs);
-                                return basicSetRequirement((TaskRequirement)otherEnd, msgs);
                 }
                 return super.eInverseAdd(otherEnd, featureID, msgs);
         }
@@ -236,8 +176,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
                                 return basicSetMission(null, msgs);
                         case DronePackage.TASK__DESCRIPTOR:
                                 return basicSetDescriptor(null, msgs);
-                        case DronePackage.TASK__REQUIREMENT:
-                                return basicSetRequirement(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -268,8 +206,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
                                 return getMission();
                         case DronePackage.TASK__DESCRIPTOR:
                                 return getDescriptor();
-                        case DronePackage.TASK__REQUIREMENT:
-                                return getRequirement();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -287,9 +223,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
                                 return;
                         case DronePackage.TASK__DESCRIPTOR:
                                 setDescriptor((TaskDescriptor)newValue);
-                                return;
-                        case DronePackage.TASK__REQUIREMENT:
-                                setRequirement((TaskRequirement)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -309,9 +242,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
                         case DronePackage.TASK__DESCRIPTOR:
                                 setDescriptor((TaskDescriptor)null);
                                 return;
-                        case DronePackage.TASK__REQUIREMENT:
-                                setRequirement((TaskRequirement)null);
-                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -328,8 +258,6 @@ public class TaskImpl extends NamedElementImpl implements Task {
                                 return getMission() != null;
                         case DronePackage.TASK__DESCRIPTOR:
                                 return descriptor != null;
-                        case DronePackage.TASK__REQUIREMENT:
-                                return requirement != null;
                 }
                 return super.eIsSet(featureID);
         }

@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getDynamicRobots <em>Dynamic Robots</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getTaskExecutions <em>Task Executions</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getTaskRequirements <em>Task Requirements</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getBehaviourContainer()
@@ -55,5 +56,21 @@ public interface BehaviourContainer extends EObject {
          * @generated
          */
         EList<TaskExecution> getTaskExecutions();
+
+        /**
+         * Returns the value of the '<em><b>Task Requirements</b></em>' containment reference list.
+         * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement}.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Task Requirements</em>' containment reference list isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Task Requirements</em>' containment reference list.
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getBehaviourContainer_TaskRequirements()
+         * @model containment="true"
+         * @generated
+         */
+        EList<TaskRequirement> getTaskRequirements();
 
 } // BehaviourContainer

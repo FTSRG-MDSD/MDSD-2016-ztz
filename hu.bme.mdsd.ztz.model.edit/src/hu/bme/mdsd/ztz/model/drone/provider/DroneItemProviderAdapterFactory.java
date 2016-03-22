@@ -279,29 +279,6 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
         }
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.TaskRequirement} instances.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected TaskRequirementItemProvider taskRequirementItemProvider;
-
-        /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.TaskRequirement}.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public Adapter createTaskRequirementAdapter() {
-                if (taskRequirementItemProvider == null) {
-                        taskRequirementItemProvider = new TaskRequirementItemProvider(this);
-                }
-
-                return taskRequirementItemProvider;
-        }
-
-        /**
          * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Size} instances.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -639,7 +616,6 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
                 if (propertyItemProvider != null) propertyItemProvider.dispose();
                 if (robotItemProvider != null) robotItemProvider.dispose();
                 if (stringPropertyItemProvider != null) stringPropertyItemProvider.dispose();
-                if (taskRequirementItemProvider != null) taskRequirementItemProvider.dispose();
                 if (sizeItemProvider != null) sizeItemProvider.dispose();
                 if (batteryItemProvider != null) batteryItemProvider.dispose();
                 if (equipmentItemProvider != null) equipmentItemProvider.dispose();

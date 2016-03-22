@@ -6,6 +6,8 @@
         eType="#//DynamicRobot" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskExecutions" upperBound="-1"
         eType="#//TaskExecution" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taskRequirements" upperBound="-1"
+        eType="#//TaskRequirement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Message">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
@@ -98,5 +100,25 @@
         eType="#//RobotStatus"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskRequirement" eSuperTypes="drone.ecore#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" unique="false" lowerBound="1"
+        eType="#//TaskExecution"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="prerequisite" unique="false"
+        eType="#//TaskExecution"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="participants" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="ecore:EClass drone.ecore#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requiredCapabilities" upperBound="-1"
+        eType="ecore:EClass drone.ecore#//Capability"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProperties" upperBound="-1"
+        eType="ecore:EClass drone.ecore#//CapabilityProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" eType="ecore:EClass drone.ecore#//TaskDescriptor"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
+        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.descriptor"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

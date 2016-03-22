@@ -3,50 +3,15 @@
   <missions name="LiftingMission">
     <tasks name="Ascend">
       <descriptor/>
-      <requirement participants="1" requiredCapabilities="//@capabilities.0 //@capabilities.2">
-        <capabilityProperties capability="//@capabilities.0">
-          <properties key="MaxFlyingHeight">
-            <value xsi:type="drone:MeasureProperty">
-              <value value="1000.0" dimension="//@measureDimensions.2"/>
-            </value>
-          </properties>
-        </capabilityProperties>
-      </requirement>
     </tasks>
     <tasks name="Approach">
       <descriptor targets="//@areaObjects.0"/>
-      <requirement prerequisite="//@missions.0/@tasks.0" participants="1" requiredCapabilities="//@capabilities.0">
-        <capabilityProperties capability="//@capabilities.0">
-          <properties key="MaxFlyingHeight">
-            <value xsi:type="drone:MeasureProperty">
-              <value value="1000.0" dimension="//@measureDimensions.2"/>
-            </value>
-          </properties>
-        </capabilityProperties>
-      </requirement>
     </tasks>
     <tasks name="Lift">
       <descriptor targets="//@areaObjects.0"/>
-      <requirement prerequisite="//@missions.0/@tasks.1" participants="1" requiredCapabilities="//@capabilities.0 //@capabilities.1">
-        <capabilityProperties capability="//@capabilities.0">
-          <properties key="MaxFlyingHeight">
-            <value xsi:type="drone:MeasureProperty">
-              <value value="1000.0" dimension="//@measureDimensions.2"/>
-            </value>
-          </properties>
-        </capabilityProperties>
-        <capabilityProperties capability="//@capabilities.1">
-          <properties key="MaxLiftingWeight">
-            <value xsi:type="drone:MeasureProperty">
-              <value value="20.0" dimension="//@measureDimensions.5"/>
-            </value>
-          </properties>
-        </capabilityProperties>
-      </requirement>
     </tasks>
     <tasks name="Deliver">
       <descriptor targets="//@areaObjects.1 //@areaObjects.0"/>
-      <requirement prerequisite="//@missions.0/@tasks.2" participants="1"/>
     </tasks>
   </missions>
   <robots name="Frank 007" capabilities="//@capabilities.2 //@capabilities.0 //@capabilities.1">

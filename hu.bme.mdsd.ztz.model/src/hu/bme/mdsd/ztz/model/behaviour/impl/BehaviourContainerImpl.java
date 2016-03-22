@@ -7,6 +7,7 @@ import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
+import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getDynamicRobots <em>Dynamic Robots</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getTaskExecutions <em>Task Executions</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getTaskRequirements <em>Task Requirements</em>}</li>
  * </ul>
  *
  * @generated
@@ -54,6 +56,16 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
          * @ordered
          */
         protected EList<TaskExecution> taskExecutions;
+
+        /**
+         * The cached value of the '{@link #getTaskRequirements() <em>Task Requirements</em>}' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getTaskRequirements()
+         * @generated
+         * @ordered
+         */
+        protected EList<TaskRequirement> taskRequirements;
 
         /**
          * <!-- begin-user-doc -->
@@ -103,6 +115,18 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
          * <!-- end-user-doc -->
          * @generated
          */
+        public EList<TaskRequirement> getTaskRequirements() {
+                if (taskRequirements == null) {
+                        taskRequirements = new EObjectContainmentEList<TaskRequirement>(TaskRequirement.class, this, BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS);
+                }
+                return taskRequirements;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -110,6 +134,8 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                                 return ((InternalEList<?>)getDynamicRobots()).basicRemove(otherEnd, msgs);
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_EXECUTIONS:
                                 return ((InternalEList<?>)getTaskExecutions()).basicRemove(otherEnd, msgs);
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
+                                return ((InternalEList<?>)getTaskRequirements()).basicRemove(otherEnd, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -126,6 +152,8 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                                 return getDynamicRobots();
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_EXECUTIONS:
                                 return getTaskExecutions();
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
+                                return getTaskRequirements();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -147,6 +175,10 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                                 getTaskExecutions().clear();
                                 getTaskExecutions().addAll((Collection<? extends TaskExecution>)newValue);
                                 return;
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
+                                getTaskRequirements().clear();
+                                getTaskRequirements().addAll((Collection<? extends TaskRequirement>)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -165,6 +197,9 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_EXECUTIONS:
                                 getTaskExecutions().clear();
                                 return;
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
+                                getTaskRequirements().clear();
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -181,6 +216,8 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                                 return dynamicRobots != null && !dynamicRobots.isEmpty();
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_EXECUTIONS:
                                 return taskExecutions != null && !taskExecutions.isEmpty();
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
+                                return taskRequirements != null && !taskRequirements.isEmpty();
                 }
                 return super.eIsSet(featureID);
         }

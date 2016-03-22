@@ -31,6 +31,7 @@ public class BehaviourTests extends TestSuite {
          */
         public static Test suite() {
                 TestSuite suite = new BehaviourTests("behaviour Tests");
+                suite.addTestSuite(TaskRequirementTest.class);
                 return suite;
         }
 

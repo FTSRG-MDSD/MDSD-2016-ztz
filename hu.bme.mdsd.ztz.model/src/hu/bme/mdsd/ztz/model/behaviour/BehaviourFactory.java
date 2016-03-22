@@ -121,6 +121,15 @@ public interface BehaviourFactory extends EFactory {
         DynamicRobot createDynamicRobot();
 
         /**
+         * Returns a new object of class '<em>Task Requirement</em>'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return a new object of class '<em>Task Requirement</em>'.
+         * @generated
+         */
+        TaskRequirement createTaskRequirement();
+
+        /**
          * Returns the package supported by this factory.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

@@ -23,6 +23,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -134,6 +135,16 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @ordered
          */
         protected MeasureValue weight;
+
+        /**
+         * The cached setting delegate for the '{@link #getMission() <em>Mission</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getMission()
+         * @generated
+         * @ordered
+         */
+        protected EStructuralFeature.Internal.SettingDelegate MISSION__ESETTING_DELEGATE = ((EStructuralFeature.Internal)DronePackage.Literals.ROBOT__MISSION).getSettingDelegate();
 
         /**
          * The cached value of the '{@link #getCapabilities() <em>Capabilities</em>}' reference list.
@@ -400,8 +411,7 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @generated
          */
         public Mission getMission() {
-                Mission mission = basicGetMission();
-                return mission != null && mission.eIsProxy() ? (Mission)eResolveProxy((InternalEObject)mission) : mission;
+                return (Mission)MISSION__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
         }
 
         /**
@@ -410,10 +420,7 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @generated
          */
         public Mission basicGetMission() {
-                // TODO: implement this method to return the 'Mission' reference
-                // -> do not perform proxy resolution
-                // Ensure that you remove @generated or mark it @generated NOT
-                throw new UnsupportedOperationException();
+                return (Mission)MISSION__ESETTING_DELEGATE.dynamicGet(this, null, 0, false, false);
         }
 
         /**
@@ -422,9 +429,7 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @generated
          */
         public boolean isSetMission() {
-                // TODO: implement this method to return whether the 'Mission' reference is set
-                // Ensure that you remove @generated or mark it @generated NOT
-                throw new UnsupportedOperationException();
+                return MISSION__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
         }
 
         /**

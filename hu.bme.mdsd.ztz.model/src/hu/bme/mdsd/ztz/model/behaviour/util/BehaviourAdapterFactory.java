@@ -118,6 +118,10 @@ public class BehaviourAdapterFactory extends AdapterFactoryImpl {
                                 return createDynamicRobotAdapter();
                         }
                         @Override
+                        public Adapter caseTaskRequirement(TaskRequirement object) {
+                                return createTaskRequirementAdapter();
+                        }
+                        @Override
                         public Adapter caseNamedElement(NamedElement object) {
                                 return createNamedElementAdapter();
                         }
@@ -306,6 +310,20 @@ public class BehaviourAdapterFactory extends AdapterFactoryImpl {
          * @generated
          */
         public Adapter createDynamicRobotAdapter() {
+                return null;
+        }
+
+        /**
+         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement <em>Task Requirement</em>}'.
+         * <!-- begin-user-doc -->
+         * This default implementation returns null so that we can easily ignore cases;
+         * it's useful to ignore a case when inheritance will catch all the cases anyway.
+         * <!-- end-user-doc -->
+         * @return the new adapter.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement
+         * @generated
+         */
+        public Adapter createTaskRequirementAdapter() {
                 return null;
         }
 

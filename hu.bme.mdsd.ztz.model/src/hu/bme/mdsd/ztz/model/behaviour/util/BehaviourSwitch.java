@@ -147,6 +147,13 @@ public class BehaviourSwitch<T> extends Switch<T> {
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
+                        case BehaviourPackage.TASK_REQUIREMENT: {
+                                TaskRequirement taskRequirement = (TaskRequirement)theEObject;
+                                T result = caseTaskRequirement(taskRequirement);
+                                if (result == null) result = caseNamedElement(taskRequirement);
+                                if (result == null) result = defaultCase(theEObject);
+                                return result;
+                        }
                         default: return defaultCase(theEObject);
                 }
         }
@@ -328,6 +335,21 @@ public class BehaviourSwitch<T> extends Switch<T> {
          * @generated
          */
         public T caseDynamicRobot(DynamicRobot object) {
+                return null;
+        }
+
+        /**
+         * Returns the result of interpreting the object as an instance of '<em>Task Requirement</em>'.
+         * <!-- begin-user-doc -->
+         * This implementation returns null;
+         * returning a non-null result will terminate the switch.
+         * <!-- end-user-doc -->
+         * @param object the target of the switch.
+         * @return the result of interpreting the object as an instance of '<em>Task Requirement</em>'.
+         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+         * @generated
+         */
+        public T caseTaskRequirement(TaskRequirement object) {
                 return null;
         }
 

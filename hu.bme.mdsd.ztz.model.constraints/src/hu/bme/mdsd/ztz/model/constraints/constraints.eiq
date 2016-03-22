@@ -1,6 +1,7 @@
 package hu.bme.mdsd.ztz.model.constraints
 
 import "http://www.mdsd.hu/drone"
+import "http://www.mdsd.hu/behaviour"
 
 
 @Constraint(
@@ -50,42 +51,42 @@ pattern nonPositiveParticipants(requirement: TaskRequirement) {
 }
 
 
-@Constraint(
-	key = {"task"},
-	severity = "error",
-	message = "$task$ must be finished when its execution status is finished!",
-	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-)
-pattern taskNotFinished(task:Task) {
-	Task.execution.status(task, ::Finished);
-	Task.status(task, status);
-	check (status != hu.bme.mdsd.ztz.model.drone.TaskStatus.FINISHED);
-}
+//@Constraint(
+//	key = {"task"},
+//	severity = "error",
+//	message = "$task$ must be finished when its execution status is finished!",
+//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+//)
+//pattern taskNotFinished(task:Task) {
+//	Task.execution.status(task, ::Finished);
+//	Task.status(task, status);
+//	check (status != hu.bme.mdsd.ztz.model.drone.TaskStatus.FINISHED);
+//}
 
 
-@Constraint(
-	key = {"task"},
-	severity = "error",
-	message = "$task$ mustn't be finished when its execution status is still not finished!",
-	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-)
-pattern taskEarlyFinished(task: Task) {
-	Task.status(task, ::Finished);
-	Task.execution.status(task, status);
-	check (status != hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus.FINISHED);
-}
+//@Constraint(
+//	key = {"task"},
+//	severity = "error",
+//	message = "$task$ mustn't be finished when its execution status is still not finished!",
+//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+//)
+//pattern taskEarlyFinished(task: Task) {
+//	Task.status(task, ::Finished);
+//	Task.execution.status(task, status);
+//	check (status != hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus.FINISHED);
+//}
 
 
-@Constraint(
-	key = {"task", "execution"},
-	severity = "error",
-	message = "$task$ is in Waiting status, so it must not have a TaskExecution!",
-	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-)
-pattern taskEarlyExecuted(task:Task, execution: TaskExecution) {
-	Task.status(task, ::Waiting);
-	Task.execution(task, execution);
-}
+//@Constraint(
+//	key = {"task", "execution"},
+//	severity = "error",
+//	message = "$task$ is in Waiting status, so it must not have a TaskExecution!",
+//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+//)
+//pattern taskEarlyExecuted(task:Task, execution: TaskExecution) {
+//	Task.status(task, ::Waiting);
+//	Task.execution(task, execution);
+//}
 
 
 @Constraint(

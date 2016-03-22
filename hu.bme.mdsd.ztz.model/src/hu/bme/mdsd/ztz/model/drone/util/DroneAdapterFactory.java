@@ -104,10 +104,6 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
                                 return createStringPropertyAdapter();
                         }
                         @Override
-                        public Adapter caseTaskRequirement(TaskRequirement object) {
-                                return createTaskRequirementAdapter();
-                        }
-                        @Override
                         public Adapter caseSize(Size object) {
                                 return createSizeAdapter();
                         }
@@ -298,20 +294,6 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
          * @generated
          */
         public Adapter createStringPropertyAdapter() {
-                return null;
-        }
-
-        /**
-         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement <em>Task Requirement</em>}'.
-         * <!-- begin-user-doc -->
-         * This default implementation returns null so that we can easily ignore cases;
-         * it's useful to ignore a case when inheritance will catch all the cases anyway.
-         * <!-- end-user-doc -->
-         * @return the new adapter.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement
-         * @generated
-         */
-        public Adapter createTaskRequirementAdapter() {
                 return null;
         }
 

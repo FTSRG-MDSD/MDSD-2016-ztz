@@ -46,4 +46,18 @@
   <taskExecutions name="Deliver Execution" executors="//@dynamicRobots.1" status="Waiting">
     <task href="robots.drone#//@missions.0/@tasks.3"/>
   </taskExecutions>
+  <taskRequirements name="Ascend Req" task="//@taskExecutions.0" participants="1">
+    <requiredCapabilities href="robots.drone#//@capabilities.2"/>
+    <requiredCapabilities href="robots.drone#//@capabilities.0"/>
+  </taskRequirements>
+  <taskRequirements name="Approach Requirement" task="//@taskExecutions.1" prerequisite="//@taskExecutions.0" participants="1">
+    <requiredCapabilities href="robots.drone#//@capabilities.0"/>
+  </taskRequirements>
+  <taskRequirements name="Lift Requirement" task="//@taskExecutions.2" prerequisite="//@taskExecutions.1" participants="1">
+    <requiredCapabilities href="robots.drone#//@capabilities.0"/>
+    <requiredCapabilities href="robots.drone#//@capabilities.1"/>
+  </taskRequirements>
+  <taskRequirements name="Deliver Requirement" task="//@taskExecutions.3" prerequisite="//@taskExecutions.2" participants="1">
+    <requiredCapabilities href="robots.drone#//@capabilities.0"/>
+  </taskRequirements>
 </behaviour:BehaviourContainer>

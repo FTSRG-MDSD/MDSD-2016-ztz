@@ -63,7 +63,6 @@ public class TaskItemProvider extends NamedElementItemProvider {
                 if (childrenFeatures == null) {
                         super.getChildrenFeatures(object);
                         childrenFeatures.add(DronePackage.Literals.TASK__DESCRIPTOR);
-                        childrenFeatures.add(DronePackage.Literals.TASK__REQUIREMENT);
                 }
                 return childrenFeatures;
         }
@@ -120,7 +119,6 @@ public class TaskItemProvider extends NamedElementItemProvider {
 
                 switch (notification.getFeatureID(Task.class)) {
                         case DronePackage.TASK__DESCRIPTOR:
-                        case DronePackage.TASK__REQUIREMENT:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -142,11 +140,6 @@ public class TaskItemProvider extends NamedElementItemProvider {
                         (createChildParameter
                                 (DronePackage.Literals.TASK__DESCRIPTOR,
                                  DroneFactory.eINSTANCE.createTaskDescriptor()));
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (DronePackage.Literals.TASK__REQUIREMENT,
-                                 DroneFactory.eINSTANCE.createTaskRequirement()));
         }
 
 }

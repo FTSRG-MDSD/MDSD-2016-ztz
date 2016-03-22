@@ -25,8 +25,6 @@ import hu.bme.mdsd.ztz.model.drone.Size;
 import hu.bme.mdsd.ztz.model.drone.StringProperty;
 import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
-import hu.bme.mdsd.ztz.model.drone.TaskRequirement;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -103,13 +101,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * @generated
          */
         private EClass stringPropertyEClass = null;
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        private EClass taskRequirementEClass = null;
 
         /**
          * <!-- begin-user-doc -->
@@ -299,15 +290,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          */
         public EReference getTask_Descriptor() {
                 return (EReference)taskEClass.getEStructuralFeatures().get(1);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTask_Requirement() {
-                return (EReference)taskEClass.getEStructuralFeatures().get(2);
         }
 
         /**
@@ -596,78 +578,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          */
         public EAttribute getStringProperty_Value() {
                 return (EAttribute)stringPropertyEClass.getEStructuralFeatures().get(0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EClass getTaskRequirement() {
-                return taskRequirementEClass;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTaskRequirement_Task() {
-                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTaskRequirement_Prerequisite() {
-                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(1);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EAttribute getTaskRequirement_Participants() {
-                return (EAttribute)taskRequirementEClass.getEStructuralFeatures().get(2);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTaskRequirement_Properties() {
-                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(3);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTaskRequirement_RequiredCapabilities() {
-                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(4);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTaskRequirement_CapabilityProperties() {
-                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(5);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getTaskRequirement_Descriptor() {
-                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(6);
         }
 
         /**
@@ -1019,7 +929,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 taskEClass = createEClass(TASK);
                 createEReference(taskEClass, TASK__MISSION);
                 createEReference(taskEClass, TASK__DESCRIPTOR);
-                createEReference(taskEClass, TASK__REQUIREMENT);
 
                 taskDescriptorEClass = createEClass(TASK_DESCRIPTOR);
                 createEReference(taskDescriptorEClass, TASK_DESCRIPTOR__TARGETS);
@@ -1059,15 +968,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
 
                 stringPropertyEClass = createEClass(STRING_PROPERTY);
                 createEAttribute(stringPropertyEClass, STRING_PROPERTY__VALUE);
-
-                taskRequirementEClass = createEClass(TASK_REQUIREMENT);
-                createEReference(taskRequirementEClass, TASK_REQUIREMENT__TASK);
-                createEReference(taskRequirementEClass, TASK_REQUIREMENT__PREREQUISITE);
-                createEAttribute(taskRequirementEClass, TASK_REQUIREMENT__PARTICIPANTS);
-                createEReference(taskRequirementEClass, TASK_REQUIREMENT__PROPERTIES);
-                createEReference(taskRequirementEClass, TASK_REQUIREMENT__REQUIRED_CAPABILITIES);
-                createEReference(taskRequirementEClass, TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
-                createEReference(taskRequirementEClass, TASK_REQUIREMENT__DESCRIPTOR);
 
                 sizeEClass = createEClass(SIZE);
                 createEReference(sizeEClass, SIZE__WIDTH);
@@ -1162,7 +1062,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getTask_Mission(), this.getMission(), this.getMission_Tasks(), "mission", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTask_Descriptor(), this.getTaskDescriptor(), this.getTaskDescriptor_Task(), "descriptor", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTask_Requirement(), this.getTaskRequirement(), this.getTaskRequirement_Task(), "requirement", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(taskDescriptorEClass, TaskDescriptor.class, "TaskDescriptor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getTaskDescriptor_Targets(), this.getAreaObject(), null, "targets", null, 0, -1, TaskDescriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1202,15 +1101,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
 
                 initEClass(stringPropertyEClass, StringProperty.class, "StringProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEAttribute(getStringProperty_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-                initEClass(taskRequirementEClass, TaskRequirement.class, "TaskRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getTaskRequirement_Task(), this.getTask(), this.getTask_Requirement(), "task", null, 1, 1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTaskRequirement_Prerequisite(), this.getTask(), null, "prerequisite", null, 0, 1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEAttribute(getTaskRequirement_Participants(), ecorePackage.getEInt(), "participants", null, 1, 1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTaskRequirement_Properties(), this.getProperty(), null, "properties", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTaskRequirement_RequiredCapabilities(), this.getCapability(), null, "requiredCapabilities", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTaskRequirement_CapabilityProperties(), this.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getTaskRequirement_Descriptor(), this.getTaskDescriptor(), null, "descriptor", null, 0, 1, TaskRequirement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
                 initEClass(sizeEClass, Size.class, "Size", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getSize_Width(), this.getMeasureValue(), null, "width", null, 1, 1, Size.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1265,6 +1155,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 // Create annotations
                 // http://www.eclipse.org/emf/2002/Ecore
                 createEcoreAnnotations();
+                // org.eclipse.incquery.querybasedfeature
+                createOrgAnnotations();
         }
 
         /**
@@ -1280,6 +1172,22 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                    source, 
                    new String[] {
                          "settingDelegates", "org.eclipse.incquery.querybasedfeature"
+                   });
+        }
+
+        /**
+         * Initializes the annotations for <b>org.eclipse.incquery.querybasedfeature</b>.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void createOrgAnnotations() {
+                String source = "org.eclipse.incquery.querybasedfeature";	
+                addAnnotation
+                  (getRobot_Mission(), 
+                   source, 
+                   new String[] {
+                         "patternFQN", "hu.bme.mdsd.ztz.model.derived.mission"
                    });
         }
 

@@ -78,6 +78,7 @@ public class BehaviourContainerItemProvider
                         super.getChildrenFeatures(object);
                         childrenFeatures.add(BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS);
                         childrenFeatures.add(BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__TASK_EXECUTIONS);
+                        childrenFeatures.add(BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS);
                 }
                 return childrenFeatures;
         }
@@ -132,6 +133,7 @@ public class BehaviourContainerItemProvider
                 switch (notification.getFeatureID(BehaviourContainer.class)) {
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS:
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_EXECUTIONS:
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -158,6 +160,11 @@ public class BehaviourContainerItemProvider
                         (createChildParameter
                                 (BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__TASK_EXECUTIONS,
                                  BehaviourFactory.eINSTANCE.createTaskExecution()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (BehaviourPackage.Literals.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS,
+                                 BehaviourFactory.eINSTANCE.createTaskRequirement()));
         }
 
         /**

@@ -65,7 +65,6 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
                         case DronePackage.PROPERTY: return createProperty();
                         case DronePackage.ROBOT: return createRobot();
                         case DronePackage.STRING_PROPERTY: return createStringProperty();
-                        case DronePackage.TASK_REQUIREMENT: return createTaskRequirement();
                         case DronePackage.SIZE: return createSize();
                         case DronePackage.BATTERY: return createBattery();
                         case DronePackage.EQUIPMENT: return createEquipment();
@@ -169,16 +168,6 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
         public StringProperty createStringProperty() {
                 StringPropertyImpl stringProperty = new StringPropertyImpl();
                 return stringProperty;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public TaskRequirement createTaskRequirement() {
-                TaskRequirementImpl taskRequirement = new TaskRequirementImpl();
-                return taskRequirement;
         }
 
         /**

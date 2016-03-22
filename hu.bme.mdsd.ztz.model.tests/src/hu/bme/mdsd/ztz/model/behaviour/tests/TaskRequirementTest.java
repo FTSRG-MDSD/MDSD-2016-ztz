@@ -1,9 +1,9 @@
 /**
  */
-package hu.bme.mdsd.ztz.model.drone.tests;
+package hu.bme.mdsd.ztz.model.behaviour.tests;
 
-import hu.bme.mdsd.ztz.model.drone.DroneFactory;
-import hu.bme.mdsd.ztz.model.drone.TaskRequirement;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
+import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 
 import junit.framework.TestCase;
 
@@ -16,7 +16,7 @@ import junit.textui.TestRunner;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor() <em>Descriptor</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getDescriptor() <em>Descriptor</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -78,7 +78,7 @@ public class TaskRequirementTest extends TestCase {
          */
         @Override
         protected void setUp() throws Exception {
-                setFixture(DroneFactory.eINSTANCE.createTaskRequirement());
+                setFixture(BehaviourFactory.eINSTANCE.createTaskRequirement());
         }
 
         /**
@@ -93,10 +93,10 @@ public class TaskRequirementTest extends TestCase {
         }
 
         /**
-         * Tests the '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor() <em>Descriptor</em>}' feature getter.
+         * Tests the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getDescriptor() <em>Descriptor</em>}' feature getter.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor()
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getDescriptor()
          * @generated
          */
         public void testGetDescriptor() {

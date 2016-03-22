@@ -325,6 +325,29 @@ public class BehaviourItemProviderAdapterFactory extends BehaviourAdapterFactory
         }
 
         /**
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected TaskRequirementItemProvider taskRequirementItemProvider;
+
+        /**
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createTaskRequirementAdapter() {
+                if (taskRequirementItemProvider == null) {
+                        taskRequirementItemProvider = new TaskRequirementItemProvider(this);
+                }
+
+                return taskRequirementItemProvider;
+        }
+
+        /**
          * This returns the root adapter factory that contains this factory.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -434,6 +457,7 @@ public class BehaviourItemProviderAdapterFactory extends BehaviourAdapterFactory
                 if (robotCollaborationItemProvider != null) robotCollaborationItemProvider.dispose();
                 if (detectedObjectItemProvider != null) detectedObjectItemProvider.dispose();
                 if (dynamicRobotItemProvider != null) dynamicRobotItemProvider.dispose();
+                if (taskRequirementItemProvider != null) taskRequirementItemProvider.dispose();
         }
 
 }

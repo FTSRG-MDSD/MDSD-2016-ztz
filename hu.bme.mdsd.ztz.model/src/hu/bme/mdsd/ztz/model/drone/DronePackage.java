@@ -65,7 +65,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getNamedElement()
          * @generated
          */
-        int NAMED_ELEMENT = 12;
+        int NAMED_ELEMENT = 11;
 
         /**
          * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -178,22 +178,13 @@ public interface DronePackage extends EPackage {
         int TASK__DESCRIPTOR = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
         /**
-         * The feature id for the '<em><b>Requirement</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK__REQUIREMENT = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-        /**
          * The number of structural features of the '<em>Task</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+        int TASK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
         /**
          * The number of operations of the '<em>Task</em>' class.
@@ -614,7 +605,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getPropertyValue()
          * @generated
          */
-        int PROPERTY_VALUE = 18;
+        int PROPERTY_VALUE = 17;
 
         /**
          * The number of structural features of the '<em>Property Value</em>' class.
@@ -672,97 +663,6 @@ public interface DronePackage extends EPackage {
         int STRING_PROPERTY_OPERATION_COUNT = PROPERTY_VALUE_OPERATION_COUNT + 0;
 
         /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl <em>Task Requirement</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getTaskRequirement()
-         * @generated
-         */
-        int TASK_REQUIREMENT = 9;
-
-        /**
-         * The feature id for the '<em><b>Task</b></em>' container reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT__TASK = 0;
-
-        /**
-         * The feature id for the '<em><b>Prerequisite</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT__PREREQUISITE = 1;
-
-        /**
-         * The feature id for the '<em><b>Participants</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT__PARTICIPANTS = 2;
-
-        /**
-         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT__PROPERTIES = 3;
-
-        /**
-         * The feature id for the '<em><b>Required Capabilities</b></em>' reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT__REQUIRED_CAPABILITIES = 4;
-
-        /**
-         * The feature id for the '<em><b>Capability Properties</b></em>' containment reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT__CAPABILITY_PROPERTIES = 5;
-
-        /**
-         * The feature id for the '<em><b>Descriptor</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT__DESCRIPTOR = 6;
-
-        /**
-         * The number of structural features of the '<em>Task Requirement</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT_FEATURE_COUNT = 7;
-
-        /**
-         * The number of operations of the '<em>Task Requirement</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT_OPERATION_COUNT = 0;
-
-        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.SizeImpl <em>Size</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -770,7 +670,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getSize()
          * @generated
          */
-        int SIZE = 10;
+        int SIZE = 9;
 
         /**
          * The feature id for the '<em><b>Width</b></em>' containment reference.
@@ -825,7 +725,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getBattery()
          * @generated
          */
-        int BATTERY = 11;
+        int BATTERY = 10;
 
         /**
          * The feature id for the '<em><b>Capacity</b></em>' containment reference.
@@ -889,7 +789,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getEquipment()
          * @generated
          */
-        int EQUIPMENT = 13;
+        int EQUIPMENT = 12;
 
         /**
          * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -944,7 +844,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureValue()
          * @generated
          */
-        int MEASURE_VALUE = 14;
+        int MEASURE_VALUE = 13;
 
         /**
          * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -990,7 +890,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureConversion()
          * @generated
          */
-        int MEASURE_CONVERSION = 15;
+        int MEASURE_CONVERSION = 14;
 
         /**
          * The feature id for the '<em><b>Rate</b></em>' attribute.
@@ -1036,7 +936,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureDimension()
          * @generated
          */
-        int MEASURE_DIMENSION = 16;
+        int MEASURE_DIMENSION = 15;
 
         /**
          * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1082,7 +982,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureProperty()
          * @generated
          */
-        int MEASURE_PROPERTY = 17;
+        int MEASURE_PROPERTY = 16;
 
         /**
          * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -1119,7 +1019,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getRobotMissionContainer()
          * @generated
          */
-        int ROBOT_MISSION_CONTAINER = 19;
+        int ROBOT_MISSION_CONTAINER = 18;
 
         /**
          * The feature id for the '<em><b>Missions</b></em>' containment reference list.
@@ -1192,7 +1092,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getCapability()
          * @generated
          */
-        int CAPABILITY = 20;
+        int CAPABILITY = 19;
 
         /**
          * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1229,7 +1129,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getCapabilityProperties()
          * @generated
          */
-        int CAPABILITY_PROPERTIES = 21;
+        int CAPABILITY_PROPERTIES = 20;
 
         /**
          * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -1320,17 +1220,6 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EReference getTask_Descriptor();
-
-        /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.Task#getRequirement <em>Requirement</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Requirement</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.Task#getRequirement()
-         * @see #getTask()
-         * @generated
-         */
-        EReference getTask_Requirement();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.TaskDescriptor <em>Task Descriptor</em>}'.
@@ -1676,93 +1565,6 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EAttribute getStringProperty_Value();
-
-        /**
-         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement <em>Task Requirement</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for class '<em>Task Requirement</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement
-         * @generated
-         */
-        EClass getTaskRequirement();
-
-        /**
-         * Returns the meta object for the container reference '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getTask <em>Task</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the container reference '<em>Task</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getTask()
-         * @see #getTaskRequirement()
-         * @generated
-         */
-        EReference getTaskRequirement_Task();
-
-        /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getPrerequisite <em>Prerequisite</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Prerequisite</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getPrerequisite()
-         * @see #getTaskRequirement()
-         * @generated
-         */
-        EReference getTaskRequirement_Prerequisite();
-
-        /**
-         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getParticipants <em>Participants</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the attribute '<em>Participants</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getParticipants()
-         * @see #getTaskRequirement()
-         * @generated
-         */
-        EAttribute getTaskRequirement_Participants();
-
-        /**
-         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getProperties <em>Properties</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference list '<em>Properties</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getProperties()
-         * @see #getTaskRequirement()
-         * @generated
-         */
-        EReference getTaskRequirement_Properties();
-
-        /**
-         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getRequiredCapabilities <em>Required Capabilities</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference list '<em>Required Capabilities</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getRequiredCapabilities()
-         * @see #getTaskRequirement()
-         * @generated
-         */
-        EReference getTaskRequirement_RequiredCapabilities();
-
-        /**
-         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getCapabilityProperties <em>Capability Properties</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference list '<em>Capability Properties</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getCapabilityProperties()
-         * @see #getTaskRequirement()
-         * @generated
-         */
-        EReference getTaskRequirement_CapabilityProperties();
-
-        /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor <em>Descriptor</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Descriptor</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor()
-         * @see #getTaskRequirement()
-         * @generated
-         */
-        EReference getTaskRequirement_Descriptor();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.Size <em>Size</em>}'.
@@ -2205,14 +2007,6 @@ public interface DronePackage extends EPackage {
                 EReference TASK__DESCRIPTOR = eINSTANCE.getTask_Descriptor();
 
                 /**
-                 * The meta object literal for the '<em><b>Requirement</b></em>' containment reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK__REQUIREMENT = eINSTANCE.getTask_Requirement();
-
-                /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.TaskDescriptorImpl <em>Task Descriptor</em>}' class.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -2481,72 +2275,6 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EAttribute STRING_PROPERTY__VALUE = eINSTANCE.getStringProperty_Value();
-
-                /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl <em>Task Requirement</em>}' class.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getTaskRequirement()
-                 * @generated
-                 */
-                EClass TASK_REQUIREMENT = eINSTANCE.getTaskRequirement();
-
-                /**
-                 * The meta object literal for the '<em><b>Task</b></em>' container reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_REQUIREMENT__TASK = eINSTANCE.getTaskRequirement_Task();
-
-                /**
-                 * The meta object literal for the '<em><b>Prerequisite</b></em>' reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_REQUIREMENT__PREREQUISITE = eINSTANCE.getTaskRequirement_Prerequisite();
-
-                /**
-                 * The meta object literal for the '<em><b>Participants</b></em>' attribute feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EAttribute TASK_REQUIREMENT__PARTICIPANTS = eINSTANCE.getTaskRequirement_Participants();
-
-                /**
-                 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_REQUIREMENT__PROPERTIES = eINSTANCE.getTaskRequirement_Properties();
-
-                /**
-                 * The meta object literal for the '<em><b>Required Capabilities</b></em>' reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_REQUIREMENT__REQUIRED_CAPABILITIES = eINSTANCE.getTaskRequirement_RequiredCapabilities();
-
-                /**
-                 * The meta object literal for the '<em><b>Capability Properties</b></em>' containment reference list feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_REQUIREMENT__CAPABILITY_PROPERTIES = eINSTANCE.getTaskRequirement_CapabilityProperties();
-
-                /**
-                 * The meta object literal for the '<em><b>Descriptor</b></em>' reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_REQUIREMENT__DESCRIPTOR = eINSTANCE.getTaskRequirement_Descriptor();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.SizeImpl <em>Size</em>}' class.

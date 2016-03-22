@@ -13,8 +13,6 @@
         eType="#//Mission" eOpposite="#//Mission/tasks"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="1"
         eType="#//TaskDescriptor" containment="true" eOpposite="#//TaskDescriptor/task"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" lowerBound="1"
-        eType="#//TaskRequirement" containment="true" eOpposite="#//TaskRequirement/task"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskDescriptor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
@@ -76,22 +74,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringProperty" eSuperTypes="#//PropertyValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskRequirement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="task" unique="false" lowerBound="1"
-        eType="#//Task" eOpposite="#//Task/requirement"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="prerequisite" unique="false"
-        eType="#//Task"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="participants" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="requiredCapabilities" upperBound="-1"
-        eType="#//Capability"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProperties" upperBound="-1"
-        eType="#//CapabilityProperties" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" eType="#//TaskDescriptor"
-        changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Size">
     <eStructuralFeatures xsi:type="ecore:EReference" name="width" lowerBound="1" eType="#//MeasureValue"

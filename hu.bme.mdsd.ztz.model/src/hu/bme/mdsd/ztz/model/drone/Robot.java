@@ -211,6 +211,7 @@ public interface Robot extends NamedElement {
          * @see #isSetMission()
          * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_Mission()
          * @model unsettable="true" transient="true" changeable="false" volatile="true" derived="true"
+         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.mission'"
          * @generated
          */
         Mission getMission();
