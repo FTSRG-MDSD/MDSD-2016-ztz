@@ -110,16 +110,22 @@ pattern oneDetectedObject(object: AreaObject, detected1: DetectedObject) {
 
 
 @Constraint (
-	key = {"robot", "task"},
+	key = {"robot", "taskExecution"},
 	severity = "error",
-	message = "$robot$ is not capable of executing linked task: $task$, capability of $capability$ is missing!",
+	message = "$robot$ is not capable of executing linked task: $taskExecution$, capability of $capability$ is missing!",
 	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
 )
-pattern robotCannotExecuteTask(robot: DynamicRobot, task: TaskExecution, capability: Capability) {
-	TaskRequirement.task(requirement, task);
-	TaskExecution.executors(task, robot);
+pattern robotCannotExecuteTask(robot: DynamicRobot, taskExecution: TaskExecution, capability: Capability) {
+	TaskRequirement.task(requirement, taskExecution);
+	TaskExecution.executors(taskExecution, robot);
 	TaskRequirement.requiredCapabilities(requirement, capability);
-	neg find robotHasCapability(robot, capability);
+	N1 == count find requiredCapability(requirement, capability);
+	N2 == count find robotHasCapability(robot, capability);
+	N1 != N2;
+}
+
+pattern requiredCapability(requirement:TaskRequirement, capability:Capability) {
+	TaskRequirement.requiredCapabilities(requirement, capability);
 }
 
 pattern robotHasCapability(robot: DynamicRobot, capability: Capability) {

@@ -3,6 +3,7 @@ package hu.bme.mdsd.ztz.model.constraints.util;
 import com.google.common.collect.Sets;
 import hu.bme.mdsd.ztz.model.constraints.RobotCannotExecuteTaskMatch;
 import hu.bme.mdsd.ztz.model.constraints.RobotCannotExecuteTaskMatcher;
+import hu.bme.mdsd.ztz.model.constraints.util.RequiredCapabilityQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.RobotHasCapabilityQuerySpecification;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +20,8 @@ import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.annotations.PAnnotation;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.Equality;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
-import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.NegativePatternCall;
+import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.Inequality;
+import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.PatternMatchCounter;
 import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.incquery.runtime.matchers.psystem.queries.PParameter;
 import org.eclipse.incquery.runtime.matchers.psystem.queries.QueryInitializationException;
@@ -84,12 +86,12 @@ public final class RobotCannotExecuteTaskQuerySpecification extends BaseGenerate
     
     @Override
     public List<String> getParameterNames() {
-      return Arrays.asList("robot","task","capability");
+      return Arrays.asList("robot","taskExecution","capability");
     }
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("robot", "hu.bme.mdsd.ztz.model.behaviour.DynamicRobot"),new PParameter("task", "hu.bme.mdsd.ztz.model.behaviour.TaskExecution"),new PParameter("capability", "hu.bme.mdsd.ztz.model.drone.Capability"));
+      return Arrays.asList(new PParameter("robot", "hu.bme.mdsd.ztz.model.behaviour.DynamicRobot"),new PParameter("taskExecution", "hu.bme.mdsd.ztz.model.behaviour.TaskExecution"),new PParameter("capability", "hu.bme.mdsd.ztz.model.drone.Capability"));
     }
     
     @Override
@@ -99,44 +101,54 @@ public final class RobotCannotExecuteTaskQuerySpecification extends BaseGenerate
       	{
       		PBody body = new PBody(this);
       		PVariable var_robot = body.getOrCreateVariableByName("robot");
-      		PVariable var_task = body.getOrCreateVariableByName("task");
+      		PVariable var_taskExecution = body.getOrCreateVariableByName("taskExecution");
       		PVariable var_capability = body.getOrCreateVariableByName("capability");
       		PVariable var_requirement = body.getOrCreateVariableByName("requirement");
+      		PVariable var_N1 = body.getOrCreateVariableByName("N1");
+      		PVariable var_N2 = body.getOrCreateVariableByName("N2");
       		new TypeConstraint(body, new FlatTuple(var_robot), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "DynamicRobot")));
-      		new TypeConstraint(body, new FlatTuple(var_task), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskExecution")));
+      		new TypeConstraint(body, new FlatTuple(var_taskExecution), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskExecution")));
       		new TypeConstraint(body, new FlatTuple(var_capability), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/drone", "Capability")));
       		body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
       		   new ExportedParameter(body, var_robot, "robot"),
-      		   new ExportedParameter(body, var_task, "task"),
+      		   new ExportedParameter(body, var_taskExecution, "taskExecution"),
       		   new ExportedParameter(body, var_capability, "capability")
       		));
-      		// 	TaskRequirement.task(requirement, task)
+      		// 	TaskRequirement.task(requirement, taskExecution)
       		new TypeConstraint(body, new FlatTuple(var_requirement), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
       		new TypeConstraint(body, new FlatTuple(var_requirement, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement", "task")));
-      		new Equality(body, var__virtual_0_, var_task);
-      		// 	TaskExecution.executors(task, robot)
-      		new TypeConstraint(body, new FlatTuple(var_task), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskExecution")));
+      		new Equality(body, var__virtual_0_, var_taskExecution);
+      		// 	TaskExecution.executors(taskExecution, robot)
+      		new TypeConstraint(body, new FlatTuple(var_taskExecution), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskExecution")));
       		PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-      		new TypeConstraint(body, new FlatTuple(var_task, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/behaviour", "TaskExecution", "executors")));
+      		new TypeConstraint(body, new FlatTuple(var_taskExecution, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/behaviour", "TaskExecution", "executors")));
       		new Equality(body, var__virtual_1_, var_robot);
       		// 	TaskRequirement.requiredCapabilities(requirement, capability)
       		new TypeConstraint(body, new FlatTuple(var_requirement), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement")));
       		PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
       		new TypeConstraint(body, new FlatTuple(var_requirement, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement", "requiredCapabilities")));
       		new Equality(body, var__virtual_2_, var_capability);
-      		// 	neg find robotHasCapability(robot, capability)
-      		new NegativePatternCall(body, new FlatTuple(var_robot, var_capability), RobotHasCapabilityQuerySpecification.instance().getInternalQueryRepresentation());
+      		// 	N1 == count find requiredCapability(requirement, capability)
+      		PVariable var__virtual_3_ = body.getOrCreateVariableByName(".virtual{3}");
+      		new PatternMatchCounter(body, new FlatTuple(var_requirement, var_capability), RequiredCapabilityQuerySpecification.instance().getInternalQueryRepresentation(), var__virtual_3_);
+      		new Equality(body, var_N1, var__virtual_3_);
+      		// 	N2 == count find robotHasCapability(robot, capability)
+      		PVariable var__virtual_4_ = body.getOrCreateVariableByName(".virtual{4}");
+      		new PatternMatchCounter(body, new FlatTuple(var_robot, var_capability), RobotHasCapabilityQuerySpecification.instance().getInternalQueryRepresentation(), var__virtual_4_);
+      		new Equality(body, var_N2, var__virtual_4_);
+      		// 	N1 != N2
+      		new Inequality(body, var_N1, var_N2);
       		bodies.add(body);
       	}
       	                {
       		PAnnotation annotation = new PAnnotation("Constraint");
       		annotation.addAttribute("severity", "error");
-      		annotation.addAttribute("message", "$robot$ is not capable of executing linked task: $task$, capability of $capability$ is missing!");
+      		annotation.addAttribute("message", "$robot$ is not capable of executing linked task: $taskExecution$, capability of $capability$ is missing!");
       		annotation.addAttribute("targetEditorId", "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID");
       		annotation.addAttribute("key", Arrays.asList(new Object[] {
       		                "robot", 
-      		                "task"
+      		                "taskExecution"
       		                }));
       		addAnnotation(annotation);
       	}

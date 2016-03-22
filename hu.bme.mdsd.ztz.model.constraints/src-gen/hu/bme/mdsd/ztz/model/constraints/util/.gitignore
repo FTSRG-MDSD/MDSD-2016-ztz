@@ -42,3 +42,5 @@
 /.RobotCannotExecuteTaskQuerySpecification.java._trace
 /.RobotExecutingUnlinkedTaskProcessor.java._trace
 /.RobotExecutingUnlinkedTaskQuerySpecification.java._trace
+/.RequiredCapabilityProcessor.java._trace
+/.RequiredCapabilityQuerySpecification.java._trace
