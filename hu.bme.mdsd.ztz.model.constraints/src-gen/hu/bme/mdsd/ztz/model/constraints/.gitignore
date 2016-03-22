@@ -32,3 +32,13 @@
 /RobotHasTaskMatcher.java
 /SameTaskAsPrerequisiteMatch.java
 /SameTaskAsPrerequisiteMatcher.java
+/.IncorrectWaitingTaskMatch.java._trace
+/.IncorrectWaitingTaskMatcher.java._trace
+/.IsNotWaitingTaskMatch.java._trace
+/.IsNotWaitingTaskMatcher.java._trace
+/.SameCollaboratorRobotMatch.java._trace
+/.SameCollaboratorRobotMatcher.java._trace
+/.OneDetectedObjectMatch.java._trace
+/.OneDetectedObjectMatcher.java._trace
+/.RobotCannotExecuteTaskMatch.java._trace
+/.RobotCannotExecuteTaskMatcher.java._trace

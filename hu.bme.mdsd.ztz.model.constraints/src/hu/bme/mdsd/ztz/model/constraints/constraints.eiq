@@ -52,114 +52,78 @@ pattern nonPositiveParticipants(requirement: TaskRequirement) {
 }
 
 
-//@Constraint(
-//	key = {"task"},
-//	severity = "error",
-//	message = "$task$ must be finished when its execution status is finished!",
-//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-//)
-//pattern taskNotFinished(task:Task) {
-//	Task.execution.status(task, ::Finished);
-//	Task.status(task, status);
-//	check (status != hu.bme.mdsd.ztz.model.drone.TaskStatus.FINISHED);
-//}
 
 
-//@Constraint(
-//	key = {"task"},
-//	severity = "error",
-//	message = "$task$ mustn't be finished when its execution status is still not finished!",
-//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-//)
-//pattern taskEarlyFinished(task: Task) {
-//	Task.status(task, ::Finished);
-//	Task.execution.status(task, status);
-//	check (status != hu.bme.mdsd.ztz.model.drone.TaskExecutionStatus.FINISHED);
-//}
+@Constraint(
+	key = {"taskExecution"},
+	severity = "error",
+	message = "$taskExecution$ must not be in Waiting status when its prerequisite task is finished!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern incorrectWaitingTask(taskExecution: TaskExecution) {
+	TaskRequirement.task(requirement, taskExecution);
+	TaskExecution.status(taskExecution, ::Waiting);
+	TaskRequirement.prerequisite.status(requirement, ::Finished);
+}
 
 
-//@Constraint(
-//	key = {"task", "execution"},
-//	severity = "error",
-//	message = "$task$ is in Waiting status, so it must not have a TaskExecution!",
-//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-//)
-//pattern taskEarlyExecuted(task:Task, execution: TaskExecution) {
-//	Task.status(task, ::Waiting);
-//	Task.execution(task, execution);
-//}
+@Constraint(
+	key = {"taskExecution"},
+	severity = "error",
+	message = "$taskExecution$ must be waiting when its prerequisite is not finished!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern isNotWaitingTask(taskExecution: TaskExecution) {
+	TaskRequirement.task(requirement, taskExecution);
+	TaskExecution.status(taskExecution, status);
+	TaskRequirement.prerequisite.status(requirement, preStatus);
+	check(preStatus != hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus.FINISHED && 
+		status != hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus.WAITING
+	);
+}
 
 
-//@Constraint(
-//	key = {"taskExecution"},
-//	severity = "error",
-//	message = "$taskExecution$ must not be in Waiting status when its prerequisite task is finished!",
-//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-//)
-//pattern incorrectWaitingTask(taskExecution: TaskExecution) {
-//	TaskRequirement.task(_, taskExecution);
-//	TaskRequirement.task(_, taskExecution);
-//	TaskExecution.status(taskExecution, ::Waiting);
-//	Task.requirement.prerequisite.status(task, ::Finished);
-//	Task.status(task, ::Waiting);
-//}
+@Constraint(
+	key = {"robot"},
+	severity = "error",
+	message = "The collaboration of $robot$ refers to itself!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern sameCollaboratorRobot(robot:DynamicRobot) {
+	DynamicRobot.collaborations.collaborator(robot, robot);
+}
 
 
-//@Constraint(
-//	key = {"task"},
-//	severity = "error",
-//	message = "$task$ must be waiting when its prerequisite is not finished!",
-//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-//)
-//pattern isNotWaitingTask(task:Task) {
-//	Task.requirement.prerequisite.status(task, preStatus);
-//	Task.status(task, taskStatus);
-//	check(preStatus != hu.bme.mdsd.ztz.model.drone.TaskStatus.FINISHED && 
-//		taskStatus != hu.bme.mdsd.ztz.model.drone.TaskStatus.WAITING
-//	);
-//}
+@Constraint(
+	key = {"detected1", "object"},
+	severity = "error",
+	message = "$object$ is detected more than once by the same robot!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern oneDetectedObject(object: AreaObject, detected1: DetectedObject) {
+	DynamicRobot.detectedObjects(robot, detected1);
+	DynamicRobot.detectedObjects(robot, detected2);
+	detected1 != detected2;
+	DetectedObject.object(detected1, object);
+	DetectedObject.object(detected2, object);
+}
 
 
-//@Constraint(
-//	key = {"robot"},
-//	severity = "error",
-//	message = "The collaboration of $robot$ refers to itself!",
-//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-//)
-//pattern sameCollaboratorRobot(robot:Robot) {
-//	Robot.collaborations.collaborator(robot, robot);
-//}
+@Constraint (
+	key = {"robot", "task"},
+	severity = "error",
+	message = "$robot$ is not capable of executing linked task: $task$, capability of $capability$ is missing!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern robotCannotExecuteTask(robot: DynamicRobot, task: TaskExecution, capability: Capability) {
+	TaskRequirement.task(requirement, task);
+	TaskExecution.executors(task, robot);
+	TaskRequirement.requiredCapabilities(requirement, capability);
+	neg find robotHasCapability(robot, capability);
+}
 
-//
-//@Constraint(
-//	key = {"detected1", "object"},
-//	severity = "error",
-//	message = "$object$ is detected more than once by the same robot!",
-//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-//)
-//pattern oneDetectedObject(object: AreaObject, detected1: DetectedObject) {
-//	Robot.detectedObjects(robot, detected1);
-//	Robot.detectedObjects(robot, detected2);
-//	detected1 != detected2;
-//	DetectedObject.object(detected1, object);
-//	DetectedObject.object(detected2, object);
-//}
-
-
-//@Constraint (
-//	key = {"robot", "task"},
-//	severity = "error",
-//	message = "$robot$ is not capable of executing linked task: $task$, capability of $capability$ is missing!",
-//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-//)
-//pattern robotCannotExecuteTask(robot: Robot, task: Task, capability: Capability) {
-//	Task.execution.executors(task, robot);
-//	Task.requirement.requiredCapabilities(task, capability);
-//	neg find robotHasCapability(robot, capability);
-//}
-
-pattern robotHasCapability(robot: Robot, capability: Capability) {
-	Robot.capabilities(robot, capability);
+pattern robotHasCapability(robot: DynamicRobot, capability: Capability) {
+	DynamicRobot.robot.capabilities(robot, capability);
 }
 
 //@Constraint (
@@ -168,8 +132,8 @@ pattern robotHasCapability(robot: Robot, capability: Capability) {
 //	message = "$robot$ is executing unlinked task: $task$!",
 //	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
 //)
-//pattern robotExecutingUnlinkedTask(robot: Robot, task: Task) {
-//	Robot.execute(robot, taskExecution);
+//pattern robotExecutingUnlinkedTask(robot: DynamicRobot, task: Task) {
+//	DynamicRobot.execute(robot, taskExecution);
 //	Task.execution(task, taskExecution);
 //	neg find robotHasTask(robot, task);
 //}

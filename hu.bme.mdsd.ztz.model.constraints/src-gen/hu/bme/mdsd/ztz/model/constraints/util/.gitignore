@@ -30,3 +30,13 @@
 /RobotHasTaskQuerySpecification.java
 /SameTaskAsPrerequisiteProcessor.java
 /SameTaskAsPrerequisiteQuerySpecification.java
+/.IncorrectWaitingTaskProcessor.java._trace
+/.IncorrectWaitingTaskQuerySpecification.java._trace
+/.IsNotWaitingTaskProcessor.java._trace
+/.IsNotWaitingTaskQuerySpecification.java._trace
+/.SameCollaboratorRobotProcessor.java._trace
+/.SameCollaboratorRobotQuerySpecification.java._trace
+/.OneDetectedObjectProcessor.java._trace
+/.OneDetectedObjectQuerySpecification.java._trace
+/.RobotCannotExecuteTaskProcessor.java._trace
+/.RobotCannotExecuteTaskQuerySpecification.java._trace
