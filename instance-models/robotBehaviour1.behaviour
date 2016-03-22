@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<behaviour:BehaviourContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:behaviour="http://www.mdsd.hu/behaviour" xmlns:drone="http://www.mdsd.hu/drone">
+  <dynamicRobots name="Bob Dynamic">
+    <robot href="robots.drone#//@robots.1"/>
+    <detectedObjects>
+      <object href="robots.drone#//@areaObjects.0"/>
+    </detectedObjects>
+    <collaborations collaborator="//@dynamicRobots.1"/>
+    <messageRepository name="Bob Repository"/>
+  </dynamicRobots>
+  <dynamicRobots name="Frank 007 Dynamic">
+    <robot href="robots.drone#//@robots.0"/>
+    <detectedObjects>
+      <object href="robots.drone#//@areaObjects.0"/>
+    </detectedObjects>
+    <collaborations collaborator="//@dynamicRobots.0"/>
+    <messageRepository name="Frank 007 Repository"/>
+    <actions name="Moving" currentTask="//@taskExecutions.0">
+      <properties key="Velocity">
+        <value xsi:type="drone:MeasureProperty">
+          <value>
+            <dimension href="robots.drone#//@measureDimensions.6"/>
+          </value>
+        </value>
+      </properties>
+      <properties key="Direction">
+        <value xsi:type="drone:StringProperty" value="North"/>
+      </properties>
+    </actions>
+  </dynamicRobots>
+  <taskExecutions name="Ascend Execution" executors="//@dynamicRobots.0 //@dynamicRobots.1">
+    <executionTime value="3.0">
+      <dimension href="robots.drone#//@measureDimensions.0"/>
+    </executionTime>
+    <task href="robots.drone#//@missions.0/@tasks.0"/>
+  </taskExecutions>
+  <taskExecutions name="Approach Execution" executors="//@dynamicRobots.1" status="InProgress">
+    <executionTime value="15.0">
+      <dimension href="robots.drone#//@measureDimensions.1"/>
+    </executionTime>
+    <task href="robots.drone#//@missions.0/@tasks.1"/>
+  </taskExecutions>
+  <taskExecutions name="Lift Execution" executors="//@dynamicRobots.1" status="Waiting">
+    <task href="robots.drone#//@missions.0/@tasks.2"/>
+  </taskExecutions>
+  <taskExecutions name="Deliver Execution" executors="//@dynamicRobots.1" status="Waiting">
+    <task href="robots.drone#//@missions.0/@tasks.3"/>
+  </taskExecutions>
+</behaviour:BehaviourContainer>
