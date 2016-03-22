@@ -31,6 +31,7 @@ public class DroneAllTests extends TestSuite {
          */
         public static Test suite() {
                 TestSuite suite = new DroneAllTests("Drone Tests");
+                suite.addTest(DroneTests.suite());
                 return suite;
         }
 

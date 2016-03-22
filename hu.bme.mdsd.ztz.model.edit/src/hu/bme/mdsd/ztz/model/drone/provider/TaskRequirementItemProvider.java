@@ -66,6 +66,7 @@ public class TaskRequirementItemProvider
                         addPrerequisitePropertyDescriptor(object);
                         addParticipantsPropertyDescriptor(object);
                         addRequiredCapabilitiesPropertyDescriptor(object);
+                        addDescriptorPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -131,6 +132,28 @@ public class TaskRequirementItemProvider
                                  true,
                                  false,
                                  true,
+                                 null,
+                                 null,
+                                 null));
+        }
+
+        /**
+         * This adds a property descriptor for the Descriptor feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addDescriptorPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_TaskRequirement_descriptor_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_descriptor_feature", "_UI_TaskRequirement_type"),
+                                 DronePackage.Literals.TASK_REQUIREMENT__DESCRIPTOR,
+                                 false,
+                                 false,
+                                 false,
                                  null,
                                  null,
                                  null));

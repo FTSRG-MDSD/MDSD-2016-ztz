@@ -877,6 +877,15 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
+        public EReference getTaskRequirement_Descriptor() {
+                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(6);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         public EClass getSize() {
                 return sizeEClass;
         }
@@ -1360,6 +1369,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__PROPERTIES);
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__REQUIRED_CAPABILITIES);
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
+                createEReference(taskRequirementEClass, TASK_REQUIREMENT__DESCRIPTOR);
 
                 sizeEClass = createEClass(SIZE);
                 createEReference(sizeEClass, SIZE__WIDTH);
@@ -1509,7 +1519,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobot_Properties(), this.getProperty(), null, "properties", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CommunicationRange(), this.getMeasureValue(), null, "communicationRange", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Weight(), this.getMeasureValue(), null, "weight", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getRobot_Mission(), this.getMission(), null, "mission", null, 0, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getRobot_Mission(), this.getMission(), null, "mission", null, 0, 1, Robot.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Actions(), this.getAction(), null, "actions", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CommunicationAction(), theBehaviourModelPackage.getCommunicationAction(), null, "communicationAction", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1536,6 +1546,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getTaskRequirement_Properties(), this.getProperty(), null, "properties", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskRequirement_RequiredCapabilities(), this.getCapability(), null, "requiredCapabilities", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskRequirement_CapabilityProperties(), this.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getTaskRequirement_Descriptor(), this.getTaskDescriptor(), null, "descriptor", null, 0, 1, TaskRequirement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
                 initEClass(sizeEClass, Size.class, "Size", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getSize_Width(), this.getMeasureValue(), null, "width", null, 1, 1, Size.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1607,6 +1618,50 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
 
                 // Create resource
                 createResource(eNS_URI);
+
+                // Create annotations
+                // http://www.eclipse.org/emf/2002/Ecore
+                createEcoreAnnotations();
+                // org.eclipse.incquery.querybasedfeature
+                createOrgAnnotations();
+        }
+
+        /**
+         * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void createEcoreAnnotations() {
+                String source = "http://www.eclipse.org/emf/2002/Ecore";	
+                addAnnotation
+                  (this, 
+                   source, 
+                   new String[] {
+                         "settingDelegates", "org.eclipse.incquery.querybasedfeature"
+                   });
+        }
+
+        /**
+         * Initializes the annotations for <b>org.eclipse.incquery.querybasedfeature</b>.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void createOrgAnnotations() {
+                String source = "org.eclipse.incquery.querybasedfeature";	
+                addAnnotation
+                  (getRobot_Mission(), 
+                   source, 
+                   new String[] {
+                         "patternFQN", "hu.bme.mdsd.ztz.model.derived.mission"
+                   });	
+                addAnnotation
+                  (getTaskRequirement_Descriptor(), 
+                   source, 
+                   new String[] {
+                         "patternFQN", "hu.bme.mdsd.ztz.model.derived.descriptor"
+                   });
         }
 
 } //DronePackageImpl

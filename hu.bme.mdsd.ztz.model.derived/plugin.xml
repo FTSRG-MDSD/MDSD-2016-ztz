@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension id="hu.bme.mdsd.ztz.model.derived.DerivedFeatures" point="org.eclipse.incquery.runtime.queryspecification">
+    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:hu.bme.mdsd.ztz.model.derived.DerivedFeatures" id="hu.bme.mdsd.ztz.model.derived.DerivedFeatures"/>
+  </extension>
+  <extension id="extension.derived.hu.bme.mdsd.ztz.model.derived.mission" point="org.eclipse.incquery.runtime.base.wellbehaving.derived.features">
+    <wellbehaving-derived-feature classifier-name="Robot" feature-name="mission" package-nsUri="http://www.mdsd.hu/drone"/>
+  </extension>
+  <extension id="extension.derived.hu.bme.mdsd.ztz.model.derived.descriptor" point="org.eclipse.incquery.runtime.base.wellbehaving.derived.features">
+    <wellbehaving-derived-feature classifier-name="TaskRequirement" feature-name="descriptor" package-nsUri="http://www.mdsd.hu/drone"/>
+  </extension>
+</plugin>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: hu.bme.mdsd.ztz.model.derived
+Bundle-SymbolicName: hu.bme.mdsd.ztz.model.derived;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Export-Package: hu.bme.mdsd.ztz.model.derived,
+ hu.bme.mdsd.ztz.model.derived.util
+Require-Bundle: org.eclipse.incquery.querybasedfeatures.runtime,
+ org.eclipse.emf.ecore,
+ org.eclipse.incquery.runtime,
+ org.eclipse.xtext.xbase.lib,
+ hu.bme.mdsd.ztz.model;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.apache.log4j

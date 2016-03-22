@@ -11,6 +11,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Robot</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.Robot#getMission() <em>Mission</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class RobotTest extends NamedElementTest {
@@ -65,6 +71,32 @@ public class RobotTest extends NamedElementTest {
         @Override
         protected void tearDown() throws Exception {
                 setFixture(null);
+        }
+
+        /**
+         * Tests the '{@link hu.bme.mdsd.ztz.model.drone.Robot#getMission() <em>Mission</em>}' feature getter.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.drone.Robot#getMission()
+         * @generated
+         */
+        public void testGetMission() {
+                // TODO: implement this feature getter test method
+                // Ensure that you remove @generated or mark it @generated NOT
+                fail();
+        }
+
+        /**
+         * Tests the '{@link hu.bme.mdsd.ztz.model.drone.Robot#isSetMission() <em>isSetMission()</em>}' method.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.drone.Robot#isSetMission()
+         * @generated
+         */
+        public void testIsSetMission() {
+                // TODO: implement this test method
+                // Ensure that you remove @generated or mark it @generated NOT
+                fail();
         }
 
 } //RobotTest

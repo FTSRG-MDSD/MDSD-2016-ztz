@@ -247,22 +247,23 @@ public interface Robot extends NamedElement {
          * </p>
          * <!-- end-user-doc -->
          * @return the value of the '<em>Mission</em>' reference.
-         * @see #setMission(Mission)
+         * @see #isSetMission()
          * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobot_Mission()
-         * @model
+         * @model unsettable="true" transient="true" changeable="false" volatile="true" derived="true"
+         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.mission'"
          * @generated
          */
         Mission getMission();
 
         /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Robot#getMission <em>Mission</em>}' reference.
+         * Returns whether the value of the '{@link hu.bme.mdsd.ztz.model.drone.Robot#getMission <em>Mission</em>}' reference is set.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Mission</em>' reference.
+         * @return whether the value of the '<em>Mission</em>' reference is set.
          * @see #getMission()
          * @generated
          */
-        void setMission(Mission value);
+        boolean isSetMission();
 
         /**
          * Returns the value of the '<em><b>Actions</b></em>' containment reference list.

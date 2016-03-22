@@ -13,6 +13,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Task Requirement</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor() <em>Descriptor</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class TaskRequirementTest extends TestCase {
@@ -84,6 +90,19 @@ public class TaskRequirementTest extends TestCase {
         @Override
         protected void tearDown() throws Exception {
                 setFixture(null);
+        }
+
+        /**
+         * Tests the '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor() <em>Descriptor</em>}' feature getter.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor()
+         * @generated
+         */
+        public void testGetDescriptor() {
+                // TODO: implement this feature getter test method
+                // Ensure that you remove @generated or mark it @generated NOT
+                fail();
         }
 
 } //TaskRequirementTest

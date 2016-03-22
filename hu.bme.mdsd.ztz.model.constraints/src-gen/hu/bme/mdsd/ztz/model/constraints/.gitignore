@@ -64,3 +64,15 @@
 /.RobotHasBatteryMatcher.java._trace
 /.RobotHasTaskMatch.java._trace
 /.RobotHasTaskMatcher.java._trace
+/NoBatteryMatch.java
+/NoBatteryMatcher.java
+/RobotCannotExecuteTaskMatch.java
+/RobotCannotExecuteTaskMatcher.java
+/RobotExecutingUnlinkedTaskMatch.java
+/RobotExecutingUnlinkedTaskMatcher.java
+/RobotHasBatteryMatch.java
+/RobotHasBatteryMatcher.java
+/RobotHasCapabilityMatch.java
+/RobotHasCapabilityMatcher.java
+/RobotHasTaskMatch.java
+/RobotHasTaskMatcher.java

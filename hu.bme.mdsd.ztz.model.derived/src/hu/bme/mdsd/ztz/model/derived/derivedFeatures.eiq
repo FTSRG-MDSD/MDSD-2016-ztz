@@ -1,0 +1,15 @@
+package hu.bme.mdsd.ztz.model.derived
+
+import "http://www.mdsd.hu/drone"
+
+@QueryBasedFeature
+pattern mission(sourceRobot: Robot, targetMission: Mission) {
+	Robot.tasks(sourceRobot, task);
+	Task.mission(task, targetMission);
+}
+
+@QueryBasedFeature
+pattern descriptor(sourceRequirement: TaskRequirement, targetDescriptor: TaskDescriptor) {
+	Task.requirement(task, sourceRequirement);
+	Task.descriptor(task, targetDescriptor);
+}

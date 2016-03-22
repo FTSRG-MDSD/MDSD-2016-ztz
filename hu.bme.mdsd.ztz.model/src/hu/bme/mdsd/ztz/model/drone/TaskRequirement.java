@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getProperties <em>Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getRequiredCapabilities <em>Required Capabilities</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getCapabilityProperties <em>Capability Properties</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor <em>Descriptor</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTaskRequirement()
@@ -155,5 +156,21 @@ public interface TaskRequirement extends EObject {
          * @generated
          */
         EList<CapabilityProperties> getCapabilityProperties();
+
+        /**
+         * Returns the value of the '<em><b>Descriptor</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Descriptor</em>' reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Descriptor</em>' reference.
+         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getTaskRequirement_Descriptor()
+         * @model transient="true" changeable="false" volatile="true" derived="true"
+         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.descriptor'"
+         * @generated
+         */
+        TaskDescriptor getDescriptor();
 
 } // TaskRequirement

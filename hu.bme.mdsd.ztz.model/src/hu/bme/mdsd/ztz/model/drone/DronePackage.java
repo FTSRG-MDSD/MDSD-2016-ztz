@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see hu.bme.mdsd.ztz.model.drone.DroneFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore settingDelegates='org.eclipse.incquery.querybasedfeature'"
  * @generated
  */
 public interface DronePackage extends EPackage {
@@ -927,13 +928,22 @@ public interface DronePackage extends EPackage {
         int TASK_REQUIREMENT__CAPABILITY_PROPERTIES = 5;
 
         /**
+         * The feature id for the '<em><b>Descriptor</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__DESCRIPTOR = 6;
+
+        /**
          * The number of structural features of the '<em>Task Requirement</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_REQUIREMENT_FEATURE_COUNT = 6;
+        int TASK_REQUIREMENT_FEATURE_COUNT = 7;
 
         /**
          * The number of operations of the '<em>Task Requirement</em>' class.
@@ -2233,6 +2243,17 @@ public interface DronePackage extends EPackage {
         EReference getTaskRequirement_CapabilityProperties();
 
         /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor <em>Descriptor</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Descriptor</em>'.
+         * @see hu.bme.mdsd.ztz.model.drone.TaskRequirement#getDescriptor()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_Descriptor();
+
+        /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.Size <em>Size</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -3231,6 +3252,14 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EReference TASK_REQUIREMENT__CAPABILITY_PROPERTIES = eINSTANCE.getTaskRequirement_CapabilityProperties();
+
+                /**
+                 * The meta object literal for the '<em><b>Descriptor</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__DESCRIPTOR = eINSTANCE.getTaskRequirement_Descriptor();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.SizeImpl <em>Size</em>}' class.

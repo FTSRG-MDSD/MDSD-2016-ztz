@@ -7,6 +7,7 @@ import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.Task;
+import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
 import hu.bme.mdsd.ztz.model.drone.TaskRequirement;
 
 import java.util.Collection;
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -41,6 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getRequiredCapabilities <em>Required Capabilities</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getCapabilityProperties <em>Capability Properties</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.TaskRequirementImpl#getDescriptor <em>Descriptor</em>}</li>
  * </ul>
  *
  * @generated
@@ -105,6 +108,16 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * @ordered
          */
         protected EList<CapabilityProperties> capabilityProperties;
+
+        /**
+         * The cached setting delegate for the '{@link #getDescriptor() <em>Descriptor</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getDescriptor()
+         * @generated
+         * @ordered
+         */
+        protected EStructuralFeature.Internal.SettingDelegate DESCRIPTOR__ESETTING_DELEGATE = ((EStructuralFeature.Internal)DronePackage.Literals.TASK_REQUIREMENT__DESCRIPTOR).getSettingDelegate();
 
         /**
          * <!-- begin-user-doc -->
@@ -266,6 +279,24 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
          * <!-- end-user-doc -->
          * @generated
          */
+        public TaskDescriptor getDescriptor() {
+                return (TaskDescriptor)DESCRIPTOR__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public TaskDescriptor basicGetDescriptor() {
+                return (TaskDescriptor)DESCRIPTOR__ESETTING_DELEGATE.dynamicGet(this, null, 0, false, false);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -330,6 +361,9 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
                                 return getRequiredCapabilities();
                         case DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 return getCapabilityProperties();
+                        case DronePackage.TASK_REQUIREMENT__DESCRIPTOR:
+                                if (resolve) return getDescriptor();
+                                return basicGetDescriptor();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -418,6 +452,8 @@ public class TaskRequirementImpl extends MinimalEObjectImpl.Container implements
                                 return requiredCapabilities != null && !requiredCapabilities.isEmpty();
                         case DronePackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 return capabilityProperties != null && !capabilityProperties.isEmpty();
+                        case DronePackage.TASK_REQUIREMENT__DESCRIPTOR:
+                                return DESCRIPTOR__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
                 }
                 return super.eIsSet(featureID);
         }

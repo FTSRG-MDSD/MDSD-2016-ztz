@@ -62,3 +62,15 @@
 /.RobotHasBatteryQuerySpecification.java._trace
 /.RobotHasTaskProcessor.java._trace
 /.RobotHasTaskQuerySpecification.java._trace
+/NoBatteryProcessor.java
+/NoBatteryQuerySpecification.java
+/RobotCannotExecuteTaskProcessor.java
+/RobotCannotExecuteTaskQuerySpecification.java
+/RobotExecutingUnlinkedTaskProcessor.java
+/RobotExecutingUnlinkedTaskQuerySpecification.java
+/RobotHasBatteryProcessor.java
+/RobotHasBatteryQuerySpecification.java
+/RobotHasCapabilityProcessor.java
+/RobotHasCapabilityQuerySpecification.java
+/RobotHasTaskProcessor.java
+/RobotHasTaskQuerySpecification.java

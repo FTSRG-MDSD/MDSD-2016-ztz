@@ -29,6 +29,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -167,14 +168,14 @@ public class RobotImpl extends NamedElementImpl implements Robot {
         protected MeasureValue weight;
 
         /**
-         * The cached value of the '{@link #getMission() <em>Mission</em>}' reference.
+         * The cached setting delegate for the '{@link #getMission() <em>Mission</em>}' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getMission()
          * @generated
          * @ordered
          */
-        protected Mission mission;
+        protected EStructuralFeature.Internal.SettingDelegate MISSION__ESETTING_DELEGATE = ((EStructuralFeature.Internal)DronePackage.Literals.ROBOT__MISSION).getSettingDelegate();
 
         /**
          * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
@@ -495,15 +496,7 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @generated
          */
         public Mission getMission() {
-                if (mission != null && mission.eIsProxy()) {
-                        InternalEObject oldMission = (InternalEObject)mission;
-                        mission = (Mission)eResolveProxy(oldMission);
-                        if (mission != oldMission) {
-                                if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.ROBOT__MISSION, oldMission, mission));
-                        }
-                }
-                return mission;
+                return (Mission)MISSION__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
         }
 
         /**
@@ -512,7 +505,7 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * @generated
          */
         public Mission basicGetMission() {
-                return mission;
+                return (Mission)MISSION__ESETTING_DELEGATE.dynamicGet(this, null, 0, false, false);
         }
 
         /**
@@ -520,11 +513,8 @@ public class RobotImpl extends NamedElementImpl implements Robot {
          * <!-- end-user-doc -->
          * @generated
          */
-        public void setMission(Mission newMission) {
-                Mission oldMission = mission;
-                mission = newMission;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT__MISSION, oldMission, mission));
+        public boolean isSetMission() {
+                return MISSION__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
         }
 
         /**
@@ -778,9 +768,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__WEIGHT:
                                 setWeight((MeasureValue)newValue);
                                 return;
-                        case DronePackage.ROBOT__MISSION:
-                                setMission((Mission)newValue);
-                                return;
                         case DronePackage.ROBOT__ACTIONS:
                                 getActions().clear();
                                 getActions().addAll((Collection<? extends Action>)newValue);
@@ -842,9 +829,6 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__WEIGHT:
                                 setWeight((MeasureValue)null);
                                 return;
-                        case DronePackage.ROBOT__MISSION:
-                                setMission((Mission)null);
-                                return;
                         case DronePackage.ROBOT__ACTIONS:
                                 getActions().clear();
                                 return;
@@ -893,7 +877,7 @@ public class RobotImpl extends NamedElementImpl implements Robot {
                         case DronePackage.ROBOT__WEIGHT:
                                 return weight != null;
                         case DronePackage.ROBOT__MISSION:
-                                return mission != null;
+                                return isSetMission();
                         case DronePackage.ROBOT__ACTIONS:
                                 return actions != null && !actions.isEmpty();
                         case DronePackage.ROBOT__CAPABILITIES:
