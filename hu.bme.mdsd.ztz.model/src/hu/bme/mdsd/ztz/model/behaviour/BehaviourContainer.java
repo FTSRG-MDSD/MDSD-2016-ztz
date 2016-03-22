@@ -30,7 +30,7 @@ public interface BehaviourContainer extends EObject {
          * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot}.
          * <!-- begin-user-doc -->
          * <p>
-         * If the meaning of the '<em>Dynamic Robots</em>' reference list isn't clear,
+         * If the meaning of the '<em>Dynamic Robots</em>' containment reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->

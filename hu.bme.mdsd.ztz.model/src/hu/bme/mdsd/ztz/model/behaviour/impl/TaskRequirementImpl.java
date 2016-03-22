@@ -21,6 +21,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -118,6 +119,16 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
          * @ordered
          */
         protected EList<CapabilityProperties> capabilityProperties;
+
+        /**
+         * The cached setting delegate for the '{@link #getDescriptor() <em>Descriptor</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getDescriptor()
+         * @generated
+         * @ordered
+         */
+        protected EStructuralFeature.Internal.SettingDelegate DESCRIPTOR__ESETTING_DELEGATE = ((EStructuralFeature.Internal)BehaviourPackage.Literals.TASK_REQUIREMENT__DESCRIPTOR).getSettingDelegate();
 
         /**
          * <!-- begin-user-doc -->
@@ -277,8 +288,7 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
          * @generated
          */
         public TaskDescriptor getDescriptor() {
-                TaskDescriptor descriptor = basicGetDescriptor();
-                return descriptor != null && descriptor.eIsProxy() ? (TaskDescriptor)eResolveProxy((InternalEObject)descriptor) : descriptor;
+                return (TaskDescriptor)DESCRIPTOR__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
         }
 
         /**
@@ -287,10 +297,7 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
          * @generated
          */
         public TaskDescriptor basicGetDescriptor() {
-                // TODO: implement this method to return the 'Descriptor' reference
-                // -> do not perform proxy resolution
-                // Ensure that you remove @generated or mark it @generated NOT
-                throw new UnsupportedOperationException();
+                return (TaskDescriptor)DESCRIPTOR__ESETTING_DELEGATE.dynamicGet(this, null, 0, false, false);
         }
 
         /**
@@ -423,7 +430,7 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
                         case BehaviourPackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
                                 return capabilityProperties != null && !capabilityProperties.isEmpty();
                         case BehaviourPackage.TASK_REQUIREMENT__DESCRIPTOR:
-                                return basicGetDescriptor() != null;
+                                return DESCRIPTOR__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
                 }
                 return super.eIsSet(featureID);
         }
