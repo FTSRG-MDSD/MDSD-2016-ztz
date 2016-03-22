@@ -126,20 +126,20 @@ pattern robotHasCapability(robot: DynamicRobot, capability: Capability) {
 	DynamicRobot.robot.capabilities(robot, capability);
 }
 
-//@Constraint (
-//	key = {"robot", "task"},
-//	severity = "error",
-//	message = "$robot$ is executing unlinked task: $task$!",
-//	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
-//)
-//pattern robotExecutingUnlinkedTask(robot: DynamicRobot, task: Task) {
-//	DynamicRobot.
-//	Task.execution(task, taskExecution);
-//	neg find robotHasTask(robot, task);
-//}
+@Constraint (
+	key = {"robot", "task"},
+	severity = "error",
+	message = "$robot$ is executing unlinked task: $task$!",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern robotExecutingUnlinkedTask(robot: DynamicRobot, task: Task) {
+	DynamicRobot.executedTasks(robot, taskExecution);
+	TaskExecution.task(taskExecution, task);
+	neg find robotHasTask(robot, task);
+}
 
-pattern robotHasTask(robot: Robot, task: Task) {
-	Robot.tasks(robot, task);
+pattern robotHasTask(robot: DynamicRobot, task: Task) {
+	DynamicRobot.robot.tasks(robot, task);
 }
 
 @Constraint (

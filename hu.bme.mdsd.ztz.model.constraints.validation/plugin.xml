@@ -9,6 +9,11 @@
       <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
     </constraint>
   </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.robotExecutingUnlinkedTask" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.RobotExecutingUnlinkedTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.robotExecutingUnlinkedTask">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
   <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.sameMeasure" point="org.eclipse.incquery.validation.runtime.constraint">
     <constraint class="hu.bme.mdsd.ztz.model.constraints.SameMeasureConstraint0" name="hu.bme.mdsd.ztz.model.constraints.sameMeasure">
       <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
@@ -19,8 +24,23 @@
       <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
     </constraint>
   </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.sameCollaboratorRobot" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.SameCollaboratorRobotConstraint0" name="hu.bme.mdsd.ztz.model.constraints.sameCollaboratorRobot">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
   <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.incorrectWaitingTask" point="org.eclipse.incquery.validation.runtime.constraint">
     <constraint class="hu.bme.mdsd.ztz.model.constraints.IncorrectWaitingTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.incorrectWaitingTask">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.robotCannotExecuteTask" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.RobotCannotExecuteTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.robotCannotExecuteTask">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.oneDetectedObject" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.OneDetectedObjectConstraint0" name="hu.bme.mdsd.ztz.model.constraints.oneDetectedObject">
       <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
     </constraint>
   </extension>
@@ -32,21 +52,6 @@
   <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.noBattery" point="org.eclipse.incquery.validation.runtime.constraint">
     <constraint class="hu.bme.mdsd.ztz.model.constraints.NoBatteryConstraint0" name="hu.bme.mdsd.ztz.model.constraints.noBattery">
       <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.sameCollaboratorRobot" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.SameCollaboratorRobotConstraint0" name="hu.bme.mdsd.ztz.model.constraints.sameCollaboratorRobot">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.oneDetectedObject" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.OneDetectedObjectConstraint0" name="hu.bme.mdsd.ztz.model.constraints.oneDetectedObject">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.robotCannotExecuteTask" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.RobotCannotExecuteTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.robotCannotExecuteTask">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
     </constraint>
   </extension>
 </plugin>

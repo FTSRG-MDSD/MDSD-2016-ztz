@@ -40,3 +40,5 @@
 /.OneDetectedObjectQuerySpecification.java._trace
 /.RobotCannotExecuteTaskProcessor.java._trace
 /.RobotCannotExecuteTaskQuerySpecification.java._trace
+/.RobotExecutingUnlinkedTaskProcessor.java._trace
+/.RobotExecutingUnlinkedTaskQuerySpecification.java._trace
