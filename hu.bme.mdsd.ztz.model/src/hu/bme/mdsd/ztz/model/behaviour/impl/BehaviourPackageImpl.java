@@ -745,6 +745,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 broadcastCommunicationEClass.getESuperTypes().add(this.getCommunicationAction());
                 messageRepositoryEClass.getESuperTypes().add(theDronePackage.getNamedElement());
                 actionEClass.getESuperTypes().add(theDronePackage.getNamedElement());
+                taskExecutionEClass.getESuperTypes().add(theDronePackage.getNamedElement());
                 dynamicRobotEClass.getESuperTypes().add(theDronePackage.getNamedElement());
 
                 // Initialize classes, features, and operations; add parameters

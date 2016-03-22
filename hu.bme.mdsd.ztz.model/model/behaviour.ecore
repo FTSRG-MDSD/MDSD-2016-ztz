@@ -57,7 +57,7 @@
         eType="ecore:EClass drone.ecore#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentTask" eType="#//TaskExecution"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskExecution">
+  <eClassifiers xsi:type="ecore:EClass" name="TaskExecution" eSuperTypes="drone.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="executors" upperBound="-1"
         eType="#//DynamicRobot"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="executionTime" unique="false"

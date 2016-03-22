@@ -3,11 +3,10 @@
 package hu.bme.mdsd.ztz.model.behaviour;
 
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
+import hu.bme.mdsd.ztz.model.drone.NamedElement;
 import hu.bme.mdsd.ztz.model.drone.Task;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface TaskExecution extends EObject {
+public interface TaskExecution extends NamedElement {
         /**
          * Returns the value of the '<em><b>Executors</b></em>' reference list.
          * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot}.

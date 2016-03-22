@@ -510,13 +510,22 @@ public interface BehaviourPackage extends EPackage {
         int TASK_EXECUTION = 8;
 
         /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_EXECUTION__NAME = DronePackage.NAMED_ELEMENT__NAME;
+
+        /**
          * The feature id for the '<em><b>Executors</b></em>' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_EXECUTION__EXECUTORS = 0;
+        int TASK_EXECUTION__EXECUTORS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
         /**
          * The feature id for the '<em><b>Execution Time</b></em>' containment reference.
@@ -525,7 +534,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int TASK_EXECUTION__EXECUTION_TIME = 1;
+        int TASK_EXECUTION__EXECUTION_TIME = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
         /**
          * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -534,7 +543,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int TASK_EXECUTION__STATUS = 2;
+        int TASK_EXECUTION__STATUS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
 
         /**
          * The feature id for the '<em><b>Task</b></em>' reference.
@@ -543,7 +552,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int TASK_EXECUTION__TASK = 3;
+        int TASK_EXECUTION__TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
         /**
          * The number of structural features of the '<em>Task Execution</em>' class.
@@ -552,7 +561,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int TASK_EXECUTION_FEATURE_COUNT = 4;
+        int TASK_EXECUTION_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
         /**
          * The number of operations of the '<em>Task Execution</em>' class.
@@ -561,7 +570,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int TASK_EXECUTION_OPERATION_COUNT = 0;
+        int TASK_EXECUTION_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.RobotCollaborationImpl <em>Robot Collaboration</em>}' class.

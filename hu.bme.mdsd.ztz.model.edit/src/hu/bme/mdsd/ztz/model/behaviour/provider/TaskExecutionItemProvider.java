@@ -5,10 +5,9 @@ package hu.bme.mdsd.ztz.model.behaviour.provider;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
-import hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus;
-
 import hu.bme.mdsd.ztz.model.drone.DroneFactory;
 
+import hu.bme.mdsd.ztz.model.drone.provider.NamedElementItemProvider;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,14 +19,8 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -37,13 +30,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class TaskExecutionItemProvider 
-        extends ItemProviderAdapter
-        implements
-                IEditingDomainItemProvider,
-                IStructuredItemContentProvider,
-                ITreeItemContentProvider,
-                IItemLabelProvider,
-                IItemPropertySource {
+        extends NamedElementItemProvider {
         /**
          * This constructs an instance from a factory and a notifier.
          * <!-- begin-user-doc -->
@@ -187,8 +174,7 @@ public class TaskExecutionItemProvider
          */
         @Override
         public String getText(Object object) {
-                TaskExecutionStatus labelValue = ((TaskExecution)object).getStatus();
-                String label = labelValue == null ? null : labelValue.toString();
+                String label = ((TaskExecution)object).getName();
                 return label == null || label.length() == 0 ?
                         getString("_UI_TaskExecution_type") :
                         getString("_UI_TaskExecution_type") + " " + label;

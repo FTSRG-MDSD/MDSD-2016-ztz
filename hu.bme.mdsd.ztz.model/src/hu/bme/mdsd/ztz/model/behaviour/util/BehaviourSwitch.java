@@ -124,6 +124,7 @@ public class BehaviourSwitch<T> extends Switch<T> {
                         case BehaviourPackage.TASK_EXECUTION: {
                                 TaskExecution taskExecution = (TaskExecution)theEObject;
                                 T result = caseTaskExecution(taskExecution);
+                                if (result == null) result = caseNamedElement(taskExecution);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
