@@ -28,7 +28,7 @@
       </properties>
     </actions>
   </dynamicRobots>
-  <taskExecutions name="Ascend Execution" executors="//@dynamicRobots.0 //@dynamicRobots.1">
+  <taskExecutions name="Ascend Execution" executors="//@dynamicRobots.0 //@dynamicRobots.1" status="Finished">
     <executionTime value="3.0">
       <dimension href="robots.drone#//@measureDimensions.0"/>
     </executionTime>

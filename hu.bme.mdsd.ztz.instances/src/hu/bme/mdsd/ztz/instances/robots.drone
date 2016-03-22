@@ -35,7 +35,7 @@
       </properties>
     </capabilityProperties>
   </robots>
-  <robots name="Bob">
+  <robots name="Bob" capabilities="//@capabilities.0">
     <position>
       <coordinates latitude="23.045" longitude="127.86" altitude="131.0"/>
     </position>
