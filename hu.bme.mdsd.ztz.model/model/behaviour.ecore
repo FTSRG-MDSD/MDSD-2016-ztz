@@ -75,7 +75,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="collaborator" lowerBound="1"
         eType="#//DynamicRobot"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="availabilityRange" eType="ecore:EClass drone.ecore#//MeasureValue"
-        containment="true"/>
+        changeable="false" volatile="true" transient="true" derived="true" containment="true">
+      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
+        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.availabilityRange"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="ecore:EClass drone.ecore#//Property" containment="true"/>
   </eClassifiers>

@@ -161,3 +161,85 @@ pattern noBattery(robot: Robot) {
 pattern robotHasBattery(robot: Robot, battery: Battery) {
 	Robot.batteries(robot, battery);
 }
+
+@Constraint (
+	key = {"robot", "size"},
+	severity = "warning",
+	message = "Size dimensions of $robot$ are not equal.",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern sizeDimensionsDiffer(robot: Robot, size: Size) {
+	Robot.size(robot, size);
+	Size.height.dimension(size, heightDim);
+	Size.length.dimension(size, lengthDim);
+	
+	heightDim != lengthDim;
+} or {
+	Robot.size(robot, size);
+	Size.height.dimension(size, heightDim);
+	Size.width.dimension(size, widthDim);
+	
+	heightDim != widthDim;
+} or {
+	Robot.size(robot, size);
+	Size.length.dimension(size, lengthDim);
+	Size.width.dimension(size, widthDim);
+	
+	lengthDim != widthDim;
+}
+
+@Constraint (
+	key = {"robot", "size"},
+	severity = "error",
+	message = "Size dimensions of $robot$ are not compatible (cannot be converted).",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern sizeDimensionsNotCompatible(robot: Robot, size: Size) {
+	find sizeDimensionsDiffer(robot, size);
+	Size.height.dimension(size, heightDim);
+	Size.length.dimension(size, lengthDim);
+	heightDim != lengthDim;
+	neg find conversionAvailable(heightDim, lengthDim);
+} or {
+	find sizeDimensionsDiffer(robot, size);
+	Size.height.dimension(size, heightDim);
+	Size.width.dimension(size, widthDim);
+	heightDim != widthDim;
+	neg find conversionAvailable(heightDim, widthDim);
+} or {
+	find sizeDimensionsDiffer(robot, size);
+	Size.length.dimension(size, lengthDim);
+	Size.width.dimension(size, widthDim);
+	lengthDim != widthDim;
+	neg find conversionAvailable(lengthDim, widthDim);
+}
+
+pattern directConversionAvailable(dim1: MeasureDimension, dim2: MeasureDimension) {
+	MeasureDimension.conversions.dimension(dim1, dim2);
+} or {
+	MeasureDimension.conversions.dimension(dim2, dim1);
+}
+
+pattern conversionAvailable(dim1: MeasureDimension, dim2: MeasureDimension) {
+	find directConversionAvailable+(dim1, dim2);
+	dim1 != dim2;
+}
+
+@Constraint(
+	key = {"robot", "collaborator"},
+	severity = "error",
+	message = "Communication range dimensions of $robot$ and $collaborator$ are not compatible (cannot be directly converted).",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern collaboratorRangeDimensionsNotCompatible(robot: Robot, collaborator: Robot) {
+	DynamicRobot.collaborations(drobot, robotCollaboration);
+	DynamicRobot.robot(drobot, robot);
+	Robot.communicationRange.dimension(robot, dim1);
+	
+	RobotCollaboration.collaborator(robotCollaboration, dcollaborator);
+	DynamicRobot.robot(dcollaborator, collaborator);
+	Robot.communicationRange.dimension(collaborator, dim2);
+	
+	neg find directConversionAvailable(dim1, dim2);
+	
+}
