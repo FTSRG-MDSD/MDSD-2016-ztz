@@ -6,6 +6,7 @@ import hu.bme.mdsd.ztz.model.drone.Capability;
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
 import hu.bme.mdsd.ztz.model.drone.NamedElement;
 import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,13 +20,15 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTask <em>Task</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTaskExecution <em>Task Execution</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisite <em>Prerequisite</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getParticipants <em>Participants</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getProperties <em>Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getRequiredCapabilities <em>Required Capabilities</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getCapabilityProperties <em>Capability Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTask <em>Task</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask <em>Prerequisite Task</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskRequirement()
@@ -33,6 +36,32 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface TaskRequirement extends NamedElement {
+        /**
+         * Returns the value of the '<em><b>Task Execution</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Task Execution</em>' reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Task Execution</em>' reference.
+         * @see #setTaskExecution(TaskExecution)
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskRequirement_TaskExecution()
+         * @model required="true"
+         * @generated
+         */
+        TaskExecution getTaskExecution();
+
+        /**
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTaskExecution <em>Task Execution</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Task Execution</em>' reference.
+         * @see #getTaskExecution()
+         * @generated
+         */
+        void setTaskExecution(TaskExecution value);
+
         /**
          * Returns the value of the '<em><b>Task</b></em>' reference.
          * <!-- begin-user-doc -->
@@ -42,22 +71,49 @@ public interface TaskRequirement extends NamedElement {
          * </p>
          * <!-- end-user-doc -->
          * @return the value of the '<em>Task</em>' reference.
-         * @see #setTask(TaskExecution)
+         * @see #isSetTask()
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskRequirement_Task()
-         * @model required="true"
+         * @model unsettable="true" required="true" transient="true" changeable="false" volatile="true" derived="true"
+         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.task'"
          * @generated
          */
-        TaskExecution getTask();
+        Task getTask();
 
         /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTask <em>Task</em>}' reference.
+         * Returns whether the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTask <em>Task</em>}' reference is set.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Task</em>' reference.
+         * @return whether the value of the '<em>Task</em>' reference is set.
          * @see #getTask()
          * @generated
          */
-        void setTask(TaskExecution value);
+        boolean isSetTask();
+
+        /**
+         * Returns the value of the '<em><b>Prerequisite Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Prerequisite Task</em>' reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Prerequisite Task</em>' reference.
+         * @see #isSetPrerequisiteTask()
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskRequirement_PrerequisiteTask()
+         * @model unsettable="true" required="true" transient="true" changeable="false" volatile="true" derived="true"
+         * @generated
+         */
+        Task getPrerequisiteTask();
+
+        /**
+         * Returns whether the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask <em>Prerequisite Task</em>}' reference is set.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return whether the value of the '<em>Prerequisite Task</em>' reference is set.
+         * @see #getPrerequisiteTask()
+         * @generated
+         */
+        boolean isSetPrerequisiteTask();
 
         /**
          * Returns the value of the '<em><b>Prerequisite</b></em>' reference.

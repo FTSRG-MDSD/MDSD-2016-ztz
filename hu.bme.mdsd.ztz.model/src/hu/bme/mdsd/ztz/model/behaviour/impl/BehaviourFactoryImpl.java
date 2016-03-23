@@ -82,8 +82,6 @@ public class BehaviourFactoryImpl extends EFactoryImpl implements BehaviourFacto
         @Override
         public Object createFromString(EDataType eDataType, String initialValue) {
                 switch (eDataType.getClassifierID()) {
-                        case BehaviourPackage.COMMUNICATION_TYPE:
-                                return createCommunicationTypeFromString(eDataType, initialValue);
                         case BehaviourPackage.ROBOT_STATUS:
                                 return createRobotStatusFromString(eDataType, initialValue);
                         case BehaviourPackage.TASK_EXECUTION_STATUS:
@@ -101,8 +99,6 @@ public class BehaviourFactoryImpl extends EFactoryImpl implements BehaviourFacto
         @Override
         public String convertToString(EDataType eDataType, Object instanceValue) {
                 switch (eDataType.getClassifierID()) {
-                        case BehaviourPackage.COMMUNICATION_TYPE:
-                                return convertCommunicationTypeToString(eDataType, instanceValue);
                         case BehaviourPackage.ROBOT_STATUS:
                                 return convertRobotStatusToString(eDataType, instanceValue);
                         case BehaviourPackage.TASK_EXECUTION_STATUS:
@@ -230,26 +226,6 @@ public class BehaviourFactoryImpl extends EFactoryImpl implements BehaviourFacto
         public TaskRequirement createTaskRequirement() {
                 TaskRequirementImpl taskRequirement = new TaskRequirementImpl();
                 return taskRequirement;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public CommunicationType createCommunicationTypeFromString(EDataType eDataType, String initialValue) {
-                CommunicationType result = CommunicationType.get(initialValue);
-                if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-                return result;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public String convertCommunicationTypeToString(EDataType eDataType, Object instanceValue) {
-                return instanceValue == null ? null : instanceValue.toString();
         }
 
         /**

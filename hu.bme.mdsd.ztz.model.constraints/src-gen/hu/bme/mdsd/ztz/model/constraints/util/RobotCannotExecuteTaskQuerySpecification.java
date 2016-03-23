@@ -114,10 +114,10 @@ public final class RobotCannotExecuteTaskQuerySpecification extends BaseGenerate
       		   new ExportedParameter(body, var_taskExecution, "taskExecution"),
       		   new ExportedParameter(body, var_capability, "capability")
       		));
-      		// 	TaskRequirement.task(requirement, taskExecution)
+      		// 	TaskRequirement.taskExecution(requirement, taskExecution)
       		new TypeConstraint(body, new FlatTuple(var_requirement), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_requirement, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement", "task")));
+      		new TypeConstraint(body, new FlatTuple(var_requirement, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement", "taskExecution")));
       		new Equality(body, var__virtual_0_, var_taskExecution);
       		// 	TaskExecution.executors(taskExecution, robot)
       		new TypeConstraint(body, new FlatTuple(var_taskExecution), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskExecution")));

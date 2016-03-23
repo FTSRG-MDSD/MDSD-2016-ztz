@@ -83,6 +83,8 @@ public class BehaviourSwitch<T> extends Switch<T> {
                         case BehaviourPackage.COMMUNICATION_ACTION: {
                                 CommunicationAction communicationAction = (CommunicationAction)theEObject;
                                 T result = caseCommunicationAction(communicationAction);
+                                if (result == null) result = caseAction(communicationAction);
+                                if (result == null) result = caseNamedElement(communicationAction);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -90,6 +92,8 @@ public class BehaviourSwitch<T> extends Switch<T> {
                                 UnicastCommunication unicastCommunication = (UnicastCommunication)theEObject;
                                 T result = caseUnicastCommunication(unicastCommunication);
                                 if (result == null) result = caseCommunicationAction(unicastCommunication);
+                                if (result == null) result = caseAction(unicastCommunication);
+                                if (result == null) result = caseNamedElement(unicastCommunication);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -97,6 +101,8 @@ public class BehaviourSwitch<T> extends Switch<T> {
                                 MulticastCommunication multicastCommunication = (MulticastCommunication)theEObject;
                                 T result = caseMulticastCommunication(multicastCommunication);
                                 if (result == null) result = caseCommunicationAction(multicastCommunication);
+                                if (result == null) result = caseAction(multicastCommunication);
+                                if (result == null) result = caseNamedElement(multicastCommunication);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -104,6 +110,8 @@ public class BehaviourSwitch<T> extends Switch<T> {
                                 BroadcastCommunication broadcastCommunication = (BroadcastCommunication)theEObject;
                                 T result = caseBroadcastCommunication(broadcastCommunication);
                                 if (result == null) result = caseCommunicationAction(broadcastCommunication);
+                                if (result == null) result = caseAction(broadcastCommunication);
+                                if (result == null) result = caseNamedElement(broadcastCommunication);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }

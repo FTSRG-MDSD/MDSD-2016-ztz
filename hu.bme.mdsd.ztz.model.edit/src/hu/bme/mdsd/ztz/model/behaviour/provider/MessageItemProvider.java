@@ -65,27 +65,29 @@ public class MessageItemProvider
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addTasksPropertyDescriptor(object);
+                        addInvolvedTaskExecutionsPropertyDescriptor(object);
                         addTimestampPropertyDescriptor(object);
                         addReferredObjectsPropertyDescriptor(object);
+                        addNeedResponsePropertyDescriptor(object);
+                        addTTLPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
 
         /**
-         * This adds a property descriptor for the Tasks feature.
+         * This adds a property descriptor for the Involved Task Executions feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        protected void addTasksPropertyDescriptor(Object object) {
+        protected void addInvolvedTaskExecutionsPropertyDescriptor(Object object) {
                 itemPropertyDescriptors.add
                         (createItemPropertyDescriptor
                                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                                  getResourceLocator(),
-                                 getString("_UI_Message_tasks_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Message_tasks_feature", "_UI_Message_type"),
-                                 BehaviourPackage.Literals.MESSAGE__TASKS,
+                                 getString("_UI_Message_involvedTaskExecutions_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Message_involvedTaskExecutions_feature", "_UI_Message_type"),
+                                 BehaviourPackage.Literals.MESSAGE__INVOLVED_TASK_EXECUTIONS,
                                  true,
                                  false,
                                  true,
@@ -130,6 +132,50 @@ public class MessageItemProvider
                                  getString("_UI_Message_referredObjects_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_Message_referredObjects_feature", "_UI_Message_type"),
                                  BehaviourPackage.Literals.MESSAGE__REFERRED_OBJECTS,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
+                                 null,
+                                 null));
+        }
+
+        /**
+         * This adds a property descriptor for the Need Response feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addNeedResponsePropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_Message_needResponse_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Message_needResponse_feature", "_UI_Message_type"),
+                                 BehaviourPackage.Literals.MESSAGE__NEED_RESPONSE,
+                                 true,
+                                 false,
+                                 false,
+                                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                                 null,
+                                 null));
+        }
+
+        /**
+         * This adds a property descriptor for the TTL feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addTTLPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_Message_TTL_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Message_TTL_feature", "_UI_Message_type"),
+                                 BehaviourPackage.Literals.MESSAGE__TTL,
                                  true,
                                  false,
                                  true,
@@ -208,6 +254,7 @@ public class MessageItemProvider
 
                 switch (notification.getFeatureID(Message.class)) {
                         case BehaviourPackage.MESSAGE__TIMESTAMP:
+                        case BehaviourPackage.MESSAGE__NEED_RESPONSE:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                                 return;
                         case BehaviourPackage.MESSAGE__PROPERTIES:

@@ -30,7 +30,7 @@ import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
  * <code><pre>
  * {@literal @}QueryBasedFeature
  * pattern descriptor(sourceRequirement: TaskRequirement, targetDescriptor: TaskDescriptor) {
- * 	TaskRequirement.task(sourceRequirement, taskExecution);
+ * 	TaskRequirement.taskExecution(sourceRequirement, taskExecution);
  * 	TaskExecution.task.descriptor(taskExecution, targetDescriptor);
  * }
  * </pre></code>

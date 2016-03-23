@@ -31,6 +31,12 @@ public class BehaviourTests extends TestSuite {
          */
         public static Test suite() {
                 TestSuite suite = new BehaviourTests("behaviour Tests");
+                suite.addTestSuite(UnicastCommunicationTest.class);
+                suite.addTestSuite(MulticastCommunicationTest.class);
+                suite.addTestSuite(BroadcastCommunicationTest.class);
+                suite.addTestSuite(MessageRepositoryTest.class);
+                suite.addTestSuite(ActionTest.class);
+                suite.addTestSuite(RobotCollaborationTest.class);
                 suite.addTestSuite(TaskRequirementTest.class);
                 return suite;
         }

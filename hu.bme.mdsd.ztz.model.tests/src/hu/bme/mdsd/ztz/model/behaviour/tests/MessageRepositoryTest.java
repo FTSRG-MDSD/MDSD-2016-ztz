@@ -13,6 +13,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Message Repository</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getReceivedMessages() <em>Received Messages</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class MessageRepositoryTest extends TestCase {
@@ -84,6 +90,32 @@ public class MessageRepositoryTest extends TestCase {
         @Override
         protected void tearDown() throws Exception {
                 setFixture(null);
+        }
+
+        /**
+         * Tests the '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getReceivedMessages() <em>Received Messages</em>}' feature getter.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getReceivedMessages()
+         * @generated
+         */
+        public void testGetReceivedMessages() {
+                // TODO: implement this feature getter test method
+                // Ensure that you remove @generated or mark it @generated NOT
+                fail();
+        }
+
+        /**
+         * Tests the '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#isSetReceivedMessages() <em>isSetReceivedMessages()</em>}' method.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.MessageRepository#isSetReceivedMessages()
+         * @generated
+         */
+        public void testIsSetReceivedMessages() {
+                // TODO: implement this test method
+                // Ensure that you remove @generated or mark it @generated NOT
+                fail();
         }
 
 } //MessageRepositoryTest

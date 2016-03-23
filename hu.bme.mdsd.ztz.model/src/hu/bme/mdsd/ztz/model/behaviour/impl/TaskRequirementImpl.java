@@ -9,6 +9,7 @@ import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 import hu.bme.mdsd.ztz.model.drone.Capability;
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
 import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
 
 import hu.bme.mdsd.ztz.model.drone.impl.NamedElementImpl;
@@ -38,27 +39,29 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getTask <em>Task</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getTaskExecution <em>Task Execution</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getPrerequisite <em>Prerequisite</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getParticipants <em>Participants</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getRequiredCapabilities <em>Required Capabilities</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getCapabilityProperties <em>Capability Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getTask <em>Task</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getPrerequisiteTask <em>Prerequisite Task</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TaskRequirementImpl extends NamedElementImpl implements TaskRequirement {
         /**
-         * The cached value of the '{@link #getTask() <em>Task</em>}' reference.
+         * The cached value of the '{@link #getTaskExecution() <em>Task Execution</em>}' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getTask()
+         * @see #getTaskExecution()
          * @generated
          * @ordered
          */
-        protected TaskExecution task;
+        protected TaskExecution taskExecution;
 
         /**
          * The cached value of the '{@link #getPrerequisite() <em>Prerequisite</em>}' reference.
@@ -131,6 +134,16 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
         protected EStructuralFeature.Internal.SettingDelegate DESCRIPTOR__ESETTING_DELEGATE = ((EStructuralFeature.Internal)BehaviourPackage.Literals.TASK_REQUIREMENT__DESCRIPTOR).getSettingDelegate();
 
         /**
+         * The cached setting delegate for the '{@link #getTask() <em>Task</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getTask()
+         * @generated
+         * @ordered
+         */
+        protected EStructuralFeature.Internal.SettingDelegate TASK__ESETTING_DELEGATE = ((EStructuralFeature.Internal)BehaviourPackage.Literals.TASK_REQUIREMENT__TASK).getSettingDelegate();
+
+        /**
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -154,16 +167,16 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
          * <!-- end-user-doc -->
          * @generated
          */
-        public TaskExecution getTask() {
-                if (task != null && task.eIsProxy()) {
-                        InternalEObject oldTask = (InternalEObject)task;
-                        task = (TaskExecution)eResolveProxy(oldTask);
-                        if (task != oldTask) {
+        public TaskExecution getTaskExecution() {
+                if (taskExecution != null && taskExecution.eIsProxy()) {
+                        InternalEObject oldTaskExecution = (InternalEObject)taskExecution;
+                        taskExecution = (TaskExecution)eResolveProxy(oldTaskExecution);
+                        if (taskExecution != oldTaskExecution) {
                                 if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.TASK_REQUIREMENT__TASK, oldTask, task));
+                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION, oldTaskExecution, taskExecution));
                         }
                 }
-                return task;
+                return taskExecution;
         }
 
         /**
@@ -171,8 +184,8 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
          * <!-- end-user-doc -->
          * @generated
          */
-        public TaskExecution basicGetTask() {
-                return task;
+        public TaskExecution basicGetTaskExecution() {
+                return taskExecution;
         }
 
         /**
@@ -180,11 +193,71 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
          * <!-- end-user-doc -->
          * @generated
          */
-        public void setTask(TaskExecution newTask) {
-                TaskExecution oldTask = task;
-                task = newTask;
+        public void setTaskExecution(TaskExecution newTaskExecution) {
+                TaskExecution oldTaskExecution = taskExecution;
+                taskExecution = newTaskExecution;
                 if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_REQUIREMENT__TASK, oldTask, task));
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION, oldTaskExecution, taskExecution));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public Task getTask() {
+                return (Task)TASK__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public Task basicGetTask() {
+                return (Task)TASK__ESETTING_DELEGATE.dynamicGet(this, null, 0, false, false);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public boolean isSetTask() {
+                return TASK__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public Task getPrerequisiteTask() {
+                Task prerequisiteTask = basicGetPrerequisiteTask();
+                return prerequisiteTask != null && prerequisiteTask.eIsProxy() ? (Task)eResolveProxy((InternalEObject)prerequisiteTask) : prerequisiteTask;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public Task basicGetPrerequisiteTask() {
+                // TODO: implement this method to return the 'Prerequisite Task' reference
+                // -> do not perform proxy resolution
+                // Ensure that you remove @generated or mark it @generated NOT
+                throw new UnsupportedOperationException();
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public boolean isSetPrerequisiteTask() {
+                // TODO: implement this method to return whether the 'Prerequisite Task' reference is set
+                // Ensure that you remove @generated or mark it @generated NOT
+                throw new UnsupportedOperationException();
         }
 
         /**
@@ -324,9 +397,9 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
                 switch (featureID) {
-                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
-                                if (resolve) return getTask();
-                                return basicGetTask();
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION:
+                                if (resolve) return getTaskExecution();
+                                return basicGetTaskExecution();
                         case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE:
                                 if (resolve) return getPrerequisite();
                                 return basicGetPrerequisite();
@@ -341,6 +414,12 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
                         case BehaviourPackage.TASK_REQUIREMENT__DESCRIPTOR:
                                 if (resolve) return getDescriptor();
                                 return basicGetDescriptor();
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
+                                if (resolve) return getTask();
+                                return basicGetTask();
+                        case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE_TASK:
+                                if (resolve) return getPrerequisiteTask();
+                                return basicGetPrerequisiteTask();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -354,8 +433,8 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
         @Override
         public void eSet(int featureID, Object newValue) {
                 switch (featureID) {
-                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
-                                setTask((TaskExecution)newValue);
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION:
+                                setTaskExecution((TaskExecution)newValue);
                                 return;
                         case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE:
                                 setPrerequisite((TaskExecution)newValue);
@@ -387,8 +466,8 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
         @Override
         public void eUnset(int featureID) {
                 switch (featureID) {
-                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
-                                setTask((TaskExecution)null);
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION:
+                                setTaskExecution((TaskExecution)null);
                                 return;
                         case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE:
                                 setPrerequisite((TaskExecution)null);
@@ -417,8 +496,8 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
         @Override
         public boolean eIsSet(int featureID) {
                 switch (featureID) {
-                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
-                                return task != null;
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION:
+                                return taskExecution != null;
                         case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE:
                                 return prerequisite != null;
                         case BehaviourPackage.TASK_REQUIREMENT__PARTICIPANTS:
@@ -431,6 +510,10 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
                                 return capabilityProperties != null && !capabilityProperties.isEmpty();
                         case BehaviourPackage.TASK_REQUIREMENT__DESCRIPTOR:
                                 return DESCRIPTOR__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK:
+                                return isSetTask();
+                        case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE_TASK:
+                                return isSetPrerequisiteTask();
                 }
                 return super.eIsSet(featureID);
         }

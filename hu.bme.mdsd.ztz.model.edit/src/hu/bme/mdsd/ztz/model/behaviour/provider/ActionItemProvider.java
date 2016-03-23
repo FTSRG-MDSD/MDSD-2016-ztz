@@ -52,9 +52,32 @@ public class ActionItemProvider
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
+                        addCurrentTaskExecutionPropertyDescriptor(object);
                         addCurrentTaskPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
+        }
+
+        /**
+         * This adds a property descriptor for the Current Task Execution feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addCurrentTaskExecutionPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_Action_currentTaskExecution_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Action_currentTaskExecution_feature", "_UI_Action_type"),
+                                 BehaviourPackage.Literals.ACTION__CURRENT_TASK_EXECUTION,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
+                                 null,
+                                 null));
         }
 
         /**
@@ -71,9 +94,9 @@ public class ActionItemProvider
                                  getString("_UI_Action_currentTask_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_Action_currentTask_feature", "_UI_Action_type"),
                                  BehaviourPackage.Literals.ACTION__CURRENT_TASK,
-                                 true,
                                  false,
-                                 true,
+                                 false,
+                                 false,
                                  null,
                                  null,
                                  null));

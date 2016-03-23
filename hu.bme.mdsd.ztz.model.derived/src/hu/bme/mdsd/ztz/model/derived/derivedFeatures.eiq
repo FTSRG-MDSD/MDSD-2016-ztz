@@ -51,3 +51,64 @@ pattern receivedMessages(repository: MessageRepository, message: Message) {
 }
 
 
+@QueryBasedFeature
+pattern availabilityRange(robotCollaboration: RobotCollaboration, minimumRange: MeasureValue) {
+	DynamicRobot.collaborations(dynRobot, robotCollaboration);
+	RobotCollaboration.collaborator(robotCollaboration, dynCooperator);
+	DynamicRobot.robot(dynRobot, robot);
+	DynamicRobot.robot(dynCooperator, cooperator);
+	
+	find minMeasure(robot, cooperator, minimumRange);
+} or {
+	DynamicRobot.collaborations(dynRobot, robotCollaboration);
+	RobotCollaboration.collaborator(robotCollaboration, dynCooperator);
+	DynamicRobot.robot(dynRobot, robot);
+	DynamicRobot.robot(dynCooperator, cooperator);
+	
+	find minMeasure(cooperator, robot, minimumRange);
+}
+
+
+pattern minMeasure(robot: Robot, cooperator: Robot, minimum: MeasureValue) {
+	Robot.communicationRange(robot, mvalue1);
+	Robot.communicationRange(cooperator, mvalue2);
+	
+	MeasureValue.dimension(mvalue1, commonDimension);
+	MeasureValue.dimension(mvalue2, commonDimension);
+	MeasureValue.value(mvalue1, value1);
+	MeasureValue.value(mvalue2, value2);
+	
+	MeasureValue.dimension(minimum, commonDimension);
+	MeasureValue.value(minimum, eval(Math.min(value1, value2)));
+} or {
+	Robot.communicationRange(robot, mvalue1);
+	Robot.communicationRange(cooperator, mvalue2);
+	
+	MeasureValue.dimension(mvalue1, dimension1);
+	MeasureValue.dimension(mvalue2, dimension2);
+	MeasureValue.value(mvalue1, value1);
+	MeasureValue.value(mvalue2, value2);
+	
+	MeasureDimension.conversions(dimension1, conv);
+	MeasureConversion.dimension(conv, dimension2);
+	MeasureConversion.rate(conv, convRate);
+	
+	check(value2 <= value1*convRate);
+	minimum == mvalue2;
+} or {
+	Robot.communicationRange(robot, mvalue1);
+	Robot.communicationRange(cooperator, mvalue2);
+	
+	MeasureValue.dimension(mvalue1, dimension1);
+	MeasureValue.dimension(mvalue2, dimension2);
+	MeasureValue.value(mvalue1, value1);
+	MeasureValue.value(mvalue2, value2);
+	
+	MeasureDimension.conversions(dimension1, conv);
+	MeasureConversion.dimension(conv, dimension2);
+	MeasureConversion.rate(conv, convRate);
+	
+	check(value1*convRate < value2);
+	minimum == mvalue1;
+}
+

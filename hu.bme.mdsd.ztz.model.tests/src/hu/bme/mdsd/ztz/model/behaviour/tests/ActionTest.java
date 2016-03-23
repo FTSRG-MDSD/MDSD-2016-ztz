@@ -13,6 +13,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Action</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTask() <em>Current Task</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class ActionTest extends TestCase {
@@ -84,6 +90,32 @@ public class ActionTest extends TestCase {
         @Override
         protected void tearDown() throws Exception {
                 setFixture(null);
+        }
+
+        /**
+         * Tests the '{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTask() <em>Current Task</em>}' feature getter.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTask()
+         * @generated
+         */
+        public void testGetCurrentTask() {
+                // TODO: implement this feature getter test method
+                // Ensure that you remove @generated or mark it @generated NOT
+                fail();
+        }
+
+        /**
+         * Tests the '{@link hu.bme.mdsd.ztz.model.behaviour.Action#isSetCurrentTask() <em>isSetCurrentTask()</em>}' method.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.Action#isSetCurrentTask()
+         * @generated
+         */
+        public void testIsSetCurrentTask() {
+                // TODO: implement this test method
+                // Ensure that you remove @generated or mark it @generated NOT
+                fail();
         }
 
 } //ActionTest

@@ -4,7 +4,6 @@ package hu.bme.mdsd.ztz.model.behaviour.provider;
 
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
-import hu.bme.mdsd.ztz.model.behaviour.CommunicationType;
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
 
 import java.util.Collection;
@@ -90,8 +89,7 @@ public class MulticastCommunicationItemProvider extends CommunicationActionItemP
          */
         @Override
         public String getText(Object object) {
-                CommunicationType labelValue = ((MulticastCommunication)object).getType();
-                String label = labelValue == null ? null : labelValue.toString();
+                String label = ((MulticastCommunication)object).getName();
                 return label == null || label.length() == 0 ?
                         getString("_UI_MulticastCommunication_type") :
                         getString("_UI_MulticastCommunication_type") + " " + label;

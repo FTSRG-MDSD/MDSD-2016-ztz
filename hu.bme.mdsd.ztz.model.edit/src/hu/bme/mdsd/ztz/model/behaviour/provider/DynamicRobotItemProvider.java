@@ -238,6 +238,21 @@ public class DynamicRobotItemProvider
                         (createChildParameter
                                 (BehaviourPackage.Literals.DYNAMIC_ROBOT__ACTIONS,
                                  BehaviourFactory.eINSTANCE.createAction()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (BehaviourPackage.Literals.DYNAMIC_ROBOT__ACTIONS,
+                                 BehaviourFactory.eINSTANCE.createUnicastCommunication()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (BehaviourPackage.Literals.DYNAMIC_ROBOT__ACTIONS,
+                                 BehaviourFactory.eINSTANCE.createMulticastCommunication()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (BehaviourPackage.Literals.DYNAMIC_ROBOT__ACTIONS,
+                                 BehaviourFactory.eINSTANCE.createBroadcastCommunication()));
         }
 
         /**

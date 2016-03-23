@@ -36,7 +36,7 @@ import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
  * 	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
  * )
  * pattern robotCannotExecuteTask(robot: DynamicRobot, taskExecution: TaskExecution, capability: Capability) {
- * 	TaskRequirement.task(requirement, taskExecution);
+ * 	TaskRequirement.taskExecution(requirement, taskExecution);
  * 	TaskExecution.executors(taskExecution, robot);
  * 	TaskRequirement.requiredCapabilities(requirement, capability);
  * 	N1 == count find requiredCapability(requirement, capability);

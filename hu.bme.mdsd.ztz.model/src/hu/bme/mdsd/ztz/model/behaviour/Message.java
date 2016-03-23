@@ -3,6 +3,7 @@
 package hu.bme.mdsd.ztz.model.behaviour;
 
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
 
 import java.util.Date;
@@ -20,10 +21,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#getInvolvedTaskExecutions <em>Involved Task Executions</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTimestamp <em>Timestamp</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#getProperties <em>Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#getReferredObjects <em>Referred Objects</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#isNeedResponse <em>Need Response</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTTL <em>TTL</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessage()
@@ -32,20 +35,20 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Message extends EObject {
         /**
-         * Returns the value of the '<em><b>Tasks</b></em>' reference list.
+         * Returns the value of the '<em><b>Involved Task Executions</b></em>' reference list.
          * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution}.
          * <!-- begin-user-doc -->
          * <p>
-         * If the meaning of the '<em>Tasks</em>' reference list isn't clear,
+         * If the meaning of the '<em>Involved Task Executions</em>' reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Tasks</em>' reference list.
-         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessage_Tasks()
+         * @return the value of the '<em>Involved Task Executions</em>' reference list.
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessage_InvolvedTaskExecutions()
          * @model
          * @generated
          */
-        EList<TaskExecution> getTasks();
+        EList<TaskExecution> getInvolvedTaskExecutions();
 
         /**
          * Returns the value of the '<em><b>Timestamp</b></em>' attribute.
@@ -104,5 +107,58 @@ public interface Message extends EObject {
          * @generated
          */
         EList<AreaObject> getReferredObjects();
+
+        /**
+         * Returns the value of the '<em><b>Need Response</b></em>' attribute.
+         * The default value is <code>"false"</code>.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Need Response</em>' attribute isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Need Response</em>' attribute.
+         * @see #setNeedResponse(boolean)
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessage_NeedResponse()
+         * @model default="false" required="true"
+         * @generated
+         */
+        boolean isNeedResponse();
+
+        /**
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.Message#isNeedResponse <em>Need Response</em>}' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Need Response</em>' attribute.
+         * @see #isNeedResponse()
+         * @generated
+         */
+        void setNeedResponse(boolean value);
+
+        /**
+         * Returns the value of the '<em><b>TTL</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>TTL</em>' reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>TTL</em>' reference.
+         * @see #setTTL(MeasureValue)
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessage_TTL()
+         * @model
+         * @generated
+         */
+        MeasureValue getTTL();
+
+        /**
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTTL <em>TTL</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>TTL</em>' reference.
+         * @see #getTTL()
+         * @generated
+         */
+        void setTTL(MeasureValue value);
 
 } // Message

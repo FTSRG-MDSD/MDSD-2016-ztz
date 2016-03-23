@@ -126,13 +126,13 @@ public interface BehaviourPackage extends EPackage {
         int MESSAGE = 1;
 
         /**
-         * The feature id for the '<em><b>Tasks</b></em>' reference list.
+         * The feature id for the '<em><b>Involved Task Executions</b></em>' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int MESSAGE__TASKS = 0;
+        int MESSAGE__INVOLVED_TASK_EXECUTIONS = 0;
 
         /**
          * The feature id for the '<em><b>Timestamp</b></em>' attribute.
@@ -162,13 +162,31 @@ public interface BehaviourPackage extends EPackage {
         int MESSAGE__REFERRED_OBJECTS = 3;
 
         /**
+         * The feature id for the '<em><b>Need Response</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE__NEED_RESPONSE = 4;
+
+        /**
+         * The feature id for the '<em><b>TTL</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE__TTL = 5;
+
+        /**
          * The number of structural features of the '<em>Message</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int MESSAGE_FEATURE_COUNT = 4;
+        int MESSAGE_FEATURE_COUNT = 6;
 
         /**
          * The number of operations of the '<em>Message</em>' class.
@@ -190,42 +208,6 @@ public interface BehaviourPackage extends EPackage {
         int COMMUNICATION_ACTION = 2;
 
         /**
-         * The feature id for the '<em><b>Message</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int COMMUNICATION_ACTION__MESSAGE = 0;
-
-        /**
-         * The feature id for the '<em><b>Type</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int COMMUNICATION_ACTION__TYPE = 1;
-
-        /**
-         * The number of structural features of the '<em>Communication Action</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int COMMUNICATION_ACTION_FEATURE_COUNT = 2;
-
-        /**
-         * The number of operations of the '<em>Communication Action</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int COMMUNICATION_ACTION_OPERATION_COUNT = 0;
-
-        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.UnicastCommunicationImpl <em>Unicast Communication</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -234,51 +216,6 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         int UNICAST_COMMUNICATION = 3;
-
-        /**
-         * The feature id for the '<em><b>Message</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int UNICAST_COMMUNICATION__MESSAGE = COMMUNICATION_ACTION__MESSAGE;
-
-        /**
-         * The feature id for the '<em><b>Type</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int UNICAST_COMMUNICATION__TYPE = COMMUNICATION_ACTION__TYPE;
-
-        /**
-         * The feature id for the '<em><b>Target</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int UNICAST_COMMUNICATION__TARGET = COMMUNICATION_ACTION_FEATURE_COUNT + 0;
-
-        /**
-         * The number of structural features of the '<em>Unicast Communication</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int UNICAST_COMMUNICATION_FEATURE_COUNT = COMMUNICATION_ACTION_FEATURE_COUNT + 1;
-
-        /**
-         * The number of operations of the '<em>Unicast Communication</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int UNICAST_COMMUNICATION_OPERATION_COUNT = COMMUNICATION_ACTION_OPERATION_COUNT + 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.MulticastCommunicationImpl <em>Multicast Communication</em>}' class.
@@ -291,51 +228,6 @@ public interface BehaviourPackage extends EPackage {
         int MULTICAST_COMMUNICATION = 4;
 
         /**
-         * The feature id for the '<em><b>Message</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MULTICAST_COMMUNICATION__MESSAGE = COMMUNICATION_ACTION__MESSAGE;
-
-        /**
-         * The feature id for the '<em><b>Type</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MULTICAST_COMMUNICATION__TYPE = COMMUNICATION_ACTION__TYPE;
-
-        /**
-         * The feature id for the '<em><b>Targets</b></em>' reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MULTICAST_COMMUNICATION__TARGETS = COMMUNICATION_ACTION_FEATURE_COUNT + 0;
-
-        /**
-         * The number of structural features of the '<em>Multicast Communication</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MULTICAST_COMMUNICATION_FEATURE_COUNT = COMMUNICATION_ACTION_FEATURE_COUNT + 1;
-
-        /**
-         * The number of operations of the '<em>Multicast Communication</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MULTICAST_COMMUNICATION_OPERATION_COUNT = COMMUNICATION_ACTION_OPERATION_COUNT + 0;
-
-        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.BroadcastCommunicationImpl <em>Broadcast Communication</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -346,51 +238,6 @@ public interface BehaviourPackage extends EPackage {
         int BROADCAST_COMMUNICATION = 5;
 
         /**
-         * The feature id for the '<em><b>Message</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int BROADCAST_COMMUNICATION__MESSAGE = COMMUNICATION_ACTION__MESSAGE;
-
-        /**
-         * The feature id for the '<em><b>Type</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int BROADCAST_COMMUNICATION__TYPE = COMMUNICATION_ACTION__TYPE;
-
-        /**
-         * The feature id for the '<em><b>Targets</b></em>' reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int BROADCAST_COMMUNICATION__TARGETS = COMMUNICATION_ACTION_FEATURE_COUNT + 0;
-
-        /**
-         * The number of structural features of the '<em>Broadcast Communication</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int BROADCAST_COMMUNICATION_FEATURE_COUNT = COMMUNICATION_ACTION_FEATURE_COUNT + 1;
-
-        /**
-         * The number of operations of the '<em>Broadcast Communication</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int BROADCAST_COMMUNICATION_OPERATION_COUNT = COMMUNICATION_ACTION_OPERATION_COUNT + 0;
-
-        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageRepositoryImpl <em>Message Repository</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -399,60 +246,6 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         int MESSAGE_REPOSITORY = 6;
-
-        /**
-         * The feature id for the '<em><b>Name</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MESSAGE_REPOSITORY__NAME = DronePackage.NAMED_ELEMENT__NAME;
-
-        /**
-         * The feature id for the '<em><b>Robot</b></em>' container reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MESSAGE_REPOSITORY__ROBOT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-        /**
-         * The feature id for the '<em><b>Received Messages</b></em>' reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MESSAGE_REPOSITORY__RECEIVED_MESSAGES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-        /**
-         * The feature id for the '<em><b>Sended Messages</b></em>' reference list.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MESSAGE_REPOSITORY__SENDED_MESSAGES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-        /**
-         * The number of structural features of the '<em>Message Repository</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MESSAGE_REPOSITORY_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-        /**
-         * The number of operations of the '<em>Message Repository</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MESSAGE_REPOSITORY_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.ActionImpl <em>Action</em>}' class.
@@ -483,13 +276,22 @@ public interface BehaviourPackage extends EPackage {
         int ACTION__PROPERTIES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
         /**
+         * The feature id for the '<em><b>Current Task Execution</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ACTION__CURRENT_TASK_EXECUTION = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+        /**
          * The feature id for the '<em><b>Current Task</b></em>' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int ACTION__CURRENT_TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+        int ACTION__CURRENT_TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
 
         /**
          * The number of structural features of the '<em>Action</em>' class.
@@ -498,7 +300,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int ACTION_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
+        int ACTION_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
         /**
          * The number of operations of the '<em>Action</em>' class.
@@ -508,6 +310,339 @@ public interface BehaviourPackage extends EPackage {
          * @ordered
          */
         int ACTION_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+        /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int COMMUNICATION_ACTION__NAME = ACTION__NAME;
+
+        /**
+         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int COMMUNICATION_ACTION__PROPERTIES = ACTION__PROPERTIES;
+
+        /**
+         * The feature id for the '<em><b>Current Task Execution</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int COMMUNICATION_ACTION__CURRENT_TASK_EXECUTION = ACTION__CURRENT_TASK_EXECUTION;
+
+        /**
+         * The feature id for the '<em><b>Current Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int COMMUNICATION_ACTION__CURRENT_TASK = ACTION__CURRENT_TASK;
+
+        /**
+         * The feature id for the '<em><b>Message</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int COMMUNICATION_ACTION__MESSAGE = ACTION_FEATURE_COUNT + 0;
+
+        /**
+         * The number of structural features of the '<em>Communication Action</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int COMMUNICATION_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
+
+        /**
+         * The number of operations of the '<em>Communication Action</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int COMMUNICATION_ACTION_OPERATION_COUNT = ACTION_OPERATION_COUNT + 0;
+
+        /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int UNICAST_COMMUNICATION__NAME = COMMUNICATION_ACTION__NAME;
+
+        /**
+         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int UNICAST_COMMUNICATION__PROPERTIES = COMMUNICATION_ACTION__PROPERTIES;
+
+        /**
+         * The feature id for the '<em><b>Current Task Execution</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int UNICAST_COMMUNICATION__CURRENT_TASK_EXECUTION = COMMUNICATION_ACTION__CURRENT_TASK_EXECUTION;
+
+        /**
+         * The feature id for the '<em><b>Current Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int UNICAST_COMMUNICATION__CURRENT_TASK = COMMUNICATION_ACTION__CURRENT_TASK;
+
+        /**
+         * The feature id for the '<em><b>Message</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int UNICAST_COMMUNICATION__MESSAGE = COMMUNICATION_ACTION__MESSAGE;
+
+        /**
+         * The feature id for the '<em><b>Target</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int UNICAST_COMMUNICATION__TARGET = COMMUNICATION_ACTION_FEATURE_COUNT + 0;
+
+        /**
+         * The number of structural features of the '<em>Unicast Communication</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int UNICAST_COMMUNICATION_FEATURE_COUNT = COMMUNICATION_ACTION_FEATURE_COUNT + 1;
+
+        /**
+         * The number of operations of the '<em>Unicast Communication</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int UNICAST_COMMUNICATION_OPERATION_COUNT = COMMUNICATION_ACTION_OPERATION_COUNT + 0;
+
+        /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MULTICAST_COMMUNICATION__NAME = COMMUNICATION_ACTION__NAME;
+
+        /**
+         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MULTICAST_COMMUNICATION__PROPERTIES = COMMUNICATION_ACTION__PROPERTIES;
+
+        /**
+         * The feature id for the '<em><b>Current Task Execution</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MULTICAST_COMMUNICATION__CURRENT_TASK_EXECUTION = COMMUNICATION_ACTION__CURRENT_TASK_EXECUTION;
+
+        /**
+         * The feature id for the '<em><b>Current Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MULTICAST_COMMUNICATION__CURRENT_TASK = COMMUNICATION_ACTION__CURRENT_TASK;
+
+        /**
+         * The feature id for the '<em><b>Message</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MULTICAST_COMMUNICATION__MESSAGE = COMMUNICATION_ACTION__MESSAGE;
+
+        /**
+         * The feature id for the '<em><b>Targets</b></em>' reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MULTICAST_COMMUNICATION__TARGETS = COMMUNICATION_ACTION_FEATURE_COUNT + 0;
+
+        /**
+         * The number of structural features of the '<em>Multicast Communication</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MULTICAST_COMMUNICATION_FEATURE_COUNT = COMMUNICATION_ACTION_FEATURE_COUNT + 1;
+
+        /**
+         * The number of operations of the '<em>Multicast Communication</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MULTICAST_COMMUNICATION_OPERATION_COUNT = COMMUNICATION_ACTION_OPERATION_COUNT + 0;
+
+        /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BROADCAST_COMMUNICATION__NAME = COMMUNICATION_ACTION__NAME;
+
+        /**
+         * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BROADCAST_COMMUNICATION__PROPERTIES = COMMUNICATION_ACTION__PROPERTIES;
+
+        /**
+         * The feature id for the '<em><b>Current Task Execution</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BROADCAST_COMMUNICATION__CURRENT_TASK_EXECUTION = COMMUNICATION_ACTION__CURRENT_TASK_EXECUTION;
+
+        /**
+         * The feature id for the '<em><b>Current Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BROADCAST_COMMUNICATION__CURRENT_TASK = COMMUNICATION_ACTION__CURRENT_TASK;
+
+        /**
+         * The feature id for the '<em><b>Message</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BROADCAST_COMMUNICATION__MESSAGE = COMMUNICATION_ACTION__MESSAGE;
+
+        /**
+         * The feature id for the '<em><b>Targets</b></em>' reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BROADCAST_COMMUNICATION__TARGETS = COMMUNICATION_ACTION_FEATURE_COUNT + 0;
+
+        /**
+         * The number of structural features of the '<em>Broadcast Communication</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BROADCAST_COMMUNICATION_FEATURE_COUNT = COMMUNICATION_ACTION_FEATURE_COUNT + 1;
+
+        /**
+         * The number of operations of the '<em>Broadcast Communication</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BROADCAST_COMMUNICATION_OPERATION_COUNT = COMMUNICATION_ACTION_OPERATION_COUNT + 0;
+
+        /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE_REPOSITORY__NAME = DronePackage.NAMED_ELEMENT__NAME;
+
+        /**
+         * The feature id for the '<em><b>Robot</b></em>' container reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE_REPOSITORY__ROBOT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+        /**
+         * The feature id for the '<em><b>Received Messages</b></em>' reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE_REPOSITORY__RECEIVED_MESSAGES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+        /**
+         * The feature id for the '<em><b>Sended Messages</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE_REPOSITORY__SENDED_MESSAGES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+        /**
+         * The number of structural features of the '<em>Message Repository</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE_REPOSITORY_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+        /**
+         * The number of operations of the '<em>Message Repository</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE_REPOSITORY_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl <em>Task Execution</em>}' class.
@@ -602,7 +737,7 @@ public interface BehaviourPackage extends EPackage {
         int ROBOT_COLLABORATION__COLLABORATOR = 0;
 
         /**
-         * The feature id for the '<em><b>Availability Range</b></em>' containment reference.
+         * The feature id for the '<em><b>Availability Range</b></em>' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -803,13 +938,13 @@ public interface BehaviourPackage extends EPackage {
         int TASK_REQUIREMENT__NAME = DronePackage.NAMED_ELEMENT__NAME;
 
         /**
-         * The feature id for the '<em><b>Task</b></em>' reference.
+         * The feature id for the '<em><b>Task Execution</b></em>' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_REQUIREMENT__TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+        int TASK_REQUIREMENT__TASK_EXECUTION = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
         /**
          * The feature id for the '<em><b>Prerequisite</b></em>' reference.
@@ -866,13 +1001,31 @@ public interface BehaviourPackage extends EPackage {
         int TASK_REQUIREMENT__DESCRIPTOR = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
 
         /**
+         * The feature id for the '<em><b>Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
+
+        /**
+         * The feature id for the '<em><b>Prerequisite Task</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_REQUIREMENT__PREREQUISITE_TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
+
+        /**
          * The number of structural features of the '<em>Task Requirement</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_REQUIREMENT_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
+        int TASK_REQUIREMENT_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
 
         /**
          * The number of operations of the '<em>Task Requirement</em>' class.
@@ -884,16 +1037,6 @@ public interface BehaviourPackage extends EPackage {
         int TASK_REQUIREMENT_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}' enum.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.behaviour.CommunicationType
-         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getCommunicationType()
-         * @generated
-         */
-        int COMMUNICATION_TYPE = 13;
-
-        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.RobotStatus <em>Robot Status</em>}' enum.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -901,7 +1044,7 @@ public interface BehaviourPackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getRobotStatus()
          * @generated
          */
-        int ROBOT_STATUS = 14;
+        int ROBOT_STATUS = 13;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus <em>Task Execution Status</em>}' enum.
@@ -911,7 +1054,7 @@ public interface BehaviourPackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getTaskExecutionStatus()
          * @generated
          */
-        int TASK_EXECUTION_STATUS = 15;
+        int TASK_EXECUTION_STATUS = 14;
 
 
         /**
@@ -968,15 +1111,15 @@ public interface BehaviourPackage extends EPackage {
         EClass getMessage();
 
         /**
-         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTasks <em>Tasks</em>}'.
+         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getInvolvedTaskExecutions <em>Involved Task Executions</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the reference list '<em>Tasks</em>'.
-         * @see hu.bme.mdsd.ztz.model.behaviour.Message#getTasks()
+         * @return the meta object for the reference list '<em>Involved Task Executions</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.Message#getInvolvedTaskExecutions()
          * @see #getMessage()
          * @generated
          */
-        EReference getMessage_Tasks();
+        EReference getMessage_InvolvedTaskExecutions();
 
         /**
          * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTimestamp <em>Timestamp</em>}'.
@@ -1012,6 +1155,28 @@ public interface BehaviourPackage extends EPackage {
         EReference getMessage_ReferredObjects();
 
         /**
+         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.behaviour.Message#isNeedResponse <em>Need Response</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the attribute '<em>Need Response</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.Message#isNeedResponse()
+         * @see #getMessage()
+         * @generated
+         */
+        EAttribute getMessage_NeedResponse();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTTL <em>TTL</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>TTL</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.Message#getTTL()
+         * @see #getMessage()
+         * @generated
+         */
+        EReference getMessage_TTL();
+
+        /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationAction <em>Communication Action</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1022,26 +1187,15 @@ public interface BehaviourPackage extends EPackage {
         EClass getCommunicationAction();
 
         /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationAction#getMessage <em>Message</em>}'.
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationAction#getMessage <em>Message</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Message</em>'.
+         * @return the meta object for the reference '<em>Message</em>'.
          * @see hu.bme.mdsd.ztz.model.behaviour.CommunicationAction#getMessage()
          * @see #getCommunicationAction()
          * @generated
          */
         EReference getCommunicationAction_Message();
-
-        /**
-         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationAction#getType <em>Type</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the attribute '<em>Type</em>'.
-         * @see hu.bme.mdsd.ztz.model.behaviour.CommunicationAction#getType()
-         * @see #getCommunicationAction()
-         * @generated
-         */
-        EAttribute getCommunicationAction_Type();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication <em>Unicast Communication</em>}'.
@@ -1139,10 +1293,10 @@ public interface BehaviourPackage extends EPackage {
         EReference getMessageRepository_ReceivedMessages();
 
         /**
-         * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getSendedMessages <em>Sended Messages</em>}'.
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getSendedMessages <em>Sended Messages</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the reference list '<em>Sended Messages</em>'.
+         * @return the meta object for the containment reference list '<em>Sended Messages</em>'.
          * @see hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getSendedMessages()
          * @see #getMessageRepository()
          * @generated
@@ -1169,6 +1323,17 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         EReference getAction_Properties();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTaskExecution <em>Current Task Execution</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Current Task Execution</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTaskExecution()
+         * @see #getAction()
+         * @generated
+         */
+        EReference getAction_CurrentTaskExecution();
 
         /**
          * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTask <em>Current Task</em>}'.
@@ -1257,10 +1422,10 @@ public interface BehaviourPackage extends EPackage {
         EReference getRobotCollaboration_Collaborator();
 
         /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getAvailabilityRange <em>Availability Range</em>}'.
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getAvailabilityRange <em>Availability Range</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Availability Range</em>'.
+         * @return the meta object for the reference '<em>Availability Range</em>'.
          * @see hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getAvailabilityRange()
          * @see #getRobotCollaboration()
          * @generated
@@ -1408,6 +1573,17 @@ public interface BehaviourPackage extends EPackage {
         EClass getTaskRequirement();
 
         /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTaskExecution <em>Task Execution</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Task Execution</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTaskExecution()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_TaskExecution();
+
+        /**
          * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTask <em>Task</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1417,6 +1593,17 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         EReference getTaskRequirement_Task();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask <em>Prerequisite Task</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Prerequisite Task</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask()
+         * @see #getTaskRequirement()
+         * @generated
+         */
+        EReference getTaskRequirement_PrerequisiteTask();
 
         /**
          * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisite <em>Prerequisite</em>}'.
@@ -1483,16 +1670,6 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         EReference getTaskRequirement_Descriptor();
-
-        /**
-         * Returns the meta object for enum '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for enum '<em>Communication Type</em>'.
-         * @see hu.bme.mdsd.ztz.model.behaviour.CommunicationType
-         * @generated
-         */
-        EEnum getCommunicationType();
 
         /**
          * Returns the meta object for enum '{@link hu.bme.mdsd.ztz.model.behaviour.RobotStatus <em>Robot Status</em>}'.
@@ -1582,12 +1759,12 @@ public interface BehaviourPackage extends EPackage {
                 EClass MESSAGE = eINSTANCE.getMessage();
 
                 /**
-                 * The meta object literal for the '<em><b>Tasks</b></em>' reference list feature.
+                 * The meta object literal for the '<em><b>Involved Task Executions</b></em>' reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
-                EReference MESSAGE__TASKS = eINSTANCE.getMessage_Tasks();
+                EReference MESSAGE__INVOLVED_TASK_EXECUTIONS = eINSTANCE.getMessage_InvolvedTaskExecutions();
 
                 /**
                  * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
@@ -1614,6 +1791,22 @@ public interface BehaviourPackage extends EPackage {
                 EReference MESSAGE__REFERRED_OBJECTS = eINSTANCE.getMessage_ReferredObjects();
 
                 /**
+                 * The meta object literal for the '<em><b>Need Response</b></em>' attribute feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EAttribute MESSAGE__NEED_RESPONSE = eINSTANCE.getMessage_NeedResponse();
+
+                /**
+                 * The meta object literal for the '<em><b>TTL</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference MESSAGE__TTL = eINSTANCE.getMessage_TTL();
+
+                /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.CommunicationActionImpl <em>Communication Action</em>}' class.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -1624,20 +1817,12 @@ public interface BehaviourPackage extends EPackage {
                 EClass COMMUNICATION_ACTION = eINSTANCE.getCommunicationAction();
 
                 /**
-                 * The meta object literal for the '<em><b>Message</b></em>' containment reference feature.
+                 * The meta object literal for the '<em><b>Message</b></em>' reference feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
                 EReference COMMUNICATION_ACTION__MESSAGE = eINSTANCE.getCommunicationAction_Message();
-
-                /**
-                 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EAttribute COMMUNICATION_ACTION__TYPE = eINSTANCE.getCommunicationAction_Type();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.UnicastCommunicationImpl <em>Unicast Communication</em>}' class.
@@ -1720,7 +1905,7 @@ public interface BehaviourPackage extends EPackage {
                 EReference MESSAGE_REPOSITORY__RECEIVED_MESSAGES = eINSTANCE.getMessageRepository_ReceivedMessages();
 
                 /**
-                 * The meta object literal for the '<em><b>Sended Messages</b></em>' reference list feature.
+                 * The meta object literal for the '<em><b>Sended Messages</b></em>' containment reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
@@ -1744,6 +1929,14 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference ACTION__PROPERTIES = eINSTANCE.getAction_Properties();
+
+                /**
+                 * The meta object literal for the '<em><b>Current Task Execution</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ACTION__CURRENT_TASK_EXECUTION = eINSTANCE.getAction_CurrentTaskExecution();
 
                 /**
                  * The meta object literal for the '<em><b>Current Task</b></em>' reference feature.
@@ -1814,7 +2007,7 @@ public interface BehaviourPackage extends EPackage {
                 EReference ROBOT_COLLABORATION__COLLABORATOR = eINSTANCE.getRobotCollaboration_Collaborator();
 
                 /**
-                 * The meta object literal for the '<em><b>Availability Range</b></em>' containment reference feature.
+                 * The meta object literal for the '<em><b>Availability Range</b></em>' reference feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
@@ -1932,12 +2125,28 @@ public interface BehaviourPackage extends EPackage {
                 EClass TASK_REQUIREMENT = eINSTANCE.getTaskRequirement();
 
                 /**
+                 * The meta object literal for the '<em><b>Task Execution</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__TASK_EXECUTION = eINSTANCE.getTaskRequirement_TaskExecution();
+
+                /**
                  * The meta object literal for the '<em><b>Task</b></em>' reference feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
                 EReference TASK_REQUIREMENT__TASK = eINSTANCE.getTaskRequirement_Task();
+
+                /**
+                 * The meta object literal for the '<em><b>Prerequisite Task</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_REQUIREMENT__PREREQUISITE_TASK = eINSTANCE.getTaskRequirement_PrerequisiteTask();
 
                 /**
                  * The meta object literal for the '<em><b>Prerequisite</b></em>' reference feature.
@@ -1986,16 +2195,6 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference TASK_REQUIREMENT__DESCRIPTOR = eINSTANCE.getTaskRequirement_Descriptor();
-
-                /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationType <em>Communication Type</em>}' enum.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.behaviour.CommunicationType
-                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getCommunicationType()
-                 * @generated
-                 */
-                EEnum COMMUNICATION_TYPE = eINSTANCE.getCommunicationType();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.RobotStatus <em>Robot Status</em>}' enum.

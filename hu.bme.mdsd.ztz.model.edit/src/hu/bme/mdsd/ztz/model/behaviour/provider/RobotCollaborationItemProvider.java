@@ -64,6 +64,7 @@ public class RobotCollaborationItemProvider
                         super.getPropertyDescriptors(object);
 
                         addCollaboratorPropertyDescriptor(object);
+                        addAvailabilityRangePropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -91,6 +92,28 @@ public class RobotCollaborationItemProvider
         }
 
         /**
+         * This adds a property descriptor for the Availability Range feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addAvailabilityRangePropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_RobotCollaboration_availabilityRange_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_RobotCollaboration_availabilityRange_feature", "_UI_RobotCollaboration_type"),
+                                 BehaviourPackage.Literals.ROBOT_COLLABORATION__AVAILABILITY_RANGE,
+                                 false,
+                                 false,
+                                 false,
+                                 null,
+                                 null,
+                                 null));
+        }
+
+        /**
          * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
          * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
          * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -102,7 +125,6 @@ public class RobotCollaborationItemProvider
         public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
                 if (childrenFeatures == null) {
                         super.getChildrenFeatures(object);
-                        childrenFeatures.add(BehaviourPackage.Literals.ROBOT_COLLABORATION__AVAILABILITY_RANGE);
                         childrenFeatures.add(BehaviourPackage.Literals.ROBOT_COLLABORATION__PROPERTIES);
                 }
                 return childrenFeatures;
@@ -156,7 +178,6 @@ public class RobotCollaborationItemProvider
                 updateChildren(notification);
 
                 switch (notification.getFeatureID(RobotCollaboration.class)) {
-                        case BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE:
                         case BehaviourPackage.ROBOT_COLLABORATION__PROPERTIES:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
@@ -174,11 +195,6 @@ public class RobotCollaborationItemProvider
         @Override
         protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
                 super.collectNewChildDescriptors(newChildDescriptors, object);
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (BehaviourPackage.Literals.ROBOT_COLLABORATION__AVAILABILITY_RANGE,
-                                 DroneFactory.eINSTANCE.createMeasureValue()));
 
                 newChildDescriptors.add
                         (createChildParameter

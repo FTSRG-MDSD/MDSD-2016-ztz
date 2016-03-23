@@ -5,8 +5,6 @@ package hu.bme.mdsd.ztz.model.behaviour.provider;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
-import hu.bme.mdsd.ztz.model.behaviour.CommunicationType;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -90,8 +88,7 @@ public class BroadcastCommunicationItemProvider extends CommunicationActionItemP
          */
         @Override
         public String getText(Object object) {
-                CommunicationType labelValue = ((BroadcastCommunication)object).getType();
-                String label = labelValue == null ? null : labelValue.toString();
+                String label = ((BroadcastCommunication)object).getName();
                 return label == null || label.length() == 0 ?
                         getString("_UI_BroadcastCommunication_type") :
                         getString("_UI_BroadcastCommunication_type") + " " + label;

@@ -105,10 +105,10 @@ public final class DescriptorQuerySpecification extends BaseGeneratedEMFQuerySpe
       		   new ExportedParameter(body, var_sourceRequirement, "sourceRequirement"),
       		   new ExportedParameter(body, var_targetDescriptor, "targetDescriptor")
       		));
-      		// 	TaskRequirement.task(sourceRequirement, taskExecution)
+      		// 	TaskRequirement.taskExecution(sourceRequirement, taskExecution)
       		new TypeConstraint(body, new FlatTuple(var_sourceRequirement), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_sourceRequirement, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement", "task")));
+      		new TypeConstraint(body, new FlatTuple(var_sourceRequirement, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/behaviour", "TaskRequirement", "taskExecution")));
       		new Equality(body, var__virtual_0_, var_taskExecution);
       		// 	TaskExecution.task.descriptor(taskExecution, targetDescriptor)
       		new TypeConstraint(body, new FlatTuple(var_taskExecution), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "TaskExecution")));

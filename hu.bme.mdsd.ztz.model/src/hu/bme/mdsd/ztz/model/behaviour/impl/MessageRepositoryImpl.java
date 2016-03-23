@@ -17,12 +17,14 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,17 +43,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  */
 public class MessageRepositoryImpl extends NamedElementImpl implements MessageRepository {
         /**
-         * The cached value of the '{@link #getReceivedMessages() <em>Received Messages</em>}' reference list.
+         * The cached setting delegate for the '{@link #getReceivedMessages() <em>Received Messages</em>}' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getReceivedMessages()
          * @generated
          * @ordered
          */
-        protected EList<Message> receivedMessages;
+        protected EStructuralFeature.Internal.SettingDelegate RECEIVED_MESSAGES__ESETTING_DELEGATE = ((EStructuralFeature.Internal)BehaviourPackage.Literals.MESSAGE_REPOSITORY__RECEIVED_MESSAGES).getSettingDelegate();
 
         /**
-         * The cached value of the '{@link #getSendedMessages() <em>Sended Messages</em>}' reference list.
+         * The cached value of the '{@link #getSendedMessages() <em>Sended Messages</em>}' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getSendedMessages()
@@ -125,11 +127,18 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
          * <!-- end-user-doc -->
          * @generated
          */
+        @SuppressWarnings("unchecked")
         public EList<Message> getReceivedMessages() {
-                if (receivedMessages == null) {
-                        receivedMessages = new EObjectResolvingEList<Message>(Message.class, this, BehaviourPackage.MESSAGE_REPOSITORY__RECEIVED_MESSAGES);
-                }
-                return receivedMessages;
+                return (EList<Message>)RECEIVED_MESSAGES__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public boolean isSetReceivedMessages() {
+                return RECEIVED_MESSAGES__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
         }
 
         /**
@@ -139,7 +148,7 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
          */
         public EList<Message> getSendedMessages() {
                 if (sendedMessages == null) {
-                        sendedMessages = new EObjectResolvingEList<Message>(Message.class, this, BehaviourPackage.MESSAGE_REPOSITORY__SENDED_MESSAGES);
+                        sendedMessages = new EObjectContainmentEList<Message>(Message.class, this, BehaviourPackage.MESSAGE_REPOSITORY__SENDED_MESSAGES);
                 }
                 return sendedMessages;
         }
@@ -170,6 +179,8 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
                 switch (featureID) {
                         case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
                                 return basicSetRobot(null, msgs);
+                        case BehaviourPackage.MESSAGE_REPOSITORY__SENDED_MESSAGES:
+                                return ((InternalEList<?>)getSendedMessages()).basicRemove(otherEnd, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -218,10 +229,6 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
                         case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
                                 setRobot((DynamicRobot)newValue);
                                 return;
-                        case BehaviourPackage.MESSAGE_REPOSITORY__RECEIVED_MESSAGES:
-                                getReceivedMessages().clear();
-                                getReceivedMessages().addAll((Collection<? extends Message>)newValue);
-                                return;
                         case BehaviourPackage.MESSAGE_REPOSITORY__SENDED_MESSAGES:
                                 getSendedMessages().clear();
                                 getSendedMessages().addAll((Collection<? extends Message>)newValue);
@@ -241,9 +248,6 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
                         case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
                                 setRobot((DynamicRobot)null);
                                 return;
-                        case BehaviourPackage.MESSAGE_REPOSITORY__RECEIVED_MESSAGES:
-                                getReceivedMessages().clear();
-                                return;
                         case BehaviourPackage.MESSAGE_REPOSITORY__SENDED_MESSAGES:
                                 getSendedMessages().clear();
                                 return;
@@ -262,7 +266,7 @@ public class MessageRepositoryImpl extends NamedElementImpl implements MessageRe
                         case BehaviourPackage.MESSAGE_REPOSITORY__ROBOT:
                                 return getRobot() != null;
                         case BehaviourPackage.MESSAGE_REPOSITORY__RECEIVED_MESSAGES:
-                                return receivedMessages != null && !receivedMessages.isEmpty();
+                                return isSetReceivedMessages();
                         case BehaviourPackage.MESSAGE_REPOSITORY__SENDED_MESSAGES:
                                 return sendedMessages != null && !sendedMessages.isEmpty();
                 }

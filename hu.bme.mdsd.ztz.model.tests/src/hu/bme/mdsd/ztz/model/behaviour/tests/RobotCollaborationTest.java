@@ -13,6 +13,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Robot Collaboration</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getAvailabilityRange() <em>Availability Range</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class RobotCollaborationTest extends TestCase {
@@ -84,6 +90,19 @@ public class RobotCollaborationTest extends TestCase {
         @Override
         protected void tearDown() throws Exception {
                 setFixture(null);
+        }
+
+        /**
+         * Tests the '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getAvailabilityRange() <em>Availability Range</em>}' feature getter.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getAvailabilityRange()
+         * @generated
+         */
+        public void testGetAvailabilityRange() {
+                // TODO: implement this feature getter test method
+                // Ensure that you remove @generated or mark it @generated NOT
+                fail();
         }
 
 } //RobotCollaborationTest

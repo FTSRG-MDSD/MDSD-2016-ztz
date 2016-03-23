@@ -53,13 +53,37 @@ public class TaskRequirementItemProvider extends NamedElementItemProvider {
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addTaskPropertyDescriptor(object);
+                        addTaskExecutionPropertyDescriptor(object);
                         addPrerequisitePropertyDescriptor(object);
                         addParticipantsPropertyDescriptor(object);
                         addRequiredCapabilitiesPropertyDescriptor(object);
                         addDescriptorPropertyDescriptor(object);
+                        addTaskPropertyDescriptor(object);
+                        addPrerequisiteTaskPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
+        }
+
+        /**
+         * This adds a property descriptor for the Task Execution feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addTaskExecutionPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_TaskRequirement_taskExecution_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_taskExecution_feature", "_UI_TaskRequirement_type"),
+                                 BehaviourPackage.Literals.TASK_REQUIREMENT__TASK_EXECUTION,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
+                                 null,
+                                 null));
         }
 
         /**
@@ -76,9 +100,31 @@ public class TaskRequirementItemProvider extends NamedElementItemProvider {
                                  getString("_UI_TaskRequirement_task_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_task_feature", "_UI_TaskRequirement_type"),
                                  BehaviourPackage.Literals.TASK_REQUIREMENT__TASK,
-                                 true,
                                  false,
-                                 true,
+                                 false,
+                                 false,
+                                 null,
+                                 null,
+                                 null));
+        }
+
+        /**
+         * This adds a property descriptor for the Prerequisite Task feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addPrerequisiteTaskPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_TaskRequirement_prerequisiteTask_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_prerequisiteTask_feature", "_UI_TaskRequirement_type"),
+                                 BehaviourPackage.Literals.TASK_REQUIREMENT__PREREQUISITE_TASK,
+                                 false,
+                                 false,
+                                 false,
                                  null,
                                  null,
                                  null));

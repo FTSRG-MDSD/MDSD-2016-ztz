@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -52,14 +53,14 @@ public class RobotCollaborationImpl extends MinimalEObjectImpl.Container impleme
         protected DynamicRobot collaborator;
 
         /**
-         * The cached value of the '{@link #getAvailabilityRange() <em>Availability Range</em>}' containment reference.
+         * The cached setting delegate for the '{@link #getAvailabilityRange() <em>Availability Range</em>}' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getAvailabilityRange()
          * @generated
          * @ordered
          */
-        protected MeasureValue availabilityRange;
+        protected EStructuralFeature.Internal.SettingDelegate AVAILABILITY_RANGE__ESETTING_DELEGATE = ((EStructuralFeature.Internal)BehaviourPackage.Literals.ROBOT_COLLABORATION__AVAILABILITY_RANGE).getSettingDelegate();
 
         /**
          * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
@@ -134,7 +135,7 @@ public class RobotCollaborationImpl extends MinimalEObjectImpl.Container impleme
          * @generated
          */
         public MeasureValue getAvailabilityRange() {
-                return availabilityRange;
+                return (MeasureValue)AVAILABILITY_RANGE__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
         }
 
         /**
@@ -142,33 +143,8 @@ public class RobotCollaborationImpl extends MinimalEObjectImpl.Container impleme
          * <!-- end-user-doc -->
          * @generated
          */
-        public NotificationChain basicSetAvailabilityRange(MeasureValue newAvailabilityRange, NotificationChain msgs) {
-                MeasureValue oldAvailabilityRange = availabilityRange;
-                availabilityRange = newAvailabilityRange;
-                if (eNotificationRequired()) {
-                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE, oldAvailabilityRange, newAvailabilityRange);
-                        if (msgs == null) msgs = notification; else msgs.add(notification);
-                }
-                return msgs;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setAvailabilityRange(MeasureValue newAvailabilityRange) {
-                if (newAvailabilityRange != availabilityRange) {
-                        NotificationChain msgs = null;
-                        if (availabilityRange != null)
-                                msgs = ((InternalEObject)availabilityRange).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE, null, msgs);
-                        if (newAvailabilityRange != null)
-                                msgs = ((InternalEObject)newAvailabilityRange).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE, null, msgs);
-                        msgs = basicSetAvailabilityRange(newAvailabilityRange, msgs);
-                        if (msgs != null) msgs.dispatch();
-                }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE, newAvailabilityRange, newAvailabilityRange));
+        public MeasureValue basicGetAvailabilityRange() {
+                return (MeasureValue)AVAILABILITY_RANGE__ESETTING_DELEGATE.dynamicGet(this, null, 0, false, false);
         }
 
         /**
@@ -191,8 +167,6 @@ public class RobotCollaborationImpl extends MinimalEObjectImpl.Container impleme
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
-                        case BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE:
-                                return basicSetAvailabilityRange(null, msgs);
                         case BehaviourPackage.ROBOT_COLLABORATION__PROPERTIES:
                                 return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
                 }
@@ -211,7 +185,8 @@ public class RobotCollaborationImpl extends MinimalEObjectImpl.Container impleme
                                 if (resolve) return getCollaborator();
                                 return basicGetCollaborator();
                         case BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE:
-                                return getAvailabilityRange();
+                                if (resolve) return getAvailabilityRange();
+                                return basicGetAvailabilityRange();
                         case BehaviourPackage.ROBOT_COLLABORATION__PROPERTIES:
                                 return getProperties();
                 }
@@ -229,9 +204,6 @@ public class RobotCollaborationImpl extends MinimalEObjectImpl.Container impleme
                 switch (featureID) {
                         case BehaviourPackage.ROBOT_COLLABORATION__COLLABORATOR:
                                 setCollaborator((DynamicRobot)newValue);
-                                return;
-                        case BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE:
-                                setAvailabilityRange((MeasureValue)newValue);
                                 return;
                         case BehaviourPackage.ROBOT_COLLABORATION__PROPERTIES:
                                 getProperties().clear();
@@ -252,9 +224,6 @@ public class RobotCollaborationImpl extends MinimalEObjectImpl.Container impleme
                         case BehaviourPackage.ROBOT_COLLABORATION__COLLABORATOR:
                                 setCollaborator((DynamicRobot)null);
                                 return;
-                        case BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE:
-                                setAvailabilityRange((MeasureValue)null);
-                                return;
                         case BehaviourPackage.ROBOT_COLLABORATION__PROPERTIES:
                                 getProperties().clear();
                                 return;
@@ -273,7 +242,7 @@ public class RobotCollaborationImpl extends MinimalEObjectImpl.Container impleme
                         case BehaviourPackage.ROBOT_COLLABORATION__COLLABORATOR:
                                 return collaborator != null;
                         case BehaviourPackage.ROBOT_COLLABORATION__AVAILABILITY_RANGE:
-                                return availabilityRange != null;
+                                return AVAILABILITY_RANGE__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
                         case BehaviourPackage.ROBOT_COLLABORATION__PROPERTIES:
                                 return properties != null && !properties.isEmpty();
                 }

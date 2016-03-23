@@ -3,31 +3,15 @@
 package hu.bme.mdsd.ztz.model.behaviour.provider;
 
 
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 import hu.bme.mdsd.ztz.model.behaviour.CommunicationAction;
-import hu.bme.mdsd.ztz.model.behaviour.CommunicationType;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.CommunicationAction} object.
@@ -36,13 +20,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class CommunicationActionItemProvider 
-        extends ItemProviderAdapter
-        implements
-                IEditingDomainItemProvider,
-                IStructuredItemContentProvider,
-                ITreeItemContentProvider,
-                IItemLabelProvider,
-                IItemPropertySource {
+        extends ActionItemProvider {
         /**
          * This constructs an instance from a factory and a notifier.
          * <!-- begin-user-doc -->
@@ -64,61 +42,31 @@ public class CommunicationActionItemProvider
                 if (itemPropertyDescriptors == null) {
                         super.getPropertyDescriptors(object);
 
-                        addTypePropertyDescriptor(object);
+                        addMessagePropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
 
         /**
-         * This adds a property descriptor for the Type feature.
+         * This adds a property descriptor for the Message feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        protected void addTypePropertyDescriptor(Object object) {
+        protected void addMessagePropertyDescriptor(Object object) {
                 itemPropertyDescriptors.add
                         (createItemPropertyDescriptor
                                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                                  getResourceLocator(),
-                                 getString("_UI_CommunicationAction_type_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_CommunicationAction_type_feature", "_UI_CommunicationAction_type"),
-                                 BehaviourPackage.Literals.COMMUNICATION_ACTION__TYPE,
+                                 getString("_UI_CommunicationAction_message_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_CommunicationAction_message_feature", "_UI_CommunicationAction_type"),
+                                 BehaviourPackage.Literals.COMMUNICATION_ACTION__MESSAGE,
                                  true,
                                  false,
-                                 false,
-                                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                                 true,
+                                 null,
                                  null,
                                  null));
-        }
-
-        /**
-         * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-         * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-         * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-                if (childrenFeatures == null) {
-                        super.getChildrenFeatures(object);
-                        childrenFeatures.add(BehaviourPackage.Literals.COMMUNICATION_ACTION__MESSAGE);
-                }
-                return childrenFeatures;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        protected EStructuralFeature getChildFeature(Object object, Object child) {
-                // Check the type of the specified child object and return the proper feature to use for
-                // adding (see {@link AddCommand}) it as a child.
-
-                return super.getChildFeature(object, child);
         }
 
         /**
@@ -129,8 +77,7 @@ public class CommunicationActionItemProvider
          */
         @Override
         public String getText(Object object) {
-                CommunicationType labelValue = ((CommunicationAction)object).getType();
-                String label = labelValue == null ? null : labelValue.toString();
+                String label = ((CommunicationAction)object).getName();
                 return label == null || label.length() == 0 ?
                         getString("_UI_CommunicationAction_type") :
                         getString("_UI_CommunicationAction_type") + " " + label;
@@ -147,15 +94,6 @@ public class CommunicationActionItemProvider
         @Override
         public void notifyChanged(Notification notification) {
                 updateChildren(notification);
-
-                switch (notification.getFeatureID(CommunicationAction.class)) {
-                        case BehaviourPackage.COMMUNICATION_ACTION__TYPE:
-                                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                                return;
-                        case BehaviourPackage.COMMUNICATION_ACTION__MESSAGE:
-                                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                                return;
-                }
                 super.notifyChanged(notification);
         }
 
@@ -169,22 +107,6 @@ public class CommunicationActionItemProvider
         @Override
         protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
                 super.collectNewChildDescriptors(newChildDescriptors, object);
-
-                newChildDescriptors.add
-                        (createChildParameter
-                                (BehaviourPackage.Literals.COMMUNICATION_ACTION__MESSAGE,
-                                 BehaviourFactory.eINSTANCE.createMessage()));
-        }
-
-        /**
-         * Return the resource locator for this item provider's resources.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public ResourceLocator getResourceLocator() {
-                return BehaviourEditPlugin.INSTANCE;
         }
 
 }

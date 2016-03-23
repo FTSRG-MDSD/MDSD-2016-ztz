@@ -5,6 +5,7 @@ package hu.bme.mdsd.ztz.model.behaviour;
 import hu.bme.mdsd.ztz.model.drone.NamedElement;
 import hu.bme.mdsd.ztz.model.drone.Property;
 
+import hu.bme.mdsd.ztz.model.drone.Task;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Action#getProperties <em>Properties</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTaskExecution <em>Current Task Execution</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTask <em>Current Task</em>}</li>
  * </ul>
  *
@@ -42,6 +44,32 @@ public interface Action extends NamedElement {
         EList<Property> getProperties();
 
         /**
+         * Returns the value of the '<em><b>Current Task Execution</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Current Task Execution</em>' reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Current Task Execution</em>' reference.
+         * @see #setCurrentTaskExecution(TaskExecution)
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getAction_CurrentTaskExecution()
+         * @model
+         * @generated
+         */
+        TaskExecution getCurrentTaskExecution();
+
+        /**
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTaskExecution <em>Current Task Execution</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Current Task Execution</em>' reference.
+         * @see #getCurrentTaskExecution()
+         * @generated
+         */
+        void setCurrentTaskExecution(TaskExecution value);
+
+        /**
          * Returns the value of the '<em><b>Current Task</b></em>' reference.
          * <!-- begin-user-doc -->
          * <p>
@@ -50,21 +78,22 @@ public interface Action extends NamedElement {
          * </p>
          * <!-- end-user-doc -->
          * @return the value of the '<em>Current Task</em>' reference.
-         * @see #setCurrentTask(TaskExecution)
+         * @see #isSetCurrentTask()
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getAction_CurrentTask()
-         * @model
+         * @model unsettable="true" transient="true" changeable="false" volatile="true" derived="true"
+         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.currentTask'"
          * @generated
          */
-        TaskExecution getCurrentTask();
+        Task getCurrentTask();
 
         /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTask <em>Current Task</em>}' reference.
+         * Returns whether the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.Action#getCurrentTask <em>Current Task</em>}' reference is set.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Current Task</em>' reference.
+         * @return whether the value of the '<em>Current Task</em>' reference is set.
          * @see #getCurrentTask()
          * @generated
          */
-        void setCurrentTask(TaskExecution value);
+        boolean isSetCurrentTask();
 
 } // Action

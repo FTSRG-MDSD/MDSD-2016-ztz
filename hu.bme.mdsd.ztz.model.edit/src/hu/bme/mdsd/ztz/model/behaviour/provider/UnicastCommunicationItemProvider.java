@@ -4,7 +4,6 @@ package hu.bme.mdsd.ztz.model.behaviour.provider;
 
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
-import hu.bme.mdsd.ztz.model.behaviour.CommunicationType;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 
 import java.util.Collection;
@@ -90,8 +89,7 @@ public class UnicastCommunicationItemProvider extends CommunicationActionItemPro
          */
         @Override
         public String getText(Object object) {
-                CommunicationType labelValue = ((UnicastCommunication)object).getType();
-                String label = labelValue == null ? null : labelValue.toString();
+                String label = ((UnicastCommunication)object).getName();
                 return label == null || label.length() == 0 ?
                         getString("_UI_UnicastCommunication_type") :
                         getString("_UI_UnicastCommunication_type") + " " + label;

@@ -34,7 +34,7 @@ import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
  * 	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
  * )
  * pattern isNotWaitingTask(taskExecution: TaskExecution) {
- * 	TaskRequirement.task(requirement, taskExecution);
+ * 	TaskRequirement.taskExecution(requirement, taskExecution);
  * 	TaskExecution.status(taskExecution, status);
  * 	TaskRequirement.prerequisite.status(requirement, preStatus);
  * 	check(preStatus != hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus.FINISHED && 

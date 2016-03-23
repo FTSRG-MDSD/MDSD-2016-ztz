@@ -63,14 +63,26 @@ public interface MessageRepository extends NamedElement {
          * </p>
          * <!-- end-user-doc -->
          * @return the value of the '<em>Received Messages</em>' reference list.
+         * @see #isSetReceivedMessages()
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessageRepository_ReceivedMessages()
-         * @model
+         * @model unsettable="true" transient="true" changeable="false" volatile="true" derived="true"
+         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.receivedMessages'"
          * @generated
          */
         EList<Message> getReceivedMessages();
 
         /**
-         * Returns the value of the '<em><b>Sended Messages</b></em>' reference list.
+         * Returns whether the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.MessageRepository#getReceivedMessages <em>Received Messages</em>}' reference list is set.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return whether the value of the '<em>Received Messages</em>' reference list is set.
+         * @see #getReceivedMessages()
+         * @generated
+         */
+        boolean isSetReceivedMessages();
+
+        /**
+         * Returns the value of the '<em><b>Sended Messages</b></em>' containment reference list.
          * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.Message}.
          * <!-- begin-user-doc -->
          * <p>
@@ -78,9 +90,9 @@ public interface MessageRepository extends NamedElement {
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Sended Messages</em>' reference list.
+         * @return the value of the '<em>Sended Messages</em>' containment reference list.
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessageRepository_SendedMessages()
-         * @model
+         * @model containment="true"
          * @generated
          */
         EList<Message> getSendedMessages();

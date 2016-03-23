@@ -8,6 +8,7 @@ import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 
 import hu.bme.mdsd.ztz.model.drone.Property;
 
+import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.impl.NamedElementImpl;
 
 import java.util.Collection;
@@ -18,6 +19,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -34,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.ActionImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.ActionImpl#getCurrentTaskExecution <em>Current Task Execution</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.ActionImpl#getCurrentTask <em>Current Task</em>}</li>
  * </ul>
  *
@@ -51,14 +54,24 @@ public class ActionImpl extends NamedElementImpl implements Action {
         protected EList<Property> properties;
 
         /**
-         * The cached value of the '{@link #getCurrentTask() <em>Current Task</em>}' reference.
+         * The cached value of the '{@link #getCurrentTaskExecution() <em>Current Task Execution</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getCurrentTaskExecution()
+         * @generated
+         * @ordered
+         */
+        protected TaskExecution currentTaskExecution;
+
+        /**
+         * The cached setting delegate for the '{@link #getCurrentTask() <em>Current Task</em>}' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getCurrentTask()
          * @generated
          * @ordered
          */
-        protected TaskExecution currentTask;
+        protected EStructuralFeature.Internal.SettingDelegate CURRENT_TASK__ESETTING_DELEGATE = ((EStructuralFeature.Internal)BehaviourPackage.Literals.ACTION__CURRENT_TASK).getSettingDelegate();
 
         /**
          * <!-- begin-user-doc -->
@@ -96,16 +109,16 @@ public class ActionImpl extends NamedElementImpl implements Action {
          * <!-- end-user-doc -->
          * @generated
          */
-        public TaskExecution getCurrentTask() {
-                if (currentTask != null && currentTask.eIsProxy()) {
-                        InternalEObject oldCurrentTask = (InternalEObject)currentTask;
-                        currentTask = (TaskExecution)eResolveProxy(oldCurrentTask);
-                        if (currentTask != oldCurrentTask) {
+        public TaskExecution getCurrentTaskExecution() {
+                if (currentTaskExecution != null && currentTaskExecution.eIsProxy()) {
+                        InternalEObject oldCurrentTaskExecution = (InternalEObject)currentTaskExecution;
+                        currentTaskExecution = (TaskExecution)eResolveProxy(oldCurrentTaskExecution);
+                        if (currentTaskExecution != oldCurrentTaskExecution) {
                                 if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.ACTION__CURRENT_TASK, oldCurrentTask, currentTask));
+                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.ACTION__CURRENT_TASK_EXECUTION, oldCurrentTaskExecution, currentTaskExecution));
                         }
                 }
-                return currentTask;
+                return currentTaskExecution;
         }
 
         /**
@@ -113,8 +126,8 @@ public class ActionImpl extends NamedElementImpl implements Action {
          * <!-- end-user-doc -->
          * @generated
          */
-        public TaskExecution basicGetCurrentTask() {
-                return currentTask;
+        public TaskExecution basicGetCurrentTaskExecution() {
+                return currentTaskExecution;
         }
 
         /**
@@ -122,11 +135,38 @@ public class ActionImpl extends NamedElementImpl implements Action {
          * <!-- end-user-doc -->
          * @generated
          */
-        public void setCurrentTask(TaskExecution newCurrentTask) {
-                TaskExecution oldCurrentTask = currentTask;
-                currentTask = newCurrentTask;
+        public void setCurrentTaskExecution(TaskExecution newCurrentTaskExecution) {
+                TaskExecution oldCurrentTaskExecution = currentTaskExecution;
+                currentTaskExecution = newCurrentTaskExecution;
                 if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.ACTION__CURRENT_TASK, oldCurrentTask, currentTask));
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.ACTION__CURRENT_TASK_EXECUTION, oldCurrentTaskExecution, currentTaskExecution));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public Task getCurrentTask() {
+                return (Task)CURRENT_TASK__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public Task basicGetCurrentTask() {
+                return (Task)CURRENT_TASK__ESETTING_DELEGATE.dynamicGet(this, null, 0, false, false);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public boolean isSetCurrentTask() {
+                return CURRENT_TASK__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
         }
 
         /**
@@ -153,6 +193,9 @@ public class ActionImpl extends NamedElementImpl implements Action {
                 switch (featureID) {
                         case BehaviourPackage.ACTION__PROPERTIES:
                                 return getProperties();
+                        case BehaviourPackage.ACTION__CURRENT_TASK_EXECUTION:
+                                if (resolve) return getCurrentTaskExecution();
+                                return basicGetCurrentTaskExecution();
                         case BehaviourPackage.ACTION__CURRENT_TASK:
                                 if (resolve) return getCurrentTask();
                                 return basicGetCurrentTask();
@@ -173,8 +216,8 @@ public class ActionImpl extends NamedElementImpl implements Action {
                                 getProperties().clear();
                                 getProperties().addAll((Collection<? extends Property>)newValue);
                                 return;
-                        case BehaviourPackage.ACTION__CURRENT_TASK:
-                                setCurrentTask((TaskExecution)newValue);
+                        case BehaviourPackage.ACTION__CURRENT_TASK_EXECUTION:
+                                setCurrentTaskExecution((TaskExecution)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -191,8 +234,8 @@ public class ActionImpl extends NamedElementImpl implements Action {
                         case BehaviourPackage.ACTION__PROPERTIES:
                                 getProperties().clear();
                                 return;
-                        case BehaviourPackage.ACTION__CURRENT_TASK:
-                                setCurrentTask((TaskExecution)null);
+                        case BehaviourPackage.ACTION__CURRENT_TASK_EXECUTION:
+                                setCurrentTaskExecution((TaskExecution)null);
                                 return;
                 }
                 super.eUnset(featureID);
@@ -208,8 +251,10 @@ public class ActionImpl extends NamedElementImpl implements Action {
                 switch (featureID) {
                         case BehaviourPackage.ACTION__PROPERTIES:
                                 return properties != null && !properties.isEmpty();
+                        case BehaviourPackage.ACTION__CURRENT_TASK_EXECUTION:
+                                return currentTaskExecution != null;
                         case BehaviourPackage.ACTION__CURRENT_TASK:
-                                return currentTask != null;
+                                return isSetCurrentTask();
                 }
                 return super.eIsSet(featureID);
         }

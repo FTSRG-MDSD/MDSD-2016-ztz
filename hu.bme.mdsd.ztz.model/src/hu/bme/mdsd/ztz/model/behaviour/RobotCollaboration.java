@@ -55,30 +55,20 @@ public interface RobotCollaboration extends EObject {
         void setCollaborator(DynamicRobot value);
 
         /**
-         * Returns the value of the '<em><b>Availability Range</b></em>' containment reference.
+         * Returns the value of the '<em><b>Availability Range</b></em>' reference.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Availability Range</em>' containment reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Availability Range</em>' containment reference.
-         * @see #setAvailabilityRange(MeasureValue)
+         * @return the value of the '<em>Availability Range</em>' reference.
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getRobotCollaboration_AvailabilityRange()
-         * @model containment="true"
+         * @model transient="true" changeable="false" volatile="true" derived="true"
+         *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.availabilityRange'"
          * @generated
          */
         MeasureValue getAvailabilityRange();
-
-        /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration#getAvailabilityRange <em>Availability Range</em>}' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Availability Range</em>' containment reference.
-         * @see #getAvailabilityRange()
-         * @generated
-         */
-        void setAvailabilityRange(MeasureValue value);
 
         /**
          * Returns the value of the '<em><b>Properties</b></em>' containment reference list.

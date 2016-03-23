@@ -7,6 +7,7 @@ import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
 
 import java.util.Collection;
@@ -35,24 +36,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#getInvolvedTaskExecutions <em>Involved Task Executions</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#getTimestamp <em>Timestamp</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#getReferredObjects <em>Referred Objects</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#isNeedResponse <em>Need Response</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#getTTL <em>TTL</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class MessageImpl extends MinimalEObjectImpl.Container implements Message {
         /**
-         * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
+         * The cached value of the '{@link #getInvolvedTaskExecutions() <em>Involved Task Executions</em>}' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getTasks()
+         * @see #getInvolvedTaskExecutions()
          * @generated
          * @ordered
          */
-        protected EList<TaskExecution> tasks;
+        protected EList<TaskExecution> involvedTaskExecutions;
 
         /**
          * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
@@ -95,6 +98,36 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
         protected EList<AreaObject> referredObjects;
 
         /**
+         * The default value of the '{@link #isNeedResponse() <em>Need Response</em>}' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #isNeedResponse()
+         * @generated
+         * @ordered
+         */
+        protected static final boolean NEED_RESPONSE_EDEFAULT = false;
+
+        /**
+         * The cached value of the '{@link #isNeedResponse() <em>Need Response</em>}' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #isNeedResponse()
+         * @generated
+         * @ordered
+         */
+        protected boolean needResponse = NEED_RESPONSE_EDEFAULT;
+
+        /**
+         * The cached value of the '{@link #getTTL() <em>TTL</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getTTL()
+         * @generated
+         * @ordered
+         */
+        protected MeasureValue ttl;
+
+        /**
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -118,11 +151,11 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * <!-- end-user-doc -->
          * @generated
          */
-        public EList<TaskExecution> getTasks() {
-                if (tasks == null) {
-                        tasks = new EObjectResolvingEList<TaskExecution>(TaskExecution.class, this, BehaviourPackage.MESSAGE__TASKS);
+        public EList<TaskExecution> getInvolvedTaskExecutions() {
+                if (involvedTaskExecutions == null) {
+                        involvedTaskExecutions = new EObjectResolvingEList<TaskExecution>(TaskExecution.class, this, BehaviourPackage.MESSAGE__INVOLVED_TASK_EXECUTIONS);
                 }
-                return tasks;
+                return involvedTaskExecutions;
         }
 
         /**
@@ -175,6 +208,65 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * <!-- end-user-doc -->
          * @generated
          */
+        public boolean isNeedResponse() {
+                return needResponse;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setNeedResponse(boolean newNeedResponse) {
+                boolean oldNeedResponse = needResponse;
+                needResponse = newNeedResponse;
+                if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.MESSAGE__NEED_RESPONSE, oldNeedResponse, needResponse));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public MeasureValue getTTL() {
+                if (ttl != null && ttl.eIsProxy()) {
+                        InternalEObject oldTTL = (InternalEObject)ttl;
+                        ttl = (MeasureValue)eResolveProxy(oldTTL);
+                        if (ttl != oldTTL) {
+                                if (eNotificationRequired())
+                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.MESSAGE__TTL, oldTTL, ttl));
+                        }
+                }
+                return ttl;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public MeasureValue basicGetTTL() {
+                return ttl;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setTTL(MeasureValue newTTL) {
+                MeasureValue oldTTL = ttl;
+                ttl = newTTL;
+                if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.MESSAGE__TTL, oldTTL, ttl));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -192,14 +284,19 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
                 switch (featureID) {
-                        case BehaviourPackage.MESSAGE__TASKS:
-                                return getTasks();
+                        case BehaviourPackage.MESSAGE__INVOLVED_TASK_EXECUTIONS:
+                                return getInvolvedTaskExecutions();
                         case BehaviourPackage.MESSAGE__TIMESTAMP:
                                 return getTimestamp();
                         case BehaviourPackage.MESSAGE__PROPERTIES:
                                 return getProperties();
                         case BehaviourPackage.MESSAGE__REFERRED_OBJECTS:
                                 return getReferredObjects();
+                        case BehaviourPackage.MESSAGE__NEED_RESPONSE:
+                                return isNeedResponse();
+                        case BehaviourPackage.MESSAGE__TTL:
+                                if (resolve) return getTTL();
+                                return basicGetTTL();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -213,9 +310,9 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
         @Override
         public void eSet(int featureID, Object newValue) {
                 switch (featureID) {
-                        case BehaviourPackage.MESSAGE__TASKS:
-                                getTasks().clear();
-                                getTasks().addAll((Collection<? extends TaskExecution>)newValue);
+                        case BehaviourPackage.MESSAGE__INVOLVED_TASK_EXECUTIONS:
+                                getInvolvedTaskExecutions().clear();
+                                getInvolvedTaskExecutions().addAll((Collection<? extends TaskExecution>)newValue);
                                 return;
                         case BehaviourPackage.MESSAGE__TIMESTAMP:
                                 setTimestamp((Date)newValue);
@@ -227,6 +324,12 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
                         case BehaviourPackage.MESSAGE__REFERRED_OBJECTS:
                                 getReferredObjects().clear();
                                 getReferredObjects().addAll((Collection<? extends AreaObject>)newValue);
+                                return;
+                        case BehaviourPackage.MESSAGE__NEED_RESPONSE:
+                                setNeedResponse((Boolean)newValue);
+                                return;
+                        case BehaviourPackage.MESSAGE__TTL:
+                                setTTL((MeasureValue)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -240,8 +343,8 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
         @Override
         public void eUnset(int featureID) {
                 switch (featureID) {
-                        case BehaviourPackage.MESSAGE__TASKS:
-                                getTasks().clear();
+                        case BehaviourPackage.MESSAGE__INVOLVED_TASK_EXECUTIONS:
+                                getInvolvedTaskExecutions().clear();
                                 return;
                         case BehaviourPackage.MESSAGE__TIMESTAMP:
                                 setTimestamp(TIMESTAMP_EDEFAULT);
@@ -251,6 +354,12 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
                                 return;
                         case BehaviourPackage.MESSAGE__REFERRED_OBJECTS:
                                 getReferredObjects().clear();
+                                return;
+                        case BehaviourPackage.MESSAGE__NEED_RESPONSE:
+                                setNeedResponse(NEED_RESPONSE_EDEFAULT);
+                                return;
+                        case BehaviourPackage.MESSAGE__TTL:
+                                setTTL((MeasureValue)null);
                                 return;
                 }
                 super.eUnset(featureID);
@@ -264,14 +373,18 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
         @Override
         public boolean eIsSet(int featureID) {
                 switch (featureID) {
-                        case BehaviourPackage.MESSAGE__TASKS:
-                                return tasks != null && !tasks.isEmpty();
+                        case BehaviourPackage.MESSAGE__INVOLVED_TASK_EXECUTIONS:
+                                return involvedTaskExecutions != null && !involvedTaskExecutions.isEmpty();
                         case BehaviourPackage.MESSAGE__TIMESTAMP:
                                 return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
                         case BehaviourPackage.MESSAGE__PROPERTIES:
                                 return properties != null && !properties.isEmpty();
                         case BehaviourPackage.MESSAGE__REFERRED_OBJECTS:
                                 return referredObjects != null && !referredObjects.isEmpty();
+                        case BehaviourPackage.MESSAGE__NEED_RESPONSE:
+                                return needResponse != NEED_RESPONSE_EDEFAULT;
+                        case BehaviourPackage.MESSAGE__TTL:
+                                return ttl != null;
                 }
                 return super.eIsSet(featureID);
         }
@@ -288,6 +401,8 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
                 StringBuffer result = new StringBuffer(super.toString());
                 result.append(" (timestamp: ");
                 result.append(timestamp);
+                result.append(", needResponse: ");
+                result.append(needResponse);
                 result.append(')');
                 return result.toString();
         }
