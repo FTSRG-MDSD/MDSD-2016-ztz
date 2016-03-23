@@ -61,7 +61,7 @@ public interface Message extends NamedElement {
          * @return the value of the '<em>Timestamp</em>' attribute.
          * @see #setTimestamp(Date)
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessage_Timestamp()
-         * @model required="true"
+         * @model
          * @generated
          */
         Date getTimestamp();

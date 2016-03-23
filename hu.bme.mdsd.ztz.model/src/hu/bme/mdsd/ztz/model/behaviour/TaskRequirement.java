@@ -72,7 +72,7 @@ public interface TaskRequirement extends NamedElement {
          * @return the value of the '<em>Task</em>' reference.
          * @see #isSetTask()
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskRequirement_Task()
-         * @model unsettable="true" required="true" transient="true" changeable="false" volatile="true" derived="true"
+         * @model unsettable="true" transient="true" changeable="false" volatile="true" derived="true"
          *        annotation="org.eclipse.incquery.querybasedfeature patternFQN='hu.bme.mdsd.ztz.model.derived.task'"
          * @generated
          */
