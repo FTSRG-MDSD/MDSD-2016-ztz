@@ -57,6 +57,7 @@ public class MessageItemProvider
                         addTimestampPropertyDescriptor(object);
                         addReferredObjectsPropertyDescriptor(object);
                         addNeedResponsePropertyDescriptor(object);
+                        addFollowsPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -145,6 +146,28 @@ public class MessageItemProvider
                                  false,
                                  false,
                                  ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                                 null,
+                                 null));
+        }
+
+        /**
+         * This adds a property descriptor for the Follows feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addFollowsPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_Message_follows_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_Message_follows_feature", "_UI_Message_type"),
+                                 BehaviourPackage.Literals.MESSAGE__FOLLOWS,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
                                  null,
                                  null));
         }

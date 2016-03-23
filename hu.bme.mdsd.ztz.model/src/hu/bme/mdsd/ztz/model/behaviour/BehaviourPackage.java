@@ -198,13 +198,22 @@ public interface BehaviourPackage extends EPackage {
         int MESSAGE__TTL = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
         /**
+         * The feature id for the '<em><b>Follows</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE__FOLLOWS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+        /**
          * The number of structural features of the '<em>Message</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int MESSAGE_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+        int MESSAGE_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
 
         /**
          * The number of operations of the '<em>Message</em>' class.
@@ -1028,22 +1037,13 @@ public interface BehaviourPackage extends EPackage {
         int TASK_REQUIREMENT__TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
 
         /**
-         * The feature id for the '<em><b>Prerequisite Task</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int TASK_REQUIREMENT__PREREQUISITE_TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
-
-        /**
          * The number of structural features of the '<em>Task Requirement</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_REQUIREMENT_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
+        int TASK_REQUIREMENT_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
 
         /**
          * The number of operations of the '<em>Task Requirement</em>' class.
@@ -1250,6 +1250,17 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         EReference getMessage_TTL();
+
+        /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getFollows <em>Follows</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Follows</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.Message#getFollows()
+         * @see #getMessage()
+         * @generated
+         */
+        EReference getMessage_Follows();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.CommunicationAction <em>Communication Action</em>}'.
@@ -1670,17 +1681,6 @@ public interface BehaviourPackage extends EPackage {
         EReference getTaskRequirement_Task();
 
         /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask <em>Prerequisite Task</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>Prerequisite Task</em>'.
-         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask()
-         * @see #getTaskRequirement()
-         * @generated
-         */
-        EReference getTaskRequirement_PrerequisiteTask();
-
-        /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviouralPropertyKeyContainer <em>Behavioural Property Key Container</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1898,6 +1898,14 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference MESSAGE__TTL = eINSTANCE.getMessage_TTL();
+
+                /**
+                 * The meta object literal for the '<em><b>Follows</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference MESSAGE__FOLLOWS = eINSTANCE.getMessage_Follows();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.CommunicationActionImpl <em>Communication Action</em>}' class.
@@ -2232,14 +2240,6 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference TASK_REQUIREMENT__TASK = eINSTANCE.getTaskRequirement_Task();
-
-                /**
-                 * The meta object literal for the '<em><b>Prerequisite Task</b></em>' reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference TASK_REQUIREMENT__PREREQUISITE_TASK = eINSTANCE.getTaskRequirement_PrerequisiteTask();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviouralPropertyKeyContainerImpl <em>Behavioural Property Key Container</em>}' class.

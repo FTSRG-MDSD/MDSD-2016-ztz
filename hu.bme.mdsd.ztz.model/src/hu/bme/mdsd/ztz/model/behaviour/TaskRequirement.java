@@ -28,7 +28,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getCapabilityProperties <em>Capability Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getDescriptor <em>Descriptor</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTask <em>Task</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask <em>Prerequisite Task</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskRequirement()
@@ -88,32 +87,6 @@ public interface TaskRequirement extends NamedElement {
          * @generated
          */
         boolean isSetTask();
-
-        /**
-         * Returns the value of the '<em><b>Prerequisite Task</b></em>' reference.
-         * <!-- begin-user-doc -->
-         * <p>
-         * If the meaning of the '<em>Prerequisite Task</em>' reference isn't clear,
-         * there really should be more of a description here...
-         * </p>
-         * <!-- end-user-doc -->
-         * @return the value of the '<em>Prerequisite Task</em>' reference.
-         * @see #isSetPrerequisiteTask()
-         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskRequirement_PrerequisiteTask()
-         * @model unsettable="true" required="true" transient="true" changeable="false" volatile="true" derived="true"
-         * @generated
-         */
-        Task getPrerequisiteTask();
-
-        /**
-         * Returns whether the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask <em>Prerequisite Task</em>}' reference is set.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return whether the value of the '<em>Prerequisite Task</em>' reference is set.
-         * @see #getPrerequisiteTask()
-         * @generated
-         */
-        boolean isSetPrerequisiteTask();
 
         /**
          * Returns the value of the '<em><b>Prerequisite</b></em>' reference.

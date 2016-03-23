@@ -327,6 +327,15 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          * <!-- end-user-doc -->
          * @generated
          */
+        public EReference getMessage_Follows() {
+                return (EReference)messageEClass.getEStructuralFeatures().get(6);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         public EClass getCommunicationAction() {
                 return communicationActionEClass;
         }
@@ -678,15 +687,6 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          * <!-- end-user-doc -->
          * @generated
          */
-        public EReference getTaskRequirement_PrerequisiteTask() {
-                return (EReference)taskRequirementEClass.getEStructuralFeatures().get(8);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         public EClass getBehaviouralPropertyKeyContainer() {
                 return behaviouralPropertyKeyContainerEClass;
         }
@@ -804,6 +804,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 createEReference(messageEClass, MESSAGE__REFERRED_OBJECTS);
                 createEAttribute(messageEClass, MESSAGE__NEED_RESPONSE);
                 createEReference(messageEClass, MESSAGE__TTL);
+                createEReference(messageEClass, MESSAGE__FOLLOWS);
 
                 communicationActionEClass = createEClass(COMMUNICATION_ACTION);
                 createEReference(communicationActionEClass, COMMUNICATION_ACTION__MESSAGE);
@@ -860,7 +861,6 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__CAPABILITY_PROPERTIES);
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__DESCRIPTOR);
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__TASK);
-                createEReference(taskRequirementEClass, TASK_REQUIREMENT__PREREQUISITE_TASK);
 
                 behaviouralPropertyKeyContainerEClass = createEClass(BEHAVIOURAL_PROPERTY_KEY_CONTAINER);
 
@@ -926,6 +926,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 initEReference(getMessage_ReferredObjects(), theDronePackage.getAreaObject(), null, "referredObjects", null, 0, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEAttribute(getMessage_NeedResponse(), ecorePackage.getEBoolean(), "needResponse", "false", 1, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getMessage_TTL(), theDronePackage.getMeasureValue(), null, "TTL", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getMessage_Follows(), this.getMessage(), null, "follows", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(communicationActionEClass, CommunicationAction.class, "CommunicationAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getCommunicationAction_Message(), this.getMessage(), null, "message", null, 1, 1, CommunicationAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -982,7 +983,6 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 initEReference(getTaskRequirement_CapabilityProperties(), theDronePackage.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, TaskRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskRequirement_Descriptor(), theDronePackage.getTaskDescriptor(), null, "descriptor", null, 0, 1, TaskRequirement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskRequirement_Task(), theDronePackage.getTask(), null, "task", null, 1, 1, TaskRequirement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-                initEReference(getTaskRequirement_PrerequisiteTask(), theDronePackage.getTask(), null, "prerequisiteTask", null, 1, 1, TaskRequirement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
                 initEClass(behaviouralPropertyKeyContainerEClass, BehaviouralPropertyKeyContainer.class, "BehaviouralPropertyKeyContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

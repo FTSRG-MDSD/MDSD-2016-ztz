@@ -47,7 +47,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getCapabilityProperties <em>Capability Properties</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getDescriptor <em>Descriptor</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getTask <em>Task</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskRequirementImpl#getPrerequisiteTask <em>Prerequisite Task</em>}</li>
  * </ul>
  *
  * @generated
@@ -232,39 +231,6 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
          * <!-- end-user-doc -->
          * @generated
          */
-        public Task getPrerequisiteTask() {
-                Task prerequisiteTask = basicGetPrerequisiteTask();
-                return prerequisiteTask != null && prerequisiteTask.eIsProxy() ? (Task)eResolveProxy((InternalEObject)prerequisiteTask) : prerequisiteTask;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public Task basicGetPrerequisiteTask() {
-                // TODO: implement this method to return the 'Prerequisite Task' reference
-                // -> do not perform proxy resolution
-                // Ensure that you remove @generated or mark it @generated NOT
-                throw new UnsupportedOperationException();
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public boolean isSetPrerequisiteTask() {
-                // TODO: implement this method to return whether the 'Prerequisite Task' reference is set
-                // Ensure that you remove @generated or mark it @generated NOT
-                throw new UnsupportedOperationException();
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         public TaskExecution getPrerequisite() {
                 if (prerequisite != null && prerequisite.eIsProxy()) {
                         InternalEObject oldPrerequisite = (InternalEObject)prerequisite;
@@ -417,9 +383,6 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
                         case BehaviourPackage.TASK_REQUIREMENT__TASK:
                                 if (resolve) return getTask();
                                 return basicGetTask();
-                        case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE_TASK:
-                                if (resolve) return getPrerequisiteTask();
-                                return basicGetPrerequisiteTask();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -512,8 +475,6 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
                                 return DESCRIPTOR__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
                         case BehaviourPackage.TASK_REQUIREMENT__TASK:
                                 return isSetTask();
-                        case BehaviourPackage.TASK_REQUIREMENT__PREREQUISITE_TASK:
-                                return isSetPrerequisiteTask();
                 }
                 return super.eIsSet(featureID);
         }

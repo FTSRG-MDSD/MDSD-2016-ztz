@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#getReferredObjects <em>Referred Objects</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#isNeedResponse <em>Need Response</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#getTTL <em>TTL</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl#getFollows <em>Follows</em>}</li>
  * </ul>
  *
  * @generated
@@ -125,6 +126,16 @@ public class MessageImpl extends NamedElementImpl implements Message {
          * @ordered
          */
         protected MeasureValue ttl;
+
+        /**
+         * The cached value of the '{@link #getFollows() <em>Follows</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getFollows()
+         * @generated
+         * @ordered
+         */
+        protected Message follows;
 
         /**
          * <!-- begin-user-doc -->
@@ -271,6 +282,44 @@ public class MessageImpl extends NamedElementImpl implements Message {
          * <!-- end-user-doc -->
          * @generated
          */
+        public Message getFollows() {
+                if (follows != null && follows.eIsProxy()) {
+                        InternalEObject oldFollows = (InternalEObject)follows;
+                        follows = (Message)eResolveProxy(oldFollows);
+                        if (follows != oldFollows) {
+                                if (eNotificationRequired())
+                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.MESSAGE__FOLLOWS, oldFollows, follows));
+                        }
+                }
+                return follows;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public Message basicGetFollows() {
+                return follows;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setFollows(Message newFollows) {
+                Message oldFollows = follows;
+                follows = newFollows;
+                if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.MESSAGE__FOLLOWS, oldFollows, follows));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -302,6 +351,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
                                 return isNeedResponse();
                         case BehaviourPackage.MESSAGE__TTL:
                                 return getTTL();
+                        case BehaviourPackage.MESSAGE__FOLLOWS:
+                                if (resolve) return getFollows();
+                                return basicGetFollows();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -336,6 +388,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
                         case BehaviourPackage.MESSAGE__TTL:
                                 setTTL((MeasureValue)newValue);
                                 return;
+                        case BehaviourPackage.MESSAGE__FOLLOWS:
+                                setFollows((Message)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -366,6 +421,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
                         case BehaviourPackage.MESSAGE__TTL:
                                 setTTL((MeasureValue)null);
                                 return;
+                        case BehaviourPackage.MESSAGE__FOLLOWS:
+                                setFollows((Message)null);
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -390,6 +448,8 @@ public class MessageImpl extends NamedElementImpl implements Message {
                                 return needResponse != NEED_RESPONSE_EDEFAULT;
                         case BehaviourPackage.MESSAGE__TTL:
                                 return ttl != null;
+                        case BehaviourPackage.MESSAGE__FOLLOWS:
+                                return follows != null;
                 }
                 return super.eIsSet(featureID);
         }

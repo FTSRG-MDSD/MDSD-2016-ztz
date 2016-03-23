@@ -59,7 +59,6 @@ public class TaskRequirementItemProvider extends NamedElementItemProvider {
                         addRequiredCapabilitiesPropertyDescriptor(object);
                         addDescriptorPropertyDescriptor(object);
                         addTaskPropertyDescriptor(object);
-                        addPrerequisiteTaskPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -100,28 +99,6 @@ public class TaskRequirementItemProvider extends NamedElementItemProvider {
                                  getString("_UI_TaskRequirement_task_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_task_feature", "_UI_TaskRequirement_type"),
                                  BehaviourPackage.Literals.TASK_REQUIREMENT__TASK,
-                                 false,
-                                 false,
-                                 false,
-                                 null,
-                                 null,
-                                 null));
-        }
-
-        /**
-         * This adds a property descriptor for the Prerequisite Task feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected void addPrerequisiteTaskPropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_TaskRequirement_prerequisiteTask_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_TaskRequirement_prerequisiteTask_feature", "_UI_TaskRequirement_type"),
-                                 BehaviourPackage.Literals.TASK_REQUIREMENT__PREREQUISITE_TASK,
                                  false,
                                  false,
                                  false,

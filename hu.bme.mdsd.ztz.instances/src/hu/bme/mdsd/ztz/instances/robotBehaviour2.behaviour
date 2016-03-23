@@ -29,12 +29,12 @@
     </detectedObjects>
     <collaborations collaborator="//@dynamicRobots.0"/>
     <messageRepository name="Frank 007 Repository">
-      <sendedMessages name="StatusResponse">
+      <sendedMessages name="StatusResponse" follows="//@dynamicRobots.0/@messageRepository/@sendedMessages.0">
         <properties key="//@behaviourKeysContainer/@keys.1">
           <value xsi:type="drone:StringValue" value="Ready"/>
         </properties>
       </sendedMessages>
-      <sendedMessages name="OrderingResponse" involvedTaskExecutions="//@taskExecutions.1 //@taskExecutions.0 //@taskExecutions.3 //@taskExecutions.2">
+      <sendedMessages name="OrderingResponse" involvedTaskExecutions="//@taskExecutions.1 //@taskExecutions.0 //@taskExecutions.3 //@taskExecutions.2" follows="//@dynamicRobots.1/@messageRepository/@sendedMessages.1">
         <referredObjects href="robots.drone#//@areaObjects.0"/>
       </sendedMessages>
     </messageRepository>

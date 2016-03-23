@@ -33,6 +33,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/referredObjects"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//Message/needResponse"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/TTL"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/follows"/>
     </genClasses>
     <genClasses image="false" ecoreClass="behaviour.ecore#//CommunicationAction">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//CommunicationAction/message"/>
@@ -89,7 +90,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/capabilityProperties"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/descriptor"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/task"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/prerequisiteTask"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//BehaviouralPropertyKeyContainer"/>
   </genPackages>

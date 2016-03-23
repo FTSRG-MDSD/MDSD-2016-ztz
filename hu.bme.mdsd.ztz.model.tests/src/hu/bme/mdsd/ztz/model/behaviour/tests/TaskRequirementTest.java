@@ -18,7 +18,6 @@ import junit.textui.TestRunner;
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getDescriptor() <em>Descriptor</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTask() <em>Task</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask() <em>Prerequisite Task</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -128,32 +127,6 @@ public class TaskRequirementTest extends TestCase {
          * @generated
          */
         public void testIsSetTask() {
-                // TODO: implement this test method
-                // Ensure that you remove @generated or mark it @generated NOT
-                fail();
-        }
-
-        /**
-         * Tests the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask() <em>Prerequisite Task</em>}' feature getter.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisiteTask()
-         * @generated
-         */
-        public void testGetPrerequisiteTask() {
-                // TODO: implement this feature getter test method
-                // Ensure that you remove @generated or mark it @generated NOT
-                fail();
-        }
-
-        /**
-         * Tests the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#isSetPrerequisiteTask() <em>isSetPrerequisiteTask()</em>}' method.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#isSetPrerequisiteTask()
-         * @generated
-         */
-        public void testIsSetPrerequisiteTask() {
                 // TODO: implement this test method
                 // Ensure that you remove @generated or mark it @generated NOT
                 fail();

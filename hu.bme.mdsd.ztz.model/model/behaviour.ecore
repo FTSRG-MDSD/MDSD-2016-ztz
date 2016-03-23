@@ -27,6 +27,7 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="TTL" eType="ecore:EClass drone.ecore#//MeasureValue"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="follows" eType="#//Message"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommunicationAction" abstract="true"
       eSuperTypes="#//Action">
@@ -148,9 +149,6 @@
         <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.task"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="prerequisiteTask" lowerBound="1"
-        eType="ecore:EClass drone.ecore#//Task" changeable="false" volatile="true"
-        transient="true" unsettable="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BehaviouralPropertyKeyContainer" eSuperTypes="drone.ecore#//PropertyKeyContainer"/>
 </ecore:EPackage>

@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#getReferredObjects <em>Referred Objects</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#isNeedResponse <em>Need Response</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTTL <em>TTL</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.Message#getFollows <em>Follows</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessage()
@@ -159,5 +160,31 @@ public interface Message extends NamedElement {
          * @generated
          */
         void setTTL(MeasureValue value);
+
+        /**
+         * Returns the value of the '<em><b>Follows</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Follows</em>' reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Follows</em>' reference.
+         * @see #setFollows(Message)
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessage_Follows()
+         * @model
+         * @generated
+         */
+        Message getFollows();
+
+        /**
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getFollows <em>Follows</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Follows</em>' reference.
+         * @see #getFollows()
+         * @generated
+         */
+        void setFollows(Message value);
 
 } // Message
