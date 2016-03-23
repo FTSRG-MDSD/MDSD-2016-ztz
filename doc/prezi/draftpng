@@ -1,0 +1,17 @@
+Dron metamodel:
+Robot -> Ennek van : 
+	-Battery -> MeasureValue -> MeasureDimension ennek előnye a különbőző mértékegységek és metrikák használata és konverziós lehetőség köztük, ezenkivűl tartozik a Valuehoz MeasureProperty, név érték páros. Ez a PropertyValue absztrakt ősből származik, ha valaminek szükséges property értékkel rendelkezni, akkor ennek leszármazottjai használhatók, illetve a Property típus ilyeneket tartalmaz
+	-Size
+	-Position
+	-Egyéb Értékek: weight, comrange
+
+Másik fontos része a robotnak a képességeik -> Capabilities Erre van szükség feladatok végrehajtásához
+	A robot a képességeit Equipment segítségével kapja -> Property
+
+	A robot rendelkezik missióval. -> Taskok vannak benne -> TaksDescription írja le, ami AreaObjecteket (size, pos, prop) tartalmaz
+
+	Az egészet a robotMissionContainer tartalmazza
+Behavior model:
+	A robot képes akciókat végrehajtani -> Egy fajta akció a kommunikációs akció
+		Uni/multi/broadcast
+	Message-et tartalmaz a kommunikációs akció
