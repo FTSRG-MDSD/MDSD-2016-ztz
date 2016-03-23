@@ -256,26 +256,26 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
         }
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.StringProperty} instances.
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.StringValue} instances.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        protected StringPropertyItemProvider stringPropertyItemProvider;
+        protected StringValueItemProvider stringValueItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.StringProperty}.
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.StringValue}.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
         @Override
-        public Adapter createStringPropertyAdapter() {
-                if (stringPropertyItemProvider == null) {
-                        stringPropertyItemProvider = new StringPropertyItemProvider(this);
+        public Adapter createStringValueAdapter() {
+                if (stringValueItemProvider == null) {
+                        stringValueItemProvider = new StringValueItemProvider(this);
                 }
 
-                return stringPropertyItemProvider;
+                return stringValueItemProvider;
         }
 
         /**
@@ -417,29 +417,6 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
         }
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.MeasureProperty} instances.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        protected MeasurePropertyItemProvider measurePropertyItemProvider;
-
-        /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.MeasureProperty}.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public Adapter createMeasurePropertyAdapter() {
-                if (measurePropertyItemProvider == null) {
-                        measurePropertyItemProvider = new MeasurePropertyItemProvider(this);
-                }
-
-                return measurePropertyItemProvider;
-        }
-
-        /**
          * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer} instances.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -460,6 +437,52 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
                 }
 
                 return robotMissionContainerItemProvider;
+        }
+
+        /**
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected PropertyKeyContainerItemProvider propertyKeyContainerItemProvider;
+
+        /**
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createPropertyKeyContainerAdapter() {
+                if (propertyKeyContainerItemProvider == null) {
+                        propertyKeyContainerItemProvider = new PropertyKeyContainerItemProvider(this);
+                }
+
+                return propertyKeyContainerItemProvider;
+        }
+
+        /**
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.PropertyKey} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected PropertyKeyItemProvider propertyKeyItemProvider;
+
+        /**
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.PropertyKey}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createPropertyKeyAdapter() {
+                if (propertyKeyItemProvider == null) {
+                        propertyKeyItemProvider = new PropertyKeyItemProvider(this);
+                }
+
+                return propertyKeyItemProvider;
         }
 
         /**
@@ -615,15 +638,16 @@ public class DroneItemProviderAdapterFactory extends DroneAdapterFactory impleme
                 if (coordinateItemProvider != null) coordinateItemProvider.dispose();
                 if (propertyItemProvider != null) propertyItemProvider.dispose();
                 if (robotItemProvider != null) robotItemProvider.dispose();
-                if (stringPropertyItemProvider != null) stringPropertyItemProvider.dispose();
+                if (stringValueItemProvider != null) stringValueItemProvider.dispose();
                 if (sizeItemProvider != null) sizeItemProvider.dispose();
                 if (batteryItemProvider != null) batteryItemProvider.dispose();
                 if (equipmentItemProvider != null) equipmentItemProvider.dispose();
                 if (measureValueItemProvider != null) measureValueItemProvider.dispose();
                 if (measureConversionItemProvider != null) measureConversionItemProvider.dispose();
                 if (measureDimensionItemProvider != null) measureDimensionItemProvider.dispose();
-                if (measurePropertyItemProvider != null) measurePropertyItemProvider.dispose();
                 if (robotMissionContainerItemProvider != null) robotMissionContainerItemProvider.dispose();
+                if (propertyKeyContainerItemProvider != null) propertyKeyContainerItemProvider.dispose();
+                if (propertyKeyItemProvider != null) propertyKeyItemProvider.dispose();
                 if (capabilityItemProvider != null) capabilityItemProvider.dispose();
                 if (capabilityPropertiesItemProvider != null) capabilityPropertiesItemProvider.dispose();
         }

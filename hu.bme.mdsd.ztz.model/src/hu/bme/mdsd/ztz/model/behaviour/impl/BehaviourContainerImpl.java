@@ -4,12 +4,14 @@ package hu.bme.mdsd.ztz.model.behaviour.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviouralPropertyKeyContainer;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -33,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getDynamicRobots <em>Dynamic Robots</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getTaskExecutions <em>Task Executions</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getTaskRequirements <em>Task Requirements</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourContainerImpl#getBehaviourKeysContainer <em>Behaviour Keys Container</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +71,16 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
          * @ordered
          */
         protected EList<TaskRequirement> taskRequirements;
+
+        /**
+         * The cached value of the '{@link #getBehaviourKeysContainer() <em>Behaviour Keys Container</em>}' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getBehaviourKeysContainer()
+         * @generated
+         * @ordered
+         */
+        protected BehaviouralPropertyKeyContainer behaviourKeysContainer;
 
         /**
          * <!-- begin-user-doc -->
@@ -128,6 +142,49 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
          * <!-- end-user-doc -->
          * @generated
          */
+        public BehaviouralPropertyKeyContainer getBehaviourKeysContainer() {
+                return behaviourKeysContainer;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public NotificationChain basicSetBehaviourKeysContainer(BehaviouralPropertyKeyContainer newBehaviourKeysContainer, NotificationChain msgs) {
+                BehaviouralPropertyKeyContainer oldBehaviourKeysContainer = behaviourKeysContainer;
+                behaviourKeysContainer = newBehaviourKeysContainer;
+                if (eNotificationRequired()) {
+                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourPackage.BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER, oldBehaviourKeysContainer, newBehaviourKeysContainer);
+                        if (msgs == null) msgs = notification; else msgs.add(notification);
+                }
+                return msgs;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setBehaviourKeysContainer(BehaviouralPropertyKeyContainer newBehaviourKeysContainer) {
+                if (newBehaviourKeysContainer != behaviourKeysContainer) {
+                        NotificationChain msgs = null;
+                        if (behaviourKeysContainer != null)
+                                msgs = ((InternalEObject)behaviourKeysContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BehaviourPackage.BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER, null, msgs);
+                        if (newBehaviourKeysContainer != null)
+                                msgs = ((InternalEObject)newBehaviourKeysContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BehaviourPackage.BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER, null, msgs);
+                        msgs = basicSetBehaviourKeysContainer(newBehaviourKeysContainer, msgs);
+                        if (msgs != null) msgs.dispatch();
+                }
+                else if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER, newBehaviourKeysContainer, newBehaviourKeysContainer));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -137,6 +194,8 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                                 return ((InternalEList<?>)getTaskExecutions()).basicRemove(otherEnd, msgs);
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
                                 return ((InternalEList<?>)getTaskRequirements()).basicRemove(otherEnd, msgs);
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER:
+                                return basicSetBehaviourKeysContainer(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -155,6 +214,8 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                                 return getTaskExecutions();
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
                                 return getTaskRequirements();
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER:
+                                return getBehaviourKeysContainer();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -180,6 +241,9 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                                 getTaskRequirements().clear();
                                 getTaskRequirements().addAll((Collection<? extends TaskRequirement>)newValue);
                                 return;
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER:
+                                setBehaviourKeysContainer((BehaviouralPropertyKeyContainer)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -201,6 +265,9 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
                                 getTaskRequirements().clear();
                                 return;
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER:
+                                setBehaviourKeysContainer((BehaviouralPropertyKeyContainer)null);
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -219,6 +286,8 @@ public class BehaviourContainerImpl extends MinimalEObjectImpl.Container impleme
                                 return taskExecutions != null && !taskExecutions.isEmpty();
                         case BehaviourPackage.BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS:
                                 return taskRequirements != null && !taskRequirements.isEmpty();
+                        case BehaviourPackage.BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER:
+                                return behaviourKeysContainer != null;
                 }
                 return super.eIsSet(featureID);
         }

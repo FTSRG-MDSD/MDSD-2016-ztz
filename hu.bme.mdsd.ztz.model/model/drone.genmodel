@@ -34,8 +34,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//Coordinate/altitude"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Property">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//Property/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Property/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference drone.ecore#//Property/key"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Robot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/position"/>
@@ -50,8 +50,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/capabilities"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Robot/capabilityProperties"/>
     </genClasses>
-    <genClasses ecoreClass="drone.ecore#//StringProperty">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//StringProperty/value"/>
+    <genClasses ecoreClass="drone.ecore#//StringValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute drone.ecore#//StringValue/value"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//Size">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//Size/width"/>
@@ -82,9 +82,6 @@
     <genClasses ecoreClass="drone.ecore#//MeasureDimension">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//MeasureDimension/conversions"/>
     </genClasses>
-    <genClasses ecoreClass="drone.ecore#//MeasureProperty">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//MeasureProperty/value"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="drone.ecore#//PropertyValue"/>
     <genClasses ecoreClass="drone.ecore#//RobotMissionContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/missions"/>
@@ -92,7 +89,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/measureDimensions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/areaObjects"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/capabilities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/propertyKeyContainer"/>
     </genClasses>
+    <genClasses ecoreClass="drone.ecore#//PropertyKeyContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//PropertyKeyContainer/keys"/>
+    </genClasses>
+    <genClasses ecoreClass="drone.ecore#//PropertyKey"/>
     <genClasses ecoreClass="drone.ecore#//Capability"/>
     <genClasses ecoreClass="drone.ecore#//CapabilityProperties">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//CapabilityProperties/properties"/>

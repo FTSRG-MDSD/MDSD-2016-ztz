@@ -94,13 +94,13 @@ public interface DroneFactory extends EFactory {
         Robot createRobot();
 
         /**
-         * Returns a new object of class '<em>String Property</em>'.
+         * Returns a new object of class '<em>String Value</em>'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return a new object of class '<em>String Property</em>'.
+         * @return a new object of class '<em>String Value</em>'.
          * @generated
          */
-        StringProperty createStringProperty();
+        StringValue createStringValue();
 
         /**
          * Returns a new object of class '<em>Size</em>'.
@@ -157,15 +157,6 @@ public interface DroneFactory extends EFactory {
         MeasureDimension createMeasureDimension();
 
         /**
-         * Returns a new object of class '<em>Measure Property</em>'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return a new object of class '<em>Measure Property</em>'.
-         * @generated
-         */
-        MeasureProperty createMeasureProperty();
-
-        /**
          * Returns a new object of class '<em>Robot Mission Container</em>'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -173,6 +164,24 @@ public interface DroneFactory extends EFactory {
          * @generated
          */
         RobotMissionContainer createRobotMissionContainer();
+
+        /**
+         * Returns a new object of class '<em>Property Key Container</em>'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return a new object of class '<em>Property Key Container</em>'.
+         * @generated
+         */
+        PropertyKeyContainer createPropertyKeyContainer();
+
+        /**
+         * Returns a new object of class '<em>Property Key</em>'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return a new object of class '<em>Property Key</em>'.
+         * @generated
+         */
+        PropertyKey createPropertyKey();
 
         /**
          * Returns a new object of class '<em>Capability</em>'.

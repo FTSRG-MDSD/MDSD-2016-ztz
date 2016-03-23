@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getDynamicRobots <em>Dynamic Robots</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getTaskExecutions <em>Task Executions</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getTaskRequirements <em>Task Requirements</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getBehaviourKeysContainer <em>Behaviour Keys Container</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getBehaviourContainer()
@@ -72,5 +73,31 @@ public interface BehaviourContainer extends EObject {
          * @generated
          */
         EList<TaskRequirement> getTaskRequirements();
+
+        /**
+         * Returns the value of the '<em><b>Behaviour Keys Container</b></em>' containment reference.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Behaviour Keys Container</em>' containment reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Behaviour Keys Container</em>' containment reference.
+         * @see #setBehaviourKeysContainer(BehaviouralPropertyKeyContainer)
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getBehaviourContainer_BehaviourKeysContainer()
+         * @model containment="true"
+         * @generated
+         */
+        BehaviouralPropertyKeyContainer getBehaviourKeysContainer();
+
+        /**
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getBehaviourKeysContainer <em>Behaviour Keys Container</em>}' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Behaviour Keys Container</em>' containment reference.
+         * @see #getBehaviourKeysContainer()
+         * @generated
+         */
+        void setBehaviourKeysContainer(BehaviouralPropertyKeyContainer value);
 
 } // BehaviourContainer

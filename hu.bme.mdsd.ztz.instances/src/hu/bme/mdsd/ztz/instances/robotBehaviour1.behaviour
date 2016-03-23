@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<behaviour:BehaviourContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:behaviour="http://www.mdsd.hu/behaviour" xmlns:drone="http://www.mdsd.hu/drone">
+<behaviour:BehaviourContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:behaviour="http://www.mdsd.hu/behaviour">
   <dynamicRobots name="Bob Dynamic">
     <robot href="robots.drone#//@robots.1"/>
     <detectedObjects>
@@ -15,18 +15,7 @@
     </detectedObjects>
     <collaborations collaborator="//@dynamicRobots.0"/>
     <messageRepository name="Frank 007 Repository"/>
-    <actions name="Moving" currentTaskExecution="//@taskExecutions.0">
-      <properties key="Velocity">
-        <value xsi:type="drone:MeasureProperty">
-          <value>
-            <dimension href="robots.drone#//@measureDimensions.6"/>
-          </value>
-        </value>
-      </properties>
-      <properties key="Direction">
-        <value xsi:type="drone:StringProperty" value="North"/>
-      </properties>
-    </actions>
+    <actions name="Moving" currentTaskExecution="//@taskExecutions.0"/>
   </dynamicRobots>
   <taskExecutions name="Ascend Execution" executors="//@dynamicRobots.0 //@dynamicRobots.1" status="Finished">
     <executionTime value="3.0">
@@ -60,4 +49,5 @@
   <taskRequirements name="Deliver Requirement" taskExecution="//@taskExecutions.3" prerequisite="//@taskExecutions.2" participants="1">
     <requiredCapabilities href="robots.drone#//@capabilities.0"/>
   </taskRequirements>
+  <behaviourKeysContainer/>
 </behaviour:BehaviourContainer>

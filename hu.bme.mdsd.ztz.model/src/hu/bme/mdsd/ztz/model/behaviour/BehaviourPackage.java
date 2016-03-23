@@ -98,13 +98,22 @@ public interface BehaviourPackage extends EPackage {
         int BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS = 2;
 
         /**
+         * The feature id for the '<em><b>Behaviour Keys Container</b></em>' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER = 3;
+
+        /**
          * The number of structural features of the '<em>Container</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int BEHAVIOUR_CONTAINER_FEATURE_COUNT = 3;
+        int BEHAVIOUR_CONTAINER_FEATURE_COUNT = 4;
 
         /**
          * The number of operations of the '<em>Container</em>' class.
@@ -1037,6 +1046,52 @@ public interface BehaviourPackage extends EPackage {
         int TASK_REQUIREMENT_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviouralPropertyKeyContainerImpl <em>Behavioural Property Key Container</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviouralPropertyKeyContainerImpl
+         * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getBehaviouralPropertyKeyContainer()
+         * @generated
+         */
+        int BEHAVIOURAL_PROPERTY_KEY_CONTAINER = 13;
+
+        /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BEHAVIOURAL_PROPERTY_KEY_CONTAINER__NAME = DronePackage.PROPERTY_KEY_CONTAINER__NAME;
+
+        /**
+         * The feature id for the '<em><b>Keys</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BEHAVIOURAL_PROPERTY_KEY_CONTAINER__KEYS = DronePackage.PROPERTY_KEY_CONTAINER__KEYS;
+
+        /**
+         * The number of structural features of the '<em>Behavioural Property Key Container</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BEHAVIOURAL_PROPERTY_KEY_CONTAINER_FEATURE_COUNT = DronePackage.PROPERTY_KEY_CONTAINER_FEATURE_COUNT + 0;
+
+        /**
+         * The number of operations of the '<em>Behavioural Property Key Container</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int BEHAVIOURAL_PROPERTY_KEY_CONTAINER_OPERATION_COUNT = DronePackage.PROPERTY_KEY_CONTAINER_OPERATION_COUNT + 0;
+
+        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.RobotStatus <em>Robot Status</em>}' enum.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1044,7 +1099,7 @@ public interface BehaviourPackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getRobotStatus()
          * @generated
          */
-        int ROBOT_STATUS = 13;
+        int ROBOT_STATUS = 14;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus <em>Task Execution Status</em>}' enum.
@@ -1054,7 +1109,7 @@ public interface BehaviourPackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getTaskExecutionStatus()
          * @generated
          */
-        int TASK_EXECUTION_STATUS = 14;
+        int TASK_EXECUTION_STATUS = 15;
 
 
         /**
@@ -1099,6 +1154,17 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          */
         EReference getBehaviourContainer_TaskRequirements();
+
+        /**
+         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getBehaviourKeysContainer <em>Behaviour Keys Container</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference '<em>Behaviour Keys Container</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer#getBehaviourKeysContainer()
+         * @see #getBehaviourContainer()
+         * @generated
+         */
+        EReference getBehaviourContainer_BehaviourKeysContainer();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.Message <em>Message</em>}'.
@@ -1606,6 +1672,16 @@ public interface BehaviourPackage extends EPackage {
         EReference getTaskRequirement_PrerequisiteTask();
 
         /**
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.BehaviouralPropertyKeyContainer <em>Behavioural Property Key Container</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Behavioural Property Key Container</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviouralPropertyKeyContainer
+         * @generated
+         */
+        EClass getBehaviouralPropertyKeyContainer();
+
+        /**
          * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getPrerequisite <em>Prerequisite</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1747,6 +1823,14 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS = eINSTANCE.getBehaviourContainer_TaskRequirements();
+
+                /**
+                 * The meta object literal for the '<em><b>Behaviour Keys Container</b></em>' containment reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER = eINSTANCE.getBehaviourContainer_BehaviourKeysContainer();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.MessageImpl <em>Message</em>}' class.
@@ -2147,6 +2231,16 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference TASK_REQUIREMENT__PREREQUISITE_TASK = eINSTANCE.getTaskRequirement_PrerequisiteTask();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.BehaviouralPropertyKeyContainerImpl <em>Behavioural Property Key Container</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviouralPropertyKeyContainerImpl
+                 * @see hu.bme.mdsd.ztz.model.behaviour.impl.BehaviourPackageImpl#getBehaviouralPropertyKeyContainer()
+                 * @generated
+                 */
+                EClass BEHAVIOURAL_PROPERTY_KEY_CONTAINER = eINSTANCE.getBehaviouralPropertyKeyContainer();
 
                 /**
                  * The meta object literal for the '<em><b>Prerequisite</b></em>' reference feature.

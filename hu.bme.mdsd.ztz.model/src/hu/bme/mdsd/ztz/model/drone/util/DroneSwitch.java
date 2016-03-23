@@ -118,10 +118,10 @@ public class DroneSwitch<T> extends Switch<T> {
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
-                        case DronePackage.STRING_PROPERTY: {
-                                StringProperty stringProperty = (StringProperty)theEObject;
-                                T result = caseStringProperty(stringProperty);
-                                if (result == null) result = casePropertyValue(stringProperty);
+                        case DronePackage.STRING_VALUE: {
+                                StringValue stringValue = (StringValue)theEObject;
+                                T result = caseStringValue(stringValue);
+                                if (result == null) result = casePropertyValue(stringValue);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -153,6 +153,7 @@ public class DroneSwitch<T> extends Switch<T> {
                         case DronePackage.MEASURE_VALUE: {
                                 MeasureValue measureValue = (MeasureValue)theEObject;
                                 T result = caseMeasureValue(measureValue);
+                                if (result == null) result = casePropertyValue(measureValue);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -169,13 +170,6 @@ public class DroneSwitch<T> extends Switch<T> {
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
-                        case DronePackage.MEASURE_PROPERTY: {
-                                MeasureProperty measureProperty = (MeasureProperty)theEObject;
-                                T result = caseMeasureProperty(measureProperty);
-                                if (result == null) result = casePropertyValue(measureProperty);
-                                if (result == null) result = defaultCase(theEObject);
-                                return result;
-                        }
                         case DronePackage.PROPERTY_VALUE: {
                                 PropertyValue propertyValue = (PropertyValue)theEObject;
                                 T result = casePropertyValue(propertyValue);
@@ -185,6 +179,20 @@ public class DroneSwitch<T> extends Switch<T> {
                         case DronePackage.ROBOT_MISSION_CONTAINER: {
                                 RobotMissionContainer robotMissionContainer = (RobotMissionContainer)theEObject;
                                 T result = caseRobotMissionContainer(robotMissionContainer);
+                                if (result == null) result = defaultCase(theEObject);
+                                return result;
+                        }
+                        case DronePackage.PROPERTY_KEY_CONTAINER: {
+                                PropertyKeyContainer propertyKeyContainer = (PropertyKeyContainer)theEObject;
+                                T result = casePropertyKeyContainer(propertyKeyContainer);
+                                if (result == null) result = caseNamedElement(propertyKeyContainer);
+                                if (result == null) result = defaultCase(theEObject);
+                                return result;
+                        }
+                        case DronePackage.PROPERTY_KEY: {
+                                PropertyKey propertyKey = (PropertyKey)theEObject;
+                                T result = casePropertyKey(propertyKey);
+                                if (result == null) result = caseNamedElement(propertyKey);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -326,17 +334,17 @@ public class DroneSwitch<T> extends Switch<T> {
         }
 
         /**
-         * Returns the result of interpreting the object as an instance of '<em>String Property</em>'.
+         * Returns the result of interpreting the object as an instance of '<em>String Value</em>'.
          * <!-- begin-user-doc -->
          * This implementation returns null;
          * returning a non-null result will terminate the switch.
          * <!-- end-user-doc -->
          * @param object the target of the switch.
-         * @return the result of interpreting the object as an instance of '<em>String Property</em>'.
+         * @return the result of interpreting the object as an instance of '<em>String Value</em>'.
          * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
          * @generated
          */
-        public T caseStringProperty(StringProperty object) {
+        public T caseStringValue(StringValue object) {
                 return null;
         }
 
@@ -446,21 +454,6 @@ public class DroneSwitch<T> extends Switch<T> {
         }
 
         /**
-         * Returns the result of interpreting the object as an instance of '<em>Measure Property</em>'.
-         * <!-- begin-user-doc -->
-         * This implementation returns null;
-         * returning a non-null result will terminate the switch.
-         * <!-- end-user-doc -->
-         * @param object the target of the switch.
-         * @return the result of interpreting the object as an instance of '<em>Measure Property</em>'.
-         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-         * @generated
-         */
-        public T caseMeasureProperty(MeasureProperty object) {
-                return null;
-        }
-
-        /**
          * Returns the result of interpreting the object as an instance of '<em>Property Value</em>'.
          * <!-- begin-user-doc -->
          * This implementation returns null;
@@ -487,6 +480,36 @@ public class DroneSwitch<T> extends Switch<T> {
          * @generated
          */
         public T caseRobotMissionContainer(RobotMissionContainer object) {
+                return null;
+        }
+
+        /**
+         * Returns the result of interpreting the object as an instance of '<em>Property Key Container</em>'.
+         * <!-- begin-user-doc -->
+         * This implementation returns null;
+         * returning a non-null result will terminate the switch.
+         * <!-- end-user-doc -->
+         * @param object the target of the switch.
+         * @return the result of interpreting the object as an instance of '<em>Property Key Container</em>'.
+         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+         * @generated
+         */
+        public T casePropertyKeyContainer(PropertyKeyContainer object) {
+                return null;
+        }
+
+        /**
+         * Returns the result of interpreting the object as an instance of '<em>Property Key</em>'.
+         * <!-- begin-user-doc -->
+         * This implementation returns null;
+         * returning a non-null result will terminate the switch.
+         * <!-- end-user-doc -->
+         * @param object the target of the switch.
+         * @return the result of interpreting the object as an instance of '<em>Property Key</em>'.
+         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+         * @generated
+         */
+        public T casePropertyKey(PropertyKey object) {
                 return null;
         }
 

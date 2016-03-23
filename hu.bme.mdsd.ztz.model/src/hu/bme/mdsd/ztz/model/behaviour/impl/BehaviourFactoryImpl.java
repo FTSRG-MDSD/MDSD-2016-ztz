@@ -69,6 +69,7 @@ public class BehaviourFactoryImpl extends EFactoryImpl implements BehaviourFacto
                         case BehaviourPackage.DETECTED_OBJECT: return createDetectedObject();
                         case BehaviourPackage.DYNAMIC_ROBOT: return createDynamicRobot();
                         case BehaviourPackage.TASK_REQUIREMENT: return createTaskRequirement();
+                        case BehaviourPackage.BEHAVIOURAL_PROPERTY_KEY_CONTAINER: return createBehaviouralPropertyKeyContainer();
                         default:
                                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
                 }
@@ -226,6 +227,16 @@ public class BehaviourFactoryImpl extends EFactoryImpl implements BehaviourFacto
         public TaskRequirement createTaskRequirement() {
                 TaskRequirementImpl taskRequirement = new TaskRequirementImpl();
                 return taskRequirement;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public BehaviouralPropertyKeyContainer createBehaviouralPropertyKeyContainer() {
+                BehaviouralPropertyKeyContainerImpl behaviouralPropertyKeyContainer = new BehaviouralPropertyKeyContainerImpl();
+                return behaviouralPropertyKeyContainer;
         }
 
         /**

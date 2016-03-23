@@ -12,17 +12,18 @@ import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Equipment;
 import hu.bme.mdsd.ztz.model.drone.MeasureConversion;
 import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
-import hu.bme.mdsd.ztz.model.drone.MeasureProperty;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Mission;
 import hu.bme.mdsd.ztz.model.drone.NamedElement;
 import hu.bme.mdsd.ztz.model.drone.Position;
 import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.model.drone.PropertyKey;
+import hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer;
 import hu.bme.mdsd.ztz.model.drone.PropertyValue;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
 import hu.bme.mdsd.ztz.model.drone.Size;
-import hu.bme.mdsd.ztz.model.drone.StringProperty;
+import hu.bme.mdsd.ztz.model.drone.StringValue;
 import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
 
@@ -101,7 +102,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        private EClass stringPropertyEClass = null;
+        private EClass stringValueEClass = null;
 
         /**
          * <!-- begin-user-doc -->
@@ -157,13 +158,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        private EClass measurePropertyEClass = null;
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         private EClass propertyValueEClass = null;
 
         /**
@@ -172,6 +166,20 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * @generated
          */
         private EClass robotMissionContainerEClass = null;
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        private EClass propertyKeyContainerEClass = null;
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        private EClass propertyKeyEClass = null;
 
         /**
          * <!-- begin-user-doc -->
@@ -442,8 +450,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EAttribute getProperty_Key() {
-                return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
+        public EReference getProperty_Key() {
+                return (EReference)propertyEClass.getEStructuralFeatures().get(1);
         }
 
         /**
@@ -452,7 +460,7 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * @generated
          */
         public EReference getProperty_Value() {
-                return (EReference)propertyEClass.getEStructuralFeatures().get(1);
+                return (EReference)propertyEClass.getEStructuralFeatures().get(0);
         }
 
         /**
@@ -568,8 +576,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EClass getStringProperty() {
-                return stringPropertyEClass;
+        public EClass getStringValue() {
+                return stringValueEClass;
         }
 
         /**
@@ -577,8 +585,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EAttribute getStringProperty_Value() {
-                return (EAttribute)stringPropertyEClass.getEStructuralFeatures().get(0);
+        public EAttribute getStringValue_Value() {
+                return (EAttribute)stringValueEClass.getEStructuralFeatures().get(0);
         }
 
         /**
@@ -784,24 +792,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          * <!-- end-user-doc -->
          * @generated
          */
-        public EClass getMeasureProperty() {
-                return measurePropertyEClass;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public EReference getMeasureProperty_Value() {
-                return (EReference)measurePropertyEClass.getEStructuralFeatures().get(0);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
         public EClass getPropertyValue() {
                 return propertyValueEClass;
         }
@@ -858,6 +848,42 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
          */
         public EReference getRobotMissionContainer_Capabilities() {
                 return (EReference)robotMissionContainerEClass.getEStructuralFeatures().get(4);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getRobotMissionContainer_PropertyKeyContainer() {
+                return (EReference)robotMissionContainerEClass.getEStructuralFeatures().get(5);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EClass getPropertyKeyContainer() {
+                return propertyKeyContainerEClass;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getPropertyKeyContainer_Keys() {
+                return (EReference)propertyKeyContainerEClass.getEStructuralFeatures().get(0);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EClass getPropertyKey() {
+                return propertyKeyEClass;
         }
 
         /**
@@ -951,8 +977,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEAttribute(coordinateEClass, COORDINATE__ALTITUDE);
 
                 propertyEClass = createEClass(PROPERTY);
-                createEAttribute(propertyEClass, PROPERTY__KEY);
                 createEReference(propertyEClass, PROPERTY__VALUE);
+                createEReference(propertyEClass, PROPERTY__KEY);
 
                 robotEClass = createEClass(ROBOT);
                 createEReference(robotEClass, ROBOT__POSITION);
@@ -967,8 +993,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEReference(robotEClass, ROBOT__CAPABILITIES);
                 createEReference(robotEClass, ROBOT__CAPABILITY_PROPERTIES);
 
-                stringPropertyEClass = createEClass(STRING_PROPERTY);
-                createEAttribute(stringPropertyEClass, STRING_PROPERTY__VALUE);
+                stringValueEClass = createEClass(STRING_VALUE);
+                createEAttribute(stringValueEClass, STRING_VALUE__VALUE);
 
                 sizeEClass = createEClass(SIZE);
                 createEReference(sizeEClass, SIZE__WIDTH);
@@ -999,9 +1025,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 measureDimensionEClass = createEClass(MEASURE_DIMENSION);
                 createEReference(measureDimensionEClass, MEASURE_DIMENSION__CONVERSIONS);
 
-                measurePropertyEClass = createEClass(MEASURE_PROPERTY);
-                createEReference(measurePropertyEClass, MEASURE_PROPERTY__VALUE);
-
                 propertyValueEClass = createEClass(PROPERTY_VALUE);
 
                 robotMissionContainerEClass = createEClass(ROBOT_MISSION_CONTAINER);
@@ -1010,6 +1033,12 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 createEReference(robotMissionContainerEClass, ROBOT_MISSION_CONTAINER__MEASURE_DIMENSIONS);
                 createEReference(robotMissionContainerEClass, ROBOT_MISSION_CONTAINER__AREA_OBJECTS);
                 createEReference(robotMissionContainerEClass, ROBOT_MISSION_CONTAINER__CAPABILITIES);
+                createEReference(robotMissionContainerEClass, ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER);
+
+                propertyKeyContainerEClass = createEClass(PROPERTY_KEY_CONTAINER);
+                createEReference(propertyKeyContainerEClass, PROPERTY_KEY_CONTAINER__KEYS);
+
+                propertyKeyEClass = createEClass(PROPERTY_KEY);
 
                 capabilityEClass = createEClass(CAPABILITY);
 
@@ -1050,10 +1079,12 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 taskEClass.getESuperTypes().add(this.getNamedElement());
                 areaObjectEClass.getESuperTypes().add(this.getNamedElement());
                 robotEClass.getESuperTypes().add(this.getNamedElement());
-                stringPropertyEClass.getESuperTypes().add(this.getPropertyValue());
+                stringValueEClass.getESuperTypes().add(this.getPropertyValue());
                 equipmentEClass.getESuperTypes().add(this.getNamedElement());
+                measureValueEClass.getESuperTypes().add(this.getPropertyValue());
                 measureDimensionEClass.getESuperTypes().add(this.getNamedElement());
-                measurePropertyEClass.getESuperTypes().add(this.getPropertyValue());
+                propertyKeyContainerEClass.getESuperTypes().add(this.getNamedElement());
+                propertyKeyEClass.getESuperTypes().add(this.getNamedElement());
                 capabilityEClass.getESuperTypes().add(this.getNamedElement());
 
                 // Initialize classes, features, and operations; add parameters
@@ -1084,8 +1115,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEAttribute(getCoordinate_Altitude(), ecorePackage.getEFloat(), "altitude", null, 1, 1, Coordinate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEAttribute(getProperty_Key(), ecorePackage.getEString(), "key", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getProperty_Value(), this.getPropertyValue(), null, "value", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getProperty_Key(), this.getPropertyKey(), null, "key", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(robotEClass, Robot.class, "Robot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getRobot_Position(), this.getPosition(), null, "position", null, 1, 1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1100,8 +1131,8 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobot_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobot_CapabilityProperties(), this.getCapabilityProperties(), null, "capabilityProperties", null, 0, -1, Robot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-                initEClass(stringPropertyEClass, StringProperty.class, "StringProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEAttribute(getStringProperty_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEClass(stringValueEClass, StringValue.class, "StringValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+                initEAttribute(getStringValue_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(sizeEClass, Size.class, "Size", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getSize_Width(), this.getMeasureValue(), null, "width", null, 1, 1, Size.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1132,9 +1163,6 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEClass(measureDimensionEClass, MeasureDimension.class, "MeasureDimension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getMeasureDimension_Conversions(), this.getMeasureConversion(), null, "conversions", null, 0, -1, MeasureDimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-                initEClass(measurePropertyEClass, MeasureProperty.class, "MeasureProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-                initEReference(getMeasureProperty_Value(), this.getMeasureValue(), null, "value", null, 1, 1, MeasureProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
                 initEClass(propertyValueEClass, PropertyValue.class, "PropertyValue", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
                 initEClass(robotMissionContainerEClass, RobotMissionContainer.class, "RobotMissionContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1143,6 +1171,12 @@ public class DronePackageImpl extends EPackageImpl implements DronePackage {
                 initEReference(getRobotMissionContainer_MeasureDimensions(), this.getMeasureDimension(), null, "measureDimensions", null, 0, -1, RobotMissionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobotMissionContainer_AreaObjects(), this.getAreaObject(), null, "areaObjects", null, 0, -1, RobotMissionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getRobotMissionContainer_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, RobotMissionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getRobotMissionContainer_PropertyKeyContainer(), this.getPropertyKeyContainer(), null, "propertyKeyContainer", null, 0, 1, RobotMissionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+                initEClass(propertyKeyContainerEClass, PropertyKeyContainer.class, "PropertyKeyContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+                initEReference(getPropertyKeyContainer_Keys(), this.getPropertyKey(), null, "keys", null, 0, -1, PropertyKeyContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+                initEClass(propertyKeyEClass, PropertyKey.class, "PropertyKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
                 initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

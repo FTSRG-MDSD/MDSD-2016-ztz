@@ -1,9 +1,9 @@
 /**
  */
-package hu.bme.mdsd.ztz.model.drone.tests;
+package hu.bme.mdsd.ztz.model.behaviour.tests;
 
-import hu.bme.mdsd.ztz.model.drone.DroneFactory;
-import hu.bme.mdsd.ztz.model.drone.StringProperty;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviouralPropertyKeyContainer;
 
 import junit.framework.TestCase;
 
@@ -11,19 +11,19 @@ import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>String Property</b></em>'.
+ * A test case for the model object '<em><b>Behavioural Property Key Container</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class StringPropertyTest extends TestCase {
+public class BehaviouralPropertyKeyContainerTest extends TestCase {
 
         /**
-         * The fixture for this String Property test case.
+         * The fixture for this Behavioural Property Key Container test case.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        protected StringProperty fixture = null;
+        protected BehaviouralPropertyKeyContainer fixture = null;
 
         /**
          * <!-- begin-user-doc -->
@@ -31,36 +31,36 @@ public class StringPropertyTest extends TestCase {
          * @generated
          */
         public static void main(String[] args) {
-                TestRunner.run(StringPropertyTest.class);
+                TestRunner.run(BehaviouralPropertyKeyContainerTest.class);
         }
 
         /**
-         * Constructs a new String Property test case with the given name.
+         * Constructs a new Behavioural Property Key Container test case with the given name.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        public StringPropertyTest(String name) {
+        public BehaviouralPropertyKeyContainerTest(String name) {
                 super(name);
         }
 
         /**
-         * Sets the fixture for this String Property test case.
+         * Sets the fixture for this Behavioural Property Key Container test case.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        protected void setFixture(StringProperty fixture) {
+        protected void setFixture(BehaviouralPropertyKeyContainer fixture) {
                 this.fixture = fixture;
         }
 
         /**
-         * Returns the fixture for this String Property test case.
+         * Returns the fixture for this Behavioural Property Key Container test case.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        protected StringProperty getFixture() {
+        protected BehaviouralPropertyKeyContainer getFixture() {
                 return fixture;
         }
 
@@ -72,7 +72,7 @@ public class StringPropertyTest extends TestCase {
          */
         @Override
         protected void setUp() throws Exception {
-                setFixture(DroneFactory.eINSTANCE.createStringProperty());
+                setFixture(BehaviourFactory.eINSTANCE.createBehaviouralPropertyKeyContainer());
         }
 
         /**
@@ -86,4 +86,4 @@ public class StringPropertyTest extends TestCase {
                 setFixture(null);
         }
 
-} //StringPropertyTest
+} //BehaviouralPropertyKeyContainerTest

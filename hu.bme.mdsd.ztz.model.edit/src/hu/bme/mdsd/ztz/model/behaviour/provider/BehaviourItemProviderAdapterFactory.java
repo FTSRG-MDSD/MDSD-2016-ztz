@@ -348,6 +348,29 @@ public class BehaviourItemProviderAdapterFactory extends BehaviourAdapterFactory
         }
 
         /**
+         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.behaviour.BehaviouralPropertyKeyContainer} instances.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected BehaviouralPropertyKeyContainerItemProvider behaviouralPropertyKeyContainerItemProvider;
+
+        /**
+         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.behaviour.BehaviouralPropertyKeyContainer}.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public Adapter createBehaviouralPropertyKeyContainerAdapter() {
+                if (behaviouralPropertyKeyContainerItemProvider == null) {
+                        behaviouralPropertyKeyContainerItemProvider = new BehaviouralPropertyKeyContainerItemProvider(this);
+                }
+
+                return behaviouralPropertyKeyContainerItemProvider;
+        }
+
+        /**
          * This returns the root adapter factory that contains this factory.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -458,6 +481,7 @@ public class BehaviourItemProviderAdapterFactory extends BehaviourAdapterFactory
                 if (detectedObjectItemProvider != null) detectedObjectItemProvider.dispose();
                 if (dynamicRobotItemProvider != null) dynamicRobotItemProvider.dispose();
                 if (taskRequirementItemProvider != null) taskRequirementItemProvider.dispose();
+                if (behaviouralPropertyKeyContainerItemProvider != null) behaviouralPropertyKeyContainerItemProvider.dispose();
         }
 
 }

@@ -426,22 +426,22 @@ public interface DronePackage extends EPackage {
         int PROPERTY = 6;
 
         /**
-         * The feature id for the '<em><b>Key</b></em>' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int PROPERTY__KEY = 0;
-
-        /**
          * The feature id for the '<em><b>Value</b></em>' containment reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int PROPERTY__VALUE = 1;
+        int PROPERTY__VALUE = 0;
+
+        /**
+         * The feature id for the '<em><b>Key</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int PROPERTY__KEY = 1;
 
         /**
          * The number of structural features of the '<em>Property</em>' class.
@@ -605,7 +605,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getPropertyValue()
          * @generated
          */
-        int PROPERTY_VALUE = 17;
+        int PROPERTY_VALUE = 16;
 
         /**
          * The number of structural features of the '<em>Property Value</em>' class.
@@ -626,14 +626,14 @@ public interface DronePackage extends EPackage {
         int PROPERTY_VALUE_OPERATION_COUNT = 0;
 
         /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.StringPropertyImpl <em>String Property</em>}' class.
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.StringValueImpl <em>String Value</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.impl.StringPropertyImpl
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getStringProperty()
+         * @see hu.bme.mdsd.ztz.model.drone.impl.StringValueImpl
+         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getStringValue()
          * @generated
          */
-        int STRING_PROPERTY = 8;
+        int STRING_VALUE = 8;
 
         /**
          * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -642,25 +642,25 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int STRING_PROPERTY__VALUE = PROPERTY_VALUE_FEATURE_COUNT + 0;
+        int STRING_VALUE__VALUE = PROPERTY_VALUE_FEATURE_COUNT + 0;
 
         /**
-         * The number of structural features of the '<em>String Property</em>' class.
+         * The number of structural features of the '<em>String Value</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int STRING_PROPERTY_FEATURE_COUNT = PROPERTY_VALUE_FEATURE_COUNT + 1;
+        int STRING_VALUE_FEATURE_COUNT = PROPERTY_VALUE_FEATURE_COUNT + 1;
 
         /**
-         * The number of operations of the '<em>String Property</em>' class.
+         * The number of operations of the '<em>String Value</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int STRING_PROPERTY_OPERATION_COUNT = PROPERTY_VALUE_OPERATION_COUNT + 0;
+        int STRING_VALUE_OPERATION_COUNT = PROPERTY_VALUE_OPERATION_COUNT + 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.SizeImpl <em>Size</em>}' class.
@@ -853,7 +853,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MEASURE_VALUE__VALUE = 0;
+        int MEASURE_VALUE__VALUE = PROPERTY_VALUE_FEATURE_COUNT + 0;
 
         /**
          * The feature id for the '<em><b>Dimension</b></em>' reference.
@@ -862,7 +862,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MEASURE_VALUE__DIMENSION = 1;
+        int MEASURE_VALUE__DIMENSION = PROPERTY_VALUE_FEATURE_COUNT + 1;
 
         /**
          * The number of structural features of the '<em>Measure Value</em>' class.
@@ -871,7 +871,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MEASURE_VALUE_FEATURE_COUNT = 2;
+        int MEASURE_VALUE_FEATURE_COUNT = PROPERTY_VALUE_FEATURE_COUNT + 2;
 
         /**
          * The number of operations of the '<em>Measure Value</em>' class.
@@ -880,7 +880,7 @@ public interface DronePackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MEASURE_VALUE_OPERATION_COUNT = 0;
+        int MEASURE_VALUE_OPERATION_COUNT = PROPERTY_VALUE_OPERATION_COUNT + 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.MeasureConversionImpl <em>Measure Conversion</em>}' class.
@@ -975,43 +975,6 @@ public interface DronePackage extends EPackage {
         int MEASURE_DIMENSION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
-         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.MeasurePropertyImpl <em>Measure Property</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see hu.bme.mdsd.ztz.model.drone.impl.MeasurePropertyImpl
-         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureProperty()
-         * @generated
-         */
-        int MEASURE_PROPERTY = 16;
-
-        /**
-         * The feature id for the '<em><b>Value</b></em>' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MEASURE_PROPERTY__VALUE = PROPERTY_VALUE_FEATURE_COUNT + 0;
-
-        /**
-         * The number of structural features of the '<em>Measure Property</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MEASURE_PROPERTY_FEATURE_COUNT = PROPERTY_VALUE_FEATURE_COUNT + 1;
-
-        /**
-         * The number of operations of the '<em>Measure Property</em>' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         * @ordered
-         */
-        int MEASURE_PROPERTY_OPERATION_COUNT = PROPERTY_VALUE_OPERATION_COUNT + 0;
-
-        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.RobotMissionContainerImpl <em>Robot Mission Container</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1019,7 +982,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getRobotMissionContainer()
          * @generated
          */
-        int ROBOT_MISSION_CONTAINER = 18;
+        int ROBOT_MISSION_CONTAINER = 17;
 
         /**
          * The feature id for the '<em><b>Missions</b></em>' containment reference list.
@@ -1067,13 +1030,22 @@ public interface DronePackage extends EPackage {
         int ROBOT_MISSION_CONTAINER__CAPABILITIES = 4;
 
         /**
+         * The feature id for the '<em><b>Property Key Container</b></em>' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER = 5;
+
+        /**
          * The number of structural features of the '<em>Robot Mission Container</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int ROBOT_MISSION_CONTAINER_FEATURE_COUNT = 5;
+        int ROBOT_MISSION_CONTAINER_FEATURE_COUNT = 6;
 
         /**
          * The number of operations of the '<em>Robot Mission Container</em>' class.
@@ -1085,6 +1057,89 @@ public interface DronePackage extends EPackage {
         int ROBOT_MISSION_CONTAINER_OPERATION_COUNT = 0;
 
         /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.PropertyKeyContainerImpl <em>Property Key Container</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.drone.impl.PropertyKeyContainerImpl
+         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getPropertyKeyContainer()
+         * @generated
+         */
+        int PROPERTY_KEY_CONTAINER = 18;
+
+        /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int PROPERTY_KEY_CONTAINER__NAME = NAMED_ELEMENT__NAME;
+
+        /**
+         * The feature id for the '<em><b>Keys</b></em>' containment reference list.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int PROPERTY_KEY_CONTAINER__KEYS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+        /**
+         * The number of structural features of the '<em>Property Key Container</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int PROPERTY_KEY_CONTAINER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+        /**
+         * The number of operations of the '<em>Property Key Container</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int PROPERTY_KEY_CONTAINER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+        /**
+         * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.PropertyKeyImpl <em>Property Key</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see hu.bme.mdsd.ztz.model.drone.impl.PropertyKeyImpl
+         * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getPropertyKey()
+         * @generated
+         */
+        int PROPERTY_KEY = 19;
+
+        /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int PROPERTY_KEY__NAME = NAMED_ELEMENT__NAME;
+
+        /**
+         * The number of structural features of the '<em>Property Key</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int PROPERTY_KEY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+        /**
+         * The number of operations of the '<em>Property Key</em>' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int PROPERTY_KEY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+        /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.drone.impl.CapabilityImpl <em>Capability</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1092,7 +1147,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getCapability()
          * @generated
          */
-        int CAPABILITY = 19;
+        int CAPABILITY = 20;
 
         /**
          * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1129,7 +1184,7 @@ public interface DronePackage extends EPackage {
          * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getCapabilityProperties()
          * @generated
          */
-        int CAPABILITY_PROPERTIES = 20;
+        int CAPABILITY_PROPERTIES = 21;
 
         /**
          * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -1393,15 +1448,15 @@ public interface DronePackage extends EPackage {
         EClass getProperty();
 
         /**
-         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.drone.Property#getKey <em>Key</em>}'.
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.drone.Property#getKey <em>Key</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the attribute '<em>Key</em>'.
+         * @return the meta object for the reference '<em>Key</em>'.
          * @see hu.bme.mdsd.ztz.model.drone.Property#getKey()
          * @see #getProperty()
          * @generated
          */
-        EAttribute getProperty_Key();
+        EReference getProperty_Key();
 
         /**
          * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.Property#getValue <em>Value</em>}'.
@@ -1546,25 +1601,25 @@ public interface DronePackage extends EPackage {
         EReference getRobot_CapabilityProperties();
 
         /**
-         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.StringProperty <em>String Property</em>}'.
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.StringValue <em>String Value</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for class '<em>String Property</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.StringProperty
+         * @return the meta object for class '<em>String Value</em>'.
+         * @see hu.bme.mdsd.ztz.model.drone.StringValue
          * @generated
          */
-        EClass getStringProperty();
+        EClass getStringValue();
 
         /**
-         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.drone.StringProperty#getValue <em>Value</em>}'.
+         * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.model.drone.StringValue#getValue <em>Value</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @return the meta object for the attribute '<em>Value</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.StringProperty#getValue()
-         * @see #getStringProperty()
+         * @see hu.bme.mdsd.ztz.model.drone.StringValue#getValue()
+         * @see #getStringValue()
          * @generated
          */
-        EAttribute getStringProperty_Value();
+        EAttribute getStringValue_Value();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.Size <em>Size</em>}'.
@@ -1802,27 +1857,6 @@ public interface DronePackage extends EPackage {
         EReference getMeasureDimension_Conversions();
 
         /**
-         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.MeasureProperty <em>Measure Property</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for class '<em>Measure Property</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.MeasureProperty
-         * @generated
-         */
-        EClass getMeasureProperty();
-
-        /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.MeasureProperty#getValue <em>Value</em>}'.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Value</em>'.
-         * @see hu.bme.mdsd.ztz.model.drone.MeasureProperty#getValue()
-         * @see #getMeasureProperty()
-         * @generated
-         */
-        EReference getMeasureProperty_Value();
-
-        /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.PropertyValue <em>Property Value</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1896,6 +1930,48 @@ public interface DronePackage extends EPackage {
          * @generated
          */
         EReference getRobotMissionContainer_Capabilities();
+
+        /**
+         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer#getPropertyKeyContainer <em>Property Key Container</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference '<em>Property Key Container</em>'.
+         * @see hu.bme.mdsd.ztz.model.drone.RobotMissionContainer#getPropertyKeyContainer()
+         * @see #getRobotMissionContainer()
+         * @generated
+         */
+        EReference getRobotMissionContainer_PropertyKeyContainer();
+
+        /**
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer <em>Property Key Container</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Property Key Container</em>'.
+         * @see hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer
+         * @generated
+         */
+        EClass getPropertyKeyContainer();
+
+        /**
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer#getKeys <em>Keys</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the containment reference list '<em>Keys</em>'.
+         * @see hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer#getKeys()
+         * @see #getPropertyKeyContainer()
+         * @generated
+         */
+        EReference getPropertyKeyContainer_Keys();
+
+        /**
+         * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.PropertyKey <em>Property Key</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for class '<em>Property Key</em>'.
+         * @see hu.bme.mdsd.ztz.model.drone.PropertyKey
+         * @generated
+         */
+        EClass getPropertyKey();
 
         /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.drone.Capability <em>Capability</em>}'.
@@ -2145,12 +2221,12 @@ public interface DronePackage extends EPackage {
                 EClass PROPERTY = eINSTANCE.getProperty();
 
                 /**
-                 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+                 * The meta object literal for the '<em><b>Key</b></em>' reference feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated
                  */
-                EAttribute PROPERTY__KEY = eINSTANCE.getProperty_Key();
+                EReference PROPERTY__KEY = eINSTANCE.getProperty_Key();
 
                 /**
                  * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
@@ -2259,14 +2335,14 @@ public interface DronePackage extends EPackage {
                 EReference ROBOT__CAPABILITY_PROPERTIES = eINSTANCE.getRobot_CapabilityProperties();
 
                 /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.StringPropertyImpl <em>String Property</em>}' class.
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.StringValueImpl <em>String Value</em>}' class.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.StringPropertyImpl
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getStringProperty()
+                 * @see hu.bme.mdsd.ztz.model.drone.impl.StringValueImpl
+                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getStringValue()
                  * @generated
                  */
-                EClass STRING_PROPERTY = eINSTANCE.getStringProperty();
+                EClass STRING_VALUE = eINSTANCE.getStringValue();
 
                 /**
                  * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -2274,7 +2350,7 @@ public interface DronePackage extends EPackage {
                  * <!-- end-user-doc -->
                  * @generated
                  */
-                EAttribute STRING_PROPERTY__VALUE = eINSTANCE.getStringProperty_Value();
+                EAttribute STRING_VALUE__VALUE = eINSTANCE.getStringValue_Value();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.SizeImpl <em>Size</em>}' class.
@@ -2467,24 +2543,6 @@ public interface DronePackage extends EPackage {
                 EReference MEASURE_DIMENSION__CONVERSIONS = eINSTANCE.getMeasureDimension_Conversions();
 
                 /**
-                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.MeasurePropertyImpl <em>Measure Property</em>}' class.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.MeasurePropertyImpl
-                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getMeasureProperty()
-                 * @generated
-                 */
-                EClass MEASURE_PROPERTY = eINSTANCE.getMeasureProperty();
-
-                /**
-                 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-                 * <!-- begin-user-doc -->
-                 * <!-- end-user-doc -->
-                 * @generated
-                 */
-                EReference MEASURE_PROPERTY__VALUE = eINSTANCE.getMeasureProperty_Value();
-
-                /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.PropertyValue <em>Property Value</em>}' class.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
@@ -2543,6 +2601,42 @@ public interface DronePackage extends EPackage {
                  * @generated
                  */
                 EReference ROBOT_MISSION_CONTAINER__CAPABILITIES = eINSTANCE.getRobotMissionContainer_Capabilities();
+
+                /**
+                 * The meta object literal for the '<em><b>Property Key Container</b></em>' containment reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER = eINSTANCE.getRobotMissionContainer_PropertyKeyContainer();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.PropertyKeyContainerImpl <em>Property Key Container</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.drone.impl.PropertyKeyContainerImpl
+                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getPropertyKeyContainer()
+                 * @generated
+                 */
+                EClass PROPERTY_KEY_CONTAINER = eINSTANCE.getPropertyKeyContainer();
+
+                /**
+                 * The meta object literal for the '<em><b>Keys</b></em>' containment reference list feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference PROPERTY_KEY_CONTAINER__KEYS = eINSTANCE.getPropertyKeyContainer_Keys();
+
+                /**
+                 * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.PropertyKeyImpl <em>Property Key</em>}' class.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @see hu.bme.mdsd.ztz.model.drone.impl.PropertyKeyImpl
+                 * @see hu.bme.mdsd.ztz.model.drone.impl.DronePackageImpl#getPropertyKey()
+                 * @generated
+                 */
+                EClass PROPERTY_KEY = eINSTANCE.getPropertyKey();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.drone.impl.CapabilityImpl <em>Capability</em>}' class.

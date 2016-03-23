@@ -28,10 +28,13 @@
     <communicationRange value="500.0" dimension="//@measureDimensions.2"/>
     <weight value="8.76" dimension="//@measureDimensions.5"/>
     <capabilityProperties capability="//@capabilities.0">
-      <properties key="MaxFlyingHeight">
-        <value xsi:type="drone:MeasureProperty">
-          <value value="1300.0" dimension="//@measureDimensions.2"/>
-        </value>
+      <properties key="//@propertyKeyContainer/@keys.1">
+        <value xsi:type="drone:MeasureValue" value="1300.0" dimension="//@measureDimensions.2"/>
+      </properties>
+    </capabilityProperties>
+    <capabilityProperties capability="//@capabilities.1">
+      <properties key="//@propertyKeyContainer/@keys.0">
+        <value xsi:type="drone:MeasureValue" value="20.0" dimension="//@measureDimensions.5"/>
       </properties>
     </capabilityProperties>
   </robots>
@@ -69,13 +72,8 @@
       <height value="0.76" dimension="//@measureDimensions.2"/>
       <length value="1.0" dimension="//@measureDimensions.2"/>
     </size>
-    <properties key="Weight">
-      <value xsi:type="drone:MeasureProperty">
-        <value value="15.6" dimension="//@measureDimensions.5"/>
-      </value>
-    </properties>
-    <properties key="Material">
-      <value xsi:type="drone:StringProperty" value="Wood"/>
+    <properties key="//@propertyKeyContainer/@keys.2">
+      <value xsi:type="drone:StringValue" value="Wood"/>
     </properties>
   </areaObjects>
   <areaObjects name="Destination">
@@ -86,4 +84,9 @@
   <capabilities name="Flying"/>
   <capabilities name="Lifting"/>
   <capabilities name="Ascending"/>
+  <propertyKeyContainer name="Key Container">
+    <keys name="MaxLiftingWeight"/>
+    <keys name="MaxHeight"/>
+    <keys name="Material"/>
+  </propertyKeyContainer>
 </drone:RobotMissionContainer>

@@ -64,15 +64,16 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
                         case DronePackage.COORDINATE: return createCoordinate();
                         case DronePackage.PROPERTY: return createProperty();
                         case DronePackage.ROBOT: return createRobot();
-                        case DronePackage.STRING_PROPERTY: return createStringProperty();
+                        case DronePackage.STRING_VALUE: return createStringValue();
                         case DronePackage.SIZE: return createSize();
                         case DronePackage.BATTERY: return createBattery();
                         case DronePackage.EQUIPMENT: return createEquipment();
                         case DronePackage.MEASURE_VALUE: return createMeasureValue();
                         case DronePackage.MEASURE_CONVERSION: return createMeasureConversion();
                         case DronePackage.MEASURE_DIMENSION: return createMeasureDimension();
-                        case DronePackage.MEASURE_PROPERTY: return createMeasureProperty();
                         case DronePackage.ROBOT_MISSION_CONTAINER: return createRobotMissionContainer();
+                        case DronePackage.PROPERTY_KEY_CONTAINER: return createPropertyKeyContainer();
+                        case DronePackage.PROPERTY_KEY: return createPropertyKey();
                         case DronePackage.CAPABILITY: return createCapability();
                         case DronePackage.CAPABILITY_PROPERTIES: return createCapabilityProperties();
                         default:
@@ -165,9 +166,9 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
          * <!-- end-user-doc -->
          * @generated
          */
-        public StringProperty createStringProperty() {
-                StringPropertyImpl stringProperty = new StringPropertyImpl();
-                return stringProperty;
+        public StringValue createStringValue() {
+                StringValueImpl stringValue = new StringValueImpl();
+                return stringValue;
         }
 
         /**
@@ -235,9 +236,9 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
          * <!-- end-user-doc -->
          * @generated
          */
-        public MeasureProperty createMeasureProperty() {
-                MeasurePropertyImpl measureProperty = new MeasurePropertyImpl();
-                return measureProperty;
+        public RobotMissionContainer createRobotMissionContainer() {
+                RobotMissionContainerImpl robotMissionContainer = new RobotMissionContainerImpl();
+                return robotMissionContainer;
         }
 
         /**
@@ -245,9 +246,19 @@ public class DroneFactoryImpl extends EFactoryImpl implements DroneFactory {
          * <!-- end-user-doc -->
          * @generated
          */
-        public RobotMissionContainer createRobotMissionContainer() {
-                RobotMissionContainerImpl robotMissionContainer = new RobotMissionContainerImpl();
-                return robotMissionContainer;
+        public PropertyKeyContainer createPropertyKeyContainer() {
+                PropertyKeyContainerImpl propertyKeyContainer = new PropertyKeyContainerImpl();
+                return propertyKeyContainer;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public PropertyKey createPropertyKey() {
+                PropertyKeyImpl propertyKey = new PropertyKeyImpl();
+                return propertyKey;
         }
 
         /**

@@ -4,6 +4,7 @@ package hu.bme.mdsd.ztz.model.drone.impl;
 
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.PropertyValue;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,33 +24,13 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.PropertyImpl#getKey <em>Key</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.PropertyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.PropertyImpl#getKey <em>Key</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PropertyImpl extends MinimalEObjectImpl.Container implements Property {
-        /**
-         * The default value of the '{@link #getKey() <em>Key</em>}' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getKey()
-         * @generated
-         * @ordered
-         */
-        protected static final String KEY_EDEFAULT = null;
-
-        /**
-         * The cached value of the '{@link #getKey() <em>Key</em>}' attribute.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see #getKey()
-         * @generated
-         * @ordered
-         */
-        protected String key = KEY_EDEFAULT;
-
         /**
          * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
          * <!-- begin-user-doc -->
@@ -59,6 +40,16 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
          * @ordered
          */
         protected PropertyValue value;
+
+        /**
+         * The cached value of the '{@link #getKey() <em>Key</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getKey()
+         * @generated
+         * @ordered
+         */
+        protected PropertyKey key;
 
         /**
          * <!-- begin-user-doc -->
@@ -84,7 +75,15 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
          * <!-- end-user-doc -->
          * @generated
          */
-        public String getKey() {
+        public PropertyKey getKey() {
+                if (key != null && key.eIsProxy()) {
+                        InternalEObject oldKey = (InternalEObject)key;
+                        key = (PropertyKey)eResolveProxy(oldKey);
+                        if (key != oldKey) {
+                                if (eNotificationRequired())
+                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.PROPERTY__KEY, oldKey, key));
+                        }
+                }
                 return key;
         }
 
@@ -93,8 +92,17 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
          * <!-- end-user-doc -->
          * @generated
          */
-        public void setKey(String newKey) {
-                String oldKey = key;
+        public PropertyKey basicGetKey() {
+                return key;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setKey(PropertyKey newKey) {
+                PropertyKey oldKey = key;
                 key = newKey;
                 if (eNotificationRequired())
                         eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.PROPERTY__KEY, oldKey, key));
@@ -165,10 +173,11 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
                 switch (featureID) {
-                        case DronePackage.PROPERTY__KEY:
-                                return getKey();
                         case DronePackage.PROPERTY__VALUE:
                                 return getValue();
+                        case DronePackage.PROPERTY__KEY:
+                                if (resolve) return getKey();
+                                return basicGetKey();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -181,11 +190,11 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         @Override
         public void eSet(int featureID, Object newValue) {
                 switch (featureID) {
-                        case DronePackage.PROPERTY__KEY:
-                                setKey((String)newValue);
-                                return;
                         case DronePackage.PROPERTY__VALUE:
                                 setValue((PropertyValue)newValue);
+                                return;
+                        case DronePackage.PROPERTY__KEY:
+                                setKey((PropertyKey)newValue);
                                 return;
                 }
                 super.eSet(featureID, newValue);
@@ -199,11 +208,11 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         @Override
         public void eUnset(int featureID) {
                 switch (featureID) {
-                        case DronePackage.PROPERTY__KEY:
-                                setKey(KEY_EDEFAULT);
-                                return;
                         case DronePackage.PROPERTY__VALUE:
                                 setValue((PropertyValue)null);
+                                return;
+                        case DronePackage.PROPERTY__KEY:
+                                setKey((PropertyKey)null);
                                 return;
                 }
                 super.eUnset(featureID);
@@ -217,28 +226,12 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         @Override
         public boolean eIsSet(int featureID) {
                 switch (featureID) {
-                        case DronePackage.PROPERTY__KEY:
-                                return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
                         case DronePackage.PROPERTY__VALUE:
                                 return value != null;
+                        case DronePackage.PROPERTY__KEY:
+                                return key != null;
                 }
                 return super.eIsSet(featureID);
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        @Override
-        public String toString() {
-                if (eIsProxy()) return super.toString();
-
-                StringBuffer result = new StringBuffer(super.toString());
-                result.append(" (key: ");
-                result.append(key);
-                result.append(')');
-                return result.toString();
         }
 
 } //PropertyImpl

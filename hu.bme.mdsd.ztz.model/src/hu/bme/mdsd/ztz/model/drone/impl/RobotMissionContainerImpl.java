@@ -7,11 +7,13 @@ import hu.bme.mdsd.ztz.model.drone.Capability;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
 import hu.bme.mdsd.ztz.model.drone.Mission;
+import hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -37,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotMissionContainerImpl#getMeasureDimensions <em>Measure Dimensions</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotMissionContainerImpl#getAreaObjects <em>Area Objects</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotMissionContainerImpl#getCapabilities <em>Capabilities</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.RobotMissionContainerImpl#getPropertyKeyContainer <em>Property Key Container</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +95,16 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
          * @ordered
          */
         protected EList<Capability> capabilities;
+
+        /**
+         * The cached value of the '{@link #getPropertyKeyContainer() <em>Property Key Container</em>}' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getPropertyKeyContainer()
+         * @generated
+         * @ordered
+         */
+        protected PropertyKeyContainer propertyKeyContainer;
 
         /**
          * <!-- begin-user-doc -->
@@ -176,6 +190,49 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
          * <!-- end-user-doc -->
          * @generated
          */
+        public PropertyKeyContainer getPropertyKeyContainer() {
+                return propertyKeyContainer;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public NotificationChain basicSetPropertyKeyContainer(PropertyKeyContainer newPropertyKeyContainer, NotificationChain msgs) {
+                PropertyKeyContainer oldPropertyKeyContainer = propertyKeyContainer;
+                propertyKeyContainer = newPropertyKeyContainer;
+                if (eNotificationRequired()) {
+                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER, oldPropertyKeyContainer, newPropertyKeyContainer);
+                        if (msgs == null) msgs = notification; else msgs.add(notification);
+                }
+                return msgs;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setPropertyKeyContainer(PropertyKeyContainer newPropertyKeyContainer) {
+                if (newPropertyKeyContainer != propertyKeyContainer) {
+                        NotificationChain msgs = null;
+                        if (propertyKeyContainer != null)
+                                msgs = ((InternalEObject)propertyKeyContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER, null, msgs);
+                        if (newPropertyKeyContainer != null)
+                                msgs = ((InternalEObject)newPropertyKeyContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER, null, msgs);
+                        msgs = basicSetPropertyKeyContainer(newPropertyKeyContainer, msgs);
+                        if (msgs != null) msgs.dispatch();
+                }
+                else if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER, newPropertyKeyContainer, newPropertyKeyContainer));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
@@ -189,6 +246,8 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                                 return ((InternalEList<?>)getAreaObjects()).basicRemove(otherEnd, msgs);
                         case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
                                 return ((InternalEList<?>)getCapabilities()).basicRemove(otherEnd, msgs);
+                        case DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER:
+                                return basicSetPropertyKeyContainer(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -211,6 +270,8 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                                 return getAreaObjects();
                         case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
                                 return getCapabilities();
+                        case DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER:
+                                return getPropertyKeyContainer();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -244,6 +305,9 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                                 getCapabilities().clear();
                                 getCapabilities().addAll((Collection<? extends Capability>)newValue);
                                 return;
+                        case DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER:
+                                setPropertyKeyContainer((PropertyKeyContainer)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -271,6 +335,9 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                         case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
                                 getCapabilities().clear();
                                 return;
+                        case DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER:
+                                setPropertyKeyContainer((PropertyKeyContainer)null);
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -293,6 +360,8 @@ public class RobotMissionContainerImpl extends MinimalEObjectImpl.Container impl
                                 return areaObjects != null && !areaObjects.isEmpty();
                         case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
                                 return capabilities != null && !capabilities.isEmpty();
+                        case DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER:
+                                return propertyKeyContainer != null;
                 }
                 return super.eIsSet(featureID);
         }

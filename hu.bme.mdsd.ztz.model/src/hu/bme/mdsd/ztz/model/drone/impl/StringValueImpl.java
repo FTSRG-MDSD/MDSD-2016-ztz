@@ -3,7 +3,7 @@
 package hu.bme.mdsd.ztz.model.drone.impl;
 
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
-import hu.bme.mdsd.ztz.model.drone.StringProperty;
+import hu.bme.mdsd.ztz.model.drone.StringValue;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>String Property</b></em>'.
+ * An implementation of the model object '<em><b>String Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.StringPropertyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.impl.StringValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class StringPropertyImpl extends MinimalEObjectImpl.Container implements StringProperty {
+public class StringValueImpl extends MinimalEObjectImpl.Container implements StringValue {
         /**
          * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
          * <!-- begin-user-doc -->
@@ -51,7 +51,7 @@ public class StringPropertyImpl extends MinimalEObjectImpl.Container implements 
          * <!-- end-user-doc -->
          * @generated
          */
-        protected StringPropertyImpl() {
+        protected StringValueImpl() {
                 super();
         }
 
@@ -62,7 +62,7 @@ public class StringPropertyImpl extends MinimalEObjectImpl.Container implements 
          */
         @Override
         protected EClass eStaticClass() {
-                return DronePackage.Literals.STRING_PROPERTY;
+                return DronePackage.Literals.STRING_VALUE;
         }
 
         /**
@@ -83,7 +83,7 @@ public class StringPropertyImpl extends MinimalEObjectImpl.Container implements 
                 String oldValue = value;
                 value = newValue;
                 if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.STRING_PROPERTY__VALUE, oldValue, value));
+                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.STRING_VALUE__VALUE, oldValue, value));
         }
 
         /**
@@ -94,7 +94,7 @@ public class StringPropertyImpl extends MinimalEObjectImpl.Container implements 
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
                 switch (featureID) {
-                        case DronePackage.STRING_PROPERTY__VALUE:
+                        case DronePackage.STRING_VALUE__VALUE:
                                 return getValue();
                 }
                 return super.eGet(featureID, resolve, coreType);
@@ -108,7 +108,7 @@ public class StringPropertyImpl extends MinimalEObjectImpl.Container implements 
         @Override
         public void eSet(int featureID, Object newValue) {
                 switch (featureID) {
-                        case DronePackage.STRING_PROPERTY__VALUE:
+                        case DronePackage.STRING_VALUE__VALUE:
                                 setValue((String)newValue);
                                 return;
                 }
@@ -123,7 +123,7 @@ public class StringPropertyImpl extends MinimalEObjectImpl.Container implements 
         @Override
         public void eUnset(int featureID) {
                 switch (featureID) {
-                        case DronePackage.STRING_PROPERTY__VALUE:
+                        case DronePackage.STRING_VALUE__VALUE:
                                 setValue(VALUE_EDEFAULT);
                                 return;
                 }
@@ -138,7 +138,7 @@ public class StringPropertyImpl extends MinimalEObjectImpl.Container implements 
         @Override
         public boolean eIsSet(int featureID) {
                 switch (featureID) {
-                        case DronePackage.STRING_PROPERTY__VALUE:
+                        case DronePackage.STRING_VALUE__VALUE:
                                 return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
                 }
                 return super.eIsSet(featureID);
@@ -160,4 +160,4 @@ public class StringPropertyImpl extends MinimalEObjectImpl.Container implements 
                 return result.toString();
         }
 
-} //StringPropertyImpl
+} //StringValueImpl

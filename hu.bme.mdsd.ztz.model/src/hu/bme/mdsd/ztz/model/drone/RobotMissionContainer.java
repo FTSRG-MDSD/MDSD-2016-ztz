@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer#getMeasureDimensions <em>Measure Dimensions</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer#getAreaObjects <em>Area Objects</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer#getCapabilities <em>Capabilities</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer#getPropertyKeyContainer <em>Property Key Container</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobotMissionContainer()
@@ -106,5 +107,31 @@ public interface RobotMissionContainer extends EObject {
          * @generated
          */
         EList<Capability> getCapabilities();
+
+        /**
+         * Returns the value of the '<em><b>Property Key Container</b></em>' containment reference.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Property Key Container</em>' containment reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Property Key Container</em>' containment reference.
+         * @see #setPropertyKeyContainer(PropertyKeyContainer)
+         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getRobotMissionContainer_PropertyKeyContainer()
+         * @model containment="true"
+         * @generated
+         */
+        PropertyKeyContainer getPropertyKeyContainer();
+
+        /**
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer#getPropertyKeyContainer <em>Property Key Container</em>}' containment reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Property Key Container</em>' containment reference.
+         * @see #getPropertyKeyContainer()
+         * @generated
+         */
+        void setPropertyKeyContainer(PropertyKeyContainer value);
 
 } // RobotMissionContainer

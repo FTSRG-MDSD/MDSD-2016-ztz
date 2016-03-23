@@ -130,6 +130,15 @@ public interface BehaviourFactory extends EFactory {
         TaskRequirement createTaskRequirement();
 
         /**
+         * Returns a new object of class '<em>Behavioural Property Key Container</em>'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return a new object of class '<em>Behavioural Property Key Container</em>'.
+         * @generated
+         */
+        BehaviouralPropertyKeyContainer createBehaviouralPropertyKeyContainer();
+
+        /**
          * Returns the package supported by this factory.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

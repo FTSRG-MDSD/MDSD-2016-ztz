@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.model.drone.Property#getKey <em>Key</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.drone.Property#getValue <em>Value</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.drone.Property#getKey <em>Key</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getProperty()
@@ -23,30 +23,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Property extends EObject {
         /**
-         * Returns the value of the '<em><b>Key</b></em>' attribute.
+         * Returns the value of the '<em><b>Key</b></em>' reference.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Key</em>' attribute isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Key</em>' attribute.
-         * @see #setKey(String)
+         * @return the value of the '<em>Key</em>' reference.
+         * @see #setKey(PropertyKey)
          * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getProperty_Key()
          * @model required="true"
          * @generated
          */
-        String getKey();
+        PropertyKey getKey();
 
         /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Property#getKey <em>Key</em>}' attribute.
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.Property#getKey <em>Key</em>}' reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Key</em>' attribute.
+         * @param value the new value of the '<em>Key</em>' reference.
          * @see #getKey()
          * @generated
          */
-        void setKey(String value);
+        void setKey(PropertyKey value);
 
         /**
          * Returns the value of the '<em><b>Value</b></em>' containment reference.

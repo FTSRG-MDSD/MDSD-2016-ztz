@@ -4,7 +4,7 @@ package hu.bme.mdsd.ztz.model.drone.provider;
 
 
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
-import hu.bme.mdsd.ztz.model.drone.StringProperty;
+import hu.bme.mdsd.ztz.model.drone.StringValue;
 
 import java.util.Collection;
 import java.util.List;
@@ -26,12 +26,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link hu.bme.mdsd.ztz.model.drone.StringProperty} object.
+ * This is the item provider adapter for a {@link hu.bme.mdsd.ztz.model.drone.StringValue} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class StringPropertyItemProvider 
+public class StringValueItemProvider 
         extends ItemProviderAdapter
         implements
                 IEditingDomainItemProvider,
@@ -45,7 +45,7 @@ public class StringPropertyItemProvider
          * <!-- end-user-doc -->
          * @generated
          */
-        public StringPropertyItemProvider(AdapterFactory adapterFactory) {
+        public StringValueItemProvider(AdapterFactory adapterFactory) {
                 super(adapterFactory);
         }
 
@@ -76,9 +76,9 @@ public class StringPropertyItemProvider
                         (createItemPropertyDescriptor
                                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                                  getResourceLocator(),
-                                 getString("_UI_StringProperty_value_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_StringProperty_value_feature", "_UI_StringProperty_type"),
-                                 DronePackage.Literals.STRING_PROPERTY__VALUE,
+                                 getString("_UI_StringValue_value_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_StringValue_value_feature", "_UI_StringValue_type"),
+                                 DronePackage.Literals.STRING_VALUE__VALUE,
                                  true,
                                  false,
                                  false,
@@ -88,14 +88,14 @@ public class StringPropertyItemProvider
         }
 
         /**
-         * This returns StringProperty.gif.
+         * This returns StringValue.gif.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
         @Override
         public Object getImage(Object object) {
-                return overlayImage(object, getResourceLocator().getImage("full/obj16/StringProperty"));
+                return overlayImage(object, getResourceLocator().getImage("full/obj16/StringValue"));
         }
 
         /**
@@ -106,10 +106,10 @@ public class StringPropertyItemProvider
          */
         @Override
         public String getText(Object object) {
-                String label = ((StringProperty)object).getValue();
+                String label = ((StringValue)object).getValue();
                 return label == null || label.length() == 0 ?
-                        getString("_UI_StringProperty_type") :
-                        getString("_UI_StringProperty_type") + " " + label;
+                        getString("_UI_StringValue_type") :
+                        getString("_UI_StringValue_type") + " " + label;
         }
         
 
@@ -124,8 +124,8 @@ public class StringPropertyItemProvider
         public void notifyChanged(Notification notification) {
                 updateChildren(notification);
 
-                switch (notification.getFeatureID(StringProperty.class)) {
-                        case DronePackage.STRING_PROPERTY__VALUE:
+                switch (notification.getFeatureID(StringValue.class)) {
+                        case DronePackage.STRING_VALUE__VALUE:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                                 return;
                 }

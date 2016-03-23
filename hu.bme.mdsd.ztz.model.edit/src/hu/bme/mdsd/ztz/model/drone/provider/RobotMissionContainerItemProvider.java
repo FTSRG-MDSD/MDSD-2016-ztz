@@ -82,6 +82,7 @@ public class RobotMissionContainerItemProvider
                         childrenFeatures.add(DronePackage.Literals.ROBOT_MISSION_CONTAINER__MEASURE_DIMENSIONS);
                         childrenFeatures.add(DronePackage.Literals.ROBOT_MISSION_CONTAINER__AREA_OBJECTS);
                         childrenFeatures.add(DronePackage.Literals.ROBOT_MISSION_CONTAINER__CAPABILITIES);
+                        childrenFeatures.add(DronePackage.Literals.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER);
                 }
                 return childrenFeatures;
         }
@@ -139,6 +140,7 @@ public class RobotMissionContainerItemProvider
                         case DronePackage.ROBOT_MISSION_CONTAINER__MEASURE_DIMENSIONS:
                         case DronePackage.ROBOT_MISSION_CONTAINER__AREA_OBJECTS:
                         case DronePackage.ROBOT_MISSION_CONTAINER__CAPABILITIES:
+                        case DronePackage.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER:
                                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                                 return;
                 }
@@ -180,6 +182,11 @@ public class RobotMissionContainerItemProvider
                         (createChildParameter
                                 (DronePackage.Literals.ROBOT_MISSION_CONTAINER__CAPABILITIES,
                                  DroneFactory.eINSTANCE.createCapability()));
+
+                newChildDescriptors.add
+                        (createChildParameter
+                                (DronePackage.Literals.ROBOT_MISSION_CONTAINER__PROPERTY_KEY_CONTAINER,
+                                 DroneFactory.eINSTANCE.createPropertyKeyContainer()));
         }
 
         /**

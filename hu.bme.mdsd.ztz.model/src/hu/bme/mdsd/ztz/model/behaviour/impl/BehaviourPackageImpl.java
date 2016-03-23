@@ -6,6 +6,7 @@ import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviouralPropertyKeyContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.CommunicationAction;
 import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
@@ -133,6 +134,13 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          * <!-- end-user-doc -->
          * @generated
          */
+        private EClass behaviouralPropertyKeyContainerEClass = null;
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         private EEnum robotStatusEEnum = null;
 
         /**
@@ -240,6 +248,15 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          */
         public EReference getBehaviourContainer_TaskRequirements() {
                 return (EReference)behaviourContainerEClass.getEStructuralFeatures().get(2);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public EReference getBehaviourContainer_BehaviourKeysContainer() {
+                return (EReference)behaviourContainerEClass.getEStructuralFeatures().get(3);
         }
 
         /**
@@ -670,6 +687,15 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
          * <!-- end-user-doc -->
          * @generated
          */
+        public EClass getBehaviouralPropertyKeyContainer() {
+                return behaviouralPropertyKeyContainerEClass;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         public EReference getTaskRequirement_Prerequisite() {
                 return (EReference)taskRequirementEClass.getEStructuralFeatures().get(1);
         }
@@ -769,6 +795,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 createEReference(behaviourContainerEClass, BEHAVIOUR_CONTAINER__DYNAMIC_ROBOTS);
                 createEReference(behaviourContainerEClass, BEHAVIOUR_CONTAINER__TASK_EXECUTIONS);
                 createEReference(behaviourContainerEClass, BEHAVIOUR_CONTAINER__TASK_REQUIREMENTS);
+                createEReference(behaviourContainerEClass, BEHAVIOUR_CONTAINER__BEHAVIOUR_KEYS_CONTAINER);
 
                 messageEClass = createEClass(MESSAGE);
                 createEReference(messageEClass, MESSAGE__INVOLVED_TASK_EXECUTIONS);
@@ -835,6 +862,8 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__TASK);
                 createEReference(taskRequirementEClass, TASK_REQUIREMENT__PREREQUISITE_TASK);
 
+                behaviouralPropertyKeyContainerEClass = createEClass(BEHAVIOURAL_PROPERTY_KEY_CONTAINER);
+
                 // Create enums
                 robotStatusEEnum = createEEnum(ROBOT_STATUS);
                 taskExecutionStatusEEnum = createEEnum(TASK_EXECUTION_STATUS);
@@ -880,12 +909,14 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 taskExecutionEClass.getESuperTypes().add(theDronePackage.getNamedElement());
                 dynamicRobotEClass.getESuperTypes().add(theDronePackage.getNamedElement());
                 taskRequirementEClass.getESuperTypes().add(theDronePackage.getNamedElement());
+                behaviouralPropertyKeyContainerEClass.getESuperTypes().add(theDronePackage.getPropertyKeyContainer());
 
                 // Initialize classes, features, and operations; add parameters
                 initEClass(behaviourContainerEClass, BehaviourContainer.class, "BehaviourContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getBehaviourContainer_DynamicRobots(), this.getDynamicRobot(), null, "dynamicRobots", null, 0, -1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getBehaviourContainer_TaskExecutions(), this.getTaskExecution(), null, "taskExecutions", null, 0, -1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getBehaviourContainer_TaskRequirements(), this.getTaskRequirement(), null, "taskRequirements", null, 0, -1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getBehaviourContainer_BehaviourKeysContainer(), this.getBehaviouralPropertyKeyContainer(), null, "behaviourKeysContainer", null, 0, 1, BehaviourContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getMessage_InvolvedTaskExecutions(), this.getTaskExecution(), null, "involvedTaskExecutions", null, 0, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -951,6 +982,8 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 initEReference(getTaskRequirement_Descriptor(), theDronePackage.getTaskDescriptor(), null, "descriptor", null, 0, 1, TaskRequirement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskRequirement_Task(), theDronePackage.getTask(), null, "task", null, 1, 1, TaskRequirement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
                 initEReference(getTaskRequirement_PrerequisiteTask(), theDronePackage.getTask(), null, "prerequisiteTask", null, 1, 1, TaskRequirement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+                initEClass(behaviouralPropertyKeyContainerEClass, BehaviouralPropertyKeyContainer.class, "BehaviouralPropertyKeyContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
                 // Initialize enums and add enum literals
                 initEEnum(robotStatusEEnum, RobotStatus.class, "RobotStatus");

@@ -100,8 +100,8 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
                                 return createRobotAdapter();
                         }
                         @Override
-                        public Adapter caseStringProperty(StringProperty object) {
-                                return createStringPropertyAdapter();
+                        public Adapter caseStringValue(StringValue object) {
+                                return createStringValueAdapter();
                         }
                         @Override
                         public Adapter caseSize(Size object) {
@@ -132,16 +132,20 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
                                 return createMeasureDimensionAdapter();
                         }
                         @Override
-                        public Adapter caseMeasureProperty(MeasureProperty object) {
-                                return createMeasurePropertyAdapter();
-                        }
-                        @Override
                         public Adapter casePropertyValue(PropertyValue object) {
                                 return createPropertyValueAdapter();
                         }
                         @Override
                         public Adapter caseRobotMissionContainer(RobotMissionContainer object) {
                                 return createRobotMissionContainerAdapter();
+                        }
+                        @Override
+                        public Adapter casePropertyKeyContainer(PropertyKeyContainer object) {
+                                return createPropertyKeyContainerAdapter();
+                        }
+                        @Override
+                        public Adapter casePropertyKey(PropertyKey object) {
+                                return createPropertyKeyAdapter();
                         }
                         @Override
                         public Adapter caseCapability(Capability object) {
@@ -284,16 +288,16 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
         }
 
         /**
-         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.StringProperty <em>String Property</em>}'.
+         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.StringValue <em>String Value</em>}'.
          * <!-- begin-user-doc -->
          * This default implementation returns null so that we can easily ignore cases;
          * it's useful to ignore a case when inheritance will catch all the cases anyway.
          * <!-- end-user-doc -->
          * @return the new adapter.
-         * @see hu.bme.mdsd.ztz.model.drone.StringProperty
+         * @see hu.bme.mdsd.ztz.model.drone.StringValue
          * @generated
          */
-        public Adapter createStringPropertyAdapter() {
+        public Adapter createStringValueAdapter() {
                 return null;
         }
 
@@ -396,20 +400,6 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
         }
 
         /**
-         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.MeasureProperty <em>Measure Property</em>}'.
-         * <!-- begin-user-doc -->
-         * This default implementation returns null so that we can easily ignore cases;
-         * it's useful to ignore a case when inheritance will catch all the cases anyway.
-         * <!-- end-user-doc -->
-         * @return the new adapter.
-         * @see hu.bme.mdsd.ztz.model.drone.MeasureProperty
-         * @generated
-         */
-        public Adapter createMeasurePropertyAdapter() {
-                return null;
-        }
-
-        /**
          * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.PropertyValue <em>Property Value</em>}'.
          * <!-- begin-user-doc -->
          * This default implementation returns null so that we can easily ignore cases;
@@ -434,6 +424,34 @@ public class DroneAdapterFactory extends AdapterFactoryImpl {
          * @generated
          */
         public Adapter createRobotMissionContainerAdapter() {
+                return null;
+        }
+
+        /**
+         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer <em>Property Key Container</em>}'.
+         * <!-- begin-user-doc -->
+         * This default implementation returns null so that we can easily ignore cases;
+         * it's useful to ignore a case when inheritance will catch all the cases anyway.
+         * <!-- end-user-doc -->
+         * @return the new adapter.
+         * @see hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer
+         * @generated
+         */
+        public Adapter createPropertyKeyContainerAdapter() {
+                return null;
+        }
+
+        /**
+         * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.model.drone.PropertyKey <em>Property Key</em>}'.
+         * <!-- begin-user-doc -->
+         * This default implementation returns null so that we can easily ignore cases;
+         * it's useful to ignore a case when inheritance will catch all the cases anyway.
+         * <!-- end-user-doc -->
+         * @return the new adapter.
+         * @see hu.bme.mdsd.ztz.model.drone.PropertyKey
+         * @generated
+         */
+        public Adapter createPropertyKeyAdapter() {
                 return null;
         }
 

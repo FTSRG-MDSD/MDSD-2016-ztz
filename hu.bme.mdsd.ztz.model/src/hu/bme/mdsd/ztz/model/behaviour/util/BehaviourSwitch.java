@@ -5,7 +5,7 @@ package hu.bme.mdsd.ztz.model.behaviour.util;
 import hu.bme.mdsd.ztz.model.behaviour.*;
 
 import hu.bme.mdsd.ztz.model.drone.NamedElement;
-
+import hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -159,6 +159,14 @@ public class BehaviourSwitch<T> extends Switch<T> {
                                 TaskRequirement taskRequirement = (TaskRequirement)theEObject;
                                 T result = caseTaskRequirement(taskRequirement);
                                 if (result == null) result = caseNamedElement(taskRequirement);
+                                if (result == null) result = defaultCase(theEObject);
+                                return result;
+                        }
+                        case BehaviourPackage.BEHAVIOURAL_PROPERTY_KEY_CONTAINER: {
+                                BehaviouralPropertyKeyContainer behaviouralPropertyKeyContainer = (BehaviouralPropertyKeyContainer)theEObject;
+                                T result = caseBehaviouralPropertyKeyContainer(behaviouralPropertyKeyContainer);
+                                if (result == null) result = casePropertyKeyContainer(behaviouralPropertyKeyContainer);
+                                if (result == null) result = caseNamedElement(behaviouralPropertyKeyContainer);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }
@@ -362,6 +370,21 @@ public class BehaviourSwitch<T> extends Switch<T> {
         }
 
         /**
+         * Returns the result of interpreting the object as an instance of '<em>Behavioural Property Key Container</em>'.
+         * <!-- begin-user-doc -->
+         * This implementation returns null;
+         * returning a non-null result will terminate the switch.
+         * <!-- end-user-doc -->
+         * @param object the target of the switch.
+         * @return the result of interpreting the object as an instance of '<em>Behavioural Property Key Container</em>'.
+         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+         * @generated
+         */
+        public T caseBehaviouralPropertyKeyContainer(BehaviouralPropertyKeyContainer object) {
+                return null;
+        }
+
+        /**
          * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
          * <!-- begin-user-doc -->
          * This implementation returns null;
@@ -373,6 +396,21 @@ public class BehaviourSwitch<T> extends Switch<T> {
          * @generated
          */
         public T caseNamedElement(NamedElement object) {
+                return null;
+        }
+
+        /**
+         * Returns the result of interpreting the object as an instance of '<em>Property Key Container</em>'.
+         * <!-- begin-user-doc -->
+         * This implementation returns null;
+         * returning a non-null result will terminate the switch.
+         * <!-- end-user-doc -->
+         * @param object the target of the switch.
+         * @return the result of interpreting the object as an instance of '<em>Property Key Container</em>'.
+         * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+         * @generated
+         */
+        public T casePropertyKeyContainer(PropertyKeyContainer object) {
                 return null;
         }
 
