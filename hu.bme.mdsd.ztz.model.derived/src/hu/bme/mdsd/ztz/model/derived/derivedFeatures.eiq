@@ -15,3 +15,17 @@ pattern descriptor(sourceRequirement: TaskRequirement, targetDescriptor: TaskDes
 	TaskExecution.task.descriptor(taskExecution, targetDescriptor);
 }
 
+
+@QueryBasedFeature
+pattern task(requirement: TaskRequirement, task: Task) {
+	TaskRequirement.taskExecution.task(requirement, task);
+}
+
+
+@QueryBasedFeature
+pattern currentTask(action: Action, task: Task) {
+	Action.currentTaskExecution.task(action, task);
+}
+
+
+
