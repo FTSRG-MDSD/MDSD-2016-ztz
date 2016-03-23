@@ -48,7 +48,7 @@
       <length value="1.1" dimension="//@measureDimensions.2"/>
     </size>
     <equipments name="Hand" facilitate="//@capabilities.1"/>
-    <communicationRange value="600.0" dimension="//@measureDimensions.2"/>
+    <communicationRange value="400.0" dimension="//@measureDimensions.2"/>
   </robots>
   <measureDimensions name="Second"/>
   <measureDimensions name="Minute">

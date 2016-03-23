@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<behaviour:BehaviourContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:behaviour="http://www.mdsd.hu/behaviour" xmlns:drone="http://www.mdsd.hu/drone">
+  <dynamicRobots name="Bob Dynamic">
+    <robot href="robots.drone#//@robots.1"/>
+    <detectedObjects>
+      <object href="robots.drone#//@areaObjects.0"/>
+    </detectedObjects>
+    <collaborations collaborator="//@dynamicRobots.1"/>
+    <messageRepository name="Bob Repository">
+      <sendedMessages name="GetStatusMessage" needResponse="true">
+        <properties key="//@behaviourKeysContainer/@keys.0">
+          <value xsi:type="drone:StringValue" value="getStatus"/>
+        </properties>
+        <TTL value="10.0">
+          <dimension href="robots.drone#//@measureDimensions.0"/>
+        </TTL>
+      </sendedMessages>
+      <sendedMessages name="OrderDeliveringTask" involvedTaskExecutions="//@taskExecutions.1 //@taskExecutions.0 //@taskExecutions.3 //@taskExecutions.2" needResponse="true">
+        <referredObjects href="robots.drone#//@areaObjects.0"/>
+      </sendedMessages>
+    </messageRepository>
+    <actions xsi:type="behaviour:UnicastCommunication" name="" message="//@dynamicRobots.0/@messageRepository/@sendedMessages.0" target="//@dynamicRobots.1"/>
+    <actions xsi:type="behaviour:UnicastCommunication" name="" message="//@dynamicRobots.0/@messageRepository/@sendedMessages.1" target="//@dynamicRobots.1"/>
+  </dynamicRobots>
+  <dynamicRobots name="Frank 007 Dynamic" status="Executing">
+    <robot href="robots.drone#//@robots.0"/>
+    <detectedObjects>
+      <object href="robots.drone#//@areaObjects.0"/>
+    </detectedObjects>
+    <collaborations collaborator="//@dynamicRobots.0"/>
+    <messageRepository name="Frank 007 Repository">
+      <sendedMessages name="StatusResponse">
+        <properties key="//@behaviourKeysContainer/@keys.1">
+          <value xsi:type="drone:StringValue" value="Ready"/>
+        </properties>
+      </sendedMessages>
+      <sendedMessages name="OrderingResponse" involvedTaskExecutions="//@taskExecutions.1 //@taskExecutions.0 //@taskExecutions.3 //@taskExecutions.2">
+        <referredObjects href="robots.drone#//@areaObjects.0"/>
+      </sendedMessages>
+    </messageRepository>
+    <actions name="Ascending" currentTaskExecution="//@taskExecutions.0"/>
+    <actions name="Moving" currentTaskExecution="//@taskExecutions.1"/>
+    <actions xsi:type="behaviour:UnicastCommunication" name="" message="//@dynamicRobots.1/@messageRepository/@sendedMessages.0" target="//@dynamicRobots.0"/>
+    <actions xsi:type="behaviour:UnicastCommunication" message="//@dynamicRobots.1/@messageRepository/@sendedMessages.1" target="//@dynamicRobots.0"/>
+  </dynamicRobots>
+  <taskExecutions name="Ascend Execution" executors="//@dynamicRobots.0 //@dynamicRobots.1" status="Finished">
+    <executionTime value="3.0">
+      <dimension href="robots.drone#//@measureDimensions.0"/>
+    </executionTime>
+    <task href="robots.drone#//@missions.0/@tasks.0"/>
+  </taskExecutions>
+  <taskExecutions name="Approach Execution" executors="//@dynamicRobots.1" status="InProgress">
+    <executionTime value="15.0">
+      <dimension href="robots.drone#//@measureDimensions.1"/>
+    </executionTime>
+    <task href="robots.drone#//@missions.0/@tasks.1"/>
+  </taskExecutions>
+  <taskExecutions name="Lift Execution" executors="//@dynamicRobots.1" status="Waiting">
+    <task href="robots.drone#//@missions.0/@tasks.2"/>
+  </taskExecutions>
+  <taskExecutions name="Deliver Execution" executors="//@dynamicRobots.1" status="Waiting">
+    <task href="robots.drone#//@missions.0/@tasks.3"/>
+  </taskExecutions>
+  <taskRequirements name="Ascend Req" taskExecution="//@taskExecutions.0" participants="1">
+    <requiredCapabilities href="robots.drone#//@capabilities.2"/>
+    <requiredCapabilities href="robots.drone#//@capabilities.0"/>
+    <capabilityProperties>
+      <properties>
+        <value xsi:type="drone:MeasureValue" value="700.0">
+          <dimension href="robots.drone#//@measureDimensions.2"/>
+        </value>
+        <key href="robots.drone#//@propertyKeyContainer/@keys.1"/>
+      </properties>
+      <capability href="robots.drone#//@capabilities.2"/>
+    </capabilityProperties>
+  </taskRequirements>
+  <taskRequirements name="Approach Requirement" taskExecution="//@taskExecutions.1" prerequisite="//@taskExecutions.0" participants="1">
+    <requiredCapabilities href="robots.drone#//@capabilities.0"/>
+  </taskRequirements>
+  <taskRequirements name="Lift Requirement" taskExecution="//@taskExecutions.2" prerequisite="//@taskExecutions.1" participants="1">
+    <requiredCapabilities href="robots.drone#//@capabilities.0"/>
+    <requiredCapabilities href="robots.drone#//@capabilities.1"/>
+  </taskRequirements>
+  <taskRequirements name="Deliver Requirement" taskExecution="//@taskExecutions.3" prerequisite="//@taskExecutions.2" participants="1">
+    <requiredCapabilities href="robots.drone#//@capabilities.0"/>
+  </taskRequirements>
+  <behaviourKeysContainer>
+    <keys name="MessageRequest"/>
+    <keys name="MessageResponse"/>
+  </behaviourKeysContainer>
+</behaviour:BehaviourContainer>

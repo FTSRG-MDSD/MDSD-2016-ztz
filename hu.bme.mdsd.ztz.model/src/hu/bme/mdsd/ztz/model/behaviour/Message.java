@@ -4,13 +4,12 @@ package hu.bme.mdsd.ztz.model.behaviour;
 
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
+import hu.bme.mdsd.ztz.model.drone.NamedElement;
 import hu.bme.mdsd.ztz.model.drone.Property;
 
 import java.util.Date;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Message extends EObject {
+public interface Message extends NamedElement {
         /**
          * Returns the value of the '<em><b>Involved Task Executions</b></em>' reference list.
          * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution}.
@@ -136,26 +135,26 @@ public interface Message extends EObject {
         void setNeedResponse(boolean value);
 
         /**
-         * Returns the value of the '<em><b>TTL</b></em>' reference.
+         * Returns the value of the '<em><b>TTL</b></em>' containment reference.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>TTL</em>' reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>TTL</em>' reference.
+         * @return the value of the '<em>TTL</em>' containment reference.
          * @see #setTTL(MeasureValue)
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getMessage_TTL()
-         * @model
+         * @model containment="true"
          * @generated
          */
         MeasureValue getTTL();
 
         /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTTL <em>TTL</em>}' reference.
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTTL <em>TTL</em>}' containment reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @param value the new value of the '<em>TTL</em>' reference.
+         * @param value the new value of the '<em>TTL</em>' containment reference.
          * @see #getTTL()
          * @generated
          */

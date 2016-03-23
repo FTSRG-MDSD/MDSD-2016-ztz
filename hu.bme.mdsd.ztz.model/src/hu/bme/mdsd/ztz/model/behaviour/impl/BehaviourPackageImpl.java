@@ -900,6 +900,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 // Set bounds for type parameters
 
                 // Add supertypes to classes
+                messageEClass.getESuperTypes().add(theDronePackage.getNamedElement());
                 communicationActionEClass.getESuperTypes().add(this.getAction());
                 unicastCommunicationEClass.getESuperTypes().add(this.getCommunicationAction());
                 multicastCommunicationEClass.getESuperTypes().add(this.getCommunicationAction());
@@ -924,7 +925,7 @@ public class BehaviourPackageImpl extends EPackageImpl implements BehaviourPacka
                 initEReference(getMessage_Properties(), theDronePackage.getProperty(), null, "properties", null, 0, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEReference(getMessage_ReferredObjects(), theDronePackage.getAreaObject(), null, "referredObjects", null, 0, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
                 initEAttribute(getMessage_NeedResponse(), ecorePackage.getEBoolean(), "needResponse", "false", 1, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-                initEReference(getMessage_TTL(), theDronePackage.getMeasureValue(), null, "TTL", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                initEReference(getMessage_TTL(), theDronePackage.getMeasureValue(), null, "TTL", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
                 initEClass(communicationActionEClass, CommunicationAction.class, "CommunicationAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
                 initEReference(getCommunicationAction_Message(), this.getMessage(), null, "message", null, 1, 1, CommunicationAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

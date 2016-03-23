@@ -135,13 +135,22 @@ public interface BehaviourPackage extends EPackage {
         int MESSAGE = 1;
 
         /**
+         * The feature id for the '<em><b>Name</b></em>' attribute.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int MESSAGE__NAME = DronePackage.NAMED_ELEMENT__NAME;
+
+        /**
          * The feature id for the '<em><b>Involved Task Executions</b></em>' reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int MESSAGE__INVOLVED_TASK_EXECUTIONS = 0;
+        int MESSAGE__INVOLVED_TASK_EXECUTIONS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
         /**
          * The feature id for the '<em><b>Timestamp</b></em>' attribute.
@@ -150,7 +159,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MESSAGE__TIMESTAMP = 1;
+        int MESSAGE__TIMESTAMP = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
         /**
          * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -159,7 +168,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MESSAGE__PROPERTIES = 2;
+        int MESSAGE__PROPERTIES = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
 
         /**
          * The feature id for the '<em><b>Referred Objects</b></em>' reference list.
@@ -168,7 +177,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MESSAGE__REFERRED_OBJECTS = 3;
+        int MESSAGE__REFERRED_OBJECTS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
         /**
          * The feature id for the '<em><b>Need Response</b></em>' attribute.
@@ -177,16 +186,16 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MESSAGE__NEED_RESPONSE = 4;
+        int MESSAGE__NEED_RESPONSE = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
         /**
-         * The feature id for the '<em><b>TTL</b></em>' reference.
+         * The feature id for the '<em><b>TTL</b></em>' containment reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int MESSAGE__TTL = 5;
+        int MESSAGE__TTL = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
         /**
          * The number of structural features of the '<em>Message</em>' class.
@@ -195,7 +204,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MESSAGE_FEATURE_COUNT = 6;
+        int MESSAGE_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
 
         /**
          * The number of operations of the '<em>Message</em>' class.
@@ -204,7 +213,7 @@ public interface BehaviourPackage extends EPackage {
          * @generated
          * @ordered
          */
-        int MESSAGE_OPERATION_COUNT = 0;
+        int MESSAGE_OPERATION_COUNT = DronePackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
         /**
          * The meta object id for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.CommunicationActionImpl <em>Communication Action</em>}' class.
@@ -1232,10 +1241,10 @@ public interface BehaviourPackage extends EPackage {
         EAttribute getMessage_NeedResponse();
 
         /**
-         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTTL <em>TTL</em>}'.
+         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.behaviour.Message#getTTL <em>TTL</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the reference '<em>TTL</em>'.
+         * @return the meta object for the containment reference '<em>TTL</em>'.
          * @see hu.bme.mdsd.ztz.model.behaviour.Message#getTTL()
          * @see #getMessage()
          * @generated
@@ -1883,7 +1892,7 @@ public interface BehaviourPackage extends EPackage {
                 EAttribute MESSAGE__NEED_RESPONSE = eINSTANCE.getMessage_NeedResponse();
 
                 /**
-                 * The meta object literal for the '<em><b>TTL</b></em>' reference feature.
+                 * The meta object literal for the '<em><b>TTL</b></em>' containment reference feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated

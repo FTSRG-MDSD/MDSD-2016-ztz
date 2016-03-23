@@ -77,6 +77,7 @@ public class BehaviourSwitch<T> extends Switch<T> {
                         case BehaviourPackage.MESSAGE: {
                                 Message message = (Message)theEObject;
                                 T result = caseMessage(message);
+                                if (result == null) result = caseNamedElement(message);
                                 if (result == null) result = defaultCase(theEObject);
                                 return result;
                         }

@@ -10,6 +10,7 @@ import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
 
+import hu.bme.mdsd.ztz.model.drone.impl.NamedElementImpl;
 import java.util.Collection;
 import java.util.Date;
 
@@ -22,8 +23,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -46,7 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class MessageImpl extends MinimalEObjectImpl.Container implements Message {
+public class MessageImpl extends NamedElementImpl implements Message {
         /**
          * The cached value of the '{@link #getInvolvedTaskExecutions() <em>Involved Task Executions</em>}' reference list.
          * <!-- begin-user-doc -->
@@ -118,7 +117,7 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
         protected boolean needResponse = NEED_RESPONSE_EDEFAULT;
 
         /**
-         * The cached value of the '{@link #getTTL() <em>TTL</em>}' reference.
+         * The cached value of the '{@link #getTTL() <em>TTL</em>}' containment reference.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getTTL()
@@ -230,14 +229,6 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * @generated
          */
         public MeasureValue getTTL() {
-                if (ttl != null && ttl.eIsProxy()) {
-                        InternalEObject oldTTL = (InternalEObject)ttl;
-                        ttl = (MeasureValue)eResolveProxy(oldTTL);
-                        if (ttl != oldTTL) {
-                                if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.MESSAGE__TTL, oldTTL, ttl));
-                        }
-                }
                 return ttl;
         }
 
@@ -246,8 +237,14 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * <!-- end-user-doc -->
          * @generated
          */
-        public MeasureValue basicGetTTL() {
-                return ttl;
+        public NotificationChain basicSetTTL(MeasureValue newTTL, NotificationChain msgs) {
+                MeasureValue oldTTL = ttl;
+                ttl = newTTL;
+                if (eNotificationRequired()) {
+                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourPackage.MESSAGE__TTL, oldTTL, newTTL);
+                        if (msgs == null) msgs = notification; else msgs.add(notification);
+                }
+                return msgs;
         }
 
         /**
@@ -256,10 +253,17 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
          * @generated
          */
         public void setTTL(MeasureValue newTTL) {
-                MeasureValue oldTTL = ttl;
-                ttl = newTTL;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.MESSAGE__TTL, oldTTL, ttl));
+                if (newTTL != ttl) {
+                        NotificationChain msgs = null;
+                        if (ttl != null)
+                                msgs = ((InternalEObject)ttl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BehaviourPackage.MESSAGE__TTL, null, msgs);
+                        if (newTTL != null)
+                                msgs = ((InternalEObject)newTTL).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BehaviourPackage.MESSAGE__TTL, null, msgs);
+                        msgs = basicSetTTL(newTTL, msgs);
+                        if (msgs != null) msgs.dispatch();
+                }
+                else if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.MESSAGE__TTL, newTTL, newTTL));
         }
 
         /**
@@ -272,6 +276,8 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
                 switch (featureID) {
                         case BehaviourPackage.MESSAGE__PROPERTIES:
                                 return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+                        case BehaviourPackage.MESSAGE__TTL:
+                                return basicSetTTL(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -295,8 +301,7 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
                         case BehaviourPackage.MESSAGE__NEED_RESPONSE:
                                 return isNeedResponse();
                         case BehaviourPackage.MESSAGE__TTL:
-                                if (resolve) return getTTL();
-                                return basicGetTTL();
+                                return getTTL();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }

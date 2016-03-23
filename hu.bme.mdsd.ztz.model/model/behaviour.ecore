@@ -14,7 +14,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="behaviourKeysContainer"
         eType="#//BehaviouralPropertyKeyContainer" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Message">
+  <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="drone.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvedTaskExecutions"
         upperBound="-1" eType="#//TaskExecution"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
@@ -25,7 +25,8 @@
         eType="ecore:EClass drone.ecore#//AreaObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="needResponse" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="TTL" eType="ecore:EClass drone.ecore#//MeasureValue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TTL" eType="ecore:EClass drone.ecore#//MeasureValue"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommunicationAction" abstract="true"
       eSuperTypes="#//Action">

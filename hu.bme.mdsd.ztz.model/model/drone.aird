@@ -1423,8 +1423,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_tUcvEObSEeW5rrLzCVrqiQ" name="key : EString" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="drone.ecore#//Property/key"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="drone.ecore#//Property/key"/>
+          <target xmi:type="ecore:EReference" href="drone.ecore#//Property/key"/>
+          <semanticElements xmi:type="ecore:EReference" href="drone.ecore#//Property/key"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_-YP2wOdgEeWH_ZsrRN4fWQ" labelAlignment="LEFT" description="_sL7iMOdeEeWH_ZsrRN4fWQ">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
@@ -3960,8 +3960,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_RoYiQOqkEeW2ga0N-O80vg" name="key : EString" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="drone.ecore#//Property/key"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="drone.ecore#//Property/key"/>
+          <target xmi:type="ecore:EReference" href="drone.ecore#//Property/key"/>
+          <semanticElements xmi:type="ecore:EReference" href="drone.ecore#//Property/key"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_RoZwYOqkEeW2ga0N-O80vg" labelAlignment="LEFT" description="_RoUQ0OqkEeW2ga0N-O80vg">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
