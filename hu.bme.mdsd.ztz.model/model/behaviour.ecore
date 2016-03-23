@@ -60,7 +60,11 @@
         eType="ecore:EClass drone.ecore#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentTaskExecution" eType="#//TaskExecution"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentTask" eType="ecore:EClass drone.ecore#//Task"
-        changeable="false" volatile="true" transient="true" unsettable="true" derived="true"/>
+        changeable="false" volatile="true" transient="true" unsettable="true" derived="true">
+      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
+        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.currentTask"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskExecution" eSuperTypes="drone.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="executors" upperBound="-1"
@@ -126,7 +130,11 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1" eType="ecore:EClass drone.ecore#//Task"
-        changeable="false" volatile="true" transient="true" unsettable="true" derived="true"/>
+        changeable="false" volatile="true" transient="true" unsettable="true" derived="true">
+      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
+        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.task"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="prerequisiteTask" lowerBound="1"
         eType="ecore:EClass drone.ecore#//Task" changeable="false" volatile="true"
         transient="true" unsettable="true" derived="true"/>
