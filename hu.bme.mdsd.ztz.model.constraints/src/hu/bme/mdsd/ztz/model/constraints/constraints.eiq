@@ -110,15 +110,16 @@ pattern oneDetectedObject(object: AreaObject, detected1: DetectedObject) {
 
 
 @Constraint (
-	key = {"robot", "taskExecution"},
+	key = {"drobot", "taskExecution"},
 	severity = "error",
-	message = "$robot$ is not capable of executing linked task: $taskExecution$, capability of $capability$ is missing!",
+	message = "$drobot$ is not capable of executing linked task: $taskExecution$, capability of $capability$ is missing!",
 	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
 )
-pattern robotCannotExecuteTask(robot: DynamicRobot, taskExecution: TaskExecution, capability: Capability) {
+pattern robotCannotExecuteTask(drobot: DynamicRobot, taskExecution: TaskExecution, capability: Capability) {
 	TaskRequirement.taskExecution(requirement, taskExecution);
-	TaskExecution.executors(taskExecution, robot);
+	TaskExecution.executors(taskExecution, drobot);
 	TaskRequirement.requiredCapabilities(requirement, capability);
+	DynamicRobot.robot(drobot, robot);
 	N1 == count find requiredCapability(requirement, capability);
 	N2 == count find robotHasCapability(robot, capability);
 	N1 != N2;
@@ -128,8 +129,8 @@ pattern requiredCapability(requirement:TaskRequirement, capability:Capability) {
 	TaskRequirement.requiredCapabilities(requirement, capability);
 }
 
-pattern robotHasCapability(robot: DynamicRobot, capability: Capability) {
-	DynamicRobot.robot.capabilities(robot, capability);
+pattern robotHasCapability(robot: Robot, capability: Capability) {
+	Robot.capabilities(robot, capability);
 }
 
 @Constraint (
@@ -229,9 +230,9 @@ pattern conversionAvailable(dim1: MeasureDimension, dim2: MeasureDimension) {
 	key = {"robot", "collaborator"},
 	severity = "error",
 	message = "Communication range dimensions of $robot$ and $collaborator$ are not compatible (cannot be directly converted).",
-	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
 )
-pattern collaboratorRangeDimensionsNotCompatible(robot: Robot, collaborator: Robot) {
+pattern collaborationRangeDimensionsNotCompatible(robot: Robot, collaborator: Robot) {
 	DynamicRobot.collaborations(drobot, robotCollaboration);
 	DynamicRobot.robot(drobot, robot);
 	Robot.communicationRange.dimension(robot, dim1);
@@ -241,5 +242,139 @@ pattern collaboratorRangeDimensionsNotCompatible(robot: Robot, collaborator: Rob
 	Robot.communicationRange.dimension(collaborator, dim2);
 	
 	neg find directConversionAvailable(dim1, dim2);
+}
+
+pattern collaborationBetweenDynamicRobots(drobot: DynamicRobot, dcollaborator: DynamicRobot) {
+	DynamicRobot.collaborations(drobot, robotCollaboration);
+	RobotCollaboration.collaborator(robotCollaboration, dcollaborator);
+}
+
+@Constraint(
+	key = {"robot", "collaborator"},
+	severity = "error",
+	message = "Collaboration between $robot$ and $collaborator$ is not symmetric.",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern collaborationNotSymmetric(robot: Robot, collaborator: Robot) {
+	DynamicRobot.robot(drobot, robot);
+	DynamicRobot.robot(dcollaborator, collaborator);
 	
+	find collaborationBetweenDynamicRobots(drobot, dcollaborator);
+	neg find collaborationBetweenDynamicRobots(dcollaborator, drobot);
+}
+
+@Constraint(
+	key = {"robot"},
+	severity = "error",
+	message = "Dynamic behaviour of $robot$ is multiply defined.",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern dynamicRobotMultiplyDefined(robot: Robot) {
+	DynamicRobot.robot(drobot1, robot);
+	DynamicRobot.robot(drobot2, robot);
+	
+	drobot1 != drobot2;
+}
+
+@Constraint(
+	key = {"task", "requiredNum", "executorNum"},
+	severity = "error",
+	message = "Not enough executors for $task$. (required: $requiredNum$, available: $executorNum$)",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern notEnoughExecutors(task: Task, requiredNum, executorNum) {
+	TaskRequirement.taskExecution(requirement, execution);
+	TaskExecution.status(execution, status);
+	check(status == hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus.IN_PROGRESS);
+	TaskExecution.task(execution, task);
+	TaskRequirement.participants(requirement, requiredNum);
+	
+	executorNum == count find executorOfTask(_, task);
+	
+	check(executorNum < requiredNum);
+}
+
+pattern executorOfTask(robot: DynamicRobot, task: Task) {
+	TaskExecution.task(execution, task);
+	TaskExecution.executors(execution, robot);
+}
+
+@Constraint(
+	key = {"robot", "task"},
+	severity = "error",
+	message = "The task $task$ is not part of $robot$'s mission.",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern multipleMission(robot: Robot, task: Task) {
+	Robot.mission(robot, mainMission);
+	Robot.tasks(robot, task);
+	Task.mission(task, taskMission);
+	
+	mainMission != taskMission;
+}
+
+@Constraint(
+	key = {"capability"},
+	severity = "error",
+	message = "Capability properties for $capability$ are multiply defined.",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern multipleCapabilityProperties(capability: Capability) {
+	CapabilityProperties.capability(capProp1, capability);
+	CapabilityProperties.capability(capProp2, capability);
+	
+	capProp1 != capProp2;
+}
+
+@Constraint(
+	key = {"robot", "capability"},
+	severity = "error",
+	message = "$robot$ has capability properties for unlinked capability ($capability$).",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern notCorrectlyLinkedCapabilityPropertiesToRobot(robot: Robot, capability: Capability) {
+	Robot.capabilityProperties.capability(robot, capability);
+	neg find robotHasCapability(robot, capability);
+}
+
+@Constraint(
+	key = {"robot", "capability", "equipment"},
+	severity = "error",
+	message = "$robot$ has equipment ($equipment$) that provides an unlinked capability ($capability$).",
+	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+)
+pattern notCorrectlyLinkedEquipmentToRobot(robot: Robot, capability: Capability, equipment: Equipment) {
+	Robot.equipments(robot, equipment);
+	Equipment.facilitate(equipment, capability);
+	neg find robotHasCapability(robot, capability);
+}
+
+@Constraint(
+	key = {"requirement", "capability"},
+	severity = "error",
+	message = "$requirement$ has capability properties for unlinked capability ($capability$).",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern notCorrectlyLinkedCapabilityPropertiesToRequirement(requirement: TaskRequirement, capability: Capability) {
+	TaskRequirement.capabilityProperties.capability(requirement, capability);
+	neg find taskRequirementHasCapability(requirement, capability);
+}
+
+pattern taskRequirementHasCapability(requirement: TaskRequirement, capability: Capability) {
+	TaskRequirement.requiredCapabilities(requirement, capability);
+}
+
+@Constraint(
+	key = {"task"},
+	severity = "error",
+	message = "Task $task$ is prerequisite of itself.",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern circleRequirementReference(task: Task) {
+	find taskRequiresOtherTask+(task, task);
+}
+
+pattern taskRequiresOtherTask(task: Task, requiredTask: Task) {
+	TaskRequirement.taskExecution.task(requirement, task);
+	TaskRequirement.prerequisite.task(requirement, requiredTask);
 }
