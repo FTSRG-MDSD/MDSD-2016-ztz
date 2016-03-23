@@ -36,7 +36,7 @@ pattern nullMeasureConversionValue(conversion: MeasureConversion) {
 )
 pattern sameTaskAsPrerequisite(taskRequirement: TaskRequirement, taskExecution: TaskExecution) {
 	TaskRequirement.prerequisite(taskRequirement, taskExecution);
-	TaskRequirement.task(taskRequirement, taskExecution);
+	TaskRequirement.taskExecution(taskRequirement, taskExecution);
 }
 
 
@@ -61,7 +61,7 @@ pattern nonPositiveParticipants(requirement: TaskRequirement) {
 	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
 )
 pattern incorrectWaitingTask(taskExecution: TaskExecution) {
-	TaskRequirement.task(requirement, taskExecution);
+	TaskRequirement.taskExecution(requirement, taskExecution);
 	TaskExecution.status(taskExecution, ::Waiting);
 	TaskRequirement.prerequisite.status(requirement, ::Finished);
 }
@@ -74,7 +74,7 @@ pattern incorrectWaitingTask(taskExecution: TaskExecution) {
 	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
 )
 pattern isNotWaitingTask(taskExecution: TaskExecution) {
-	TaskRequirement.task(requirement, taskExecution);
+	TaskRequirement.taskExecution(requirement, taskExecution);
 	TaskExecution.status(taskExecution, status);
 	TaskRequirement.prerequisite.status(requirement, preStatus);
 	check(preStatus != hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus.FINISHED && 
@@ -116,7 +116,7 @@ pattern oneDetectedObject(object: AreaObject, detected1: DetectedObject) {
 	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
 )
 pattern robotCannotExecuteTask(robot: DynamicRobot, taskExecution: TaskExecution, capability: Capability) {
-	TaskRequirement.task(requirement, taskExecution);
+	TaskRequirement.taskExecution(requirement, taskExecution);
 	TaskExecution.executors(taskExecution, robot);
 	TaskRequirement.requiredCapabilities(requirement, capability);
 	N1 == count find requiredCapability(requirement, capability);

@@ -7,10 +7,6 @@
   <foreignModel>behaviour.ecore</foreignModel>
   <genPackages prefix="Behaviour" basePackage="hu.bme.mdsd.ztz.model" disposableProviderFactory="true"
       ecorePackage="behaviour.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="behaviour.ecore#//CommunicationType">
-      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//CommunicationType/Synchronous"/>
-      <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//CommunicationType/Asynchronous"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="behaviour.ecore#//RobotStatus">
       <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//RobotStatus/Ready"/>
       <genEnumLiterals ecoreEnumLiteral="behaviour.ecore#//RobotStatus/TurnedOff"/>
@@ -30,14 +26,15 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//BehaviourContainer/taskRequirements"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//Message">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/tasks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/involvedTaskExecutions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//Message/timestamp"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/properties"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/referredObjects"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//Message/needResponse"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Message/TTL"/>
     </genClasses>
     <genClasses image="false" ecoreClass="behaviour.ecore#//CommunicationAction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//CommunicationAction/message"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//CommunicationAction/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//CommunicationAction/message"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//UnicastCommunication">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//UnicastCommunication/target"/>
@@ -51,11 +48,12 @@
     <genClasses ecoreClass="behaviour.ecore#//MessageRepository">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/robot"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/receivedMessages"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/sendedMessages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//MessageRepository/sendedMessages"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//Action">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//Action/properties"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Action/currentTask"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//Action/currentTaskExecution"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//Action/currentTask"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//TaskExecution">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskExecution/executors"/>
@@ -82,13 +80,15 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//DynamicRobot/executedTasks"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//TaskRequirement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/task"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/taskExecution"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/prerequisite"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//TaskRequirement/participants"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/properties"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/requiredCapabilities"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/capabilityProperties"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/descriptor"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/task"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference behaviour.ecore#//TaskRequirement/prerequisiteTask"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
