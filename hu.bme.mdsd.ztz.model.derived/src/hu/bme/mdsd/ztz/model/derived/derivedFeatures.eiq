@@ -28,4 +28,26 @@ pattern currentTask(action: Action, task: Task) {
 }
 
 
+@QueryBasedFeature
+pattern receivedMessages(repository: MessageRepository, message: Message) {
+	DynamicRobot.actions(robotSender, action);
+	UnicastCommunication.target(action, robotReceiver);
+	robotSender != robotReceiver;
+	UnicastCommunication.message(action, message);
+	DynamicRobot.messageRepository(robotReceiver, repository);
+	}
+	or {
+	DynamicRobot.actions(robotSender, action);
+	MulticastCommunication.targets(action, robotReceiver);
+	robotSender != robotReceiver;
+	MulticastCommunication.message(action, message);
+	DynamicRobot.messageRepository(robotReceiver, repository);
+	} or {
+	DynamicRobot.actions(robotSender, action);
+	BroadcastCommunication.targets(action, robotReceiver);
+	robotSender != robotReceiver;
+	BroadcastCommunication.message(action, message);
+	DynamicRobot.messageRepository(robotReceiver, repository);
+}
+
 

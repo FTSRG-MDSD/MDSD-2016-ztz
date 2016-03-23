@@ -25,7 +25,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="TTL" eType="ecore:EClass drone.ecore#//MeasureValue"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CommunicationAction" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationAction" abstract="true"
+      eSuperTypes="#//Action">
     <eStructuralFeatures xsi:type="ecore:EReference" name="message" lowerBound="1"
         eType="#//Message"/>
   </eClassifiers>
@@ -45,7 +46,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="robot" lowerBound="1" eType="#//DynamicRobot"
         eOpposite="#//DynamicRobot/messageRepository"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="receivedMessages" upperBound="-1"
-        eType="#//Message"/>
+        eType="#//Message" changeable="false" volatile="true" transient="true" unsettable="true"
+        derived="true">
+      <eAnnotations source="org.eclipse.incquery.querybasedfeature">
+        <details key="patternFQN" value="hu.bme.mdsd.ztz.model.derived.receivedMessages"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sendedMessages" upperBound="-1"
         eType="#//Message" containment="true"/>
   </eClassifiers>
