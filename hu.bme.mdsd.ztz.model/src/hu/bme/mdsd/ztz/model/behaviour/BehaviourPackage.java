@@ -727,13 +727,22 @@ public interface BehaviourPackage extends EPackage {
         int TASK_EXECUTION__TASK = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
         /**
+         * The feature id for the '<em><b>Requirement</b></em>' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         * @ordered
+         */
+        int TASK_EXECUTION__REQUIREMENT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+        /**
          * The number of structural features of the '<em>Task Execution</em>' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          * @ordered
          */
-        int TASK_EXECUTION_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
+        int TASK_EXECUTION_FEATURE_COUNT = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
         /**
          * The number of operations of the '<em>Task Execution</em>' class.
@@ -1487,6 +1496,17 @@ public interface BehaviourPackage extends EPackage {
         EReference getTaskExecution_Task();
 
         /**
+         * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getRequirement <em>Requirement</em>}'.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @return the meta object for the reference '<em>Requirement</em>'.
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getRequirement()
+         * @see #getTaskExecution()
+         * @generated
+         */
+        EReference getTaskExecution_Requirement();
+
+        /**
          * Returns the meta object for class '{@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration <em>Robot Collaboration</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2088,6 +2108,14 @@ public interface BehaviourPackage extends EPackage {
                  * @generated
                  */
                 EReference TASK_EXECUTION__TASK = eINSTANCE.getTaskExecution_Task();
+
+                /**
+                 * The meta object literal for the '<em><b>Requirement</b></em>' reference feature.
+                 * <!-- begin-user-doc -->
+                 * <!-- end-user-doc -->
+                 * @generated
+                 */
+                EReference TASK_EXECUTION__REQUIREMENT = eINSTANCE.getTaskExecution_Requirement();
 
                 /**
                  * The meta object literal for the '{@link hu.bme.mdsd.ztz.model.behaviour.impl.RobotCollaborationImpl <em>Robot Collaboration</em>}' class.

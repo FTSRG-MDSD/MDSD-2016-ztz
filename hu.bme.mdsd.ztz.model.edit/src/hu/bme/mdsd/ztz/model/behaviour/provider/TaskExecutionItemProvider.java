@@ -55,6 +55,7 @@ public class TaskExecutionItemProvider
                         addExecutorsPropertyDescriptor(object);
                         addStatusPropertyDescriptor(object);
                         addTaskPropertyDescriptor(object);
+                        addRequirementPropertyDescriptor(object);
                 }
                 return itemPropertyDescriptors;
         }
@@ -117,6 +118,28 @@ public class TaskExecutionItemProvider
                                  getString("_UI_TaskExecution_task_feature"),
                                  getString("_UI_PropertyDescriptor_description", "_UI_TaskExecution_task_feature", "_UI_TaskExecution_type"),
                                  BehaviourPackage.Literals.TASK_EXECUTION__TASK,
+                                 true,
+                                 false,
+                                 true,
+                                 null,
+                                 null,
+                                 null));
+        }
+
+        /**
+         * This adds a property descriptor for the Requirement feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected void addRequirementPropertyDescriptor(Object object) {
+                itemPropertyDescriptors.add
+                        (createItemPropertyDescriptor
+                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                 getResourceLocator(),
+                                 getString("_UI_TaskExecution_requirement_feature"),
+                                 getString("_UI_PropertyDescriptor_description", "_UI_TaskExecution_requirement_feature", "_UI_TaskExecution_type"),
+                                 BehaviourPackage.Literals.TASK_EXECUTION__REQUIREMENT,
                                  true,
                                  false,
                                  true,

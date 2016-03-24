@@ -62,6 +62,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskExecution/executionTime"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute behaviour.ecore#//TaskExecution/status"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskExecution/task"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//TaskExecution/requirement"/>
     </genClasses>
     <genClasses ecoreClass="behaviour.ecore#//RobotCollaboration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference behaviour.ecore#//RobotCollaboration/collaborator"/>
