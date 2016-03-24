@@ -1,8 +1,8 @@
 package hu.bme.mdsd.ztz.model.constraints.util;
 
-import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.constraints.RobotHasCapabilityMatch;
 import hu.bme.mdsd.ztz.model.drone.Capability;
+import hu.bme.mdsd.ztz.model.drone.Robot;
 import org.eclipse.incquery.runtime.api.IMatchProcessor;
 
 /**
@@ -19,7 +19,7 @@ public abstract class RobotHasCapabilityProcessor implements IMatchProcessor<Rob
    * @param pCapability the value of pattern parameter capability in the currently processed match
    * 
    */
-  public abstract void process(final DynamicRobot pRobot, final Capability pCapability);
+  public abstract void process(final Robot pRobot, final Capability pCapability);
   
   @Override
   public void process(final RobotHasCapabilityMatch match) {

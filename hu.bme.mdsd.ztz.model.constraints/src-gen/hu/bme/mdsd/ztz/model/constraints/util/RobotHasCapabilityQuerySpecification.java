@@ -60,7 +60,7 @@ public final class RobotHasCapabilityQuerySpecification extends BaseGeneratedEMF
   
   @Override
   public RobotHasCapabilityMatch newMatch(final Object... parameters) {
-    return RobotHasCapabilityMatch.newMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) parameters[0], (hu.bme.mdsd.ztz.model.drone.Capability) parameters[1]);
+    return RobotHasCapabilityMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) parameters[0], (hu.bme.mdsd.ztz.model.drone.Capability) parameters[1]);
   }
   
   private static class LazyHolder {
@@ -86,7 +86,7 @@ public final class RobotHasCapabilityQuerySpecification extends BaseGeneratedEMF
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("robot", "hu.bme.mdsd.ztz.model.behaviour.DynamicRobot"),new PParameter("capability", "hu.bme.mdsd.ztz.model.drone.Capability"));
+      return Arrays.asList(new PParameter("robot", "hu.bme.mdsd.ztz.model.drone.Robot"),new PParameter("capability", "hu.bme.mdsd.ztz.model.drone.Capability"));
     }
     
     @Override
@@ -97,19 +97,17 @@ public final class RobotHasCapabilityQuerySpecification extends BaseGeneratedEMF
       		PBody body = new PBody(this);
       		PVariable var_robot = body.getOrCreateVariableByName("robot");
       		PVariable var_capability = body.getOrCreateVariableByName("capability");
-      		new TypeConstraint(body, new FlatTuple(var_robot), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "DynamicRobot")));
+      		new TypeConstraint(body, new FlatTuple(var_robot), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/drone", "Robot")));
       		new TypeConstraint(body, new FlatTuple(var_capability), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/drone", "Capability")));
       		body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
       		   new ExportedParameter(body, var_robot, "robot"),
       		   new ExportedParameter(body, var_capability, "capability")
       		));
-      		// 	DynamicRobot.robot.capabilities(robot, capability)
-      		new TypeConstraint(body, new FlatTuple(var_robot), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/behaviour", "DynamicRobot")));
+      		// 	Robot.capabilities(robot, capability)
+      		new TypeConstraint(body, new FlatTuple(var_robot), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.mdsd.hu/drone", "Robot")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_robot, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/behaviour", "DynamicRobot", "robot")));
-      		PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-      		new TypeConstraint(body, new FlatTuple(var__virtual_0_, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/drone", "Robot", "capabilities")));
-      		new Equality(body, var__virtual_1_, var_capability);
+      		new TypeConstraint(body, new FlatTuple(var_robot, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/drone", "Robot", "capabilities")));
+      		new Equality(body, var__virtual_0_, var_capability);
       		bodies.add(body);
       	}
       	// to silence compiler error

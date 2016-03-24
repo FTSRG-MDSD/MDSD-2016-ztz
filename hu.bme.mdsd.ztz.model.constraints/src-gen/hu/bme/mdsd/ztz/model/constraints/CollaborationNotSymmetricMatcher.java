@@ -1,7 +1,7 @@
 package hu.bme.mdsd.ztz.model.constraints;
 
-import hu.bme.mdsd.ztz.model.constraints.CollaboratorRangeDimensionsNotCompatibleMatch;
-import hu.bme.mdsd.ztz.model.constraints.util.CollaboratorRangeDimensionsNotCompatibleQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.CollaborationNotSymmetricMatch;
+import hu.bme.mdsd.ztz.model.constraints.util.CollaborationNotSymmetricQuerySpecification;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,43 +17,38 @@ import org.eclipse.incquery.runtime.matchers.tuple.Tuple;
 import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
 
 /**
- * Generated pattern matcher API of the hu.bme.mdsd.ztz.model.constraints.collaboratorRangeDimensionsNotCompatible pattern,
+ * Generated pattern matcher API of the hu.bme.mdsd.ztz.model.constraints.collaborationNotSymmetric pattern,
  * providing pattern-specific query methods.
  * 
  * <p>Use the pattern matcher on a given model via {@link #on(IncQueryEngine)},
  * e.g. in conjunction with {@link IncQueryEngine#on(Notifier)}.
  * 
- * <p>Matches of the pattern will be represented as {@link CollaboratorRangeDimensionsNotCompatibleMatch}.
+ * <p>Matches of the pattern will be represented as {@link CollaborationNotSymmetricMatch}.
  * 
  * <p>Original source:
  * <code><pre>
  * {@literal @}Constraint(
  * 	key = {"robot", "collaborator"},
  * 	severity = "error",
- * 	message = "Communication range dimensions of $robot$ and $collaborator$ are not compatible (cannot be directly converted).",
- * 	targetEditorId = "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"
+ * 	message = "Collaboration between $robot$ and $collaborator$ is not symmetric.",
+ * 	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
  * )
- * pattern collaboratorRangeDimensionsNotCompatible(robot: Robot, collaborator: Robot) {
- * 	DynamicRobot.collaborations(drobot, robotCollaboration);
+ * pattern collaborationNotSymmetric(robot: Robot, collaborator: Robot) {
  * 	DynamicRobot.robot(drobot, robot);
- * 	Robot.communicationRange.dimension(robot, dim1);
- * 	
- * 	RobotCollaboration.collaborator(robotCollaboration, dcollaborator);
  * 	DynamicRobot.robot(dcollaborator, collaborator);
- * 	Robot.communicationRange.dimension(collaborator, dim2);
  * 	
- * 	neg find directConversionAvailable(dim1, dim2);
- * 	
+ * 	find collaborationBetweenDynamicRobots(drobot, dcollaborator);
+ * 	neg find collaborationBetweenDynamicRobots(dcollaborator, drobot);
  * }
  * </pre></code>
  * 
- * @see CollaboratorRangeDimensionsNotCompatibleMatch
- * @see CollaboratorRangeDimensionsNotCompatibleProcessor
- * @see CollaboratorRangeDimensionsNotCompatibleQuerySpecification
+ * @see CollaborationNotSymmetricMatch
+ * @see CollaborationNotSymmetricProcessor
+ * @see CollaborationNotSymmetricQuerySpecification
  * 
  */
 @SuppressWarnings("all")
-public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher<CollaboratorRangeDimensionsNotCompatibleMatch> {
+public class CollaborationNotSymmetricMatcher extends BaseMatcher<CollaborationNotSymmetricMatch> {
   /**
    * Initializes the pattern matcher within an existing EMF-IncQuery engine.
    * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
@@ -62,11 +57,11 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * @throws IncQueryException if an error occurs during pattern matcher creation
    * 
    */
-  public static CollaboratorRangeDimensionsNotCompatibleMatcher on(final IncQueryEngine engine) throws IncQueryException {
+  public static CollaborationNotSymmetricMatcher on(final IncQueryEngine engine) throws IncQueryException {
     // check if matcher already exists
-    CollaboratorRangeDimensionsNotCompatibleMatcher matcher = engine.getExistingMatcher(querySpecification());
+    CollaborationNotSymmetricMatcher matcher = engine.getExistingMatcher(querySpecification());
     if (matcher == null) {
-    	matcher = new CollaboratorRangeDimensionsNotCompatibleMatcher(engine);
+    	matcher = new CollaborationNotSymmetricMatcher(engine);
     	// do not have to "put" it into engine.matchers, reportMatcherInitialized() will take care of it
     }
     return matcher;
@@ -76,7 +71,7 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
   
   private final static int POSITION_COLLABORATOR = 1;
   
-  private final static Logger LOGGER = IncQueryLoggingUtil.getLogger(CollaboratorRangeDimensionsNotCompatibleMatcher.class);
+  private final static Logger LOGGER = IncQueryLoggingUtil.getLogger(CollaborationNotSymmetricMatcher.class);
   
   /**
    * Initializes the pattern matcher over a given EMF model root (recommended: Resource or ResourceSet).
@@ -91,7 +86,7 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * 
    */
   @Deprecated
-  public CollaboratorRangeDimensionsNotCompatibleMatcher(final Notifier emfRoot) throws IncQueryException {
+  public CollaborationNotSymmetricMatcher(final Notifier emfRoot) throws IncQueryException {
     this(IncQueryEngine.on(emfRoot));
   }
   
@@ -105,7 +100,7 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * 
    */
   @Deprecated
-  public CollaboratorRangeDimensionsNotCompatibleMatcher(final IncQueryEngine engine) throws IncQueryException {
+  public CollaborationNotSymmetricMatcher(final IncQueryEngine engine) throws IncQueryException {
     super(engine, querySpecification());
   }
   
@@ -113,10 +108,10 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * Returns the set of all matches of the pattern that conform to the given fixed values of some parameters.
    * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
    * @param pCollaborator the fixed value of pattern parameter collaborator, or null if not bound.
-   * @return matches represented as a CollaboratorRangeDimensionsNotCompatibleMatch object.
+   * @return matches represented as a CollaborationNotSymmetricMatch object.
    * 
    */
-  public Collection<CollaboratorRangeDimensionsNotCompatibleMatch> getAllMatches(final Robot pRobot, final Robot pCollaborator) {
+  public Collection<CollaborationNotSymmetricMatch> getAllMatches(final Robot pRobot, final Robot pCollaborator) {
     return rawGetAllMatches(new Object[]{pRobot, pCollaborator});
   }
   
@@ -125,10 +120,10 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * Neither determinism nor randomness of selection is guaranteed.
    * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
    * @param pCollaborator the fixed value of pattern parameter collaborator, or null if not bound.
-   * @return a match represented as a CollaboratorRangeDimensionsNotCompatibleMatch object, or null if no match is found.
+   * @return a match represented as a CollaborationNotSymmetricMatch object, or null if no match is found.
    * 
    */
-  public CollaboratorRangeDimensionsNotCompatibleMatch getOneArbitraryMatch(final Robot pRobot, final Robot pCollaborator) {
+  public CollaborationNotSymmetricMatch getOneArbitraryMatch(final Robot pRobot, final Robot pCollaborator) {
     return rawGetOneArbitraryMatch(new Object[]{pRobot, pCollaborator});
   }
   
@@ -162,7 +157,7 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * @param processor the action that will process each pattern match.
    * 
    */
-  public void forEachMatch(final Robot pRobot, final Robot pCollaborator, final IMatchProcessor<? super CollaboratorRangeDimensionsNotCompatibleMatch> processor) {
+  public void forEachMatch(final Robot pRobot, final Robot pCollaborator, final IMatchProcessor<? super CollaborationNotSymmetricMatch> processor) {
     rawForEachMatch(new Object[]{pRobot, pCollaborator}, processor);
   }
   
@@ -175,7 +170,7 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
    * 
    */
-  public boolean forOneArbitraryMatch(final Robot pRobot, final Robot pCollaborator, final IMatchProcessor<? super CollaboratorRangeDimensionsNotCompatibleMatch> processor) {
+  public boolean forOneArbitraryMatch(final Robot pRobot, final Robot pCollaborator, final IMatchProcessor<? super CollaborationNotSymmetricMatch> processor) {
     return rawForOneArbitraryMatch(new Object[]{pRobot, pCollaborator}, processor);
   }
   
@@ -188,8 +183,8 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * @return the (partial) match object.
    * 
    */
-  public CollaboratorRangeDimensionsNotCompatibleMatch newMatch(final Robot pRobot, final Robot pCollaborator) {
-    return CollaboratorRangeDimensionsNotCompatibleMatch.newMatch(pRobot, pCollaborator);
+  public CollaborationNotSymmetricMatch newMatch(final Robot pRobot, final Robot pCollaborator) {
+    return CollaborationNotSymmetricMatch.newMatch(pRobot, pCollaborator);
   }
   
   /**
@@ -217,7 +212,7 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<Robot> getAllValuesOfrobot(final CollaboratorRangeDimensionsNotCompatibleMatch partialMatch) {
+  public Set<Robot> getAllValuesOfrobot(final CollaborationNotSymmetricMatch partialMatch) {
     return rawAccumulateAllValuesOfrobot(partialMatch.toArray());
   }
   
@@ -258,7 +253,7 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<Robot> getAllValuesOfcollaborator(final CollaboratorRangeDimensionsNotCompatibleMatch partialMatch) {
+  public Set<Robot> getAllValuesOfcollaborator(final CollaborationNotSymmetricMatch partialMatch) {
     return rawAccumulateAllValuesOfcollaborator(partialMatch.toArray());
   }
   
@@ -275,9 +270,9 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
   }
   
   @Override
-  protected CollaboratorRangeDimensionsNotCompatibleMatch tupleToMatch(final Tuple t) {
+  protected CollaborationNotSymmetricMatch tupleToMatch(final Tuple t) {
     try {
-    	return CollaboratorRangeDimensionsNotCompatibleMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) t.get(POSITION_ROBOT), (hu.bme.mdsd.ztz.model.drone.Robot) t.get(POSITION_COLLABORATOR));
+    	return CollaborationNotSymmetricMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) t.get(POSITION_ROBOT), (hu.bme.mdsd.ztz.model.drone.Robot) t.get(POSITION_COLLABORATOR));
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in tuple not properly typed!",e);
     	return null;
@@ -285,9 +280,9 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
   }
   
   @Override
-  protected CollaboratorRangeDimensionsNotCompatibleMatch arrayToMatch(final Object[] match) {
+  protected CollaborationNotSymmetricMatch arrayToMatch(final Object[] match) {
     try {
-    	return CollaboratorRangeDimensionsNotCompatibleMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_COLLABORATOR]);
+    	return CollaborationNotSymmetricMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_COLLABORATOR]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -295,9 +290,9 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
   }
   
   @Override
-  protected CollaboratorRangeDimensionsNotCompatibleMatch arrayToMatchMutable(final Object[] match) {
+  protected CollaborationNotSymmetricMatch arrayToMatchMutable(final Object[] match) {
     try {
-    	return CollaboratorRangeDimensionsNotCompatibleMatch.newMutableMatch((hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_COLLABORATOR]);
+    	return CollaborationNotSymmetricMatch.newMutableMatch((hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_COLLABORATOR]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -309,7 +304,7 @@ public class CollaboratorRangeDimensionsNotCompatibleMatcher extends BaseMatcher
    * @throws IncQueryException if the pattern definition could not be loaded
    * 
    */
-  public static IQuerySpecification<CollaboratorRangeDimensionsNotCompatibleMatcher> querySpecification() throws IncQueryException {
-    return CollaboratorRangeDimensionsNotCompatibleQuerySpecification.instance();
+  public static IQuerySpecification<CollaborationNotSymmetricMatcher> querySpecification() throws IncQueryException {
+    return CollaborationNotSymmetricQuerySpecification.instance();
   }
 }

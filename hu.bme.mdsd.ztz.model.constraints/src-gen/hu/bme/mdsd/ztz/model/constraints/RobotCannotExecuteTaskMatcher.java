@@ -30,15 +30,16 @@ import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
  * <p>Original source:
  * <code><pre>
  * {@literal @}Constraint (
- * 	key = {"robot", "taskExecution"},
+ * 	key = {"drobot", "taskExecution"},
  * 	severity = "error",
- * 	message = "$robot$ is not capable of executing linked task: $taskExecution$, capability of $capability$ is missing!",
+ * 	message = "$drobot$ is not capable of executing linked task: $taskExecution$, capability of $capability$ is missing!",
  * 	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
  * )
- * pattern robotCannotExecuteTask(robot: DynamicRobot, taskExecution: TaskExecution, capability: Capability) {
+ * pattern robotCannotExecuteTask(drobot: DynamicRobot, taskExecution: TaskExecution, capability: Capability) {
  * 	TaskRequirement.taskExecution(requirement, taskExecution);
- * 	TaskExecution.executors(taskExecution, robot);
+ * 	TaskExecution.executors(taskExecution, drobot);
  * 	TaskRequirement.requiredCapabilities(requirement, capability);
+ * 	DynamicRobot.robot(drobot, robot);
  * 	N1 == count find requiredCapability(requirement, capability);
  * 	N2 == count find robotHasCapability(robot, capability);
  * 	N1 != N2;
@@ -70,7 +71,7 @@ public class RobotCannotExecuteTaskMatcher extends BaseMatcher<RobotCannotExecut
     return matcher;
   }
   
-  private final static int POSITION_ROBOT = 0;
+  private final static int POSITION_DROBOT = 0;
   
   private final static int POSITION_TASKEXECUTION = 1;
   
@@ -111,130 +112,130 @@ public class RobotCannotExecuteTaskMatcher extends BaseMatcher<RobotCannotExecut
   
   /**
    * Returns the set of all matches of the pattern that conform to the given fixed values of some parameters.
-   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @param pDrobot the fixed value of pattern parameter drobot, or null if not bound.
    * @param pTaskExecution the fixed value of pattern parameter taskExecution, or null if not bound.
    * @param pCapability the fixed value of pattern parameter capability, or null if not bound.
    * @return matches represented as a RobotCannotExecuteTaskMatch object.
    * 
    */
-  public Collection<RobotCannotExecuteTaskMatch> getAllMatches(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-    return rawGetAllMatches(new Object[]{pRobot, pTaskExecution, pCapability});
+  public Collection<RobotCannotExecuteTaskMatch> getAllMatches(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+    return rawGetAllMatches(new Object[]{pDrobot, pTaskExecution, pCapability});
   }
   
   /**
    * Returns an arbitrarily chosen match of the pattern that conforms to the given fixed values of some parameters.
    * Neither determinism nor randomness of selection is guaranteed.
-   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @param pDrobot the fixed value of pattern parameter drobot, or null if not bound.
    * @param pTaskExecution the fixed value of pattern parameter taskExecution, or null if not bound.
    * @param pCapability the fixed value of pattern parameter capability, or null if not bound.
    * @return a match represented as a RobotCannotExecuteTaskMatch object, or null if no match is found.
    * 
    */
-  public RobotCannotExecuteTaskMatch getOneArbitraryMatch(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-    return rawGetOneArbitraryMatch(new Object[]{pRobot, pTaskExecution, pCapability});
+  public RobotCannotExecuteTaskMatch getOneArbitraryMatch(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+    return rawGetOneArbitraryMatch(new Object[]{pDrobot, pTaskExecution, pCapability});
   }
   
   /**
    * Indicates whether the given combination of specified pattern parameters constitute a valid pattern match,
    * under any possible substitution of the unspecified parameters (if any).
-   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @param pDrobot the fixed value of pattern parameter drobot, or null if not bound.
    * @param pTaskExecution the fixed value of pattern parameter taskExecution, or null if not bound.
    * @param pCapability the fixed value of pattern parameter capability, or null if not bound.
    * @return true if the input is a valid (partial) match of the pattern.
    * 
    */
-  public boolean hasMatch(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-    return rawHasMatch(new Object[]{pRobot, pTaskExecution, pCapability});
+  public boolean hasMatch(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+    return rawHasMatch(new Object[]{pDrobot, pTaskExecution, pCapability});
   }
   
   /**
    * Returns the number of all matches of the pattern that conform to the given fixed values of some parameters.
-   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @param pDrobot the fixed value of pattern parameter drobot, or null if not bound.
    * @param pTaskExecution the fixed value of pattern parameter taskExecution, or null if not bound.
    * @param pCapability the fixed value of pattern parameter capability, or null if not bound.
    * @return the number of pattern matches found.
    * 
    */
-  public int countMatches(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-    return rawCountMatches(new Object[]{pRobot, pTaskExecution, pCapability});
+  public int countMatches(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+    return rawCountMatches(new Object[]{pDrobot, pTaskExecution, pCapability});
   }
   
   /**
    * Executes the given processor on each match of the pattern that conforms to the given fixed values of some parameters.
-   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @param pDrobot the fixed value of pattern parameter drobot, or null if not bound.
    * @param pTaskExecution the fixed value of pattern parameter taskExecution, or null if not bound.
    * @param pCapability the fixed value of pattern parameter capability, or null if not bound.
    * @param processor the action that will process each pattern match.
    * 
    */
-  public void forEachMatch(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability, final IMatchProcessor<? super RobotCannotExecuteTaskMatch> processor) {
-    rawForEachMatch(new Object[]{pRobot, pTaskExecution, pCapability}, processor);
+  public void forEachMatch(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability, final IMatchProcessor<? super RobotCannotExecuteTaskMatch> processor) {
+    rawForEachMatch(new Object[]{pDrobot, pTaskExecution, pCapability}, processor);
   }
   
   /**
    * Executes the given processor on an arbitrarily chosen match of the pattern that conforms to the given fixed values of some parameters.
    * Neither determinism nor randomness of selection is guaranteed.
-   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @param pDrobot the fixed value of pattern parameter drobot, or null if not bound.
    * @param pTaskExecution the fixed value of pattern parameter taskExecution, or null if not bound.
    * @param pCapability the fixed value of pattern parameter capability, or null if not bound.
    * @param processor the action that will process the selected match.
    * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
    * 
    */
-  public boolean forOneArbitraryMatch(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability, final IMatchProcessor<? super RobotCannotExecuteTaskMatch> processor) {
-    return rawForOneArbitraryMatch(new Object[]{pRobot, pTaskExecution, pCapability}, processor);
+  public boolean forOneArbitraryMatch(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability, final IMatchProcessor<? super RobotCannotExecuteTaskMatch> processor) {
+    return rawForOneArbitraryMatch(new Object[]{pDrobot, pTaskExecution, pCapability}, processor);
   }
   
   /**
    * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
-   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @param pDrobot the fixed value of pattern parameter drobot, or null if not bound.
    * @param pTaskExecution the fixed value of pattern parameter taskExecution, or null if not bound.
    * @param pCapability the fixed value of pattern parameter capability, or null if not bound.
    * @return the (partial) match object.
    * 
    */
-  public RobotCannotExecuteTaskMatch newMatch(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-    return RobotCannotExecuteTaskMatch.newMatch(pRobot, pTaskExecution, pCapability);
+  public RobotCannotExecuteTaskMatch newMatch(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+    return RobotCannotExecuteTaskMatch.newMatch(pDrobot, pTaskExecution, pCapability);
   }
   
   /**
-   * Retrieve the set of values that occur in matches for robot.
+   * Retrieve the set of values that occur in matches for drobot.
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  protected Set<DynamicRobot> rawAccumulateAllValuesOfrobot(final Object[] parameters) {
+  protected Set<DynamicRobot> rawAccumulateAllValuesOfdrobot(final Object[] parameters) {
     Set<DynamicRobot> results = new HashSet<DynamicRobot>();
-    rawAccumulateAllValues(POSITION_ROBOT, parameters, results);
+    rawAccumulateAllValues(POSITION_DROBOT, parameters, results);
     return results;
   }
   
   /**
-   * Retrieve the set of values that occur in matches for robot.
+   * Retrieve the set of values that occur in matches for drobot.
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<DynamicRobot> getAllValuesOfrobot() {
-    return rawAccumulateAllValuesOfrobot(emptyArray());
+  public Set<DynamicRobot> getAllValuesOfdrobot() {
+    return rawAccumulateAllValuesOfdrobot(emptyArray());
   }
   
   /**
-   * Retrieve the set of values that occur in matches for robot.
+   * Retrieve the set of values that occur in matches for drobot.
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<DynamicRobot> getAllValuesOfrobot(final RobotCannotExecuteTaskMatch partialMatch) {
-    return rawAccumulateAllValuesOfrobot(partialMatch.toArray());
+  public Set<DynamicRobot> getAllValuesOfdrobot(final RobotCannotExecuteTaskMatch partialMatch) {
+    return rawAccumulateAllValuesOfdrobot(partialMatch.toArray());
   }
   
   /**
-   * Retrieve the set of values that occur in matches for robot.
+   * Retrieve the set of values that occur in matches for drobot.
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<DynamicRobot> getAllValuesOfrobot(final TaskExecution pTaskExecution, final Capability pCapability) {
-    return rawAccumulateAllValuesOfrobot(new Object[]{
+  public Set<DynamicRobot> getAllValuesOfdrobot(final TaskExecution pTaskExecution, final Capability pCapability) {
+    return rawAccumulateAllValuesOfdrobot(new Object[]{
     null, 
     pTaskExecution, 
     pCapability
@@ -275,9 +276,9 @@ public class RobotCannotExecuteTaskMatcher extends BaseMatcher<RobotCannotExecut
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<TaskExecution> getAllValuesOftaskExecution(final DynamicRobot pRobot, final Capability pCapability) {
+  public Set<TaskExecution> getAllValuesOftaskExecution(final DynamicRobot pDrobot, final Capability pCapability) {
     return rawAccumulateAllValuesOftaskExecution(new Object[]{
-    pRobot, 
+    pDrobot, 
     null, 
     pCapability
     });
@@ -317,9 +318,9 @@ public class RobotCannotExecuteTaskMatcher extends BaseMatcher<RobotCannotExecut
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<Capability> getAllValuesOfcapability(final DynamicRobot pRobot, final TaskExecution pTaskExecution) {
+  public Set<Capability> getAllValuesOfcapability(final DynamicRobot pDrobot, final TaskExecution pTaskExecution) {
     return rawAccumulateAllValuesOfcapability(new Object[]{
-    pRobot, 
+    pDrobot, 
     pTaskExecution, 
     null
     });
@@ -328,7 +329,7 @@ public class RobotCannotExecuteTaskMatcher extends BaseMatcher<RobotCannotExecut
   @Override
   protected RobotCannotExecuteTaskMatch tupleToMatch(final Tuple t) {
     try {
-    	return RobotCannotExecuteTaskMatch.newMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) t.get(POSITION_ROBOT), (hu.bme.mdsd.ztz.model.behaviour.TaskExecution) t.get(POSITION_TASKEXECUTION), (hu.bme.mdsd.ztz.model.drone.Capability) t.get(POSITION_CAPABILITY));
+    	return RobotCannotExecuteTaskMatch.newMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) t.get(POSITION_DROBOT), (hu.bme.mdsd.ztz.model.behaviour.TaskExecution) t.get(POSITION_TASKEXECUTION), (hu.bme.mdsd.ztz.model.drone.Capability) t.get(POSITION_CAPABILITY));
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in tuple not properly typed!",e);
     	return null;
@@ -338,7 +339,7 @@ public class RobotCannotExecuteTaskMatcher extends BaseMatcher<RobotCannotExecut
   @Override
   protected RobotCannotExecuteTaskMatch arrayToMatch(final Object[] match) {
     try {
-    	return RobotCannotExecuteTaskMatch.newMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.behaviour.TaskExecution) match[POSITION_TASKEXECUTION], (hu.bme.mdsd.ztz.model.drone.Capability) match[POSITION_CAPABILITY]);
+    	return RobotCannotExecuteTaskMatch.newMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) match[POSITION_DROBOT], (hu.bme.mdsd.ztz.model.behaviour.TaskExecution) match[POSITION_TASKEXECUTION], (hu.bme.mdsd.ztz.model.drone.Capability) match[POSITION_CAPABILITY]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -348,7 +349,7 @@ public class RobotCannotExecuteTaskMatcher extends BaseMatcher<RobotCannotExecut
   @Override
   protected RobotCannotExecuteTaskMatch arrayToMatchMutable(final Object[] match) {
     try {
-    	return RobotCannotExecuteTaskMatch.newMutableMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.behaviour.TaskExecution) match[POSITION_TASKEXECUTION], (hu.bme.mdsd.ztz.model.drone.Capability) match[POSITION_CAPABILITY]);
+    	return RobotCannotExecuteTaskMatch.newMutableMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) match[POSITION_DROBOT], (hu.bme.mdsd.ztz.model.behaviour.TaskExecution) match[POSITION_TASKEXECUTION], (hu.bme.mdsd.ztz.model.drone.Capability) match[POSITION_CAPABILITY]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;

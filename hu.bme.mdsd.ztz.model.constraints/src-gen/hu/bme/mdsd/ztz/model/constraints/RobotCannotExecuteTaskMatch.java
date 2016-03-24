@@ -25,30 +25,30 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  */
 @SuppressWarnings("all")
 public abstract class RobotCannotExecuteTaskMatch extends BasePatternMatch {
-  private DynamicRobot fRobot;
+  private DynamicRobot fDrobot;
   
   private TaskExecution fTaskExecution;
   
   private Capability fCapability;
   
-  private static List<String> parameterNames = makeImmutableList("robot", "taskExecution", "capability");
+  private static List<String> parameterNames = makeImmutableList("drobot", "taskExecution", "capability");
   
-  private RobotCannotExecuteTaskMatch(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-    this.fRobot = pRobot;
+  private RobotCannotExecuteTaskMatch(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+    this.fDrobot = pDrobot;
     this.fTaskExecution = pTaskExecution;
     this.fCapability = pCapability;
   }
   
   @Override
   public Object get(final String parameterName) {
-    if ("robot".equals(parameterName)) return this.fRobot;
+    if ("drobot".equals(parameterName)) return this.fDrobot;
     if ("taskExecution".equals(parameterName)) return this.fTaskExecution;
     if ("capability".equals(parameterName)) return this.fCapability;
     return null;
   }
   
-  public DynamicRobot getRobot() {
-    return this.fRobot;
+  public DynamicRobot getDrobot() {
+    return this.fDrobot;
   }
   
   public TaskExecution getTaskExecution() {
@@ -62,8 +62,8 @@ public abstract class RobotCannotExecuteTaskMatch extends BasePatternMatch {
   @Override
   public boolean set(final String parameterName, final Object newValue) {
     if (!isMutable()) throw new java.lang.UnsupportedOperationException();
-    if ("robot".equals(parameterName) ) {
-    	this.fRobot = (hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) newValue;
+    if ("drobot".equals(parameterName) ) {
+    	this.fDrobot = (hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) newValue;
     	return true;
     }
     if ("taskExecution".equals(parameterName) ) {
@@ -77,9 +77,9 @@ public abstract class RobotCannotExecuteTaskMatch extends BasePatternMatch {
     return false;
   }
   
-  public void setRobot(final DynamicRobot pRobot) {
+  public void setDrobot(final DynamicRobot pDrobot) {
     if (!isMutable()) throw new java.lang.UnsupportedOperationException();
-    this.fRobot = pRobot;
+    this.fDrobot = pDrobot;
   }
   
   public void setTaskExecution(final TaskExecution pTaskExecution) {
@@ -104,18 +104,18 @@ public abstract class RobotCannotExecuteTaskMatch extends BasePatternMatch {
   
   @Override
   public Object[] toArray() {
-    return new Object[]{fRobot, fTaskExecution, fCapability};
+    return new Object[]{fDrobot, fTaskExecution, fCapability};
   }
   
   @Override
   public RobotCannotExecuteTaskMatch toImmutable() {
-    return isMutable() ? newMatch(fRobot, fTaskExecution, fCapability) : this;
+    return isMutable() ? newMatch(fDrobot, fTaskExecution, fCapability) : this;
   }
   
   @Override
   public String prettyPrint() {
     StringBuilder result = new StringBuilder();
-    result.append("\"robot\"=" + prettyPrintValue(fRobot) + ", ");
+    result.append("\"drobot\"=" + prettyPrintValue(fDrobot) + ", ");
     
     result.append("\"taskExecution\"=" + prettyPrintValue(fTaskExecution) + ", ");
     
@@ -128,7 +128,7 @@ public abstract class RobotCannotExecuteTaskMatch extends BasePatternMatch {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((fRobot == null) ? 0 : fRobot.hashCode());
+    result = prime * result + ((fDrobot == null) ? 0 : fDrobot.hashCode());
     result = prime * result + ((fTaskExecution == null) ? 0 : fTaskExecution.hashCode());
     result = prime * result + ((fCapability == null) ? 0 : fCapability.hashCode());
     return result;
@@ -151,8 +151,8 @@ public abstract class RobotCannotExecuteTaskMatch extends BasePatternMatch {
     	return Arrays.deepEquals(toArray(), otherSig.toArray());
     }
     RobotCannotExecuteTaskMatch other = (RobotCannotExecuteTaskMatch) obj;
-    if (fRobot == null) {if (other.fRobot != null) return false;}
-    else if (!fRobot.equals(other.fRobot)) return false;
+    if (fDrobot == null) {if (other.fDrobot != null) return false;}
+    else if (!fDrobot.equals(other.fDrobot)) return false;
     if (fTaskExecution == null) {if (other.fTaskExecution != null) return false;}
     else if (!fTaskExecution.equals(other.fTaskExecution)) return false;
     if (fCapability == null) {if (other.fCapability != null) return false;}
@@ -185,33 +185,33 @@ public abstract class RobotCannotExecuteTaskMatch extends BasePatternMatch {
    * Returns a mutable (partial) match.
    * Fields of the mutable match can be filled to create a partial match, usable as matcher input.
    * 
-   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @param pDrobot the fixed value of pattern parameter drobot, or null if not bound.
    * @param pTaskExecution the fixed value of pattern parameter taskExecution, or null if not bound.
    * @param pCapability the fixed value of pattern parameter capability, or null if not bound.
    * @return the new, mutable (partial) match object.
    * 
    */
-  public static RobotCannotExecuteTaskMatch newMutableMatch(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-    return new Mutable(pRobot, pTaskExecution, pCapability);
+  public static RobotCannotExecuteTaskMatch newMutableMatch(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+    return new Mutable(pDrobot, pTaskExecution, pCapability);
   }
   
   /**
    * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
-   * @param pRobot the fixed value of pattern parameter robot, or null if not bound.
+   * @param pDrobot the fixed value of pattern parameter drobot, or null if not bound.
    * @param pTaskExecution the fixed value of pattern parameter taskExecution, or null if not bound.
    * @param pCapability the fixed value of pattern parameter capability, or null if not bound.
    * @return the (partial) match object.
    * 
    */
-  public static RobotCannotExecuteTaskMatch newMatch(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-    return new Immutable(pRobot, pTaskExecution, pCapability);
+  public static RobotCannotExecuteTaskMatch newMatch(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+    return new Immutable(pDrobot, pTaskExecution, pCapability);
   }
   
   private static final class Mutable extends RobotCannotExecuteTaskMatch {
-    Mutable(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-      super(pRobot, pTaskExecution, pCapability);
+    Mutable(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+      super(pDrobot, pTaskExecution, pCapability);
     }
     
     @Override
@@ -221,8 +221,8 @@ public abstract class RobotCannotExecuteTaskMatch extends BasePatternMatch {
   }
   
   private static final class Immutable extends RobotCannotExecuteTaskMatch {
-    Immutable(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability) {
-      super(pRobot, pTaskExecution, pCapability);
+    Immutable(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability) {
+      super(pDrobot, pTaskExecution, pCapability);
     }
     
     @Override

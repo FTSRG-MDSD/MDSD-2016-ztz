@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
-  <extension id="hu.bme.mdsd.ztz.model.derived.DerivedFeatures" point="org.eclipse.incquery.runtime.queryspecification">
-    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:hu.bme.mdsd.ztz.model.derived.DerivedFeatures" id="hu.bme.mdsd.ztz.model.derived.DerivedFeatures"/>
-  </extension>
   <extension id="extension.derived.hu.bme.mdsd.ztz.model.derived.task" point="org.eclipse.incquery.runtime.base.wellbehaving.derived.features">
     <wellbehaving-derived-feature classifier-name="TaskRequirement" feature-name="task" package-nsUri="http://www.mdsd.hu/behaviour"/>
   </extension>
@@ -19,5 +16,8 @@
   </extension>
   <extension id="extension.derived.hu.bme.mdsd.ztz.model.derived.availabilityRange" point="org.eclipse.incquery.runtime.base.wellbehaving.derived.features">
     <wellbehaving-derived-feature classifier-name="RobotCollaboration" feature-name="availabilityRange" package-nsUri="http://www.mdsd.hu/behaviour"/>
+  </extension>
+  <extension id="hu.bme.mdsd.ztz.model.derived.DerivedFeatures" point="org.eclipse.incquery.runtime.queryspecification">
+    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:hu.bme.mdsd.ztz.model.derived.DerivedFeatures" id="hu.bme.mdsd.ztz.model.derived.DerivedFeatures"/>
   </extension>
 </plugin>

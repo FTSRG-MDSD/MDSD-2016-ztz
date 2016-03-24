@@ -1,8 +1,8 @@
 package hu.bme.mdsd.ztz.model.constraints.util;
 
 import com.google.common.collect.Sets;
-import hu.bme.mdsd.ztz.model.constraints.CollaboratorRangeDimensionsNotCompatibleMatch;
-import hu.bme.mdsd.ztz.model.constraints.CollaboratorRangeDimensionsNotCompatibleMatcher;
+import hu.bme.mdsd.ztz.model.constraints.CollaborationRangeDimensionsNotCompatibleMatch;
+import hu.bme.mdsd.ztz.model.constraints.CollaborationRangeDimensionsNotCompatibleMatcher;
 import hu.bme.mdsd.ztz.model.constraints.util.DirectConversionAvailableQuerySpecification;
 import java.util.Arrays;
 import java.util.List;
@@ -26,15 +26,15 @@ import org.eclipse.incquery.runtime.matchers.psystem.queries.QueryInitialization
 import org.eclipse.incquery.runtime.matchers.tuple.FlatTuple;
 
 /**
- * A pattern-specific query specification that can instantiate CollaboratorRangeDimensionsNotCompatibleMatcher in a type-safe way.
+ * A pattern-specific query specification that can instantiate CollaborationRangeDimensionsNotCompatibleMatcher in a type-safe way.
  * 
- * @see CollaboratorRangeDimensionsNotCompatibleMatcher
- * @see CollaboratorRangeDimensionsNotCompatibleMatch
+ * @see CollaborationRangeDimensionsNotCompatibleMatcher
+ * @see CollaborationRangeDimensionsNotCompatibleMatch
  * 
  */
 @SuppressWarnings("all")
-public final class CollaboratorRangeDimensionsNotCompatibleQuerySpecification extends BaseGeneratedEMFQuerySpecification<CollaboratorRangeDimensionsNotCompatibleMatcher> {
-  private CollaboratorRangeDimensionsNotCompatibleQuerySpecification() {
+public final class CollaborationRangeDimensionsNotCompatibleQuerySpecification extends BaseGeneratedEMFQuerySpecification<CollaborationRangeDimensionsNotCompatibleMatcher> {
+  private CollaborationRangeDimensionsNotCompatibleQuerySpecification() {
     super(GeneratedPQuery.INSTANCE);
   }
   
@@ -43,7 +43,7 @@ public final class CollaboratorRangeDimensionsNotCompatibleQuerySpecification ex
    * @throws IncQueryException if the pattern definition could not be loaded
    * 
    */
-  public static CollaboratorRangeDimensionsNotCompatibleQuerySpecification instance() throws IncQueryException {
+  public static CollaborationRangeDimensionsNotCompatibleQuerySpecification instance() throws IncQueryException {
     try{
     	return LazyHolder.INSTANCE;
     } catch (ExceptionInInitializerError err) {
@@ -52,34 +52,34 @@ public final class CollaboratorRangeDimensionsNotCompatibleQuerySpecification ex
   }
   
   @Override
-  protected CollaboratorRangeDimensionsNotCompatibleMatcher instantiate(final IncQueryEngine engine) throws IncQueryException {
-    return CollaboratorRangeDimensionsNotCompatibleMatcher.on(engine);
+  protected CollaborationRangeDimensionsNotCompatibleMatcher instantiate(final IncQueryEngine engine) throws IncQueryException {
+    return CollaborationRangeDimensionsNotCompatibleMatcher.on(engine);
   }
   
   @Override
-  public CollaboratorRangeDimensionsNotCompatibleMatch newEmptyMatch() {
-    return CollaboratorRangeDimensionsNotCompatibleMatch.newEmptyMatch();
+  public CollaborationRangeDimensionsNotCompatibleMatch newEmptyMatch() {
+    return CollaborationRangeDimensionsNotCompatibleMatch.newEmptyMatch();
   }
   
   @Override
-  public CollaboratorRangeDimensionsNotCompatibleMatch newMatch(final Object... parameters) {
-    return CollaboratorRangeDimensionsNotCompatibleMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) parameters[0], (hu.bme.mdsd.ztz.model.drone.Robot) parameters[1]);
+  public CollaborationRangeDimensionsNotCompatibleMatch newMatch(final Object... parameters) {
+    return CollaborationRangeDimensionsNotCompatibleMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) parameters[0], (hu.bme.mdsd.ztz.model.drone.Robot) parameters[1]);
   }
   
   private static class LazyHolder {
-    private final static CollaboratorRangeDimensionsNotCompatibleQuerySpecification INSTANCE = make();
+    private final static CollaborationRangeDimensionsNotCompatibleQuerySpecification INSTANCE = make();
     
-    public static CollaboratorRangeDimensionsNotCompatibleQuerySpecification make() {
-      return new CollaboratorRangeDimensionsNotCompatibleQuerySpecification();					
+    public static CollaborationRangeDimensionsNotCompatibleQuerySpecification make() {
+      return new CollaborationRangeDimensionsNotCompatibleQuerySpecification();					
     }
   }
   
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
-    private final static CollaboratorRangeDimensionsNotCompatibleQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
+    private final static CollaborationRangeDimensionsNotCompatibleQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
     @Override
     public String getFullyQualifiedName() {
-      return "hu.bme.mdsd.ztz.model.constraints.collaboratorRangeDimensionsNotCompatible";
+      return "hu.bme.mdsd.ztz.model.constraints.collaborationRangeDimensionsNotCompatible";
     }
     
     @Override
@@ -153,7 +153,7 @@ public final class CollaboratorRangeDimensionsNotCompatibleQuerySpecification ex
       		PAnnotation annotation = new PAnnotation("Constraint");
       		annotation.addAttribute("severity", "error");
       		annotation.addAttribute("message", "Communication range dimensions of $robot$ and $collaborator$ are not compatible (cannot be directly converted).");
-      		annotation.addAttribute("targetEditorId", "hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID");
+      		annotation.addAttribute("targetEditorId", "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID");
       		annotation.addAttribute("key", Arrays.asList(new Object[] {
       		                "robot", 
       		                "collaborator"

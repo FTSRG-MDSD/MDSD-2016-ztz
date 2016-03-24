@@ -16,15 +16,15 @@ import org.eclipse.incquery.runtime.api.IMatchProcessor;
 public abstract class RobotCannotExecuteTaskProcessor implements IMatchProcessor<RobotCannotExecuteTaskMatch> {
   /**
    * Defines the action that is to be executed on each match.
-   * @param pRobot the value of pattern parameter robot in the currently processed match
+   * @param pDrobot the value of pattern parameter drobot in the currently processed match
    * @param pTaskExecution the value of pattern parameter taskExecution in the currently processed match
    * @param pCapability the value of pattern parameter capability in the currently processed match
    * 
    */
-  public abstract void process(final DynamicRobot pRobot, final TaskExecution pTaskExecution, final Capability pCapability);
+  public abstract void process(final DynamicRobot pDrobot, final TaskExecution pTaskExecution, final Capability pCapability);
   
   @Override
   public void process(final RobotCannotExecuteTaskMatch match) {
-    process(match.getRobot(), match.getTaskExecution(), match.getCapability());
+    process(match.getDrobot(), match.getTaskExecution(), match.getCapability());
   }
 }

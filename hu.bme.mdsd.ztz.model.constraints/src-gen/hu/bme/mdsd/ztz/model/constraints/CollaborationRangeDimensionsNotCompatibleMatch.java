@@ -1,6 +1,6 @@
 package hu.bme.mdsd.ztz.model.constraints;
 
-import hu.bme.mdsd.ztz.model.constraints.util.CollaboratorRangeDimensionsNotCompatibleQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.util.CollaborationRangeDimensionsNotCompatibleQuerySpecification;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import java.util.Arrays;
 import java.util.List;
@@ -9,27 +9,27 @@ import org.eclipse.incquery.runtime.api.impl.BasePatternMatch;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 
 /**
- * Pattern-specific match representation of the hu.bme.mdsd.ztz.model.constraints.collaboratorRangeDimensionsNotCompatible pattern,
- * to be used in conjunction with {@link CollaboratorRangeDimensionsNotCompatibleMatcher}.
+ * Pattern-specific match representation of the hu.bme.mdsd.ztz.model.constraints.collaborationRangeDimensionsNotCompatible pattern,
+ * to be used in conjunction with {@link CollaborationRangeDimensionsNotCompatibleMatcher}.
  * 
  * <p>Class fields correspond to parameters of the pattern. Fields with value null are considered unassigned.
  * Each instance is a (possibly partial) substitution of pattern parameters,
  * usable to represent a match of the pattern in the result of a query,
  * or to specify the bound (fixed) input parameters when issuing a query.
  * 
- * @see CollaboratorRangeDimensionsNotCompatibleMatcher
- * @see CollaboratorRangeDimensionsNotCompatibleProcessor
+ * @see CollaborationRangeDimensionsNotCompatibleMatcher
+ * @see CollaborationRangeDimensionsNotCompatibleProcessor
  * 
  */
 @SuppressWarnings("all")
-public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends BasePatternMatch {
+public abstract class CollaborationRangeDimensionsNotCompatibleMatch extends BasePatternMatch {
   private Robot fRobot;
   
   private Robot fCollaborator;
   
   private static List<String> parameterNames = makeImmutableList("robot", "collaborator");
   
-  private CollaboratorRangeDimensionsNotCompatibleMatch(final Robot pRobot, final Robot pCollaborator) {
+  private CollaborationRangeDimensionsNotCompatibleMatch(final Robot pRobot, final Robot pCollaborator) {
     this.fRobot = pRobot;
     this.fCollaborator = pCollaborator;
   }
@@ -75,12 +75,12 @@ public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends Base
   
   @Override
   public String patternName() {
-    return "hu.bme.mdsd.ztz.model.constraints.collaboratorRangeDimensionsNotCompatible";
+    return "hu.bme.mdsd.ztz.model.constraints.collaborationRangeDimensionsNotCompatible";
   }
   
   @Override
   public List<String> parameterNames() {
-    return CollaboratorRangeDimensionsNotCompatibleMatch.parameterNames;
+    return CollaborationRangeDimensionsNotCompatibleMatch.parameterNames;
   }
   
   @Override
@@ -89,7 +89,7 @@ public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends Base
   }
   
   @Override
-  public CollaboratorRangeDimensionsNotCompatibleMatch toImmutable() {
+  public CollaborationRangeDimensionsNotCompatibleMatch toImmutable() {
     return isMutable() ? newMatch(fRobot, fCollaborator) : this;
   }
   
@@ -116,7 +116,7 @@ public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends Base
   public boolean equals(final Object obj) {
     if (this == obj)
     	return true;
-    if (!(obj instanceof CollaboratorRangeDimensionsNotCompatibleMatch)) { // this should be infrequent
+    if (!(obj instanceof CollaborationRangeDimensionsNotCompatibleMatch)) { // this should be infrequent
     	if (obj == null) {
     		return false;
     	}
@@ -128,7 +128,7 @@ public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends Base
     		return false;
     	return Arrays.deepEquals(toArray(), otherSig.toArray());
     }
-    CollaboratorRangeDimensionsNotCompatibleMatch other = (CollaboratorRangeDimensionsNotCompatibleMatch) obj;
+    CollaborationRangeDimensionsNotCompatibleMatch other = (CollaborationRangeDimensionsNotCompatibleMatch) obj;
     if (fRobot == null) {if (other.fRobot != null) return false;}
     else if (!fRobot.equals(other.fRobot)) return false;
     if (fCollaborator == null) {if (other.fCollaborator != null) return false;}
@@ -137,9 +137,9 @@ public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends Base
   }
   
   @Override
-  public CollaboratorRangeDimensionsNotCompatibleQuerySpecification specification() {
+  public CollaborationRangeDimensionsNotCompatibleQuerySpecification specification() {
     try {
-    	return CollaboratorRangeDimensionsNotCompatibleQuerySpecification.instance();
+    	return CollaborationRangeDimensionsNotCompatibleQuerySpecification.instance();
     } catch (IncQueryException ex) {
      	// This cannot happen, as the match object can only be instantiated if the query specification exists
      	throw new IllegalStateException (ex);
@@ -153,7 +153,7 @@ public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends Base
    * @return the empty match.
    * 
    */
-  public static CollaboratorRangeDimensionsNotCompatibleMatch newEmptyMatch() {
+  public static CollaborationRangeDimensionsNotCompatibleMatch newEmptyMatch() {
     return new Mutable(null, null);
   }
   
@@ -166,7 +166,7 @@ public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends Base
    * @return the new, mutable (partial) match object.
    * 
    */
-  public static CollaboratorRangeDimensionsNotCompatibleMatch newMutableMatch(final Robot pRobot, final Robot pCollaborator) {
+  public static CollaborationRangeDimensionsNotCompatibleMatch newMutableMatch(final Robot pRobot, final Robot pCollaborator) {
     return new Mutable(pRobot, pCollaborator);
   }
   
@@ -179,11 +179,11 @@ public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends Base
    * @return the (partial) match object.
    * 
    */
-  public static CollaboratorRangeDimensionsNotCompatibleMatch newMatch(final Robot pRobot, final Robot pCollaborator) {
+  public static CollaborationRangeDimensionsNotCompatibleMatch newMatch(final Robot pRobot, final Robot pCollaborator) {
     return new Immutable(pRobot, pCollaborator);
   }
   
-  private static final class Mutable extends CollaboratorRangeDimensionsNotCompatibleMatch {
+  private static final class Mutable extends CollaborationRangeDimensionsNotCompatibleMatch {
     Mutable(final Robot pRobot, final Robot pCollaborator) {
       super(pRobot, pCollaborator);
     }
@@ -194,7 +194,7 @@ public abstract class CollaboratorRangeDimensionsNotCompatibleMatch extends Base
     }
   }
   
-  private static final class Immutable extends CollaboratorRangeDimensionsNotCompatibleMatch {
+  private static final class Immutable extends CollaborationRangeDimensionsNotCompatibleMatch {
     Immutable(final Robot pRobot, final Robot pCollaborator) {
       super(pRobot, pCollaborator);
     }

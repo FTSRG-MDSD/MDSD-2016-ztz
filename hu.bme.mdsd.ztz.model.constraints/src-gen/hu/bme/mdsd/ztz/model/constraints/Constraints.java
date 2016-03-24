@@ -1,43 +1,33 @@
 package hu.bme.mdsd.ztz.model.constraints;
 
-import hu.bme.mdsd.ztz.model.constraints.CollaboratorRangeDimensionsNotCompatibleMatcher;
 import hu.bme.mdsd.ztz.model.constraints.ConversionAvailableMatcher;
 import hu.bme.mdsd.ztz.model.constraints.DirectConversionAvailableMatcher;
-import hu.bme.mdsd.ztz.model.constraints.IncorrectWaitingTaskMatcher;
-import hu.bme.mdsd.ztz.model.constraints.IsNotWaitingTaskMatcher;
+import hu.bme.mdsd.ztz.model.constraints.EmptyMissionMatcher;
+import hu.bme.mdsd.ztz.model.constraints.MissionContainsTaskMatcher;
+import hu.bme.mdsd.ztz.model.constraints.MultipleCapabilityPropertiesMatcher;
+import hu.bme.mdsd.ztz.model.constraints.MultipleMissionMatcher;
 import hu.bme.mdsd.ztz.model.constraints.NoBatteryMatcher;
-import hu.bme.mdsd.ztz.model.constraints.NonPositiveParticipantsMatcher;
+import hu.bme.mdsd.ztz.model.constraints.NotCorrectlyLinkedCapabilityPropertiesToRobotMatcher;
+import hu.bme.mdsd.ztz.model.constraints.NotCorrectlyLinkedEquipmentToRobotMatcher;
 import hu.bme.mdsd.ztz.model.constraints.NullMeasureConversionValueMatcher;
-import hu.bme.mdsd.ztz.model.constraints.OneDetectedObjectMatcher;
-import hu.bme.mdsd.ztz.model.constraints.RequiredCapabilityMatcher;
-import hu.bme.mdsd.ztz.model.constraints.RobotCannotExecuteTaskMatcher;
-import hu.bme.mdsd.ztz.model.constraints.RobotExecutingUnlinkedTaskMatcher;
 import hu.bme.mdsd.ztz.model.constraints.RobotHasBatteryMatcher;
 import hu.bme.mdsd.ztz.model.constraints.RobotHasCapabilityMatcher;
-import hu.bme.mdsd.ztz.model.constraints.RobotHasTaskMatcher;
-import hu.bme.mdsd.ztz.model.constraints.SameCollaboratorRobotMatcher;
 import hu.bme.mdsd.ztz.model.constraints.SameMeasureMatcher;
-import hu.bme.mdsd.ztz.model.constraints.SameTaskAsPrerequisiteMatcher;
 import hu.bme.mdsd.ztz.model.constraints.SizeDimensionsDifferMatcher;
 import hu.bme.mdsd.ztz.model.constraints.SizeDimensionsNotCompatibleMatcher;
-import hu.bme.mdsd.ztz.model.constraints.util.CollaboratorRangeDimensionsNotCompatibleQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.ConversionAvailableQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.DirectConversionAvailableQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.IncorrectWaitingTaskQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.IsNotWaitingTaskQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.util.EmptyMissionQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.util.MissionContainsTaskQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.util.MultipleCapabilityPropertiesQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.util.MultipleMissionQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.NoBatteryQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.NonPositiveParticipantsQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.util.NotCorrectlyLinkedCapabilityPropertiesToRobotQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.util.NotCorrectlyLinkedEquipmentToRobotQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.NullMeasureConversionValueQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.OneDetectedObjectQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.RequiredCapabilityQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.RobotCannotExecuteTaskQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.RobotExecutingUnlinkedTaskQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.RobotHasBatteryQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.RobotHasCapabilityQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.RobotHasTaskQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.SameCollaboratorRobotQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.SameMeasureQuerySpecification;
-import hu.bme.mdsd.ztz.model.constraints.util.SameTaskAsPrerequisiteQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.SizeDimensionsDifferQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.SizeDimensionsNotCompatibleQuerySpecification;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
@@ -54,24 +44,19 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * <p> From package hu.bme.mdsd.ztz.model.constraints, the group contains the definition of the following patterns: <ul>
  * <li>sameMeasure</li>
  * <li>nullMeasureConversionValue</li>
- * <li>sameTaskAsPrerequisite</li>
- * <li>nonPositiveParticipants</li>
- * <li>incorrectWaitingTask</li>
- * <li>isNotWaitingTask</li>
- * <li>sameCollaboratorRobot</li>
- * <li>oneDetectedObject</li>
- * <li>robotCannotExecuteTask</li>
- * <li>requiredCapability</li>
  * <li>robotHasCapability</li>
- * <li>robotExecutingUnlinkedTask</li>
- * <li>robotHasTask</li>
  * <li>noBattery</li>
  * <li>robotHasBattery</li>
  * <li>sizeDimensionsDiffer</li>
  * <li>sizeDimensionsNotCompatible</li>
  * <li>directConversionAvailable</li>
  * <li>conversionAvailable</li>
- * <li>collaboratorRangeDimensionsNotCompatible</li>
+ * <li>multipleMission</li>
+ * <li>emptyMission</li>
+ * <li>missionContainsTask</li>
+ * <li>multipleCapabilityProperties</li>
+ * <li>notCorrectlyLinkedCapabilityPropertiesToRobot</li>
+ * <li>notCorrectlyLinkedEquipmentToRobot</li>
  * </ul>
  * 
  * @see IPatternGroup
@@ -98,24 +83,19 @@ public final class Constraints extends BaseGeneratedPatternGroup {
   private Constraints() throws IncQueryException {
     querySpecifications.add(SameMeasureQuerySpecification.instance());
     querySpecifications.add(NullMeasureConversionValueQuerySpecification.instance());
-    querySpecifications.add(SameTaskAsPrerequisiteQuerySpecification.instance());
-    querySpecifications.add(NonPositiveParticipantsQuerySpecification.instance());
-    querySpecifications.add(IncorrectWaitingTaskQuerySpecification.instance());
-    querySpecifications.add(IsNotWaitingTaskQuerySpecification.instance());
-    querySpecifications.add(SameCollaboratorRobotQuerySpecification.instance());
-    querySpecifications.add(OneDetectedObjectQuerySpecification.instance());
-    querySpecifications.add(RobotCannotExecuteTaskQuerySpecification.instance());
-    querySpecifications.add(RequiredCapabilityQuerySpecification.instance());
     querySpecifications.add(RobotHasCapabilityQuerySpecification.instance());
-    querySpecifications.add(RobotExecutingUnlinkedTaskQuerySpecification.instance());
-    querySpecifications.add(RobotHasTaskQuerySpecification.instance());
     querySpecifications.add(NoBatteryQuerySpecification.instance());
     querySpecifications.add(RobotHasBatteryQuerySpecification.instance());
     querySpecifications.add(SizeDimensionsDifferQuerySpecification.instance());
     querySpecifications.add(SizeDimensionsNotCompatibleQuerySpecification.instance());
     querySpecifications.add(DirectConversionAvailableQuerySpecification.instance());
     querySpecifications.add(ConversionAvailableQuerySpecification.instance());
-    querySpecifications.add(CollaboratorRangeDimensionsNotCompatibleQuerySpecification.instance());
+    querySpecifications.add(MultipleMissionQuerySpecification.instance());
+    querySpecifications.add(EmptyMissionQuerySpecification.instance());
+    querySpecifications.add(MissionContainsTaskQuerySpecification.instance());
+    querySpecifications.add(MultipleCapabilityPropertiesQuerySpecification.instance());
+    querySpecifications.add(NotCorrectlyLinkedCapabilityPropertiesToRobotQuerySpecification.instance());
+    querySpecifications.add(NotCorrectlyLinkedEquipmentToRobotQuerySpecification.instance());
   }
   
   public SameMeasureQuerySpecification getSameMeasure() throws IncQueryException {
@@ -134,92 +114,12 @@ public final class Constraints extends BaseGeneratedPatternGroup {
     return NullMeasureConversionValueMatcher.on(engine);
   }
   
-  public SameTaskAsPrerequisiteQuerySpecification getSameTaskAsPrerequisite() throws IncQueryException {
-    return SameTaskAsPrerequisiteQuerySpecification.instance();
-  }
-  
-  public SameTaskAsPrerequisiteMatcher getSameTaskAsPrerequisite(final IncQueryEngine engine) throws IncQueryException {
-    return SameTaskAsPrerequisiteMatcher.on(engine);
-  }
-  
-  public NonPositiveParticipantsQuerySpecification getNonPositiveParticipants() throws IncQueryException {
-    return NonPositiveParticipantsQuerySpecification.instance();
-  }
-  
-  public NonPositiveParticipantsMatcher getNonPositiveParticipants(final IncQueryEngine engine) throws IncQueryException {
-    return NonPositiveParticipantsMatcher.on(engine);
-  }
-  
-  public IncorrectWaitingTaskQuerySpecification getIncorrectWaitingTask() throws IncQueryException {
-    return IncorrectWaitingTaskQuerySpecification.instance();
-  }
-  
-  public IncorrectWaitingTaskMatcher getIncorrectWaitingTask(final IncQueryEngine engine) throws IncQueryException {
-    return IncorrectWaitingTaskMatcher.on(engine);
-  }
-  
-  public IsNotWaitingTaskQuerySpecification getIsNotWaitingTask() throws IncQueryException {
-    return IsNotWaitingTaskQuerySpecification.instance();
-  }
-  
-  public IsNotWaitingTaskMatcher getIsNotWaitingTask(final IncQueryEngine engine) throws IncQueryException {
-    return IsNotWaitingTaskMatcher.on(engine);
-  }
-  
-  public SameCollaboratorRobotQuerySpecification getSameCollaboratorRobot() throws IncQueryException {
-    return SameCollaboratorRobotQuerySpecification.instance();
-  }
-  
-  public SameCollaboratorRobotMatcher getSameCollaboratorRobot(final IncQueryEngine engine) throws IncQueryException {
-    return SameCollaboratorRobotMatcher.on(engine);
-  }
-  
-  public OneDetectedObjectQuerySpecification getOneDetectedObject() throws IncQueryException {
-    return OneDetectedObjectQuerySpecification.instance();
-  }
-  
-  public OneDetectedObjectMatcher getOneDetectedObject(final IncQueryEngine engine) throws IncQueryException {
-    return OneDetectedObjectMatcher.on(engine);
-  }
-  
-  public RobotCannotExecuteTaskQuerySpecification getRobotCannotExecuteTask() throws IncQueryException {
-    return RobotCannotExecuteTaskQuerySpecification.instance();
-  }
-  
-  public RobotCannotExecuteTaskMatcher getRobotCannotExecuteTask(final IncQueryEngine engine) throws IncQueryException {
-    return RobotCannotExecuteTaskMatcher.on(engine);
-  }
-  
-  public RequiredCapabilityQuerySpecification getRequiredCapability() throws IncQueryException {
-    return RequiredCapabilityQuerySpecification.instance();
-  }
-  
-  public RequiredCapabilityMatcher getRequiredCapability(final IncQueryEngine engine) throws IncQueryException {
-    return RequiredCapabilityMatcher.on(engine);
-  }
-  
   public RobotHasCapabilityQuerySpecification getRobotHasCapability() throws IncQueryException {
     return RobotHasCapabilityQuerySpecification.instance();
   }
   
   public RobotHasCapabilityMatcher getRobotHasCapability(final IncQueryEngine engine) throws IncQueryException {
     return RobotHasCapabilityMatcher.on(engine);
-  }
-  
-  public RobotExecutingUnlinkedTaskQuerySpecification getRobotExecutingUnlinkedTask() throws IncQueryException {
-    return RobotExecutingUnlinkedTaskQuerySpecification.instance();
-  }
-  
-  public RobotExecutingUnlinkedTaskMatcher getRobotExecutingUnlinkedTask(final IncQueryEngine engine) throws IncQueryException {
-    return RobotExecutingUnlinkedTaskMatcher.on(engine);
-  }
-  
-  public RobotHasTaskQuerySpecification getRobotHasTask() throws IncQueryException {
-    return RobotHasTaskQuerySpecification.instance();
-  }
-  
-  public RobotHasTaskMatcher getRobotHasTask(final IncQueryEngine engine) throws IncQueryException {
-    return RobotHasTaskMatcher.on(engine);
   }
   
   public NoBatteryQuerySpecification getNoBattery() throws IncQueryException {
@@ -270,11 +170,51 @@ public final class Constraints extends BaseGeneratedPatternGroup {
     return ConversionAvailableMatcher.on(engine);
   }
   
-  public CollaboratorRangeDimensionsNotCompatibleQuerySpecification getCollaboratorRangeDimensionsNotCompatible() throws IncQueryException {
-    return CollaboratorRangeDimensionsNotCompatibleQuerySpecification.instance();
+  public MultipleMissionQuerySpecification getMultipleMission() throws IncQueryException {
+    return MultipleMissionQuerySpecification.instance();
   }
   
-  public CollaboratorRangeDimensionsNotCompatibleMatcher getCollaboratorRangeDimensionsNotCompatible(final IncQueryEngine engine) throws IncQueryException {
-    return CollaboratorRangeDimensionsNotCompatibleMatcher.on(engine);
+  public MultipleMissionMatcher getMultipleMission(final IncQueryEngine engine) throws IncQueryException {
+    return MultipleMissionMatcher.on(engine);
+  }
+  
+  public EmptyMissionQuerySpecification getEmptyMission() throws IncQueryException {
+    return EmptyMissionQuerySpecification.instance();
+  }
+  
+  public EmptyMissionMatcher getEmptyMission(final IncQueryEngine engine) throws IncQueryException {
+    return EmptyMissionMatcher.on(engine);
+  }
+  
+  public MissionContainsTaskQuerySpecification getMissionContainsTask() throws IncQueryException {
+    return MissionContainsTaskQuerySpecification.instance();
+  }
+  
+  public MissionContainsTaskMatcher getMissionContainsTask(final IncQueryEngine engine) throws IncQueryException {
+    return MissionContainsTaskMatcher.on(engine);
+  }
+  
+  public MultipleCapabilityPropertiesQuerySpecification getMultipleCapabilityProperties() throws IncQueryException {
+    return MultipleCapabilityPropertiesQuerySpecification.instance();
+  }
+  
+  public MultipleCapabilityPropertiesMatcher getMultipleCapabilityProperties(final IncQueryEngine engine) throws IncQueryException {
+    return MultipleCapabilityPropertiesMatcher.on(engine);
+  }
+  
+  public NotCorrectlyLinkedCapabilityPropertiesToRobotQuerySpecification getNotCorrectlyLinkedCapabilityPropertiesToRobot() throws IncQueryException {
+    return NotCorrectlyLinkedCapabilityPropertiesToRobotQuerySpecification.instance();
+  }
+  
+  public NotCorrectlyLinkedCapabilityPropertiesToRobotMatcher getNotCorrectlyLinkedCapabilityPropertiesToRobot(final IncQueryEngine engine) throws IncQueryException {
+    return NotCorrectlyLinkedCapabilityPropertiesToRobotMatcher.on(engine);
+  }
+  
+  public NotCorrectlyLinkedEquipmentToRobotQuerySpecification getNotCorrectlyLinkedEquipmentToRobot() throws IncQueryException {
+    return NotCorrectlyLinkedEquipmentToRobotQuerySpecification.instance();
+  }
+  
+  public NotCorrectlyLinkedEquipmentToRobotMatcher getNotCorrectlyLinkedEquipmentToRobot(final IncQueryEngine engine) throws IncQueryException {
+    return NotCorrectlyLinkedEquipmentToRobotMatcher.on(engine);
   }
 }

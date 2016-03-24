@@ -1,8 +1,8 @@
 package hu.bme.mdsd.ztz.model.constraints;
 
-import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.constraints.util.RobotHasCapabilityQuerySpecification;
 import hu.bme.mdsd.ztz.model.drone.Capability;
+import hu.bme.mdsd.ztz.model.drone.Robot;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.incquery.runtime.api.IPatternMatch;
@@ -24,13 +24,13 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  */
 @SuppressWarnings("all")
 public abstract class RobotHasCapabilityMatch extends BasePatternMatch {
-  private DynamicRobot fRobot;
+  private Robot fRobot;
   
   private Capability fCapability;
   
   private static List<String> parameterNames = makeImmutableList("robot", "capability");
   
-  private RobotHasCapabilityMatch(final DynamicRobot pRobot, final Capability pCapability) {
+  private RobotHasCapabilityMatch(final Robot pRobot, final Capability pCapability) {
     this.fRobot = pRobot;
     this.fCapability = pCapability;
   }
@@ -42,7 +42,7 @@ public abstract class RobotHasCapabilityMatch extends BasePatternMatch {
     return null;
   }
   
-  public DynamicRobot getRobot() {
+  public Robot getRobot() {
     return this.fRobot;
   }
   
@@ -54,7 +54,7 @@ public abstract class RobotHasCapabilityMatch extends BasePatternMatch {
   public boolean set(final String parameterName, final Object newValue) {
     if (!isMutable()) throw new java.lang.UnsupportedOperationException();
     if ("robot".equals(parameterName) ) {
-    	this.fRobot = (hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) newValue;
+    	this.fRobot = (hu.bme.mdsd.ztz.model.drone.Robot) newValue;
     	return true;
     }
     if ("capability".equals(parameterName) ) {
@@ -64,7 +64,7 @@ public abstract class RobotHasCapabilityMatch extends BasePatternMatch {
     return false;
   }
   
-  public void setRobot(final DynamicRobot pRobot) {
+  public void setRobot(final Robot pRobot) {
     if (!isMutable()) throw new java.lang.UnsupportedOperationException();
     this.fRobot = pRobot;
   }
@@ -167,7 +167,7 @@ public abstract class RobotHasCapabilityMatch extends BasePatternMatch {
    * @return the new, mutable (partial) match object.
    * 
    */
-  public static RobotHasCapabilityMatch newMutableMatch(final DynamicRobot pRobot, final Capability pCapability) {
+  public static RobotHasCapabilityMatch newMutableMatch(final Robot pRobot, final Capability pCapability) {
     return new Mutable(pRobot, pCapability);
   }
   
@@ -180,12 +180,12 @@ public abstract class RobotHasCapabilityMatch extends BasePatternMatch {
    * @return the (partial) match object.
    * 
    */
-  public static RobotHasCapabilityMatch newMatch(final DynamicRobot pRobot, final Capability pCapability) {
+  public static RobotHasCapabilityMatch newMatch(final Robot pRobot, final Capability pCapability) {
     return new Immutable(pRobot, pCapability);
   }
   
   private static final class Mutable extends RobotHasCapabilityMatch {
-    Mutable(final DynamicRobot pRobot, final Capability pCapability) {
+    Mutable(final Robot pRobot, final Capability pCapability) {
       super(pRobot, pCapability);
     }
     
@@ -196,7 +196,7 @@ public abstract class RobotHasCapabilityMatch extends BasePatternMatch {
   }
   
   private static final class Immutable extends RobotHasCapabilityMatch {
-    Immutable(final DynamicRobot pRobot, final Capability pCapability) {
+    Immutable(final Robot pRobot, final Capability pCapability) {
       super(pRobot, pCapability);
     }
     

@@ -1,9 +1,9 @@
 package hu.bme.mdsd.ztz.model.constraints;
 
-import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.constraints.RobotHasCapabilityMatch;
 import hu.bme.mdsd.ztz.model.constraints.util.RobotHasCapabilityQuerySpecification;
 import hu.bme.mdsd.ztz.model.drone.Capability;
+import hu.bme.mdsd.ztz.model.drone.Robot;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,8 +28,8 @@ import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
  * 
  * <p>Original source:
  * <code><pre>
- * pattern robotHasCapability(robot: DynamicRobot, capability: Capability) {
- * 	DynamicRobot.robot.capabilities(robot, capability);
+ * pattern robotHasCapability(robot: Robot, capability: Capability) {
+ * 	Robot.capabilities(robot, capability);
  * }
  * </pre></code>
  * 
@@ -102,7 +102,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return matches represented as a RobotHasCapabilityMatch object.
    * 
    */
-  public Collection<RobotHasCapabilityMatch> getAllMatches(final DynamicRobot pRobot, final Capability pCapability) {
+  public Collection<RobotHasCapabilityMatch> getAllMatches(final Robot pRobot, final Capability pCapability) {
     return rawGetAllMatches(new Object[]{pRobot, pCapability});
   }
   
@@ -114,7 +114,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return a match represented as a RobotHasCapabilityMatch object, or null if no match is found.
    * 
    */
-  public RobotHasCapabilityMatch getOneArbitraryMatch(final DynamicRobot pRobot, final Capability pCapability) {
+  public RobotHasCapabilityMatch getOneArbitraryMatch(final Robot pRobot, final Capability pCapability) {
     return rawGetOneArbitraryMatch(new Object[]{pRobot, pCapability});
   }
   
@@ -126,7 +126,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return true if the input is a valid (partial) match of the pattern.
    * 
    */
-  public boolean hasMatch(final DynamicRobot pRobot, final Capability pCapability) {
+  public boolean hasMatch(final Robot pRobot, final Capability pCapability) {
     return rawHasMatch(new Object[]{pRobot, pCapability});
   }
   
@@ -137,7 +137,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return the number of pattern matches found.
    * 
    */
-  public int countMatches(final DynamicRobot pRobot, final Capability pCapability) {
+  public int countMatches(final Robot pRobot, final Capability pCapability) {
     return rawCountMatches(new Object[]{pRobot, pCapability});
   }
   
@@ -148,7 +148,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @param processor the action that will process each pattern match.
    * 
    */
-  public void forEachMatch(final DynamicRobot pRobot, final Capability pCapability, final IMatchProcessor<? super RobotHasCapabilityMatch> processor) {
+  public void forEachMatch(final Robot pRobot, final Capability pCapability, final IMatchProcessor<? super RobotHasCapabilityMatch> processor) {
     rawForEachMatch(new Object[]{pRobot, pCapability}, processor);
   }
   
@@ -161,7 +161,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
    * 
    */
-  public boolean forOneArbitraryMatch(final DynamicRobot pRobot, final Capability pCapability, final IMatchProcessor<? super RobotHasCapabilityMatch> processor) {
+  public boolean forOneArbitraryMatch(final Robot pRobot, final Capability pCapability, final IMatchProcessor<? super RobotHasCapabilityMatch> processor) {
     return rawForOneArbitraryMatch(new Object[]{pRobot, pCapability}, processor);
   }
   
@@ -174,7 +174,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return the (partial) match object.
    * 
    */
-  public RobotHasCapabilityMatch newMatch(final DynamicRobot pRobot, final Capability pCapability) {
+  public RobotHasCapabilityMatch newMatch(final Robot pRobot, final Capability pCapability) {
     return RobotHasCapabilityMatch.newMatch(pRobot, pCapability);
   }
   
@@ -183,8 +183,8 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  protected Set<DynamicRobot> rawAccumulateAllValuesOfrobot(final Object[] parameters) {
-    Set<DynamicRobot> results = new HashSet<DynamicRobot>();
+  protected Set<Robot> rawAccumulateAllValuesOfrobot(final Object[] parameters) {
+    Set<Robot> results = new HashSet<Robot>();
     rawAccumulateAllValues(POSITION_ROBOT, parameters, results);
     return results;
   }
@@ -194,7 +194,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<DynamicRobot> getAllValuesOfrobot() {
+  public Set<Robot> getAllValuesOfrobot() {
     return rawAccumulateAllValuesOfrobot(emptyArray());
   }
   
@@ -203,7 +203,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<DynamicRobot> getAllValuesOfrobot(final RobotHasCapabilityMatch partialMatch) {
+  public Set<Robot> getAllValuesOfrobot(final RobotHasCapabilityMatch partialMatch) {
     return rawAccumulateAllValuesOfrobot(partialMatch.toArray());
   }
   
@@ -212,7 +212,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<DynamicRobot> getAllValuesOfrobot(final Capability pCapability) {
+  public Set<Robot> getAllValuesOfrobot(final Capability pCapability) {
     return rawAccumulateAllValuesOfrobot(new Object[]{
     null, 
     pCapability
@@ -253,7 +253,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<Capability> getAllValuesOfcapability(final DynamicRobot pRobot) {
+  public Set<Capability> getAllValuesOfcapability(final Robot pRobot) {
     return rawAccumulateAllValuesOfcapability(new Object[]{
     pRobot, 
     null
@@ -263,7 +263,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
   @Override
   protected RobotHasCapabilityMatch tupleToMatch(final Tuple t) {
     try {
-    	return RobotHasCapabilityMatch.newMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) t.get(POSITION_ROBOT), (hu.bme.mdsd.ztz.model.drone.Capability) t.get(POSITION_CAPABILITY));
+    	return RobotHasCapabilityMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) t.get(POSITION_ROBOT), (hu.bme.mdsd.ztz.model.drone.Capability) t.get(POSITION_CAPABILITY));
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in tuple not properly typed!",e);
     	return null;
@@ -273,7 +273,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
   @Override
   protected RobotHasCapabilityMatch arrayToMatch(final Object[] match) {
     try {
-    	return RobotHasCapabilityMatch.newMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.drone.Capability) match[POSITION_CAPABILITY]);
+    	return RobotHasCapabilityMatch.newMatch((hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.drone.Capability) match[POSITION_CAPABILITY]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -283,7 +283,7 @@ public class RobotHasCapabilityMatcher extends BaseMatcher<RobotHasCapabilityMat
   @Override
   protected RobotHasCapabilityMatch arrayToMatchMutable(final Object[] match) {
     try {
-    	return RobotHasCapabilityMatch.newMutableMatch((hu.bme.mdsd.ztz.model.behaviour.DynamicRobot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.drone.Capability) match[POSITION_CAPABILITY]);
+    	return RobotHasCapabilityMatch.newMutableMatch((hu.bme.mdsd.ztz.model.drone.Robot) match[POSITION_ROBOT], (hu.bme.mdsd.ztz.model.drone.Capability) match[POSITION_CAPABILITY]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;

@@ -69,4 +69,69 @@
       <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
     </constraint>
   </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.dynamicRobotMultiplyDefined" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.DynamicRobotMultiplyDefinedConstraint0" name="hu.bme.mdsd.ztz.model.constraints.dynamicRobotMultiplyDefined">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.collaborationNotSymmetric" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.CollaborationNotSymmetricConstraint0" name="hu.bme.mdsd.ztz.model.constraints.collaborationNotSymmetric">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.multipleCapabilityProperties" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.MultipleCapabilityPropertiesConstraint0" name="hu.bme.mdsd.ztz.model.constraints.multipleCapabilityProperties">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedCapabilityPropertiesToRequirement" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.NotCorrectlyLinkedCapabilityPropertiesToRequirementConstraint0" name="hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedCapabilityPropertiesToRequirement">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.communicationActionWithoutMessage" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.CommunicationActionWithoutMessageConstraint0" name="hu.bme.mdsd.ztz.model.constraints.communicationActionWithoutMessage">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.notEnoughExecutors" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.NotEnoughExecutorsConstraint0" name="hu.bme.mdsd.ztz.model.constraints.notEnoughExecutors">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.emptyMission" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.EmptyMissionConstraint0" name="hu.bme.mdsd.ztz.model.constraints.emptyMission">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.circleRequirementReference" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.CircleRequirementReferenceConstraint0" name="hu.bme.mdsd.ztz.model.constraints.circleRequirementReference">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedEquipmentToRobot" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.NotCorrectlyLinkedEquipmentToRobotConstraint0" name="hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedEquipmentToRobot">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.collaborationRangeDimensionsNotCompatible" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.CollaborationRangeDimensionsNotCompatibleConstraint0" name="hu.bme.mdsd.ztz.model.constraints.collaborationRangeDimensionsNotCompatible">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.messageToSelf" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.MessageToSelfConstraint0" name="hu.bme.mdsd.ztz.model.constraints.messageToSelf">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.multipleMission" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.MultipleMissionConstraint0" name="hu.bme.mdsd.ztz.model.constraints.multipleMission">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedCapabilityPropertiesToRobot" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.NotCorrectlyLinkedCapabilityPropertiesToRobotConstraint0" name="hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedCapabilityPropertiesToRobot">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
+    </constraint>
+  </extension>
 </plugin>
