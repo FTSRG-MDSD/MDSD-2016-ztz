@@ -1,84 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.nonPositiveParticipants" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.NonPositiveParticipantsConstraint0" name="hu.bme.mdsd.ztz.model.constraints.nonPositiveParticipants">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.robotExecutingUnlinkedTask" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.RobotExecutingUnlinkedTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.robotExecutingUnlinkedTask">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.sameTaskAsPrerequisite" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.SameTaskAsPrerequisiteConstraint0" name="hu.bme.mdsd.ztz.model.constraints.sameTaskAsPrerequisite">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.sameCollaboratorRobot" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.SameCollaboratorRobotConstraint0" name="hu.bme.mdsd.ztz.model.constraints.sameCollaboratorRobot">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.incorrectWaitingTask" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.IncorrectWaitingTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.incorrectWaitingTask">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.robotCannotExecuteTask" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.RobotCannotExecuteTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.robotCannotExecuteTask">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.oneDetectedObject" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.OneDetectedObjectConstraint0" name="hu.bme.mdsd.ztz.model.constraints.oneDetectedObject">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.isNotWaitingTask" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.IsNotWaitingTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.isNotWaitingTask">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.dynamicRobotMultiplyDefined" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.DynamicRobotMultiplyDefinedConstraint0" name="hu.bme.mdsd.ztz.model.constraints.dynamicRobotMultiplyDefined">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.collaborationNotSymmetric" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.CollaborationNotSymmetricConstraint0" name="hu.bme.mdsd.ztz.model.constraints.collaborationNotSymmetric">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedCapabilityPropertiesToRequirement" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.NotCorrectlyLinkedCapabilityPropertiesToRequirementConstraint0" name="hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedCapabilityPropertiesToRequirement">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.communicationActionWithoutMessage" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.CommunicationActionWithoutMessageConstraint0" name="hu.bme.mdsd.ztz.model.constraints.communicationActionWithoutMessage">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.notEnoughExecutors" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.NotEnoughExecutorsConstraint0" name="hu.bme.mdsd.ztz.model.constraints.notEnoughExecutors">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.circleRequirementReference" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.CircleRequirementReferenceConstraint0" name="hu.bme.mdsd.ztz.model.constraints.circleRequirementReference">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.collaborationRangeDimensionsNotCompatible" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.CollaborationRangeDimensionsNotCompatibleConstraint0" name="hu.bme.mdsd.ztz.model.constraints.collaborationRangeDimensionsNotCompatible">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
-  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.messageToSelf" point="org.eclipse.incquery.validation.runtime.constraint">
-    <constraint class="hu.bme.mdsd.ztz.model.constraints.MessageToSelfConstraint0" name="hu.bme.mdsd.ztz.model.constraints.messageToSelf">
-      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
-    </constraint>
-  </extension>
   <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.nullMeasureConversionValue" point="org.eclipse.incquery.validation.runtime.constraint">
     <constraint class="hu.bme.mdsd.ztz.model.constraints.NullMeasureConversionValueConstraint0" name="hu.bme.mdsd.ztz.model.constraints.nullMeasureConversionValue">
       <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
@@ -127,6 +47,91 @@
   <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.multipleCapabilityProperties" point="org.eclipse.incquery.validation.runtime.constraint">
     <constraint class="hu.bme.mdsd.ztz.model.constraints.MultipleCapabilityPropertiesConstraint0" name="hu.bme.mdsd.ztz.model.constraints.multipleCapabilityProperties">
       <enabledForEditor editorId="hu.bme.mdsd.ztz.model.drone.presentation.DroneEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.nonPositiveParticipants" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.NonPositiveParticipantsConstraint0" name="hu.bme.mdsd.ztz.model.constraints.nonPositiveParticipants">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.dynamicRobotMultiplyDefined" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.DynamicRobotMultiplyDefinedConstraint0" name="hu.bme.mdsd.ztz.model.constraints.dynamicRobotMultiplyDefined">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.incorrectWaitingTask" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.IncorrectWaitingTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.incorrectWaitingTask">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.collaborationRangeDimensionsNotCompatible" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.CollaborationRangeDimensionsNotCompatibleConstraint0" name="hu.bme.mdsd.ztz.model.constraints.collaborationRangeDimensionsNotCompatible">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.collaborationNotSymmetric" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.CollaborationNotSymmetricConstraint0" name="hu.bme.mdsd.ztz.model.constraints.collaborationNotSymmetric">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.isNotWaitingTask" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.IsNotWaitingTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.isNotWaitingTask">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedCapabilityPropertiesToRequirement" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.NotCorrectlyLinkedCapabilityPropertiesToRequirementConstraint0" name="hu.bme.mdsd.ztz.model.constraints.notCorrectlyLinkedCapabilityPropertiesToRequirement">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.messageToSelf" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.MessageToSelfConstraint0" name="hu.bme.mdsd.ztz.model.constraints.messageToSelf">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.robotExecutingUnlinkedTask" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.RobotExecutingUnlinkedTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.robotExecutingUnlinkedTask">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.communicationActionWithoutMessage" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.CommunicationActionWithoutMessageConstraint0" name="hu.bme.mdsd.ztz.model.constraints.communicationActionWithoutMessage">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.sameTaskAsPrerequisite" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.SameTaskAsPrerequisiteConstraint0" name="hu.bme.mdsd.ztz.model.constraints.sameTaskAsPrerequisite">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.sameCollaboratorRobot" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.SameCollaboratorRobotConstraint0" name="hu.bme.mdsd.ztz.model.constraints.sameCollaboratorRobot">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.notEnoughExecutors" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.NotEnoughExecutorsConstraint0" name="hu.bme.mdsd.ztz.model.constraints.notEnoughExecutors">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.robotCannotExecuteTask" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.RobotCannotExecuteTaskConstraint0" name="hu.bme.mdsd.ztz.model.constraints.robotCannotExecuteTask">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.oneDetectedObject" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.OneDetectedObjectConstraint0" name="hu.bme.mdsd.ztz.model.constraints.oneDetectedObject">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.circleRequirementReference" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.CircleRequirementReferenceConstraint0" name="hu.bme.mdsd.ztz.model.constraints.circleRequirementReference">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.hu.bme.mdsd.ztz.model.constraints.messageNotFromRepository" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="hu.bme.mdsd.ztz.model.constraints.MessageNotFromRepositoryConstraint0" name="hu.bme.mdsd.ztz.model.constraints.messageNotFromRepository">
+      <enabledForEditor editorId="hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"/>
     </constraint>
   </extension>
 </plugin>

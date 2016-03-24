@@ -80,3 +80,9 @@
 /.MessageTargetQuerySpecification.java._trace
 /CollaborationRangeDimensionsNotCompatibleProcessor.java
 /CollaborationRangeDimensionsNotCompatibleQuerySpecification.java
+/.MessageNotFromRepositoryProcessor.java._trace
+/.MessageNotFromRepositoryQuerySpecification.java._trace
+/.RepositoryHasMessageProcessor.java._trace
+/.RepositoryHasMessageQuerySpecification.java._trace
+/.RepositoryHasSendedMessageProcessor.java._trace
+/.RepositoryHasSendedMessageQuerySpecification.java._trace
