@@ -35,10 +35,10 @@ import org.eclipse.incquery.runtime.api.impl.BaseGeneratedPatternGroup;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 
 /**
- * A pattern group formed of all patterns defined in constraints.eiq.
+ * A pattern group formed of all patterns defined in structuralConstraints.eiq.
  * 
  * <p>Use the static instance as any {@link org.eclipse.incquery.runtime.api.IPatternGroup}, to conveniently prepare
- * an EMF-IncQuery engine for matching all patterns originally defined in file constraints.eiq,
+ * an EMF-IncQuery engine for matching all patterns originally defined in file structuralConstraints.eiq,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
  * <p> From package hu.bme.mdsd.ztz.model.constraints, the group contains the definition of the following patterns: <ul>
@@ -63,7 +63,7 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * 
  */
 @SuppressWarnings("all")
-public final class Constraints extends BaseGeneratedPatternGroup {
+public final class StructuralConstraints extends BaseGeneratedPatternGroup {
   /**
    * Access the pattern group.
    * 
@@ -71,16 +71,16 @@ public final class Constraints extends BaseGeneratedPatternGroup {
    * @throws IncQueryException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Constraints instance() throws IncQueryException {
+  public static StructuralConstraints instance() throws IncQueryException {
     if (INSTANCE == null) {
-    	INSTANCE = new Constraints();
+    	INSTANCE = new StructuralConstraints();
     }
     return INSTANCE;
   }
   
-  private static Constraints INSTANCE;
+  private static StructuralConstraints INSTANCE;
   
-  private Constraints() throws IncQueryException {
+  private StructuralConstraints() throws IncQueryException {
     querySpecifications.add(SameMeasureQuerySpecification.instance());
     querySpecifications.add(NullMeasureConversionValueQuerySpecification.instance());
     querySpecifications.add(RobotHasCapabilityQuerySpecification.instance());
