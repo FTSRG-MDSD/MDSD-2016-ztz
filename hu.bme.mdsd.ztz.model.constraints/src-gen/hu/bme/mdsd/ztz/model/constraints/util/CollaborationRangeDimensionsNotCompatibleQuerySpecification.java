@@ -19,6 +19,7 @@ import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.annotations.PAnnotation;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.Equality;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
+import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.Inequality;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.NegativePatternCall;
 import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.incquery.runtime.matchers.psystem.queries.PParameter;
@@ -145,7 +146,9 @@ public final class CollaborationRangeDimensionsNotCompatibleQuerySpecification e
       		PVariable var__virtual_7_ = body.getOrCreateVariableByName(".virtual{7}");
       		new TypeConstraint(body, new FlatTuple(var__virtual_6_, var__virtual_7_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.mdsd.hu/drone", "MeasureValue", "dimension")));
       		new Equality(body, var__virtual_7_, var_dim2);
-      		// 		neg find directConversionAvailable(dim1, dim2)
+      		// 		dim1 != dim2
+      		new Inequality(body, var_dim1, var_dim2);
+      		// 	neg find directConversionAvailable(dim1, dim2)
       		new NegativePatternCall(body, new FlatTuple(var_dim1, var_dim2), DirectConversionAvailableQuerySpecification.instance().getInternalQueryRepresentation());
       		bodies.add(body);
       	}

@@ -42,6 +42,7 @@ import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
  * 	DynamicRobot.robot(dcollaborator, collaborator);
  * 	Robot.communicationRange.dimension(collaborator, dim2);
  * 	
+ * 	dim1 != dim2;
  * 	neg find directConversionAvailable(dim1, dim2);
  * }
  * </pre></code>

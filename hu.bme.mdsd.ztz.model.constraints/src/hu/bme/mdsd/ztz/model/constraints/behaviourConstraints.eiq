@@ -130,6 +130,7 @@ pattern collaborationRangeDimensionsNotCompatible(robot: Robot, collaborator: Ro
 	DynamicRobot.robot(dcollaborator, collaborator);
 	Robot.communicationRange.dimension(collaborator, dim2);
 	
+	dim1 != dim2;
 	neg find directConversionAvailable(dim1, dim2);
 }
 
