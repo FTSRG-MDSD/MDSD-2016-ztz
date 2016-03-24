@@ -78,3 +78,5 @@
 /.CommunicationActionWithoutMessageQuerySpecification.java._trace
 /.MessageTargetProcessor.java._trace
 /.MessageTargetQuerySpecification.java._trace
+/CollaborationRangeDimensionsNotCompatibleProcessor.java
+/CollaborationRangeDimensionsNotCompatibleQuerySpecification.java

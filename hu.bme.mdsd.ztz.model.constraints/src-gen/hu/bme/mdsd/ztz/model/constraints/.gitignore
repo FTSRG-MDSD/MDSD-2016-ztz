@@ -80,3 +80,5 @@
 /.CommunicationActionWithoutMessageMatcher.java._trace
 /.MessageTargetMatch.java._trace
 /.MessageTargetMatcher.java._trace
+/CollaborationRangeDimensionsNotCompatibleMatch.java
+/CollaborationRangeDimensionsNotCompatibleMatcher.java
