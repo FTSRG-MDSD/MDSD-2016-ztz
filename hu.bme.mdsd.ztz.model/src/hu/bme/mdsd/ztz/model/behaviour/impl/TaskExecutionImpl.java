@@ -7,6 +7,7 @@ import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus;
 
+import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Task;
 
@@ -38,6 +39,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl#getExecutionTime <em>Execution Time</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl#getTask <em>Task</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.impl.TaskExecutionImpl#getRequirement <em>Requirement</em>}</li>
  * </ul>
  *
  * @generated
@@ -92,6 +94,16 @@ public class TaskExecutionImpl extends NamedElementImpl implements TaskExecution
          * @ordered
          */
         protected Task task;
+
+        /**
+         * The cached value of the '{@link #getRequirement() <em>Requirement</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see #getRequirement()
+         * @generated
+         * @ordered
+         */
+        protected TaskRequirement requirement;
 
         /**
          * <!-- begin-user-doc -->
@@ -231,11 +243,89 @@ public class TaskExecutionImpl extends NamedElementImpl implements TaskExecution
          * <!-- end-user-doc -->
          * @generated
          */
+        public TaskRequirement getRequirement() {
+                if (requirement != null && requirement.eIsProxy()) {
+                        InternalEObject oldRequirement = (InternalEObject)requirement;
+                        requirement = (TaskRequirement)eResolveProxy(oldRequirement);
+                        if (requirement != oldRequirement) {
+                                if (eNotificationRequired())
+                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourPackage.TASK_EXECUTION__REQUIREMENT, oldRequirement, requirement));
+                        }
+                }
+                return requirement;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public TaskRequirement basicGetRequirement() {
+                return requirement;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public NotificationChain basicSetRequirement(TaskRequirement newRequirement, NotificationChain msgs) {
+                TaskRequirement oldRequirement = requirement;
+                requirement = newRequirement;
+                if (eNotificationRequired()) {
+                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_EXECUTION__REQUIREMENT, oldRequirement, newRequirement);
+                        if (msgs == null) msgs = notification; else msgs.add(notification);
+                }
+                return msgs;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setRequirement(TaskRequirement newRequirement) {
+                if (newRequirement != requirement) {
+                        NotificationChain msgs = null;
+                        if (requirement != null)
+                                msgs = ((InternalEObject)requirement).eInverseRemove(this, BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION, TaskRequirement.class, msgs);
+                        if (newRequirement != null)
+                                msgs = ((InternalEObject)newRequirement).eInverseAdd(this, BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION, TaskRequirement.class, msgs);
+                        msgs = basicSetRequirement(newRequirement, msgs);
+                        if (msgs != null) msgs.dispatch();
+                }
+                else if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_EXECUTION__REQUIREMENT, newRequirement, newRequirement));
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+                switch (featureID) {
+                        case BehaviourPackage.TASK_EXECUTION__REQUIREMENT:
+                                if (requirement != null)
+                                        msgs = ((InternalEObject)requirement).eInverseRemove(this, BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION, TaskRequirement.class, msgs);
+                                return basicSetRequirement((TaskRequirement)otherEnd, msgs);
+                }
+                return super.eInverseAdd(otherEnd, featureID, msgs);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
                         case BehaviourPackage.TASK_EXECUTION__EXECUTION_TIME:
                                 return basicSetExecutionTime(null, msgs);
+                        case BehaviourPackage.TASK_EXECUTION__REQUIREMENT:
+                                return basicSetRequirement(null, msgs);
                 }
                 return super.eInverseRemove(otherEnd, featureID, msgs);
         }
@@ -257,6 +347,9 @@ public class TaskExecutionImpl extends NamedElementImpl implements TaskExecution
                         case BehaviourPackage.TASK_EXECUTION__TASK:
                                 if (resolve) return getTask();
                                 return basicGetTask();
+                        case BehaviourPackage.TASK_EXECUTION__REQUIREMENT:
+                                if (resolve) return getRequirement();
+                                return basicGetRequirement();
                 }
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -283,6 +376,9 @@ public class TaskExecutionImpl extends NamedElementImpl implements TaskExecution
                         case BehaviourPackage.TASK_EXECUTION__TASK:
                                 setTask((Task)newValue);
                                 return;
+                        case BehaviourPackage.TASK_EXECUTION__REQUIREMENT:
+                                setRequirement((TaskRequirement)newValue);
+                                return;
                 }
                 super.eSet(featureID, newValue);
         }
@@ -307,6 +403,9 @@ public class TaskExecutionImpl extends NamedElementImpl implements TaskExecution
                         case BehaviourPackage.TASK_EXECUTION__TASK:
                                 setTask((Task)null);
                                 return;
+                        case BehaviourPackage.TASK_EXECUTION__REQUIREMENT:
+                                setRequirement((TaskRequirement)null);
+                                return;
                 }
                 super.eUnset(featureID);
         }
@@ -327,6 +426,8 @@ public class TaskExecutionImpl extends NamedElementImpl implements TaskExecution
                                 return status != STATUS_EDEFAULT;
                         case BehaviourPackage.TASK_EXECUTION__TASK:
                                 return task != null;
+                        case BehaviourPackage.TASK_EXECUTION__REQUIREMENT:
+                                return requirement != null;
                 }
                 return super.eIsSet(featureID);
         }

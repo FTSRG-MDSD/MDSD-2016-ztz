@@ -83,3 +83,9 @@
 /CollaborationRangeDimensionsNotCompatibleMatch.java
 /CollaborationRangeDimensionsNotCompatibleMatcher.java
 /.StructuralConstraints.java._trace
+/.MessageNotFromRepositoryMatch.java._trace
+/.MessageNotFromRepositoryMatcher.java._trace
+/.RepositoryHasMessageMatch.java._trace
+/.RepositoryHasMessageMatcher.java._trace
+/.RepositoryHasSendedMessageMatch.java._trace
+/.RepositoryHasSendedMessageMatcher.java._trace

@@ -250,3 +250,22 @@ pattern communicationActionWithoutMessage(communicationAction: CommunicationActi
 pattern communicationActionHasMessage(communicationAction: CommunicationAction, message: Message) {
 	CommunicationAction.message(communicationAction, message);
 }
+
+
+@Constraint(
+	key = {"action", "message"},
+	severity = "error",
+	message = "The message ($message$) of the action is not in the message repository as a sendedMessage.",
+	targetEditorId = "hu.bme.mdsd.ztz.model.behaviour.presentation.BehaviourEditorID"
+)
+pattern messageNotFromRepository(message: Message, action: CommunicationAction) {
+	DynamicRobot.actions(robot, action);
+	DynamicRobot.messageRepository(robot, repository);
+	CommunicationAction.message(action, message);
+	neg find repositoryHasSendedMessage(repository, message);
+}
+
+
+pattern repositoryHasSendedMessage(repository: MessageRepository, message: Message) {
+	MessageRepository.sendedMessages(repository, message);
+}

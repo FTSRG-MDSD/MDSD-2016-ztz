@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getExecutionTime <em>Execution Time</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getStatus <em>Status</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getTask <em>Task</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getRequirement <em>Requirement</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskExecution()
@@ -124,5 +125,33 @@ public interface TaskExecution extends NamedElement {
          * @generated
          */
         void setTask(Task value);
+
+        /**
+         * Returns the value of the '<em><b>Requirement</b></em>' reference.
+         * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTaskExecution <em>Task Execution</em>}'.
+         * <!-- begin-user-doc -->
+         * <p>
+         * If the meaning of the '<em>Requirement</em>' reference isn't clear,
+         * there really should be more of a description here...
+         * </p>
+         * <!-- end-user-doc -->
+         * @return the value of the '<em>Requirement</em>' reference.
+         * @see #setRequirement(TaskRequirement)
+         * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskExecution_Requirement()
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskRequirement#getTaskExecution
+         * @model opposite="taskExecution"
+         * @generated
+         */
+        TaskRequirement getRequirement();
+
+        /**
+         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getRequirement <em>Requirement</em>}' reference.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @param value the new value of the '<em>Requirement</em>' reference.
+         * @see #getRequirement()
+         * @generated
+         */
+        void setRequirement(TaskRequirement value);
 
 } // TaskExecution

@@ -83,6 +83,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" unique="false"
         lowerBound="1" eType="#//TaskExecutionStatus"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1" eType="ecore:EClass drone.ecore#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="#//TaskRequirement"
+        eOpposite="#//TaskRequirement/taskExecution"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RobotCollaboration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="collaborator" lowerBound="1"
@@ -125,7 +127,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskRequirement" eSuperTypes="drone.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskExecution" unique="false"
-        lowerBound="1" eType="#//TaskExecution"/>
+        lowerBound="1" eType="#//TaskExecution" eOpposite="#//TaskExecution/requirement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="prerequisite" unique="false"
         eType="#//TaskExecution"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="participants" lowerBound="1"

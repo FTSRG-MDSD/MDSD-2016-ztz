@@ -10,12 +10,14 @@ import hu.bme.mdsd.ztz.model.constraints.DynamicRobotMultiplyDefinedMatcher;
 import hu.bme.mdsd.ztz.model.constraints.ExecutorOfTaskMatcher;
 import hu.bme.mdsd.ztz.model.constraints.IncorrectWaitingTaskMatcher;
 import hu.bme.mdsd.ztz.model.constraints.IsNotWaitingTaskMatcher;
+import hu.bme.mdsd.ztz.model.constraints.MessageNotFromRepositoryMatcher;
 import hu.bme.mdsd.ztz.model.constraints.MessageTargetMatcher;
 import hu.bme.mdsd.ztz.model.constraints.MessageToSelfMatcher;
 import hu.bme.mdsd.ztz.model.constraints.NonPositiveParticipantsMatcher;
 import hu.bme.mdsd.ztz.model.constraints.NotCorrectlyLinkedCapabilityPropertiesToRequirementMatcher;
 import hu.bme.mdsd.ztz.model.constraints.NotEnoughExecutorsMatcher;
 import hu.bme.mdsd.ztz.model.constraints.OneDetectedObjectMatcher;
+import hu.bme.mdsd.ztz.model.constraints.RepositoryHasSendedMessageMatcher;
 import hu.bme.mdsd.ztz.model.constraints.RequiredCapabilityMatcher;
 import hu.bme.mdsd.ztz.model.constraints.RobotCannotExecuteTaskMatcher;
 import hu.bme.mdsd.ztz.model.constraints.RobotExecutingUnlinkedTaskMatcher;
@@ -34,12 +36,14 @@ import hu.bme.mdsd.ztz.model.constraints.util.DynamicRobotMultiplyDefinedQuerySp
 import hu.bme.mdsd.ztz.model.constraints.util.ExecutorOfTaskQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.IncorrectWaitingTaskQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.IsNotWaitingTaskQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.util.MessageNotFromRepositoryQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.MessageTargetQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.MessageToSelfQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.NonPositiveParticipantsQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.NotCorrectlyLinkedCapabilityPropertiesToRequirementQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.NotEnoughExecutorsQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.OneDetectedObjectQuerySpecification;
+import hu.bme.mdsd.ztz.model.constraints.util.RepositoryHasSendedMessageQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.RequiredCapabilityQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.RobotCannotExecuteTaskQuerySpecification;
 import hu.bme.mdsd.ztz.model.constraints.util.RobotExecutingUnlinkedTaskQuerySpecification;
@@ -84,6 +88,8 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * <li>messageTarget</li>
  * <li>communicationActionWithoutMessage</li>
  * <li>communicationActionHasMessage</li>
+ * <li>messageNotFromRepository</li>
+ * <li>repositoryHasSendedMessage</li>
  * </ul>
  * 
  * @see IPatternGroup
@@ -132,6 +138,8 @@ public final class BehaviourConstraints extends BaseGeneratedPatternGroup {
     querySpecifications.add(MessageTargetQuerySpecification.instance());
     querySpecifications.add(CommunicationActionWithoutMessageQuerySpecification.instance());
     querySpecifications.add(CommunicationActionHasMessageQuerySpecification.instance());
+    querySpecifications.add(MessageNotFromRepositoryQuerySpecification.instance());
+    querySpecifications.add(RepositoryHasSendedMessageQuerySpecification.instance());
   }
   
   public SameTaskAsPrerequisiteQuerySpecification getSameTaskAsPrerequisite() throws IncQueryException {
@@ -324,5 +332,21 @@ public final class BehaviourConstraints extends BaseGeneratedPatternGroup {
   
   public CommunicationActionHasMessageMatcher getCommunicationActionHasMessage(final IncQueryEngine engine) throws IncQueryException {
     return CommunicationActionHasMessageMatcher.on(engine);
+  }
+  
+  public MessageNotFromRepositoryQuerySpecification getMessageNotFromRepository() throws IncQueryException {
+    return MessageNotFromRepositoryQuerySpecification.instance();
+  }
+  
+  public MessageNotFromRepositoryMatcher getMessageNotFromRepository(final IncQueryEngine engine) throws IncQueryException {
+    return MessageNotFromRepositoryMatcher.on(engine);
+  }
+  
+  public RepositoryHasSendedMessageQuerySpecification getRepositoryHasSendedMessage() throws IncQueryException {
+    return RepositoryHasSendedMessageQuerySpecification.instance();
+  }
+  
+  public RepositoryHasSendedMessageMatcher getRepositoryHasSendedMessage(final IncQueryEngine engine) throws IncQueryException {
+    return RepositoryHasSendedMessageMatcher.on(engine);
   }
 }

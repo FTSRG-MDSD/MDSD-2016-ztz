@@ -37,6 +37,7 @@ import org.eclipse.emf.common.util.EList;
 public interface TaskRequirement extends NamedElement {
         /**
          * Returns the value of the '<em><b>Task Execution</b></em>' reference.
+         * It is bidirectional and its opposite is '{@link hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getRequirement <em>Requirement</em>}'.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Task Execution</em>' reference isn't clear,
@@ -46,7 +47,8 @@ public interface TaskRequirement extends NamedElement {
          * @return the value of the '<em>Task Execution</em>' reference.
          * @see #setTaskExecution(TaskExecution)
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getTaskRequirement_TaskExecution()
-         * @model required="true"
+         * @see hu.bme.mdsd.ztz.model.behaviour.TaskExecution#getRequirement
+         * @model opposite="requirement" required="true"
          * @generated
          */
         TaskExecution getTaskExecution();

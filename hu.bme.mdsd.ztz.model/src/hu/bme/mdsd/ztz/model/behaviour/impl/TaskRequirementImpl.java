@@ -192,11 +192,33 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
          * <!-- end-user-doc -->
          * @generated
          */
-        public void setTaskExecution(TaskExecution newTaskExecution) {
+        public NotificationChain basicSetTaskExecution(TaskExecution newTaskExecution, NotificationChain msgs) {
                 TaskExecution oldTaskExecution = taskExecution;
                 taskExecution = newTaskExecution;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION, oldTaskExecution, taskExecution));
+                if (eNotificationRequired()) {
+                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION, oldTaskExecution, newTaskExecution);
+                        if (msgs == null) msgs = notification; else msgs.add(notification);
+                }
+                return msgs;
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void setTaskExecution(TaskExecution newTaskExecution) {
+                if (newTaskExecution != taskExecution) {
+                        NotificationChain msgs = null;
+                        if (taskExecution != null)
+                                msgs = ((InternalEObject)taskExecution).eInverseRemove(this, BehaviourPackage.TASK_EXECUTION__REQUIREMENT, TaskExecution.class, msgs);
+                        if (newTaskExecution != null)
+                                msgs = ((InternalEObject)newTaskExecution).eInverseAdd(this, BehaviourPackage.TASK_EXECUTION__REQUIREMENT, TaskExecution.class, msgs);
+                        msgs = basicSetTaskExecution(newTaskExecution, msgs);
+                        if (msgs != null) msgs.dispatch();
+                }
+                else if (eNotificationRequired())
+                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION, newTaskExecution, newTaskExecution));
         }
 
         /**
@@ -224,6 +246,22 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
          */
         public boolean isSetTask() {
                 return TASK__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
+        }
+
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+                switch (featureID) {
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION:
+                                if (taskExecution != null)
+                                        msgs = ((InternalEObject)taskExecution).eInverseRemove(this, BehaviourPackage.TASK_EXECUTION__REQUIREMENT, TaskExecution.class, msgs);
+                                return basicSetTaskExecution((TaskExecution)otherEnd, msgs);
+                }
+                return super.eInverseAdd(otherEnd, featureID, msgs);
         }
 
         /**
@@ -347,6 +385,8 @@ public class TaskRequirementImpl extends NamedElementImpl implements TaskRequire
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
                 switch (featureID) {
+                        case BehaviourPackage.TASK_REQUIREMENT__TASK_EXECUTION:
+                                return basicSetTaskExecution(null, msgs);
                         case BehaviourPackage.TASK_REQUIREMENT__PROPERTIES:
                                 return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
                         case BehaviourPackage.TASK_REQUIREMENT__CAPABILITY_PROPERTIES:
