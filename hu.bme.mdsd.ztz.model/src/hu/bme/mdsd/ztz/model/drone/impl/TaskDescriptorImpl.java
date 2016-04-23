@@ -43,234 +43,234 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class TaskDescriptorImpl extends MinimalEObjectImpl.Container implements TaskDescriptor {
         /**
-         * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list.
-         * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getTargets()
-         * @generated
-         * @ordered
-         */
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
         protected EList<AreaObject> targets;
 
         /**
-         * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
-         * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getProperties()
-         * @generated
-         * @ordered
-         */
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
         protected EList<Property> properties;
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected TaskDescriptorImpl() {
-                super();
-        }
+		super();
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         protected EClass eStaticClass() {
-                return DronePackage.Literals.TASK_DESCRIPTOR;
-        }
+		return DronePackage.Literals.TASK_DESCRIPTOR;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public EList<AreaObject> getTargets() {
-                if (targets == null) {
-                        targets = new EObjectResolvingEList<AreaObject>(AreaObject.class, this, DronePackage.TASK_DESCRIPTOR__TARGETS);
-                }
-                return targets;
-        }
+		if (targets == null) {
+			targets = new EObjectResolvingEList<AreaObject>(AreaObject.class, this, DronePackage.TASK_DESCRIPTOR__TARGETS);
+		}
+		return targets;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public EList<Property> getProperties() {
-                if (properties == null) {
-                        properties = new EObjectContainmentEList<Property>(Property.class, this, DronePackage.TASK_DESCRIPTOR__PROPERTIES);
-                }
-                return properties;
-        }
+		if (properties == null) {
+			properties = new EObjectContainmentEList<Property>(Property.class, this, DronePackage.TASK_DESCRIPTOR__PROPERTIES);
+		}
+		return properties;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public Task getTask() {
-                if (eContainerFeatureID() != DronePackage.TASK_DESCRIPTOR__TASK) return null;
-                return (Task)eInternalContainer();
-        }
+		if (eContainerFeatureID() != DronePackage.TASK_DESCRIPTOR__TASK) return null;
+		return (Task)eInternalContainer();
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public NotificationChain basicSetTask(Task newTask, NotificationChain msgs) {
-                msgs = eBasicSetContainer((InternalEObject)newTask, DronePackage.TASK_DESCRIPTOR__TASK, msgs);
-                return msgs;
-        }
+		msgs = eBasicSetContainer((InternalEObject)newTask, DronePackage.TASK_DESCRIPTOR__TASK, msgs);
+		return msgs;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void setTask(Task newTask) {
-                if (newTask != eInternalContainer() || (eContainerFeatureID() != DronePackage.TASK_DESCRIPTOR__TASK && newTask != null)) {
-                        if (EcoreUtil.isAncestor(this, newTask))
-                                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-                        NotificationChain msgs = null;
-                        if (eInternalContainer() != null)
-                                msgs = eBasicRemoveFromContainer(msgs);
-                        if (newTask != null)
-                                msgs = ((InternalEObject)newTask).eInverseAdd(this, DronePackage.TASK__DESCRIPTOR, Task.class, msgs);
-                        msgs = basicSetTask(newTask, msgs);
-                        if (msgs != null) msgs.dispatch();
-                }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK_DESCRIPTOR__TASK, newTask, newTask));
-        }
+		if (newTask != eInternalContainer() || (eContainerFeatureID() != DronePackage.TASK_DESCRIPTOR__TASK && newTask != null)) {
+			if (EcoreUtil.isAncestor(this, newTask))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newTask != null)
+				msgs = ((InternalEObject)newTask).eInverseAdd(this, DronePackage.TASK__DESCRIPTOR, Task.class, msgs);
+			msgs = basicSetTask(newTask, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.TASK_DESCRIPTOR__TASK, newTask, newTask));
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-                switch (featureID) {
-                        case DronePackage.TASK_DESCRIPTOR__TASK:
-                                if (eInternalContainer() != null)
-                                        msgs = eBasicRemoveFromContainer(msgs);
-                                return basicSetTask((Task)otherEnd, msgs);
-                }
-                return super.eInverseAdd(otherEnd, featureID, msgs);
-        }
+		switch (featureID) {
+			case DronePackage.TASK_DESCRIPTOR__TASK:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetTask((Task)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-                switch (featureID) {
-                        case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
-                                return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
-                        case DronePackage.TASK_DESCRIPTOR__TASK:
-                                return basicSetTask(null, msgs);
-                }
-                return super.eInverseRemove(otherEnd, featureID, msgs);
-        }
+		switch (featureID) {
+			case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case DronePackage.TASK_DESCRIPTOR__TASK:
+				return basicSetTask(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-                switch (eContainerFeatureID()) {
-                        case DronePackage.TASK_DESCRIPTOR__TASK:
-                                return eInternalContainer().eInverseRemove(this, DronePackage.TASK__DESCRIPTOR, Task.class, msgs);
-                }
-                return super.eBasicRemoveFromContainerFeature(msgs);
-        }
+		switch (eContainerFeatureID()) {
+			case DronePackage.TASK_DESCRIPTOR__TASK:
+				return eInternalContainer().eInverseRemove(this, DronePackage.TASK__DESCRIPTOR, Task.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
-                switch (featureID) {
-                        case DronePackage.TASK_DESCRIPTOR__TARGETS:
-                                return getTargets();
-                        case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
-                                return getProperties();
-                        case DronePackage.TASK_DESCRIPTOR__TASK:
-                                return getTask();
-                }
-                return super.eGet(featureID, resolve, coreType);
-        }
+		switch (featureID) {
+			case DronePackage.TASK_DESCRIPTOR__TARGETS:
+				return getTargets();
+			case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
+				return getProperties();
+			case DronePackage.TASK_DESCRIPTOR__TASK:
+				return getTask();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @SuppressWarnings("unchecked")
         @Override
         public void eSet(int featureID, Object newValue) {
-                switch (featureID) {
-                        case DronePackage.TASK_DESCRIPTOR__TARGETS:
-                                getTargets().clear();
-                                getTargets().addAll((Collection<? extends AreaObject>)newValue);
-                                return;
-                        case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
-                                getProperties().clear();
-                                getProperties().addAll((Collection<? extends Property>)newValue);
-                                return;
-                        case DronePackage.TASK_DESCRIPTOR__TASK:
-                                setTask((Task)newValue);
-                                return;
-                }
-                super.eSet(featureID, newValue);
-        }
+		switch (featureID) {
+			case DronePackage.TASK_DESCRIPTOR__TARGETS:
+				getTargets().clear();
+				getTargets().addAll((Collection<? extends AreaObject>)newValue);
+				return;
+			case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends Property>)newValue);
+				return;
+			case DronePackage.TASK_DESCRIPTOR__TASK:
+				setTask((Task)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public void eUnset(int featureID) {
-                switch (featureID) {
-                        case DronePackage.TASK_DESCRIPTOR__TARGETS:
-                                getTargets().clear();
-                                return;
-                        case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
-                                getProperties().clear();
-                                return;
-                        case DronePackage.TASK_DESCRIPTOR__TASK:
-                                setTask((Task)null);
-                                return;
-                }
-                super.eUnset(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.TASK_DESCRIPTOR__TARGETS:
+				getTargets().clear();
+				return;
+			case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
+				getProperties().clear();
+				return;
+			case DronePackage.TASK_DESCRIPTOR__TASK:
+				setTask((Task)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public boolean eIsSet(int featureID) {
-                switch (featureID) {
-                        case DronePackage.TASK_DESCRIPTOR__TARGETS:
-                                return targets != null && !targets.isEmpty();
-                        case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
-                                return properties != null && !properties.isEmpty();
-                        case DronePackage.TASK_DESCRIPTOR__TASK:
-                                return getTask() != null;
-                }
-                return super.eIsSet(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.TASK_DESCRIPTOR__TARGETS:
+				return targets != null && !targets.isEmpty();
+			case DronePackage.TASK_DESCRIPTOR__PROPERTIES:
+				return properties != null && !properties.isEmpty();
+			case DronePackage.TASK_DESCRIPTOR__TASK:
+				return getTask() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //TaskDescriptorImpl

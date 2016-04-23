@@ -24,61 +24,61 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface AreaObject extends NamedElement {
         /**
-         * Returns the value of the '<em><b>Positions</b></em>' containment reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Position}.
-         * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Positions</b></em>' containment reference list.
+	 * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Position}.
+	 * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Positions</em>' containment reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Positions</em>' containment reference list.
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getAreaObject_Positions()
-         * @model containment="true"
-         * @generated
-         */
+	 * @return the value of the '<em>Positions</em>' containment reference list.
+	 * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getAreaObject_Positions()
+	 * @model containment="true"
+	 * @generated
+	 */
         EList<Position> getPositions();
 
         /**
-         * Returns the value of the '<em><b>Size</b></em>' containment reference.
-         * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Size</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Size</em>' containment reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Size</em>' containment reference.
-         * @see #setSize(Size)
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getAreaObject_Size()
-         * @model containment="true"
-         * @generated
-         */
+	 * @return the value of the '<em>Size</em>' containment reference.
+	 * @see #setSize(Size)
+	 * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getAreaObject_Size()
+	 * @model containment="true"
+	 * @generated
+	 */
         Size getSize();
 
         /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.AreaObject#getSize <em>Size</em>}' containment reference.
-         * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link hu.bme.mdsd.ztz.model.drone.AreaObject#getSize <em>Size</em>}' containment reference.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Size</em>' containment reference.
-         * @see #getSize()
-         * @generated
-         */
+	 * @param value the new value of the '<em>Size</em>' containment reference.
+	 * @see #getSize()
+	 * @generated
+	 */
         void setSize(Size value);
 
         /**
-         * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Property}.
-         * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Property}.
+	 * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Properties</em>' containment reference list.
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getAreaObject_Properties()
-         * @model containment="true"
-         * @generated
-         */
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getAreaObject_Properties()
+	 * @model containment="true"
+	 * @generated
+	 */
         EList<Property> getProperties();
 
 } // AreaObject

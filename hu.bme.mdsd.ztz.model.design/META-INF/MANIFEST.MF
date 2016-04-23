@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: hu.bme.mdsd.ztz.model.design
+Bundle-SymbolicName: hu.bme.mdsd.ztz.model.design;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: hu.bme.mdsd.ztz.model.design.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.sirius,
+ org.eclipse.sirius.common.acceleo.aql,
+ hu.bme.mdsd.ztz.model;bundle-version="0.1.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

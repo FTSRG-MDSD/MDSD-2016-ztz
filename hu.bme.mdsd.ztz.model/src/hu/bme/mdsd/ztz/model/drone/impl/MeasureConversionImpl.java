@@ -30,196 +30,196 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class MeasureConversionImpl extends MinimalEObjectImpl.Container implements MeasureConversion {
         /**
-         * The default value of the '{@link #getRate() <em>Rate</em>}' attribute.
-         * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getRate() <em>Rate</em>}' attribute.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getRate()
-         * @generated
-         * @ordered
-         */
+	 * @see #getRate()
+	 * @generated
+	 * @ordered
+	 */
         protected static final float RATE_EDEFAULT = 0.0F;
 
         /**
-         * The cached value of the '{@link #getRate() <em>Rate</em>}' attribute.
-         * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRate() <em>Rate</em>}' attribute.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getRate()
-         * @generated
-         * @ordered
-         */
+	 * @see #getRate()
+	 * @generated
+	 * @ordered
+	 */
         protected float rate = RATE_EDEFAULT;
 
         /**
-         * The cached value of the '{@link #getDimension() <em>Dimension</em>}' reference.
-         * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getDimension() <em>Dimension</em>}' reference.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getDimension()
-         * @generated
-         * @ordered
-         */
+	 * @see #getDimension()
+	 * @generated
+	 * @ordered
+	 */
         protected MeasureDimension dimension;
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected MeasureConversionImpl() {
-                super();
-        }
+		super();
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         protected EClass eStaticClass() {
-                return DronePackage.Literals.MEASURE_CONVERSION;
-        }
+		return DronePackage.Literals.MEASURE_CONVERSION;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public float getRate() {
-                return rate;
-        }
+		return rate;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void setRate(float newRate) {
-                float oldRate = rate;
-                rate = newRate;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.MEASURE_CONVERSION__RATE, oldRate, rate));
-        }
+		float oldRate = rate;
+		rate = newRate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.MEASURE_CONVERSION__RATE, oldRate, rate));
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public MeasureDimension getDimension() {
-                if (dimension != null && dimension.eIsProxy()) {
-                        InternalEObject oldDimension = (InternalEObject)dimension;
-                        dimension = (MeasureDimension)eResolveProxy(oldDimension);
-                        if (dimension != oldDimension) {
-                                if (eNotificationRequired())
-                                        eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.MEASURE_CONVERSION__DIMENSION, oldDimension, dimension));
-                        }
-                }
-                return dimension;
-        }
+		if (dimension != null && dimension.eIsProxy()) {
+			InternalEObject oldDimension = (InternalEObject)dimension;
+			dimension = (MeasureDimension)eResolveProxy(oldDimension);
+			if (dimension != oldDimension) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DronePackage.MEASURE_CONVERSION__DIMENSION, oldDimension, dimension));
+			}
+		}
+		return dimension;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public MeasureDimension basicGetDimension() {
-                return dimension;
-        }
+		return dimension;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void setDimension(MeasureDimension newDimension) {
-                MeasureDimension oldDimension = dimension;
-                dimension = newDimension;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.MEASURE_CONVERSION__DIMENSION, oldDimension, dimension));
-        }
+		MeasureDimension oldDimension = dimension;
+		dimension = newDimension;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.MEASURE_CONVERSION__DIMENSION, oldDimension, dimension));
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
-                switch (featureID) {
-                        case DronePackage.MEASURE_CONVERSION__RATE:
-                                return getRate();
-                        case DronePackage.MEASURE_CONVERSION__DIMENSION:
-                                if (resolve) return getDimension();
-                                return basicGetDimension();
-                }
-                return super.eGet(featureID, resolve, coreType);
-        }
+		switch (featureID) {
+			case DronePackage.MEASURE_CONVERSION__RATE:
+				return getRate();
+			case DronePackage.MEASURE_CONVERSION__DIMENSION:
+				if (resolve) return getDimension();
+				return basicGetDimension();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public void eSet(int featureID, Object newValue) {
-                switch (featureID) {
-                        case DronePackage.MEASURE_CONVERSION__RATE:
-                                setRate((Float)newValue);
-                                return;
-                        case DronePackage.MEASURE_CONVERSION__DIMENSION:
-                                setDimension((MeasureDimension)newValue);
-                                return;
-                }
-                super.eSet(featureID, newValue);
-        }
+		switch (featureID) {
+			case DronePackage.MEASURE_CONVERSION__RATE:
+				setRate((Float)newValue);
+				return;
+			case DronePackage.MEASURE_CONVERSION__DIMENSION:
+				setDimension((MeasureDimension)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public void eUnset(int featureID) {
-                switch (featureID) {
-                        case DronePackage.MEASURE_CONVERSION__RATE:
-                                setRate(RATE_EDEFAULT);
-                                return;
-                        case DronePackage.MEASURE_CONVERSION__DIMENSION:
-                                setDimension((MeasureDimension)null);
-                                return;
-                }
-                super.eUnset(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.MEASURE_CONVERSION__RATE:
+				setRate(RATE_EDEFAULT);
+				return;
+			case DronePackage.MEASURE_CONVERSION__DIMENSION:
+				setDimension((MeasureDimension)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public boolean eIsSet(int featureID) {
-                switch (featureID) {
-                        case DronePackage.MEASURE_CONVERSION__RATE:
-                                return rate != RATE_EDEFAULT;
-                        case DronePackage.MEASURE_CONVERSION__DIMENSION:
-                                return dimension != null;
-                }
-                return super.eIsSet(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.MEASURE_CONVERSION__RATE:
+				return rate != RATE_EDEFAULT;
+			case DronePackage.MEASURE_CONVERSION__DIMENSION:
+				return dimension != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public String toString() {
-                if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-                StringBuffer result = new StringBuffer(super.toString());
-                result.append(" (rate: ");
-                result.append(rate);
-                result.append(')');
-                return result.toString();
-        }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (rate: ");
+		result.append(rate);
+		result.append(')');
+		return result.toString();
+	}
 
 } //MeasureConversionImpl

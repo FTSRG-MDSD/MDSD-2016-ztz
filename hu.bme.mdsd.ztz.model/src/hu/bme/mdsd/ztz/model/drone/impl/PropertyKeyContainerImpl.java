@@ -33,118 +33,118 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class PropertyKeyContainerImpl extends NamedElementImpl implements PropertyKeyContainer {
         /**
-         * The cached value of the '{@link #getKeys() <em>Keys</em>}' containment reference list.
-         * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getKeys() <em>Keys</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getKeys()
-         * @generated
-         * @ordered
-         */
+	 * @see #getKeys()
+	 * @generated
+	 * @ordered
+	 */
         protected EList<PropertyKey> keys;
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected PropertyKeyContainerImpl() {
-                super();
-        }
+		super();
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         protected EClass eStaticClass() {
-                return DronePackage.Literals.PROPERTY_KEY_CONTAINER;
-        }
+		return DronePackage.Literals.PROPERTY_KEY_CONTAINER;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public EList<PropertyKey> getKeys() {
-                if (keys == null) {
-                        keys = new EObjectContainmentEList<PropertyKey>(PropertyKey.class, this, DronePackage.PROPERTY_KEY_CONTAINER__KEYS);
-                }
-                return keys;
-        }
+		if (keys == null) {
+			keys = new EObjectContainmentEList<PropertyKey>(PropertyKey.class, this, DronePackage.PROPERTY_KEY_CONTAINER__KEYS);
+		}
+		return keys;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-                switch (featureID) {
-                        case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
-                                return ((InternalEList<?>)getKeys()).basicRemove(otherEnd, msgs);
-                }
-                return super.eInverseRemove(otherEnd, featureID, msgs);
-        }
+		switch (featureID) {
+			case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
+				return ((InternalEList<?>)getKeys()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
-                switch (featureID) {
-                        case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
-                                return getKeys();
-                }
-                return super.eGet(featureID, resolve, coreType);
-        }
+		switch (featureID) {
+			case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
+				return getKeys();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @SuppressWarnings("unchecked")
         @Override
         public void eSet(int featureID, Object newValue) {
-                switch (featureID) {
-                        case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
-                                getKeys().clear();
-                                getKeys().addAll((Collection<? extends PropertyKey>)newValue);
-                                return;
-                }
-                super.eSet(featureID, newValue);
-        }
+		switch (featureID) {
+			case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
+				getKeys().clear();
+				getKeys().addAll((Collection<? extends PropertyKey>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public void eUnset(int featureID) {
-                switch (featureID) {
-                        case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
-                                getKeys().clear();
-                                return;
-                }
-                super.eUnset(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
+				getKeys().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public boolean eIsSet(int featureID) {
-                switch (featureID) {
-                        case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
-                                return keys != null && !keys.isEmpty();
-                }
-                return super.eIsSet(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.PROPERTY_KEY_CONTAINER__KEYS:
+				return keys != null && !keys.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //PropertyKeyContainerImpl

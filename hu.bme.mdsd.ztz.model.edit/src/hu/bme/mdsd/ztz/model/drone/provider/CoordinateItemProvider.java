@@ -40,165 +40,165 @@ public class CoordinateItemProvider
                 IItemLabelProvider,
                 IItemPropertySource {
         /**
-         * This constructs an instance from a factory and a notifier.
-         * <!-- begin-user-doc -->
+	 * This constructs an instance from a factory and a notifier.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public CoordinateItemProvider(AdapterFactory adapterFactory) {
-                super(adapterFactory);
-        }
+		super(adapterFactory);
+	}
 
         /**
-         * This returns the property descriptors for the adapted class.
-         * <!-- begin-user-doc -->
+	 * This returns the property descriptors for the adapted class.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-                if (itemPropertyDescriptors == null) {
-                        super.getPropertyDescriptors(object);
+		if (itemPropertyDescriptors == null) {
+			super.getPropertyDescriptors(object);
 
-                        addLatitudePropertyDescriptor(object);
-                        addLongitudePropertyDescriptor(object);
-                        addAltitudePropertyDescriptor(object);
-                }
-                return itemPropertyDescriptors;
-        }
+			addLatitudePropertyDescriptor(object);
+			addLongitudePropertyDescriptor(object);
+			addAltitudePropertyDescriptor(object);
+		}
+		return itemPropertyDescriptors;
+	}
 
         /**
-         * This adds a property descriptor for the Latitude feature.
-         * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Latitude feature.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected void addLatitudePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Coordinate_latitude_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Coordinate_latitude_feature", "_UI_Coordinate_type"),
-                                 DronePackage.Literals.COORDINATE__LATITUDE,
-                                 true,
-                                 false,
-                                 false,
-                                 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-                                 null,
-                                 null));
-        }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Coordinate_latitude_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Coordinate_latitude_feature", "_UI_Coordinate_type"),
+				 DronePackage.Literals.COORDINATE__LATITUDE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
         /**
-         * This adds a property descriptor for the Longitude feature.
-         * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Longitude feature.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected void addLongitudePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Coordinate_longitude_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Coordinate_longitude_feature", "_UI_Coordinate_type"),
-                                 DronePackage.Literals.COORDINATE__LONGITUDE,
-                                 true,
-                                 false,
-                                 false,
-                                 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-                                 null,
-                                 null));
-        }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Coordinate_longitude_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Coordinate_longitude_feature", "_UI_Coordinate_type"),
+				 DronePackage.Literals.COORDINATE__LONGITUDE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
         /**
-         * This adds a property descriptor for the Altitude feature.
-         * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Altitude feature.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected void addAltitudePropertyDescriptor(Object object) {
-                itemPropertyDescriptors.add
-                        (createItemPropertyDescriptor
-                                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                 getResourceLocator(),
-                                 getString("_UI_Coordinate_altitude_feature"),
-                                 getString("_UI_PropertyDescriptor_description", "_UI_Coordinate_altitude_feature", "_UI_Coordinate_type"),
-                                 DronePackage.Literals.COORDINATE__ALTITUDE,
-                                 true,
-                                 false,
-                                 false,
-                                 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-                                 null,
-                                 null));
-        }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Coordinate_altitude_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Coordinate_altitude_feature", "_UI_Coordinate_type"),
+				 DronePackage.Literals.COORDINATE__ALTITUDE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
         /**
-         * This returns Coordinate.gif.
-         * <!-- begin-user-doc -->
+	 * This returns Coordinate.gif.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Object getImage(Object object) {
-                return overlayImage(object, getResourceLocator().getImage("full/obj16/Coordinate"));
-        }
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Coordinate"));
+	}
 
         /**
-         * This returns the label text for the adapted class.
-         * <!-- begin-user-doc -->
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public String getText(Object object) {
-                Coordinate coordinate = (Coordinate)object;
-                return getString("_UI_Coordinate_type") + " " + coordinate.getLatitude();
-        }
+		Coordinate coordinate = (Coordinate)object;
+		return getString("_UI_Coordinate_type") + " " + coordinate.getLatitude();
+	}
         
 
         /**
-         * This handles model notifications by calling {@link #updateChildren} to update any cached
-         * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-         * <!-- begin-user-doc -->
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public void notifyChanged(Notification notification) {
-                updateChildren(notification);
+		updateChildren(notification);
 
-                switch (notification.getFeatureID(Coordinate.class)) {
-                        case DronePackage.COORDINATE__LATITUDE:
-                        case DronePackage.COORDINATE__LONGITUDE:
-                        case DronePackage.COORDINATE__ALTITUDE:
-                                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                                return;
-                }
-                super.notifyChanged(notification);
-        }
+		switch (notification.getFeatureID(Coordinate.class)) {
+			case DronePackage.COORDINATE__LATITUDE:
+			case DronePackage.COORDINATE__LONGITUDE:
+			case DronePackage.COORDINATE__ALTITUDE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
+		super.notifyChanged(notification);
+	}
 
         /**
-         * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-         * that can be created under this object.
-         * <!-- begin-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-                super.collectNewChildDescriptors(newChildDescriptors, object);
-        }
+		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
 
         /**
-         * Return the resource locator for this item provider's resources.
-         * <!-- begin-user-doc -->
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public ResourceLocator getResourceLocator() {
-                return DroneEditPlugin.INSTANCE;
-        }
+		return DroneEditPlugin.INSTANCE;
+	}
 
 }

@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class CapabilityImpl extends NamedElementImpl implements Capability {
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected CapabilityImpl() {
-                super();
-        }
+		super();
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         protected EClass eStaticClass() {
-                return DronePackage.Literals.CAPABILITY;
-        }
+		return DronePackage.Literals.CAPABILITY;
+	}
 
 } //CapabilityImpl

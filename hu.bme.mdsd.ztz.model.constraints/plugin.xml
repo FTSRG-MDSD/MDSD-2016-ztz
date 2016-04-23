@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
-  <extension id="hu.bme.mdsd.ztz.model.constraints.BehaviourConstraints" point="org.eclipse.incquery.runtime.queryspecification">
-    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:hu.bme.mdsd.ztz.model.constraints.BehaviourConstraints" id="hu.bme.mdsd.ztz.model.constraints.BehaviourConstraints"/>
-  </extension>
   <extension id="hu.bme.mdsd.ztz.model.constraints.StructuralConstraints" point="org.eclipse.incquery.runtime.queryspecification">
     <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:hu.bme.mdsd.ztz.model.constraints.StructuralConstraints" id="hu.bme.mdsd.ztz.model.constraints.StructuralConstraints"/>
+  </extension>
+  <extension id="hu.bme.mdsd.ztz.model.constraints.BehaviourConstraints" point="org.eclipse.incquery.runtime.queryspecification">
+    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:hu.bme.mdsd.ztz.model.constraints.BehaviourConstraints" id="hu.bme.mdsd.ztz.model.constraints.BehaviourConstraints"/>
   </extension>
 </plugin>

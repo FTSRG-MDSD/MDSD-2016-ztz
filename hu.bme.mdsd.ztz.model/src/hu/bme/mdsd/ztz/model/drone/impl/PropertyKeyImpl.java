@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class PropertyKeyImpl extends NamedElementImpl implements PropertyKey {
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected PropertyKeyImpl() {
-                super();
-        }
+		super();
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         protected EClass eStaticClass() {
-                return DronePackage.Literals.PROPERTY_KEY;
-        }
+		return DronePackage.Literals.PROPERTY_KEY;
+	}
 
 } //PropertyKeyImpl

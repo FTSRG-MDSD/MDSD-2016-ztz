@@ -33,133 +33,133 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class MissionImpl extends NamedElementImpl implements Mission {
         /**
-         * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
-         * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getTasks()
-         * @generated
-         * @ordered
-         */
+	 * @see #getTasks()
+	 * @generated
+	 * @ordered
+	 */
         protected EList<Task> tasks;
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected MissionImpl() {
-                super();
-        }
+		super();
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         protected EClass eStaticClass() {
-                return DronePackage.Literals.MISSION;
-        }
+		return DronePackage.Literals.MISSION;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public EList<Task> getTasks() {
-                if (tasks == null) {
-                        tasks = new EObjectContainmentWithInverseEList<Task>(Task.class, this, DronePackage.MISSION__TASKS, DronePackage.TASK__MISSION);
-                }
-                return tasks;
-        }
+		if (tasks == null) {
+			tasks = new EObjectContainmentWithInverseEList<Task>(Task.class, this, DronePackage.MISSION__TASKS, DronePackage.TASK__MISSION);
+		}
+		return tasks;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @SuppressWarnings("unchecked")
         @Override
         public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-                switch (featureID) {
-                        case DronePackage.MISSION__TASKS:
-                                return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
-                }
-                return super.eInverseAdd(otherEnd, featureID, msgs);
-        }
+		switch (featureID) {
+			case DronePackage.MISSION__TASKS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-                switch (featureID) {
-                        case DronePackage.MISSION__TASKS:
-                                return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
-                }
-                return super.eInverseRemove(otherEnd, featureID, msgs);
-        }
+		switch (featureID) {
+			case DronePackage.MISSION__TASKS:
+				return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
-                switch (featureID) {
-                        case DronePackage.MISSION__TASKS:
-                                return getTasks();
-                }
-                return super.eGet(featureID, resolve, coreType);
-        }
+		switch (featureID) {
+			case DronePackage.MISSION__TASKS:
+				return getTasks();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @SuppressWarnings("unchecked")
         @Override
         public void eSet(int featureID, Object newValue) {
-                switch (featureID) {
-                        case DronePackage.MISSION__TASKS:
-                                getTasks().clear();
-                                getTasks().addAll((Collection<? extends Task>)newValue);
-                                return;
-                }
-                super.eSet(featureID, newValue);
-        }
+		switch (featureID) {
+			case DronePackage.MISSION__TASKS:
+				getTasks().clear();
+				getTasks().addAll((Collection<? extends Task>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public void eUnset(int featureID) {
-                switch (featureID) {
-                        case DronePackage.MISSION__TASKS:
-                                getTasks().clear();
-                                return;
-                }
-                super.eUnset(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.MISSION__TASKS:
+				getTasks().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public boolean eIsSet(int featureID) {
-                switch (featureID) {
-                        case DronePackage.MISSION__TASKS:
-                                return tasks != null && !tasks.isEmpty();
-                }
-                return super.eIsSet(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.MISSION__TASKS:
+				return tasks != null && !tasks.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //MissionImpl

@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: hu.bme.mdsd.ztz.model.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: hu.bme.mdsd.ztz.model.behaviour.provider.BehaviourEditPlugin$Implementation
+Bundle-Activator: hu.bme.mdsd.ztz.model.drone.provider.DroneEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

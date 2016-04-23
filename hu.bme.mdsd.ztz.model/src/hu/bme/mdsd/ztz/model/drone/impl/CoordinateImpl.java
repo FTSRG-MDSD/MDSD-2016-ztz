@@ -29,243 +29,243 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class CoordinateImpl extends MinimalEObjectImpl.Container implements Coordinate {
         /**
-         * The default value of the '{@link #getLatitude() <em>Latitude</em>}' attribute.
-         * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getLatitude() <em>Latitude</em>}' attribute.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getLatitude()
-         * @generated
-         * @ordered
-         */
+	 * @see #getLatitude()
+	 * @generated
+	 * @ordered
+	 */
         protected static final float LATITUDE_EDEFAULT = 0.0F;
 
         /**
-         * The cached value of the '{@link #getLatitude() <em>Latitude</em>}' attribute.
-         * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getLatitude() <em>Latitude</em>}' attribute.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getLatitude()
-         * @generated
-         * @ordered
-         */
+	 * @see #getLatitude()
+	 * @generated
+	 * @ordered
+	 */
         protected float latitude = LATITUDE_EDEFAULT;
 
         /**
-         * The default value of the '{@link #getLongitude() <em>Longitude</em>}' attribute.
-         * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getLongitude() <em>Longitude</em>}' attribute.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getLongitude()
-         * @generated
-         * @ordered
-         */
+	 * @see #getLongitude()
+	 * @generated
+	 * @ordered
+	 */
         protected static final float LONGITUDE_EDEFAULT = 0.0F;
 
         /**
-         * The cached value of the '{@link #getLongitude() <em>Longitude</em>}' attribute.
-         * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getLongitude() <em>Longitude</em>}' attribute.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getLongitude()
-         * @generated
-         * @ordered
-         */
+	 * @see #getLongitude()
+	 * @generated
+	 * @ordered
+	 */
         protected float longitude = LONGITUDE_EDEFAULT;
 
         /**
-         * The default value of the '{@link #getAltitude() <em>Altitude</em>}' attribute.
-         * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getAltitude() <em>Altitude</em>}' attribute.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getAltitude()
-         * @generated
-         * @ordered
-         */
+	 * @see #getAltitude()
+	 * @generated
+	 * @ordered
+	 */
         protected static final float ALTITUDE_EDEFAULT = 0.0F;
 
         /**
-         * The cached value of the '{@link #getAltitude() <em>Altitude</em>}' attribute.
-         * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getAltitude() <em>Altitude</em>}' attribute.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see #getAltitude()
-         * @generated
-         * @ordered
-         */
+	 * @see #getAltitude()
+	 * @generated
+	 * @ordered
+	 */
         protected float altitude = ALTITUDE_EDEFAULT;
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected CoordinateImpl() {
-                super();
-        }
+		super();
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         protected EClass eStaticClass() {
-                return DronePackage.Literals.COORDINATE;
-        }
+		return DronePackage.Literals.COORDINATE;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public float getLatitude() {
-                return latitude;
-        }
+		return latitude;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void setLatitude(float newLatitude) {
-                float oldLatitude = latitude;
-                latitude = newLatitude;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.COORDINATE__LATITUDE, oldLatitude, latitude));
-        }
+		float oldLatitude = latitude;
+		latitude = newLatitude;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.COORDINATE__LATITUDE, oldLatitude, latitude));
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public float getLongitude() {
-                return longitude;
-        }
+		return longitude;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void setLongitude(float newLongitude) {
-                float oldLongitude = longitude;
-                longitude = newLongitude;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.COORDINATE__LONGITUDE, oldLongitude, longitude));
-        }
+		float oldLongitude = longitude;
+		longitude = newLongitude;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.COORDINATE__LONGITUDE, oldLongitude, longitude));
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public float getAltitude() {
-                return altitude;
-        }
+		return altitude;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void setAltitude(float newAltitude) {
-                float oldAltitude = altitude;
-                altitude = newAltitude;
-                if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.COORDINATE__ALTITUDE, oldAltitude, altitude));
-        }
+		float oldAltitude = altitude;
+		altitude = newAltitude;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DronePackage.COORDINATE__ALTITUDE, oldAltitude, altitude));
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Object eGet(int featureID, boolean resolve, boolean coreType) {
-                switch (featureID) {
-                        case DronePackage.COORDINATE__LATITUDE:
-                                return getLatitude();
-                        case DronePackage.COORDINATE__LONGITUDE:
-                                return getLongitude();
-                        case DronePackage.COORDINATE__ALTITUDE:
-                                return getAltitude();
-                }
-                return super.eGet(featureID, resolve, coreType);
-        }
+		switch (featureID) {
+			case DronePackage.COORDINATE__LATITUDE:
+				return getLatitude();
+			case DronePackage.COORDINATE__LONGITUDE:
+				return getLongitude();
+			case DronePackage.COORDINATE__ALTITUDE:
+				return getAltitude();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public void eSet(int featureID, Object newValue) {
-                switch (featureID) {
-                        case DronePackage.COORDINATE__LATITUDE:
-                                setLatitude((Float)newValue);
-                                return;
-                        case DronePackage.COORDINATE__LONGITUDE:
-                                setLongitude((Float)newValue);
-                                return;
-                        case DronePackage.COORDINATE__ALTITUDE:
-                                setAltitude((Float)newValue);
-                                return;
-                }
-                super.eSet(featureID, newValue);
-        }
+		switch (featureID) {
+			case DronePackage.COORDINATE__LATITUDE:
+				setLatitude((Float)newValue);
+				return;
+			case DronePackage.COORDINATE__LONGITUDE:
+				setLongitude((Float)newValue);
+				return;
+			case DronePackage.COORDINATE__ALTITUDE:
+				setAltitude((Float)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public void eUnset(int featureID) {
-                switch (featureID) {
-                        case DronePackage.COORDINATE__LATITUDE:
-                                setLatitude(LATITUDE_EDEFAULT);
-                                return;
-                        case DronePackage.COORDINATE__LONGITUDE:
-                                setLongitude(LONGITUDE_EDEFAULT);
-                                return;
-                        case DronePackage.COORDINATE__ALTITUDE:
-                                setAltitude(ALTITUDE_EDEFAULT);
-                                return;
-                }
-                super.eUnset(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.COORDINATE__LATITUDE:
+				setLatitude(LATITUDE_EDEFAULT);
+				return;
+			case DronePackage.COORDINATE__LONGITUDE:
+				setLongitude(LONGITUDE_EDEFAULT);
+				return;
+			case DronePackage.COORDINATE__ALTITUDE:
+				setAltitude(ALTITUDE_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public boolean eIsSet(int featureID) {
-                switch (featureID) {
-                        case DronePackage.COORDINATE__LATITUDE:
-                                return latitude != LATITUDE_EDEFAULT;
-                        case DronePackage.COORDINATE__LONGITUDE:
-                                return longitude != LONGITUDE_EDEFAULT;
-                        case DronePackage.COORDINATE__ALTITUDE:
-                                return altitude != ALTITUDE_EDEFAULT;
-                }
-                return super.eIsSet(featureID);
-        }
+		switch (featureID) {
+			case DronePackage.COORDINATE__LATITUDE:
+				return latitude != LATITUDE_EDEFAULT;
+			case DronePackage.COORDINATE__LONGITUDE:
+				return longitude != LONGITUDE_EDEFAULT;
+			case DronePackage.COORDINATE__ALTITUDE:
+				return altitude != ALTITUDE_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public String toString() {
-                if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-                StringBuffer result = new StringBuffer(super.toString());
-                result.append(" (latitude: ");
-                result.append(latitude);
-                result.append(", longitude: ");
-                result.append(longitude);
-                result.append(", altitude: ");
-                result.append(altitude);
-                result.append(')');
-                return result.toString();
-        }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (latitude: ");
+		result.append(latitude);
+		result.append(", longitude: ");
+		result.append(longitude);
+		result.append(", altitude: ");
+		result.append(altitude);
+		result.append(')');
+		return result.toString();
+	}
 
 } //CoordinateImpl

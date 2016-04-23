@@ -25,35 +25,35 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Position extends EObject {
         /**
-         * Returns the value of the '<em><b>Coordinates</b></em>' containment reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Coordinate}.
-         * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Coordinates</b></em>' containment reference list.
+	 * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Coordinate}.
+	 * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Coordinates</em>' containment reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Coordinates</em>' containment reference list.
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getPosition_Coordinates()
-         * @model containment="true"
-         * @generated
-         */
+	 * @return the value of the '<em>Coordinates</em>' containment reference list.
+	 * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getPosition_Coordinates()
+	 * @model containment="true"
+	 * @generated
+	 */
         EList<Coordinate> getCoordinates();
 
         /**
-         * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-         * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Property}.
-         * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.Property}.
+	 * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Properties</em>' containment reference list.
-         * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getPosition_Properties()
-         * @model containment="true"
-         * @generated
-         */
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see hu.bme.mdsd.ztz.model.drone.DronePackage#getPosition_Properties()
+	 * @model containment="true"
+	 * @generated
+	 */
         EList<Property> getProperties();
 
 } // Position

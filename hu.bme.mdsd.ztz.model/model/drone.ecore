@@ -134,6 +134,8 @@
         eType="#//Capability" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyKeyContainer" eType="#//PropertyKeyContainer"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="temporalElements" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyKeyContainer" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="keys" upperBound="-1" eType="#//PropertyKey"

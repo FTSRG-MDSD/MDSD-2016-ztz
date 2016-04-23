@@ -34,622 +34,622 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  */
 public class DroneItemProviderAdapterFactory extends DroneAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
         /**
-         * This keeps track of the root adapter factory that delegates to this adapter factory.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the root adapter factory that delegates to this adapter factory.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected ComposedAdapterFactory parentAdapterFactory;
 
         /**
-         * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-         * <!-- begin-user-doc -->
+	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
         /**
-         * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-         * <!-- begin-user-doc -->
+	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
         /**
-         * This constructs an instance.
-         * <!-- begin-user-doc -->
+	 * This constructs an instance.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public DroneItemProviderAdapterFactory() {
-                supportedTypes.add(IEditingDomainItemProvider.class);
-                supportedTypes.add(IStructuredItemContentProvider.class);
-                supportedTypes.add(ITreeItemContentProvider.class);
-                supportedTypes.add(IItemLabelProvider.class);
-                supportedTypes.add(IItemPropertySource.class);
-        }
+		supportedTypes.add(IEditingDomainItemProvider.class);
+		supportedTypes.add(IStructuredItemContentProvider.class);
+		supportedTypes.add(ITreeItemContentProvider.class);
+		supportedTypes.add(IItemLabelProvider.class);
+		supportedTypes.add(IItemPropertySource.class);
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Mission} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Mission} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected MissionItemProvider missionItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Mission}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Mission}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createMissionAdapter() {
-                if (missionItemProvider == null) {
-                        missionItemProvider = new MissionItemProvider(this);
-                }
+		if (missionItemProvider == null) {
+			missionItemProvider = new MissionItemProvider(this);
+		}
 
-                return missionItemProvider;
-        }
+		return missionItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Task} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Task} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected TaskItemProvider taskItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Task}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Task}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createTaskAdapter() {
-                if (taskItemProvider == null) {
-                        taskItemProvider = new TaskItemProvider(this);
-                }
+		if (taskItemProvider == null) {
+			taskItemProvider = new TaskItemProvider(this);
+		}
 
-                return taskItemProvider;
-        }
+		return taskItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.TaskDescriptor} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.TaskDescriptor} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected TaskDescriptorItemProvider taskDescriptorItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.TaskDescriptor}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.TaskDescriptor}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createTaskDescriptorAdapter() {
-                if (taskDescriptorItemProvider == null) {
-                        taskDescriptorItemProvider = new TaskDescriptorItemProvider(this);
-                }
+		if (taskDescriptorItemProvider == null) {
+			taskDescriptorItemProvider = new TaskDescriptorItemProvider(this);
+		}
 
-                return taskDescriptorItemProvider;
-        }
+		return taskDescriptorItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Position} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Position} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected PositionItemProvider positionItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Position}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Position}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createPositionAdapter() {
-                if (positionItemProvider == null) {
-                        positionItemProvider = new PositionItemProvider(this);
-                }
+		if (positionItemProvider == null) {
+			positionItemProvider = new PositionItemProvider(this);
+		}
 
-                return positionItemProvider;
-        }
+		return positionItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.AreaObject} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.AreaObject} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected AreaObjectItemProvider areaObjectItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.AreaObject}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.AreaObject}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createAreaObjectAdapter() {
-                if (areaObjectItemProvider == null) {
-                        areaObjectItemProvider = new AreaObjectItemProvider(this);
-                }
+		if (areaObjectItemProvider == null) {
+			areaObjectItemProvider = new AreaObjectItemProvider(this);
+		}
 
-                return areaObjectItemProvider;
-        }
+		return areaObjectItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Coordinate} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Coordinate} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected CoordinateItemProvider coordinateItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Coordinate}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Coordinate}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createCoordinateAdapter() {
-                if (coordinateItemProvider == null) {
-                        coordinateItemProvider = new CoordinateItemProvider(this);
-                }
+		if (coordinateItemProvider == null) {
+			coordinateItemProvider = new CoordinateItemProvider(this);
+		}
 
-                return coordinateItemProvider;
-        }
+		return coordinateItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Property} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Property} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected PropertyItemProvider propertyItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Property}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Property}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createPropertyAdapter() {
-                if (propertyItemProvider == null) {
-                        propertyItemProvider = new PropertyItemProvider(this);
-                }
+		if (propertyItemProvider == null) {
+			propertyItemProvider = new PropertyItemProvider(this);
+		}
 
-                return propertyItemProvider;
-        }
+		return propertyItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Robot} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Robot} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected RobotItemProvider robotItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Robot}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Robot}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createRobotAdapter() {
-                if (robotItemProvider == null) {
-                        robotItemProvider = new RobotItemProvider(this);
-                }
+		if (robotItemProvider == null) {
+			robotItemProvider = new RobotItemProvider(this);
+		}
 
-                return robotItemProvider;
-        }
+		return robotItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.StringValue} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.StringValue} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected StringValueItemProvider stringValueItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.StringValue}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.StringValue}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createStringValueAdapter() {
-                if (stringValueItemProvider == null) {
-                        stringValueItemProvider = new StringValueItemProvider(this);
-                }
+		if (stringValueItemProvider == null) {
+			stringValueItemProvider = new StringValueItemProvider(this);
+		}
 
-                return stringValueItemProvider;
-        }
+		return stringValueItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Size} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Size} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected SizeItemProvider sizeItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Size}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Size}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createSizeAdapter() {
-                if (sizeItemProvider == null) {
-                        sizeItemProvider = new SizeItemProvider(this);
-                }
+		if (sizeItemProvider == null) {
+			sizeItemProvider = new SizeItemProvider(this);
+		}
 
-                return sizeItemProvider;
-        }
+		return sizeItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Battery} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Battery} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected BatteryItemProvider batteryItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Battery}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Battery}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createBatteryAdapter() {
-                if (batteryItemProvider == null) {
-                        batteryItemProvider = new BatteryItemProvider(this);
-                }
+		if (batteryItemProvider == null) {
+			batteryItemProvider = new BatteryItemProvider(this);
+		}
 
-                return batteryItemProvider;
-        }
+		return batteryItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Equipment} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Equipment} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected EquipmentItemProvider equipmentItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Equipment}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Equipment}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createEquipmentAdapter() {
-                if (equipmentItemProvider == null) {
-                        equipmentItemProvider = new EquipmentItemProvider(this);
-                }
+		if (equipmentItemProvider == null) {
+			equipmentItemProvider = new EquipmentItemProvider(this);
+		}
 
-                return equipmentItemProvider;
-        }
+		return equipmentItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.MeasureValue} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.MeasureValue} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected MeasureValueItemProvider measureValueItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.MeasureValue}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.MeasureValue}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createMeasureValueAdapter() {
-                if (measureValueItemProvider == null) {
-                        measureValueItemProvider = new MeasureValueItemProvider(this);
-                }
+		if (measureValueItemProvider == null) {
+			measureValueItemProvider = new MeasureValueItemProvider(this);
+		}
 
-                return measureValueItemProvider;
-        }
+		return measureValueItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.MeasureConversion} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.MeasureConversion} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected MeasureConversionItemProvider measureConversionItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.MeasureConversion}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.MeasureConversion}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createMeasureConversionAdapter() {
-                if (measureConversionItemProvider == null) {
-                        measureConversionItemProvider = new MeasureConversionItemProvider(this);
-                }
+		if (measureConversionItemProvider == null) {
+			measureConversionItemProvider = new MeasureConversionItemProvider(this);
+		}
 
-                return measureConversionItemProvider;
-        }
+		return measureConversionItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.MeasureDimension} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.MeasureDimension} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected MeasureDimensionItemProvider measureDimensionItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.MeasureDimension}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.MeasureDimension}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createMeasureDimensionAdapter() {
-                if (measureDimensionItemProvider == null) {
-                        measureDimensionItemProvider = new MeasureDimensionItemProvider(this);
-                }
+		if (measureDimensionItemProvider == null) {
+			measureDimensionItemProvider = new MeasureDimensionItemProvider(this);
+		}
 
-                return measureDimensionItemProvider;
-        }
+		return measureDimensionItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected RobotMissionContainerItemProvider robotMissionContainerItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.RobotMissionContainer}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createRobotMissionContainerAdapter() {
-                if (robotMissionContainerItemProvider == null) {
-                        robotMissionContainerItemProvider = new RobotMissionContainerItemProvider(this);
-                }
+		if (robotMissionContainerItemProvider == null) {
+			robotMissionContainerItemProvider = new RobotMissionContainerItemProvider(this);
+		}
 
-                return robotMissionContainerItemProvider;
-        }
+		return robotMissionContainerItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected PropertyKeyContainerItemProvider propertyKeyContainerItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.PropertyKeyContainer}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createPropertyKeyContainerAdapter() {
-                if (propertyKeyContainerItemProvider == null) {
-                        propertyKeyContainerItemProvider = new PropertyKeyContainerItemProvider(this);
-                }
+		if (propertyKeyContainerItemProvider == null) {
+			propertyKeyContainerItemProvider = new PropertyKeyContainerItemProvider(this);
+		}
 
-                return propertyKeyContainerItemProvider;
-        }
+		return propertyKeyContainerItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.PropertyKey} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.PropertyKey} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected PropertyKeyItemProvider propertyKeyItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.PropertyKey}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.PropertyKey}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createPropertyKeyAdapter() {
-                if (propertyKeyItemProvider == null) {
-                        propertyKeyItemProvider = new PropertyKeyItemProvider(this);
-                }
+		if (propertyKeyItemProvider == null) {
+			propertyKeyItemProvider = new PropertyKeyItemProvider(this);
+		}
 
-                return propertyKeyItemProvider;
-        }
+		return propertyKeyItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Capability} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.Capability} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected CapabilityItemProvider capabilityItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Capability}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.Capability}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createCapabilityAdapter() {
-                if (capabilityItemProvider == null) {
-                        capabilityItemProvider = new CapabilityItemProvider(this);
-                }
+		if (capabilityItemProvider == null) {
+			capabilityItemProvider = new CapabilityItemProvider(this);
+		}
 
-                return capabilityItemProvider;
-        }
+		return capabilityItemProvider;
+	}
 
         /**
-         * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.CapabilityProperties} instances.
-         * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link hu.bme.mdsd.ztz.model.drone.CapabilityProperties} instances.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         protected CapabilityPropertiesItemProvider capabilityPropertiesItemProvider;
 
         /**
-         * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.CapabilityProperties}.
-         * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link hu.bme.mdsd.ztz.model.drone.CapabilityProperties}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter createCapabilityPropertiesAdapter() {
-                if (capabilityPropertiesItemProvider == null) {
-                        capabilityPropertiesItemProvider = new CapabilityPropertiesItemProvider(this);
-                }
+		if (capabilityPropertiesItemProvider == null) {
+			capabilityPropertiesItemProvider = new CapabilityPropertiesItemProvider(this);
+		}
 
-                return capabilityPropertiesItemProvider;
-        }
+		return capabilityPropertiesItemProvider;
+	}
 
         /**
-         * This returns the root adapter factory that contains this factory.
-         * <!-- begin-user-doc -->
+	 * This returns the root adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public ComposeableAdapterFactory getRootAdapterFactory() {
-                return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-        }
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+	}
 
         /**
-         * This sets the composed adapter factory that contains this factory.
-         * <!-- begin-user-doc -->
+	 * This sets the composed adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-                this.parentAdapterFactory = parentAdapterFactory;
-        }
+		this.parentAdapterFactory = parentAdapterFactory;
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public boolean isFactoryForType(Object type) {
-                return supportedTypes.contains(type) || super.isFactoryForType(type);
-        }
+		return supportedTypes.contains(type) || super.isFactoryForType(type);
+	}
 
         /**
-         * This implementation substitutes the factory itself as the key for the adapter.
-         * <!-- begin-user-doc -->
+	 * This implementation substitutes the factory itself as the key for the adapter.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Adapter adapt(Notifier notifier, Object type) {
-                return super.adapt(notifier, this);
-        }
+		return super.adapt(notifier, this);
+	}
 
         /**
-         * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         @Override
         public Object adapt(Object object, Object type) {
-                if (isFactoryForType(type)) {
-                        Object adapter = super.adapt(object, type);
-                        if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-                                return adapter;
-                        }
-                }
+		if (isFactoryForType(type)) {
+			Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+				return adapter;
+			}
+		}
 
-                return null;
-        }
+		return null;
+	}
 
         /**
-         * This adds a listener.
-         * <!-- begin-user-doc -->
+	 * This adds a listener.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void addListener(INotifyChangedListener notifyChangedListener) {
-                changeNotifier.addListener(notifyChangedListener);
-        }
+		changeNotifier.addListener(notifyChangedListener);
+	}
 
         /**
-         * This removes a listener.
-         * <!-- begin-user-doc -->
+	 * This removes a listener.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void removeListener(INotifyChangedListener notifyChangedListener) {
-                changeNotifier.removeListener(notifyChangedListener);
-        }
+		changeNotifier.removeListener(notifyChangedListener);
+	}
 
         /**
-         * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-         * <!-- begin-user-doc -->
+	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void fireNotifyChanged(Notification notification) {
-                changeNotifier.fireNotifyChanged(notification);
+		changeNotifier.fireNotifyChanged(notification);
 
-                if (parentAdapterFactory != null) {
-                        parentAdapterFactory.fireNotifyChanged(notification);
-                }
-        }
+		if (parentAdapterFactory != null) {
+			parentAdapterFactory.fireNotifyChanged(notification);
+		}
+	}
 
         /**
-         * This disposes all of the item providers created by this factory. 
-         * <!-- begin-user-doc -->
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @generated
-         */
+	 * @generated
+	 */
         public void dispose() {
-                if (missionItemProvider != null) missionItemProvider.dispose();
-                if (taskItemProvider != null) taskItemProvider.dispose();
-                if (taskDescriptorItemProvider != null) taskDescriptorItemProvider.dispose();
-                if (positionItemProvider != null) positionItemProvider.dispose();
-                if (areaObjectItemProvider != null) areaObjectItemProvider.dispose();
-                if (coordinateItemProvider != null) coordinateItemProvider.dispose();
-                if (propertyItemProvider != null) propertyItemProvider.dispose();
-                if (robotItemProvider != null) robotItemProvider.dispose();
-                if (stringValueItemProvider != null) stringValueItemProvider.dispose();
-                if (sizeItemProvider != null) sizeItemProvider.dispose();
-                if (batteryItemProvider != null) batteryItemProvider.dispose();
-                if (equipmentItemProvider != null) equipmentItemProvider.dispose();
-                if (measureValueItemProvider != null) measureValueItemProvider.dispose();
-                if (measureConversionItemProvider != null) measureConversionItemProvider.dispose();
-                if (measureDimensionItemProvider != null) measureDimensionItemProvider.dispose();
-                if (robotMissionContainerItemProvider != null) robotMissionContainerItemProvider.dispose();
-                if (propertyKeyContainerItemProvider != null) propertyKeyContainerItemProvider.dispose();
-                if (propertyKeyItemProvider != null) propertyKeyItemProvider.dispose();
-                if (capabilityItemProvider != null) capabilityItemProvider.dispose();
-                if (capabilityPropertiesItemProvider != null) capabilityPropertiesItemProvider.dispose();
-        }
+		if (missionItemProvider != null) missionItemProvider.dispose();
+		if (taskItemProvider != null) taskItemProvider.dispose();
+		if (taskDescriptorItemProvider != null) taskDescriptorItemProvider.dispose();
+		if (positionItemProvider != null) positionItemProvider.dispose();
+		if (areaObjectItemProvider != null) areaObjectItemProvider.dispose();
+		if (coordinateItemProvider != null) coordinateItemProvider.dispose();
+		if (propertyItemProvider != null) propertyItemProvider.dispose();
+		if (robotItemProvider != null) robotItemProvider.dispose();
+		if (stringValueItemProvider != null) stringValueItemProvider.dispose();
+		if (sizeItemProvider != null) sizeItemProvider.dispose();
+		if (batteryItemProvider != null) batteryItemProvider.dispose();
+		if (equipmentItemProvider != null) equipmentItemProvider.dispose();
+		if (measureValueItemProvider != null) measureValueItemProvider.dispose();
+		if (measureConversionItemProvider != null) measureConversionItemProvider.dispose();
+		if (measureDimensionItemProvider != null) measureDimensionItemProvider.dispose();
+		if (robotMissionContainerItemProvider != null) robotMissionContainerItemProvider.dispose();
+		if (propertyKeyContainerItemProvider != null) propertyKeyContainerItemProvider.dispose();
+		if (propertyKeyItemProvider != null) propertyKeyItemProvider.dispose();
+		if (capabilityItemProvider != null) capabilityItemProvider.dispose();
+		if (capabilityPropertiesItemProvider != null) capabilityPropertiesItemProvider.dispose();
+	}
 
 }

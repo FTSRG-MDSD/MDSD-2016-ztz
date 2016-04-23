@@ -90,6 +90,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/areaObjects"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/capabilities"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/propertyKeyContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//RobotMissionContainer/temporalElements"/>
     </genClasses>
     <genClasses ecoreClass="drone.ecore#//PropertyKeyContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference drone.ecore#//PropertyKeyContainer/keys"/>
