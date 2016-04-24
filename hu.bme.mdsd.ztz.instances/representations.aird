@@ -1,2 +1,869 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xmi:id="_pmwqkAnrEeazMczpVOnkqw" version="10.1.0.201509162000"/>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:drone="http://www.mdsd.hu/drone" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_pmwqkAnrEeazMczpVOnkqw" selectedViews="_To6yEAoeEeaw-sw0vsdHGw _Tp63oAoeEeaw-sw0vsdHGw" version="10.1.0.201509162000">
+  <semanticResources>src/hu/bme/mdsd/ztz/instances/robotBehaviour1.behaviour</semanticResources>
+  <semanticResources>src/hu/bme/mdsd/ztz/instances/robots.drone</semanticResources>
+  <semanticResources>src/hu/bme/mdsd/ztz/instances/robotBehaviour2.behaviour</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_To6yEAoeEeaw-sw0vsdHGw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/robot.odesign#//@ownedViewpoints[name='robotdiagram']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_Tp63oAoeEeaw-sw0vsdHGw">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_W1FMEAoeEeaw-sw0vsdHGw" name="missionAreaObjectDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_W1FMEQoeEeaw-sw0vsdHGw" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_W1FMEgoeEeaw-sw0vsdHGw"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_W19V0AoeEeaw-sw0vsdHGw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_W19V0QoeEeaw-sw0vsdHGw" type="Sirius" element="_W1FMEAoeEeaw-sw0vsdHGw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_W2h9kAoeEeaw-sw0vsdHGw" type="2001" element="_W1FMEwoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W3RkcAoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W3RkcQoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4Gq4AoeEeaw-sw0vsdHGw" type="3003" element="_W1FMFAoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4Gq4QoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4Gq4goeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W2h9kQoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W2h9kgoeEeaw-sw0vsdHGw" x="722" y="528" width="85" height="61"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_W3nisAoeEeaw-sw0vsdHGw" type="2001" element="_W1FMFQoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W3ow0AoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W3ow0QoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4IgEAoeEeaw-sw0vsdHGw" type="3003" element="_W1FMFgoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4IgEQoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4IgEgoeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W3nisQoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W3nisgoeEeaw-sw0vsdHGw" x="456" y="516" width="97" height="61"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_W3pX4AoeEeaw-sw0vsdHGw" type="2001" element="_W1FMFwoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W3p-8AoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W3p-8QoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4JHIAoeEeaw-sw0vsdHGw" type="3003" element="_W1FMGAoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4JuMAoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4JuMQoeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W3pX4QoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W3pX4goeEeaw-sw0vsdHGw" x="216" y="522" width="85" height="49"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_W3r0IAoeEeaw-sw0vsdHGw" type="2001" element="_W1FMGQoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W3sbMAoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W3sbMQoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4KVQAoeEeaw-sw0vsdHGw" type="3003" element="_W1FMGgoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4KVQQoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4KVQgoeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W3r0IQoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W3r0IgoeEeaw-sw0vsdHGw" x="684" y="84" width="162" height="49"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_W3tpUAoeEeaw-sw0vsdHGw" type="2001" element="_W1FMGwoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W3u3cAoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W3u3cQoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4LjYAoeEeaw-sw0vsdHGw" type="3003" element="_W1FMHAoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4LjYQoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4LjYgoeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W3tpUQoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W3tpUgoeEeaw-sw0vsdHGw" x="204" y="72" width="145" height="49"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_W3vegAoeEeaw-sw0vsdHGw" type="2001" element="_W1FMHQoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W3x6wAoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W3x6wQoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4MKcAoeEeaw-sw0vsdHGw" type="3003" element="_W1FMHgoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4MKcQoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4MKcgoeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W3vegQoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W3veggoeEeaw-sw0vsdHGw" x="444" y="216" width="85" height="37"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_W3yh0AoeEeaw-sw0vsdHGw" type="2001" element="_W1FMHwoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W3zv8AoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W3zv8QoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4NYkAoeEeaw-sw0vsdHGw" type="3003" element="_W1FMIAoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4NYkQoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4NYkgoeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W3yh0QoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W3yh0goeEeaw-sw0vsdHGw" x="714" y="216" width="73" height="37"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_W30-EAoeEeaw-sw0vsdHGw" type="2001" element="_W1FMIQoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W31lIAoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W31lIQoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4N_oAoeEeaw-sw0vsdHGw" type="3003" element="_W1FMIgoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4N_oQoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4N_ogoeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W30-EQoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W30-EgoeEeaw-sw0vsdHGw" x="828" y="216" width="73" height="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_W32MMAoeEeaw-sw0vsdHGw" type="2001" element="_W1FMIwoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W33aUAoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W33aUQoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4OmsAoeEeaw-sw0vsdHGw" type="3003" element="_W1FMJAoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4OmsQoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4OmsgoeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W32MMQoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W32MMgoeEeaw-sw0vsdHGw" x="576" y="216" width="73" height="37"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_W34BYAoeEeaw-sw0vsdHGw" type="2001" element="_W1FMJQoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W35PgAoeEeaw-sw0vsdHGw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_W35PgQoeEeaw-sw0vsdHGw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W4Qb4AoeEeaw-sw0vsdHGw" type="3003" element="_W1FMJgoeEeaw-sw0vsdHGw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_W4Qb4QoeEeaw-sw0vsdHGw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W4Qb4goeEeaw-sw0vsdHGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W34BYQoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W34ocAoeEeaw-sw0vsdHGw" x="138" y="213" width="193" height="37"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_yCjtMAoiEeae9ehf68s8Mg" type="2001" element="_yADy0AoiEeae9ehf68s8Mg">
+            <children xmi:type="notation:Node" xmi:id="_yCliYAoiEeae9ehf68s8Mg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_yCliYQoiEeae9ehf68s8Mg" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_yCv6cAoiEeae9ehf68s8Mg" type="3016" element="_yAEZ4AoiEeae9ehf68s8Mg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_yCv6cQoiEeae9ehf68s8Mg" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yCv6cgoiEeae9ehf68s8Mg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_yCjtMQoiEeae9ehf68s8Mg" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yCjtMgoiEeae9ehf68s8Mg" x="722" y="624" width="121" height="49"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_yCmJcAoiEeae9ehf68s8Mg" type="2001" element="_yAGPEAoiEeae9ehf68s8Mg">
+            <children xmi:type="notation:Node" xmi:id="_yCn-oAoiEeae9ehf68s8Mg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_yCn-oQoiEeae9ehf68s8Mg" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_yCyWsAoiEeae9ehf68s8Mg" type="3016" element="_yAHdMAoiEeae9ehf68s8Mg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_yCyWsQoiEeae9ehf68s8Mg" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yCyWsgoiEeae9ehf68s8Mg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_yCmJcQoiEeae9ehf68s8Mg" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yCmJcgoiEeae9ehf68s8Mg" x="480" y="636" width="97" height="49"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_FGDW0gokEeaPFc0_zXG-jQ" type="2001" element="_FEyLgAokEeaPFc0_zXG-jQ">
+            <children xmi:type="notation:Node" xmi:id="_FGD94AokEeaPFc0_zXG-jQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FGD94QokEeaPFc0_zXG-jQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FGKEgAokEeaPFc0_zXG-jQ" type="3003" element="_FEyykAokEeaPFc0_zXG-jQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_FGKEgQokEeaPFc0_zXG-jQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FGKEggokEeaPFc0_zXG-jQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_FGDW0wokEeaPFc0_zXG-jQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FGDW1AokEeaPFc0_zXG-jQ" x="698" y="711" width="133" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_FGEk8AokEeaPFc0_zXG-jQ" type="2001" element="_FEzZoAokEeaPFc0_zXG-jQ">
+            <children xmi:type="notation:Node" xmi:id="_FGFMAAokEeaPFc0_zXG-jQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FGFzEAokEeaPFc0_zXG-jQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FGKEgwokEeaPFc0_zXG-jQ" type="3003" element="_FE0AsAokEeaPFc0_zXG-jQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_FGKEhAokEeaPFc0_zXG-jQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FGKEhQokEeaPFc0_zXG-jQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_FGEk8QokEeaPFc0_zXG-jQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FGEk8gokEeaPFc0_zXG-jQ" x="480" y="716" width="87" height="25"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_kr6sIAo2EearEOP0KLZlEQ" type="2001" element="_kpbY0Ao2EearEOP0KLZlEQ">
+            <children xmi:type="notation:Node" xmi:id="_ksLK0Ao2EearEOP0KLZlEQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ksLK0Qo2EearEOP0KLZlEQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ksc3oAo2EearEOP0KLZlEQ" type="3003" element="_kpecIAo2EearEOP0KLZlEQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ksc3oQo2EearEOP0KLZlEQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ksc3ogo2EearEOP0KLZlEQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_kr6sIQo2EearEOP0KLZlEQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kr6sIgo2EearEOP0KLZlEQ" x="408" y="420" width="97" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_ksUUwAo2EearEOP0KLZlEQ" type="2001" element="_kpmX8Ao2EearEOP0KLZlEQ">
+            <children xmi:type="notation:Node" xmi:id="_ksU70Ao2EearEOP0KLZlEQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ksVi4Ao2EearEOP0KLZlEQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_kseFwAo2EearEOP0KLZlEQ" type="3003" element="_kpmX8Qo2EearEOP0KLZlEQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_kseFwQo2EearEOP0KLZlEQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kseFwgo2EearEOP0KLZlEQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ksUUwQo2EearEOP0KLZlEQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ksUUwgo2EearEOP0KLZlEQ" x="749" y="420" width="97" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_ksVi4Qo2EearEOP0KLZlEQ" type="2001" element="_kpnmEAo2EearEOP0KLZlEQ">
+            <children xmi:type="notation:Node" xmi:id="_ksWxAAo2EearEOP0KLZlEQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ksWxAQo2EearEOP0KLZlEQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ksfT4Ao2EearEOP0KLZlEQ" type="3003" element="_kpoNIAo2EearEOP0KLZlEQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ksfT4Qo2EearEOP0KLZlEQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ksfT4go2EearEOP0KLZlEQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ksVi4go2EearEOP0KLZlEQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ksVi4wo2EearEOP0KLZlEQ" x="888" y="420" width="109" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_ksX_IAo2EearEOP0KLZlEQ" type="2001" element="_kpo0MAo2EearEOP0KLZlEQ">
+            <children xmi:type="notation:Node" xmi:id="_ksZNQAo2EearEOP0KLZlEQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ksZNQQo2EearEOP0KLZlEQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ksgiAAo2EearEOP0KLZlEQ" type="3003" element="_kppbQAo2EearEOP0KLZlEQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ksgiAQo2EearEOP0KLZlEQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ksgiAgo2EearEOP0KLZlEQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ksX_IQo2EearEOP0KLZlEQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ksX_Igo2EearEOP0KLZlEQ" x="556" y="420" width="102" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_L5NDoAo6Eeaj4YZVIxLFLw" type="2001" element="_L4YkQAo6Eeaj4YZVIxLFLw">
+            <children xmi:type="notation:Node" xmi:id="_L5Z38Ao6Eeaj4YZVIxLFLw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_L5Z38Qo6Eeaj4YZVIxLFLw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_L5fXgAo6Eeaj4YZVIxLFLw" type="3003" element="_L4aZcAo6Eeaj4YZVIxLFLw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_L5fXgQo6Eeaj4YZVIxLFLw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L5fXggo6Eeaj4YZVIxLFLw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_L5NDoQo6Eeaj4YZVIxLFLw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L5NDogo6Eeaj4YZVIxLFLw" x="156" y="348" width="145" height="37"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_t4t2EAo6EeaFgJKjVcmCZA" type="2001" element="_t3xa4Ao6EeaFgJKjVcmCZA">
+            <children xmi:type="notation:Node" xmi:id="_t5BYEAo6EeaFgJKjVcmCZA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_t5BYEQo6EeaFgJKjVcmCZA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_HbOfoAo-Eealc9wKgeCQ8Q" type="3016" element="_HaL90Ao-Eealc9wKgeCQ8Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_HbOfoQo-Eealc9wKgeCQ8Q" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HbOfogo-Eealc9wKgeCQ8Q"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_t4t2EQo6EeaFgJKjVcmCZA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_t4t2Ego6EeaFgJKjVcmCZA" x="72" y="401" width="121" height="49"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_wvM7AAo6EeaFgJKjVcmCZA" type="2001" element="_wuty0Ao6EeaFgJKjVcmCZA">
+            <children xmi:type="notation:Node" xmi:id="_wvOJIAo6EeaFgJKjVcmCZA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_wvOJIQo6EeaFgJKjVcmCZA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_wvTBoAo6EeaFgJKjVcmCZA" type="3003" element="_wuuZ4Ao6EeaFgJKjVcmCZA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_wvTBoQo6EeaFgJKjVcmCZA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wvTBogo6EeaFgJKjVcmCZA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_wvM7AQo6EeaFgJKjVcmCZA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wvM7Ago6EeaFgJKjVcmCZA" x="216" y="432" width="157" height="25"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_W19V0goeEeaw-sw0vsdHGw"/>
+          <edges xmi:type="notation:Edge" xmi:id="_W5Lo8AoeEeaw-sw0vsdHGw" type="4001" element="_W1FzIAoeEeaw-sw0vsdHGw" source="_W3r0IAoeEeaw-sw0vsdHGw" target="_W3vegAoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W5OsQAoeEeaw-sw0vsdHGw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5OsQQoeEeaw-sw0vsdHGw" x="11" y="-5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W5P6YAoeEeaw-sw0vsdHGw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5P6YQoeEeaw-sw0vsdHGw" x="-9" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W5RIgAoeEeaw-sw0vsdHGw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5RIgQoeEeaw-sw0vsdHGw" x="-7" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_W5Lo8QoeEeaw-sw0vsdHGw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_W5Lo8goeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_W5Lo8woeEeaw-sw0vsdHGw" points="[-15, 15, 225, -183]$[-170, 173, 70, -25]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W5qxIAoeEeaw-sw0vsdHGw" id="(0.09259259259259259,-0.9795918367346939)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W5qxIQoeEeaw-sw0vsdHGw" id="(0.17647058823529413,0.4864864864864865)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_W5r_QAoeEeaw-sw0vsdHGw" type="4001" element="_W1FzIwoeEeaw-sw0vsdHGw" source="_W3r0IAoeEeaw-sw0vsdHGw" target="_W3yh0AoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W5smUAoeEeaw-sw0vsdHGw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5smUQoeEeaw-sw0vsdHGw" x="6" y="-2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W5smUgoeEeaw-sw0vsdHGw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5smUwoeEeaw-sw0vsdHGw" x="-10" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W5tNYAoeEeaw-sw0vsdHGw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5tNYQoeEeaw-sw0vsdHGw" x="-10" y="3"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_W5r_QQoeEeaw-sw0vsdHGw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_W5r_QgoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_W5r_QwoeEeaw-sw0vsdHGw" points="[36, 97, 6, -101]$[31, 180, 1, -18]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W5t0cAoeEeaw-sw0vsdHGw" id="(0.09259259259259259,-0.9795918367346939)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W5t0cQoeEeaw-sw0vsdHGw" id="(0.2054794520547945,0.4864864864864865)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_W5t0cgoeEeaw-sw0vsdHGw" type="4001" element="_W1FzJgoeEeaw-sw0vsdHGw" source="_W3r0IAoeEeaw-sw0vsdHGw" target="_W30-EAoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W5ubgAoeEeaw-sw0vsdHGw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5ubgQoeEeaw-sw0vsdHGw" x="-14" y="2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W5vCkAoeEeaw-sw0vsdHGw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5vCkQoeEeaw-sw0vsdHGw" x="11" y="-1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W5vCkgoeEeaw-sw0vsdHGw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5vCkwoeEeaw-sw0vsdHGw" x="8" y="-2"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_W5t0cwoeEeaw-sw0vsdHGw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_W5t0dAoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_W5t0dQoeEeaw-sw0vsdHGw" points="[52, 97, -92, -95]$[129, 176, -15, -16]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W5wQsAoeEeaw-sw0vsdHGw" id="(0.09259259259259259,-0.9795918367346939)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W5wQsQoeEeaw-sw0vsdHGw" id="(0.2054794520547945,0.3870967741935484)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_W5wQsgoeEeaw-sw0vsdHGw" type="4001" element="_W1FzKQoeEeaw-sw0vsdHGw" source="_W3r0IAoeEeaw-sw0vsdHGw" target="_W32MMAoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_W5xe0AoeEeaw-sw0vsdHGw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5xe0QoeEeaw-sw0vsdHGw" x="15" y="3"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W5yF4AoeEeaw-sw0vsdHGw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5yF4QoeEeaw-sw0vsdHGw" x="-16" y="1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_W5yF4goeEeaw-sw0vsdHGw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W5yF4woeEeaw-sw0vsdHGw" x="-17" y="2"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_W5wQswoeEeaw-sw0vsdHGw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_W5wQtAoeEeaw-sw0vsdHGw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_W5wQtQoeEeaw-sw0vsdHGw" points="[11, 97, 119, -113]$[-77, 180, 31, -30]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W5ys8AoeEeaw-sw0vsdHGw" id="(0.09259259259259259,-0.9795918367346939)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W5ys8QoeEeaw-sw0vsdHGw" id="(0.2054794520547945,0.8108108108108109)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_jZxroAoyEeawnYQA92SWtA" type="4001" element="_jYuiwAoyEeawnYQA92SWtA" source="_W2h9kAoeEeaw-sw0vsdHGw" target="_yCjtMAoiEeae9ehf68s8Mg">
+            <children xmi:type="notation:Node" xmi:id="_jaD_gAoyEeawnYQA92SWtA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jaD_gQoyEeawnYQA92SWtA" x="-23"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jaLUQAoyEeawnYQA92SWtA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jaLUQQoyEeawnYQA92SWtA" x="18" y="1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jaMiYAoyEeawnYQA92SWtA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jaMiYQoyEeawnYQA92SWtA" x="8" y="1"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_jZxroQoyEeawnYQA92SWtA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_jZxrogoyEeawnYQA92SWtA" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jZxrowoyEeawnYQA92SWtA" points="[-7, 31, 11, -59]$[-14, 66, 4, -24]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jajuwAoyEeawnYQA92SWtA" id="(0.49411764705882355,0.4918032786885246)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jajuwQoyEeawnYQA92SWtA" id="(0.19834710743801653,0.4897959183673469)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_jak84AoyEeawnYQA92SWtA" type="4001" element="_jYzbQAoyEeawnYQA92SWtA" source="_W3nisAoeEeaw-sw0vsdHGw" target="_yCmJcAoiEeae9ehf68s8Mg">
+            <children xmi:type="notation:Node" xmi:id="_jalj8AoyEeawnYQA92SWtA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jalj8QoyEeawnYQA92SWtA" x="-22" y="2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jalj8goyEeawnYQA92SWtA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jalj8woyEeawnYQA92SWtA" x="13" y="1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jalj9AoyEeawnYQA92SWtA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jalj9QoyEeawnYQA92SWtA" x="5"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_jak84QoyEeawnYQA92SWtA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_jak84goyEeawnYQA92SWtA" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jak84woyEeawnYQA92SWtA" points="[9, 31, 9, -83]$[2, 90, 2, -24]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_janZIAoyEeawnYQA92SWtA" id="(0.4948453608247423,0.4918032786885246)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_janZIQoyEeawnYQA92SWtA" id="(0.24742268041237114,0.4897959183673469)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_aBZKggozEealTIurco7FpA" type="4001" element="_Z-lHEAozEealTIurco7FpA" source="_yCjtMAoiEeae9ehf68s8Mg" target="_FGDW0gokEeaPFc0_zXG-jQ">
+            <children xmi:type="notation:Node" xmi:id="_aBaYoAozEealTIurco7FpA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aBaYoQozEealTIurco7FpA" x="1" y="2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_aBaYogozEealTIurco7FpA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aBaYowozEealTIurco7FpA" x="-5" y="1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_aBaYpAozEealTIurco7FpA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aBaYpQozEealTIurco7FpA" x="-4"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_aBZxkAozEealTIurco7FpA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_aBZxkQozEealTIurco7FpA" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aBZxkgozEealTIurco7FpA" points="[-13, 25, 5, -53]$[-17, 63, 1, -15]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_aBbmwAozEealTIurco7FpA" id="(0.19834710743801653,0.4897959183673469)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_aBbmwQozEealTIurco7FpA" id="(0.22556390977443608,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_aBcN0AozEealTIurco7FpA" type="4001" element="_Z-mVMAozEealTIurco7FpA" source="_yCmJcAoiEeae9ehf68s8Mg" target="_FGEk8AokEeaPFc0_zXG-jQ">
+            <children xmi:type="notation:Node" xmi:id="_aBdb8AozEealTIurco7FpA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aBdb8QozEealTIurco7FpA" x="-24" y="2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_aBdb8gozEealTIurco7FpA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aBdb8wozEealTIurco7FpA" x="-36" y="2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_aBeDAAozEealTIurco7FpA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aBeDAQozEealTIurco7FpA" x="34"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_aBcN0QozEealTIurco7FpA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_aBcN0gozEealTIurco7FpA" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aBcN0wozEealTIurco7FpA" points="[0, 25, 9, -46]$[0, 56, 9, -15]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_aBfRIAozEealTIurco7FpA" id="(0.24742268041237114,0.4897959183673469)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_aBfRIQozEealTIurco7FpA" id="(0.1724137931034483,0.6)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_ktCtgAo2EearEOP0KLZlEQ" type="4001" element="_kqAnoAo2EearEOP0KLZlEQ" source="_W3vegAoeEeaw-sw0vsdHGw" target="_kr6sIAo2EearEOP0KLZlEQ">
+            <children xmi:type="notation:Node" xmi:id="_ktFw0Ao2EearEOP0KLZlEQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ktFw0Qo2EearEOP0KLZlEQ" x="9"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ktINEAo2EearEOP0KLZlEQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ktINEQo2EearEOP0KLZlEQ" x="-14" y="1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ktJbMAo2EearEOP0KLZlEQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ktJbMQo2EearEOP0KLZlEQ" x="-12" y="3"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_ktCtgQo2EearEOP0KLZlEQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_ktCtggo2EearEOP0KLZlEQ" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ktCtgwo2EearEOP0KLZlEQ" points="[-17, 49, 46, -197]$[-56, 216, 7, -30]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kticwAo2EearEOP0KLZlEQ" id="(0.49411764705882355,-0.32432432432432434)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ktjD0Ao2EearEOP0KLZlEQ" id="(0.15463917525773196,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_ktsNwAo2EearEOP0KLZlEQ" type="4001" element="_kqjaMAo2EearEOP0KLZlEQ" source="_W3yh0AoeEeaw-sw0vsdHGw" target="_ksUUwAo2EearEOP0KLZlEQ">
+            <children xmi:type="notation:Node" xmi:id="_kts00Ao2EearEOP0KLZlEQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kts00Qo2EearEOP0KLZlEQ" x="4" y="6"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_kttb4Ao2EearEOP0KLZlEQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kttb4Qo2EearEOP0KLZlEQ" x="-13"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_kttb4go2EearEOP0KLZlEQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kttb4wo2EearEOP0KLZlEQ" x="-13" y="2"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_ktsNwQo2EearEOP0KLZlEQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_ktsNwgo2EearEOP0KLZlEQ" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ktsNwwo2EearEOP0KLZlEQ" points="[-28, 49, -42, -193]$[8, 216, -6, -26]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ktuC8Ao2EearEOP0KLZlEQ" id="(0.4931506849315068,-0.32432432432432434)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ktuC8Qo2EearEOP0KLZlEQ" id="(0.15463917525773196,0.8666666666666667)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_kuISoAo2EearEOP0KLZlEQ" type="4001" element="_kqvncAo2EearEOP0KLZlEQ" source="_W30-EAoeEeaw-sw0vsdHGw" target="_ksVi4Qo2EearEOP0KLZlEQ">
+            <children xmi:type="notation:Node" xmi:id="_kuI5sAo2EearEOP0KLZlEQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kuJgwAo2EearEOP0KLZlEQ" x="12" y="-1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_kuJgwQo2EearEOP0KLZlEQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kuJgwgo2EearEOP0KLZlEQ" x="-15" y="3"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_kuJgwwo2EearEOP0KLZlEQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kuJgxAo2EearEOP0KLZlEQ" x="-14" y="2"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_kuISoQo2EearEOP0KLZlEQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_kuISogo2EearEOP0KLZlEQ" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kuISowo2EearEOP0KLZlEQ" points="[-36, 20, -75, -228]$[30, 222, -9, -26]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kuKH0Ao2EearEOP0KLZlEQ" id="(0.4931506849315068,-0.5806451612903226)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kuKH0Qo2EearEOP0KLZlEQ" id="(0.13761467889908258,0.8666666666666667)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_kub0oAo2EearEOP0KLZlEQ" type="4001" element="_kq70sAo2EearEOP0KLZlEQ" source="_W32MMAoeEeaw-sw0vsdHGw" target="_ksX_IAo2EearEOP0KLZlEQ">
+            <children xmi:type="notation:Node" xmi:id="_kueQ4Ao2EearEOP0KLZlEQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kueQ4Qo2EearEOP0KLZlEQ" x="8" y="2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_kue38Ao2EearEOP0KLZlEQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kue38Qo2EearEOP0KLZlEQ" x="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_kugtIAo2EearEOP0KLZlEQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kugtIQo2EearEOP0KLZlEQ" x="-12"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_kub0oQo2EearEOP0KLZlEQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_kucbsAo2EearEOP0KLZlEQ" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kucbsQo2EearEOP0KLZlEQ" points="[25, 37, 54, -197]$[-21, 204, 8, -30]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kuhUMAo2EearEOP0KLZlEQ" id="(0.3287671232876712,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kuhUMQo2EearEOP0KLZlEQ" id="(0.14705882352941177,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_NHAa4Ao3EeaNoYVlQAQyVg" type="4001" element="_NAfjMAo3EeaNoYVlQAQyVg" source="_ksUUwAo2EearEOP0KLZlEQ" target="_W2h9kAoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_NHOdUAo3EeaNoYVlQAQyVg" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHOdUQo3EeaNoYVlQAQyVg" x="11" y="1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_NHUj8Ao3EeaNoYVlQAQyVg" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHUj8Qo3EeaNoYVlQAQyVg" x="-13" y="1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_NHVyEAo3EeaNoYVlQAQyVg" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHVyEQo3EeaNoYVlQAQyVg" x="-18" y="2"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_NHAa4Qo3EeaNoYVlQAQyVg"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_NHAa4go3EeaNoYVlQAQyVg" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NHAa4wo3EeaNoYVlQAQyVg" points="[-24, 16, -2, -108]$[-23, 94, -1, -30]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NHpUEAo3EeaNoYVlQAQyVg" id="(0.38144329896907214,0.46666666666666673)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NHpUEQo3EeaNoYVlQAQyVg" id="(0.49411764705882355,0.4918032786885246)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_NHqiMAo3EeaNoYVlQAQyVg" type="4001" element="_NF4ZgAo3EeaNoYVlQAQyVg" source="_ksVi4Qo2EearEOP0KLZlEQ" target="_W2h9kAoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_NHrJQAo3EeaNoYVlQAQyVg" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHrJQQo3EeaNoYVlQAQyVg" x="19" y="-2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_NHrJQgo3EeaNoYVlQAQyVg" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHrJQwo3EeaNoYVlQAQyVg" x="-15" y="6"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_NHrwUAo3EeaNoYVlQAQyVg" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHrwUQo3EeaNoYVlQAQyVg" x="-19" y="6"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_NHqiMQo3EeaNoYVlQAQyVg"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_NHqiMgo3EeaNoYVlQAQyVg" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NHqiMwo3EeaNoYVlQAQyVg" points="[-44, 16, 137, -108]$[-143, 94, 38, -30]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NHsXYAo3EeaNoYVlQAQyVg" id="(0.5229357798165137,0.46666666666666673)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NHsXYQo3EeaNoYVlQAQyVg" id="(0.49411764705882355,0.4918032786885246)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_NHs-cAo3EeaNoYVlQAQyVg" type="4001" element="_NF5noAo3EeaNoYVlQAQyVg" source="_ksX_IAo2EearEOP0KLZlEQ" target="_W3nisAoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_NHuMkAo3EeaNoYVlQAQyVg" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHuMkQo3EeaNoYVlQAQyVg" x="18" y="-1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_NHuMkgo3EeaNoYVlQAQyVg" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHuMkwo3EeaNoYVlQAQyVg" x="-33" y="2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_NHuMlAo3EeaNoYVlQAQyVg" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHuMlQo3EeaNoYVlQAQyVg" x="-26" y="2"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_NHs-cQo3EeaNoYVlQAQyVg"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_NHs-cgo3EeaNoYVlQAQyVg" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NHs-cwo3EeaNoYVlQAQyVg" points="[11, 6, 132, -96]$[-80, 72, 41, -30]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NHvasAo3EeaNoYVlQAQyVg" id="(0.6764705882352942,0.8)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NHvasQo3EeaNoYVlQAQyVg" id="(0.4948453608247423,0.4918032786885246)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_NHvasgo3EeaNoYVlQAQyVg" type="4001" element="_NF61wAo3EeaNoYVlQAQyVg" source="_ksX_IAo2EearEOP0KLZlEQ" target="_W2h9kAoeEeaw-sw0vsdHGw">
+            <children xmi:type="notation:Node" xmi:id="_NHwBwAo3EeaNoYVlQAQyVg" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHwBwQo3EeaNoYVlQAQyVg" x="14"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_NHwo0Ao3EeaNoYVlQAQyVg" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHwo0Qo3EeaNoYVlQAQyVg" x="-25"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_NHxP4Ao3EeaNoYVlQAQyVg" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NHxP4Qo3EeaNoYVlQAQyVg" x="-23" y="1"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_NHvaswo3EeaNoYVlQAQyVg"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_NHvatAo3EeaNoYVlQAQyVg" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NHvatQo3EeaNoYVlQAQyVg" points="[-1, 6, -140, -108]$[100, 84, -39, -30]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NHx28Ao3EeaNoYVlQAQyVg" id="(0.6764705882352942,0.8)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NHx28Qo3EeaNoYVlQAQyVg" id="(0.49411764705882355,0.4918032786885246)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMEwoeEeaw-sw0vsdHGw" name="Box" outgoingEdges="_jYuiwAoyEeawnYQA92SWtA" incomingEdges="_NAfjMAo3EeaNoYVlQAQyVg _NF4ZgAo3EeaNoYVlQAQyVg _NF61wAo3EeaNoYVlQAQyVg" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:AreaObject" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.0"/>
+        <semanticElements xmi:type="drone:AreaObject" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMFAoeEeaw-sw0vsdHGw" labelPosition="node" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='AreaObjectNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='AreaObjectNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMFQoeEeaw-sw0vsdHGw" name="Destination" outgoingEdges="_jYzbQAoyEeawnYQA92SWtA" incomingEdges="_NF5noAo3EeaNoYVlQAQyVg" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:AreaObject" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.1"/>
+        <semanticElements xmi:type="drone:AreaObject" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMFgoeEeaw-sw0vsdHGw" labelPosition="node" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='AreaObjectNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='AreaObjectNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMFwoeEeaw-sw0vsdHGw" name="SomeStuff" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:AreaObject" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.2"/>
+        <semanticElements xmi:type="drone:AreaObject" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMGAoeEeaw-sw0vsdHGw" labelPosition="node" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='AreaObjectNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='AreaObjectNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMGQoeEeaw-sw0vsdHGw" name="LiftingMission" outgoingEdges="_W1FzIAoeEeaw-sw0vsdHGw _W1FzIwoeEeaw-sw0vsdHGw _W1FzJgoeEeaw-sw0vsdHGw _W1FzKQoeEeaw-sw0vsdHGw" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Mission" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0"/>
+        <semanticElements xmi:type="drone:Mission" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMGgoeEeaw-sw0vsdHGw" labelPosition="node" color="246,139,139">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='missionNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='missionNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMGwoeEeaw-sw0vsdHGw" name="MakeSometing" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Mission" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.1"/>
+        <semanticElements xmi:type="drone:Mission" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMHAoeEeaw-sw0vsdHGw" labelPosition="node" color="246,139,139">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='missionNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='missionNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMHQoeEeaw-sw0vsdHGw" name="Ascend" outgoingEdges="_kqAnoAo2EearEOP0KLZlEQ" incomingEdges="_W1FzIAoeEeaw-sw0vsdHGw" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.0"/>
+        <semanticElements xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMHgoeEeaw-sw0vsdHGw" labelPosition="node" color="255,245,181">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMHwoeEeaw-sw0vsdHGw" name="Approach" outgoingEdges="_kqjaMAo2EearEOP0KLZlEQ" incomingEdges="_W1FzIwoeEeaw-sw0vsdHGw" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.1"/>
+        <semanticElements xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMIAoeEeaw-sw0vsdHGw" labelPosition="node" color="255,245,181">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMIQoeEeaw-sw0vsdHGw" name="Lift" outgoingEdges="_kqvncAo2EearEOP0KLZlEQ" incomingEdges="_W1FzJgoeEeaw-sw0vsdHGw" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.2"/>
+        <semanticElements xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMIgoeEeaw-sw0vsdHGw" labelPosition="node" color="255,245,181">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMIwoeEeaw-sw0vsdHGw" name="Deliver" outgoingEdges="_kq70sAo2EearEOP0KLZlEQ" incomingEdges="_W1FzKQoeEeaw-sw0vsdHGw" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.3"/>
+        <semanticElements xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.3"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMJAoeEeaw-sw0vsdHGw" labelPosition="node" color="255,245,181">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_W1FMJQoeEeaw-sw0vsdHGw" name="New Task" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@temporalElements.0"/>
+        <semanticElements xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@temporalElements.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_W1FMJgoeEeaw-sw0vsdHGw" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='notAssignedTasks']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='notAssignedTasks']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_W1FzIAoeEeaw-sw0vsdHGw" sourceNode="_W1FMGQoeEeaw-sw0vsdHGw" targetNode="_W1FMHQoeEeaw-sw0vsdHGw">
+        <target xmi:type="drone:Mission" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_W1FzIQoeEeaw-sw0vsdHGw" sourceArrow="FillDiamond" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_W1FzIgoeEeaw-sw0vsdHGw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_W1FzIwoeEeaw-sw0vsdHGw" sourceNode="_W1FMGQoeEeaw-sw0vsdHGw" targetNode="_W1FMHwoeEeaw-sw0vsdHGw">
+        <target xmi:type="drone:Mission" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_W1FzJAoeEeaw-sw0vsdHGw" sourceArrow="FillDiamond" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_W1FzJQoeEeaw-sw0vsdHGw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_W1FzJgoeEeaw-sw0vsdHGw" sourceNode="_W1FMGQoeEeaw-sw0vsdHGw" targetNode="_W1FMIQoeEeaw-sw0vsdHGw">
+        <target xmi:type="drone:Mission" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_W1FzJwoeEeaw-sw0vsdHGw" sourceArrow="FillDiamond" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_W1FzKAoeEeaw-sw0vsdHGw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_W1FzKQoeEeaw-sw0vsdHGw" sourceNode="_W1FMGQoeEeaw-sw0vsdHGw" targetNode="_W1FMIwoeEeaw-sw0vsdHGw">
+        <target xmi:type="drone:Mission" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_W1FzKgoeEeaw-sw0vsdHGw" sourceArrow="FillDiamond" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_W1FzKwoeEeaw-sw0vsdHGw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yADy0AoiEeae9ehf68s8Mg" name="Position" outgoingEdges="_Z-lHEAozEealTIurco7FpA" incomingEdges="_jYuiwAoyEeawnYQA92SWtA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Position" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.0/@positions.0"/>
+        <semanticElements xmi:type="drone:Position" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.0/@positions.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_yAEZ4AoiEeae9ehf68s8Mg" labelPosition="node">
+          <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='positionNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='positionNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yAGPEAoiEeae9ehf68s8Mg" name="Position" outgoingEdges="_Z-mVMAozEealTIurco7FpA" incomingEdges="_jYzbQAoyEeawnYQA92SWtA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Position" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.1/@positions.0"/>
+        <semanticElements xmi:type="drone:Position" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.1/@positions.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_yAHdMAoiEeae9ehf68s8Mg" labelPosition="node">
+          <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='positionNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='positionNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_FEyLgAokEeaPFc0_zXG-jQ" name="Coordinate" incomingEdges="_Z-lHEAozEealTIurco7FpA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Coordinate" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.0/@positions.0/@coordinates.0"/>
+        <semanticElements xmi:type="drone:Coordinate" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.0/@positions.0/@coordinates.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FEyykAokEeaPFc0_zXG-jQ" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='coordinateNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='coordinateNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_FEzZoAokEeaPFc0_zXG-jQ" name="Coordinate" incomingEdges="_Z-mVMAozEealTIurco7FpA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Coordinate" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.1/@positions.0/@coordinates.0"/>
+        <semanticElements xmi:type="drone:Coordinate" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.1/@positions.0/@coordinates.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FE0AsAokEeaPFc0_zXG-jQ" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='coordinateNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='coordinateNode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_jYuiwAoyEeawnYQA92SWtA" sourceNode="_W1FMEwoeEeaw-sw0vsdHGw" targetNode="_yADy0AoiEeae9ehf68s8Mg">
+        <target xmi:type="drone:AreaObject" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_jYw_AAoyEeawnYQA92SWtA" sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='areaObjectPositionRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_jYw_AQoyEeawnYQA92SWtA"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='areaObjectPositionRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_jYzbQAoyEeawnYQA92SWtA" sourceNode="_W1FMFQoeEeaw-sw0vsdHGw" targetNode="_yAGPEAoiEeae9ehf68s8Mg">
+        <target xmi:type="drone:AreaObject" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_jY0CUAoyEeawnYQA92SWtA" sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='areaObjectPositionRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_jY0CUQoyEeawnYQA92SWtA"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='areaObjectPositionRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Z-lHEAozEealTIurco7FpA" sourceNode="_yADy0AoiEeae9ehf68s8Mg" targetNode="_FEyLgAokEeaPFc0_zXG-jQ">
+        <target xmi:type="drone:Position" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.0/@positions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Z-luIAozEealTIurco7FpA" sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='positionCoordinateRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Z-luIQozEealTIurco7FpA"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='positionCoordinateRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Z-mVMAozEealTIurco7FpA" sourceNode="_yAGPEAoiEeae9ehf68s8Mg" targetNode="_FEzZoAokEeaPFc0_zXG-jQ">
+        <target xmi:type="drone:Position" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@areaObjects.1/@positions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Z-mVMQozEealTIurco7FpA" sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='positionCoordinateRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Z-mVMgozEealTIurco7FpA"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='positionCoordinateRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_kpbY0Ao2EearEOP0KLZlEQ" name="Task Descriptor" incomingEdges="_kqAnoAo2EearEOP0KLZlEQ" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.0/@descriptor"/>
+        <semanticElements xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.0/@descriptor"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kpecIAo2EearEOP0KLZlEQ" labelPosition="node" color="194,239,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_kpmX8Ao2EearEOP0KLZlEQ" name="Task Descriptor" outgoingEdges="_NAfjMAo3EeaNoYVlQAQyVg" incomingEdges="_kqjaMAo2EearEOP0KLZlEQ" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.1/@descriptor"/>
+        <semanticElements xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.1/@descriptor"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kpmX8Qo2EearEOP0KLZlEQ" labelPosition="node" color="194,239,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_kpnmEAo2EearEOP0KLZlEQ" name="Task Descriptor" outgoingEdges="_NF4ZgAo3EeaNoYVlQAQyVg" incomingEdges="_kqvncAo2EearEOP0KLZlEQ" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.2/@descriptor"/>
+        <semanticElements xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.2/@descriptor"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kpoNIAo2EearEOP0KLZlEQ" labelPosition="node" color="194,239,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_kpo0MAo2EearEOP0KLZlEQ" name="Task Descriptor" outgoingEdges="_NF5noAo3EeaNoYVlQAQyVg _NF61wAo3EeaNoYVlQAQyVg" incomingEdges="_kq70sAo2EearEOP0KLZlEQ" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.3/@descriptor"/>
+        <semanticElements xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.3/@descriptor"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kppbQAo2EearEOP0KLZlEQ" labelPosition="node" color="194,239,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_kqAnoAo2EearEOP0KLZlEQ" sourceNode="_W1FMHQoeEeaw-sw0vsdHGw" targetNode="_kpbY0Ao2EearEOP0KLZlEQ">
+        <target xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_kqBOsAo2EearEOP0KLZlEQ" sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskTaskDecriptorRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_kqBOsQo2EearEOP0KLZlEQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskTaskDecriptorRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_kqjaMAo2EearEOP0KLZlEQ" sourceNode="_W1FMHwoeEeaw-sw0vsdHGw" targetNode="_kpmX8Ao2EearEOP0KLZlEQ">
+        <target xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_kqkBQAo2EearEOP0KLZlEQ" sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskTaskDecriptorRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_kqkBQQo2EearEOP0KLZlEQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskTaskDecriptorRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_kqvncAo2EearEOP0KLZlEQ" sourceNode="_W1FMIQoeEeaw-sw0vsdHGw" targetNode="_kpnmEAo2EearEOP0KLZlEQ">
+        <target xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_kqvncQo2EearEOP0KLZlEQ" sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskTaskDecriptorRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_kqvncgo2EearEOP0KLZlEQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskTaskDecriptorRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_kq70sAo2EearEOP0KLZlEQ" sourceNode="_W1FMIwoeEeaw-sw0vsdHGw" targetNode="_kpo0MAo2EearEOP0KLZlEQ">
+        <target xmi:type="drone:Task" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.3"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_kq8bwAo2EearEOP0KLZlEQ" sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskTaskDecriptorRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_kq8bwQo2EearEOP0KLZlEQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskTaskDecriptorRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_NAfjMAo3EeaNoYVlQAQyVg" sourceNode="_kpmX8Ao2EearEOP0KLZlEQ" targetNode="_W1FMEwoeEeaw-sw0vsdHGw">
+        <target xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.1/@descriptor"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_NF2kUAo3EeaNoYVlQAQyVg" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskDescriptorAreaObjectRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_NF2kUQo3EeaNoYVlQAQyVg"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskDescriptorAreaObjectRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_NF4ZgAo3EeaNoYVlQAQyVg" sourceNode="_kpnmEAo2EearEOP0KLZlEQ" targetNode="_W1FMEwoeEeaw-sw0vsdHGw">
+        <target xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.2/@descriptor"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_NF5AkAo3EeaNoYVlQAQyVg" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskDescriptorAreaObjectRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_NF5AkQo3EeaNoYVlQAQyVg"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskDescriptorAreaObjectRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_NF5noAo3EeaNoYVlQAQyVg" sourceNode="_kpo0MAo2EearEOP0KLZlEQ" targetNode="_W1FMFQoeEeaw-sw0vsdHGw">
+        <target xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.3/@descriptor"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_NF6OsAo3EeaNoYVlQAQyVg" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskDescriptorAreaObjectRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_NF6OsQo3EeaNoYVlQAQyVg"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskDescriptorAreaObjectRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_NF61wAo3EeaNoYVlQAQyVg" sourceNode="_kpo0MAo2EearEOP0KLZlEQ" targetNode="_W1FMEwoeEeaw-sw0vsdHGw">
+        <target xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@missions.0/@tasks.3/@descriptor"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_NF61wQo3EeaNoYVlQAQyVg" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskDescriptorAreaObjectRelation']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_NF61wgo3EeaNoYVlQAQyVg"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskDescriptorAreaObjectRelation']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_L4YkQAo6Eeaj4YZVIxLFLw" name="Not assigned Task Descriptor" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@temporalElements.2"/>
+        <semanticElements xmi:type="drone:TaskDescriptor" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@temporalElements.2"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_L4aZcAo6Eeaj4YZVIxLFLw" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='notAssignedTaskDescriptors']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='notAssignedTaskDescriptors']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_t3xa4Ao6EeaFgJKjVcmCZA" name="Not assigned Position" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Position" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@temporalElements.1"/>
+        <semanticElements xmi:type="drone:Position" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@temporalElements.1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_HaL90Ao-Eealc9wKgeCQ8Q" labelPosition="node">
+          <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='notAssignedPosition']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='notAssignedPosition']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_wuty0Ao6EeaFgJKjVcmCZA" name="Not assigned Coordinate" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="drone:Coordinate" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@temporalElements.3"/>
+        <semanticElements xmi:type="drone:Coordinate" href="src/hu/bme/mdsd/ztz/instances/robots.drone#//@temporalElements.3"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_wuuZ4Ao6EeaFgJKjVcmCZA" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='notAssignedCoordinate']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='notAssignedCoordinate']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_W1FzLAoeEeaw-sw0vsdHGw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer"/>
+      <target xmi:type="drone:RobotMissionContainer" href="src/hu/bme/mdsd/ztz/instances/robots.drone#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/hu.bme.mdsd.ztz.model.design/description/environment.odesign#//@ownedViewpoints[name='areaobjectdiagram']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
