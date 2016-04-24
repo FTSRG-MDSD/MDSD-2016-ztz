@@ -81,7 +81,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="taskTaskDecriptorRelation" sourceMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']" targetMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']" targetFinderExpression="aql:self.mission.tasks.descriptor">
+        <edgeMappings name="taskTaskDecriptorRelation" sourceMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']" targetMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']" targetFinderExpression="aql:self.descriptor">
           <style sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -127,7 +127,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="missionCreation" label="New mission" nodeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='missionNode']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="missionCreation" label="New Mission" nodeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='missionNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
