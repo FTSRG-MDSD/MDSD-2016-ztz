@@ -6,6 +6,11 @@ package hu.bme.mdsd.ztz.text.validation
 import org.eclipse.xtext.validation.Check
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
+import hu.bme.mdsd.ztz.text.manager.ResourceManager
+import org.eclipse.core.runtime.Path
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.IPath
+import org.eclipse.emf.common.util.URI
 
 /**
  * This class contains custom validation rules. 
@@ -14,23 +19,29 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
  */
 class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 	
-//  public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					BehaviourLanguagePackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
-
 
 	@Check
 	def handleImport(Import imp) {
 		if (imp.importURI.empty) {
 			error("Import cannot be empty", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT)
 		}
+		
+//		val manager = ResourceManager.instance 
+//		if (!manager.importedModelPath.equals(imp.importURI)) {
+//			manager.importedModelPath = imp.importURI
+//			
+//			val platformString = imp.eResource.URI.toPlatformString(true);
+//    		val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+//    		val proj = myFile.getProject();
+//    		val IPath modelPath = new Path(ResourcesPlugin.getWorkspace().getRoot().fullPath.toOSString).
+//    			append(proj.fullPath).
+//    			append(new Path("/model/").toOSString).
+//    			append(imp.importURI)
+//    		println(modelPath)
+//    		println(modelPath.makeAbsolute)
+//    		val URI resourceURI = URI.createFileURI(modelPath.makeAbsolute.toOSString)
+//			manager.load(resourceURI)
+//		}
 	}
 	
 }

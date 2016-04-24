@@ -7,6 +7,10 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
+import java.util.Iterator
+import org.eclipse.emf.common.util.URI
+import hu.bme.mdsd.ztz.text.manager.ResourceManager
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +20,19 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class BehaviourLanguageGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+		val Iterator<Import> iterator = resource.allContents.filter(typeof(Import))
+		if (iterator.hasNext) {
+			val Import imp = iterator.next
+			if (!imp.importURI.empty) {
+				val manager = ResourceManager.instance
+				if (!manager.importedModelPath.equals(imp.importURI)) {
+					
+					val URI modelPathUri = fsa.getURI("../model/" + imp.importURI)
+					manager.load(modelPathUri)
+					manager.importedModelPath = imp.importURI
+				}
+			}
+		}
+		
 	}
 }
