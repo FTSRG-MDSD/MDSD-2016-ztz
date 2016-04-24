@@ -32,6 +32,7 @@ Workflow {
 			name = "hu.bme.mdsd.ztz.text.BehaviourLanguage"
 			fileExtensions = "drb"
 			referencedResource = "platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.genmodel"
+			referencedResource = "platform:/resource/hu.bme.mdsd.ztz.model/model/drone.genmodel"
 			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
 
