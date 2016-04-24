@@ -1332,150 +1332,27 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
-	public class PositionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Position");
+	public class PropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Property");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cPositionAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cPositionKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCoordinatesKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cCoordinatesAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final RuleCall cCoordinatesCoordinateParserRuleCall_3_2_0 = (RuleCall)cCoordinatesAssignment_3_2.eContents().get(0);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCommaKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cCoordinatesAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final RuleCall cCoordinatesCoordinateParserRuleCall_3_3_1_0 = (RuleCall)cCoordinatesAssignment_3_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cPropertiesKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cPropertiesAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cPropertiesPropertyParserRuleCall_4_2_0 = (RuleCall)cPropertiesAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cPropertiesPropertyParserRuleCall_4_3_1_0 = (RuleCall)cPropertiesAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//Position drone::Position:
-		//	{drone::Position}
-		//	'Position'
-		//	'{' ('coordinates' '{' coordinates+=Coordinate ("," coordinates+=Coordinate)* '}')? ('properties' '{'
-		//	properties+=Property ("," properties+=Property)* '}')?
-		//	'}'
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{drone::Position} 'Position' '{' ('coordinates' '{' coordinates+=Coordinate ("," coordinates+=Coordinate)* '}')?
-		//('properties' '{' properties+=Property ("," properties+=Property)* '}')? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{drone::Position}
-		public Action getPositionAction_0() { return cPositionAction_0; }
-		
-		//'Position'
-		public Keyword getPositionKeyword_1() { return cPositionKeyword_1; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('coordinates' '{' coordinates+=Coordinate ("," coordinates+=Coordinate)* '}')?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'coordinates'
-		public Keyword getCoordinatesKeyword_3_0() { return cCoordinatesKeyword_3_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3_1() { return cLeftCurlyBracketKeyword_3_1; }
-		
-		//coordinates+=Coordinate
-		public Assignment getCoordinatesAssignment_3_2() { return cCoordinatesAssignment_3_2; }
-		
-		//Coordinate
-		public RuleCall getCoordinatesCoordinateParserRuleCall_3_2_0() { return cCoordinatesCoordinateParserRuleCall_3_2_0; }
-		
-		//("," coordinates+=Coordinate)*
-		public Group getGroup_3_3() { return cGroup_3_3; }
-		
-		//","
-		public Keyword getCommaKeyword_3_3_0() { return cCommaKeyword_3_3_0; }
-		
-		//coordinates+=Coordinate
-		public Assignment getCoordinatesAssignment_3_3_1() { return cCoordinatesAssignment_3_3_1; }
-		
-		//Coordinate
-		public RuleCall getCoordinatesCoordinateParserRuleCall_3_3_1_0() { return cCoordinatesCoordinateParserRuleCall_3_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_3_4() { return cRightCurlyBracketKeyword_3_4; }
-		
-		//('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'properties'
-		public Keyword getPropertiesKeyword_4_0() { return cPropertiesKeyword_4_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_4_2() { return cPropertiesAssignment_4_2; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_4_2_0() { return cPropertiesPropertyParserRuleCall_4_2_0; }
-		
-		//("," properties+=Property)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
-		
-		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_4_3_1() { return cPropertiesAssignment_4_3_1; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_4_3_1_0() { return cPropertiesPropertyParserRuleCall_4_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-	public class EquipmentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Equipment");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cEquipmentAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cEquipmentKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cFacilitateKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cFacilitateAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final CrossReference cFacilitateCapabilityCrossReference_4_2_0 = (CrossReference)cFacilitateAssignment_4_2.eContents().get(0);
-		private final RuleCall cFacilitateCapabilityEStringParserRuleCall_4_2_0_1 = (RuleCall)cFacilitateCapabilityCrossReference_4_2_0.eContents().get(1);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cFacilitateAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final CrossReference cFacilitateCapabilityCrossReference_4_3_1_0 = (CrossReference)cFacilitateAssignment_4_3_1.eContents().get(0);
-		private final RuleCall cFacilitateCapabilityEStringParserRuleCall_4_3_1_0_1 = (RuleCall)cFacilitateCapabilityCrossReference_4_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cPropertiesKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cPropertiesAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cPropertiesPropertyParserRuleCall_5_2_0 = (RuleCall)cPropertiesAssignment_5_2.eContents().get(0);
-		private final Group cGroup_5_3 = (Group)cGroup_5.eContents().get(3);
-		private final Keyword cCommaKeyword_5_3_0 = (Keyword)cGroup_5_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_5_3_1 = (Assignment)cGroup_5_3.eContents().get(1);
-		private final RuleCall cPropertiesPropertyParserRuleCall_5_3_1_0 = (RuleCall)cPropertiesAssignment_5_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
+		private final Keyword cPropertyKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cKeyKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cKeyAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cKeyPropertyKeyCrossReference_3_0 = (CrossReference)cKeyAssignment_3.eContents().get(0);
+		private final RuleCall cKeyPropertyKeyEStringParserRuleCall_3_0_1 = (RuleCall)cKeyPropertyKeyCrossReference_3_0.eContents().get(1);
+		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValuePropertyValueParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
+		////Position returns drone::Position:
+		////	{drone::Position}
+		////	'Position'
+		////	'{'
+		////		('coordinates' '{' coordinates+=Coordinate ( "," coordinates+=Coordinate)* '}' )?
+		////		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+		////	'}';
 		////Size returns drone::Size:
 		////	'Size'
 		////	'{'
@@ -1491,165 +1368,20 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		////		'rechargeTime' rechargeTime=MeasureValue
 		////		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 		////	'}';
-		//Equipment drone::Equipment:
-		//	{drone::Equipment}
-		//	'Equipment'
-		//	name=EString
-		//	'{' ('facilitate' '(' facilitate+=[drone::Capability|EString] ("," facilitate+=[drone::Capability|EString])* ')')?
-		//	('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		//	'}'
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{drone::Equipment} 'Equipment' name=EString '{' ('facilitate' '(' facilitate+=[drone::Capability|EString] (","
-		//facilitate+=[drone::Capability|EString])* ')')? ('properties' '{' properties+=Property ("," properties+=Property)*
-		//'}')? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{drone::Equipment}
-		public Action getEquipmentAction_0() { return cEquipmentAction_0; }
-		
-		//'Equipment'
-		public Keyword getEquipmentKeyword_1() { return cEquipmentKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('facilitate' '(' facilitate+=[drone::Capability|EString] ("," facilitate+=[drone::Capability|EString])* ')')?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'facilitate'
-		public Keyword getFacilitateKeyword_4_0() { return cFacilitateKeyword_4_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_4_1() { return cLeftParenthesisKeyword_4_1; }
-		
-		//facilitate+=[drone::Capability|EString]
-		public Assignment getFacilitateAssignment_4_2() { return cFacilitateAssignment_4_2; }
-		
-		//[drone::Capability|EString]
-		public CrossReference getFacilitateCapabilityCrossReference_4_2_0() { return cFacilitateCapabilityCrossReference_4_2_0; }
-		
-		//EString
-		public RuleCall getFacilitateCapabilityEStringParserRuleCall_4_2_0_1() { return cFacilitateCapabilityEStringParserRuleCall_4_2_0_1; }
-		
-		//("," facilitate+=[drone::Capability|EString])*
-		public Group getGroup_4_3() { return cGroup_4_3; }
-		
-		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
-		
-		//facilitate+=[drone::Capability|EString]
-		public Assignment getFacilitateAssignment_4_3_1() { return cFacilitateAssignment_4_3_1; }
-		
-		//[drone::Capability|EString]
-		public CrossReference getFacilitateCapabilityCrossReference_4_3_1_0() { return cFacilitateCapabilityCrossReference_4_3_1_0; }
-		
-		//EString
-		public RuleCall getFacilitateCapabilityEStringParserRuleCall_4_3_1_0_1() { return cFacilitateCapabilityEStringParserRuleCall_4_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_4_4() { return cRightParenthesisKeyword_4_4; }
-		
-		//('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		public Group getGroup_5() { return cGroup_5; }
-		
-		//'properties'
-		public Keyword getPropertiesKeyword_5_0() { return cPropertiesKeyword_5_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_5_1() { return cLeftCurlyBracketKeyword_5_1; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_5_2() { return cPropertiesAssignment_5_2; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_5_2_0() { return cPropertiesPropertyParserRuleCall_5_2_0; }
-		
-		//("," properties+=Property)*
-		public Group getGroup_5_3() { return cGroup_5_3; }
-		
-		//","
-		public Keyword getCommaKeyword_5_3_0() { return cCommaKeyword_5_3_0; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_5_3_1() { return cPropertiesAssignment_5_3_1; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_5_3_1_0() { return cPropertiesPropertyParserRuleCall_5_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5_4() { return cRightCurlyBracketKeyword_5_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
-	}
-	public class TaskElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Task");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTaskKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cDescriptorKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cDescriptorAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cDescriptorTaskDescriptorParserRuleCall_4_0 = (RuleCall)cDescriptorAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//Task drone::Task:
-		//	'Task'
-		//	name=EString
-		//	'{'
-		//	'descriptor' descriptor=TaskDescriptor
-		//	'}'
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Task' name=EString '{' 'descriptor' descriptor=TaskDescriptor '}'
-		public Group getGroup() { return cGroup; }
-		
-		//'Task'
-		public Keyword getTaskKeyword_0() { return cTaskKeyword_0; }
-		
-		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//'descriptor'
-		public Keyword getDescriptorKeyword_3() { return cDescriptorKeyword_3; }
-		
-		//descriptor=TaskDescriptor
-		public Assignment getDescriptorAssignment_4() { return cDescriptorAssignment_4; }
-		
-		//TaskDescriptor
-		public RuleCall getDescriptorTaskDescriptorParserRuleCall_4_0() { return cDescriptorTaskDescriptorParserRuleCall_4_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-	public class PropertyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Property");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPropertyKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cKeyKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cKeyAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cKeyPropertyKeyCrossReference_3_0 = (CrossReference)cKeyAssignment_3.eContents().get(0);
-		private final RuleCall cKeyPropertyKeyEStringParserRuleCall_3_0_1 = (RuleCall)cKeyPropertyKeyCrossReference_3_0.eContents().get(1);
-		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cValuePropertyValueParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		
+		////Equipment returns drone::Equipment:
+		////	{drone::Equipment}
+		////	'Equipment'
+		////	name=EString
+		////	'{'
+		////		('facilitate' '(' facilitate+=[drone::Capability|EString] ( "," facilitate+=[drone::Capability|EString])* ')' )?
+		////		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+		////	'}';
+		////Task returns drone::Task:
+		////	'Task'
+		////	name=EString
+		////	'{'
+		////		'descriptor' descriptor=TaskDescriptor
+		////	'}';
 		//Property drone::Property:
 		//	'Property'
 		//	'{'
@@ -1749,35 +1481,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
-	public class CapabilityElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Capability");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cCapabilityAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cCapabilityKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		
-		//Capability drone::Capability:
-		//	{drone::Capability}
-		//	'Capability'
-		//	name=EString
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{drone::Capability} 'Capability' name=EString
-		public Group getGroup() { return cGroup; }
-		
-		//{drone::Capability}
-		public Action getCapabilityAction_0() { return cCapabilityAction_0; }
-		
-		//'Capability'
-		public Keyword getCapabilityKeyword_1() { return cCapabilityKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-	}
 	public class CapabilityPropertiesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.CapabilityProperties");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1799,6 +1502,10 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
+		////Capability returns drone::Capability:
+		////	{drone::Capability}
+		////	'Capability'
+		////	name=EString;
 		//CapabilityProperties drone::CapabilityProperties:
 		//	'CapabilityProperties'
 		//	'{'
@@ -1862,70 +1569,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
-	public class CoordinateElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Coordinate");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCoordinateKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLatitudeKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cLatitudeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cLatitudeEFloatParserRuleCall_3_0 = (RuleCall)cLatitudeAssignment_3.eContents().get(0);
-		private final Keyword cLongitudeKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cLongitudeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cLongitudeEFloatParserRuleCall_5_0 = (RuleCall)cLongitudeAssignment_5.eContents().get(0);
-		private final Keyword cAltitudeKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cAltitudeAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cAltitudeEFloatParserRuleCall_7_0 = (RuleCall)cAltitudeAssignment_7.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		
-		//Coordinate drone::Coordinate:
-		//	'Coordinate'
-		//	'{'
-		//	'latitude' latitude=EFloat
-		//	'longitude' longitude=EFloat
-		//	'altitude' altitude=EFloat
-		//	'}'
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Coordinate' '{' 'latitude' latitude=EFloat 'longitude' longitude=EFloat 'altitude' altitude=EFloat '}'
-		public Group getGroup() { return cGroup; }
-		
-		//'Coordinate'
-		public Keyword getCoordinateKeyword_0() { return cCoordinateKeyword_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-		
-		//'latitude'
-		public Keyword getLatitudeKeyword_2() { return cLatitudeKeyword_2; }
-		
-		//latitude=EFloat
-		public Assignment getLatitudeAssignment_3() { return cLatitudeAssignment_3; }
-		
-		//EFloat
-		public RuleCall getLatitudeEFloatParserRuleCall_3_0() { return cLatitudeEFloatParserRuleCall_3_0; }
-		
-		//'longitude'
-		public Keyword getLongitudeKeyword_4() { return cLongitudeKeyword_4; }
-		
-		//longitude=EFloat
-		public Assignment getLongitudeAssignment_5() { return cLongitudeAssignment_5; }
-		
-		//EFloat
-		public RuleCall getLongitudeEFloatParserRuleCall_5_0() { return cLongitudeEFloatParserRuleCall_5_0; }
-		
-		//'altitude'
-		public Keyword getAltitudeKeyword_6() { return cAltitudeKeyword_6; }
-		
-		//altitude=EFloat
-		public Assignment getAltitudeAssignment_7() { return cAltitudeAssignment_7; }
-		
-		//EFloat
-		public RuleCall getAltitudeEFloatParserRuleCall_7_0() { return cAltitudeEFloatParserRuleCall_7_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
-	}
 	public class EFloatElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.EFloat");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1940,6 +1583,13 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Keyword cHyphenMinusKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
 		private final RuleCall cINTTerminalRuleCall_4_2 = (RuleCall)cGroup_4.eContents().get(2);
 		
+		////Coordinate returns drone::Coordinate:
+		////	'Coordinate'
+		////	'{'
+		////		'latitude' latitude=EFloat
+		////		'longitude' longitude=EFloat
+		////		'altitude' altitude=EFloat
+		////	'}';
 		//EFloat ecore::EFloat:
 		//	'-'? INT? '.' INT (('E' | 'e') '-'? INT)?
 		@Override public ParserRule getRule() { return rule; }
@@ -1977,127 +1627,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//INT
 		public RuleCall getINTTerminalRuleCall_4_2() { return cINTTerminalRuleCall_4_2; }
 	}
-	public class TaskDescriptorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskDescriptor");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cTaskDescriptorAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cTaskDescriptorKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cTargetsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cTargetsAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final CrossReference cTargetsAreaObjectCrossReference_3_2_0 = (CrossReference)cTargetsAssignment_3_2.eContents().get(0);
-		private final RuleCall cTargetsAreaObjectEStringParserRuleCall_3_2_0_1 = (RuleCall)cTargetsAreaObjectCrossReference_3_2_0.eContents().get(1);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCommaKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cTargetsAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final CrossReference cTargetsAreaObjectCrossReference_3_3_1_0 = (CrossReference)cTargetsAssignment_3_3_1.eContents().get(0);
-		private final RuleCall cTargetsAreaObjectEStringParserRuleCall_3_3_1_0_1 = (RuleCall)cTargetsAreaObjectCrossReference_3_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cPropertiesKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cPropertiesAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cPropertiesPropertyParserRuleCall_4_2_0 = (RuleCall)cPropertiesAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cPropertiesPropertyParserRuleCall_4_3_1_0 = (RuleCall)cPropertiesAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//TaskDescriptor drone::TaskDescriptor:
-		//	{drone::TaskDescriptor}
-		//	'TaskDescriptor'
-		//	'{' ('targets' '(' targets+=[drone::AreaObject|EString] ("," targets+=[drone::AreaObject|EString])* ')')?
-		//	('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		//	'}'
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{drone::TaskDescriptor} 'TaskDescriptor' '{' ('targets' '(' targets+=[drone::AreaObject|EString] (","
-		//targets+=[drone::AreaObject|EString])* ')')? ('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		//'}'
-		public Group getGroup() { return cGroup; }
-		
-		//{drone::TaskDescriptor}
-		public Action getTaskDescriptorAction_0() { return cTaskDescriptorAction_0; }
-		
-		//'TaskDescriptor'
-		public Keyword getTaskDescriptorKeyword_1() { return cTaskDescriptorKeyword_1; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('targets' '(' targets+=[drone::AreaObject|EString] ("," targets+=[drone::AreaObject|EString])* ')')?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'targets'
-		public Keyword getTargetsKeyword_3_0() { return cTargetsKeyword_3_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
-		
-		//targets+=[drone::AreaObject|EString]
-		public Assignment getTargetsAssignment_3_2() { return cTargetsAssignment_3_2; }
-		
-		//[drone::AreaObject|EString]
-		public CrossReference getTargetsAreaObjectCrossReference_3_2_0() { return cTargetsAreaObjectCrossReference_3_2_0; }
-		
-		//EString
-		public RuleCall getTargetsAreaObjectEStringParserRuleCall_3_2_0_1() { return cTargetsAreaObjectEStringParserRuleCall_3_2_0_1; }
-		
-		//("," targets+=[drone::AreaObject|EString])*
-		public Group getGroup_3_3() { return cGroup_3_3; }
-		
-		//","
-		public Keyword getCommaKeyword_3_3_0() { return cCommaKeyword_3_3_0; }
-		
-		//targets+=[drone::AreaObject|EString]
-		public Assignment getTargetsAssignment_3_3_1() { return cTargetsAssignment_3_3_1; }
-		
-		//[drone::AreaObject|EString]
-		public CrossReference getTargetsAreaObjectCrossReference_3_3_1_0() { return cTargetsAreaObjectCrossReference_3_3_1_0; }
-		
-		//EString
-		public RuleCall getTargetsAreaObjectEStringParserRuleCall_3_3_1_0_1() { return cTargetsAreaObjectEStringParserRuleCall_3_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
-		
-		//('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'properties'
-		public Keyword getPropertiesKeyword_4_0() { return cPropertiesKeyword_4_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_4_2() { return cPropertiesAssignment_4_2; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_4_2_0() { return cPropertiesPropertyParserRuleCall_4_2_0; }
-		
-		//("," properties+=Property)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
-		
-		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_4_3_1() { return cPropertiesAssignment_4_3_1; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_4_3_1_0() { return cPropertiesPropertyParserRuleCall_4_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
 	public class PropertyKeyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.PropertyKey");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -2106,6 +1635,13 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
+		////TaskDescriptor returns drone::TaskDescriptor:
+		////	{drone::TaskDescriptor}
+		////	'TaskDescriptor'
+		////	'{'
+		////		('targets' '(' targets+=[drone::AreaObject|EString] ( "," targets+=[drone::AreaObject|EString])* ')' )?
+		////		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+		////	'}';
 		////AreaObject returns drone::AreaObject:
 		////	{drone::AreaObject}
 		////	'AreaObject'
@@ -2174,150 +1710,26 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
-	public class MeasureDimensionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MeasureDimension");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMeasureDimensionAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMeasureDimensionKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cConversionsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cConversionsAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cConversionsMeasureConversionParserRuleCall_4_2_0 = (RuleCall)cConversionsAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cConversionsAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cConversionsMeasureConversionParserRuleCall_4_3_1_0 = (RuleCall)cConversionsAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//MeasureDimension drone::MeasureDimension:
-		//	{drone::MeasureDimension}
-		//	'MeasureDimension'
-		//	name=EString
-		//	'{' ('conversions' '{' conversions+=MeasureConversion ("," conversions+=MeasureConversion)* '}')?
-		//	'}'
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{drone::MeasureDimension} 'MeasureDimension' name=EString '{' ('conversions' '{' conversions+=MeasureConversion (","
-		//conversions+=MeasureConversion)* '}')? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{drone::MeasureDimension}
-		public Action getMeasureDimensionAction_0() { return cMeasureDimensionAction_0; }
-		
-		//'MeasureDimension'
-		public Keyword getMeasureDimensionKeyword_1() { return cMeasureDimensionKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('conversions' '{' conversions+=MeasureConversion ("," conversions+=MeasureConversion)* '}')?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'conversions'
-		public Keyword getConversionsKeyword_4_0() { return cConversionsKeyword_4_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
-		
-		//conversions+=MeasureConversion
-		public Assignment getConversionsAssignment_4_2() { return cConversionsAssignment_4_2; }
-		
-		//MeasureConversion
-		public RuleCall getConversionsMeasureConversionParserRuleCall_4_2_0() { return cConversionsMeasureConversionParserRuleCall_4_2_0; }
-		
-		//("," conversions+=MeasureConversion)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
-		
-		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
-		
-		//conversions+=MeasureConversion
-		public Assignment getConversionsAssignment_4_3_1() { return cConversionsAssignment_4_3_1; }
-		
-		//MeasureConversion
-		public RuleCall getConversionsMeasureConversionParserRuleCall_4_3_1_0() { return cConversionsMeasureConversionParserRuleCall_4_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-	public class MeasureConversionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MeasureConversion");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cMeasureConversionKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cRateKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cRateAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cRateEFloatParserRuleCall_2_1_0 = (RuleCall)cRateAssignment_2_1.eContents().get(0);
-		private final Keyword cDimensionKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cDimensionAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cDimensionMeasureDimensionCrossReference_4_0 = (CrossReference)cDimensionAssignment_4.eContents().get(0);
-		private final RuleCall cDimensionMeasureDimensionEStringParserRuleCall_4_0_1 = (RuleCall)cDimensionMeasureDimensionCrossReference_4_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//MeasureConversion drone::MeasureConversion:
-		//	'MeasureConversion'
-		//	'{' ('rate' rate=EFloat)?
-		//	'dimension' dimension=[drone::MeasureDimension|EString]
-		//	'}'
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'MeasureConversion' '{' ('rate' rate=EFloat)? 'dimension' dimension=[drone::MeasureDimension|EString] '}'
-		public Group getGroup() { return cGroup; }
-		
-		//'MeasureConversion'
-		public Keyword getMeasureConversionKeyword_0() { return cMeasureConversionKeyword_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-		
-		//('rate' rate=EFloat)?
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//'rate'
-		public Keyword getRateKeyword_2_0() { return cRateKeyword_2_0; }
-		
-		//rate=EFloat
-		public Assignment getRateAssignment_2_1() { return cRateAssignment_2_1; }
-		
-		//EFloat
-		public RuleCall getRateEFloatParserRuleCall_2_1_0() { return cRateEFloatParserRuleCall_2_1_0; }
-		
-		//'dimension'
-		public Keyword getDimensionKeyword_3() { return cDimensionKeyword_3; }
-		
-		//dimension=[drone::MeasureDimension|EString]
-		public Assignment getDimensionAssignment_4() { return cDimensionAssignment_4; }
-		
-		//[drone::MeasureDimension|EString]
-		public CrossReference getDimensionMeasureDimensionCrossReference_4_0() { return cDimensionMeasureDimensionCrossReference_4_0; }
-		
-		//EString
-		public RuleCall getDimensionMeasureDimensionEStringParserRuleCall_4_0_1() { return cDimensionMeasureDimensionEStringParserRuleCall_4_0_1; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
 	public class EBooleanElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.EBoolean");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cTrueKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
+		////MeasureDimension returns drone::MeasureDimension:
+		////	{drone::MeasureDimension}
+		////	'MeasureDimension'
+		////	name=EString
+		////	'{'
+		////		('conversions' '{' conversions+=MeasureConversion ( "," conversions+=MeasureConversion)* '}' )?
+		////	'}';
+		////
+		////MeasureConversion returns drone::MeasureConversion:
+		////	'MeasureConversion'
+		////	'{'
+		////		('rate' rate=EFloat)?
+		////		'dimension' dimension=[drone::MeasureDimension|EString]
+		////	'}';
 		//EBoolean ecore::EBoolean:
 		//	'true' | 'false'
 		@Override public ParserRule getRule() { return rule; }
@@ -3161,20 +2573,12 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	private final MessageRepositoryElements pMessageRepository;
 	private final RobotStatusElements eRobotStatus;
 	private final Action_ImplElements pAction_Impl;
-	private final PositionElements pPosition;
-	private final EquipmentElements pEquipment;
-	private final TaskElements pTask;
 	private final PropertyElements pProperty;
 	private final MeasureValueElements pMeasureValue;
-	private final CapabilityElements pCapability;
 	private final CapabilityPropertiesElements pCapabilityProperties;
-	private final CoordinateElements pCoordinate;
 	private final EFloatElements pEFloat;
-	private final TaskDescriptorElements pTaskDescriptor;
 	private final PropertyKeyElements pPropertyKey;
 	private final StringValueElements pStringValue;
-	private final MeasureDimensionElements pMeasureDimension;
-	private final MeasureConversionElements pMeasureConversion;
 	private final EBooleanElements pEBoolean;
 	private final MessageElements pMessage;
 	private final EDateElements pEDate;
@@ -3208,20 +2612,12 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		this.pMessageRepository = new MessageRepositoryElements();
 		this.eRobotStatus = new RobotStatusElements();
 		this.pAction_Impl = new Action_ImplElements();
-		this.pPosition = new PositionElements();
-		this.pEquipment = new EquipmentElements();
-		this.pTask = new TaskElements();
 		this.pProperty = new PropertyElements();
 		this.pMeasureValue = new MeasureValueElements();
-		this.pCapability = new CapabilityElements();
 		this.pCapabilityProperties = new CapabilityPropertiesElements();
-		this.pCoordinate = new CoordinateElements();
 		this.pEFloat = new EFloatElements();
-		this.pTaskDescriptor = new TaskDescriptorElements();
 		this.pPropertyKey = new PropertyKeyElements();
 		this.pStringValue = new StringValueElements();
-		this.pMeasureDimension = new MeasureDimensionElements();
-		this.pMeasureConversion = new MeasureConversionElements();
 		this.pEBoolean = new EBooleanElements();
 		this.pMessage = new MessageElements();
 		this.pEDate = new EDateElements();
@@ -3476,20 +2872,13 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getAction_ImplAccess().getRule();
 	}
 	
-	//Position drone::Position:
-	//	{drone::Position}
-	//	'Position'
-	//	'{' ('coordinates' '{' coordinates+=Coordinate ("," coordinates+=Coordinate)* '}')? ('properties' '{'
-	//	properties+=Property ("," properties+=Property)* '}')?
-	//	'}'
-	public PositionElements getPositionAccess() {
-		return pPosition;
-	}
-	
-	public ParserRule getPositionRule() {
-		return getPositionAccess().getRule();
-	}
-	
+	////Position returns drone::Position:
+	////	{drone::Position}
+	////	'Position'
+	////	'{'
+	////		('coordinates' '{' coordinates+=Coordinate ( "," coordinates+=Coordinate)* '}' )?
+	////		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+	////	'}';
 	////Size returns drone::Size:
 	////	'Size'
 	////	'{'
@@ -3505,35 +2894,20 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	////		'rechargeTime' rechargeTime=MeasureValue
 	////		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 	////	'}';
-	//Equipment drone::Equipment:
-	//	{drone::Equipment}
-	//	'Equipment'
-	//	name=EString
-	//	'{' ('facilitate' '(' facilitate+=[drone::Capability|EString] ("," facilitate+=[drone::Capability|EString])* ')')?
-	//	('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-	//	'}'
-	public EquipmentElements getEquipmentAccess() {
-		return pEquipment;
-	}
-	
-	public ParserRule getEquipmentRule() {
-		return getEquipmentAccess().getRule();
-	}
-	
-	//Task drone::Task:
-	//	'Task'
-	//	name=EString
-	//	'{'
-	//	'descriptor' descriptor=TaskDescriptor
-	//	'}'
-	public TaskElements getTaskAccess() {
-		return pTask;
-	}
-	
-	public ParserRule getTaskRule() {
-		return getTaskAccess().getRule();
-	}
-	
+	////Equipment returns drone::Equipment:
+	////	{drone::Equipment}
+	////	'Equipment'
+	////	name=EString
+	////	'{'
+	////		('facilitate' '(' facilitate+=[drone::Capability|EString] ( "," facilitate+=[drone::Capability|EString])* ')' )?
+	////		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+	////	'}';
+	////Task returns drone::Task:
+	////	'Task'
+	////	name=EString
+	////	'{'
+	////		'descriptor' descriptor=TaskDescriptor
+	////	'}';
 	//Property drone::Property:
 	//	'Property'
 	//	'{'
@@ -3561,18 +2935,10 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getMeasureValueAccess().getRule();
 	}
 	
-	//Capability drone::Capability:
-	//	{drone::Capability}
-	//	'Capability'
-	//	name=EString
-	public CapabilityElements getCapabilityAccess() {
-		return pCapability;
-	}
-	
-	public ParserRule getCapabilityRule() {
-		return getCapabilityAccess().getRule();
-	}
-	
+	////Capability returns drone::Capability:
+	////	{drone::Capability}
+	////	'Capability'
+	////	name=EString;
 	//CapabilityProperties drone::CapabilityProperties:
 	//	'CapabilityProperties'
 	//	'{'
@@ -3587,21 +2953,13 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getCapabilityPropertiesAccess().getRule();
 	}
 	
-	//Coordinate drone::Coordinate:
-	//	'Coordinate'
-	//	'{'
-	//	'latitude' latitude=EFloat
-	//	'longitude' longitude=EFloat
-	//	'altitude' altitude=EFloat
-	//	'}'
-	public CoordinateElements getCoordinateAccess() {
-		return pCoordinate;
-	}
-	
-	public ParserRule getCoordinateRule() {
-		return getCoordinateAccess().getRule();
-	}
-	
+	////Coordinate returns drone::Coordinate:
+	////	'Coordinate'
+	////	'{'
+	////		'latitude' latitude=EFloat
+	////		'longitude' longitude=EFloat
+	////		'altitude' altitude=EFloat
+	////	'}';
 	//EFloat ecore::EFloat:
 	//	'-'? INT? '.' INT (('E' | 'e') '-'? INT)?
 	public EFloatElements getEFloatAccess() {
@@ -3612,20 +2970,13 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getEFloatAccess().getRule();
 	}
 	
-	//TaskDescriptor drone::TaskDescriptor:
-	//	{drone::TaskDescriptor}
-	//	'TaskDescriptor'
-	//	'{' ('targets' '(' targets+=[drone::AreaObject|EString] ("," targets+=[drone::AreaObject|EString])* ')')?
-	//	('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-	//	'}'
-	public TaskDescriptorElements getTaskDescriptorAccess() {
-		return pTaskDescriptor;
-	}
-	
-	public ParserRule getTaskDescriptorRule() {
-		return getTaskDescriptorAccess().getRule();
-	}
-	
+	////TaskDescriptor returns drone::TaskDescriptor:
+	////	{drone::TaskDescriptor}
+	////	'TaskDescriptor'
+	////	'{'
+	////		('targets' '(' targets+=[drone::AreaObject|EString] ( "," targets+=[drone::AreaObject|EString])* ')' )?
+	////		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+	////	'}';
 	////AreaObject returns drone::AreaObject:
 	////	{drone::AreaObject}
 	////	'AreaObject'
@@ -3660,33 +3011,20 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getStringValueAccess().getRule();
 	}
 	
-	//MeasureDimension drone::MeasureDimension:
-	//	{drone::MeasureDimension}
-	//	'MeasureDimension'
-	//	name=EString
-	//	'{' ('conversions' '{' conversions+=MeasureConversion ("," conversions+=MeasureConversion)* '}')?
-	//	'}'
-	public MeasureDimensionElements getMeasureDimensionAccess() {
-		return pMeasureDimension;
-	}
-	
-	public ParserRule getMeasureDimensionRule() {
-		return getMeasureDimensionAccess().getRule();
-	}
-	
-	//MeasureConversion drone::MeasureConversion:
-	//	'MeasureConversion'
-	//	'{' ('rate' rate=EFloat)?
-	//	'dimension' dimension=[drone::MeasureDimension|EString]
-	//	'}'
-	public MeasureConversionElements getMeasureConversionAccess() {
-		return pMeasureConversion;
-	}
-	
-	public ParserRule getMeasureConversionRule() {
-		return getMeasureConversionAccess().getRule();
-	}
-	
+	////MeasureDimension returns drone::MeasureDimension:
+	////	{drone::MeasureDimension}
+	////	'MeasureDimension'
+	////	name=EString
+	////	'{'
+	////		('conversions' '{' conversions+=MeasureConversion ( "," conversions+=MeasureConversion)* '}' )?
+	////	'}';
+	////
+	////MeasureConversion returns drone::MeasureConversion:
+	////	'MeasureConversion'
+	////	'{'
+	////		('rate' rate=EFloat)?
+	////		'dimension' dimension=[drone::MeasureDimension|EString]
+	////	'}';
 	//EBoolean ecore::EBoolean:
 	//	'true' | 'false'
 	public EBooleanElements getEBooleanAccess() {

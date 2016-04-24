@@ -17,20 +17,12 @@ import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
-import hu.bme.mdsd.ztz.model.drone.Capability;
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
-import hu.bme.mdsd.ztz.model.drone.Coordinate;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
-import hu.bme.mdsd.ztz.model.drone.Equipment;
-import hu.bme.mdsd.ztz.model.drone.MeasureConversion;
-import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
-import hu.bme.mdsd.ztz.model.drone.Position;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.StringValue;
-import hu.bme.mdsd.ztz.model.drone.Task;
-import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
@@ -111,29 +103,11 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 			}
 		else if (epackage == DronePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case DronePackage.CAPABILITY:
-				sequence_Capability(context, (Capability) semanticObject); 
-				return; 
 			case DronePackage.CAPABILITY_PROPERTIES:
 				sequence_CapabilityProperties(context, (CapabilityProperties) semanticObject); 
 				return; 
-			case DronePackage.COORDINATE:
-				sequence_Coordinate(context, (Coordinate) semanticObject); 
-				return; 
-			case DronePackage.EQUIPMENT:
-				sequence_Equipment(context, (Equipment) semanticObject); 
-				return; 
-			case DronePackage.MEASURE_CONVERSION:
-				sequence_MeasureConversion(context, (MeasureConversion) semanticObject); 
-				return; 
-			case DronePackage.MEASURE_DIMENSION:
-				sequence_MeasureDimension(context, (MeasureDimension) semanticObject); 
-				return; 
 			case DronePackage.MEASURE_VALUE:
 				sequence_MeasureValue(context, (MeasureValue) semanticObject); 
-				return; 
-			case DronePackage.POSITION:
-				sequence_Position(context, (Position) semanticObject); 
 				return; 
 			case DronePackage.PROPERTY:
 				sequence_Property(context, (Property) semanticObject); 
@@ -143,12 +117,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case DronePackage.STRING_VALUE:
 				sequence_StringValue(context, (StringValue) semanticObject); 
-				return; 
-			case DronePackage.TASK:
-				sequence_Task(context, (Task) semanticObject); 
-				return; 
-			case DronePackage.TASK_DESCRIPTOR:
-				sequence_TaskDescriptor(context, (TaskDescriptor) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -252,48 +220,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     Capability returns Capability
-	 *
-	 * Constraint:
-	 *     name=EString
-	 */
-	protected void sequence_Capability(ISerializationContext context, Capability semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCapabilityAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Coordinate returns Coordinate
-	 *
-	 * Constraint:
-	 *     (latitude=EFloat longitude=EFloat altitude=EFloat)
-	 */
-	protected void sequence_Coordinate(ISerializationContext context, Coordinate semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.COORDINATE__LATITUDE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.COORDINATE__LATITUDE));
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.COORDINATE__LONGITUDE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.COORDINATE__LONGITUDE));
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.COORDINATE__ALTITUDE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.COORDINATE__ALTITUDE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCoordinateAccess().getLatitudeEFloatParserRuleCall_3_0(), semanticObject.getLatitude());
-		feeder.accept(grammarAccess.getCoordinateAccess().getLongitudeEFloatParserRuleCall_5_0(), semanticObject.getLongitude());
-		feeder.accept(grammarAccess.getCoordinateAccess().getAltitudeEFloatParserRuleCall_7_0(), semanticObject.getAltitude());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     DetectedObject returns DetectedObject
 	 *
 	 * Constraint:
@@ -327,18 +253,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     Equipment returns Equipment
-	 *
-	 * Constraint:
-	 *     (name=EString (facilitate+=[Capability|EString] facilitate+=[Capability|EString]*)? (properties+=Property properties+=Property*)?)
-	 */
-	protected void sequence_Equipment(ISerializationContext context, Equipment semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Import returns Import
 	 *
 	 * Constraint:
@@ -352,30 +266,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     MeasureConversion returns MeasureConversion
-	 *
-	 * Constraint:
-	 *     (rate=EFloat? dimension=[MeasureDimension|EString])
-	 */
-	protected void sequence_MeasureConversion(ISerializationContext context, MeasureConversion semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     MeasureDimension returns MeasureDimension
-	 *
-	 * Constraint:
-	 *     (name=EString (conversions+=MeasureConversion conversions+=MeasureConversion*)?)
-	 */
-	protected void sequence_MeasureDimension(ISerializationContext context, MeasureDimension semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -441,18 +331,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     )
 	 */
 	protected void sequence_MulticastCommunication(ISerializationContext context, MulticastCommunication semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Position returns Position
-	 *
-	 * Constraint:
-	 *     ((coordinates+=Coordinate coordinates+=Coordinate*)? (properties+=Property properties+=Property*)?)
-	 */
-	protected void sequence_Position(ISerializationContext context, Position semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -529,18 +407,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     TaskDescriptor returns TaskDescriptor
-	 *
-	 * Constraint:
-	 *     ((targets+=[AreaObject|EString] targets+=[AreaObject|EString]*)? (properties+=Property properties+=Property*)?)
-	 */
-	protected void sequence_TaskDescriptor(ISerializationContext context, TaskDescriptor semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     TaskExecution returns TaskExecution
 	 *
 	 * Constraint:
@@ -575,27 +441,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 */
 	protected void sequence_TaskRequirement(ISerializationContext context, TaskRequirement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Task returns Task
-	 *
-	 * Constraint:
-	 *     (name=EString descriptor=TaskDescriptor)
-	 */
-	protected void sequence_Task(ISerializationContext context, Task semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME));
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.TASK__DESCRIPTOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.TASK__DESCRIPTOR));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTaskAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getTaskAccess().getDescriptorTaskDescriptorParserRuleCall_4_0(), semanticObject.getDescriptor());
-		feeder.finish();
 	}
 	
 	
