@@ -2,7 +2,15 @@ package hu.bme.mdsd.ztz.text.manager;
 
 import com.google.common.base.Objects;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import java.util.Map;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -25,6 +33,12 @@ public class ResourceManager {
   @Accessors(AccessorType.PUBLIC_GETTER)
   private Resource resource;
   
+  @Accessors(AccessorType.PUBLIC_GETTER)
+  private String acceptedDomain = "drone";
+  
+  @Accessors(AccessorType.PUBLIC_GETTER)
+  private final String modelFolder = "../model/";
+  
   private static ResourceManager instance = null;
   
   protected ResourceSetImpl ResourceManager() {
@@ -41,7 +55,7 @@ public class ResourceManager {
     return ResourceManager.instance;
   }
   
-  public void load(final URI resourceURI) {
+  protected void load(final URI resourceURI) {
     InputOutput.<String>print("load resource");
     DronePackage.eINSTANCE.eClass();
     final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -62,6 +76,39 @@ public class ResourceManager {
     }
   }
   
+  public void load(final Import imp) {
+    String _importURI = imp.getImportURI();
+    boolean _equals = this.importedModelPath.equals(_importURI);
+    boolean _not = (!_equals);
+    if (_not) {
+      String _importURI_1 = imp.getImportURI();
+      this.importedModelPath = _importURI_1;
+      Resource _eResource = imp.eResource();
+      URI _uRI = _eResource.getURI();
+      final String platformString = _uRI.toPlatformString(true);
+      IWorkspace _workspace = ResourcesPlugin.getWorkspace();
+      IWorkspaceRoot _root = _workspace.getRoot();
+      Path _path = new Path(platformString);
+      final IFile myFile = _root.getFile(_path);
+      final IProject proj = myFile.getProject();
+      IWorkspace _workspace_1 = ResourcesPlugin.getWorkspace();
+      IWorkspaceRoot _root_1 = _workspace_1.getRoot();
+      IPath _fullPath = _root_1.getFullPath();
+      String _oSString = _fullPath.toOSString();
+      Path _path_1 = new Path(_oSString);
+      IPath _fullPath_1 = proj.getFullPath();
+      IPath _append = _path_1.append(_fullPath_1);
+      Path _path_2 = new Path("/model/");
+      String _oSString_1 = _path_2.toOSString();
+      IPath _append_1 = _append.append(_oSString_1);
+      String _importURI_2 = imp.getImportURI();
+      final IPath modelPath = _append_1.append(_importURI_2);
+      String _oSString_2 = modelPath.toOSString();
+      URI _createPlatformResourceURI = URI.createPlatformResourceURI(_oSString_2, true);
+      this.load(_createPlatformResourceURI);
+    }
+  }
+  
   @Pure
   public String getImportedModelPath() {
     return this.importedModelPath;
@@ -79,5 +126,15 @@ public class ResourceManager {
   @Pure
   public Resource getResource() {
     return this.resource;
+  }
+  
+  @Pure
+  public String getAcceptedDomain() {
+    return this.acceptedDomain;
+  }
+  
+  @Pure
+  public String getModelFolder() {
+    return this.modelFolder;
   }
 }

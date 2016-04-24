@@ -5,10 +5,18 @@ package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -38,6 +46,62 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * @generated
    */
   private EClass importEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass statementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass messageStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass collaborationStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass messageTargetEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass uniTargetEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiTargetEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass allTargetEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -140,6 +204,16 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getBehaviourLanguage_Statements()
+  {
+    return (EReference)behaviourLanguageEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getImport()
   {
     return importEClass;
@@ -153,6 +227,176 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
   public EAttribute getImport_ImportURI()
   {
     return (EAttribute)importEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStatement()
+  {
+    return statementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStatement_Robot()
+  {
+    return (EReference)statementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getActionStatement()
+  {
+    return actionStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActionStatement_Action()
+  {
+    return (EReference)actionStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActionStatement_Moreactions()
+  {
+    return (EReference)actionStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMessageStatement()
+  {
+    return messageStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMessageStatement_Target()
+  {
+    return (EReference)messageStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMessageStatement_Message()
+  {
+    return (EReference)messageStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCollaborationStatement()
+  {
+    return collaborationStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCollaborationStatement_Collaboration()
+  {
+    return (EReference)collaborationStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMessageTarget()
+  {
+    return messageTargetEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUniTarget()
+  {
+    return uniTargetEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUniTarget_Target()
+  {
+    return (EReference)uniTargetEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMultiTarget()
+  {
+    return multiTargetEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMultiTarget_Target()
+  {
+    return (EReference)multiTargetEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAllTarget()
+  {
+    return allTargetEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAllTarget_Target()
+  {
+    return (EAttribute)allTargetEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -188,9 +432,35 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     behaviourLanguageEClass = createEClass(BEHAVIOUR_LANGUAGE);
     createEReference(behaviourLanguageEClass, BEHAVIOUR_LANGUAGE__IMPORT_MODEL);
     createEReference(behaviourLanguageEClass, BEHAVIOUR_LANGUAGE__CONTAINER);
+    createEReference(behaviourLanguageEClass, BEHAVIOUR_LANGUAGE__STATEMENTS);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORT_URI);
+
+    statementEClass = createEClass(STATEMENT);
+    createEReference(statementEClass, STATEMENT__ROBOT);
+
+    actionStatementEClass = createEClass(ACTION_STATEMENT);
+    createEReference(actionStatementEClass, ACTION_STATEMENT__ACTION);
+    createEReference(actionStatementEClass, ACTION_STATEMENT__MOREACTIONS);
+
+    messageStatementEClass = createEClass(MESSAGE_STATEMENT);
+    createEReference(messageStatementEClass, MESSAGE_STATEMENT__TARGET);
+    createEReference(messageStatementEClass, MESSAGE_STATEMENT__MESSAGE);
+
+    collaborationStatementEClass = createEClass(COLLABORATION_STATEMENT);
+    createEReference(collaborationStatementEClass, COLLABORATION_STATEMENT__COLLABORATION);
+
+    messageTargetEClass = createEClass(MESSAGE_TARGET);
+
+    uniTargetEClass = createEClass(UNI_TARGET);
+    createEReference(uniTargetEClass, UNI_TARGET__TARGET);
+
+    multiTargetEClass = createEClass(MULTI_TARGET);
+    createEReference(multiTargetEClass, MULTI_TARGET__TARGET);
+
+    allTargetEClass = createEClass(ALL_TARGET);
+    createEAttribute(allTargetEClass, ALL_TARGET__TARGET);
   }
 
   /**
@@ -225,14 +495,46 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    actionStatementEClass.getESuperTypes().add(this.getStatement());
+    messageStatementEClass.getESuperTypes().add(this.getStatement());
+    collaborationStatementEClass.getESuperTypes().add(this.getStatement());
+    uniTargetEClass.getESuperTypes().add(this.getMessageTarget());
+    multiTargetEClass.getESuperTypes().add(this.getMessageTarget());
+    allTargetEClass.getESuperTypes().add(this.getMessageTarget());
 
     // Initialize classes and features; add operations and parameters
     initEClass(behaviourLanguageEClass, BehaviourLanguage.class, "BehaviourLanguage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBehaviourLanguage_ImportModel(), this.getImport(), null, "importModel", null, 0, 1, BehaviourLanguage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehaviourLanguage_Container(), theBehaviourPackage.getBehaviourContainer(), null, "container", null, 0, 1, BehaviourLanguage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBehaviourLanguage_Statements(), this.getStatement(), null, "statements", null, 0, -1, BehaviourLanguage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getActionStatement_Action(), theBehaviourPackage.getAction(), null, "action", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionStatement_Moreactions(), theBehaviourPackage.getAction(), null, "moreactions", null, 0, -1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(messageStatementEClass, MessageStatement.class, "MessageStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMessageStatement_Target(), this.getMessageTarget(), null, "target", null, 0, 1, MessageStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMessageStatement_Message(), theBehaviourPackage.getMessage(), null, "message", null, 0, 1, MessageStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(collaborationStatementEClass, CollaborationStatement.class, "CollaborationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCollaborationStatement_Collaboration(), theBehaviourPackage.getRobotCollaboration(), null, "collaboration", null, 0, -1, CollaborationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(messageTargetEClass, MessageTarget.class, "MessageTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(uniTargetEClass, UniTarget.class, "UniTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUniTarget_Target(), theBehaviourPackage.getDynamicRobot(), null, "target", null, 0, 1, UniTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(multiTargetEClass, MultiTarget.class, "MultiTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMultiTarget_Target(), theBehaviourPackage.getDynamicRobot(), null, "target", null, 0, -1, MultiTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(allTargetEClass, AllTarget.class, "AllTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAllTarget_Target(), ecorePackage.getEString(), "target", null, 0, 1, AllTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

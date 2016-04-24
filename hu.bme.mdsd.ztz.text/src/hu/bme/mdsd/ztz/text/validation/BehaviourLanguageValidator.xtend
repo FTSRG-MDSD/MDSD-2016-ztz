@@ -11,6 +11,10 @@ import org.eclipse.core.runtime.Path
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.IPath
 import org.eclipse.emf.common.util.URI
+import com.google.inject.Provider
+import com.google.inject.Inject
+import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2
+import java.io.File
 
 /**
  * This class contains custom validation rules. 
@@ -20,10 +24,37 @@ import org.eclipse.emf.common.util.URI
 class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 	
 
+//	@Inject
+//	private Provider<EclipseResourceFileSystemAccess2> fileSystemAccessProvider;
+	
+
+//	val String modelFolder = "../model/"
+	
 	@Check
 	def handleImport(Import imp) {
 		if (imp.importURI.empty) {
 			error("Import cannot be empty", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT)
+		} else if (imp.importURI.endsWith(ResourceManager.instance.acceptedDomain)){
+			println("validate")
+			val manager = ResourceManager.instance
+			manager.load(imp)
+//			val EclipseResourceFileSystemAccess2 access = fileSystemAccessProvider.get()
+//			val URI uri = URI.createPlatformResourceURI(new File(modelFolder + imp.importURI).absolutePath.toString(), true);
+//			val URI modelPathUri = access.getURI(modelFolder + imp.importURI)
+//			manager.importedModelPath = imp.importURI
+//			println(uri)
+			
+//			val platformString = imp.eResource.URI.toPlatformString(true);
+//    		val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+//    		val proj = myFile.getProject();
+//    		val IPath modelPath = new Path(ResourcesPlugin.getWorkspace().getRoot().fullPath.toOSString).
+//    			append(proj.fullPath).
+//    			append(new Path("/model/").toOSString).
+//    			append(imp.importURI)
+//    		println(URI.createPlatformResourceURI(modelPath.toOSString, true))
+//    		manager.load(URI.createPlatformResourceURI(modelPath.toOSString, true))
+//			ResourcesPlugin.getWorkspace().getRoot().locationURI.
+//			ResourceManager.instance.load(imp.importURI)
 		}
 		
 //		val manager = ResourceManager.instance 

@@ -34,4 +34,17 @@ class BehaviourLanguageParsingTest{
 		helper.assertError(model, BehaviourLanguagePackage.Literals.IMPORT, ErrorCodes.INVALID_IMPORT)
 	}
 	
+	@Test
+	def void testBasicGrammar() {
+		val model = parseHelper.parse(		
+		'''
+		import "something"
+		
+		BehaviourContainer {
+			
+		}
+		''')
+		helper.assertNoErrors(model)
+	}
+	
 }

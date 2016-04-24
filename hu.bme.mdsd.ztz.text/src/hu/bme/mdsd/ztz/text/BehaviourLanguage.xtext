@@ -8,6 +8,7 @@ import "http://www.mdsd.hu/drone" as drone
 BehaviourLanguage:
 	importModel=Import
 	container=BehaviourContainer
+	(statements+=Statement)?
 ;
 
 
@@ -23,11 +24,12 @@ BehaviourContainer returns BehaviourContainer:
 		('taskExecutions' '{' taskExecutions+=TaskExecution ( "," taskExecutions+=TaskExecution)* '}' )?
 		('taskRequirements' '{' taskRequirements+=TaskRequirement ( "," taskRequirements+=TaskRequirement)* '}' )?
 		('behaviourKeysContainer' behaviourKeysContainer=BehaviouralPropertyKeyContainer)?
-	'}';
+	'}'
+;
 
 
-Action returns Action:
-	Action_Impl | UnicastCommunication | MulticastCommunication | BroadcastCommunication;
+//Action returns Action:
+//	Action_Impl | UnicastCommunication | MulticastCommunication | BroadcastCommunication;
 
 
 PropertyValue returns drone::PropertyValue:
@@ -35,21 +37,57 @@ PropertyValue returns drone::PropertyValue:
 
 
 DynamicRobot returns DynamicRobot:
-	'DynamicRobot'
-	name=EString
-	'{'
-		'status' status=RobotStatus
-		'robot' robot=[drone::Robot]
-		('executedTasks' '(' executedTasks+=[TaskExecution|EString] ( "," executedTasks+=[TaskExecution|EString])* ')' )?
-		('detectedObjects' '{' detectedObjects+=DetectedObject ( "," detectedObjects+=DetectedObject)* '}' )?
-		('collaborations' collaborations=RobotCollaboration)?
-		('messageRepository' messageRepository=MessageRepository)?
-		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
-	'}';
+	name=EString ':' robot=[drone::Robot]
+//	'{'
+//		'status' status=RobotStatus
+//		'robot' robot=[drone::Robot]
+//		('executedTasks' '(' executedTasks+=[TaskExecution|EString] ( "," executedTasks+=[TaskExecution|EString])* ')' )?
+//		('detectedObjects' '{' detectedObjects+=DetectedObject ( "," detectedObjects+=DetectedObject)* '}' )?
+//		('collaborations' collaborations=RobotCollaboration)?
+//		('messageRepository' messageRepository=MessageRepository)?
+//		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
+//	'}'
+;
 
+
+Statement:
+	ActionStatement | MessageStatement | CollaborationStatement
+;
+
+
+ActionStatement:
+	robot=[DynamicRobot] 'do' action=Action_Impl ('->' moreactions+=Action_Impl)*
+;
+
+
+MessageStatement:
+	robot=[DynamicRobot] 'send' target=MessageTarget message=Message
+;
+
+
+CollaborationStatement:
+	robot=[DynamicRobot] 'know' collaboration+=RobotCollaboration
+;
+
+
+MessageTarget:
+	UniTarget | MultiTarget | AllTarget
+;
+
+UniTarget:
+	target = [DynamicRobot]
+;
+
+
+MultiTarget:
+	'(' target+=[DynamicRobot] ')'
+;
+
+AllTarget:
+	target='*'
+;
 
 TaskExecution returns TaskExecution:
-	'TaskExecution'
 	name=EString
 	'{'
 		'status' status=TaskExecutionStatus
@@ -103,15 +141,14 @@ DetectedObject returns DetectedObject:
 	(obstacle?='obstacle')?
 	'DetectedObject'
 	'{'
-		'object' object=[drone::AreaObject|EString]
+		'object' object=[drone::AreaObject]
 	'}';
 
 RobotCollaboration returns RobotCollaboration:
-	'RobotCollaboration'
-	'{'
-		'collaborator' collaborator=[DynamicRobot|EString]
+		{RobotCollaboration}
+		collaborator=[DynamicRobot]
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-	'}';
+;
 
 MessageRepository returns MessageRepository:
 	{MessageRepository}
@@ -126,12 +163,12 @@ enum RobotStatus returns RobotStatus:
 
 Action_Impl returns Action:
 	{Action}
-	'Action'
-	name=EString
-	'{'
-		('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
+	name=EString ('(' currentTaskExecution=[TaskExecution] ')')?
+//	'{'
+//		('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-	'}';
+//	'}'
+;
 
 //Position returns drone::Position:
 //	{drone::Position}
@@ -260,7 +297,6 @@ EBoolean returns ecore::EBoolean:
 
 Message returns Message:
 	needResponse?='needResponse'
-	'Message'
 	name=EString
 	'{'
 		('timestamp' timestamp=EDate)?

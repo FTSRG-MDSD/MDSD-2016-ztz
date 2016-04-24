@@ -26,9 +26,10 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
  */
 class BehaviourLanguageGenerator extends AbstractGenerator {
 
-	val String modelFolder = "../model/"
+	
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		println("generate")
 		val manager = ResourceManager.instance
 
 		val Iterator<Import> iterator = resource.allContents.filter(typeof(Import))
@@ -37,9 +38,11 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 			if (!imp.importURI.empty) {
 				if (!manager.importedModelPath.equals(imp.importURI)) {
 					
-					val URI modelPathUri = fsa.getURI(modelFolder + imp.importURI)
-					manager.importedModelPath = imp.importURI
-					manager.load(modelPathUri)
+//					val URI modelPathUri = fsa.getURI(modelFolder + imp.importURI)
+//					manager.importedModelPath = imp.importURI
+//					println(modelPathUri)
+//					manager.load(modelPathUri)
+					manager.load(imp)
 				}
 			}
 		}
@@ -56,7 +59,7 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 			
 			val ResourceSet resourceSet = new ResourceSetImpl();
 
-			val resourceURI = fsa.getURI(modelFolder + "robots.behaviour")
+			val resourceURI = fsa.getURI(ResourceManager.instance.modelFolder + "robots.behaviour")
 
 			val resourceOfBehaviour = resourceSet.createResource(resourceURI)
 			resourceOfBehaviour.getContents().clear();

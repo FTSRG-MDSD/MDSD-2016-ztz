@@ -20,7 +20,7 @@ import hu.bme.mdsd.ztz.model.drone.Robot
  * on how and when to use it.
  */
 class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvider {
-
+ 
 	def IScope scopeForDynamicRobot(DynamicRobot dynamicRobot, EReference reference) {
 		val manager = ResourceManager.instance
 		if (manager.resource != null) {

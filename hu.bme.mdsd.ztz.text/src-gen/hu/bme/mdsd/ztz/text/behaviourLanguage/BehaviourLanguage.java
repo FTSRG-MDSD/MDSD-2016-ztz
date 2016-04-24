@@ -5,6 +5,8 @@ package hu.bme.mdsd.ztz.text.behaviourLanguage;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage#getImportModel <em>Import Model</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage#getContainer <em>Container</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage#getStatements <em>Statements</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getBehaviourLanguage()
@@ -77,5 +80,21 @@ public interface BehaviourLanguage extends EObject
    * @generated
    */
   void setContainer(BehaviourContainer value);
+
+  /**
+   * Returns the value of the '<em><b>Statements</b></em>' containment reference list.
+   * The list contents are of type {@link hu.bme.mdsd.ztz.text.behaviourLanguage.Statement}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Statements</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Statements</em>' containment reference list.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getBehaviourLanguage_Statements()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Statement> getStatements();
 
 } // BehaviourLanguage

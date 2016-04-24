@@ -86,13 +86,22 @@ public interface BehaviourLanguagePackage extends EPackage
   int BEHAVIOUR_LANGUAGE__CONTAINER = 1;
 
   /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BEHAVIOUR_LANGUAGE__STATEMENTS = 2;
+
+  /**
    * The number of structural features of the '<em>Behaviour Language</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BEHAVIOUR_LANGUAGE_FEATURE_COUNT = 2;
+  int BEHAVIOUR_LANGUAGE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ImportImpl <em>Import</em>}' class.
@@ -121,6 +130,266 @@ public interface BehaviourLanguagePackage extends EPackage
    * @ordered
    */
   int IMPORT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.StatementImpl <em>Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.StatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getStatement()
+   * @generated
+   */
+  int STATEMENT = 2;
+
+  /**
+   * The feature id for the '<em><b>Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT__ROBOT = 0;
+
+  /**
+   * The number of structural features of the '<em>Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl <em>Action Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getActionStatement()
+   * @generated
+   */
+  int ACTION_STATEMENT = 3;
+
+  /**
+   * The feature id for the '<em><b>Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_STATEMENT__ROBOT = STATEMENT__ROBOT;
+
+  /**
+   * The feature id for the '<em><b>Action</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_STATEMENT__ACTION = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Moreactions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_STATEMENT__MOREACTIONS = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Action Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl <em>Message Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageStatement()
+   * @generated
+   */
+  int MESSAGE_STATEMENT = 4;
+
+  /**
+   * The feature id for the '<em><b>Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE_STATEMENT__ROBOT = STATEMENT__ROBOT;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE_STATEMENT__TARGET = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Message</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE_STATEMENT__MESSAGE = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Message Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.CollaborationStatementImpl <em>Collaboration Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.CollaborationStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getCollaborationStatement()
+   * @generated
+   */
+  int COLLABORATION_STATEMENT = 5;
+
+  /**
+   * The feature id for the '<em><b>Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLLABORATION_STATEMENT__ROBOT = STATEMENT__ROBOT;
+
+  /**
+   * The feature id for the '<em><b>Collaboration</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLLABORATION_STATEMENT__COLLABORATION = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Collaboration Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLLABORATION_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageTarget()
+   * @generated
+   */
+  int MESSAGE_TARGET = 6;
+
+  /**
+   * The number of structural features of the '<em>Message Target</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE_TARGET_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.UniTargetImpl <em>Uni Target</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.UniTargetImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getUniTarget()
+   * @generated
+   */
+  int UNI_TARGET = 7;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNI_TARGET__TARGET = MESSAGE_TARGET_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Uni Target</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNI_TARGET_FEATURE_COUNT = MESSAGE_TARGET_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MultiTargetImpl <em>Multi Target</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MultiTargetImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMultiTarget()
+   * @generated
+   */
+  int MULTI_TARGET = 8;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI_TARGET__TARGET = MESSAGE_TARGET_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Multi Target</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI_TARGET_FEATURE_COUNT = MESSAGE_TARGET_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.AllTargetImpl <em>All Target</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.AllTargetImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getAllTarget()
+   * @generated
+   */
+  int ALL_TARGET = 9;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALL_TARGET__TARGET = MESSAGE_TARGET_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>All Target</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALL_TARGET_FEATURE_COUNT = MESSAGE_TARGET_FEATURE_COUNT + 1;
 
 
   /**
@@ -156,6 +425,17 @@ public interface BehaviourLanguagePackage extends EPackage
   EReference getBehaviourLanguage_Container();
 
   /**
+   * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage#getStatements <em>Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage#getStatements()
+   * @see #getBehaviourLanguage()
+   * @generated
+   */
+  EReference getBehaviourLanguage_Statements();
+
+  /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Import <em>Import</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -175,6 +455,185 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    */
   EAttribute getImport_ImportURI();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Statement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
+   * @generated
+   */
+  EClass getStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Statement#getRobot <em>Robot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Robot</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Statement#getRobot()
+   * @see #getStatement()
+   * @generated
+   */
+  EReference getStatement_Robot();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement <em>Action Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Action Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement
+   * @generated
+   */
+  EClass getActionStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement#getAction <em>Action</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Action</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement#getAction()
+   * @see #getActionStatement()
+   * @generated
+   */
+  EReference getActionStatement_Action();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement#getMoreactions <em>Moreactions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Moreactions</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement#getMoreactions()
+   * @see #getActionStatement()
+   * @generated
+   */
+  EReference getActionStatement_Moreactions();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement <em>Message Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Message Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
+   * @generated
+   */
+  EClass getMessageStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement#getTarget <em>Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Target</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement#getTarget()
+   * @see #getMessageStatement()
+   * @generated
+   */
+  EReference getMessageStatement_Target();
+
+  /**
+   * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement#getMessage <em>Message</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Message</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement#getMessage()
+   * @see #getMessageStatement()
+   * @generated
+   */
+  EReference getMessageStatement_Message();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement <em>Collaboration Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Collaboration Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
+   * @generated
+   */
+  EClass getCollaborationStatement();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement#getCollaboration <em>Collaboration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Collaboration</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement#getCollaboration()
+   * @see #getCollaborationStatement()
+   * @generated
+   */
+  EReference getCollaborationStatement_Collaboration();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget <em>Message Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Message Target</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget
+   * @generated
+   */
+  EClass getMessageTarget();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget <em>Uni Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Uni Target</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
+   * @generated
+   */
+  EClass getUniTarget();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget#getTarget <em>Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Target</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget#getTarget()
+   * @see #getUniTarget()
+   * @generated
+   */
+  EReference getUniTarget_Target();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget <em>Multi Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Multi Target</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget
+   * @generated
+   */
+  EClass getMultiTarget();
+
+  /**
+   * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget#getTarget <em>Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Target</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget#getTarget()
+   * @see #getMultiTarget()
+   * @generated
+   */
+  EReference getMultiTarget_Target();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget <em>All Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>All Target</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget
+   * @generated
+   */
+  EClass getAllTarget();
+
+  /**
+   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget#getTarget <em>Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget#getTarget()
+   * @see #getAllTarget()
+   * @generated
+   */
+  EAttribute getAllTarget_Target();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -226,6 +685,14 @@ public interface BehaviourLanguagePackage extends EPackage
     EReference BEHAVIOUR_LANGUAGE__CONTAINER = eINSTANCE.getBehaviourLanguage_Container();
 
     /**
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BEHAVIOUR_LANGUAGE__STATEMENTS = eINSTANCE.getBehaviourLanguage_Statements();
+
+    /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ImportImpl <em>Import</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -242,6 +709,158 @@ public interface BehaviourLanguagePackage extends EPackage
      * @generated
      */
     EAttribute IMPORT__IMPORT_URI = eINSTANCE.getImport_ImportURI();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.StatementImpl <em>Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.StatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getStatement()
+     * @generated
+     */
+    EClass STATEMENT = eINSTANCE.getStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATEMENT__ROBOT = eINSTANCE.getStatement_Robot();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl <em>Action Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getActionStatement()
+     * @generated
+     */
+    EClass ACTION_STATEMENT = eINSTANCE.getActionStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Action</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION_STATEMENT__ACTION = eINSTANCE.getActionStatement_Action();
+
+    /**
+     * The meta object literal for the '<em><b>Moreactions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION_STATEMENT__MOREACTIONS = eINSTANCE.getActionStatement_Moreactions();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl <em>Message Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageStatement()
+     * @generated
+     */
+    EClass MESSAGE_STATEMENT = eINSTANCE.getMessageStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MESSAGE_STATEMENT__TARGET = eINSTANCE.getMessageStatement_Target();
+
+    /**
+     * The meta object literal for the '<em><b>Message</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MESSAGE_STATEMENT__MESSAGE = eINSTANCE.getMessageStatement_Message();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.CollaborationStatementImpl <em>Collaboration Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.CollaborationStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getCollaborationStatement()
+     * @generated
+     */
+    EClass COLLABORATION_STATEMENT = eINSTANCE.getCollaborationStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Collaboration</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COLLABORATION_STATEMENT__COLLABORATION = eINSTANCE.getCollaborationStatement_Collaboration();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageTarget()
+     * @generated
+     */
+    EClass MESSAGE_TARGET = eINSTANCE.getMessageTarget();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.UniTargetImpl <em>Uni Target</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.UniTargetImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getUniTarget()
+     * @generated
+     */
+    EClass UNI_TARGET = eINSTANCE.getUniTarget();
+
+    /**
+     * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference UNI_TARGET__TARGET = eINSTANCE.getUniTarget_Target();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MultiTargetImpl <em>Multi Target</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MultiTargetImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMultiTarget()
+     * @generated
+     */
+    EClass MULTI_TARGET = eINSTANCE.getMultiTarget();
+
+    /**
+     * The meta object literal for the '<em><b>Target</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MULTI_TARGET__TARGET = eINSTANCE.getMultiTarget_Target();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.AllTargetImpl <em>All Target</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.AllTargetImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getAllTarget()
+     * @generated
+     */
+    EClass ALL_TARGET = eINSTANCE.getAllTarget();
+
+    /**
+     * The meta object literal for the '<em><b>Target</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ALL_TARGET__TARGET = eINSTANCE.getAllTarget_Target();
 
   }
 

@@ -21,6 +21,7 @@ import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 /**
  * Generates code from your model files on save.
@@ -29,11 +30,10 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  */
 @SuppressWarnings("all")
 public class BehaviourLanguageGenerator extends AbstractGenerator {
-  private final String modelFolder = "../model/";
-  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     try {
+      InputOutput.<String>println("generate");
       final ResourceManager manager = ResourceManager.getInstance();
       TreeIterator<EObject> _allContents = resource.getAllContents();
       final Iterator<Import> iterator = Iterators.<Import>filter(_allContents, Import.class);
@@ -49,12 +49,7 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
           boolean _equals = _importedModelPath.equals(_importURI_1);
           boolean _not_1 = (!_equals);
           if (_not_1) {
-            String _importURI_2 = imp.getImportURI();
-            String _plus = (this.modelFolder + _importURI_2);
-            final URI modelPathUri = fsa.getURI(_plus);
-            String _importURI_3 = imp.getImportURI();
-            manager.setImportedModelPath(_importURI_3);
-            manager.load(modelPathUri);
+            manager.load(imp);
           }
         }
       }
@@ -68,7 +63,10 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
         XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();
         m.put("behaviour", _xMIResourceFactoryImpl);
         final ResourceSet resourceSet = new ResourceSetImpl();
-        final URI resourceURI = fsa.getURI((this.modelFolder + "robots.behaviour"));
+        ResourceManager _instance = ResourceManager.getInstance();
+        String _modelFolder = _instance.getModelFolder();
+        String _plus = (_modelFolder + "robots.behaviour");
+        final URI resourceURI = fsa.getURI(_plus);
         final Resource resourceOfBehaviour = resourceSet.createResource(resourceURI);
         EList<EObject> _contents = resourceOfBehaviour.getContents();
         _contents.clear();

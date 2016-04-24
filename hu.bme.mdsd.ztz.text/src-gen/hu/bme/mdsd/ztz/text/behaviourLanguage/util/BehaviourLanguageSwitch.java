@@ -87,6 +87,68 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case BehaviourLanguagePackage.STATEMENT:
+      {
+        Statement statement = (Statement)theEObject;
+        T result = caseStatement(statement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.ACTION_STATEMENT:
+      {
+        ActionStatement actionStatement = (ActionStatement)theEObject;
+        T result = caseActionStatement(actionStatement);
+        if (result == null) result = caseStatement(actionStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.MESSAGE_STATEMENT:
+      {
+        MessageStatement messageStatement = (MessageStatement)theEObject;
+        T result = caseMessageStatement(messageStatement);
+        if (result == null) result = caseStatement(messageStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.COLLABORATION_STATEMENT:
+      {
+        CollaborationStatement collaborationStatement = (CollaborationStatement)theEObject;
+        T result = caseCollaborationStatement(collaborationStatement);
+        if (result == null) result = caseStatement(collaborationStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.MESSAGE_TARGET:
+      {
+        MessageTarget messageTarget = (MessageTarget)theEObject;
+        T result = caseMessageTarget(messageTarget);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.UNI_TARGET:
+      {
+        UniTarget uniTarget = (UniTarget)theEObject;
+        T result = caseUniTarget(uniTarget);
+        if (result == null) result = caseMessageTarget(uniTarget);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.MULTI_TARGET:
+      {
+        MultiTarget multiTarget = (MultiTarget)theEObject;
+        T result = caseMultiTarget(multiTarget);
+        if (result == null) result = caseMessageTarget(multiTarget);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.ALL_TARGET:
+      {
+        AllTarget allTarget = (AllTarget)theEObject;
+        T result = caseAllTarget(allTarget);
+        if (result == null) result = caseMessageTarget(allTarget);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -119,6 +181,134 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseImport(Import object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStatement(Statement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionStatement(ActionStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Message Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Message Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMessageStatement(MessageStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Collaboration Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Collaboration Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCollaborationStatement(CollaborationStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Message Target</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Message Target</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMessageTarget(MessageTarget object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Uni Target</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Uni Target</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUniTarget(UniTarget object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multi Target</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multi Target</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiTarget(MultiTarget object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>All Target</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>All Target</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAllTarget(AllTarget object)
   {
     return null;
   }

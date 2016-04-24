@@ -67,6 +67,14 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
     {
       case BehaviourLanguagePackage.BEHAVIOUR_LANGUAGE: return createBehaviourLanguage();
       case BehaviourLanguagePackage.IMPORT: return createImport();
+      case BehaviourLanguagePackage.STATEMENT: return createStatement();
+      case BehaviourLanguagePackage.ACTION_STATEMENT: return createActionStatement();
+      case BehaviourLanguagePackage.MESSAGE_STATEMENT: return createMessageStatement();
+      case BehaviourLanguagePackage.COLLABORATION_STATEMENT: return createCollaborationStatement();
+      case BehaviourLanguagePackage.MESSAGE_TARGET: return createMessageTarget();
+      case BehaviourLanguagePackage.UNI_TARGET: return createUniTarget();
+      case BehaviourLanguagePackage.MULTI_TARGET: return createMultiTarget();
+      case BehaviourLanguagePackage.ALL_TARGET: return createAllTarget();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -92,6 +100,94 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
   {
     ImportImpl import_ = new ImportImpl();
     return import_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Statement createStatement()
+  {
+    StatementImpl statement = new StatementImpl();
+    return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ActionStatement createActionStatement()
+  {
+    ActionStatementImpl actionStatement = new ActionStatementImpl();
+    return actionStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MessageStatement createMessageStatement()
+  {
+    MessageStatementImpl messageStatement = new MessageStatementImpl();
+    return messageStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CollaborationStatement createCollaborationStatement()
+  {
+    CollaborationStatementImpl collaborationStatement = new CollaborationStatementImpl();
+    return collaborationStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MessageTarget createMessageTarget()
+  {
+    MessageTargetImpl messageTarget = new MessageTargetImpl();
+    return messageTarget;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UniTarget createUniTarget()
+  {
+    UniTargetImpl uniTarget = new UniTargetImpl();
+    return uniTarget;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MultiTarget createMultiTarget()
+  {
+    MultiTargetImpl multiTarget = new MultiTargetImpl();
+    return multiTarget;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AllTarget createAllTarget()
+  {
+    AllTargetImpl allTarget = new AllTargetImpl();
+    return allTarget;
   }
 
   /**

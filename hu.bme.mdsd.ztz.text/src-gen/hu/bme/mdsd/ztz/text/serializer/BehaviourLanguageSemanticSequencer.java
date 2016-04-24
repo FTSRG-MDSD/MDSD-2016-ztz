@@ -23,9 +23,15 @@ import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.StringValue;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.services.BehaviourLanguageGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -94,11 +100,29 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 			}
 		else if (epackage == BehaviourLanguagePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case BehaviourLanguagePackage.ACTION_STATEMENT:
+				sequence_ActionStatement(context, (ActionStatement) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.ALL_TARGET:
+				sequence_AllTarget(context, (AllTarget) semanticObject); 
+				return; 
 			case BehaviourLanguagePackage.BEHAVIOUR_LANGUAGE:
 				sequence_BehaviourLanguage(context, (BehaviourLanguage) semanticObject); 
 				return; 
+			case BehaviourLanguagePackage.COLLABORATION_STATEMENT:
+				sequence_CollaborationStatement(context, (CollaborationStatement) semanticObject); 
+				return; 
 			case BehaviourLanguagePackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.MESSAGE_STATEMENT:
+				sequence_MessageStatement(context, (MessageStatement) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.MULTI_TARGET:
+				sequence_MultiTarget(context, (MultiTarget) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.UNI_TARGET:
+				sequence_UniTarget(context, (UniTarget) semanticObject); 
 				return; 
 			}
 		else if (epackage == DronePackage.eINSTANCE)
@@ -125,14 +149,45 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     Action returns Action
+	 *     Statement returns ActionStatement
+	 *     ActionStatement returns ActionStatement
+	 *
+	 * Constraint:
+	 *     (robot=[DynamicRobot|ID] action=Action_Impl moreactions+=Action_Impl*)
+	 */
+	protected void sequence_ActionStatement(ISerializationContext context, ActionStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Action_Impl returns Action
 	 *
 	 * Constraint:
-	 *     (name=EString currentTaskExecution=[TaskExecution|EString]? (properties+=Property properties+=Property*)?)
+	 *     (name=EString currentTaskExecution=[TaskExecution|ID]? (properties+=Property properties+=Property*)?)
 	 */
 	protected void sequence_Action_Impl(ISerializationContext context, hu.bme.mdsd.ztz.model.behaviour.Action semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MessageTarget returns AllTarget
+	 *     AllTarget returns AllTarget
+	 *
+	 * Constraint:
+	 *     target='*'
+	 */
+	protected void sequence_AllTarget(ISerializationContext context, AllTarget semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.ALL_TARGET__TARGET) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.ALL_TARGET__TARGET));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAllTargetAccess().getTargetAsteriskKeyword_0(), semanticObject.getTarget());
+		feeder.finish();
 	}
 	
 	
@@ -158,19 +213,10 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     BehaviourLanguage returns BehaviourLanguage
 	 *
 	 * Constraint:
-	 *     (importModel=Import container=BehaviourContainer)
+	 *     (importModel=Import container=BehaviourContainer statements+=Statement?)
 	 */
 	protected void sequence_BehaviourLanguage(ISerializationContext context, BehaviourLanguage semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.BEHAVIOUR_LANGUAGE__IMPORT_MODEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.BEHAVIOUR_LANGUAGE__IMPORT_MODEL));
-			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.BEHAVIOUR_LANGUAGE__CONTAINER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.BEHAVIOUR_LANGUAGE__CONTAINER));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBehaviourLanguageAccess().getImportModelImportParserRuleCall_0_0(), semanticObject.getImportModel());
-		feeder.accept(grammarAccess.getBehaviourLanguageAccess().getContainerBehaviourContainerParserRuleCall_1_0(), semanticObject.getContainer());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -188,7 +234,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     Action returns BroadcastCommunication
 	 *     BroadcastCommunication returns BroadcastCommunication
 	 *
 	 * Constraint:
@@ -220,10 +265,23 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
+	 *     Statement returns CollaborationStatement
+	 *     CollaborationStatement returns CollaborationStatement
+	 *
+	 * Constraint:
+	 *     (robot=[DynamicRobot|ID] collaboration+=RobotCollaboration)
+	 */
+	protected void sequence_CollaborationStatement(ISerializationContext context, CollaborationStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     DetectedObject returns DetectedObject
 	 *
 	 * Constraint:
-	 *     (obstacle?='obstacle'? object=[AreaObject|EString])
+	 *     (obstacle?='obstacle'? object=[AreaObject|ID])
 	 */
 	protected void sequence_DetectedObject(ISerializationContext context, DetectedObject semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -235,19 +293,19 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     DynamicRobot returns DynamicRobot
 	 *
 	 * Constraint:
-	 *     (
-	 *         name=EString 
-	 *         status=RobotStatus 
-	 *         robot=[Robot|ID] 
-	 *         (executedTasks+=[TaskExecution|EString] executedTasks+=[TaskExecution|EString]*)? 
-	 *         (detectedObjects+=DetectedObject detectedObjects+=DetectedObject*)? 
-	 *         collaborations=RobotCollaboration? 
-	 *         messageRepository=MessageRepository? 
-	 *         (actions+=Action actions+=Action*)?
-	 *     )
+	 *     (name=EString robot=[Robot|ID])
 	 */
 	protected void sequence_DynamicRobot(ISerializationContext context, DynamicRobot semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME));
+			if (transientValues.isValueTransient(semanticObject, BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDynamicRobotAccess().getNameEStringParserRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getDynamicRobotAccess().getRobotRobotIDTerminalRuleCall_2_0_1(), semanticObject.getRobot());
+		feeder.finish();
 	}
 	
 	
@@ -296,6 +354,31 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
+	 *     Statement returns MessageStatement
+	 *     MessageStatement returns MessageStatement
+	 *
+	 * Constraint:
+	 *     (robot=[DynamicRobot|ID] target=MessageTarget message=Message)
+	 */
+	protected void sequence_MessageStatement(ISerializationContext context, MessageStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.STATEMENT__ROBOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.STATEMENT__ROBOT));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__TARGET) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__TARGET));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__MESSAGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__MESSAGE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMessageStatementAccess().getRobotDynamicRobotIDTerminalRuleCall_0_0_1(), semanticObject.getRobot());
+		feeder.accept(grammarAccess.getMessageStatementAccess().getTargetMessageTargetParserRuleCall_2_0(), semanticObject.getTarget());
+		feeder.accept(grammarAccess.getMessageStatementAccess().getMessageMessageParserRuleCall_3_0(), semanticObject.getMessage());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Message returns Message
 	 *
 	 * Constraint:
@@ -317,7 +400,19 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     Action returns MulticastCommunication
+	 *     MessageTarget returns MultiTarget
+	 *     MultiTarget returns MultiTarget
+	 *
+	 * Constraint:
+	 *     target+=[DynamicRobot|ID]
+	 */
+	protected void sequence_MultiTarget(ISerializationContext context, MultiTarget semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     MulticastCommunication returns MulticastCommunication
 	 *
 	 * Constraint:
@@ -379,7 +474,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     RobotCollaboration returns RobotCollaboration
 	 *
 	 * Constraint:
-	 *     (collaborator=[DynamicRobot|EString] (properties+=Property properties+=Property*)?)
+	 *     (collaborator=[DynamicRobot|ID] (properties+=Property properties+=Property*)?)
 	 */
 	protected void sequence_RobotCollaboration(ISerializationContext context, RobotCollaboration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -446,7 +541,25 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     Action returns UnicastCommunication
+	 *     MessageTarget returns UniTarget
+	 *     UniTarget returns UniTarget
+	 *
+	 * Constraint:
+	 *     target=[DynamicRobot|ID]
+	 */
+	protected void sequence_UniTarget(ISerializationContext context, UniTarget semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getUniTargetAccess().getTargetDynamicRobotIDTerminalRuleCall_0_1(), semanticObject.getTarget());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     UnicastCommunication returns UnicastCommunication
 	 *
 	 * Constraint:

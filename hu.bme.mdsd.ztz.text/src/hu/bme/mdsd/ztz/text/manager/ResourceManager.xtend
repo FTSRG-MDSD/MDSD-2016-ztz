@@ -7,6 +7,10 @@ import org.eclipse.emf.common.util.URI
 import hu.bme.mdsd.ztz.model.drone.DronePackage
 import java.util.Map
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.IPath
+import org.eclipse.core.runtime.Path
 
 class ResourceManager {
 	
@@ -18,6 +22,12 @@ class ResourceManager {
 	
 	@Accessors(PUBLIC_GETTER)
 	var Resource resource
+	
+	@Accessors(PUBLIC_GETTER)
+	var String acceptedDomain = "drone"
+	
+	@Accessors(PUBLIC_GETTER)
+	val String modelFolder = "../model/"
 	
 	var private static ResourceManager instance = null
 	
@@ -32,7 +42,7 @@ class ResourceManager {
 		return instance
 	}
 	
-	def load(URI resourceURI) {
+	def protected load(URI resourceURI) {
 		print("load resource")
 		DronePackage.eINSTANCE.eClass()
 		
@@ -53,6 +63,20 @@ class ResourceManager {
 //		for (obj : resource.contents) {
 //				println(obj)
 //		}
+	}
+	
+	def load(Import imp) {
+		if (!importedModelPath.equals(imp.importURI)){
+			importedModelPath = imp.importURI
+			val platformString = imp.eResource.URI.toPlatformString(true);
+	    	val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+	    	val proj = myFile.getProject();
+	    	val IPath modelPath = new Path(ResourcesPlugin.getWorkspace().getRoot().fullPath.toOSString).
+	    		append(proj.fullPath).
+	    		append(new Path("/model/").toOSString).
+	    		append(imp.importURI)
+	    	load(URI.createPlatformResourceURI(modelPath.toOSString, true))
+    	}
 	}
 	
 	

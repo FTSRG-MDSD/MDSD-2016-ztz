@@ -86,6 +86,46 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
         return createImportAdapter();
       }
       @Override
+      public Adapter caseStatement(Statement object)
+      {
+        return createStatementAdapter();
+      }
+      @Override
+      public Adapter caseActionStatement(ActionStatement object)
+      {
+        return createActionStatementAdapter();
+      }
+      @Override
+      public Adapter caseMessageStatement(MessageStatement object)
+      {
+        return createMessageStatementAdapter();
+      }
+      @Override
+      public Adapter caseCollaborationStatement(CollaborationStatement object)
+      {
+        return createCollaborationStatementAdapter();
+      }
+      @Override
+      public Adapter caseMessageTarget(MessageTarget object)
+      {
+        return createMessageTargetAdapter();
+      }
+      @Override
+      public Adapter caseUniTarget(UniTarget object)
+      {
+        return createUniTargetAdapter();
+      }
+      @Override
+      public Adapter caseMultiTarget(MultiTarget object)
+      {
+        return createMultiTargetAdapter();
+      }
+      @Override
+      public Adapter caseAllTarget(AllTarget object)
+      {
+        return createAllTargetAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -133,6 +173,126 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createImportAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Statement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
+   * @generated
+   */
+  public Adapter createStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement <em>Action Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement
+   * @generated
+   */
+  public Adapter createActionStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement <em>Message Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
+   * @generated
+   */
+  public Adapter createMessageStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement <em>Collaboration Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
+   * @generated
+   */
+  public Adapter createCollaborationStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget <em>Message Target</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget
+   * @generated
+   */
+  public Adapter createMessageTargetAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget <em>Uni Target</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
+   * @generated
+   */
+  public Adapter createUniTargetAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget <em>Multi Target</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget
+   * @generated
+   */
+  public Adapter createMultiTargetAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget <em>All Target</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget
+   * @generated
+   */
+  public Adapter createAllTargetAdapter()
   {
     return null;
   }

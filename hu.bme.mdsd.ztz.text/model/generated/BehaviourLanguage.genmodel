@@ -9,9 +9,34 @@
     <genClasses ecoreClass="BehaviourLanguage.ecore#//BehaviourLanguage">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//BehaviourLanguage/importModel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//BehaviourLanguage/container"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//BehaviourLanguage/statements"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//Import/importURI"/>
+    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//Statement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//Statement/robot"/>
+    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//ActionStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ActionStatement/action"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ActionStatement/moreactions"/>
+    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//MessageStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MessageStatement/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MessageStatement/message"/>
+    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//CollaborationStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//CollaborationStatement/collaboration"/>
+    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//MessageTarget"/>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//UniTarget">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//UniTarget/target"/>
+    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//MultiTarget">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MultiTarget/target"/>
+    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//AllTarget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//AllTarget/target"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

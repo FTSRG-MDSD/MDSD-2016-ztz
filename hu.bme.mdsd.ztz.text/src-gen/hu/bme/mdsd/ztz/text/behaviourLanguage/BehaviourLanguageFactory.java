@@ -42,6 +42,78 @@ public interface BehaviourLanguageFactory extends EFactory
   Import createImport();
 
   /**
+   * Returns a new object of class '<em>Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Statement</em>'.
+   * @generated
+   */
+  Statement createStatement();
+
+  /**
+   * Returns a new object of class '<em>Action Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action Statement</em>'.
+   * @generated
+   */
+  ActionStatement createActionStatement();
+
+  /**
+   * Returns a new object of class '<em>Message Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Message Statement</em>'.
+   * @generated
+   */
+  MessageStatement createMessageStatement();
+
+  /**
+   * Returns a new object of class '<em>Collaboration Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Collaboration Statement</em>'.
+   * @generated
+   */
+  CollaborationStatement createCollaborationStatement();
+
+  /**
+   * Returns a new object of class '<em>Message Target</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Message Target</em>'.
+   * @generated
+   */
+  MessageTarget createMessageTarget();
+
+  /**
+   * Returns a new object of class '<em>Uni Target</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Uni Target</em>'.
+   * @generated
+   */
+  UniTarget createUniTarget();
+
+  /**
+   * Returns a new object of class '<em>Multi Target</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multi Target</em>'.
+   * @generated
+   */
+  MultiTarget createMultiTarget();
+
+  /**
+   * Returns a new object of class '<em>All Target</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>All Target</em>'.
+   * @generated
+   */
+  AllTarget createAllTarget();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

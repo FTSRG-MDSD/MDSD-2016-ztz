@@ -5,9 +5,11 @@ package hu.bme.mdsd.ztz.text.validation;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
+import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 /**
  * This class contains custom validation rules.
@@ -22,6 +24,16 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
     boolean _isEmpty = _importURI.isEmpty();
     if (_isEmpty) {
       this.error("Import cannot be empty", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT);
+    } else {
+      String _importURI_1 = imp.getImportURI();
+      ResourceManager _instance = ResourceManager.getInstance();
+      String _acceptedDomain = _instance.getAcceptedDomain();
+      boolean _endsWith = _importURI_1.endsWith(_acceptedDomain);
+      if (_endsWith) {
+        InputOutput.<String>println("validate");
+        final ResourceManager manager = ResourceManager.getInstance();
+        manager.load(imp);
+      }
     }
   }
 }

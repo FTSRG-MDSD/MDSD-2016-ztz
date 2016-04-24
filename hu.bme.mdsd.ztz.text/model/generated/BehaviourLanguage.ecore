@@ -7,8 +7,42 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//BehaviourContainer"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//Statement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="robot" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActionStatement" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//Action"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moreactions" upperBound="-1"
+        eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//Action"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageStatement" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//MessageTarget"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="message" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//Message"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborationStatement" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaboration" upperBound="-1"
+        eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//RobotCollaboration"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageTarget"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UniTarget" eSuperTypes="#//MessageTarget">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiTarget" eSuperTypes="#//MessageTarget">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" unique="false"
+        upperBound="-1" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AllTarget" eSuperTypes="#//MessageTarget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

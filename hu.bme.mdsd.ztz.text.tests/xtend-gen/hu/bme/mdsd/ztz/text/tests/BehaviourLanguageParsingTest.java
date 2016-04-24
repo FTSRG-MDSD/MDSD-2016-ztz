@@ -39,4 +39,24 @@ public class BehaviourLanguageParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testBasicGrammar() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("import \"something\"");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("BehaviourContainer {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      final BehaviourLanguage model = this.parseHelper.parse(_builder);
+      this.helper.assertNoErrors(model);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }
