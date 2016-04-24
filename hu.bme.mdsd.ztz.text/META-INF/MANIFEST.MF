@@ -12,7 +12,9 @@ Require-Bundle: hu.bme.mdsd.ztz.model,
  org.eclipse.xtext.xbase.lib,
  org.antlr.runtime,
  org.eclipse.xtext.util,
- org.eclipse.xtend.lib
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: hu.bme.mdsd.ztz.text.validation,
  hu.bme.mdsd.ztz.text.parser.antlr,
@@ -22,5 +24,8 @@ Export-Package: hu.bme.mdsd.ztz.text.validation,
  hu.bme.mdsd.ztz.text.serializer,
  hu.bme.mdsd.ztz.text.formatting,
  hu.bme.mdsd.ztz.text.scoping,
- hu.bme.mdsd.ztz.text.parser.antlr.internal
+ hu.bme.mdsd.ztz.text.parser.antlr.internal,
+ hu.bme.mdsd.ztz.text.behaviourLanguage.util,
+ hu.bme.mdsd.ztz.text.behaviourLanguage,
+ hu.bme.mdsd.ztz.text.behaviourLanguage.impl
 Import-Package: org.apache.log4j

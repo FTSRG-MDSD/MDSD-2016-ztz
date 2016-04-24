@@ -44,7 +44,7 @@ import hu.bme.mdsd.ztz.text.services.BehaviourLanguageGrammarAccess;
 
     @Override
     protected String getFirstRuleName() {
-    	return "BehaviourContainer";
+    	return "BehaviourLanguage";
    	}
 
    	@Override
@@ -60,6 +60,104 @@ import hu.bme.mdsd.ztz.text.services.BehaviourLanguageGrammarAccess;
         appendSkippedTokens();
     }
 }
+
+// Entry rule entryRuleBehaviourLanguage
+entryRuleBehaviourLanguage returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getBehaviourLanguageRule()); }
+	iv_ruleBehaviourLanguage=ruleBehaviourLanguage
+	{ $current=$iv_ruleBehaviourLanguage.current; }
+	EOF;
+
+// Rule BehaviourLanguage
+ruleBehaviourLanguage returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getBehaviourLanguageAccess().getImportModelImportParserRuleCall_0_0());
+				}
+				lv_importModel_0_0=ruleImport
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getBehaviourLanguageRule());
+					}
+					set(
+						$current,
+						"importModel",
+						lv_importModel_0_0,
+						"hu.bme.mdsd.ztz.text.BehaviourLanguage.Import");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getBehaviourLanguageAccess().getContainerBehaviourContainerParserRuleCall_1_0());
+				}
+				lv_container_1_0=ruleBehaviourContainer
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getBehaviourLanguageRule());
+					}
+					set(
+						$current,
+						"container",
+						lv_container_1_0,
+						"hu.bme.mdsd.ztz.text.BehaviourLanguage.BehaviourContainer");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleImport
+entryRuleImport returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getImportRule()); }
+	iv_ruleImport=ruleImport
+	{ $current=$iv_ruleImport.current; }
+	EOF;
+
+// Rule Import
+ruleImport returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='import'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
+		}
+		(
+			(
+				lv_importURI_1_0=RULE_STRING
+				{
+					newLeafNode(lv_importURI_1_0, grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getImportRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"importURI",
+						lv_importURI_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+	)
+;
 
 // Entry rule entryRuleBehaviourContainer
 entryRuleBehaviourContainer returns [EObject current=null]:

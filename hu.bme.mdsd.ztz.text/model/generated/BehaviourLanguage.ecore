@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="behaviourLanguage" nsURI="http://www.mdsd.hu/behaviour/language"
+    nsPrefix="behaviourLanguage">
+  <eClassifiers xsi:type="ecore:EClass" name="BehaviourLanguage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importModel" eType="#//Import"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//BehaviourContainer"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Import">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

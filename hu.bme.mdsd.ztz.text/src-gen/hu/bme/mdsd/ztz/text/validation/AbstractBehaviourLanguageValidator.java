@@ -13,6 +13,7 @@ public abstract class AbstractBehaviourLanguageValidator extends AbstractDeclara
 	@Override
 	protected List<EPackage> getEPackages() {
 	    List<EPackage> result = new ArrayList<EPackage>();
+	    result.add(hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage.eINSTANCE);
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.mdsd.hu/behaviour"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.mdsd.hu/drone"));
 		return result;

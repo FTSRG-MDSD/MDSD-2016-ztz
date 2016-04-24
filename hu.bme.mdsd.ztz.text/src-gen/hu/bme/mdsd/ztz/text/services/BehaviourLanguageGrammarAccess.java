@@ -27,6 +27,57 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder {
 	
+	public class BehaviourLanguageElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.BehaviourLanguage");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cImportModelAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cImportModelImportParserRuleCall_0_0 = (RuleCall)cImportModelAssignment_0.eContents().get(0);
+		private final Assignment cContainerAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cContainerBehaviourContainerParserRuleCall_1_0 = (RuleCall)cContainerAssignment_1.eContents().get(0);
+		
+		//BehaviourLanguage:
+		//	importModel=Import
+		//	container=BehaviourContainer;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//importModel=Import container=BehaviourContainer
+		public Group getGroup() { return cGroup; }
+		
+		//importModel=Import
+		public Assignment getImportModelAssignment_0() { return cImportModelAssignment_0; }
+		
+		//Import
+		public RuleCall getImportModelImportParserRuleCall_0_0() { return cImportModelImportParserRuleCall_0_0; }
+		
+		//container=BehaviourContainer
+		public Assignment getContainerAssignment_1() { return cContainerAssignment_1; }
+		
+		//BehaviourContainer
+		public RuleCall getContainerBehaviourContainerParserRuleCall_1_0() { return cContainerBehaviourContainerParserRuleCall_1_0; }
+	}
+	public class ImportElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Import");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cImportURIAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cImportURISTRINGTerminalRuleCall_1_0 = (RuleCall)cImportURIAssignment_1.eContents().get(0);
+		
+		//Import:
+		//	'import' importURI=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'import' importURI=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//'import'
+		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
+		
+		//importURI=STRING
+		public Assignment getImportURIAssignment_1() { return cImportURIAssignment_1; }
+		
+		//STRING
+		public RuleCall getImportURISTRINGTerminalRuleCall_1_0() { return cImportURISTRINGTerminalRuleCall_1_0; }
+	}
 	public class BehaviourContainerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.BehaviourContainer");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -3722,6 +3773,8 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		public Keyword getWaitingWaitingKeyword_4_0() { return cWaitingWaitingKeyword_4_0; }
 	}
 	
+	private final BehaviourLanguageElements pBehaviourLanguage;
+	private final ImportElements pImport;
 	private final BehaviourContainerElements pBehaviourContainer;
 	private final ActionElements pAction;
 	private final PropertyValueElements pPropertyValue;
@@ -3771,6 +3824,8 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pBehaviourLanguage = new BehaviourLanguageElements();
+		this.pImport = new ImportElements();
 		this.pBehaviourContainer = new BehaviourContainerElements();
 		this.pAction = new ActionElements();
 		this.pPropertyValue = new PropertyValueElements();
@@ -3838,6 +3893,27 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return gaTerminals;
 	}
 
+	
+	//BehaviourLanguage:
+	//	importModel=Import
+	//	container=BehaviourContainer;
+	public BehaviourLanguageElements getBehaviourLanguageAccess() {
+		return pBehaviourLanguage;
+	}
+	
+	public ParserRule getBehaviourLanguageRule() {
+		return getBehaviourLanguageAccess().getRule();
+	}
+	
+	//Import:
+	//	'import' importURI=STRING;
+	public ImportElements getImportAccess() {
+		return pImport;
+	}
+	
+	public ParserRule getImportRule() {
+		return getImportAccess().getRule();
+	}
 	
 	//BehaviourContainer:
 	//	{BehaviourContainer}

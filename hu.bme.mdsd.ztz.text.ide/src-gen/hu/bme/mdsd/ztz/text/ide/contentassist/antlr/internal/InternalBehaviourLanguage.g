@@ -49,6 +49,56 @@ import hu.bme.mdsd.ztz.text.services.BehaviourLanguageGrammarAccess;
 	}
 }
 
+// Entry rule entryRuleBehaviourLanguage
+entryRuleBehaviourLanguage
+:
+{ before(grammarAccess.getBehaviourLanguageRule()); }
+	 ruleBehaviourLanguage
+{ after(grammarAccess.getBehaviourLanguageRule()); } 
+	 EOF 
+;
+
+// Rule BehaviourLanguage
+ruleBehaviourLanguage 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getBehaviourLanguageAccess().getGroup()); }
+		(rule__BehaviourLanguage__Group__0)
+		{ after(grammarAccess.getBehaviourLanguageAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleImport
+entryRuleImport
+:
+{ before(grammarAccess.getImportRule()); }
+	 ruleImport
+{ after(grammarAccess.getImportRule()); } 
+	 EOF 
+;
+
+// Rule Import
+ruleImport 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getImportAccess().getGroup()); }
+		(rule__Import__Group__0)
+		{ after(grammarAccess.getImportAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleBehaviourContainer
 entryRuleBehaviourContainer
 :
@@ -1023,6 +1073,114 @@ rule__TaskExecutionStatus__Alternatives
 finally {
 	restoreStackSize(stackSize);
 }
+
+rule__BehaviourLanguage__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__BehaviourLanguage__Group__0__Impl
+	rule__BehaviourLanguage__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BehaviourLanguage__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getBehaviourLanguageAccess().getImportModelAssignment_0()); }
+	(rule__BehaviourLanguage__ImportModelAssignment_0)
+	{ after(grammarAccess.getBehaviourLanguageAccess().getImportModelAssignment_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BehaviourLanguage__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__BehaviourLanguage__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BehaviourLanguage__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getBehaviourLanguageAccess().getContainerAssignment_1()); }
+	(rule__BehaviourLanguage__ContainerAssignment_1)
+	{ after(grammarAccess.getBehaviourLanguageAccess().getContainerAssignment_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Import__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Import__Group__0__Impl
+	rule__Import__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Import__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getImportAccess().getImportKeyword_0()); }
+	'import'
+	{ after(grammarAccess.getImportAccess().getImportKeyword_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Import__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Import__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Import__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getImportAccess().getImportURIAssignment_1()); }
+	(rule__Import__ImportURIAssignment_1)
+	{ after(grammarAccess.getImportAccess().getImportURIAssignment_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 
 rule__BehaviourContainer__Group__0
 	@init {
@@ -12957,6 +13115,51 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+
+rule__BehaviourLanguage__ImportModelAssignment_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBehaviourLanguageAccess().getImportModelImportParserRuleCall_0_0()); }
+		ruleImport
+		{ after(grammarAccess.getBehaviourLanguageAccess().getImportModelImportParserRuleCall_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BehaviourLanguage__ContainerAssignment_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBehaviourLanguageAccess().getContainerBehaviourContainerParserRuleCall_1_0()); }
+		ruleBehaviourContainer
+		{ after(grammarAccess.getBehaviourLanguageAccess().getContainerBehaviourContainerParserRuleCall_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Import__ImportURIAssignment_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0()); }
+		RULE_STRING
+		{ after(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 rule__BehaviourContainer__DynamicRobotsAssignment_3_2
 	@init {

@@ -5,6 +5,7 @@ package hu.bme.mdsd.ztz.text;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ISetup;
@@ -29,6 +30,9 @@ public class BehaviourLanguageStandaloneSetupGenerated implements ISetup {
 	}
 	
 	public void register(Injector injector) {
+		if (!EPackage.Registry.INSTANCE.containsKey("http://www.mdsd.hu/behaviour/language")) {
+			EPackage.Registry.INSTANCE.put("http://www.mdsd.hu/behaviour/language", BehaviourLanguagePackage.eINSTANCE);
+		}
 		IResourceFactory resourceFactory = injector.getInstance(IResourceFactory.class);
 		IResourceServiceProvider serviceProvider = injector.getInstance(IResourceServiceProvider.class);
 		

@@ -35,6 +35,9 @@ import hu.bme.mdsd.ztz.model.drone.Size;
 import hu.bme.mdsd.ztz.model.drone.StringValue;
 import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.services.BehaviourLanguageGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -99,6 +102,15 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case BehaviourPackage.UNICAST_COMMUNICATION:
 				sequence_UnicastCommunication(context, (UnicastCommunication) semanticObject); 
+				return; 
+			}
+		else if (epackage == BehaviourLanguagePackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
+			case BehaviourLanguagePackage.BEHAVIOUR_LANGUAGE:
+				sequence_BehaviourLanguage(context, (BehaviourLanguage) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.IMPORT:
+				sequence_Import(context, (Import) semanticObject); 
 				return; 
 			}
 		else if (epackage == DronePackage.eINSTANCE)
@@ -210,6 +222,27 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 */
 	protected void sequence_BehaviourContainer(ISerializationContext context, BehaviourContainer semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     BehaviourLanguage returns BehaviourLanguage
+	 *
+	 * Constraint:
+	 *     (importModel=Import container=BehaviourContainer)
+	 */
+	protected void sequence_BehaviourLanguage(ISerializationContext context, BehaviourLanguage semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.BEHAVIOUR_LANGUAGE__IMPORT_MODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.BEHAVIOUR_LANGUAGE__IMPORT_MODEL));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.BEHAVIOUR_LANGUAGE__CONTAINER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.BEHAVIOUR_LANGUAGE__CONTAINER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBehaviourLanguageAccess().getImportModelImportParserRuleCall_0_0(), semanticObject.getImportModel());
+		feeder.accept(grammarAccess.getBehaviourLanguageAccess().getContainerBehaviourContainerParserRuleCall_1_0(), semanticObject.getContainer());
+		feeder.finish();
 	}
 	
 	
@@ -341,6 +374,24 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 */
 	protected void sequence_Equipment(ISerializationContext context, Equipment semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Import returns Import
+	 *
+	 * Constraint:
+	 *     importURI=STRING
+	 */
+	protected void sequence_Import(ISerializationContext context, Import semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());
+		feeder.finish();
 	}
 	
 	

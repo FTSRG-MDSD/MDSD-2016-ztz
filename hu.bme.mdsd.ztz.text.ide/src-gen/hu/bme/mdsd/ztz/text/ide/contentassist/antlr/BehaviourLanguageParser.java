@@ -42,6 +42,8 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEBooleanAccess().getAlternatives(), "rule__EBoolean__Alternatives");
 					put(grammarAccess.getRobotStatusAccess().getAlternatives(), "rule__RobotStatus__Alternatives");
 					put(grammarAccess.getTaskExecutionStatusAccess().getAlternatives(), "rule__TaskExecutionStatus__Alternatives");
+					put(grammarAccess.getBehaviourLanguageAccess().getGroup(), "rule__BehaviourLanguage__Group__0");
+					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 					put(grammarAccess.getBehaviourContainerAccess().getGroup(), "rule__BehaviourContainer__Group__0");
 					put(grammarAccess.getBehaviourContainerAccess().getGroup_3(), "rule__BehaviourContainer__Group_3__0");
 					put(grammarAccess.getBehaviourContainerAccess().getGroup_3_3(), "rule__BehaviourContainer__Group_3_3__0");
@@ -169,6 +171,9 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBroadcastCommunicationAccess().getGroup_11(), "rule__BroadcastCommunication__Group_11__0");
 					put(grammarAccess.getBroadcastCommunicationAccess().getGroup_11_3(), "rule__BroadcastCommunication__Group_11_3__0");
 					put(grammarAccess.getEIntAccess().getGroup(), "rule__EInt__Group__0");
+					put(grammarAccess.getBehaviourLanguageAccess().getImportModelAssignment_0(), "rule__BehaviourLanguage__ImportModelAssignment_0");
+					put(grammarAccess.getBehaviourLanguageAccess().getContainerAssignment_1(), "rule__BehaviourLanguage__ContainerAssignment_1");
+					put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
 					put(grammarAccess.getBehaviourContainerAccess().getDynamicRobotsAssignment_3_2(), "rule__BehaviourContainer__DynamicRobotsAssignment_3_2");
 					put(grammarAccess.getBehaviourContainerAccess().getDynamicRobotsAssignment_3_3_1(), "rule__BehaviourContainer__DynamicRobotsAssignment_3_3_1");
 					put(grammarAccess.getBehaviourContainerAccess().getTaskExecutionsAssignment_4_2(), "rule__BehaviourContainer__TaskExecutionsAssignment_4_2");
@@ -324,7 +329,7 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			InternalBehaviourLanguageParser typedParser = (InternalBehaviourLanguageParser) parser;
-			typedParser.entryRuleBehaviourContainer();
+			typedParser.entryRuleBehaviourLanguage();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

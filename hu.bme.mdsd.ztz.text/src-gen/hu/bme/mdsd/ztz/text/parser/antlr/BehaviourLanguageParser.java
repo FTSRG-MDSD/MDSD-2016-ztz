@@ -27,7 +27,7 @@ public class BehaviourLanguageParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "BehaviourContainer";
+		return "BehaviourLanguage";
 	}
 
 	public BehaviourLanguageGrammarAccess getGrammarAccess() {
