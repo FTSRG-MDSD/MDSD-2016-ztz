@@ -7,8 +7,8 @@ import com.google.common.collect.Maps;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import hu.bme.mdsd.drone.BehaviourLanguageRuntimeModule;
-import hu.bme.mdsd.drone.ui.BehaviourLanguageUiModule;
+import hu.bme.mdsd.ztz.text.BehaviourLanguageRuntimeModule;
+import hu.bme.mdsd.ztz.text.ui.BehaviourLanguageUiModule;
 import java.util.Collections;
 import java.util.Map;
 import org.apache.log4j.Logger;
@@ -23,7 +23,7 @@ import org.osgi.framework.BundleContext;
  */
 public class TextActivator extends AbstractUIPlugin {
 
-	public static final String HU_BME_MDSD_DRONE_BEHAVIOURLANGUAGE = "hu.bme.mdsd.drone.BehaviourLanguage";
+	public static final String HU_BME_MDSD_ZTZ_TEXT_BEHAVIOURLANGUAGE = "hu.bme.mdsd.ztz.text.BehaviourLanguage";
 	
 	private static final Logger logger = Logger.getLogger(TextActivator.class);
 	
@@ -73,14 +73,14 @@ public class TextActivator extends AbstractUIPlugin {
 	}
 	
 	protected Module getRuntimeModule(String grammar) {
-		if (HU_BME_MDSD_DRONE_BEHAVIOURLANGUAGE.equals(grammar)) {
+		if (HU_BME_MDSD_ZTZ_TEXT_BEHAVIOURLANGUAGE.equals(grammar)) {
 			return new BehaviourLanguageRuntimeModule();
 		}
 		throw new IllegalArgumentException(grammar);
 	}
 	
 	protected Module getUiModule(String grammar) {
-		if (HU_BME_MDSD_DRONE_BEHAVIOURLANGUAGE.equals(grammar)) {
+		if (HU_BME_MDSD_ZTZ_TEXT_BEHAVIOURLANGUAGE.equals(grammar)) {
 			return new BehaviourLanguageUiModule(this);
 		}
 		throw new IllegalArgumentException(grammar);

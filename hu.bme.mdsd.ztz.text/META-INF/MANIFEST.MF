@@ -14,13 +14,13 @@ Require-Bundle: hu.bme.mdsd.ztz.model,
  org.eclipse.xtext.util,
  org.eclipse.xtend.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: hu.bme.mdsd.drone.scoping,
- hu.bme.mdsd.drone,
- hu.bme.mdsd.drone.serializer,
- hu.bme.mdsd.drone.validation,
- hu.bme.mdsd.drone.generator,
- hu.bme.mdsd.drone.formatting,
- hu.bme.mdsd.drone.parser.antlr,
- hu.bme.mdsd.drone.services,
- hu.bme.mdsd.drone.parser.antlr.internal
+Export-Package: hu.bme.mdsd.ztz.text.validation,
+ hu.bme.mdsd.ztz.text.parser.antlr,
+ hu.bme.mdsd.ztz.text,
+ hu.bme.mdsd.ztz.text.services,
+ hu.bme.mdsd.ztz.text.generator,
+ hu.bme.mdsd.ztz.text.serializer,
+ hu.bme.mdsd.ztz.text.formatting,
+ hu.bme.mdsd.ztz.text.scoping,
+ hu.bme.mdsd.ztz.text.parser.antlr.internal
 Import-Package: org.apache.log4j

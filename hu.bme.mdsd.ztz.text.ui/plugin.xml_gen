@@ -4,48 +4,48 @@
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="drb"
-			id="hu.bme.mdsd.drone.BehaviourLanguage"
+			id="hu.bme.mdsd.ztz.text.BehaviourLanguage"
 			name="BehaviourLanguage Editor">
 		</editor>
 	</extension>
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
 			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
 			<activeWhen>
 				<reference
-					definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened">
+					definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-			commandId="hu.bme.mdsd.drone.BehaviourLanguage.validate">
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="hu.bme.mdsd.ztz.text.BehaviourLanguage.validate">
 		<activeWhen>
 			<reference
-					definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened">
+					definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened">
 			</reference>
 		</activeWhen>
 		</handler>
 		<!-- copy qualified name -->
 		<handler
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
 			<activeWhen>
-				<reference definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened" />
+				<reference definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened" />
 			</activeWhen>
 		</handler>
 		<handler
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
 			<activeWhen>
 				<and>
-					<reference definitionId="hu.bme.mdsd.drone.BehaviourLanguage.XtextEditor.opened" />
+					<reference definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.XtextEditor.opened" />
 					<iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -54,22 +54,22 @@
 		</handler>
 	</extension>
 	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened">
+		<definition id="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened">
 			<and>
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-						value="hu.bme.mdsd.drone.BehaviourLanguage" 
+						value="hu.bme.mdsd.ztz.text.BehaviourLanguage" 
 						forcePluginActivation="true"/>
 				</with>		
 			</and>
 		</definition>
-		<definition id="hu.bme.mdsd.drone.BehaviourLanguage.XtextEditor.opened">
+		<definition id="hu.bme.mdsd.ztz.text.BehaviourLanguage.XtextEditor.opened">
 			<and>
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-						value="hu.bme.mdsd.drone.BehaviourLanguage" 
+						value="hu.bme.mdsd.ztz.text.BehaviourLanguage" 
 						forcePluginActivation="true"/>
 				</with>		
 			</and>
@@ -78,33 +78,33 @@
 	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="hu.bme.mdsd.drone.BehaviourLanguage"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="hu.bme.mdsd.ztz.text.BehaviourLanguage"
 			name="BehaviourLanguage">
-			<keywordReference id="hu.bme.mdsd.drone.ui.keyword_BehaviourLanguage"/>
+			<keywordReference id="hu.bme.mdsd.ztz.text.ui.keyword_BehaviourLanguage"/>
 		</page>
 		<page
-			category="hu.bme.mdsd.drone.BehaviourLanguage"
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="hu.bme.mdsd.drone.BehaviourLanguage.coloring"
+			category="hu.bme.mdsd.ztz.text.BehaviourLanguage"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="hu.bme.mdsd.ztz.text.BehaviourLanguage.coloring"
 			name="Syntax Coloring">
-			<keywordReference id="hu.bme.mdsd.drone.ui.keyword_BehaviourLanguage"/>
+			<keywordReference id="hu.bme.mdsd.ztz.text.ui.keyword_BehaviourLanguage"/>
 		</page>
 		<page
-			category="hu.bme.mdsd.drone.BehaviourLanguage"
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-			id="hu.bme.mdsd.drone.BehaviourLanguage.templates"
+			category="hu.bme.mdsd.ztz.text.BehaviourLanguage"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="hu.bme.mdsd.ztz.text.BehaviourLanguage.templates"
 			name="Templates">
-			<keywordReference id="hu.bme.mdsd.drone.ui.keyword_BehaviourLanguage"/>
+			<keywordReference id="hu.bme.mdsd.ztz.text.ui.keyword_BehaviourLanguage"/>
 		</page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="hu.bme.mdsd.drone.BehaviourLanguage"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="hu.bme.mdsd.ztz.text.BehaviourLanguage"
 			name="BehaviourLanguage">
-			<keywordReference id="hu.bme.mdsd.drone.ui.keyword_BehaviourLanguage"/>
+			<keywordReference id="hu.bme.mdsd.ztz.text.ui.keyword_BehaviourLanguage"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -114,14 +114,14 @@
 	<extension
 		point="org.eclipse.ui.keywords">
 		<keyword
-			id="hu.bme.mdsd.drone.ui.keyword_BehaviourLanguage"
+			id="hu.bme.mdsd.ztz.text.ui.keyword_BehaviourLanguage"
 			label="BehaviourLanguage"/>
 	</extension>
 	<extension
 		point="org.eclipse.ui.commands">
 	<command
 			description="Trigger expensive validation"
-			id="hu.bme.mdsd.drone.BehaviourLanguage.validate"
+			id="hu.bme.mdsd.ztz.text.BehaviourLanguage.validate"
 			name="Validate">
 	</command>
 	<!-- copy qualified name -->
@@ -142,12 +142,12 @@
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
 			 <command
-				 commandId="hu.bme.mdsd.drone.BehaviourLanguage.validate"
+				 commandId="hu.bme.mdsd.ztz.text.BehaviourLanguage.validate"
 				 style="push"
 				 tooltip="Trigger expensive validation">
 			<visibleWhen checkEnabled="false">
 				<reference
-					definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened">
+					definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened">
 				</reference>
 			</visibleWhen>
 		</command>  
@@ -157,7 +157,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened" />
+					<reference definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened" />
 				</visibleWhen>
 			</command>  
 		</menuContribution>
@@ -165,7 +165,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened" />
+					<reference definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened" />
 				</visibleWhen>
 			</command>  
 		</menuContribution>
@@ -174,7 +174,7 @@
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
 					<and>
-						<reference definitionId="hu.bme.mdsd.drone.BehaviourLanguage.XtextEditor.opened" />
+						<reference definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -187,7 +187,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened">
+					<reference definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -195,11 +195,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
 			commandId="org.eclipse.xtext.ui.editor.FindReferences">
 			<activeWhen>
 				<reference
-					definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened">
+					definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -208,17 +208,17 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="drb">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 	    <resourceServiceProvider
-	        class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+	        class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
 	        uriExtension="drb">
 	    </resourceServiceProvider>
 	</extension>
-	<!-- marker definitions for hu.bme.mdsd.drone.BehaviourLanguage -->
+	<!-- marker definitions for hu.bme.mdsd.ztz.text.BehaviourLanguage -->
 	<extension
 			id="behaviourlanguage.check.fast"
 			name="BehaviourLanguage Problem"
@@ -242,25 +242,25 @@
 	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
 			fileExtensions="drb"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="hu.bme.mdsd.drone.BehaviourLanguage"
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="hu.bme.mdsd.drone.BehaviourLanguage.compiler.preferencePage"
+			category="hu.bme.mdsd.ztz.text.BehaviourLanguage"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="hu.bme.mdsd.ztz.text.BehaviourLanguage.compiler.preferencePage"
 			name="Compiler">
-			<keywordReference id="hu.bme.mdsd.drone.ui.keyword_BehaviourLanguage"/>
+			<keywordReference id="hu.bme.mdsd.ztz.text.ui.keyword_BehaviourLanguage"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.propertyPages">
 		<page
-			category="hu.bme.mdsd.drone.BehaviourLanguage"
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="hu.bme.mdsd.drone.BehaviourLanguage.compiler.propertyPage"
+			category="hu.bme.mdsd.ztz.text.BehaviourLanguage"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="hu.bme.mdsd.ztz.text.BehaviourLanguage.compiler.propertyPage"
 			name="Compiler">
-			<keywordReference id="hu.bme.mdsd.drone.ui.keyword_BehaviourLanguage"/>
+			<keywordReference id="hu.bme.mdsd.ztz.text.ui.keyword_BehaviourLanguage"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -271,20 +271,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="hu.bme.mdsd.drone.BehaviourLanguage.OpenGeneratedCode"
+				id="hu.bme.mdsd.ztz.text.BehaviourLanguage.OpenGeneratedCode"
 				style="push">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened" />
+					<reference definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 			<activeWhen>
-				<reference definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened" />
+				<reference definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened" />
 			</activeWhen>
 		</handler>
 	</extension>
@@ -292,11 +292,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened">
+					definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -316,16 +316,16 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened"/>
+					<reference definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for hu.bme.mdsd.drone.BehaviourLanguage -->
+	<!-- quickfix marker resolution generator for hu.bme.mdsd.ztz.text.BehaviourLanguage -->
 	<extension
 	        point="org.eclipse.ui.ide.markerResolution">
 	    <markerResolutionGenerator
-	        class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+	        class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 	        markerType="hu.bme.mdsd.ztz.text.ui.behaviourlanguage.check.fast">
 	        <attribute
 	            name="FIXABLE_KEY"
@@ -333,7 +333,7 @@
 	        </attribute>
 	    </markerResolutionGenerator>
 	    <markerResolutionGenerator
-	        class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+	        class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 	        markerType="hu.bme.mdsd.ztz.text.ui.behaviourlanguage.check.normal">
 	        <attribute
 	            name="FIXABLE_KEY"
@@ -341,7 +341,7 @@
 	        </attribute>
 	    </markerResolutionGenerator>
 	    <markerResolutionGenerator
-	        class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+	        class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 	        markerType="hu.bme.mdsd.ztz.text.ui.behaviourlanguage.check.expensive">
 	        <attribute
 	            name="FIXABLE_KEY"
@@ -352,11 +352,11 @@
 	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened">
+					definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -368,7 +368,7 @@
 				style="push">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="hu.bme.mdsd.drone.BehaviourLanguage.Editor.opened">
+						definitionId="hu.bme.mdsd.ztz.text.BehaviourLanguage.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -376,28 +376,28 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="hu.bme.mdsd.drone.BehaviourLanguage"
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-			id="hu.bme.mdsd.drone.BehaviourLanguage.refactoring"
+			category="hu.bme.mdsd.ztz.text.BehaviourLanguage"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="hu.bme.mdsd.ztz.text.BehaviourLanguage.refactoring"
 			name="Refactoring">
-			<keywordReference id="hu.bme.mdsd.drone.ui.keyword_BehaviourLanguage"/>
+			<keywordReference id="hu.bme.mdsd.ztz.text.ui.keyword_BehaviourLanguage"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.compare.contentViewers">
-		<viewer id="hu.bme.mdsd.drone.BehaviourLanguage.compare.contentViewers"
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="hu.bme.mdsd.ztz.text.BehaviourLanguage.compare.contentViewers"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="drb">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
-		<viewer id="hu.bme.mdsd.drone.BehaviourLanguage.compare.contentMergeViewers"
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="hu.bme.mdsd.ztz.text.BehaviourLanguage.compare.contentMergeViewers"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="drb" label="BehaviourLanguage Compare">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
-		<provider id="hu.bme.mdsd.drone.BehaviourLanguage.editors.documentProviders"
-			class="hu.bme.mdsd.drone.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+		<provider id="hu.bme.mdsd.ztz.text.BehaviourLanguage.editors.documentProviders"
+			class="hu.bme.mdsd.ztz.text.ui.BehaviourLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
 			extensions="drb">
 		</provider>
 	</extension>
