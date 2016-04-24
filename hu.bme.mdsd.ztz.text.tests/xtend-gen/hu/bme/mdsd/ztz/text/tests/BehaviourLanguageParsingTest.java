@@ -4,14 +4,16 @@
 package hu.bme.mdsd.ztz.text.tests;
 
 import com.google.inject.Inject;
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.tests.BehaviourLanguageInjectorProvider;
+import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,16 +22,19 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 public class BehaviourLanguageParsingTest {
   @Inject
-  private ParseHelper<BehaviourContainer> parseHelper;
+  private ParseHelper<BehaviourLanguage> parseHelper;
+  
+  @Inject
+  private ValidationTestHelper helper;
   
   @Test
-  public void loadModel() {
+  public void testEmptyImport() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("import \"\"");
       _builder.newLine();
-      final BehaviourContainer result = this.parseHelper.parse(_builder);
-      Assert.assertNotNull(result);
+      final BehaviourLanguage model = this.parseHelper.parse(_builder);
+      this.helper.assertError(model, BehaviourLanguagePackage.Literals.IMPORT, ErrorCodes.INVALID_IMPORT);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

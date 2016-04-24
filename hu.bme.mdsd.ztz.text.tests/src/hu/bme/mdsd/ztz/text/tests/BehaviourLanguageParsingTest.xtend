@@ -4,27 +4,34 @@
 package hu.bme.mdsd.ztz.text.tests
 
 import com.google.inject.Inject
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.text.validation.ErrorCodes
 
 @RunWith(XtextRunner)
 @InjectWith(BehaviourLanguageInjectorProvider)
 class BehaviourLanguageParsingTest{
 
 	@Inject
-	ParseHelper<BehaviourContainer> parseHelper;
+	ParseHelper<BehaviourLanguage> parseHelper;
 
-	@Test 
-	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
+ 	@Inject
+  	private ValidationTestHelper helper;
+
+	
+	@Test
+	def void testEmptyImport() {
+		val model = parseHelper.parse(
+		'''
+		import ""
 		''')
-		Assert.assertNotNull(result)
+		helper.assertError(model, BehaviourLanguagePackage.Literals.IMPORT, ErrorCodes.INVALID_IMPORT)
 	}
-
+	
 }

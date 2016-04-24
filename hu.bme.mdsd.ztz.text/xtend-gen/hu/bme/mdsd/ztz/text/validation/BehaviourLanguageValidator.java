@@ -3,7 +3,11 @@
  */
 package hu.bme.mdsd.ztz.text.validation;
 
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
+import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
+import org.eclipse.xtext.validation.Check;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +16,12 @@ import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
  */
 @SuppressWarnings("all")
 public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
+  @Check
+  public void handleImport(final Import imp) {
+    String _importURI = imp.getImportURI();
+    boolean _isEmpty = _importURI.isEmpty();
+    if (_isEmpty) {
+      this.error("Import cannot be empty", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT);
+    }
+  }
 }

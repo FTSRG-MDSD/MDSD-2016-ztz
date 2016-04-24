@@ -3,6 +3,9 @@
  */
 package hu.bme.mdsd.ztz.text.validation
 
+import org.eclipse.xtext.validation.Check
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
 
 /**
  * This class contains custom validation rules. 
@@ -23,6 +26,11 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 //	}
 
 
-
+	@Check
+	def handleImport(Import imp) {
+		if (imp.importURI.empty) {
+			error("Import cannot be empty", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT)
+		}
+	}
 	
 }
