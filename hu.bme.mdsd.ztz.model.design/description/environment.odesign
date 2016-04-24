@@ -31,8 +31,82 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="missionTaskRelation" sourceMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='missionNode']" targetMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']" targetFinderExpression="aql:self.tasks">
+        <nodeMappings name="notAssignedTaskDescriptors" label="notAssignedTaskDescriptors" semanticCandidatesExpression="aql:self.temporalElements" domainClass="drone.TaskDescriptor">
+          <style xsi:type="style:SquareDescription" labelExpression="Not assigned Task Descriptor" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="taskDescriptor" label="TaskDescriptor" semanticCandidatesExpression="aql:self.missions.tasks.descriptor" domainClass="drone.TaskDescriptor">
+          <style xsi:type="style:SquareDescription" labelExpression="Task Descriptor" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="positionNode" label="PositionNode" semanticCandidatesExpression="aql:self.areaObjects.positions" domainClass="drone.Position">
+          <style xsi:type="style:EllipseNodeDescription" labelExpression="Position" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="coordinateNode" semanticCandidatesExpression="aql:self.areaObjects.positions.coordinates" domainClass="drone.Coordinate">
+          <style xsi:type="style:SquareDescription" labelExpression="Coordinate" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="notAssignedPosition" label="notAssignedPosition" semanticCandidatesExpression="aql:self.temporalElements" domainClass="drone.Position">
+          <style xsi:type="style:EllipseNodeDescription" labelExpression="Not assigned Position" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="notAssignedCoordinate" label="notAssignedCoordinate" semanticCandidatesExpression="aql:self.temporalElements" domainClass="drone.Coordinate">
+          <style xsi:type="style:SquareDescription" labelExpression="Not assigned Coordinate" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="missionTaskRelation" sourceMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='missionNode']" targetMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode'] //@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='notAssignedTasks']" targetFinderExpression="aql:self.tasks">
           <style sourceArrow="FillDiamond" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="taskTaskDecriptorRelation" sourceMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskNode']" targetMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']" targetFinderExpression="aql:self.mission.tasks.descriptor">
+          <style sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="areaObjectPositionRelation" sourceMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='AreaObjectNode']" targetMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='positionNode']" targetFinderExpression="aql:self.positions">
+          <style sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="positionCoordinateRelation" sourceMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='positionNode']" targetMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='coordinateNode']" targetFinderExpression="aql:self.coordinates">
+          <style sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="taskDescriptorAreaObjectRelation" sourceMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']" targetMapping="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='AreaObjectNode']" targetFinderExpression="aql:self.targets">
+          <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -79,6 +153,33 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="taskDiscriptorCreation" label="New TaskDescriptor" nodeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='taskDescriptor']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.TaskDescriptor" referenceName="temporalElements"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="positionCreation" label="New Position" nodeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='positionNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Position" referenceName="temporalElements"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="coordinateCreation" label="New Coordinate" nodeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@nodeMappings[name='coordinateNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Coordinate" referenceName="temporalElements"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="directEditAreaObjectName" label="Edit areaObject name">
             <mask mask="{0}"/>
             <initialOperation>
@@ -97,7 +198,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="missionTaskRelationCreation" label="Add Task to Mission" precondition="aql:preTarget.oclIsTypeOf(drone::Task)" edgeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Mission)">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="addTaskToMission" label="Add Task to Mission" precondition="aql:preTarget.oclIsTypeOf(drone::Task)" edgeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='missionTaskRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Mission)">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -105,6 +206,42 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="tasks" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="temporalElements" elementExpression="target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="addTaskDescriptorToTask" label="Add TaskDescriptor to Task" precondition="aql:preTarget.oclIsTypeOf(drone::TaskDescriptor)" edgeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='taskTaskDecriptorRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Task)">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="descriptor" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="temporalElements" elementExpression="target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="addPositionToAreaObject" label="Add Position to AreaObject" precondition="aql:preTarget.oclIsTypeOf(drone::AreaObject)" edgeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='areaObjectPositionRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Position)">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="positions" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="temporalElements" elementExpression="target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="addCoordinateToPosition" label="Add Coordinate to Position" precondition="aql:preTarget.oclIsTypeOf(drone::Position)" edgeMappings="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@edgeMappings[name='positionCoordinateRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Coordinate)">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="coordinates" valueExpression="var:target"/>
                 <subModelOperations xsi:type="tool_1:Unset" featureName="temporalElements" elementExpression="target"/>
               </firstModelOperations>
             </initialOperation>
