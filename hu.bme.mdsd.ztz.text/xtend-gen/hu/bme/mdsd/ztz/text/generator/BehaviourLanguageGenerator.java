@@ -4,16 +4,23 @@
 package hu.bme.mdsd.ztz.text.generator;
 
 import com.google.common.collect.Iterators;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import java.util.Iterator;
+import java.util.Map;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 
 /**
  * Generates code from your model files on save.
@@ -22,31 +29,55 @@ import org.eclipse.xtext.generator.IGeneratorContext;
  */
 @SuppressWarnings("all")
 public class BehaviourLanguageGenerator extends AbstractGenerator {
+  private final String modelFolder = "../model/";
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    final Iterator<Import> iterator = Iterators.<Import>filter(_allContents, Import.class);
-    boolean _hasNext = iterator.hasNext();
-    if (_hasNext) {
-      final Import imp = iterator.next();
-      String _importURI = imp.getImportURI();
-      boolean _isEmpty = _importURI.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final ResourceManager manager = ResourceManager.getInstance();
-        String _importedModelPath = manager.getImportedModelPath();
-        String _importURI_1 = imp.getImportURI();
-        boolean _equals = _importedModelPath.equals(_importURI_1);
-        boolean _not_1 = (!_equals);
-        if (_not_1) {
-          String _importURI_2 = imp.getImportURI();
-          String _plus = ("../model/" + _importURI_2);
-          final URI modelPathUri = fsa.getURI(_plus);
-          manager.load(modelPathUri);
-          String _importURI_3 = imp.getImportURI();
-          manager.setImportedModelPath(_importURI_3);
+    try {
+      final ResourceManager manager = ResourceManager.getInstance();
+      TreeIterator<EObject> _allContents = resource.getAllContents();
+      final Iterator<Import> iterator = Iterators.<Import>filter(_allContents, Import.class);
+      boolean _hasNext = iterator.hasNext();
+      if (_hasNext) {
+        final Import imp = iterator.next();
+        String _importURI = imp.getImportURI();
+        boolean _isEmpty = _importURI.isEmpty();
+        boolean _not = (!_isEmpty);
+        if (_not) {
+          String _importedModelPath = manager.getImportedModelPath();
+          String _importURI_1 = imp.getImportURI();
+          boolean _equals = _importedModelPath.equals(_importURI_1);
+          boolean _not_1 = (!_equals);
+          if (_not_1) {
+            String _importURI_2 = imp.getImportURI();
+            String _plus = (this.modelFolder + _importURI_2);
+            final URI modelPathUri = fsa.getURI(_plus);
+            String _importURI_3 = imp.getImportURI();
+            manager.setImportedModelPath(_importURI_3);
+            manager.load(modelPathUri);
+          }
         }
       }
+      TreeIterator<EObject> _allContents_1 = resource.getAllContents();
+      final Iterator<BehaviourContainer> containerIterator = Iterators.<BehaviourContainer>filter(_allContents_1, BehaviourContainer.class);
+      boolean _hasNext_1 = containerIterator.hasNext();
+      if (_hasNext_1) {
+        final BehaviourContainer container = containerIterator.next();
+        final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+        final Map<String, Object> m = reg.getExtensionToFactoryMap();
+        XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();
+        m.put("behaviour", _xMIResourceFactoryImpl);
+        final ResourceSet resourceSet = new ResourceSetImpl();
+        final URI resourceURI = fsa.getURI((this.modelFolder + "robots.behaviour"));
+        final Resource resourceOfBehaviour = resourceSet.createResource(resourceURI);
+        EList<EObject> _contents = resourceOfBehaviour.getContents();
+        _contents.clear();
+        EList<EObject> _contents_1 = resourceOfBehaviour.getContents();
+        _contents_1.add(container);
+        resourceOfBehaviour.save(null);
+      }
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
   }
 }

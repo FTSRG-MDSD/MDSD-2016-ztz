@@ -3,6 +3,15 @@
  */
 package hu.bme.mdsd.ztz.text.scoping
 
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EReference
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
+import org.eclipse.xtext.scoping.IScope
+import hu.bme.mdsd.ztz.text.manager.ResourceManager
+import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer
+import org.eclipse.xtext.scoping.Scopes
+import org.eclipse.xtext.EcoreUtil2
+import hu.bme.mdsd.ztz.model.drone.Robot
 
 /**
  * This class contains custom scoping description.
@@ -11,5 +20,26 @@ package hu.bme.mdsd.ztz.text.scoping
  * on how and when to use it.
  */
 class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvider {
+
+
+	def IScope scopeForDynamicRobot(DynamicRobot dynamicRobot, EReference reference) {
+		val manager = ResourceManager.instance
+		if (manager.resource != null) {
+			val container = manager.resource.contents.get(0) as RobotMissionContainer
+			for (Robot r : container.robots) {
+				println(r)
+			}
+//			val robots = EcoreUtil2.getAllContentsOfType(container, Robot)
+			return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(container, Robot))
+		}
+		super.getScope(dynamicRobot, reference)
+	}
+
+	override  getScope(EObject context, EReference reference) {
+		if (context instanceof DynamicRobot) {
+			return scopeForDynamicRobot(context, reference)	
+		}
+		super.getScope(context, reference)
+	}
 
 }

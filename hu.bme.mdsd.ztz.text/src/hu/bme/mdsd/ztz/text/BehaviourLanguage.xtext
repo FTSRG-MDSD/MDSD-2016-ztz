@@ -38,7 +38,7 @@ DynamicRobot returns DynamicRobot:
 	name=EString
 	'{'
 		'status' status=RobotStatus
-		'robot' robot=[drone::Robot|EString]
+		'robot' robot=[drone::Robot]
 		('executedTasks' '(' executedTasks+=[TaskExecution|EString] ( "," executedTasks+=[TaskExecution|EString])* ')' )?
 		('detectedObjects' '{' detectedObjects+=DetectedObject ( "," detectedObjects+=DetectedObject)* '}' )?
 		('collaborations' collaborations=RobotCollaboration)?
@@ -80,21 +80,21 @@ BehaviouralPropertyKeyContainer returns BehaviouralPropertyKeyContainer:
 EString returns ecore::EString:
 	STRING | ID;
 
-Robot returns drone::Robot:
-	'Robot'
-	name=EString
-	'{'
-		('tasks' '(' tasks+=[drone::Task|EString] ( "," tasks+=[drone::Task|EString])* ')' )?
-		('capabilities' '(' capabilities+=[drone::Capability|EString] ( "," capabilities+=[drone::Capability|EString])* ')' )?
-		'position' position=Position
-		'size' size=Size
-		('batteries' '{' batteries+=Battery ( "," batteries+=Battery)* '}' )?
-		('equipments' '{' equipments+=Equipment ( "," equipments+=Equipment)* '}' )?
-		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-		('communicationRange' communicationRange=MeasureValue)?
-		('weight' weight=MeasureValue)?
-		('capabilityProperties' '{' capabilityProperties+=CapabilityProperties ( "," capabilityProperties+=CapabilityProperties)* '}' )?
-	'}';
+//Robot returns drone::Robot:
+//	'Robot'
+//	name=EString
+//	'{'
+//		('tasks' '(' tasks+=[drone::Task|EString] ( "," tasks+=[drone::Task|EString])* ')' )?
+//		('capabilities' '(' capabilities+=[drone::Capability|EString] ( "," capabilities+=[drone::Capability|EString])* ')' )?
+//		'position' position=Position
+//		'size' size=Size
+//		('batteries' '{' batteries+=Battery ( "," batteries+=Battery)* '}' )?
+//		('equipments' '{' equipments+=Equipment ( "," equipments+=Equipment)* '}' )?
+//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+//		('communicationRange' communicationRange=MeasureValue)?
+//		('weight' weight=MeasureValue)?
+//		('capabilityProperties' '{' capabilityProperties+=CapabilityProperties ( "," capabilityProperties+=CapabilityProperties)* '}' )?
+//	'}';
 
 DetectedObject returns DetectedObject:
 	(obstacle?='obstacle')?
@@ -138,22 +138,22 @@ Position returns drone::Position:
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 	'}';
 
-Size returns drone::Size:
-	'Size'
-	'{'
-		'width' width=MeasureValue
-		'height' height=MeasureValue
-		'length' length=MeasureValue
-	'}';
+//Size returns drone::Size:
+//	'Size'
+//	'{'
+//		'width' width=MeasureValue
+//		'height' height=MeasureValue
+//		'length' length=MeasureValue
+//	'}';
 
-Battery returns drone::Battery:
-	'Battery'
-	'{'
-		'capacity' capacity=MeasureValue
-		'voltage' voltage=MeasureValue
-		'rechargeTime' rechargeTime=MeasureValue
-		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-	'}';
+//Battery returns drone::Battery:
+//	'Battery'
+//	'{'
+//		'capacity' capacity=MeasureValue
+//		'voltage' voltage=MeasureValue
+//		'rechargeTime' rechargeTime=MeasureValue
+//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+//	'}';
 
 Equipment returns drone::Equipment:
 	{drone::Equipment}
@@ -216,15 +216,15 @@ TaskDescriptor returns drone::TaskDescriptor:
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 	'}';
 
-AreaObject returns drone::AreaObject:
-	{drone::AreaObject}
-	'AreaObject'
-	name=EString
-	'{'
-		('positions' '{' positions+=Position ( "," positions+=Position)* '}' )?
-		('size' size=Size)?
-		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-	'}';
+//AreaObject returns drone::AreaObject:
+//	{drone::AreaObject}
+//	'AreaObject'
+//	name=EString
+//	'{'
+//		('positions' '{' positions+=Position ( "," positions+=Position)* '}' )?
+//		('size' size=Size)?
+//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+//	'}';
 
 PropertyKey returns drone::PropertyKey:
 	{drone::PropertyKey}

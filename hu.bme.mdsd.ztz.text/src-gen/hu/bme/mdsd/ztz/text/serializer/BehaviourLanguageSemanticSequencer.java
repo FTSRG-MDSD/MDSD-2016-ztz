@@ -17,8 +17,6 @@ import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
-import hu.bme.mdsd.ztz.model.drone.AreaObject;
-import hu.bme.mdsd.ztz.model.drone.Battery;
 import hu.bme.mdsd.ztz.model.drone.Capability;
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
 import hu.bme.mdsd.ztz.model.drone.Coordinate;
@@ -30,8 +28,6 @@ import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Position;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
-import hu.bme.mdsd.ztz.model.drone.Robot;
-import hu.bme.mdsd.ztz.model.drone.Size;
 import hu.bme.mdsd.ztz.model.drone.StringValue;
 import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
@@ -115,12 +111,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 			}
 		else if (epackage == DronePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case DronePackage.AREA_OBJECT:
-				sequence_AreaObject(context, (AreaObject) semanticObject); 
-				return; 
-			case DronePackage.BATTERY:
-				sequence_Battery(context, (Battery) semanticObject); 
-				return; 
 			case DronePackage.CAPABILITY:
 				sequence_Capability(context, (Capability) semanticObject); 
 				return; 
@@ -151,12 +141,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 			case DronePackage.PROPERTY_KEY:
 				sequence_PropertyKey(context, (PropertyKey) semanticObject); 
 				return; 
-			case DronePackage.ROBOT:
-				sequence_Robot(context, (Robot) semanticObject); 
-				return; 
-			case DronePackage.SIZE:
-				sequence_Size(context, (Size) semanticObject); 
-				return; 
 			case DronePackage.STRING_VALUE:
 				sequence_StringValue(context, (StringValue) semanticObject); 
 				return; 
@@ -180,30 +164,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     (name=EString currentTaskExecution=[TaskExecution|EString]? (properties+=Property properties+=Property*)?)
 	 */
 	protected void sequence_Action_Impl(ISerializationContext context, hu.bme.mdsd.ztz.model.behaviour.Action semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     AreaObject returns AreaObject
-	 *
-	 * Constraint:
-	 *     (name=EString (positions+=Position positions+=Position*)? size=Size? (properties+=Property properties+=Property*)?)
-	 */
-	protected void sequence_AreaObject(ISerializationContext context, AreaObject semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Battery returns Battery
-	 *
-	 * Constraint:
-	 *     (capacity=MeasureValue voltage=MeasureValue rechargeTime=MeasureValue (properties+=Property properties+=Property*)?)
-	 */
-	protected void sequence_Battery(ISerializationContext context, Battery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -352,7 +312,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     (
 	 *         name=EString 
 	 *         status=RobotStatus 
-	 *         robot=[Robot|EString] 
+	 *         robot=[Robot|ID] 
 	 *         (executedTasks+=[TaskExecution|EString] executedTasks+=[TaskExecution|EString]*)? 
 	 *         (detectedObjects+=DetectedObject detectedObjects+=DetectedObject*)? 
 	 *         collaborations=RobotCollaboration? 
@@ -545,54 +505,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 */
 	protected void sequence_RobotCollaboration(ISerializationContext context, RobotCollaboration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Robot returns Robot
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=EString 
-	 *         (tasks+=[Task|EString] tasks+=[Task|EString]*)? 
-	 *         (capabilities+=[Capability|EString] capabilities+=[Capability|EString]*)? 
-	 *         position=Position 
-	 *         size=Size 
-	 *         (batteries+=Battery batteries+=Battery*)? 
-	 *         (equipments+=Equipment equipments+=Equipment*)? 
-	 *         (properties+=Property properties+=Property*)? 
-	 *         communicationRange=MeasureValue? 
-	 *         weight=MeasureValue? 
-	 *         (capabilityProperties+=CapabilityProperties capabilityProperties+=CapabilityProperties*)?
-	 *     )
-	 */
-	protected void sequence_Robot(ISerializationContext context, Robot semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Size returns Size
-	 *
-	 * Constraint:
-	 *     (width=MeasureValue height=MeasureValue length=MeasureValue)
-	 */
-	protected void sequence_Size(ISerializationContext context, Size semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.SIZE__WIDTH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.SIZE__WIDTH));
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.SIZE__HEIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.SIZE__HEIGHT));
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.SIZE__LENGTH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.SIZE__LENGTH));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSizeAccess().getWidthMeasureValueParserRuleCall_3_0(), semanticObject.getWidth());
-		feeder.accept(grammarAccess.getSizeAccess().getHeightMeasureValueParserRuleCall_5_0(), semanticObject.getHeight());
-		feeder.accept(grammarAccess.getSizeAccess().getLengthMeasureValueParserRuleCall_7_0(), semanticObject.getLength());
-		feeder.finish();
 	}
 	
 	

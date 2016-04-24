@@ -11,6 +11,13 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import java.util.Iterator
 import org.eclipse.emf.common.util.URI
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
+import hu.bme.mdsd.ztz.model.drone.Robot
+import java.util.Map
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 
 /**
  * Generates code from your model files on save.
@@ -19,19 +26,47 @@ import hu.bme.mdsd.ztz.text.manager.ResourceManager
  */
 class BehaviourLanguageGenerator extends AbstractGenerator {
 
+	val String modelFolder = "../model/"
+
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		val manager = ResourceManager.instance
+
 		val Iterator<Import> iterator = resource.allContents.filter(typeof(Import))
 		if (iterator.hasNext) {
 			val Import imp = iterator.next
 			if (!imp.importURI.empty) {
-				val manager = ResourceManager.instance
 				if (!manager.importedModelPath.equals(imp.importURI)) {
 					
-					val URI modelPathUri = fsa.getURI("../model/" + imp.importURI)
-					manager.load(modelPathUri)
+					val URI modelPathUri = fsa.getURI(modelFolder + imp.importURI)
 					manager.importedModelPath = imp.importURI
+					manager.load(modelPathUri)
 				}
 			}
+		}
+		
+		val Iterator<BehaviourContainer> containerIterator = resource.allContents.filter(typeof(BehaviourContainer))
+		if (containerIterator.hasNext) {
+			val container = containerIterator.next()
+			
+//			container.dynamicRobots.get(0).robot = manager.resource.allContents.filter(typeof(Robot)).filter().next()  
+			
+			val Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE
+    		val Map<String, Object> m = reg.getExtensionToFactoryMap()
+    		m.put("behaviour", new XMIResourceFactoryImpl())
+			
+			val ResourceSet resourceSet = new ResourceSetImpl();
+
+			val resourceURI = fsa.getURI(modelFolder + "robots.behaviour")
+
+			val resourceOfBehaviour = resourceSet.createResource(resourceURI)
+			resourceOfBehaviour.getContents().clear();
+
+//			factory = RailwayFactory.eINSTANCE;
+//			val newContainer = BehaviourFactory.eINSTANCE.createBehaviourContainer()
+			resourceOfBehaviour.getContents().add(container);
+			
+			resourceOfBehaviour.save(null)
+			
 		}
 		
 	}

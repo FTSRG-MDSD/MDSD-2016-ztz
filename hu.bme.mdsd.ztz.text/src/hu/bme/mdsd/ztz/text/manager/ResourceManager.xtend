@@ -5,6 +5,8 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.common.util.URI
 import hu.bme.mdsd.ztz.model.drone.DronePackage
+import java.util.Map
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 
 class ResourceManager {
 	
@@ -14,6 +16,7 @@ class ResourceManager {
 	@Accessors(PUBLIC_GETTER)
 	var ResourceSetImpl resourceSet
 	
+	@Accessors(PUBLIC_GETTER)
 	var Resource resource
 	
 	var private static ResourceManager instance = null
@@ -32,17 +35,24 @@ class ResourceManager {
 	def load(URI resourceURI) {
 		print("load resource")
 		DronePackage.eINSTANCE.eClass()
-		println(resourceURI)
-		println(resourceSet)
+		
+		val Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE
+	    val Map<String, Object> m = reg.getExtensionToFactoryMap()
+	    m.put("drone", new XMIResourceFactoryImpl())
+		
 		if (resourceSet == null) {
 			resourceSet = new ResourceSetImpl()
 		}
 		resource = resourceSet.getResource(resourceURI, true)
 		
-		println(resource)
-		for (obj : resource.contents) {
-				println(obj)
+//		println(resource)
+		val iterator = resource.allContents
+		while (iterator.hasNext) {
+			println(iterator.next())			
 		}
+//		for (obj : resource.contents) {
+//				println(obj)
+//		}
 	}
 	
 	

@@ -3,7 +3,21 @@
  */
 package hu.bme.mdsd.ztz.text.scoping;
 
+import com.google.common.base.Objects;
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.drone.Robot;
+import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
+import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.scoping.AbstractBehaviourLanguageScopeProvider;
+import java.util.List;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 /**
  * This class contains custom scoping description.
@@ -13,4 +27,38 @@ import hu.bme.mdsd.ztz.text.scoping.AbstractBehaviourLanguageScopeProvider;
  */
 @SuppressWarnings("all")
 public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvider {
+  public IScope scopeForDynamicRobot(final DynamicRobot dynamicRobot, final EReference reference) {
+    IScope _xblockexpression = null;
+    {
+      final ResourceManager manager = ResourceManager.getInstance();
+      Resource _resource = manager.getResource();
+      boolean _notEquals = (!Objects.equal(_resource, null));
+      if (_notEquals) {
+        Resource _resource_1 = manager.getResource();
+        EList<EObject> _contents = _resource_1.getContents();
+        EObject _get = _contents.get(0);
+        final RobotMissionContainer container = ((RobotMissionContainer) _get);
+        EList<Robot> _robots = container.getRobots();
+        for (final Robot r : _robots) {
+          InputOutput.<Robot>println(r);
+        }
+        List<Robot> _allContentsOfType = EcoreUtil2.<Robot>getAllContentsOfType(container, Robot.class);
+        return Scopes.scopeFor(_allContentsOfType);
+      }
+      _xblockexpression = super.getScope(dynamicRobot, reference);
+    }
+    return _xblockexpression;
+  }
+  
+  @Override
+  public IScope getScope(final EObject context, final EReference reference) {
+    IScope _xblockexpression = null;
+    {
+      if ((context instanceof DynamicRobot)) {
+        return this.scopeForDynamicRobot(((DynamicRobot)context), reference);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
 }
