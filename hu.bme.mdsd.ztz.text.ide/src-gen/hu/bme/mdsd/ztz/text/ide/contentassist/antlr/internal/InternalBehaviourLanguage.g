@@ -993,7 +993,7 @@ rule__BehaviourLanguage__Group__2__Impl
 :
 (
 	{ before(grammarAccess.getBehaviourLanguageAccess().getStatementsAssignment_2()); }
-	(rule__BehaviourLanguage__StatementsAssignment_2)?
+	(rule__BehaviourLanguage__StatementsAssignment_2)*
 	{ after(grammarAccess.getBehaviourLanguageAccess().getStatementsAssignment_2()); }
 )
 ;
@@ -1101,9 +1101,9 @@ rule__BehaviourContainer__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBehaviourContainerAccess().getBehaviourContainerKeyword_1()); }
-	'BehaviourContainer'
-	{ after(grammarAccess.getBehaviourContainerAccess().getBehaviourContainerKeyword_1()); }
+	{ before(grammarAccess.getBehaviourContainerAccess().getDeclarationKeyword_1()); }
+	'Declaration'
+	{ after(grammarAccess.getBehaviourContainerAccess().getDeclarationKeyword_1()); }
 )
 ;
 finally {
@@ -1291,7 +1291,7 @@ rule__BehaviourContainer__Group_3__0__Impl
 :
 (
 	{ before(grammarAccess.getBehaviourContainerAccess().getDynamicRobotsKeyword_3_0()); }
-	'dynamicRobots'
+	'DynamicRobots'
 	{ after(grammarAccess.getBehaviourContainerAccess().getDynamicRobotsKeyword_3_0()); }
 )
 ;
@@ -1480,7 +1480,7 @@ rule__BehaviourContainer__Group_4__0__Impl
 :
 (
 	{ before(grammarAccess.getBehaviourContainerAccess().getTaskExecutionsKeyword_4_0()); }
-	'taskExecutions'
+	'TaskExecutions'
 	{ after(grammarAccess.getBehaviourContainerAccess().getTaskExecutionsKeyword_4_0()); }
 )
 ;
@@ -1669,7 +1669,7 @@ rule__BehaviourContainer__Group_5__0__Impl
 :
 (
 	{ before(grammarAccess.getBehaviourContainerAccess().getTaskRequirementsKeyword_5_0()); }
-	'taskRequirements'
+	'TaskRequirements'
 	{ after(grammarAccess.getBehaviourContainerAccess().getTaskRequirementsKeyword_5_0()); }
 )
 ;
@@ -1857,9 +1857,9 @@ rule__BehaviourContainer__Group_6__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBehaviourContainerAccess().getBehaviourKeysContainerKeyword_6_0()); }
-	'behaviourKeysContainer'
-	{ after(grammarAccess.getBehaviourContainerAccess().getBehaviourKeysContainerKeyword_6_0()); }
+	{ before(grammarAccess.getBehaviourContainerAccess().getKeysKeyword_6_0()); }
+	'Keys'
+	{ after(grammarAccess.getBehaviourContainerAccess().getKeysKeyword_6_0()); }
 )
 ;
 finally {

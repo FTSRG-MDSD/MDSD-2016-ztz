@@ -133,7 +133,7 @@ ruleBehaviourLanguage returns [EObject current=null]
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)?
+		)*
 	)
 ;
 
@@ -201,16 +201,16 @@ ruleBehaviourContainer returns [EObject current=null]
 					$current);
 			}
 		)
-		otherlv_1='BehaviourContainer'
+		otherlv_1='Declaration'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getBehaviourContainerAccess().getBehaviourContainerKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getBehaviourContainerAccess().getDeclarationKeyword_1());
 		}
 		otherlv_2='{'
 		{
 			newLeafNode(otherlv_2, grammarAccess.getBehaviourContainerAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
-			otherlv_3='dynamicRobots'
+			otherlv_3='DynamicRobots'
 			{
 				newLeafNode(otherlv_3, grammarAccess.getBehaviourContainerAccess().getDynamicRobotsKeyword_3_0());
 			}
@@ -268,7 +268,7 @@ ruleBehaviourContainer returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_9='taskExecutions'
+			otherlv_9='TaskExecutions'
 			{
 				newLeafNode(otherlv_9, grammarAccess.getBehaviourContainerAccess().getTaskExecutionsKeyword_4_0());
 			}
@@ -326,7 +326,7 @@ ruleBehaviourContainer returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_15='taskRequirements'
+			otherlv_15='TaskRequirements'
 			{
 				newLeafNode(otherlv_15, grammarAccess.getBehaviourContainerAccess().getTaskRequirementsKeyword_5_0());
 			}
@@ -384,9 +384,9 @@ ruleBehaviourContainer returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_21='behaviourKeysContainer'
+			otherlv_21='Keys'
 			{
-				newLeafNode(otherlv_21, grammarAccess.getBehaviourContainerAccess().getBehaviourKeysContainerKeyword_6_0());
+				newLeafNode(otherlv_21, grammarAccess.getBehaviourContainerAccess().getKeysKeyword_6_0());
 			}
 			(
 				(

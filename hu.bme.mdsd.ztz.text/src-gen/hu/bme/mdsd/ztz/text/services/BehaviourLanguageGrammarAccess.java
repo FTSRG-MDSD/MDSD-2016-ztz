@@ -40,10 +40,10 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//BehaviourLanguage:
 		//	importModel=Import
 		//	container=BehaviourContainer
-		//	statements+=Statement?;
+		//	statements+=Statement*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//importModel=Import container=BehaviourContainer statements+=Statement?
+		//importModel=Import container=BehaviourContainer statements+=Statement*
 		public Group getGroup() { return cGroup; }
 		
 		//importModel=Import
@@ -58,7 +58,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//BehaviourContainer
 		public RuleCall getContainerBehaviourContainerParserRuleCall_1_0() { return cContainerBehaviourContainerParserRuleCall_1_0; }
 		
-		//statements+=Statement?
+		//statements+=Statement*
 		public Assignment getStatementsAssignment_2() { return cStatementsAssignment_2; }
 		
 		//Statement
@@ -91,7 +91,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.BehaviourContainer");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cBehaviourContainerAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cBehaviourContainerKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cDeclarationKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cDynamicRobotsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
@@ -124,41 +124,40 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final RuleCall cTaskRequirementsTaskRequirementParserRuleCall_5_3_1_0 = (RuleCall)cTaskRequirementsAssignment_5_3_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cBehaviourKeysContainerKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cKeysKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Assignment cBehaviourKeysContainerAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final RuleCall cBehaviourKeysContainerBehaviouralPropertyKeyContainerParserRuleCall_6_1_0 = (RuleCall)cBehaviourKeysContainerAssignment_6_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//BehaviourContainer:
 		//	{BehaviourContainer}
-		//	'BehaviourContainer'
-		//	'{' ('dynamicRobots' '{' dynamicRobots+=DynamicRobot ("," dynamicRobots+=DynamicRobot)* '}')? ('taskExecutions' '{'
-		//	taskExecutions+=TaskExecution ("," taskExecutions+=TaskExecution)* '}')? ('taskRequirements' '{'
-		//	taskRequirements+=TaskRequirement ("," taskRequirements+=TaskRequirement)* '}')? ('behaviourKeysContainer'
+		//	'Declaration'
+		//	'{' ('DynamicRobots' '{' dynamicRobots+=DynamicRobot ("," dynamicRobots+=DynamicRobot)* '}')? ('TaskExecutions' '{'
+		//	taskExecutions+=TaskExecution ("," taskExecutions+=TaskExecution)* '}')? ('TaskRequirements' '{'
+		//	taskRequirements+=TaskRequirement ("," taskRequirements+=TaskRequirement)* '}')? ('Keys'
 		//	behaviourKeysContainer=BehaviouralPropertyKeyContainer)?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{BehaviourContainer} 'BehaviourContainer' '{' ('dynamicRobots' '{' dynamicRobots+=DynamicRobot (","
-		//dynamicRobots+=DynamicRobot)* '}')? ('taskExecutions' '{' taskExecutions+=TaskExecution (","
-		//taskExecutions+=TaskExecution)* '}')? ('taskRequirements' '{' taskRequirements+=TaskRequirement (","
-		//taskRequirements+=TaskRequirement)* '}')? ('behaviourKeysContainer'
-		//behaviourKeysContainer=BehaviouralPropertyKeyContainer)? '}'
+		//{BehaviourContainer} 'Declaration' '{' ('DynamicRobots' '{' dynamicRobots+=DynamicRobot (","
+		//dynamicRobots+=DynamicRobot)* '}')? ('TaskExecutions' '{' taskExecutions+=TaskExecution (","
+		//taskExecutions+=TaskExecution)* '}')? ('TaskRequirements' '{' taskRequirements+=TaskRequirement (","
+		//taskRequirements+=TaskRequirement)* '}')? ('Keys' behaviourKeysContainer=BehaviouralPropertyKeyContainer)? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{BehaviourContainer}
 		public Action getBehaviourContainerAction_0() { return cBehaviourContainerAction_0; }
 		
-		//'BehaviourContainer'
-		public Keyword getBehaviourContainerKeyword_1() { return cBehaviourContainerKeyword_1; }
+		//'Declaration'
+		public Keyword getDeclarationKeyword_1() { return cDeclarationKeyword_1; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//('dynamicRobots' '{' dynamicRobots+=DynamicRobot ("," dynamicRobots+=DynamicRobot)* '}')?
+		//('DynamicRobots' '{' dynamicRobots+=DynamicRobot ("," dynamicRobots+=DynamicRobot)* '}')?
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//'dynamicRobots'
+		//'DynamicRobots'
 		public Keyword getDynamicRobotsKeyword_3_0() { return cDynamicRobotsKeyword_3_0; }
 		
 		//'{'
@@ -185,10 +184,10 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_4() { return cRightCurlyBracketKeyword_3_4; }
 		
-		//('taskExecutions' '{' taskExecutions+=TaskExecution ("," taskExecutions+=TaskExecution)* '}')?
+		//('TaskExecutions' '{' taskExecutions+=TaskExecution ("," taskExecutions+=TaskExecution)* '}')?
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//'taskExecutions'
+		//'TaskExecutions'
 		public Keyword getTaskExecutionsKeyword_4_0() { return cTaskExecutionsKeyword_4_0; }
 		
 		//'{'
@@ -215,10 +214,10 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
 		
-		//('taskRequirements' '{' taskRequirements+=TaskRequirement ("," taskRequirements+=TaskRequirement)* '}')?
+		//('TaskRequirements' '{' taskRequirements+=TaskRequirement ("," taskRequirements+=TaskRequirement)* '}')?
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//'taskRequirements'
+		//'TaskRequirements'
 		public Keyword getTaskRequirementsKeyword_5_0() { return cTaskRequirementsKeyword_5_0; }
 		
 		//'{'
@@ -245,11 +244,11 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_4() { return cRightCurlyBracketKeyword_5_4; }
 		
-		//('behaviourKeysContainer' behaviourKeysContainer=BehaviouralPropertyKeyContainer)?
+		//('Keys' behaviourKeysContainer=BehaviouralPropertyKeyContainer)?
 		public Group getGroup_6() { return cGroup_6; }
 		
-		//'behaviourKeysContainer'
-		public Keyword getBehaviourKeysContainerKeyword_6_0() { return cBehaviourKeysContainerKeyword_6_0; }
+		//'Keys'
+		public Keyword getKeysKeyword_6_0() { return cKeysKeyword_6_0; }
 		
 		//behaviourKeysContainer=BehaviouralPropertyKeyContainer
 		public Assignment getBehaviourKeysContainerAssignment_6_1() { return cBehaviourKeysContainerAssignment_6_1; }
@@ -2663,7 +2662,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	//BehaviourLanguage:
 	//	importModel=Import
 	//	container=BehaviourContainer
-	//	statements+=Statement?;
+	//	statements+=Statement*;
 	public BehaviourLanguageElements getBehaviourLanguageAccess() {
 		return pBehaviourLanguage;
 	}
@@ -2684,10 +2683,10 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	//BehaviourContainer:
 	//	{BehaviourContainer}
-	//	'BehaviourContainer'
-	//	'{' ('dynamicRobots' '{' dynamicRobots+=DynamicRobot ("," dynamicRobots+=DynamicRobot)* '}')? ('taskExecutions' '{'
-	//	taskExecutions+=TaskExecution ("," taskExecutions+=TaskExecution)* '}')? ('taskRequirements' '{'
-	//	taskRequirements+=TaskRequirement ("," taskRequirements+=TaskRequirement)* '}')? ('behaviourKeysContainer'
+	//	'Declaration'
+	//	'{' ('DynamicRobots' '{' dynamicRobots+=DynamicRobot ("," dynamicRobots+=DynamicRobot)* '}')? ('TaskExecutions' '{'
+	//	taskExecutions+=TaskExecution ("," taskExecutions+=TaskExecution)* '}')? ('TaskRequirements' '{'
+	//	taskRequirements+=TaskRequirement ("," taskRequirements+=TaskRequirement)* '}')? ('Keys'
 	//	behaviourKeysContainer=BehaviouralPropertyKeyContainer)?
 	//	'}';
 	public BehaviourContainerElements getBehaviourContainerAccess() {

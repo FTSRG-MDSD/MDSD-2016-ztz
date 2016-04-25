@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalBehaviourLanguageParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'EDate'", "'E'", "'e'", "'Ready'", "'Finished'", "'Suspended'", "'InProgress'", "'Waiting'", "'import'", "'BehaviourContainer'", "'{'", "'}'", "'dynamicRobots'", "','", "'taskExecutions'", "'taskRequirements'", "'behaviourKeysContainer'", "':'", "'do'", "'->'", "'send'", "'know'", "'('", "')'", "'status'", "'task'", "'executors'", "'requirement'", "'executionTime'", "'TaskRequirement'", "'participants'", "'taskExecution'", "'prerequisite'", "'requiredCapabilities'", "'properties'", "'capabilityProperties'", "'BehaviouralPropertyKeyContainer'", "'keys'", "'Property'", "'key'", "'value'", "'MeasureValue'", "'dimension'", "'CapabilityProperties'", "'capability'", "'-'", "'.'", "'PropertyKey'", "'StringValue'", "'timestamp'", "'involvedTaskExecutions'", "'referredObjects'", "'follows'", "'TTL'", "'*'", "'needResponse'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'EDate'", "'E'", "'e'", "'Ready'", "'Finished'", "'Suspended'", "'InProgress'", "'Waiting'", "'import'", "'Declaration'", "'{'", "'}'", "'DynamicRobots'", "','", "'TaskExecutions'", "'TaskRequirements'", "'Keys'", "':'", "'do'", "'->'", "'send'", "'know'", "'('", "')'", "'status'", "'task'", "'executors'", "'requirement'", "'executionTime'", "'TaskRequirement'", "'participants'", "'taskExecution'", "'prerequisite'", "'requiredCapabilities'", "'properties'", "'capabilityProperties'", "'BehaviouralPropertyKeyContainer'", "'keys'", "'Property'", "'key'", "'value'", "'MeasureValue'", "'dimension'", "'CapabilityProperties'", "'capability'", "'-'", "'.'", "'PropertyKey'", "'StringValue'", "'timestamp'", "'involvedTaskExecutions'", "'referredObjects'", "'follows'", "'TTL'", "'*'", "'needResponse'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -2409,6 +2409,11 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
 
             if ( (LA2_0==RULE_ID) ) {
                 switch ( input.LA(2) ) {
+                case 31:
+                    {
+                    alt2=2;
+                    }
+                    break;
                 case 29:
                     {
                     alt2=1;
@@ -2417,11 +2422,6 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
                 case 32:
                     {
                     alt2=3;
-                    }
-                    break;
-                case 31:
-                    {
-                    alt2=2;
                     }
                     break;
                 default:
@@ -3131,40 +3131,47 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__BehaviourLanguage__Group__2__Impl"
-    // InternalBehaviourLanguage.g:989:1: rule__BehaviourLanguage__Group__2__Impl : ( ( rule__BehaviourLanguage__StatementsAssignment_2 )? ) ;
+    // InternalBehaviourLanguage.g:989:1: rule__BehaviourLanguage__Group__2__Impl : ( ( rule__BehaviourLanguage__StatementsAssignment_2 )* ) ;
     public final void rule__BehaviourLanguage__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBehaviourLanguage.g:993:1: ( ( ( rule__BehaviourLanguage__StatementsAssignment_2 )? ) )
-            // InternalBehaviourLanguage.g:994:1: ( ( rule__BehaviourLanguage__StatementsAssignment_2 )? )
+            // InternalBehaviourLanguage.g:993:1: ( ( ( rule__BehaviourLanguage__StatementsAssignment_2 )* ) )
+            // InternalBehaviourLanguage.g:994:1: ( ( rule__BehaviourLanguage__StatementsAssignment_2 )* )
             {
-            // InternalBehaviourLanguage.g:994:1: ( ( rule__BehaviourLanguage__StatementsAssignment_2 )? )
-            // InternalBehaviourLanguage.g:995:2: ( rule__BehaviourLanguage__StatementsAssignment_2 )?
+            // InternalBehaviourLanguage.g:994:1: ( ( rule__BehaviourLanguage__StatementsAssignment_2 )* )
+            // InternalBehaviourLanguage.g:995:2: ( rule__BehaviourLanguage__StatementsAssignment_2 )*
             {
              before(grammarAccess.getBehaviourLanguageAccess().getStatementsAssignment_2()); 
-            // InternalBehaviourLanguage.g:996:2: ( rule__BehaviourLanguage__StatementsAssignment_2 )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // InternalBehaviourLanguage.g:996:2: ( rule__BehaviourLanguage__StatementsAssignment_2 )*
+            loop7:
+            do {
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-            if ( (LA7_0==RULE_ID) ) {
-                alt7=1;
-            }
-            switch (alt7) {
-                case 1 :
-                    // InternalBehaviourLanguage.g:996:3: rule__BehaviourLanguage__StatementsAssignment_2
-                    {
-                    pushFollow(FOLLOW_2);
-                    rule__BehaviourLanguage__StatementsAssignment_2();
-
-                    state._fsp--;
+                if ( (LA7_0==RULE_ID) ) {
+                    alt7=1;
+                }
 
 
-                    }
-                    break;
+                switch (alt7) {
+            	case 1 :
+            	    // InternalBehaviourLanguage.g:996:3: rule__BehaviourLanguage__StatementsAssignment_2
+            	    {
+            	    pushFollow(FOLLOW_5);
+            	    rule__BehaviourLanguage__StatementsAssignment_2();
 
-            }
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop7;
+                }
+            } while (true);
 
              after(grammarAccess.getBehaviourLanguageAccess().getStatementsAssignment_2()); 
 
@@ -3198,7 +3205,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1009:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
             // InternalBehaviourLanguage.g:1010:2: rule__Import__Group__0__Impl rule__Import__Group__1
             {
-            pushFollow(FOLLOW_5);
+            pushFollow(FOLLOW_6);
             rule__Import__Group__0__Impl();
 
             state._fsp--;
@@ -3428,7 +3435,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1090:1: ( rule__BehaviourContainer__Group__1__Impl rule__BehaviourContainer__Group__2 )
             // InternalBehaviourLanguage.g:1091:2: rule__BehaviourContainer__Group__1__Impl rule__BehaviourContainer__Group__2
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__BehaviourContainer__Group__1__Impl();
 
             state._fsp--;
@@ -3457,21 +3464,21 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__BehaviourContainer__Group__1__Impl"
-    // InternalBehaviourLanguage.g:1098:1: rule__BehaviourContainer__Group__1__Impl : ( 'BehaviourContainer' ) ;
+    // InternalBehaviourLanguage.g:1098:1: rule__BehaviourContainer__Group__1__Impl : ( 'Declaration' ) ;
     public final void rule__BehaviourContainer__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBehaviourLanguage.g:1102:1: ( ( 'BehaviourContainer' ) )
-            // InternalBehaviourLanguage.g:1103:1: ( 'BehaviourContainer' )
+            // InternalBehaviourLanguage.g:1102:1: ( ( 'Declaration' ) )
+            // InternalBehaviourLanguage.g:1103:1: ( 'Declaration' )
             {
-            // InternalBehaviourLanguage.g:1103:1: ( 'BehaviourContainer' )
-            // InternalBehaviourLanguage.g:1104:2: 'BehaviourContainer'
+            // InternalBehaviourLanguage.g:1103:1: ( 'Declaration' )
+            // InternalBehaviourLanguage.g:1104:2: 'Declaration'
             {
-             before(grammarAccess.getBehaviourContainerAccess().getBehaviourContainerKeyword_1()); 
+             before(grammarAccess.getBehaviourContainerAccess().getDeclarationKeyword_1()); 
             match(input,20,FOLLOW_2); 
-             after(grammarAccess.getBehaviourContainerAccess().getBehaviourContainerKeyword_1()); 
+             after(grammarAccess.getBehaviourContainerAccess().getDeclarationKeyword_1()); 
 
             }
 
@@ -3503,7 +3510,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1117:1: ( rule__BehaviourContainer__Group__2__Impl rule__BehaviourContainer__Group__3 )
             // InternalBehaviourLanguage.g:1118:2: rule__BehaviourContainer__Group__2__Impl rule__BehaviourContainer__Group__3
             {
-            pushFollow(FOLLOW_7);
+            pushFollow(FOLLOW_8);
             rule__BehaviourContainer__Group__2__Impl();
 
             state._fsp--;
@@ -3578,7 +3585,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1144:1: ( rule__BehaviourContainer__Group__3__Impl rule__BehaviourContainer__Group__4 )
             // InternalBehaviourLanguage.g:1145:2: rule__BehaviourContainer__Group__3__Impl rule__BehaviourContainer__Group__4
             {
-            pushFollow(FOLLOW_7);
+            pushFollow(FOLLOW_8);
             rule__BehaviourContainer__Group__3__Impl();
 
             state._fsp--;
@@ -3674,7 +3681,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1171:1: ( rule__BehaviourContainer__Group__4__Impl rule__BehaviourContainer__Group__5 )
             // InternalBehaviourLanguage.g:1172:2: rule__BehaviourContainer__Group__4__Impl rule__BehaviourContainer__Group__5
             {
-            pushFollow(FOLLOW_7);
+            pushFollow(FOLLOW_8);
             rule__BehaviourContainer__Group__4__Impl();
 
             state._fsp--;
@@ -3770,7 +3777,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1198:1: ( rule__BehaviourContainer__Group__5__Impl rule__BehaviourContainer__Group__6 )
             // InternalBehaviourLanguage.g:1199:2: rule__BehaviourContainer__Group__5__Impl rule__BehaviourContainer__Group__6
             {
-            pushFollow(FOLLOW_7);
+            pushFollow(FOLLOW_8);
             rule__BehaviourContainer__Group__5__Impl();
 
             state._fsp--;
@@ -3866,7 +3873,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1225:1: ( rule__BehaviourContainer__Group__6__Impl rule__BehaviourContainer__Group__7 )
             // InternalBehaviourLanguage.g:1226:2: rule__BehaviourContainer__Group__6__Impl rule__BehaviourContainer__Group__7
             {
-            pushFollow(FOLLOW_7);
+            pushFollow(FOLLOW_8);
             rule__BehaviourContainer__Group__6__Impl();
 
             state._fsp--;
@@ -4032,7 +4039,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1279:1: ( rule__BehaviourContainer__Group_3__0__Impl rule__BehaviourContainer__Group_3__1 )
             // InternalBehaviourLanguage.g:1280:2: rule__BehaviourContainer__Group_3__0__Impl rule__BehaviourContainer__Group_3__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__BehaviourContainer__Group_3__0__Impl();
 
             state._fsp--;
@@ -4061,17 +4068,17 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__BehaviourContainer__Group_3__0__Impl"
-    // InternalBehaviourLanguage.g:1287:1: rule__BehaviourContainer__Group_3__0__Impl : ( 'dynamicRobots' ) ;
+    // InternalBehaviourLanguage.g:1287:1: rule__BehaviourContainer__Group_3__0__Impl : ( 'DynamicRobots' ) ;
     public final void rule__BehaviourContainer__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBehaviourLanguage.g:1291:1: ( ( 'dynamicRobots' ) )
-            // InternalBehaviourLanguage.g:1292:1: ( 'dynamicRobots' )
+            // InternalBehaviourLanguage.g:1291:1: ( ( 'DynamicRobots' ) )
+            // InternalBehaviourLanguage.g:1292:1: ( 'DynamicRobots' )
             {
-            // InternalBehaviourLanguage.g:1292:1: ( 'dynamicRobots' )
-            // InternalBehaviourLanguage.g:1293:2: 'dynamicRobots'
+            // InternalBehaviourLanguage.g:1292:1: ( 'DynamicRobots' )
+            // InternalBehaviourLanguage.g:1293:2: 'DynamicRobots'
             {
              before(grammarAccess.getBehaviourContainerAccess().getDynamicRobotsKeyword_3_0()); 
             match(input,23,FOLLOW_2); 
@@ -4107,7 +4114,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1306:1: ( rule__BehaviourContainer__Group_3__1__Impl rule__BehaviourContainer__Group_3__2 )
             // InternalBehaviourLanguage.g:1307:2: rule__BehaviourContainer__Group_3__1__Impl rule__BehaviourContainer__Group_3__2
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__BehaviourContainer__Group_3__1__Impl();
 
             state._fsp--;
@@ -4182,7 +4189,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1333:1: ( rule__BehaviourContainer__Group_3__2__Impl rule__BehaviourContainer__Group_3__3 )
             // InternalBehaviourLanguage.g:1334:2: rule__BehaviourContainer__Group_3__2__Impl rule__BehaviourContainer__Group_3__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__BehaviourContainer__Group_3__2__Impl();
 
             state._fsp--;
@@ -4267,7 +4274,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1360:1: ( rule__BehaviourContainer__Group_3__3__Impl rule__BehaviourContainer__Group_3__4 )
             // InternalBehaviourLanguage.g:1361:2: rule__BehaviourContainer__Group_3__3__Impl rule__BehaviourContainer__Group_3__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__BehaviourContainer__Group_3__3__Impl();
 
             state._fsp--;
@@ -4324,7 +4331,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:1375:3: rule__BehaviourContainer__Group_3_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__BehaviourContainer__Group_3_3__0();
 
             	    state._fsp--;
@@ -4440,7 +4447,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1414:1: ( rule__BehaviourContainer__Group_3_3__0__Impl rule__BehaviourContainer__Group_3_3__1 )
             // InternalBehaviourLanguage.g:1415:2: rule__BehaviourContainer__Group_3_3__0__Impl rule__BehaviourContainer__Group_3_3__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__BehaviourContainer__Group_3_3__0__Impl();
 
             state._fsp--;
@@ -4595,7 +4602,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1468:1: ( rule__BehaviourContainer__Group_4__0__Impl rule__BehaviourContainer__Group_4__1 )
             // InternalBehaviourLanguage.g:1469:2: rule__BehaviourContainer__Group_4__0__Impl rule__BehaviourContainer__Group_4__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__BehaviourContainer__Group_4__0__Impl();
 
             state._fsp--;
@@ -4624,17 +4631,17 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__BehaviourContainer__Group_4__0__Impl"
-    // InternalBehaviourLanguage.g:1476:1: rule__BehaviourContainer__Group_4__0__Impl : ( 'taskExecutions' ) ;
+    // InternalBehaviourLanguage.g:1476:1: rule__BehaviourContainer__Group_4__0__Impl : ( 'TaskExecutions' ) ;
     public final void rule__BehaviourContainer__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBehaviourLanguage.g:1480:1: ( ( 'taskExecutions' ) )
-            // InternalBehaviourLanguage.g:1481:1: ( 'taskExecutions' )
+            // InternalBehaviourLanguage.g:1480:1: ( ( 'TaskExecutions' ) )
+            // InternalBehaviourLanguage.g:1481:1: ( 'TaskExecutions' )
             {
-            // InternalBehaviourLanguage.g:1481:1: ( 'taskExecutions' )
-            // InternalBehaviourLanguage.g:1482:2: 'taskExecutions'
+            // InternalBehaviourLanguage.g:1481:1: ( 'TaskExecutions' )
+            // InternalBehaviourLanguage.g:1482:2: 'TaskExecutions'
             {
              before(grammarAccess.getBehaviourContainerAccess().getTaskExecutionsKeyword_4_0()); 
             match(input,25,FOLLOW_2); 
@@ -4670,7 +4677,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1495:1: ( rule__BehaviourContainer__Group_4__1__Impl rule__BehaviourContainer__Group_4__2 )
             // InternalBehaviourLanguage.g:1496:2: rule__BehaviourContainer__Group_4__1__Impl rule__BehaviourContainer__Group_4__2
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__BehaviourContainer__Group_4__1__Impl();
 
             state._fsp--;
@@ -4745,7 +4752,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1522:1: ( rule__BehaviourContainer__Group_4__2__Impl rule__BehaviourContainer__Group_4__3 )
             // InternalBehaviourLanguage.g:1523:2: rule__BehaviourContainer__Group_4__2__Impl rule__BehaviourContainer__Group_4__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__BehaviourContainer__Group_4__2__Impl();
 
             state._fsp--;
@@ -4830,7 +4837,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1549:1: ( rule__BehaviourContainer__Group_4__3__Impl rule__BehaviourContainer__Group_4__4 )
             // InternalBehaviourLanguage.g:1550:2: rule__BehaviourContainer__Group_4__3__Impl rule__BehaviourContainer__Group_4__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__BehaviourContainer__Group_4__3__Impl();
 
             state._fsp--;
@@ -4887,7 +4894,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:1564:3: rule__BehaviourContainer__Group_4_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__BehaviourContainer__Group_4_3__0();
 
             	    state._fsp--;
@@ -5003,7 +5010,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1603:1: ( rule__BehaviourContainer__Group_4_3__0__Impl rule__BehaviourContainer__Group_4_3__1 )
             // InternalBehaviourLanguage.g:1604:2: rule__BehaviourContainer__Group_4_3__0__Impl rule__BehaviourContainer__Group_4_3__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__BehaviourContainer__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -5158,7 +5165,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1657:1: ( rule__BehaviourContainer__Group_5__0__Impl rule__BehaviourContainer__Group_5__1 )
             // InternalBehaviourLanguage.g:1658:2: rule__BehaviourContainer__Group_5__0__Impl rule__BehaviourContainer__Group_5__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__BehaviourContainer__Group_5__0__Impl();
 
             state._fsp--;
@@ -5187,17 +5194,17 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__BehaviourContainer__Group_5__0__Impl"
-    // InternalBehaviourLanguage.g:1665:1: rule__BehaviourContainer__Group_5__0__Impl : ( 'taskRequirements' ) ;
+    // InternalBehaviourLanguage.g:1665:1: rule__BehaviourContainer__Group_5__0__Impl : ( 'TaskRequirements' ) ;
     public final void rule__BehaviourContainer__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBehaviourLanguage.g:1669:1: ( ( 'taskRequirements' ) )
-            // InternalBehaviourLanguage.g:1670:1: ( 'taskRequirements' )
+            // InternalBehaviourLanguage.g:1669:1: ( ( 'TaskRequirements' ) )
+            // InternalBehaviourLanguage.g:1670:1: ( 'TaskRequirements' )
             {
-            // InternalBehaviourLanguage.g:1670:1: ( 'taskRequirements' )
-            // InternalBehaviourLanguage.g:1671:2: 'taskRequirements'
+            // InternalBehaviourLanguage.g:1670:1: ( 'TaskRequirements' )
+            // InternalBehaviourLanguage.g:1671:2: 'TaskRequirements'
             {
              before(grammarAccess.getBehaviourContainerAccess().getTaskRequirementsKeyword_5_0()); 
             match(input,26,FOLLOW_2); 
@@ -5233,7 +5240,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1684:1: ( rule__BehaviourContainer__Group_5__1__Impl rule__BehaviourContainer__Group_5__2 )
             // InternalBehaviourLanguage.g:1685:2: rule__BehaviourContainer__Group_5__1__Impl rule__BehaviourContainer__Group_5__2
             {
-            pushFollow(FOLLOW_11);
+            pushFollow(FOLLOW_12);
             rule__BehaviourContainer__Group_5__1__Impl();
 
             state._fsp--;
@@ -5308,7 +5315,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1711:1: ( rule__BehaviourContainer__Group_5__2__Impl rule__BehaviourContainer__Group_5__3 )
             // InternalBehaviourLanguage.g:1712:2: rule__BehaviourContainer__Group_5__2__Impl rule__BehaviourContainer__Group_5__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__BehaviourContainer__Group_5__2__Impl();
 
             state._fsp--;
@@ -5393,7 +5400,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1738:1: ( rule__BehaviourContainer__Group_5__3__Impl rule__BehaviourContainer__Group_5__4 )
             // InternalBehaviourLanguage.g:1739:2: rule__BehaviourContainer__Group_5__3__Impl rule__BehaviourContainer__Group_5__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__BehaviourContainer__Group_5__3__Impl();
 
             state._fsp--;
@@ -5450,7 +5457,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:1753:3: rule__BehaviourContainer__Group_5_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__BehaviourContainer__Group_5_3__0();
 
             	    state._fsp--;
@@ -5566,7 +5573,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1792:1: ( rule__BehaviourContainer__Group_5_3__0__Impl rule__BehaviourContainer__Group_5_3__1 )
             // InternalBehaviourLanguage.g:1793:2: rule__BehaviourContainer__Group_5_3__0__Impl rule__BehaviourContainer__Group_5_3__1
             {
-            pushFollow(FOLLOW_11);
+            pushFollow(FOLLOW_12);
             rule__BehaviourContainer__Group_5_3__0__Impl();
 
             state._fsp--;
@@ -5721,7 +5728,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1846:1: ( rule__BehaviourContainer__Group_6__0__Impl rule__BehaviourContainer__Group_6__1 )
             // InternalBehaviourLanguage.g:1847:2: rule__BehaviourContainer__Group_6__0__Impl rule__BehaviourContainer__Group_6__1
             {
-            pushFollow(FOLLOW_12);
+            pushFollow(FOLLOW_13);
             rule__BehaviourContainer__Group_6__0__Impl();
 
             state._fsp--;
@@ -5750,21 +5757,21 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__BehaviourContainer__Group_6__0__Impl"
-    // InternalBehaviourLanguage.g:1854:1: rule__BehaviourContainer__Group_6__0__Impl : ( 'behaviourKeysContainer' ) ;
+    // InternalBehaviourLanguage.g:1854:1: rule__BehaviourContainer__Group_6__0__Impl : ( 'Keys' ) ;
     public final void rule__BehaviourContainer__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBehaviourLanguage.g:1858:1: ( ( 'behaviourKeysContainer' ) )
-            // InternalBehaviourLanguage.g:1859:1: ( 'behaviourKeysContainer' )
+            // InternalBehaviourLanguage.g:1858:1: ( ( 'Keys' ) )
+            // InternalBehaviourLanguage.g:1859:1: ( 'Keys' )
             {
-            // InternalBehaviourLanguage.g:1859:1: ( 'behaviourKeysContainer' )
-            // InternalBehaviourLanguage.g:1860:2: 'behaviourKeysContainer'
+            // InternalBehaviourLanguage.g:1859:1: ( 'Keys' )
+            // InternalBehaviourLanguage.g:1860:2: 'Keys'
             {
-             before(grammarAccess.getBehaviourContainerAccess().getBehaviourKeysContainerKeyword_6_0()); 
+             before(grammarAccess.getBehaviourContainerAccess().getKeysKeyword_6_0()); 
             match(input,27,FOLLOW_2); 
-             after(grammarAccess.getBehaviourContainerAccess().getBehaviourKeysContainerKeyword_6_0()); 
+             after(grammarAccess.getBehaviourContainerAccess().getKeysKeyword_6_0()); 
 
             }
 
@@ -5876,7 +5883,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1900:1: ( rule__DynamicRobot__Group__0__Impl rule__DynamicRobot__Group__1 )
             // InternalBehaviourLanguage.g:1901:2: rule__DynamicRobot__Group__0__Impl rule__DynamicRobot__Group__1
             {
-            pushFollow(FOLLOW_13);
+            pushFollow(FOLLOW_14);
             rule__DynamicRobot__Group__0__Impl();
 
             state._fsp--;
@@ -6116,7 +6123,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:1981:1: ( rule__ActionStatement__Group__0__Impl rule__ActionStatement__Group__1 )
             // InternalBehaviourLanguage.g:1982:2: rule__ActionStatement__Group__0__Impl rule__ActionStatement__Group__1
             {
-            pushFollow(FOLLOW_14);
+            pushFollow(FOLLOW_15);
             rule__ActionStatement__Group__0__Impl();
 
             state._fsp--;
@@ -6201,7 +6208,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2008:1: ( rule__ActionStatement__Group__1__Impl rule__ActionStatement__Group__2 )
             // InternalBehaviourLanguage.g:2009:2: rule__ActionStatement__Group__1__Impl rule__ActionStatement__Group__2
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__ActionStatement__Group__1__Impl();
 
             state._fsp--;
@@ -6276,7 +6283,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2035:1: ( rule__ActionStatement__Group__2__Impl rule__ActionStatement__Group__3 )
             // InternalBehaviourLanguage.g:2036:2: rule__ActionStatement__Group__2__Impl rule__ActionStatement__Group__3
             {
-            pushFollow(FOLLOW_15);
+            pushFollow(FOLLOW_16);
             rule__ActionStatement__Group__2__Impl();
 
             state._fsp--;
@@ -6413,7 +6420,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:2076:3: rule__ActionStatement__Group_3__0
             	    {
-            	    pushFollow(FOLLOW_16);
+            	    pushFollow(FOLLOW_17);
             	    rule__ActionStatement__Group_3__0();
 
             	    state._fsp--;
@@ -6459,7 +6466,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2089:1: ( rule__ActionStatement__Group_3__0__Impl rule__ActionStatement__Group_3__1 )
             // InternalBehaviourLanguage.g:2090:2: rule__ActionStatement__Group_3__0__Impl rule__ActionStatement__Group_3__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__ActionStatement__Group_3__0__Impl();
 
             state._fsp--;
@@ -6614,7 +6621,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2143:1: ( rule__MessageStatement__Group__0__Impl rule__MessageStatement__Group__1 )
             // InternalBehaviourLanguage.g:2144:2: rule__MessageStatement__Group__0__Impl rule__MessageStatement__Group__1
             {
-            pushFollow(FOLLOW_17);
+            pushFollow(FOLLOW_18);
             rule__MessageStatement__Group__0__Impl();
 
             state._fsp--;
@@ -6699,7 +6706,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2170:1: ( rule__MessageStatement__Group__1__Impl rule__MessageStatement__Group__2 )
             // InternalBehaviourLanguage.g:2171:2: rule__MessageStatement__Group__1__Impl rule__MessageStatement__Group__2
             {
-            pushFollow(FOLLOW_18);
+            pushFollow(FOLLOW_19);
             rule__MessageStatement__Group__1__Impl();
 
             state._fsp--;
@@ -6774,7 +6781,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2197:1: ( rule__MessageStatement__Group__2__Impl rule__MessageStatement__Group__3 )
             // InternalBehaviourLanguage.g:2198:2: rule__MessageStatement__Group__2__Impl rule__MessageStatement__Group__3
             {
-            pushFollow(FOLLOW_19);
+            pushFollow(FOLLOW_20);
             rule__MessageStatement__Group__2__Impl();
 
             state._fsp--;
@@ -6939,7 +6946,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2251:1: ( rule__CollaborationStatement__Group__0__Impl rule__CollaborationStatement__Group__1 )
             // InternalBehaviourLanguage.g:2252:2: rule__CollaborationStatement__Group__0__Impl rule__CollaborationStatement__Group__1
             {
-            pushFollow(FOLLOW_20);
+            pushFollow(FOLLOW_21);
             rule__CollaborationStatement__Group__0__Impl();
 
             state._fsp--;
@@ -7254,7 +7261,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2359:1: ( rule__MultiTarget__Group__1__Impl rule__MultiTarget__Group__2 )
             // InternalBehaviourLanguage.g:2360:2: rule__MultiTarget__Group__1__Impl rule__MultiTarget__Group__2
             {
-            pushFollow(FOLLOW_21);
+            pushFollow(FOLLOW_22);
             rule__MultiTarget__Group__1__Impl();
 
             state._fsp--;
@@ -7409,7 +7416,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2413:1: ( rule__TaskExecution__Group__0__Impl rule__TaskExecution__Group__1 )
             // InternalBehaviourLanguage.g:2414:2: rule__TaskExecution__Group__0__Impl rule__TaskExecution__Group__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__TaskExecution__Group__0__Impl();
 
             state._fsp--;
@@ -7494,7 +7501,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2440:1: ( rule__TaskExecution__Group__1__Impl rule__TaskExecution__Group__2 )
             // InternalBehaviourLanguage.g:2441:2: rule__TaskExecution__Group__1__Impl rule__TaskExecution__Group__2
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_23);
             rule__TaskExecution__Group__1__Impl();
 
             state._fsp--;
@@ -7569,7 +7576,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2467:1: ( rule__TaskExecution__Group__2__Impl rule__TaskExecution__Group__3 )
             // InternalBehaviourLanguage.g:2468:2: rule__TaskExecution__Group__2__Impl rule__TaskExecution__Group__3
             {
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_24);
             rule__TaskExecution__Group__2__Impl();
 
             state._fsp--;
@@ -7644,7 +7651,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2494:1: ( rule__TaskExecution__Group__3__Impl rule__TaskExecution__Group__4 )
             // InternalBehaviourLanguage.g:2495:2: rule__TaskExecution__Group__3__Impl rule__TaskExecution__Group__4
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__TaskExecution__Group__3__Impl();
 
             state._fsp--;
@@ -7729,7 +7736,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2521:1: ( rule__TaskExecution__Group__4__Impl rule__TaskExecution__Group__5 )
             // InternalBehaviourLanguage.g:2522:2: rule__TaskExecution__Group__4__Impl rule__TaskExecution__Group__5
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__TaskExecution__Group__4__Impl();
 
             state._fsp--;
@@ -7825,7 +7832,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2548:1: ( rule__TaskExecution__Group__5__Impl rule__TaskExecution__Group__6 )
             // InternalBehaviourLanguage.g:2549:2: rule__TaskExecution__Group__5__Impl rule__TaskExecution__Group__6
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__TaskExecution__Group__5__Impl();
 
             state._fsp--;
@@ -7900,7 +7907,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2575:1: ( rule__TaskExecution__Group__6__Impl rule__TaskExecution__Group__7 )
             // InternalBehaviourLanguage.g:2576:2: rule__TaskExecution__Group__6__Impl rule__TaskExecution__Group__7
             {
-            pushFollow(FOLLOW_25);
+            pushFollow(FOLLOW_26);
             rule__TaskExecution__Group__6__Impl();
 
             state._fsp--;
@@ -7985,7 +7992,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2602:1: ( rule__TaskExecution__Group__7__Impl rule__TaskExecution__Group__8 )
             // InternalBehaviourLanguage.g:2603:2: rule__TaskExecution__Group__7__Impl rule__TaskExecution__Group__8
             {
-            pushFollow(FOLLOW_25);
+            pushFollow(FOLLOW_26);
             rule__TaskExecution__Group__7__Impl();
 
             state._fsp--;
@@ -8081,7 +8088,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2629:1: ( rule__TaskExecution__Group__8__Impl rule__TaskExecution__Group__9 )
             // InternalBehaviourLanguage.g:2630:2: rule__TaskExecution__Group__8__Impl rule__TaskExecution__Group__9
             {
-            pushFollow(FOLLOW_25);
+            pushFollow(FOLLOW_26);
             rule__TaskExecution__Group__8__Impl();
 
             state._fsp--;
@@ -8247,7 +8254,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2683:1: ( rule__TaskExecution__Group_4__0__Impl rule__TaskExecution__Group_4__1 )
             // InternalBehaviourLanguage.g:2684:2: rule__TaskExecution__Group_4__0__Impl rule__TaskExecution__Group_4__1
             {
-            pushFollow(FOLLOW_26);
+            pushFollow(FOLLOW_27);
             rule__TaskExecution__Group_4__0__Impl();
 
             state._fsp--;
@@ -8322,7 +8329,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2710:1: ( rule__TaskExecution__Group_4__1__Impl rule__TaskExecution__Group_4__2 )
             // InternalBehaviourLanguage.g:2711:2: rule__TaskExecution__Group_4__1__Impl rule__TaskExecution__Group_4__2
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__TaskExecution__Group_4__1__Impl();
 
             state._fsp--;
@@ -8397,7 +8404,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2737:1: ( rule__TaskExecution__Group_4__2__Impl rule__TaskExecution__Group_4__3 )
             // InternalBehaviourLanguage.g:2738:2: rule__TaskExecution__Group_4__2__Impl rule__TaskExecution__Group_4__3
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_28);
             rule__TaskExecution__Group_4__2__Impl();
 
             state._fsp--;
@@ -8482,7 +8489,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2764:1: ( rule__TaskExecution__Group_4__3__Impl rule__TaskExecution__Group_4__4 )
             // InternalBehaviourLanguage.g:2765:2: rule__TaskExecution__Group_4__3__Impl rule__TaskExecution__Group_4__4
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_28);
             rule__TaskExecution__Group_4__3__Impl();
 
             state._fsp--;
@@ -8539,7 +8546,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:2779:3: rule__TaskExecution__Group_4_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__TaskExecution__Group_4_3__0();
 
             	    state._fsp--;
@@ -8655,7 +8662,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2818:1: ( rule__TaskExecution__Group_4_3__0__Impl rule__TaskExecution__Group_4_3__1 )
             // InternalBehaviourLanguage.g:2819:2: rule__TaskExecution__Group_4_3__0__Impl rule__TaskExecution__Group_4_3__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__TaskExecution__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -8810,7 +8817,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2872:1: ( rule__TaskExecution__Group_7__0__Impl rule__TaskExecution__Group_7__1 )
             // InternalBehaviourLanguage.g:2873:2: rule__TaskExecution__Group_7__0__Impl rule__TaskExecution__Group_7__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__TaskExecution__Group_7__0__Impl();
 
             state._fsp--;
@@ -8965,7 +8972,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2926:1: ( rule__TaskExecution__Group_8__0__Impl rule__TaskExecution__Group_8__1 )
             // InternalBehaviourLanguage.g:2927:2: rule__TaskExecution__Group_8__0__Impl rule__TaskExecution__Group_8__1
             {
-            pushFollow(FOLLOW_28);
+            pushFollow(FOLLOW_29);
             rule__TaskExecution__Group_8__0__Impl();
 
             state._fsp--;
@@ -9120,7 +9127,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:2980:1: ( rule__TaskRequirement__Group__0__Impl rule__TaskRequirement__Group__1 )
             // InternalBehaviourLanguage.g:2981:2: rule__TaskRequirement__Group__0__Impl rule__TaskRequirement__Group__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__TaskRequirement__Group__0__Impl();
 
             state._fsp--;
@@ -9195,7 +9202,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3007:1: ( rule__TaskRequirement__Group__1__Impl rule__TaskRequirement__Group__2 )
             // InternalBehaviourLanguage.g:3008:2: rule__TaskRequirement__Group__1__Impl rule__TaskRequirement__Group__2
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__TaskRequirement__Group__1__Impl();
 
             state._fsp--;
@@ -9280,7 +9287,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3034:1: ( rule__TaskRequirement__Group__2__Impl rule__TaskRequirement__Group__3 )
             // InternalBehaviourLanguage.g:3035:2: rule__TaskRequirement__Group__2__Impl rule__TaskRequirement__Group__3
             {
-            pushFollow(FOLLOW_29);
+            pushFollow(FOLLOW_30);
             rule__TaskRequirement__Group__2__Impl();
 
             state._fsp--;
@@ -9355,7 +9362,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3061:1: ( rule__TaskRequirement__Group__3__Impl rule__TaskRequirement__Group__4 )
             // InternalBehaviourLanguage.g:3062:2: rule__TaskRequirement__Group__3__Impl rule__TaskRequirement__Group__4
             {
-            pushFollow(FOLLOW_30);
+            pushFollow(FOLLOW_31);
             rule__TaskRequirement__Group__3__Impl();
 
             state._fsp--;
@@ -9430,7 +9437,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3088:1: ( rule__TaskRequirement__Group__4__Impl rule__TaskRequirement__Group__5 )
             // InternalBehaviourLanguage.g:3089:2: rule__TaskRequirement__Group__4__Impl rule__TaskRequirement__Group__5
             {
-            pushFollow(FOLLOW_31);
+            pushFollow(FOLLOW_32);
             rule__TaskRequirement__Group__4__Impl();
 
             state._fsp--;
@@ -9515,7 +9522,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3115:1: ( rule__TaskRequirement__Group__5__Impl rule__TaskRequirement__Group__6 )
             // InternalBehaviourLanguage.g:3116:2: rule__TaskRequirement__Group__5__Impl rule__TaskRequirement__Group__6
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__TaskRequirement__Group__5__Impl();
 
             state._fsp--;
@@ -9590,7 +9597,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3142:1: ( rule__TaskRequirement__Group__6__Impl rule__TaskRequirement__Group__7 )
             // InternalBehaviourLanguage.g:3143:2: rule__TaskRequirement__Group__6__Impl rule__TaskRequirement__Group__7
             {
-            pushFollow(FOLLOW_32);
+            pushFollow(FOLLOW_33);
             rule__TaskRequirement__Group__6__Impl();
 
             state._fsp--;
@@ -9675,7 +9682,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3169:1: ( rule__TaskRequirement__Group__7__Impl rule__TaskRequirement__Group__8 )
             // InternalBehaviourLanguage.g:3170:2: rule__TaskRequirement__Group__7__Impl rule__TaskRequirement__Group__8
             {
-            pushFollow(FOLLOW_32);
+            pushFollow(FOLLOW_33);
             rule__TaskRequirement__Group__7__Impl();
 
             state._fsp--;
@@ -9771,7 +9778,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3196:1: ( rule__TaskRequirement__Group__8__Impl rule__TaskRequirement__Group__9 )
             // InternalBehaviourLanguage.g:3197:2: rule__TaskRequirement__Group__8__Impl rule__TaskRequirement__Group__9
             {
-            pushFollow(FOLLOW_32);
+            pushFollow(FOLLOW_33);
             rule__TaskRequirement__Group__8__Impl();
 
             state._fsp--;
@@ -9867,7 +9874,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3223:1: ( rule__TaskRequirement__Group__9__Impl rule__TaskRequirement__Group__10 )
             // InternalBehaviourLanguage.g:3224:2: rule__TaskRequirement__Group__9__Impl rule__TaskRequirement__Group__10
             {
-            pushFollow(FOLLOW_32);
+            pushFollow(FOLLOW_33);
             rule__TaskRequirement__Group__9__Impl();
 
             state._fsp--;
@@ -9963,7 +9970,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3250:1: ( rule__TaskRequirement__Group__10__Impl rule__TaskRequirement__Group__11 )
             // InternalBehaviourLanguage.g:3251:2: rule__TaskRequirement__Group__10__Impl rule__TaskRequirement__Group__11
             {
-            pushFollow(FOLLOW_32);
+            pushFollow(FOLLOW_33);
             rule__TaskRequirement__Group__10__Impl();
 
             state._fsp--;
@@ -10129,7 +10136,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3304:1: ( rule__TaskRequirement__Group_7__0__Impl rule__TaskRequirement__Group_7__1 )
             // InternalBehaviourLanguage.g:3305:2: rule__TaskRequirement__Group_7__0__Impl rule__TaskRequirement__Group_7__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__TaskRequirement__Group_7__0__Impl();
 
             state._fsp--;
@@ -10284,7 +10291,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3358:1: ( rule__TaskRequirement__Group_8__0__Impl rule__TaskRequirement__Group_8__1 )
             // InternalBehaviourLanguage.g:3359:2: rule__TaskRequirement__Group_8__0__Impl rule__TaskRequirement__Group_8__1
             {
-            pushFollow(FOLLOW_26);
+            pushFollow(FOLLOW_27);
             rule__TaskRequirement__Group_8__0__Impl();
 
             state._fsp--;
@@ -10359,7 +10366,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3385:1: ( rule__TaskRequirement__Group_8__1__Impl rule__TaskRequirement__Group_8__2 )
             // InternalBehaviourLanguage.g:3386:2: rule__TaskRequirement__Group_8__1__Impl rule__TaskRequirement__Group_8__2
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__TaskRequirement__Group_8__1__Impl();
 
             state._fsp--;
@@ -10434,7 +10441,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3412:1: ( rule__TaskRequirement__Group_8__2__Impl rule__TaskRequirement__Group_8__3 )
             // InternalBehaviourLanguage.g:3413:2: rule__TaskRequirement__Group_8__2__Impl rule__TaskRequirement__Group_8__3
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_28);
             rule__TaskRequirement__Group_8__2__Impl();
 
             state._fsp--;
@@ -10519,7 +10526,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3439:1: ( rule__TaskRequirement__Group_8__3__Impl rule__TaskRequirement__Group_8__4 )
             // InternalBehaviourLanguage.g:3440:2: rule__TaskRequirement__Group_8__3__Impl rule__TaskRequirement__Group_8__4
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_28);
             rule__TaskRequirement__Group_8__3__Impl();
 
             state._fsp--;
@@ -10576,7 +10583,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:3454:3: rule__TaskRequirement__Group_8_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__TaskRequirement__Group_8_3__0();
 
             	    state._fsp--;
@@ -10692,7 +10699,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3493:1: ( rule__TaskRequirement__Group_8_3__0__Impl rule__TaskRequirement__Group_8_3__1 )
             // InternalBehaviourLanguage.g:3494:2: rule__TaskRequirement__Group_8_3__0__Impl rule__TaskRequirement__Group_8_3__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__TaskRequirement__Group_8_3__0__Impl();
 
             state._fsp--;
@@ -10847,7 +10854,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3547:1: ( rule__TaskRequirement__Group_9__0__Impl rule__TaskRequirement__Group_9__1 )
             // InternalBehaviourLanguage.g:3548:2: rule__TaskRequirement__Group_9__0__Impl rule__TaskRequirement__Group_9__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__TaskRequirement__Group_9__0__Impl();
 
             state._fsp--;
@@ -10922,7 +10929,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3574:1: ( rule__TaskRequirement__Group_9__1__Impl rule__TaskRequirement__Group_9__2 )
             // InternalBehaviourLanguage.g:3575:2: rule__TaskRequirement__Group_9__1__Impl rule__TaskRequirement__Group_9__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__TaskRequirement__Group_9__1__Impl();
 
             state._fsp--;
@@ -10997,7 +11004,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3601:1: ( rule__TaskRequirement__Group_9__2__Impl rule__TaskRequirement__Group_9__3 )
             // InternalBehaviourLanguage.g:3602:2: rule__TaskRequirement__Group_9__2__Impl rule__TaskRequirement__Group_9__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__TaskRequirement__Group_9__2__Impl();
 
             state._fsp--;
@@ -11082,7 +11089,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3628:1: ( rule__TaskRequirement__Group_9__3__Impl rule__TaskRequirement__Group_9__4 )
             // InternalBehaviourLanguage.g:3629:2: rule__TaskRequirement__Group_9__3__Impl rule__TaskRequirement__Group_9__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__TaskRequirement__Group_9__3__Impl();
 
             state._fsp--;
@@ -11139,7 +11146,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:3643:3: rule__TaskRequirement__Group_9_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__TaskRequirement__Group_9_3__0();
 
             	    state._fsp--;
@@ -11255,7 +11262,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3682:1: ( rule__TaskRequirement__Group_9_3__0__Impl rule__TaskRequirement__Group_9_3__1 )
             // InternalBehaviourLanguage.g:3683:2: rule__TaskRequirement__Group_9_3__0__Impl rule__TaskRequirement__Group_9_3__1
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__TaskRequirement__Group_9_3__0__Impl();
 
             state._fsp--;
@@ -11410,7 +11417,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3736:1: ( rule__TaskRequirement__Group_10__0__Impl rule__TaskRequirement__Group_10__1 )
             // InternalBehaviourLanguage.g:3737:2: rule__TaskRequirement__Group_10__0__Impl rule__TaskRequirement__Group_10__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__TaskRequirement__Group_10__0__Impl();
 
             state._fsp--;
@@ -11485,7 +11492,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3763:1: ( rule__TaskRequirement__Group_10__1__Impl rule__TaskRequirement__Group_10__2 )
             // InternalBehaviourLanguage.g:3764:2: rule__TaskRequirement__Group_10__1__Impl rule__TaskRequirement__Group_10__2
             {
-            pushFollow(FOLLOW_34);
+            pushFollow(FOLLOW_35);
             rule__TaskRequirement__Group_10__1__Impl();
 
             state._fsp--;
@@ -11560,7 +11567,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3790:1: ( rule__TaskRequirement__Group_10__2__Impl rule__TaskRequirement__Group_10__3 )
             // InternalBehaviourLanguage.g:3791:2: rule__TaskRequirement__Group_10__2__Impl rule__TaskRequirement__Group_10__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__TaskRequirement__Group_10__2__Impl();
 
             state._fsp--;
@@ -11645,7 +11652,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3817:1: ( rule__TaskRequirement__Group_10__3__Impl rule__TaskRequirement__Group_10__4 )
             // InternalBehaviourLanguage.g:3818:2: rule__TaskRequirement__Group_10__3__Impl rule__TaskRequirement__Group_10__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__TaskRequirement__Group_10__3__Impl();
 
             state._fsp--;
@@ -11702,7 +11709,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:3832:3: rule__TaskRequirement__Group_10_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__TaskRequirement__Group_10_3__0();
 
             	    state._fsp--;
@@ -11818,7 +11825,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3871:1: ( rule__TaskRequirement__Group_10_3__0__Impl rule__TaskRequirement__Group_10_3__1 )
             // InternalBehaviourLanguage.g:3872:2: rule__TaskRequirement__Group_10_3__0__Impl rule__TaskRequirement__Group_10_3__1
             {
-            pushFollow(FOLLOW_34);
+            pushFollow(FOLLOW_35);
             rule__TaskRequirement__Group_10_3__0__Impl();
 
             state._fsp--;
@@ -11973,7 +11980,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3925:1: ( rule__BehaviouralPropertyKeyContainer__Group__0__Impl rule__BehaviouralPropertyKeyContainer__Group__1 )
             // InternalBehaviourLanguage.g:3926:2: rule__BehaviouralPropertyKeyContainer__Group__0__Impl rule__BehaviouralPropertyKeyContainer__Group__1
             {
-            pushFollow(FOLLOW_12);
+            pushFollow(FOLLOW_13);
             rule__BehaviouralPropertyKeyContainer__Group__0__Impl();
 
             state._fsp--;
@@ -12048,7 +12055,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3952:1: ( rule__BehaviouralPropertyKeyContainer__Group__1__Impl rule__BehaviouralPropertyKeyContainer__Group__2 )
             // InternalBehaviourLanguage.g:3953:2: rule__BehaviouralPropertyKeyContainer__Group__1__Impl rule__BehaviouralPropertyKeyContainer__Group__2
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__BehaviouralPropertyKeyContainer__Group__1__Impl();
 
             state._fsp--;
@@ -12123,7 +12130,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:3979:1: ( rule__BehaviouralPropertyKeyContainer__Group__2__Impl rule__BehaviouralPropertyKeyContainer__Group__3 )
             // InternalBehaviourLanguage.g:3980:2: rule__BehaviouralPropertyKeyContainer__Group__2__Impl rule__BehaviouralPropertyKeyContainer__Group__3
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__BehaviouralPropertyKeyContainer__Group__2__Impl();
 
             state._fsp--;
@@ -12208,7 +12215,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4006:1: ( rule__BehaviouralPropertyKeyContainer__Group__3__Impl rule__BehaviouralPropertyKeyContainer__Group__4 )
             // InternalBehaviourLanguage.g:4007:2: rule__BehaviouralPropertyKeyContainer__Group__3__Impl rule__BehaviouralPropertyKeyContainer__Group__4
             {
-            pushFollow(FOLLOW_35);
+            pushFollow(FOLLOW_36);
             rule__BehaviouralPropertyKeyContainer__Group__3__Impl();
 
             state._fsp--;
@@ -12283,7 +12290,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4033:1: ( rule__BehaviouralPropertyKeyContainer__Group__4__Impl rule__BehaviouralPropertyKeyContainer__Group__5 )
             // InternalBehaviourLanguage.g:4034:2: rule__BehaviouralPropertyKeyContainer__Group__4__Impl rule__BehaviouralPropertyKeyContainer__Group__5
             {
-            pushFollow(FOLLOW_35);
+            pushFollow(FOLLOW_36);
             rule__BehaviouralPropertyKeyContainer__Group__4__Impl();
 
             state._fsp--;
@@ -12449,7 +12456,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4087:1: ( rule__BehaviouralPropertyKeyContainer__Group_4__0__Impl rule__BehaviouralPropertyKeyContainer__Group_4__1 )
             // InternalBehaviourLanguage.g:4088:2: rule__BehaviouralPropertyKeyContainer__Group_4__0__Impl rule__BehaviouralPropertyKeyContainer__Group_4__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__BehaviouralPropertyKeyContainer__Group_4__0__Impl();
 
             state._fsp--;
@@ -12524,7 +12531,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4114:1: ( rule__BehaviouralPropertyKeyContainer__Group_4__1__Impl rule__BehaviouralPropertyKeyContainer__Group_4__2 )
             // InternalBehaviourLanguage.g:4115:2: rule__BehaviouralPropertyKeyContainer__Group_4__1__Impl rule__BehaviouralPropertyKeyContainer__Group_4__2
             {
-            pushFollow(FOLLOW_36);
+            pushFollow(FOLLOW_37);
             rule__BehaviouralPropertyKeyContainer__Group_4__1__Impl();
 
             state._fsp--;
@@ -12599,7 +12606,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4141:1: ( rule__BehaviouralPropertyKeyContainer__Group_4__2__Impl rule__BehaviouralPropertyKeyContainer__Group_4__3 )
             // InternalBehaviourLanguage.g:4142:2: rule__BehaviouralPropertyKeyContainer__Group_4__2__Impl rule__BehaviouralPropertyKeyContainer__Group_4__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__BehaviouralPropertyKeyContainer__Group_4__2__Impl();
 
             state._fsp--;
@@ -12684,7 +12691,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4168:1: ( rule__BehaviouralPropertyKeyContainer__Group_4__3__Impl rule__BehaviouralPropertyKeyContainer__Group_4__4 )
             // InternalBehaviourLanguage.g:4169:2: rule__BehaviouralPropertyKeyContainer__Group_4__3__Impl rule__BehaviouralPropertyKeyContainer__Group_4__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__BehaviouralPropertyKeyContainer__Group_4__3__Impl();
 
             state._fsp--;
@@ -12741,7 +12748,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:4183:3: rule__BehaviouralPropertyKeyContainer__Group_4_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__BehaviouralPropertyKeyContainer__Group_4_3__0();
 
             	    state._fsp--;
@@ -12857,7 +12864,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4222:1: ( rule__BehaviouralPropertyKeyContainer__Group_4_3__0__Impl rule__BehaviouralPropertyKeyContainer__Group_4_3__1 )
             // InternalBehaviourLanguage.g:4223:2: rule__BehaviouralPropertyKeyContainer__Group_4_3__0__Impl rule__BehaviouralPropertyKeyContainer__Group_4_3__1
             {
-            pushFollow(FOLLOW_36);
+            pushFollow(FOLLOW_37);
             rule__BehaviouralPropertyKeyContainer__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -13087,7 +13094,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4303:1: ( rule__RobotCollaboration__Group__1__Impl rule__RobotCollaboration__Group__2 )
             // InternalBehaviourLanguage.g:4304:2: rule__RobotCollaboration__Group__1__Impl rule__RobotCollaboration__Group__2
             {
-            pushFollow(FOLLOW_37);
+            pushFollow(FOLLOW_38);
             rule__RobotCollaboration__Group__1__Impl();
 
             state._fsp--;
@@ -13263,7 +13270,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4357:1: ( rule__RobotCollaboration__Group_2__0__Impl rule__RobotCollaboration__Group_2__1 )
             // InternalBehaviourLanguage.g:4358:2: rule__RobotCollaboration__Group_2__0__Impl rule__RobotCollaboration__Group_2__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__RobotCollaboration__Group_2__0__Impl();
 
             state._fsp--;
@@ -13338,7 +13345,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4384:1: ( rule__RobotCollaboration__Group_2__1__Impl rule__RobotCollaboration__Group_2__2 )
             // InternalBehaviourLanguage.g:4385:2: rule__RobotCollaboration__Group_2__1__Impl rule__RobotCollaboration__Group_2__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__RobotCollaboration__Group_2__1__Impl();
 
             state._fsp--;
@@ -13413,7 +13420,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4411:1: ( rule__RobotCollaboration__Group_2__2__Impl rule__RobotCollaboration__Group_2__3 )
             // InternalBehaviourLanguage.g:4412:2: rule__RobotCollaboration__Group_2__2__Impl rule__RobotCollaboration__Group_2__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__RobotCollaboration__Group_2__2__Impl();
 
             state._fsp--;
@@ -13498,7 +13505,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4438:1: ( rule__RobotCollaboration__Group_2__3__Impl rule__RobotCollaboration__Group_2__4 )
             // InternalBehaviourLanguage.g:4439:2: rule__RobotCollaboration__Group_2__3__Impl rule__RobotCollaboration__Group_2__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__RobotCollaboration__Group_2__3__Impl();
 
             state._fsp--;
@@ -13555,7 +13562,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:4453:3: rule__RobotCollaboration__Group_2_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__RobotCollaboration__Group_2_3__0();
 
             	    state._fsp--;
@@ -13671,7 +13678,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4492:1: ( rule__RobotCollaboration__Group_2_3__0__Impl rule__RobotCollaboration__Group_2_3__1 )
             // InternalBehaviourLanguage.g:4493:2: rule__RobotCollaboration__Group_2_3__0__Impl rule__RobotCollaboration__Group_2_3__1
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__RobotCollaboration__Group_2_3__0__Impl();
 
             state._fsp--;
@@ -13826,7 +13833,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4546:1: ( rule__Action_Impl__Group__0__Impl rule__Action_Impl__Group__1 )
             // InternalBehaviourLanguage.g:4547:2: rule__Action_Impl__Group__0__Impl rule__Action_Impl__Group__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__Action_Impl__Group__0__Impl();
 
             state._fsp--;
@@ -13901,7 +13908,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4573:1: ( rule__Action_Impl__Group__1__Impl rule__Action_Impl__Group__2 )
             // InternalBehaviourLanguage.g:4574:2: rule__Action_Impl__Group__1__Impl rule__Action_Impl__Group__2
             {
-            pushFollow(FOLLOW_38);
+            pushFollow(FOLLOW_39);
             rule__Action_Impl__Group__1__Impl();
 
             state._fsp--;
@@ -13986,7 +13993,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4600:1: ( rule__Action_Impl__Group__2__Impl rule__Action_Impl__Group__3 )
             // InternalBehaviourLanguage.g:4601:2: rule__Action_Impl__Group__2__Impl rule__Action_Impl__Group__3
             {
-            pushFollow(FOLLOW_38);
+            pushFollow(FOLLOW_39);
             rule__Action_Impl__Group__2__Impl();
 
             state._fsp--;
@@ -14248,7 +14255,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4681:1: ( rule__Action_Impl__Group_2__1__Impl rule__Action_Impl__Group_2__2 )
             // InternalBehaviourLanguage.g:4682:2: rule__Action_Impl__Group_2__1__Impl rule__Action_Impl__Group_2__2
             {
-            pushFollow(FOLLOW_21);
+            pushFollow(FOLLOW_22);
             rule__Action_Impl__Group_2__1__Impl();
 
             state._fsp--;
@@ -14403,7 +14410,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4735:1: ( rule__Action_Impl__Group_3__0__Impl rule__Action_Impl__Group_3__1 )
             // InternalBehaviourLanguage.g:4736:2: rule__Action_Impl__Group_3__0__Impl rule__Action_Impl__Group_3__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__Action_Impl__Group_3__0__Impl();
 
             state._fsp--;
@@ -14478,7 +14485,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4762:1: ( rule__Action_Impl__Group_3__1__Impl rule__Action_Impl__Group_3__2 )
             // InternalBehaviourLanguage.g:4763:2: rule__Action_Impl__Group_3__1__Impl rule__Action_Impl__Group_3__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__Action_Impl__Group_3__1__Impl();
 
             state._fsp--;
@@ -14553,7 +14560,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4789:1: ( rule__Action_Impl__Group_3__2__Impl rule__Action_Impl__Group_3__3 )
             // InternalBehaviourLanguage.g:4790:2: rule__Action_Impl__Group_3__2__Impl rule__Action_Impl__Group_3__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__Action_Impl__Group_3__2__Impl();
 
             state._fsp--;
@@ -14638,7 +14645,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4816:1: ( rule__Action_Impl__Group_3__3__Impl rule__Action_Impl__Group_3__4 )
             // InternalBehaviourLanguage.g:4817:2: rule__Action_Impl__Group_3__3__Impl rule__Action_Impl__Group_3__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__Action_Impl__Group_3__3__Impl();
 
             state._fsp--;
@@ -14695,7 +14702,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:4831:3: rule__Action_Impl__Group_3_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__Action_Impl__Group_3_3__0();
 
             	    state._fsp--;
@@ -14811,7 +14818,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4870:1: ( rule__Action_Impl__Group_3_3__0__Impl rule__Action_Impl__Group_3_3__1 )
             // InternalBehaviourLanguage.g:4871:2: rule__Action_Impl__Group_3_3__0__Impl rule__Action_Impl__Group_3_3__1
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__Action_Impl__Group_3_3__0__Impl();
 
             state._fsp--;
@@ -14966,7 +14973,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4924:1: ( rule__Property__Group__0__Impl rule__Property__Group__1 )
             // InternalBehaviourLanguage.g:4925:2: rule__Property__Group__0__Impl rule__Property__Group__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__Property__Group__0__Impl();
 
             state._fsp--;
@@ -15041,7 +15048,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4951:1: ( rule__Property__Group__1__Impl rule__Property__Group__2 )
             // InternalBehaviourLanguage.g:4952:2: rule__Property__Group__1__Impl rule__Property__Group__2
             {
-            pushFollow(FOLLOW_39);
+            pushFollow(FOLLOW_40);
             rule__Property__Group__1__Impl();
 
             state._fsp--;
@@ -15116,7 +15123,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:4978:1: ( rule__Property__Group__2__Impl rule__Property__Group__3 )
             // InternalBehaviourLanguage.g:4979:2: rule__Property__Group__2__Impl rule__Property__Group__3
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__Property__Group__2__Impl();
 
             state._fsp--;
@@ -15191,7 +15198,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5005:1: ( rule__Property__Group__3__Impl rule__Property__Group__4 )
             // InternalBehaviourLanguage.g:5006:2: rule__Property__Group__3__Impl rule__Property__Group__4
             {
-            pushFollow(FOLLOW_40);
+            pushFollow(FOLLOW_41);
             rule__Property__Group__3__Impl();
 
             state._fsp--;
@@ -15276,7 +15283,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5032:1: ( rule__Property__Group__4__Impl rule__Property__Group__5 )
             // InternalBehaviourLanguage.g:5033:2: rule__Property__Group__4__Impl rule__Property__Group__5
             {
-            pushFollow(FOLLOW_41);
+            pushFollow(FOLLOW_42);
             rule__Property__Group__4__Impl();
 
             state._fsp--;
@@ -15351,7 +15358,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5059:1: ( rule__Property__Group__5__Impl rule__Property__Group__6 )
             // InternalBehaviourLanguage.g:5060:2: rule__Property__Group__5__Impl rule__Property__Group__6
             {
-            pushFollow(FOLLOW_42);
+            pushFollow(FOLLOW_43);
             rule__Property__Group__5__Impl();
 
             state._fsp--;
@@ -15506,7 +15513,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5113:1: ( rule__MeasureValue__Group__0__Impl rule__MeasureValue__Group__1 )
             // InternalBehaviourLanguage.g:5114:2: rule__MeasureValue__Group__0__Impl rule__MeasureValue__Group__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__MeasureValue__Group__0__Impl();
 
             state._fsp--;
@@ -15581,7 +15588,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5140:1: ( rule__MeasureValue__Group__1__Impl rule__MeasureValue__Group__2 )
             // InternalBehaviourLanguage.g:5141:2: rule__MeasureValue__Group__1__Impl rule__MeasureValue__Group__2
             {
-            pushFollow(FOLLOW_43);
+            pushFollow(FOLLOW_44);
             rule__MeasureValue__Group__1__Impl();
 
             state._fsp--;
@@ -15656,7 +15663,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5167:1: ( rule__MeasureValue__Group__2__Impl rule__MeasureValue__Group__3 )
             // InternalBehaviourLanguage.g:5168:2: rule__MeasureValue__Group__2__Impl rule__MeasureValue__Group__3
             {
-            pushFollow(FOLLOW_43);
+            pushFollow(FOLLOW_44);
             rule__MeasureValue__Group__2__Impl();
 
             state._fsp--;
@@ -15752,7 +15759,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5194:1: ( rule__MeasureValue__Group__3__Impl rule__MeasureValue__Group__4 )
             // InternalBehaviourLanguage.g:5195:2: rule__MeasureValue__Group__3__Impl rule__MeasureValue__Group__4
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__MeasureValue__Group__3__Impl();
 
             state._fsp--;
@@ -15827,7 +15834,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5221:1: ( rule__MeasureValue__Group__4__Impl rule__MeasureValue__Group__5 )
             // InternalBehaviourLanguage.g:5222:2: rule__MeasureValue__Group__4__Impl rule__MeasureValue__Group__5
             {
-            pushFollow(FOLLOW_42);
+            pushFollow(FOLLOW_43);
             rule__MeasureValue__Group__4__Impl();
 
             state._fsp--;
@@ -15982,7 +15989,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5275:1: ( rule__MeasureValue__Group_2__0__Impl rule__MeasureValue__Group_2__1 )
             // InternalBehaviourLanguage.g:5276:2: rule__MeasureValue__Group_2__0__Impl rule__MeasureValue__Group_2__1
             {
-            pushFollow(FOLLOW_44);
+            pushFollow(FOLLOW_45);
             rule__MeasureValue__Group_2__0__Impl();
 
             state._fsp--;
@@ -16137,7 +16144,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5329:1: ( rule__CapabilityProperties__Group__0__Impl rule__CapabilityProperties__Group__1 )
             // InternalBehaviourLanguage.g:5330:2: rule__CapabilityProperties__Group__0__Impl rule__CapabilityProperties__Group__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__CapabilityProperties__Group__0__Impl();
 
             state._fsp--;
@@ -16212,7 +16219,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5356:1: ( rule__CapabilityProperties__Group__1__Impl rule__CapabilityProperties__Group__2 )
             // InternalBehaviourLanguage.g:5357:2: rule__CapabilityProperties__Group__1__Impl rule__CapabilityProperties__Group__2
             {
-            pushFollow(FOLLOW_45);
+            pushFollow(FOLLOW_46);
             rule__CapabilityProperties__Group__1__Impl();
 
             state._fsp--;
@@ -16287,7 +16294,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5383:1: ( rule__CapabilityProperties__Group__2__Impl rule__CapabilityProperties__Group__3 )
             // InternalBehaviourLanguage.g:5384:2: rule__CapabilityProperties__Group__2__Impl rule__CapabilityProperties__Group__3
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__CapabilityProperties__Group__2__Impl();
 
             state._fsp--;
@@ -16362,7 +16369,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5410:1: ( rule__CapabilityProperties__Group__3__Impl rule__CapabilityProperties__Group__4 )
             // InternalBehaviourLanguage.g:5411:2: rule__CapabilityProperties__Group__3__Impl rule__CapabilityProperties__Group__4
             {
-            pushFollow(FOLLOW_46);
+            pushFollow(FOLLOW_47);
             rule__CapabilityProperties__Group__3__Impl();
 
             state._fsp--;
@@ -16447,7 +16454,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5437:1: ( rule__CapabilityProperties__Group__4__Impl rule__CapabilityProperties__Group__5 )
             // InternalBehaviourLanguage.g:5438:2: rule__CapabilityProperties__Group__4__Impl rule__CapabilityProperties__Group__5
             {
-            pushFollow(FOLLOW_46);
+            pushFollow(FOLLOW_47);
             rule__CapabilityProperties__Group__4__Impl();
 
             state._fsp--;
@@ -16613,7 +16620,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5491:1: ( rule__CapabilityProperties__Group_4__0__Impl rule__CapabilityProperties__Group_4__1 )
             // InternalBehaviourLanguage.g:5492:2: rule__CapabilityProperties__Group_4__0__Impl rule__CapabilityProperties__Group_4__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__CapabilityProperties__Group_4__0__Impl();
 
             state._fsp--;
@@ -16688,7 +16695,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5518:1: ( rule__CapabilityProperties__Group_4__1__Impl rule__CapabilityProperties__Group_4__2 )
             // InternalBehaviourLanguage.g:5519:2: rule__CapabilityProperties__Group_4__1__Impl rule__CapabilityProperties__Group_4__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__CapabilityProperties__Group_4__1__Impl();
 
             state._fsp--;
@@ -16763,7 +16770,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5545:1: ( rule__CapabilityProperties__Group_4__2__Impl rule__CapabilityProperties__Group_4__3 )
             // InternalBehaviourLanguage.g:5546:2: rule__CapabilityProperties__Group_4__2__Impl rule__CapabilityProperties__Group_4__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__CapabilityProperties__Group_4__2__Impl();
 
             state._fsp--;
@@ -16848,7 +16855,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5572:1: ( rule__CapabilityProperties__Group_4__3__Impl rule__CapabilityProperties__Group_4__4 )
             // InternalBehaviourLanguage.g:5573:2: rule__CapabilityProperties__Group_4__3__Impl rule__CapabilityProperties__Group_4__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__CapabilityProperties__Group_4__3__Impl();
 
             state._fsp--;
@@ -16905,7 +16912,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:5587:3: rule__CapabilityProperties__Group_4_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__CapabilityProperties__Group_4_3__0();
 
             	    state._fsp--;
@@ -17021,7 +17028,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5626:1: ( rule__CapabilityProperties__Group_4_3__0__Impl rule__CapabilityProperties__Group_4_3__1 )
             // InternalBehaviourLanguage.g:5627:2: rule__CapabilityProperties__Group_4_3__0__Impl rule__CapabilityProperties__Group_4_3__1
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__CapabilityProperties__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -17176,7 +17183,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5680:1: ( rule__EFloat__Group__0__Impl rule__EFloat__Group__1 )
             // InternalBehaviourLanguage.g:5681:2: rule__EFloat__Group__0__Impl rule__EFloat__Group__1
             {
-            pushFollow(FOLLOW_44);
+            pushFollow(FOLLOW_45);
             rule__EFloat__Group__0__Impl();
 
             state._fsp--;
@@ -17268,7 +17275,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5707:1: ( rule__EFloat__Group__1__Impl rule__EFloat__Group__2 )
             // InternalBehaviourLanguage.g:5708:2: rule__EFloat__Group__1__Impl rule__EFloat__Group__2
             {
-            pushFollow(FOLLOW_44);
+            pushFollow(FOLLOW_45);
             rule__EFloat__Group__1__Impl();
 
             state._fsp--;
@@ -17360,7 +17367,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5734:1: ( rule__EFloat__Group__2__Impl rule__EFloat__Group__3 )
             // InternalBehaviourLanguage.g:5735:2: rule__EFloat__Group__2__Impl rule__EFloat__Group__3
             {
-            pushFollow(FOLLOW_47);
+            pushFollow(FOLLOW_48);
             rule__EFloat__Group__2__Impl();
 
             state._fsp--;
@@ -17435,7 +17442,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5761:1: ( rule__EFloat__Group__3__Impl rule__EFloat__Group__4 )
             // InternalBehaviourLanguage.g:5762:2: rule__EFloat__Group__3__Impl rule__EFloat__Group__4
             {
-            pushFollow(FOLLOW_48);
+            pushFollow(FOLLOW_49);
             rule__EFloat__Group__3__Impl();
 
             state._fsp--;
@@ -17601,7 +17608,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5815:1: ( rule__EFloat__Group_4__0__Impl rule__EFloat__Group_4__1 )
             // InternalBehaviourLanguage.g:5816:2: rule__EFloat__Group_4__0__Impl rule__EFloat__Group_4__1
             {
-            pushFollow(FOLLOW_30);
+            pushFollow(FOLLOW_31);
             rule__EFloat__Group_4__0__Impl();
 
             state._fsp--;
@@ -17686,7 +17693,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5842:1: ( rule__EFloat__Group_4__1__Impl rule__EFloat__Group_4__2 )
             // InternalBehaviourLanguage.g:5843:2: rule__EFloat__Group_4__1__Impl rule__EFloat__Group_4__2
             {
-            pushFollow(FOLLOW_30);
+            pushFollow(FOLLOW_31);
             rule__EFloat__Group_4__1__Impl();
 
             state._fsp--;
@@ -17848,7 +17855,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5896:1: ( rule__PropertyKey__Group__0__Impl rule__PropertyKey__Group__1 )
             // InternalBehaviourLanguage.g:5897:2: rule__PropertyKey__Group__0__Impl rule__PropertyKey__Group__1
             {
-            pushFollow(FOLLOW_36);
+            pushFollow(FOLLOW_37);
             rule__PropertyKey__Group__0__Impl();
 
             state._fsp--;
@@ -17923,7 +17930,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5923:1: ( rule__PropertyKey__Group__1__Impl rule__PropertyKey__Group__2 )
             // InternalBehaviourLanguage.g:5924:2: rule__PropertyKey__Group__1__Impl rule__PropertyKey__Group__2
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__PropertyKey__Group__1__Impl();
 
             state._fsp--;
@@ -18078,7 +18085,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:5977:1: ( rule__StringValue__Group__0__Impl rule__StringValue__Group__1 )
             // InternalBehaviourLanguage.g:5978:2: rule__StringValue__Group__0__Impl rule__StringValue__Group__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__StringValue__Group__0__Impl();
 
             state._fsp--;
@@ -18153,7 +18160,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6004:1: ( rule__StringValue__Group__1__Impl rule__StringValue__Group__2 )
             // InternalBehaviourLanguage.g:6005:2: rule__StringValue__Group__1__Impl rule__StringValue__Group__2
             {
-            pushFollow(FOLLOW_40);
+            pushFollow(FOLLOW_41);
             rule__StringValue__Group__1__Impl();
 
             state._fsp--;
@@ -18228,7 +18235,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6031:1: ( rule__StringValue__Group__2__Impl rule__StringValue__Group__3 )
             // InternalBehaviourLanguage.g:6032:2: rule__StringValue__Group__2__Impl rule__StringValue__Group__3
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__StringValue__Group__2__Impl();
 
             state._fsp--;
@@ -18303,7 +18310,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6058:1: ( rule__StringValue__Group__3__Impl rule__StringValue__Group__4 )
             // InternalBehaviourLanguage.g:6059:2: rule__StringValue__Group__3__Impl rule__StringValue__Group__4
             {
-            pushFollow(FOLLOW_42);
+            pushFollow(FOLLOW_43);
             rule__StringValue__Group__3__Impl();
 
             state._fsp--;
@@ -18458,7 +18465,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6112:1: ( rule__Message__Group__0__Impl rule__Message__Group__1 )
             // InternalBehaviourLanguage.g:6113:2: rule__Message__Group__0__Impl rule__Message__Group__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__Message__Group__0__Impl();
 
             state._fsp--;
@@ -18543,7 +18550,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6139:1: ( rule__Message__Group__1__Impl rule__Message__Group__2 )
             // InternalBehaviourLanguage.g:6140:2: rule__Message__Group__1__Impl rule__Message__Group__2
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__Message__Group__1__Impl();
 
             state._fsp--;
@@ -18628,7 +18635,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6166:1: ( rule__Message__Group__2__Impl rule__Message__Group__3 )
             // InternalBehaviourLanguage.g:6167:2: rule__Message__Group__2__Impl rule__Message__Group__3
             {
-            pushFollow(FOLLOW_49);
+            pushFollow(FOLLOW_50);
             rule__Message__Group__2__Impl();
 
             state._fsp--;
@@ -18703,7 +18710,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6193:1: ( rule__Message__Group__3__Impl rule__Message__Group__4 )
             // InternalBehaviourLanguage.g:6194:2: rule__Message__Group__3__Impl rule__Message__Group__4
             {
-            pushFollow(FOLLOW_49);
+            pushFollow(FOLLOW_50);
             rule__Message__Group__3__Impl();
 
             state._fsp--;
@@ -18799,7 +18806,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6220:1: ( rule__Message__Group__4__Impl rule__Message__Group__5 )
             // InternalBehaviourLanguage.g:6221:2: rule__Message__Group__4__Impl rule__Message__Group__5
             {
-            pushFollow(FOLLOW_49);
+            pushFollow(FOLLOW_50);
             rule__Message__Group__4__Impl();
 
             state._fsp--;
@@ -18895,7 +18902,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6247:1: ( rule__Message__Group__5__Impl rule__Message__Group__6 )
             // InternalBehaviourLanguage.g:6248:2: rule__Message__Group__5__Impl rule__Message__Group__6
             {
-            pushFollow(FOLLOW_49);
+            pushFollow(FOLLOW_50);
             rule__Message__Group__5__Impl();
 
             state._fsp--;
@@ -18991,7 +18998,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6274:1: ( rule__Message__Group__6__Impl rule__Message__Group__7 )
             // InternalBehaviourLanguage.g:6275:2: rule__Message__Group__6__Impl rule__Message__Group__7
             {
-            pushFollow(FOLLOW_49);
+            pushFollow(FOLLOW_50);
             rule__Message__Group__6__Impl();
 
             state._fsp--;
@@ -19087,7 +19094,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6301:1: ( rule__Message__Group__7__Impl rule__Message__Group__8 )
             // InternalBehaviourLanguage.g:6302:2: rule__Message__Group__7__Impl rule__Message__Group__8
             {
-            pushFollow(FOLLOW_49);
+            pushFollow(FOLLOW_50);
             rule__Message__Group__7__Impl();
 
             state._fsp--;
@@ -19183,7 +19190,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6328:1: ( rule__Message__Group__8__Impl rule__Message__Group__9 )
             // InternalBehaviourLanguage.g:6329:2: rule__Message__Group__8__Impl rule__Message__Group__9
             {
-            pushFollow(FOLLOW_49);
+            pushFollow(FOLLOW_50);
             rule__Message__Group__8__Impl();
 
             state._fsp--;
@@ -19349,7 +19356,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6382:1: ( rule__Message__Group_3__0__Impl rule__Message__Group_3__1 )
             // InternalBehaviourLanguage.g:6383:2: rule__Message__Group_3__0__Impl rule__Message__Group_3__1
             {
-            pushFollow(FOLLOW_50);
+            pushFollow(FOLLOW_51);
             rule__Message__Group_3__0__Impl();
 
             state._fsp--;
@@ -19504,7 +19511,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6436:1: ( rule__Message__Group_4__0__Impl rule__Message__Group_4__1 )
             // InternalBehaviourLanguage.g:6437:2: rule__Message__Group_4__0__Impl rule__Message__Group_4__1
             {
-            pushFollow(FOLLOW_26);
+            pushFollow(FOLLOW_27);
             rule__Message__Group_4__0__Impl();
 
             state._fsp--;
@@ -19579,7 +19586,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6463:1: ( rule__Message__Group_4__1__Impl rule__Message__Group_4__2 )
             // InternalBehaviourLanguage.g:6464:2: rule__Message__Group_4__1__Impl rule__Message__Group_4__2
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__Message__Group_4__1__Impl();
 
             state._fsp--;
@@ -19654,7 +19661,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6490:1: ( rule__Message__Group_4__2__Impl rule__Message__Group_4__3 )
             // InternalBehaviourLanguage.g:6491:2: rule__Message__Group_4__2__Impl rule__Message__Group_4__3
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_28);
             rule__Message__Group_4__2__Impl();
 
             state._fsp--;
@@ -19739,7 +19746,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6517:1: ( rule__Message__Group_4__3__Impl rule__Message__Group_4__4 )
             // InternalBehaviourLanguage.g:6518:2: rule__Message__Group_4__3__Impl rule__Message__Group_4__4
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_28);
             rule__Message__Group_4__3__Impl();
 
             state._fsp--;
@@ -19796,7 +19803,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:6532:3: rule__Message__Group_4_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__Message__Group_4_3__0();
 
             	    state._fsp--;
@@ -19912,7 +19919,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6571:1: ( rule__Message__Group_4_3__0__Impl rule__Message__Group_4_3__1 )
             // InternalBehaviourLanguage.g:6572:2: rule__Message__Group_4_3__0__Impl rule__Message__Group_4_3__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__Message__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -20067,7 +20074,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6625:1: ( rule__Message__Group_5__0__Impl rule__Message__Group_5__1 )
             // InternalBehaviourLanguage.g:6626:2: rule__Message__Group_5__0__Impl rule__Message__Group_5__1
             {
-            pushFollow(FOLLOW_26);
+            pushFollow(FOLLOW_27);
             rule__Message__Group_5__0__Impl();
 
             state._fsp--;
@@ -20142,7 +20149,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6652:1: ( rule__Message__Group_5__1__Impl rule__Message__Group_5__2 )
             // InternalBehaviourLanguage.g:6653:2: rule__Message__Group_5__1__Impl rule__Message__Group_5__2
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__Message__Group_5__1__Impl();
 
             state._fsp--;
@@ -20217,7 +20224,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6679:1: ( rule__Message__Group_5__2__Impl rule__Message__Group_5__3 )
             // InternalBehaviourLanguage.g:6680:2: rule__Message__Group_5__2__Impl rule__Message__Group_5__3
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_28);
             rule__Message__Group_5__2__Impl();
 
             state._fsp--;
@@ -20302,7 +20309,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6706:1: ( rule__Message__Group_5__3__Impl rule__Message__Group_5__4 )
             // InternalBehaviourLanguage.g:6707:2: rule__Message__Group_5__3__Impl rule__Message__Group_5__4
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_28);
             rule__Message__Group_5__3__Impl();
 
             state._fsp--;
@@ -20359,7 +20366,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:6721:3: rule__Message__Group_5_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__Message__Group_5_3__0();
 
             	    state._fsp--;
@@ -20475,7 +20482,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6760:1: ( rule__Message__Group_5_3__0__Impl rule__Message__Group_5_3__1 )
             // InternalBehaviourLanguage.g:6761:2: rule__Message__Group_5_3__0__Impl rule__Message__Group_5_3__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__Message__Group_5_3__0__Impl();
 
             state._fsp--;
@@ -20630,7 +20637,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6814:1: ( rule__Message__Group_6__0__Impl rule__Message__Group_6__1 )
             // InternalBehaviourLanguage.g:6815:2: rule__Message__Group_6__0__Impl rule__Message__Group_6__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__Message__Group_6__0__Impl();
 
             state._fsp--;
@@ -20785,7 +20792,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6868:1: ( rule__Message__Group_7__0__Impl rule__Message__Group_7__1 )
             // InternalBehaviourLanguage.g:6869:2: rule__Message__Group_7__0__Impl rule__Message__Group_7__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_7);
             rule__Message__Group_7__0__Impl();
 
             state._fsp--;
@@ -20860,7 +20867,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6895:1: ( rule__Message__Group_7__1__Impl rule__Message__Group_7__2 )
             // InternalBehaviourLanguage.g:6896:2: rule__Message__Group_7__1__Impl rule__Message__Group_7__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__Message__Group_7__1__Impl();
 
             state._fsp--;
@@ -20935,7 +20942,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6922:1: ( rule__Message__Group_7__2__Impl rule__Message__Group_7__3 )
             // InternalBehaviourLanguage.g:6923:2: rule__Message__Group_7__2__Impl rule__Message__Group_7__3
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__Message__Group_7__2__Impl();
 
             state._fsp--;
@@ -21020,7 +21027,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:6949:1: ( rule__Message__Group_7__3__Impl rule__Message__Group_7__4 )
             // InternalBehaviourLanguage.g:6950:2: rule__Message__Group_7__3__Impl rule__Message__Group_7__4
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             rule__Message__Group_7__3__Impl();
 
             state._fsp--;
@@ -21077,7 +21084,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             	case 1 :
             	    // InternalBehaviourLanguage.g:6964:3: rule__Message__Group_7_3__0
             	    {
-            	    pushFollow(FOLLOW_10);
+            	    pushFollow(FOLLOW_11);
             	    rule__Message__Group_7_3__0();
 
             	    state._fsp--;
@@ -21193,7 +21200,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:7003:1: ( rule__Message__Group_7_3__0__Impl rule__Message__Group_7_3__1 )
             // InternalBehaviourLanguage.g:7004:2: rule__Message__Group_7_3__0__Impl rule__Message__Group_7_3__1
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__Message__Group_7_3__0__Impl();
 
             state._fsp--;
@@ -21348,7 +21355,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:7057:1: ( rule__Message__Group_8__0__Impl rule__Message__Group_8__1 )
             // InternalBehaviourLanguage.g:7058:2: rule__Message__Group_8__0__Impl rule__Message__Group_8__1
             {
-            pushFollow(FOLLOW_28);
+            pushFollow(FOLLOW_29);
             rule__Message__Group_8__0__Impl();
 
             state._fsp--;
@@ -21503,7 +21510,7 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
             // InternalBehaviourLanguage.g:7111:1: ( rule__EInt__Group__0__Impl rule__EInt__Group__1 )
             // InternalBehaviourLanguage.g:7112:2: rule__EInt__Group__0__Impl rule__EInt__Group__1
             {
-            pushFollow(FOLLOW_30);
+            pushFollow(FOLLOW_31);
             rule__EInt__Group__0__Impl();
 
             state._fsp--;
@@ -24738,51 +24745,52 @@ public class InternalBehaviourLanguageParser extends AbstractInternalContentAssi
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x000000000EC00000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000001400000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000040000002L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000200000020L,0x0000000000000002L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x000000000007C000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000003000000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x000000C000400000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000401000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0100000000000040L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000780000400000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0001000000400000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000200200000000L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0810000000000000L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0028000000000000L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0300000000000040L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0080000000000000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000200000400000L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000003000L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0xF000200000400000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x000000000EC00000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000001400000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000001000002L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000200000020L,0x0000000000000002L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x000000000007C000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000003000000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x000000C000400000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000401000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0100000000000040L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000780000400000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0001000000400000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000200200000000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0004000000000000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0810000000000000L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0028000000000000L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0300000000000040L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000200000400000L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000003000L});
+    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0xF000200000400000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000800L});
 
 }

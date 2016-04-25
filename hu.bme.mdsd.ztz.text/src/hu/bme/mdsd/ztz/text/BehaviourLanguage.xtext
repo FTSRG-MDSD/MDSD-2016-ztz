@@ -8,7 +8,7 @@ import "http://www.mdsd.hu/drone" as drone
 BehaviourLanguage:
 	importModel=Import
 	container=BehaviourContainer
-	(statements+=Statement)?
+	(statements+=Statement)*
 ;
 
 
@@ -18,12 +18,12 @@ Import:
 
 BehaviourContainer returns BehaviourContainer:
 	{BehaviourContainer}
-	'BehaviourContainer'
+	'Declaration'
 	'{'
-		('dynamicRobots' '{' dynamicRobots+=DynamicRobot ( "," dynamicRobots+=DynamicRobot)* '}' )?
-		('taskExecutions' '{' taskExecutions+=TaskExecution ( "," taskExecutions+=TaskExecution)* '}' )?
-		('taskRequirements' '{' taskRequirements+=TaskRequirement ( "," taskRequirements+=TaskRequirement)* '}' )?
-		('behaviourKeysContainer' behaviourKeysContainer=BehaviouralPropertyKeyContainer)?
+		('DynamicRobots' '{' dynamicRobots+=DynamicRobot ( "," dynamicRobots+=DynamicRobot)* '}' )?
+		('TaskExecutions' '{' taskExecutions+=TaskExecution ( "," taskExecutions+=TaskExecution)* '}' )?
+		('TaskRequirements' '{' taskRequirements+=TaskRequirement ( "," taskRequirements+=TaskRequirement)* '}' )?
+		('Keys' behaviourKeysContainer=BehaviouralPropertyKeyContainer)?
 	'}'
 ;
 

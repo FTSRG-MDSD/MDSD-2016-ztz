@@ -213,7 +213,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     BehaviourLanguage returns BehaviourLanguage
 	 *
 	 * Constraint:
-	 *     (importModel=Import container=BehaviourContainer statements+=Statement?)
+	 *     (importModel=Import container=BehaviourContainer statements+=Statement*)
 	 */
 	protected void sequence_BehaviourLanguage(ISerializationContext context, BehaviourLanguage semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
