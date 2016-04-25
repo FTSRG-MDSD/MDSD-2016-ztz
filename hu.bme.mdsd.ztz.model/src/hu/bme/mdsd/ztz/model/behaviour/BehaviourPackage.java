@@ -892,7 +892,7 @@ public interface BehaviourPackage extends EPackage {
         int DYNAMIC_ROBOT__DETECTED_OBJECTS = DronePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
         /**
-         * The feature id for the '<em><b>Collaborations</b></em>' containment reference.
+         * The feature id for the '<em><b>Collaborations</b></em>' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -1614,10 +1614,10 @@ public interface BehaviourPackage extends EPackage {
         EReference getDynamicRobot_DetectedObjects();
 
         /**
-         * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getCollaborations <em>Collaborations</em>}'.
+         * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getCollaborations <em>Collaborations</em>}'.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @return the meta object for the containment reference '<em>Collaborations</em>'.
+         * @return the meta object for the containment reference list '<em>Collaborations</em>'.
          * @see hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getCollaborations()
          * @see #getDynamicRobot()
          * @generated
@@ -2204,7 +2204,7 @@ public interface BehaviourPackage extends EPackage {
                 EReference DYNAMIC_ROBOT__DETECTED_OBJECTS = eINSTANCE.getDynamicRobot_DetectedObjects();
 
                 /**
-                 * The meta object literal for the '<em><b>Collaborations</b></em>' containment reference feature.
+                 * The meta object literal for the '<em><b>Collaborations</b></em>' containment reference list feature.
                  * <!-- begin-user-doc -->
                  * <!-- end-user-doc -->
                  * @generated

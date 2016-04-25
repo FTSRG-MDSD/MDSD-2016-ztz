@@ -114,8 +114,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="robot" lowerBound="1" eType="ecore:EClass drone.ecore#//Robot"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="detectedObjects" upperBound="-1"
         eType="#//DetectedObject" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborations" eType="#//RobotCollaboration"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborations" upperBound="-1"
+        eType="#//RobotCollaboration" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="messageRepository" eType="#//MessageRepository"
         containment="true" eOpposite="#//MessageRepository/robot"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"

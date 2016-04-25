@@ -73,30 +73,20 @@ public interface DynamicRobot extends NamedElement {
         EList<DetectedObject> getDetectedObjects();
 
         /**
-         * Returns the value of the '<em><b>Collaborations</b></em>' containment reference.
+         * Returns the value of the '<em><b>Collaborations</b></em>' containment reference list.
+         * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration}.
          * <!-- begin-user-doc -->
          * <p>
          * If the meaning of the '<em>Collaborations</em>' containment reference isn't clear,
          * there really should be more of a description here...
          * </p>
          * <!-- end-user-doc -->
-         * @return the value of the '<em>Collaborations</em>' containment reference.
-         * @see #setCollaborations(RobotCollaboration)
+         * @return the value of the '<em>Collaborations</em>' containment reference list.
          * @see hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage#getDynamicRobot_Collaborations()
          * @model containment="true"
          * @generated
          */
-        RobotCollaboration getCollaborations();
-
-        /**
-         * Sets the value of the '{@link hu.bme.mdsd.ztz.model.behaviour.DynamicRobot#getCollaborations <em>Collaborations</em>}' containment reference.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @param value the new value of the '<em>Collaborations</em>' containment reference.
-         * @see #getCollaborations()
-         * @generated
-         */
-        void setCollaborations(RobotCollaboration value);
+        EList<RobotCollaboration> getCollaborations();
 
         /**
          * Returns the value of the '<em><b>Message Repository</b></em>' containment reference.

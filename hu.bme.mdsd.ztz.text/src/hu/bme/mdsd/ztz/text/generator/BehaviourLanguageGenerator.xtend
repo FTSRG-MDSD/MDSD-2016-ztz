@@ -78,6 +78,7 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 	
 	def dispatch parseStatement(CollaborationStatement statement, Resource resourceOfBehaviour) {
 		val robot = statement.robot
+		
 //		if (robot.collaborations.collaborator != statement.collaboration)
 	}
 	

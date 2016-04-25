@@ -72,14 +72,14 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
         protected EList<DetectedObject> detectedObjects;
 
         /**
-         * The cached value of the '{@link #getCollaborations() <em>Collaborations</em>}' containment reference.
+         * The cached value of the '{@link #getCollaborations() <em>Collaborations</em>}' containment reference list.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @see #getCollaborations()
          * @generated
          * @ordered
          */
-        protected RobotCollaboration collaborations;
+        protected EList<RobotCollaboration> collaborations;
 
         /**
          * The cached value of the '{@link #getMessageRepository() <em>Message Repository</em>}' containment reference.
@@ -205,42 +205,11 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
          * <!-- end-user-doc -->
          * @generated
          */
-        public RobotCollaboration getCollaborations() {
+        public EList<RobotCollaboration> getCollaborations() {
+                if (collaborations == null) {
+                        collaborations = new EObjectContainmentEList<RobotCollaboration>(RobotCollaboration.class, this, BehaviourPackage.DYNAMIC_ROBOT__COLLABORATIONS);
+                }
                 return collaborations;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public NotificationChain basicSetCollaborations(RobotCollaboration newCollaborations, NotificationChain msgs) {
-                RobotCollaboration oldCollaborations = collaborations;
-                collaborations = newCollaborations;
-                if (eNotificationRequired()) {
-                        ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourPackage.DYNAMIC_ROBOT__COLLABORATIONS, oldCollaborations, newCollaborations);
-                        if (msgs == null) msgs = notification; else msgs.add(notification);
-                }
-                return msgs;
-        }
-
-        /**
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        public void setCollaborations(RobotCollaboration newCollaborations) {
-                if (newCollaborations != collaborations) {
-                        NotificationChain msgs = null;
-                        if (collaborations != null)
-                                msgs = ((InternalEObject)collaborations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BehaviourPackage.DYNAMIC_ROBOT__COLLABORATIONS, null, msgs);
-                        if (newCollaborations != null)
-                                msgs = ((InternalEObject)newCollaborations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BehaviourPackage.DYNAMIC_ROBOT__COLLABORATIONS, null, msgs);
-                        msgs = basicSetCollaborations(newCollaborations, msgs);
-                        if (msgs != null) msgs.dispatch();
-                }
-                else if (eNotificationRequired())
-                        eNotify(new ENotificationImpl(this, Notification.SET, BehaviourPackage.DYNAMIC_ROBOT__COLLABORATIONS, newCollaborations, newCollaborations));
         }
 
         /**
@@ -358,7 +327,7 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
                         case BehaviourPackage.DYNAMIC_ROBOT__DETECTED_OBJECTS:
                                 return ((InternalEList<?>)getDetectedObjects()).basicRemove(otherEnd, msgs);
                         case BehaviourPackage.DYNAMIC_ROBOT__COLLABORATIONS:
-                                return basicSetCollaborations(null, msgs);
+                                return ((InternalEList<?>)getCollaborations()).basicRemove(otherEnd, msgs);
                         case BehaviourPackage.DYNAMIC_ROBOT__MESSAGE_REPOSITORY:
                                 return basicSetMessageRepository(null, msgs);
                         case BehaviourPackage.DYNAMIC_ROBOT__ACTIONS:
@@ -411,7 +380,8 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
                                 getDetectedObjects().addAll((Collection<? extends DetectedObject>)newValue);
                                 return;
                         case BehaviourPackage.DYNAMIC_ROBOT__COLLABORATIONS:
-                                setCollaborations((RobotCollaboration)newValue);
+                                getCollaborations().clear();
+                                getCollaborations().addAll((Collection<? extends RobotCollaboration>)newValue);
                                 return;
                         case BehaviourPackage.DYNAMIC_ROBOT__MESSAGE_REPOSITORY:
                                 setMessageRepository((MessageRepository)newValue);
@@ -446,7 +416,7 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
                                 getDetectedObjects().clear();
                                 return;
                         case BehaviourPackage.DYNAMIC_ROBOT__COLLABORATIONS:
-                                setCollaborations((RobotCollaboration)null);
+                                getCollaborations().clear();
                                 return;
                         case BehaviourPackage.DYNAMIC_ROBOT__MESSAGE_REPOSITORY:
                                 setMessageRepository((MessageRepository)null);
@@ -477,7 +447,7 @@ public class DynamicRobotImpl extends NamedElementImpl implements DynamicRobot {
                         case BehaviourPackage.DYNAMIC_ROBOT__DETECTED_OBJECTS:
                                 return detectedObjects != null && !detectedObjects.isEmpty();
                         case BehaviourPackage.DYNAMIC_ROBOT__COLLABORATIONS:
-                                return collaborations != null;
+                                return collaborations != null && !collaborations.isEmpty();
                         case BehaviourPackage.DYNAMIC_ROBOT__MESSAGE_REPOSITORY:
                                 return messageRepository != null;
                         case BehaviourPackage.DYNAMIC_ROBOT__STATUS:
