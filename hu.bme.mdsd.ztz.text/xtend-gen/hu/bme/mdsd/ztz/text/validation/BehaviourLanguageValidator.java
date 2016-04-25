@@ -3,11 +3,16 @@
  */
 package hu.bme.mdsd.ztz.text.validation;
 
+import com.google.common.base.Objects;
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
 
@@ -42,5 +47,18 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       _xifexpression = _xifexpression_1;
     }
     return _xifexpression;
+  }
+  
+  @Check
+  public void checkSelfKnowing(final CollaborationStatement statement) {
+    EList<RobotCollaboration> _collaboration = statement.getCollaboration();
+    for (final RobotCollaboration collab : _collaboration) {
+      DynamicRobot _robot = statement.getRobot();
+      DynamicRobot _collaborator = collab.getCollaborator();
+      boolean _equals = Objects.equal(_robot, _collaborator);
+      if (_equals) {
+        this.error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.COLLABORATION_STATEMENT__COLLABORATION, ErrorCodes.SAME_COLLABORATOR);
+      }
+    }
   }
 }

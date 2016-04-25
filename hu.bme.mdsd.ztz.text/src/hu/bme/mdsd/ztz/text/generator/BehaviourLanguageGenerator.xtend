@@ -93,7 +93,9 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 				}
 			}
 			if (!inCollaboration) {
-				connectedRobots.add(possibleCollaboration.collaborator)
+				if (robot != possibleCollaboration.collaborator) {
+					connectedRobots.add(possibleCollaboration.collaborator)
+				}
 			}
 		}
 		

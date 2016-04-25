@@ -116,7 +116,11 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
         }
         if ((!inCollaboration)) {
           DynamicRobot _collaborator_2 = possibleCollaboration.getCollaborator();
-          connectedRobots.add(_collaborator_2);
+          boolean _notEquals = (!Objects.equal(robot, _collaborator_2));
+          if (_notEquals) {
+            DynamicRobot _collaborator_3 = possibleCollaboration.getCollaborator();
+            connectedRobots.add(_collaborator_3);
+          }
         }
       }
     }

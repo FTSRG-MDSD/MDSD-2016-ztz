@@ -7,6 +7,8 @@ import org.eclipse.xtext.validation.Check
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
+import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
+import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
 
 /**
  * This class contains custom validation rules. 
@@ -24,8 +26,15 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 			val manager = ResourceManager.instance
 			manager.load(imp)
 		}
-		
-
+	}
+	
+	@Check
+	def checkSelfKnowing(CollaborationStatement statement) {
+		for (RobotCollaboration collab : statement.collaboration) {
+			if (statement.robot == collab.collaborator) {
+				error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.COLLABORATION_STATEMENT__COLLABORATION, ErrorCodes.SAME_COLLABORATOR)
+			}
+		}
 	}
 	
 }
