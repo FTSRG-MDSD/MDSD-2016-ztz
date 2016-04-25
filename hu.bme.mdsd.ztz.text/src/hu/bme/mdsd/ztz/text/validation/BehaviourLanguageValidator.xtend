@@ -14,6 +14,7 @@ import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage
 import hu.bme.mdsd.ztz.model.drone.DronePackage
+import hu.bme.mdsd.ztz.model.behaviour.Message
 
 /**
  * This class contains custom validation rules. 
@@ -51,6 +52,21 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 					error("Robots cannot have the same name", robot, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_ROBOT_NAME)
 				}
 			}
+		}
+	}
+	
+	
+	@Check
+	def checkUniqueMessageNames(Message message) {
+		val messagesIterator = message.eResource.allContents.filter(Message)
+		while (messagesIterator.hasNext) {
+			var otherMessage = messagesIterator.next()
+			if (otherMessage != message) {
+				if (otherMessage.name.equals(message.name)) {
+					error("Messages cannot have the same name", message, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_MESSAGE_NAME)
+				}
+			}
+			
 		}
 	}
 	

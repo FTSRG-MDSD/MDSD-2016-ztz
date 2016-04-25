@@ -4,8 +4,10 @@
 package hu.bme.mdsd.ztz.text.validation;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
@@ -14,7 +16,9 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
+import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
@@ -78,6 +82,27 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
         boolean _equals = _name.equals(_name_1);
         if (_equals) {
           this.error("Robots cannot have the same name", robot, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_ROBOT_NAME);
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void checkUniqueMessageNames(final Message message) {
+    Resource _eResource = message.eResource();
+    TreeIterator<EObject> _allContents = _eResource.getAllContents();
+    final Iterator<Message> messagesIterator = Iterators.<Message>filter(_allContents, Message.class);
+    while (messagesIterator.hasNext()) {
+      {
+        Message otherMessage = messagesIterator.next();
+        boolean _notEquals = (!Objects.equal(otherMessage, message));
+        if (_notEquals) {
+          String _name = otherMessage.getName();
+          String _name_1 = message.getName();
+          boolean _equals = _name.equals(_name_1);
+          if (_equals) {
+            this.error("Messages cannot have the same name", message, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_MESSAGE_NAME);
+          }
         }
       }
     }
