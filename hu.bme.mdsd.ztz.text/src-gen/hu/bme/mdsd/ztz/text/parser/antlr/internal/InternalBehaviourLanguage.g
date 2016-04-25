@@ -757,6 +757,31 @@ ruleCollaborationStatement returns [EObject current=null]
 				}
 			)
 		)
+		(
+			otherlv_3=','
+			{
+				newLeafNode(otherlv_3, grammarAccess.getCollaborationStatementAccess().getCommaKeyword_3_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getCollaborationStatementAccess().getCollaborationRobotCollaborationParserRuleCall_3_1_0());
+					}
+					lv_collaboration_4_0=ruleRobotCollaboration
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getCollaborationStatementRule());
+						}
+						add(
+							$current,
+							"collaboration",
+							lv_collaboration_4_0,
+							"hu.bme.mdsd.ztz.text.BehaviourLanguage.RobotCollaboration");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
 	)
 ;
 

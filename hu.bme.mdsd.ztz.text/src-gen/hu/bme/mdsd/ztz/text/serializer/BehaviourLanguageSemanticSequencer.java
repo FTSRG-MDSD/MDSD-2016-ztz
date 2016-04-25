@@ -269,7 +269,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     CollaborationStatement returns CollaborationStatement
 	 *
 	 * Constraint:
-	 *     (robot=[DynamicRobot|ID] collaboration+=RobotCollaboration)
+	 *     (robot=[DynamicRobot|ID] collaboration+=RobotCollaboration collaboration+=RobotCollaboration*)
 	 */
 	protected void sequence_CollaborationStatement(ISerializationContext context, CollaborationStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

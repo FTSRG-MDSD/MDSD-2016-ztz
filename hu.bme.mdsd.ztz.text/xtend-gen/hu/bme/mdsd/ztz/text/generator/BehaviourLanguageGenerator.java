@@ -16,8 +16,8 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
@@ -100,7 +100,7 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
   
   protected Boolean _parseStatement(final CollaborationStatement statement, final Resource resourceOfBehaviour) {
     final DynamicRobot robot = statement.getRobot();
-    final ArrayList<DynamicRobot> connectedRobots = new ArrayList<DynamicRobot>();
+    final HashSet<DynamicRobot> connectedRobots = new HashSet<DynamicRobot>();
     EList<RobotCollaboration> _collaboration = statement.getCollaboration();
     for (final RobotCollaboration possibleCollaboration : _collaboration) {
       {

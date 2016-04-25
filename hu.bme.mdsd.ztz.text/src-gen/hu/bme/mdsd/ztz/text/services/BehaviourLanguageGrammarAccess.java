@@ -441,12 +441,16 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Keyword cKnowKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cCollaborationAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCollaborationRobotCollaborationParserRuleCall_2_0 = (RuleCall)cCollaborationAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cCollaborationAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cCollaborationRobotCollaborationParserRuleCall_3_1_0 = (RuleCall)cCollaborationAssignment_3_1.eContents().get(0);
 		
 		//CollaborationStatement:
-		//	robot=[DynamicRobot] 'know' collaboration+=RobotCollaboration;
+		//	robot=[DynamicRobot] 'know' collaboration+=RobotCollaboration (',' collaboration+=RobotCollaboration)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//robot=[DynamicRobot] 'know' collaboration+=RobotCollaboration
+		//robot=[DynamicRobot] 'know' collaboration+=RobotCollaboration (',' collaboration+=RobotCollaboration)*
 		public Group getGroup() { return cGroup; }
 		
 		//robot=[DynamicRobot]
@@ -466,6 +470,18 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//RobotCollaboration
 		public RuleCall getCollaborationRobotCollaborationParserRuleCall_2_0() { return cCollaborationRobotCollaborationParserRuleCall_2_0; }
+		
+		//(',' collaboration+=RobotCollaboration)*
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//','
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+		
+		//collaboration+=RobotCollaboration
+		public Assignment getCollaborationAssignment_3_1() { return cCollaborationAssignment_3_1; }
+		
+		//RobotCollaboration
+		public RuleCall getCollaborationRobotCollaborationParserRuleCall_3_1_0() { return cCollaborationRobotCollaborationParserRuleCall_3_1_0; }
 	}
 	public class MessageTargetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MessageTarget");
@@ -2750,7 +2766,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 	
 	//CollaborationStatement:
-	//	robot=[DynamicRobot] 'know' collaboration+=RobotCollaboration;
+	//	robot=[DynamicRobot] 'know' collaboration+=RobotCollaboration (',' collaboration+=RobotCollaboration)*;
 	public CollaborationStatementElements getCollaborationStatementAccess() {
 		return pCollaborationStatement;
 	}

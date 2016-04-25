@@ -25,6 +25,7 @@ import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
 import java.util.ArrayList
 import hu.bme.mdsd.ztz.model.drone.Robot
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
+import java.util.HashSet
 
 /**
  * Generates code from your model files on save.
@@ -84,7 +85,7 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 	def dispatch parseStatement(CollaborationStatement statement, Resource resourceOfBehaviour) {
 		val robot = statement.robot
 		
-		val connectedRobots = new ArrayList<DynamicRobot>()
+		val connectedRobots = new HashSet<DynamicRobot>()
 		for (RobotCollaboration possibleCollaboration : statement.collaboration) {
 			var inCollaboration = false
 			for (RobotCollaboration collaboration : robot.collaborations) {

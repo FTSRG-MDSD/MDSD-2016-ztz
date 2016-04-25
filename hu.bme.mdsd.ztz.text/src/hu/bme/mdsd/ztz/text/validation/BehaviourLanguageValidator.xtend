@@ -32,7 +32,7 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 	def checkSelfKnowing(CollaborationStatement statement) {
 		for (RobotCollaboration collab : statement.collaboration) {
 			if (statement.robot == collab.collaborator) {
-				error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.COLLABORATION_STATEMENT__COLLABORATION, ErrorCodes.SAME_COLLABORATOR)
+				error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.STATEMENT__ROBOT, ErrorCodes.SAME_COLLABORATOR)
 			}
 		}
 	}
