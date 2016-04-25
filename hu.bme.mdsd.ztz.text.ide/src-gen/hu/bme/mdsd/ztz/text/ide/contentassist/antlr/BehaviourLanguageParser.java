@@ -66,7 +66,6 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTaskExecutionAccess().getGroup_5(), "rule__TaskExecution__Group_5__0");
 					put(grammarAccess.getTaskExecutionAccess().getGroup_5_3(), "rule__TaskExecution__Group_5_3__0");
 					put(grammarAccess.getTaskExecutionAccess().getGroup_6(), "rule__TaskExecution__Group_6__0");
-					put(grammarAccess.getTaskExecutionAccess().getGroup_7(), "rule__TaskExecution__Group_7__0");
 					put(grammarAccess.getTaskRequirementAccess().getGroup(), "rule__TaskRequirement__Group__0");
 					put(grammarAccess.getTaskRequirementAccess().getGroup_7(), "rule__TaskRequirement__Group_7__0");
 					put(grammarAccess.getTaskRequirementAccess().getGroup_8(), "rule__TaskRequirement__Group_8__0");
@@ -155,8 +154,7 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTaskExecutionAccess().getStatusAssignment_4_1(), "rule__TaskExecution__StatusAssignment_4_1");
 					put(grammarAccess.getTaskExecutionAccess().getExecutorsAssignment_5_2(), "rule__TaskExecution__ExecutorsAssignment_5_2");
 					put(grammarAccess.getTaskExecutionAccess().getExecutorsAssignment_5_3_1(), "rule__TaskExecution__ExecutorsAssignment_5_3_1");
-					put(grammarAccess.getTaskExecutionAccess().getRequirementAssignment_6_1(), "rule__TaskExecution__RequirementAssignment_6_1");
-					put(grammarAccess.getTaskExecutionAccess().getExecutionTimeAssignment_7_1(), "rule__TaskExecution__ExecutionTimeAssignment_7_1");
+					put(grammarAccess.getTaskExecutionAccess().getExecutionTimeAssignment_6_1(), "rule__TaskExecution__ExecutionTimeAssignment_6_1");
 					put(grammarAccess.getTaskRequirementAccess().getNameAssignment_1(), "rule__TaskRequirement__NameAssignment_1");
 					put(grammarAccess.getTaskRequirementAccess().getParticipantsAssignment_4(), "rule__TaskRequirement__ParticipantsAssignment_4");
 					put(grammarAccess.getTaskRequirementAccess().getTaskExecutionAssignment_6(), "rule__TaskRequirement__TaskExecutionAssignment_6");
@@ -170,8 +168,8 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBehaviouralPropertyKeyContainerAccess().getNameAssignment_2(), "rule__BehaviouralPropertyKeyContainer__NameAssignment_2");
 					put(grammarAccess.getBehaviouralPropertyKeyContainerAccess().getKeysAssignment_4_2(), "rule__BehaviouralPropertyKeyContainer__KeysAssignment_4_2");
 					put(grammarAccess.getBehaviouralPropertyKeyContainerAccess().getKeysAssignment_4_3_1(), "rule__BehaviouralPropertyKeyContainer__KeysAssignment_4_3_1");
-					put(grammarAccess.getDetectedObjectAccess().getObstacleAssignment_0(), "rule__DetectedObject__ObstacleAssignment_0");
-					put(grammarAccess.getDetectedObjectAccess().getObjectAssignment_4(), "rule__DetectedObject__ObjectAssignment_4");
+					put(grammarAccess.getDetectedObjectAccess().getObstacleAssignment_1(), "rule__DetectedObject__ObstacleAssignment_1");
+					put(grammarAccess.getDetectedObjectAccess().getObjectAssignment_5(), "rule__DetectedObject__ObjectAssignment_5");
 					put(grammarAccess.getRobotCollaborationAccess().getCollaboratorAssignment_1(), "rule__RobotCollaboration__CollaboratorAssignment_1");
 					put(grammarAccess.getRobotCollaborationAccess().getPropertiesAssignment_2_2(), "rule__RobotCollaboration__PropertiesAssignment_2_2");
 					put(grammarAccess.getRobotCollaborationAccess().getPropertiesAssignment_2_3_1(), "rule__RobotCollaboration__PropertiesAssignment_2_3_1");

@@ -1078,35 +1078,16 @@ ruleTaskExecution returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_12='requirement'
+			otherlv_12='executionTime'
 			{
-				newLeafNode(otherlv_12, grammarAccess.getTaskExecutionAccess().getRequirementKeyword_6_0());
+				newLeafNode(otherlv_12, grammarAccess.getTaskExecutionAccess().getExecutionTimeKeyword_6_0());
 			}
 			(
 				(
 					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTaskExecutionRule());
-						}
+						newCompositeNode(grammarAccess.getTaskExecutionAccess().getExecutionTimeMeasureValueParserRuleCall_6_1_0());
 					}
-					otherlv_13=RULE_ID
-					{
-						newLeafNode(otherlv_13, grammarAccess.getTaskExecutionAccess().getRequirementTaskRequirementCrossReference_6_1_0());
-					}
-				)
-			)
-		)?
-		(
-			otherlv_14='executionTime'
-			{
-				newLeafNode(otherlv_14, grammarAccess.getTaskExecutionAccess().getExecutionTimeKeyword_7_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getTaskExecutionAccess().getExecutionTimeMeasureValueParserRuleCall_7_1_0());
-					}
-					lv_executionTime_15_0=ruleMeasureValue
+					lv_executionTime_13_0=ruleMeasureValue
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTaskExecutionRule());
@@ -1114,16 +1095,16 @@ ruleTaskExecution returns [EObject current=null]
 						set(
 							$current,
 							"executionTime",
-							lv_executionTime_15_0,
+							lv_executionTime_13_0,
 							"hu.bme.mdsd.ztz.text.BehaviourLanguage.MeasureValue");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)?
-		otherlv_16='}'
+		otherlv_14='}'
 		{
-			newLeafNode(otherlv_16, grammarAccess.getTaskExecutionAccess().getRightCurlyBracketKeyword_8());
+			newLeafNode(otherlv_14, grammarAccess.getTaskExecutionAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;
@@ -1806,12 +1787,9 @@ ruleProperty returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getPropertyRule());
 					}
 				}
+				otherlv_3=RULE_ID
 				{
-					newCompositeNode(grammarAccess.getPropertyAccess().getKeyPropertyKeyCrossReference_3_0());
-				}
-				ruleEString
-				{
-					afterParserOrEnumRuleCall();
+					newLeafNode(otherlv_3, grammarAccess.getPropertyAccess().getKeyPropertyKeyCrossReference_3_0());
 				}
 			)
 		)
@@ -1953,12 +1931,9 @@ ruleCapabilityProperties returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getCapabilityPropertiesRule());
 					}
 				}
+				otherlv_3=RULE_ID
 				{
-					newCompositeNode(grammarAccess.getCapabilityPropertiesAccess().getCapabilityCapabilityCrossReference_3_0());
-				}
-				ruleEString
-				{
-					afterParserOrEnumRuleCall();
+					newLeafNode(otherlv_3, grammarAccess.getCapabilityPropertiesAccess().getCapabilityCapabilityCrossReference_3_0());
 				}
 			)
 		)
@@ -2308,12 +2283,9 @@ ruleMessage returns [EObject current=null]
 								$current = createModelElement(grammarAccess.getMessageRule());
 							}
 						}
+						otherlv_10=RULE_ID
 						{
-							newCompositeNode(grammarAccess.getMessageAccess().getReferredObjectsAreaObjectCrossReference_1_2_2_0());
-						}
-						ruleEString
-						{
-							afterParserOrEnumRuleCall();
+							newLeafNode(otherlv_10, grammarAccess.getMessageAccess().getReferredObjectsAreaObjectCrossReference_1_2_2_0());
 						}
 					)
 				)
@@ -2329,12 +2301,9 @@ ruleMessage returns [EObject current=null]
 									$current = createModelElement(grammarAccess.getMessageRule());
 								}
 							}
+							otherlv_12=RULE_ID
 							{
-								newCompositeNode(grammarAccess.getMessageAccess().getReferredObjectsAreaObjectCrossReference_1_2_3_1_0());
-							}
-							ruleEString
-							{
-								afterParserOrEnumRuleCall();
+								newLeafNode(otherlv_12, grammarAccess.getMessageAccess().getReferredObjectsAreaObjectCrossReference_1_2_3_1_0());
 							}
 						)
 					)
@@ -2356,12 +2325,9 @@ ruleMessage returns [EObject current=null]
 								$current = createModelElement(grammarAccess.getMessageRule());
 							}
 						}
+						otherlv_15=RULE_ID
 						{
-							newCompositeNode(grammarAccess.getMessageAccess().getFollowsMessageCrossReference_1_3_1_0());
-						}
-						ruleEString
-						{
-							afterParserOrEnumRuleCall();
+							newLeafNode(otherlv_15, grammarAccess.getMessageAccess().getFollowsMessageCrossReference_1_3_1_0());
 						}
 					)
 				)

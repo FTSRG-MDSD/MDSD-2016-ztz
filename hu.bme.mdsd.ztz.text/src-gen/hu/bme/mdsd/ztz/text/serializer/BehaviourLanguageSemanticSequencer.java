@@ -256,7 +256,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     CapabilityProperties returns CapabilityProperties
 	 *
 	 * Constraint:
-	 *     (capability=[Capability|EString] (properties+=Property properties+=Property*)?)
+	 *     (capability=[Capability|ID] (properties+=Property properties+=Property*)?)
 	 */
 	protected void sequence_CapabilityProperties(ISerializationContext context, CapabilityProperties semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -385,8 +385,8 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     (
 	 *         name=EString 
 	 *         (involvedTaskExecutions+=[TaskExecution|ID] involvedTaskExecutions+=[TaskExecution|ID]*)? 
-	 *         (referredObjects+=[AreaObject|EString] referredObjects+=[AreaObject|EString]*)? 
-	 *         follows=[Message|EString]? 
+	 *         (referredObjects+=[AreaObject|ID] referredObjects+=[AreaObject|ID]*)? 
+	 *         follows=[Message|ID]? 
 	 *         (properties+=Property properties+=Property*)? 
 	 *         TTL=MeasureValue?
 	 *     )
@@ -451,7 +451,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     Property returns Property
 	 *
 	 * Constraint:
-	 *     (key=[PropertyKey|EString] value=PropertyValue)
+	 *     (key=[PropertyKey|ID] value=PropertyValue)
 	 */
 	protected void sequence_Property(ISerializationContext context, Property semanticObject) {
 		if (errorAcceptor != null) {
@@ -461,7 +461,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.PROPERTY__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPropertyAccess().getKeyPropertyKeyEStringParserRuleCall_3_0_1(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getPropertyAccess().getKeyPropertyKeyIDTerminalRuleCall_3_0_1(), semanticObject.getKey());
 		feeder.accept(grammarAccess.getPropertyAccess().getValuePropertyValueParserRuleCall_5_0(), semanticObject.getValue());
 		feeder.finish();
 	}
@@ -508,7 +508,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *         task=[Task|ID] 
 	 *         status=TaskExecutionStatus? 
 	 *         (executors+=[DynamicRobot|ID] executors+=[DynamicRobot|ID]*)? 
-	 *         requirement=[TaskRequirement|ID]? 
 	 *         executionTime=MeasureValue?
 	 *     )
 	 */

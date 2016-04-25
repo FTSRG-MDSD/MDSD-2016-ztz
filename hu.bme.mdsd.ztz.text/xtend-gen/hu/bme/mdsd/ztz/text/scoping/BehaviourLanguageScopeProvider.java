@@ -4,13 +4,26 @@
 package hu.bme.mdsd.ztz.text.scoping;
 
 import com.google.common.base.Objects;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
+import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
+import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
+import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.Capability;
+import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
+import hu.bme.mdsd.ztz.model.drone.DronePackage;
+import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
+import hu.bme.mdsd.ztz.model.drone.MeasureValue;
+import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
 import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.scoping.AbstractBehaviourLanguageScopeProvider;
+import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -28,57 +41,221 @@ import org.eclipse.xtext.scoping.Scopes;
  */
 @SuppressWarnings("all")
 public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvider {
-  public IScope scopeForDynamicRobot(final DynamicRobot dynamicRobot, final EReference reference) {
-    IScope _xblockexpression = null;
-    {
-      final ResourceManager manager = ResourceManager.getInstance();
-      Resource _resource = manager.getResource();
-      boolean _notEquals = (!Objects.equal(_resource, null));
-      if (_notEquals) {
-        Resource _resource_1 = manager.getResource();
-        EList<EObject> _contents = _resource_1.getContents();
-        EObject _get = _contents.get(0);
-        final RobotMissionContainer container = ((RobotMissionContainer) _get);
-        List<Robot> _allContentsOfType = EcoreUtil2.<Robot>getAllContentsOfType(container, Robot.class);
-        return Scopes.scopeFor(_allContentsOfType);
-      }
-      _xblockexpression = super.getScope(dynamicRobot, reference);
-    }
-    return _xblockexpression;
-  }
-  
-  public IScope scopeForTaskExecution(final TaskExecution taskExecution, final EReference reference) {
-    IScope _xblockexpression = null;
-    {
-      final ResourceManager manager = ResourceManager.getInstance();
-      Resource _resource = manager.getResource();
-      boolean _notEquals = (!Objects.equal(_resource, null));
-      if (_notEquals) {
-        Resource _resource_1 = manager.getResource();
-        EList<EObject> _contents = _resource_1.getContents();
-        EObject _get = _contents.get(0);
-        final RobotMissionContainer container = ((RobotMissionContainer) _get);
-        List<Task> _allContentsOfType = EcoreUtil2.<Task>getAllContentsOfType(container, Task.class);
-        return Scopes.scopeFor(_allContentsOfType);
-      }
-      _xblockexpression = super.getScope(taskExecution, reference);
-    }
-    return _xblockexpression;
-  }
-  
   @Override
   public IScope getScope(final EObject context, final EReference reference) {
+    final ResourceManager manager = ResourceManager.getInstance();
+    return this.scopeForContext(context, reference, manager);
+  }
+  
+  protected IScope _scopeForContext(final EObject context, final EReference reference, final ResourceManager manager) {
+    return super.getScope(context, reference);
+  }
+  
+  protected IScope _scopeForContext(final DynamicRobot context, final EReference reference, final ResourceManager manager) {
     IScope _xblockexpression = null;
     {
-      if ((context instanceof DynamicRobot)) {
-        return this.scopeForDynamicRobot(((DynamicRobot)context), reference);
+      boolean _and = false;
+      boolean _equals = Objects.equal(reference, BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT);
+      if (!_equals) {
+        _and = false;
       } else {
-        if ((context instanceof TaskExecution)) {
-          return this.scopeForTaskExecution(((TaskExecution)context), reference);
-        }
+        Resource _resource = manager.getResource();
+        boolean _notEquals = (!Objects.equal(_resource, null));
+        _and = _notEquals;
+      }
+      if (_and) {
+        RobotMissionContainer _container = this.getContainer(manager);
+        List<Robot> _allContentsOfType = EcoreUtil2.<Robot>getAllContentsOfType(_container, Robot.class);
+        return Scopes.scopeFor(_allContentsOfType);
       }
       _xblockexpression = super.getScope(context, reference);
     }
     return _xblockexpression;
+  }
+  
+  protected IScope _scopeForContext(final TaskExecution context, final EReference reference, final ResourceManager manager) {
+    IScope _xblockexpression = null;
+    {
+      boolean _and = false;
+      boolean _equals = Objects.equal(reference, BehaviourPackage.Literals.TASK_EXECUTION__TASK);
+      if (!_equals) {
+        _and = false;
+      } else {
+        Resource _resource = manager.getResource();
+        boolean _notEquals = (!Objects.equal(_resource, null));
+        _and = _notEquals;
+      }
+      if (_and) {
+        RobotMissionContainer _container = this.getContainer(manager);
+        List<Task> _allContentsOfType = EcoreUtil2.<Task>getAllContentsOfType(_container, Task.class);
+        return Scopes.scopeFor(_allContentsOfType);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
+  
+  protected IScope _scopeForContext(final Message context, final EReference reference, final ResourceManager manager) {
+    IScope _xblockexpression = null;
+    {
+      boolean _and = false;
+      boolean _equals = Objects.equal(reference, BehaviourPackage.Literals.MESSAGE__REFERRED_OBJECTS);
+      if (!_equals) {
+        _and = false;
+      } else {
+        Resource _resource = manager.getResource();
+        boolean _notEquals = (!Objects.equal(_resource, null));
+        _and = _notEquals;
+      }
+      if (_and) {
+        RobotMissionContainer _container = this.getContainer(manager);
+        List<AreaObject> _allContentsOfType = EcoreUtil2.<AreaObject>getAllContentsOfType(_container, AreaObject.class);
+        return Scopes.scopeFor(_allContentsOfType);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
+  
+  protected IScope _scopeForContext(final TaskRequirement context, final EReference reference, final ResourceManager manager) {
+    IScope _xblockexpression = null;
+    {
+      boolean _and = false;
+      boolean _equals = Objects.equal(reference, BehaviourPackage.Literals.TASK_REQUIREMENT__REQUIRED_CAPABILITIES);
+      if (!_equals) {
+        _and = false;
+      } else {
+        Resource _resource = manager.getResource();
+        boolean _notEquals = (!Objects.equal(_resource, null));
+        _and = _notEquals;
+      }
+      if (_and) {
+        RobotMissionContainer _container = this.getContainer(manager);
+        List<Capability> _allContentsOfType = EcoreUtil2.<Capability>getAllContentsOfType(_container, Capability.class);
+        return Scopes.scopeFor(_allContentsOfType);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
+  
+  protected IScope _scopeForContext(final DetectedObject context, final EReference reference, final ResourceManager manager) {
+    IScope _xblockexpression = null;
+    {
+      boolean _and = false;
+      boolean _equals = Objects.equal(reference, BehaviourPackage.Literals.DETECTED_OBJECT__OBJECT);
+      if (!_equals) {
+        _and = false;
+      } else {
+        Resource _resource = manager.getResource();
+        boolean _notEquals = (!Objects.equal(_resource, null));
+        _and = _notEquals;
+      }
+      if (_and) {
+        RobotMissionContainer _container = this.getContainer(manager);
+        List<AreaObject> _allContentsOfType = EcoreUtil2.<AreaObject>getAllContentsOfType(_container, AreaObject.class);
+        return Scopes.scopeFor(_allContentsOfType);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
+  
+  protected IScope _scopeForContext(final Property context, final EReference reference, final ResourceManager manager) {
+    IScope _xblockexpression = null;
+    {
+      boolean _and = false;
+      boolean _equals = Objects.equal(reference, DronePackage.Literals.PROPERTY__KEY);
+      if (!_equals) {
+        _and = false;
+      } else {
+        Resource _resource = manager.getResource();
+        boolean _notEquals = (!Objects.equal(_resource, null));
+        _and = _notEquals;
+      }
+      if (_and) {
+        RobotMissionContainer _container = this.getContainer(manager);
+        List<PropertyKey> _allContentsOfType = EcoreUtil2.<PropertyKey>getAllContentsOfType(_container, PropertyKey.class);
+        return Scopes.scopeFor(_allContentsOfType);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
+  
+  protected IScope _scopeForContext(final MeasureValue context, final EReference reference, final ResourceManager manager) {
+    IScope _xblockexpression = null;
+    {
+      boolean _and = false;
+      boolean _equals = Objects.equal(reference, DronePackage.Literals.MEASURE_VALUE__DIMENSION);
+      if (!_equals) {
+        _and = false;
+      } else {
+        Resource _resource = manager.getResource();
+        boolean _notEquals = (!Objects.equal(_resource, null));
+        _and = _notEquals;
+      }
+      if (_and) {
+        RobotMissionContainer _container = this.getContainer(manager);
+        List<MeasureDimension> _allContentsOfType = EcoreUtil2.<MeasureDimension>getAllContentsOfType(_container, MeasureDimension.class);
+        return Scopes.scopeFor(_allContentsOfType);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
+  
+  protected IScope _scopeForContext(final CapabilityProperties context, final EReference reference, final ResourceManager manager) {
+    IScope _xblockexpression = null;
+    {
+      boolean _and = false;
+      boolean _equals = Objects.equal(reference, DronePackage.Literals.CAPABILITY_PROPERTIES__CAPABILITY);
+      if (!_equals) {
+        _and = false;
+      } else {
+        Resource _resource = manager.getResource();
+        boolean _notEquals = (!Objects.equal(_resource, null));
+        _and = _notEquals;
+      }
+      if (_and) {
+        RobotMissionContainer _container = this.getContainer(manager);
+        List<Capability> _allContentsOfType = EcoreUtil2.<Capability>getAllContentsOfType(_container, Capability.class);
+        return Scopes.scopeFor(_allContentsOfType);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
+  
+  protected RobotMissionContainer getContainer(final ResourceManager manager) {
+    Resource _resource = manager.getResource();
+    EList<EObject> _contents = _resource.getContents();
+    EObject _get = _contents.get(0);
+    return ((RobotMissionContainer) _get);
+  }
+  
+  public IScope scopeForContext(final EObject context, final EReference reference, final ResourceManager manager) {
+    if (context instanceof DynamicRobot) {
+      return _scopeForContext((DynamicRobot)context, reference, manager);
+    } else if (context instanceof Message) {
+      return _scopeForContext((Message)context, reference, manager);
+    } else if (context instanceof TaskExecution) {
+      return _scopeForContext((TaskExecution)context, reference, manager);
+    } else if (context instanceof TaskRequirement) {
+      return _scopeForContext((TaskRequirement)context, reference, manager);
+    } else if (context instanceof MeasureValue) {
+      return _scopeForContext((MeasureValue)context, reference, manager);
+    } else if (context instanceof DetectedObject) {
+      return _scopeForContext((DetectedObject)context, reference, manager);
+    } else if (context instanceof CapabilityProperties) {
+      return _scopeForContext((CapabilityProperties)context, reference, manager);
+    } else if (context instanceof Property) {
+      return _scopeForContext((Property)context, reference, manager);
+    } else if (context != null) {
+      return _scopeForContext(context, reference, manager);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(context, reference, manager).toString());
+    }
   }
 }
