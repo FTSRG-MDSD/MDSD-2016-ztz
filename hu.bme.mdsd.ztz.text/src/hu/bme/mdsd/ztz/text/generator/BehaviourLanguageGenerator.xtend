@@ -3,18 +3,18 @@
  */
 package hu.bme.mdsd.ztz.text.generator
 
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
+import hu.bme.mdsd.ztz.text.manager.ResourceManager
+import java.util.Iterator
+import java.util.Map
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
-import java.util.Iterator
-import hu.bme.mdsd.ztz.text.manager.ResourceManager
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import java.util.Map
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 
 /**
  * Generates code from your model files on save.
@@ -23,12 +23,37 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
  */
 class BehaviourLanguageGenerator extends AbstractGenerator {
 
-	
-
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		println("generate")
 		val manager = ResourceManager.instance
-
+		importResource(resource, manager)
+		
+		generateBehaviour(resource, fsa)
+	}
+	
+	protected def generateBehaviour(Resource resource, IFileSystemAccess2 fsa) {
+		val Iterator<BehaviourContainer> containerIterator = resource.allContents.filter(typeof(BehaviourContainer))
+		if (containerIterator.hasNext) {
+			val container = containerIterator.next()
+			
+			val Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE
+		    		val Map<String, Object> m = reg.getExtensionToFactoryMap()
+		    		m.put("behaviour", new XMIResourceFactoryImpl())
+			
+			val ResourceSet resourceSet = new ResourceSetImpl();
+		
+			val resourceURI = fsa.getURI(ResourceManager.instance.modelFolder + "robots.behaviour")
+		
+			val resourceOfBehaviour = resourceSet.createResource(resourceURI)
+			resourceOfBehaviour.getContents().clear();
+		
+			resourceOfBehaviour.getContents().add(container);
+			
+			resourceOfBehaviour.save(null)
+		}
+	}
+	
+	
+	def protected importResource(Resource resource, ResourceManager manager) {
 		val Iterator<Import> iterator = resource.allContents.filter(typeof(Import))
 		if (iterator.hasNext) {
 			val Import imp = iterator.next
@@ -38,27 +63,5 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 				}
 			}
 		}
-		
-		val Iterator<BehaviourContainer> containerIterator = resource.allContents.filter(typeof(BehaviourContainer))
-		if (containerIterator.hasNext) {
-			val container = containerIterator.next()
-			
-			val Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE
-    		val Map<String, Object> m = reg.getExtensionToFactoryMap()
-    		m.put("behaviour", new XMIResourceFactoryImpl())
-			
-			val ResourceSet resourceSet = new ResourceSetImpl();
-
-			val resourceURI = fsa.getURI(ResourceManager.instance.modelFolder + "robots.behaviour")
-
-			val resourceOfBehaviour = resourceSet.createResource(resourceURI)
-			resourceOfBehaviour.getContents().clear();
-
-			resourceOfBehaviour.getContents().add(container);
-			
-			resourceOfBehaviour.save(null)
-			
-		}
-		
 	}
 }

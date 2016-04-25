@@ -21,7 +21,6 @@ import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 
 /**
  * Generates code from your model files on save.
@@ -32,31 +31,17 @@ import org.eclipse.xtext.xbase.lib.InputOutput;
 public class BehaviourLanguageGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    final ResourceManager manager = ResourceManager.getInstance();
+    this.importResource(resource, manager);
+    this.generateBehaviour(resource, fsa);
+  }
+  
+  protected void generateBehaviour(final Resource resource, final IFileSystemAccess2 fsa) {
     try {
-      InputOutput.<String>println("generate");
-      final ResourceManager manager = ResourceManager.getInstance();
       TreeIterator<EObject> _allContents = resource.getAllContents();
-      final Iterator<Import> iterator = Iterators.<Import>filter(_allContents, Import.class);
-      boolean _hasNext = iterator.hasNext();
+      final Iterator<BehaviourContainer> containerIterator = Iterators.<BehaviourContainer>filter(_allContents, BehaviourContainer.class);
+      boolean _hasNext = containerIterator.hasNext();
       if (_hasNext) {
-        final Import imp = iterator.next();
-        String _importURI = imp.getImportURI();
-        boolean _isEmpty = _importURI.isEmpty();
-        boolean _not = (!_isEmpty);
-        if (_not) {
-          String _importedModelPath = manager.getImportedModelPath();
-          String _importURI_1 = imp.getImportURI();
-          boolean _equals = _importedModelPath.equals(_importURI_1);
-          boolean _not_1 = (!_equals);
-          if (_not_1) {
-            manager.load(imp);
-          }
-        }
-      }
-      TreeIterator<EObject> _allContents_1 = resource.getAllContents();
-      final Iterator<BehaviourContainer> containerIterator = Iterators.<BehaviourContainer>filter(_allContents_1, BehaviourContainer.class);
-      boolean _hasNext_1 = containerIterator.hasNext();
-      if (_hasNext_1) {
         final BehaviourContainer container = containerIterator.next();
         final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
         final Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -77,5 +62,40 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  protected Resource importResource(final Resource resource, final ResourceManager manager) {
+    Resource _xblockexpression = null;
+    {
+      TreeIterator<EObject> _allContents = resource.getAllContents();
+      final Iterator<Import> iterator = Iterators.<Import>filter(_allContents, Import.class);
+      Resource _xifexpression = null;
+      boolean _hasNext = iterator.hasNext();
+      if (_hasNext) {
+        Resource _xblockexpression_1 = null;
+        {
+          final Import imp = iterator.next();
+          Resource _xifexpression_1 = null;
+          String _importURI = imp.getImportURI();
+          boolean _isEmpty = _importURI.isEmpty();
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            Resource _xifexpression_2 = null;
+            String _importedModelPath = manager.getImportedModelPath();
+            String _importURI_1 = imp.getImportURI();
+            boolean _equals = _importedModelPath.equals(_importURI_1);
+            boolean _not_1 = (!_equals);
+            if (_not_1) {
+              _xifexpression_2 = manager.load(imp);
+            }
+            _xifexpression_1 = _xifexpression_2;
+          }
+          _xblockexpression_1 = _xifexpression_1;
+        }
+        _xifexpression = _xblockexpression_1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
 }
