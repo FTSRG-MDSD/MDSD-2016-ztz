@@ -3,16 +3,20 @@
  */
 package hu.bme.mdsd.ztz.text.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
@@ -96,6 +100,38 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
   
   protected Boolean _parseStatement(final CollaborationStatement statement, final Resource resourceOfBehaviour) {
     final DynamicRobot robot = statement.getRobot();
+    final ArrayList<DynamicRobot> connectedRobots = new ArrayList<DynamicRobot>();
+    EList<RobotCollaboration> _collaboration = statement.getCollaboration();
+    for (final RobotCollaboration possibleCollaboration : _collaboration) {
+      {
+        boolean inCollaboration = false;
+        EList<RobotCollaboration> _collaborations = robot.getCollaborations();
+        for (final RobotCollaboration collaboration : _collaborations) {
+          DynamicRobot _collaborator = collaboration.getCollaborator();
+          DynamicRobot _collaborator_1 = possibleCollaboration.getCollaborator();
+          boolean _equals = Objects.equal(_collaborator, _collaborator_1);
+          if (_equals) {
+            inCollaboration = true;
+          }
+        }
+        if ((!inCollaboration)) {
+          DynamicRobot _collaborator_2 = possibleCollaboration.getCollaborator();
+          connectedRobots.add(_collaborator_2);
+        }
+      }
+    }
+    for (final DynamicRobot r : connectedRobots) {
+      {
+        final RobotCollaboration newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration();
+        newCollaboration.setCollaborator(r);
+        EList<RobotCollaboration> _collaborations = robot.getCollaborations();
+        _collaborations.add(newCollaboration);
+        final RobotCollaboration newOppositeCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration();
+        newOppositeCollaboration.setCollaborator(robot);
+        EList<RobotCollaboration> _collaborations_1 = r.getCollaborations();
+        _collaborations_1.add(newOppositeCollaboration);
+      }
+    }
     return null;
   }
   
