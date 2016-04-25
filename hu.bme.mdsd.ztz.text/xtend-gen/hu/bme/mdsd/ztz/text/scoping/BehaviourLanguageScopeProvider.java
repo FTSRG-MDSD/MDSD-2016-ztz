@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 
 /**
  * This class contains custom scoping description.
@@ -38,10 +37,6 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
         EList<EObject> _contents = _resource_1.getContents();
         EObject _get = _contents.get(0);
         final RobotMissionContainer container = ((RobotMissionContainer) _get);
-        EList<Robot> _robots = container.getRobots();
-        for (final Robot r : _robots) {
-          InputOutput.<Robot>println(r);
-        }
         List<Robot> _allContentsOfType = EcoreUtil2.<Robot>getAllContentsOfType(container, Robot.class);
         return Scopes.scopeFor(_allContentsOfType);
       }

@@ -4,9 +4,16 @@
 package hu.bme.mdsd.ztz.text.generator;
 
 import com.google.common.collect.Iterators;
+import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
@@ -57,11 +64,39 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
         _contents.clear();
         EList<EObject> _contents_1 = resourceOfBehaviour.getContents();
         _contents_1.add(container);
+        this.parseStatements(resource, resourceOfBehaviour);
         resourceOfBehaviour.save(null);
       }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  protected void parseStatements(final Resource resource, final Resource resourceOfBehaviour) {
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    final Iterator<Statement> statementIter = Iterators.<Statement>filter(_allContents, Statement.class);
+    while (statementIter.hasNext()) {
+      {
+        final Statement statement = statementIter.next();
+        this.parseStatement(statement, resourceOfBehaviour);
+      }
+    }
+  }
+  
+  protected Boolean _parseStatement(final ActionStatement statement, final Resource resourceOfBehaviour) {
+    DynamicRobot _robot = statement.getRobot();
+    EList<Action> _actions = _robot.getActions();
+    Action _action = statement.getAction();
+    return Boolean.valueOf(_actions.add(_action));
+  }
+  
+  protected Boolean _parseStatement(final MessageStatement statement, final Resource resourceOfBehaviour) {
+    return null;
+  }
+  
+  protected Boolean _parseStatement(final CollaborationStatement statement, final Resource resourceOfBehaviour) {
+    final DynamicRobot robot = statement.getRobot();
+    return null;
   }
   
   protected Resource importResource(final Resource resource, final ResourceManager manager) {
@@ -97,5 +132,18 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
+  }
+  
+  public Boolean parseStatement(final Statement statement, final Resource resourceOfBehaviour) {
+    if (statement instanceof ActionStatement) {
+      return _parseStatement((ActionStatement)statement, resourceOfBehaviour);
+    } else if (statement instanceof CollaborationStatement) {
+      return _parseStatement((CollaborationStatement)statement, resourceOfBehaviour);
+    } else if (statement instanceof MessageStatement) {
+      return _parseStatement((MessageStatement)statement, resourceOfBehaviour);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(statement, resourceOfBehaviour).toString());
+    }
   }
 }

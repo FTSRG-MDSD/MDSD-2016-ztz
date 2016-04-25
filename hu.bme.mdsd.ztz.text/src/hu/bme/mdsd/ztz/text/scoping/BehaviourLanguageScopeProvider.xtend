@@ -23,14 +23,12 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
  
 	def IScope scopeForDynamicRobot(DynamicRobot dynamicRobot, EReference reference) {
 		val manager = ResourceManager.instance
+		
 		if (manager.resource != null) {
 			val container = manager.resource.contents.get(0) as RobotMissionContainer
-			for (Robot r : container.robots) {
-				println(r)
-			}
-//			val robots = EcoreUtil2.getAllContentsOfType(container, Robot)
 			return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(container, Robot))
 		}
+		
 		super.getScope(dynamicRobot, reference)
 	}
 
@@ -38,6 +36,7 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 		if (context instanceof DynamicRobot) {
 			return scopeForDynamicRobot(context, reference)	
 		}
+		
 		super.getScope(context, reference)
 	}
 

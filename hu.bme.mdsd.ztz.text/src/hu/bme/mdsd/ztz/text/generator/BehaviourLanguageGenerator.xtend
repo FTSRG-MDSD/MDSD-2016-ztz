@@ -5,6 +5,7 @@ package hu.bme.mdsd.ztz.text.generator
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
 import java.util.Iterator
 import java.util.Map
@@ -15,6 +16,10 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
+import org.eclipse.xtend.lib.annotations.Delegate
 
 /**
  * Generates code from your model files on save.
@@ -44,12 +49,36 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 			val resourceURI = fsa.getURI(ResourceManager.instance.modelFolder + "robots.behaviour")
 		
 			val resourceOfBehaviour = resourceSet.createResource(resourceURI)
-			resourceOfBehaviour.getContents().clear();
+			resourceOfBehaviour.getContents().clear()
 		
-			resourceOfBehaviour.getContents().add(container);
+			resourceOfBehaviour.getContents().add(container)
+			
+			parseStatements(resource, resourceOfBehaviour)
 			
 			resourceOfBehaviour.save(null)
 		}
+	}
+	
+	protected def parseStatements(Resource resource, Resource resourceOfBehaviour) {
+		val Iterator<Statement> statementIter = resource.allContents.filter(typeof(Statement))
+		
+		while(statementIter.hasNext) {
+			val statement = statementIter.next()
+			statement.parseStatement(resourceOfBehaviour)
+		}
+	}
+	
+	def dispatch parseStatement(ActionStatement statement, Resource resourceOfBehaviour) {
+		statement.robot.actions.add(statement.action)
+	}
+	
+	def dispatch parseStatement(MessageStatement statement, Resource resourceOfBehaviour) {
+		
+	}
+	
+	def dispatch parseStatement(CollaborationStatement statement, Resource resourceOfBehaviour) {
+		val robot = statement.robot
+//		if (robot.collaborations.collaborator != statement.collaboration)
 	}
 	
 	
