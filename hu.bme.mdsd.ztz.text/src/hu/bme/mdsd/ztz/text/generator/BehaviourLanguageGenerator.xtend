@@ -9,13 +9,10 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import java.util.Iterator
-import org.eclipse.emf.common.util.URI
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
-import hu.bme.mdsd.ztz.model.drone.Robot
 import java.util.Map
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 
@@ -37,11 +34,6 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 			val Import imp = iterator.next
 			if (!imp.importURI.empty) {
 				if (!manager.importedModelPath.equals(imp.importURI)) {
-					
-//					val URI modelPathUri = fsa.getURI(modelFolder + imp.importURI)
-//					manager.importedModelPath = imp.importURI
-//					println(modelPathUri)
-//					manager.load(modelPathUri)
 					manager.load(imp)
 				}
 			}
@@ -50,8 +42,6 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 		val Iterator<BehaviourContainer> containerIterator = resource.allContents.filter(typeof(BehaviourContainer))
 		if (containerIterator.hasNext) {
 			val container = containerIterator.next()
-			
-//			container.dynamicRobots.get(0).robot = manager.resource.allContents.filter(typeof(Robot)).filter().next()  
 			
 			val Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE
     		val Map<String, Object> m = reg.getExtensionToFactoryMap()
@@ -64,8 +54,6 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 			val resourceOfBehaviour = resourceSet.createResource(resourceURI)
 			resourceOfBehaviour.getContents().clear();
 
-//			factory = RailwayFactory.eINSTANCE;
-//			val newContainer = BehaviourFactory.eINSTANCE.createBehaviourContainer()
 			resourceOfBehaviour.getContents().add(container);
 			
 			resourceOfBehaviour.save(null)

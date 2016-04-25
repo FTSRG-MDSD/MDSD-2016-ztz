@@ -43,7 +43,6 @@ class ResourceManager {
 	}
 	
 	def protected load(URI resourceURI) {
-		print("load resource")
 		DronePackage.eINSTANCE.eClass()
 		
 		val Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE
@@ -54,15 +53,6 @@ class ResourceManager {
 			resourceSet = new ResourceSetImpl()
 		}
 		resource = resourceSet.getResource(resourceURI, true)
-		
-//		println(resource)
-		val iterator = resource.allContents
-		while (iterator.hasNext) {
-			println(iterator.next())			
-		}
-//		for (obj : resource.contents) {
-//				println(obj)
-//		}
 	}
 	
 	def load(Import imp) {

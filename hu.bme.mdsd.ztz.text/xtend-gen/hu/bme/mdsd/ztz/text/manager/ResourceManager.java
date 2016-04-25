@@ -11,15 +11,12 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtend.lib.annotations.AccessorType;
 import org.eclipse.xtend.lib.annotations.Accessors;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Pure;
 
 @SuppressWarnings("all")
@@ -55,58 +52,62 @@ public class ResourceManager {
     return ResourceManager.instance;
   }
   
-  protected void load(final URI resourceURI) {
-    InputOutput.<String>print("load resource");
-    DronePackage.eINSTANCE.eClass();
-    final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-    final Map<String, Object> m = reg.getExtensionToFactoryMap();
-    XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();
-    m.put("drone", _xMIResourceFactoryImpl);
-    boolean _equals = Objects.equal(this.resourceSet, null);
-    if (_equals) {
-      ResourceSetImpl _resourceSetImpl = new ResourceSetImpl();
-      this.resourceSet = _resourceSetImpl;
+  protected Resource load(final URI resourceURI) {
+    Resource _xblockexpression = null;
+    {
+      DronePackage.eINSTANCE.eClass();
+      final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+      final Map<String, Object> m = reg.getExtensionToFactoryMap();
+      XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();
+      m.put("drone", _xMIResourceFactoryImpl);
+      boolean _equals = Objects.equal(this.resourceSet, null);
+      if (_equals) {
+        ResourceSetImpl _resourceSetImpl = new ResourceSetImpl();
+        this.resourceSet = _resourceSetImpl;
+      }
+      Resource _resource = this.resourceSet.getResource(resourceURI, true);
+      _xblockexpression = this.resource = _resource;
     }
-    Resource _resource = this.resourceSet.getResource(resourceURI, true);
-    this.resource = _resource;
-    final TreeIterator<EObject> iterator = this.resource.getAllContents();
-    while (iterator.hasNext()) {
-      EObject _next = iterator.next();
-      InputOutput.<EObject>println(_next);
-    }
+    return _xblockexpression;
   }
   
-  public void load(final Import imp) {
+  public Resource load(final Import imp) {
+    Resource _xifexpression = null;
     String _importURI = imp.getImportURI();
     boolean _equals = this.importedModelPath.equals(_importURI);
     boolean _not = (!_equals);
     if (_not) {
-      String _importURI_1 = imp.getImportURI();
-      this.importedModelPath = _importURI_1;
-      Resource _eResource = imp.eResource();
-      URI _uRI = _eResource.getURI();
-      final String platformString = _uRI.toPlatformString(true);
-      IWorkspace _workspace = ResourcesPlugin.getWorkspace();
-      IWorkspaceRoot _root = _workspace.getRoot();
-      Path _path = new Path(platformString);
-      final IFile myFile = _root.getFile(_path);
-      final IProject proj = myFile.getProject();
-      IWorkspace _workspace_1 = ResourcesPlugin.getWorkspace();
-      IWorkspaceRoot _root_1 = _workspace_1.getRoot();
-      IPath _fullPath = _root_1.getFullPath();
-      String _oSString = _fullPath.toOSString();
-      Path _path_1 = new Path(_oSString);
-      IPath _fullPath_1 = proj.getFullPath();
-      IPath _append = _path_1.append(_fullPath_1);
-      Path _path_2 = new Path("/model/");
-      String _oSString_1 = _path_2.toOSString();
-      IPath _append_1 = _append.append(_oSString_1);
-      String _importURI_2 = imp.getImportURI();
-      final IPath modelPath = _append_1.append(_importURI_2);
-      String _oSString_2 = modelPath.toOSString();
-      URI _createPlatformResourceURI = URI.createPlatformResourceURI(_oSString_2, true);
-      this.load(_createPlatformResourceURI);
+      Resource _xblockexpression = null;
+      {
+        String _importURI_1 = imp.getImportURI();
+        this.importedModelPath = _importURI_1;
+        Resource _eResource = imp.eResource();
+        URI _uRI = _eResource.getURI();
+        final String platformString = _uRI.toPlatformString(true);
+        IWorkspace _workspace = ResourcesPlugin.getWorkspace();
+        IWorkspaceRoot _root = _workspace.getRoot();
+        Path _path = new Path(platformString);
+        final IFile myFile = _root.getFile(_path);
+        final IProject proj = myFile.getProject();
+        IWorkspace _workspace_1 = ResourcesPlugin.getWorkspace();
+        IWorkspaceRoot _root_1 = _workspace_1.getRoot();
+        IPath _fullPath = _root_1.getFullPath();
+        String _oSString = _fullPath.toOSString();
+        Path _path_1 = new Path(_oSString);
+        IPath _fullPath_1 = proj.getFullPath();
+        IPath _append = _path_1.append(_fullPath_1);
+        Path _path_2 = new Path("/model/");
+        String _oSString_1 = _path_2.toOSString();
+        IPath _append_1 = _append.append(_oSString_1);
+        String _importURI_2 = imp.getImportURI();
+        final IPath modelPath = _append_1.append(_importURI_2);
+        String _oSString_2 = modelPath.toOSString();
+        URI _createPlatformResourceURI = URI.createPlatformResourceURI(_oSString_2, true);
+        _xblockexpression = this.load(_createPlatformResourceURI);
+      }
+      _xifexpression = _xblockexpression;
     }
+    return _xifexpression;
   }
   
   @Pure
