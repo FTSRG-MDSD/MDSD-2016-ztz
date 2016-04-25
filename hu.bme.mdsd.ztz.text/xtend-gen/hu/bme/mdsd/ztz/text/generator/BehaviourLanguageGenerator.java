@@ -99,10 +99,25 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
   }
   
   protected Boolean _parseStatement(final ActionStatement statement, final Resource resourceOfBehaviour) {
-    DynamicRobot _robot = statement.getRobot();
-    EList<Action> _actions = _robot.getActions();
-    Action _action = statement.getAction();
-    return Boolean.valueOf(_actions.add(_action));
+    boolean _xblockexpression = false;
+    {
+      DynamicRobot _robot = statement.getRobot();
+      EList<Action> _actions = _robot.getActions();
+      Action _action = statement.getAction();
+      _actions.add(_action);
+      boolean _xifexpression = false;
+      EList<Action> _moreactions = statement.getMoreactions();
+      boolean _isEmpty = _moreactions.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        DynamicRobot _robot_1 = statement.getRobot();
+        EList<Action> _actions_1 = _robot_1.getActions();
+        EList<Action> _moreactions_1 = statement.getMoreactions();
+        _xifexpression = _actions_1.addAll(_moreactions_1);
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return Boolean.valueOf(_xblockexpression);
   }
   
   protected Boolean _parseStatement(final MessageStatement statement, final Resource resourceOfBehaviour) {

@@ -87,6 +87,9 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 
 	def dispatch parseStatement(ActionStatement statement, Resource resourceOfBehaviour) {
 		statement.robot.actions.add(statement.action)
+		if (!statement.moreactions.empty) {
+			statement.robot.actions.addAll(statement.moreactions)
+		}
 	}
 
 	def dispatch parseStatement(MessageStatement statement, Resource resourceOfBehaviour) {
