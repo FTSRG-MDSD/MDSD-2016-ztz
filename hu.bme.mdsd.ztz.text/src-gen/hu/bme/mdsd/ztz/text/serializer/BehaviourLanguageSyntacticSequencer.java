@@ -11,6 +11,9 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -18,10 +21,12 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class BehaviourLanguageSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected BehaviourLanguageGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (BehaviourLanguageGrammarAccess) access;
+		match_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_1_6()));
 	}
 	
 	@Override
@@ -36,8 +41,21 @@ public class BehaviourLanguageSyntacticSequencer extends AbstractSyntacticSequen
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q.equals(syntax))
+				emit_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     ('{' '}')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=EString (ambiguity) (rule end)
+	 */
+	protected void emit_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

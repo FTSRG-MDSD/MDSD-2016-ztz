@@ -12,6 +12,8 @@ import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.EcoreUtil2
 import hu.bme.mdsd.ztz.model.drone.Robot
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution
+import hu.bme.mdsd.ztz.model.drone.Task
 
 /**
  * This class contains custom scoping description.
@@ -31,10 +33,24 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 		
 		super.getScope(dynamicRobot, reference)
 	}
+	
+	
+	def IScope scopeForTaskExecution(TaskExecution taskExecution, EReference reference) {
+		val manager = ResourceManager.instance
+		
+		if (manager.resource != null) {
+			val container = manager.resource.contents.get(0) as RobotMissionContainer
+			return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(container, Task))
+		}
+		
+		super.getScope(taskExecution, reference)
+	}
 
 	override  getScope(EObject context, EReference reference) {
 		if (context instanceof DynamicRobot) {
 			return scopeForDynamicRobot(context, reference)	
+		} else if (context instanceof TaskExecution) {
+			return scopeForTaskExecution(context, reference)
 		}
 		
 		super.getScope(context, reference)

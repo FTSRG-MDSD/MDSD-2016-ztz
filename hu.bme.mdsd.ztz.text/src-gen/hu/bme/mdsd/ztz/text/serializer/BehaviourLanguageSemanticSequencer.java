@@ -333,7 +333,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     MeasureValue returns MeasureValue
 	 *
 	 * Constraint:
-	 *     (value=EFloat? dimension=[MeasureDimension|EString])
+	 *     (value=EFloat? dimension=[MeasureDimension|ID])
 	 */
 	protected void sequence_MeasureValue(ISerializationContext context, MeasureValue semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -382,16 +382,17 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     Message returns Message
 	 *
 	 * Constraint:
-	 *     name=EString
+	 *     (
+	 *         name=EString 
+	 *         (involvedTaskExecutions+=[TaskExecution|ID] involvedTaskExecutions+=[TaskExecution|ID]*)? 
+	 *         (referredObjects+=[AreaObject|EString] referredObjects+=[AreaObject|EString]*)? 
+	 *         follows=[Message|EString]? 
+	 *         (properties+=Property properties+=Property*)? 
+	 *         TTL=MeasureValue?
+	 *     )
 	 */
 	protected void sequence_Message(ISerializationContext context, Message semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMessageAccess().getNameEStringParserRuleCall_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -504,10 +505,10 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 * Constraint:
 	 *     (
 	 *         name=EString 
-	 *         status=TaskExecutionStatus 
-	 *         (executors+=[DynamicRobot|EString] executors+=[DynamicRobot|EString]*)? 
-	 *         task=[Task|EString] 
-	 *         requirement=[TaskRequirement|EString]? 
+	 *         task=[Task|ID] 
+	 *         status=TaskExecutionStatus? 
+	 *         (executors+=[DynamicRobot|ID] executors+=[DynamicRobot|ID]*)? 
+	 *         requirement=[TaskRequirement|ID]? 
 	 *         executionTime=MeasureValue?
 	 *     )
 	 */
@@ -524,9 +525,9 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     (
 	 *         name=EString 
 	 *         participants=EInt 
-	 *         taskExecution=[TaskExecution|EString] 
-	 *         prerequisite=[TaskExecution|EString]? 
-	 *         (requiredCapabilities+=[Capability|EString] requiredCapabilities+=[Capability|EString]*)? 
+	 *         taskExecution=[TaskExecution|ID] 
+	 *         prerequisite=[TaskExecution|ID]? 
+	 *         (requiredCapabilities+=[Capability|ID] requiredCapabilities+=[Capability|ID]*)? 
 	 *         (properties+=Property properties+=Property*)? 
 	 *         (capabilityProperties+=CapabilityProperties capabilityProperties+=CapabilityProperties*)?
 	 *     )

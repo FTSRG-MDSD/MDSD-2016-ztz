@@ -5,8 +5,10 @@ package hu.bme.mdsd.ztz.text.scoping;
 
 import com.google.common.base.Objects;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
+import hu.bme.mdsd.ztz.model.drone.Task;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.scoping.AbstractBehaviourLanguageScopeProvider;
 import java.util.List;
@@ -45,12 +47,35 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
     return _xblockexpression;
   }
   
+  public IScope scopeForTaskExecution(final TaskExecution taskExecution, final EReference reference) {
+    IScope _xblockexpression = null;
+    {
+      final ResourceManager manager = ResourceManager.getInstance();
+      Resource _resource = manager.getResource();
+      boolean _notEquals = (!Objects.equal(_resource, null));
+      if (_notEquals) {
+        Resource _resource_1 = manager.getResource();
+        EList<EObject> _contents = _resource_1.getContents();
+        EObject _get = _contents.get(0);
+        final RobotMissionContainer container = ((RobotMissionContainer) _get);
+        List<Task> _allContentsOfType = EcoreUtil2.<Task>getAllContentsOfType(container, Task.class);
+        return Scopes.scopeFor(_allContentsOfType);
+      }
+      _xblockexpression = super.getScope(taskExecution, reference);
+    }
+    return _xblockexpression;
+  }
+  
   @Override
   public IScope getScope(final EObject context, final EReference reference) {
     IScope _xblockexpression = null;
     {
       if ((context instanceof DynamicRobot)) {
         return this.scopeForDynamicRobot(((DynamicRobot)context), reference);
+      } else {
+        if ((context instanceof TaskExecution)) {
+          return this.scopeForTaskExecution(((TaskExecution)context), reference);
+        }
       }
       _xblockexpression = super.getScope(context, reference);
     }

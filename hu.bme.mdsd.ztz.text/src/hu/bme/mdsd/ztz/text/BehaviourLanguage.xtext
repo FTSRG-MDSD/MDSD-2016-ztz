@@ -28,10 +28,6 @@ BehaviourContainer returns BehaviourContainer:
 ;
 
 
-//Action returns Action:
-//	Action_Impl | UnicastCommunication | MulticastCommunication | BroadcastCommunication;
-
-
 PropertyValue returns drone::PropertyValue:
 	StringValue | MeasureValue;
 
@@ -88,12 +84,11 @@ AllTarget:
 ;
 
 TaskExecution returns TaskExecution:
-	name=EString
+	name=EString ':' task=[drone::Task]
 	'{'
-		'status' status=TaskExecutionStatus
-		('executors' '(' executors+=[DynamicRobot|EString] ( "," executors+=[DynamicRobot|EString])* ')' )?
-		'task' task=[drone::Task|EString]
-		('requirement' requirement=[TaskRequirement|EString])?
+		('status' status=TaskExecutionStatus)?
+		('executors' '(' executors+=[DynamicRobot] ( "," executors+=[DynamicRobot])* ')' )?
+		('requirement' requirement=[TaskRequirement])?
 		('executionTime' executionTime=MeasureValue)?
 	'}';
 
@@ -103,9 +98,9 @@ TaskRequirement returns TaskRequirement:
 	name=EString
 	'{'
 		'participants' participants=EInt
-		'taskExecution' taskExecution=[TaskExecution|EString]
-		('prerequisite' prerequisite=[TaskExecution|EString])?
-		('requiredCapabilities' '(' requiredCapabilities+=[drone::Capability|EString] ( "," requiredCapabilities+=[drone::Capability|EString])* ')' )?
+		'taskExecution' taskExecution=[TaskExecution]
+		('prerequisite' prerequisite=[TaskExecution])?
+		('requiredCapabilities' '(' requiredCapabilities+=[drone::Capability] ( "," requiredCapabilities+=[drone::Capability])* ')' )?
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 		('capabilityProperties' '{' capabilityProperties+=CapabilityProperties ( "," capabilityProperties+=CapabilityProperties)* '}' )?
 	'}';
@@ -121,21 +116,6 @@ BehaviouralPropertyKeyContainer returns BehaviouralPropertyKeyContainer:
 EString returns ecore::EString:
 	STRING | ID;
 
-//Robot returns drone::Robot:
-//	'Robot'
-//	name=EString
-//	'{'
-//		('tasks' '(' tasks+=[drone::Task|EString] ( "," tasks+=[drone::Task|EString])* ')' )?
-//		('capabilities' '(' capabilities+=[drone::Capability|EString] ( "," capabilities+=[drone::Capability|EString])* ')' )?
-//		'position' position=Position
-//		'size' size=Size
-//		('batteries' '{' batteries+=Battery ( "," batteries+=Battery)* '}' )?
-//		('equipments' '{' equipments+=Equipment ( "," equipments+=Equipment)* '}' )?
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//		('communicationRange' communicationRange=MeasureValue)?
-//		('weight' weight=MeasureValue)?
-//		('capabilityProperties' '{' capabilityProperties+=CapabilityProperties ( "," capabilityProperties+=CapabilityProperties)* '}' )?
-//	'}';
 
 DetectedObject returns DetectedObject:
 	(obstacle?='obstacle')?
@@ -170,46 +150,6 @@ Action_Impl returns Action:
 //	'}'
 ;
 
-//Position returns drone::Position:
-//	{drone::Position}
-//	'Position'
-//	'{'
-//		('coordinates' '{' coordinates+=Coordinate ( "," coordinates+=Coordinate)* '}' )?
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//	'}';
-
-//Size returns drone::Size:
-//	'Size'
-//	'{'
-//		'width' width=MeasureValue
-//		'height' height=MeasureValue
-//		'length' length=MeasureValue
-//	'}';
-
-//Battery returns drone::Battery:
-//	'Battery'
-//	'{'
-//		'capacity' capacity=MeasureValue
-//		'voltage' voltage=MeasureValue
-//		'rechargeTime' rechargeTime=MeasureValue
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//	'}';
-
-//Equipment returns drone::Equipment:
-//	{drone::Equipment}
-//	'Equipment'
-//	name=EString
-//	'{'
-//		('facilitate' '(' facilitate+=[drone::Capability|EString] ( "," facilitate+=[drone::Capability|EString])* ')' )?
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//	'}';
-
-//Task returns drone::Task:
-//	'Task'
-//	name=EString
-//	'{'
-//		'descriptor' descriptor=TaskDescriptor
-//	'}';
 
 Property returns drone::Property:
 	'Property'
@@ -222,13 +162,9 @@ MeasureValue returns drone::MeasureValue:
 	'MeasureValue'
 	'{'
 		('value' value=EFloat)?
-		'dimension' dimension=[drone::MeasureDimension|EString]
+		'dimension' dimension=[drone::MeasureDimension]
 	'}';
 
-//Capability returns drone::Capability:
-//	{drone::Capability}
-//	'Capability'
-//	name=EString;
 
 CapabilityProperties returns drone::CapabilityProperties:
 	'CapabilityProperties'
@@ -237,34 +173,11 @@ CapabilityProperties returns drone::CapabilityProperties:
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 	'}';
 
-//Coordinate returns drone::Coordinate:
-//	'Coordinate'
-//	'{'
-//		'latitude' latitude=EFloat
-//		'longitude' longitude=EFloat
-//		'altitude' altitude=EFloat
-//	'}';
+
 
 EFloat returns ecore::EFloat:
 	'-'? INT? '.' INT (('E'|'e') '-'? INT)?;
 
-//TaskDescriptor returns drone::TaskDescriptor:
-//	{drone::TaskDescriptor}
-//	'TaskDescriptor'
-//	'{'
-//		('targets' '(' targets+=[drone::AreaObject|EString] ( "," targets+=[drone::AreaObject|EString])* ')' )?
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//	'}';
-
-//AreaObject returns drone::AreaObject:
-//	{drone::AreaObject}
-//	'AreaObject'
-//	name=EString
-//	'{'
-//		('positions' '{' positions+=Position ( "," positions+=Position)* '}' )?
-//		('size' size=Size)?
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//	'}';
 
 PropertyKey returns drone::PropertyKey:
 	{drone::PropertyKey}
@@ -277,20 +190,6 @@ StringValue returns drone::StringValue:
 		'value' value=EString
 	'}';
 
-//MeasureDimension returns drone::MeasureDimension:
-//	{drone::MeasureDimension}
-//	'MeasureDimension'
-//	name=EString
-//	'{'
-//		('conversions' '{' conversions+=MeasureConversion ( "," conversions+=MeasureConversion)* '}' )?
-//	'}';
-//
-//MeasureConversion returns drone::MeasureConversion:
-//	'MeasureConversion'
-//	'{'
-//		('rate' rate=EFloat)?
-//		'dimension' dimension=[drone::MeasureDimension|EString]
-//	'}';
 
 EBoolean returns ecore::EBoolean:
 	'true' | 'false';
@@ -298,18 +197,19 @@ EBoolean returns ecore::EBoolean:
 Message returns Message:
 //	needResponse?='needResponse'
 	name=EString
-//	'{'
-//		('timestamp' timestamp=EDate)?
-//		('involvedTaskExecutions' '(' involvedTaskExecutions+=[TaskExecution|EString] ( "," involvedTaskExecutions+=[TaskExecution|EString])* ')' )?
-//		('referredObjects' '(' referredObjects+=[drone::AreaObject|EString] ( "," referredObjects+=[drone::AreaObject|EString])* ')' )?
-//		('follows' follows=[Message|EString])?
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//		('TTL' TTL=MeasureValue)?
-//	'}'
+	(
+	'{'
+		('TaskExecutions' '(' involvedTaskExecutions+=[TaskExecution] ( "," involvedTaskExecutions+=[TaskExecution])* ')' )?
+		('ReferredObjects' '(' referredObjects+=[drone::AreaObject|EString] ( "," referredObjects+=[drone::AreaObject|EString])* ')' )?
+		('Follows' follows=[Message|EString])?
+		('Properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+		('TTL' TTL=MeasureValue)?
+	'}'		
+		
+	)?
+
 ;
 
-EDate returns ecore::EDate:
-	'EDate' /* TODO: implement this rule and an appropriate IValueConverter */;
 
 UnicastCommunication returns UnicastCommunication:
 	'UnicastCommunication'
