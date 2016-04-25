@@ -4,8 +4,10 @@
 package hu.bme.mdsd.ztz.text.validation;
 
 import com.google.common.base.Objects;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
+import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
@@ -13,6 +15,7 @@ import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
 
@@ -58,6 +61,24 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       boolean _equals = Objects.equal(_robot, _collaborator);
       if (_equals) {
         this.error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.STATEMENT__ROBOT, ErrorCodes.SAME_COLLABORATOR);
+      }
+    }
+  }
+  
+  @Check
+  public void checkUniqueRobotNames(final DynamicRobot robot) {
+    EObject _eContainer = robot.eContainer();
+    final BehaviourContainer container = ((BehaviourContainer) _eContainer);
+    EList<DynamicRobot> _dynamicRobots = container.getDynamicRobots();
+    for (final DynamicRobot otherRobot : _dynamicRobots) {
+      boolean _notEquals = (!Objects.equal(otherRobot, robot));
+      if (_notEquals) {
+        String _name = otherRobot.getName();
+        String _name_1 = robot.getName();
+        boolean _equals = _name.equals(_name_1);
+        if (_equals) {
+          this.error("Robots cannot have the same name", robot, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_ROBOT_NAME);
+        }
       }
     }
   }

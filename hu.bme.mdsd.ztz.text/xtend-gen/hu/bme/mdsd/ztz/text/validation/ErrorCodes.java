@@ -5,4 +5,6 @@ public class ErrorCodes {
   public final static String INVALID_IMPORT = "invalid_import";
   
   public final static String SAME_COLLABORATOR = "same_collaborator";
+  
+  public final static String SAME_ROBOT_NAME = "same_robot_name";
 }

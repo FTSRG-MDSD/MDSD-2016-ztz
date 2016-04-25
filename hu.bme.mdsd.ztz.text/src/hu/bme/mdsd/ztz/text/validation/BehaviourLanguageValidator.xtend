@@ -9,6 +9,11 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage
+import hu.bme.mdsd.ztz.model.drone.DronePackage
 
 /**
  * This class contains custom validation rules. 
@@ -33,6 +38,18 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		for (RobotCollaboration collab : statement.collaboration) {
 			if (statement.robot == collab.collaborator) {
 				error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.STATEMENT__ROBOT, ErrorCodes.SAME_COLLABORATOR)
+			}
+		}
+	}
+	
+	@Check
+	def checkUniqueRobotNames(DynamicRobot robot) {
+		val container = robot.eContainer as BehaviourContainer
+		for (DynamicRobot otherRobot : container.dynamicRobots) {
+			if (otherRobot != robot) {
+				if (otherRobot.name.equals(robot.name)) {
+					error("Robots cannot have the same name", robot, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_ROBOT_NAME)
+				}
 			}
 		}
 	}
