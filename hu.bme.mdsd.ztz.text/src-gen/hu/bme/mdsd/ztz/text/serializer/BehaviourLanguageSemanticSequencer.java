@@ -382,19 +382,16 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     Message returns Message
 	 *
 	 * Constraint:
-	 *     (
-	 *         needResponse?='needResponse' 
-	 *         name=EString 
-	 *         timestamp=EDate? 
-	 *         (involvedTaskExecutions+=[TaskExecution|EString] involvedTaskExecutions+=[TaskExecution|EString]*)? 
-	 *         (referredObjects+=[AreaObject|EString] referredObjects+=[AreaObject|EString]*)? 
-	 *         follows=[Message|EString]? 
-	 *         (properties+=Property properties+=Property*)? 
-	 *         TTL=MeasureValue?
-	 *     )
+	 *     name=EString
 	 */
 	protected void sequence_Message(ISerializationContext context, Message semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMessageAccess().getNameEStringParserRuleCall_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -404,7 +401,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     MultiTarget returns MultiTarget
 	 *
 	 * Constraint:
-	 *     target+=[DynamicRobot|ID]
+	 *     (target+=[DynamicRobot|ID] target+=[DynamicRobot|ID]*)
 	 */
 	protected void sequence_MultiTarget(ISerializationContext context, MultiTarget semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

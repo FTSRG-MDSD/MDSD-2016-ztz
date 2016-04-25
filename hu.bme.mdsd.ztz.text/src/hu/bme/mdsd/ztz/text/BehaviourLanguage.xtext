@@ -80,7 +80,7 @@ UniTarget:
 
 
 MultiTarget:
-	'(' target+=[DynamicRobot] ')'
+	'(' target+=[DynamicRobot] (',' target+=[DynamicRobot] )*')'
 ;
 
 AllTarget:
@@ -296,16 +296,17 @@ EBoolean returns ecore::EBoolean:
 	'true' | 'false';
 
 Message returns Message:
-	needResponse?='needResponse'
+//	needResponse?='needResponse'
 	name=EString
-	'{'
-		('timestamp' timestamp=EDate)?
-		('involvedTaskExecutions' '(' involvedTaskExecutions+=[TaskExecution|EString] ( "," involvedTaskExecutions+=[TaskExecution|EString])* ')' )?
-		('referredObjects' '(' referredObjects+=[drone::AreaObject|EString] ( "," referredObjects+=[drone::AreaObject|EString])* ')' )?
-		('follows' follows=[Message|EString])?
-		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-		('TTL' TTL=MeasureValue)?
-	'}';
+//	'{'
+//		('timestamp' timestamp=EDate)?
+//		('involvedTaskExecutions' '(' involvedTaskExecutions+=[TaskExecution|EString] ( "," involvedTaskExecutions+=[TaskExecution|EString])* ')' )?
+//		('referredObjects' '(' referredObjects+=[drone::AreaObject|EString] ( "," referredObjects+=[drone::AreaObject|EString])* ')' )?
+//		('follows' follows=[Message|EString])?
+//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+//		('TTL' TTL=MeasureValue)?
+//	'}'
+;
 
 EDate returns ecore::EDate:
 	'EDate' /* TODO: implement this rule and an appropriate IValueConverter */;

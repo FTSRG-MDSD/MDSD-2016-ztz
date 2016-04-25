@@ -8,18 +8,28 @@ import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
+import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.Message;
+import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
+import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
+import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -32,6 +42,7 @@ import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 /**
  * Generates code from your model files on save.
@@ -95,7 +106,129 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
   }
   
   protected Boolean _parseStatement(final MessageStatement statement, final Resource resourceOfBehaviour) {
-    return null;
+    Boolean _xblockexpression = null;
+    {
+      final DynamicRobot senderRobot = statement.getRobot();
+      this.initMessageRepository(senderRobot);
+      final MessageTarget messageTarget = statement.getTarget();
+      final Message message = statement.getMessage();
+      _xblockexpression = this.parseMessageTarget(messageTarget, senderRobot, message);
+    }
+    return _xblockexpression;
+  }
+  
+  public MessageRepository initMessageRepository(final DynamicRobot robot) {
+    MessageRepository messageRepository = robot.getMessageRepository();
+    MessageRepository _messageRepository = robot.getMessageRepository();
+    boolean _equals = Objects.equal(_messageRepository, null);
+    if (_equals) {
+      MessageRepository _createMessageRepository = BehaviourFactory.eINSTANCE.createMessageRepository();
+      messageRepository = _createMessageRepository;
+      String _name = robot.getName();
+      String _plus = (_name + "MessageRepository");
+      messageRepository.setName(_plus);
+      messageRepository.setRobot(robot);
+    }
+    return messageRepository;
+  }
+  
+  protected Boolean _parseMessageTarget(final UniTarget target, final DynamicRobot senderRobot, final Message message) {
+    boolean _xblockexpression = false;
+    {
+      InputOutput.<String>println("uni target");
+      DynamicRobot _target = target.getTarget();
+      boolean _reachableRobot = this.reachableRobot(senderRobot, _target);
+      boolean _not = (!_reachableRobot);
+      if (_not) {
+        InputOutput.<String>println("not reachable");
+        return null;
+      }
+      DynamicRobot _target_1 = target.getTarget();
+      this.initMessageRepository(_target_1);
+      final UnicastCommunication action = BehaviourFactory.eINSTANCE.createUnicastCommunication();
+      action.setMessage(message);
+      DynamicRobot _target_2 = target.getTarget();
+      action.setTarget(_target_2);
+      this.addAction(senderRobot, action);
+      _xblockexpression = this.addSendedMessage(senderRobot, message);
+    }
+    return Boolean.valueOf(_xblockexpression);
+  }
+  
+  protected Boolean _parseMessageTarget(final MultiTarget target, final DynamicRobot senderRobot, final Message message) {
+    boolean _xblockexpression = false;
+    {
+      EList<DynamicRobot> _target = target.getTarget();
+      for (final DynamicRobot targetRobot : _target) {
+        boolean _reachableRobot = this.reachableRobot(senderRobot, targetRobot);
+        boolean _not = (!_reachableRobot);
+        if (_not) {
+          return null;
+        }
+      }
+      EList<DynamicRobot> _target_1 = target.getTarget();
+      for (final DynamicRobot targetRobot_1 : _target_1) {
+        this.initMessageRepository(targetRobot_1);
+      }
+      final MulticastCommunication action = BehaviourFactory.eINSTANCE.createMulticastCommunication();
+      action.setMessage(message);
+      EList<DynamicRobot> _targets = action.getTargets();
+      EList<DynamicRobot> _target_2 = target.getTarget();
+      _targets.addAll(_target_2);
+      this.addAction(senderRobot, action);
+      _xblockexpression = this.addSendedMessage(senderRobot, message);
+    }
+    return Boolean.valueOf(_xblockexpression);
+  }
+  
+  protected Boolean _parseMessageTarget(final AllTarget target, final DynamicRobot senderRobot, final Message message) {
+    boolean _xblockexpression = false;
+    {
+      EList<RobotCollaboration> _collaborations = senderRobot.getCollaborations();
+      boolean _isEmpty = _collaborations.isEmpty();
+      if (_isEmpty) {
+        return null;
+      }
+      final BroadcastCommunication action = BehaviourFactory.eINSTANCE.createBroadcastCommunication();
+      action.setMessage(message);
+      final Set<DynamicRobot> targetRobots = new HashSet<DynamicRobot>();
+      EList<RobotCollaboration> _collaborations_1 = senderRobot.getCollaborations();
+      for (final RobotCollaboration collab : _collaborations_1) {
+        DynamicRobot _collaborator = collab.getCollaborator();
+        targetRobots.add(_collaborator);
+      }
+      for (final DynamicRobot robot : targetRobots) {
+        this.initMessageRepository(robot);
+      }
+      EList<DynamicRobot> _targets = action.getTargets();
+      _targets.addAll(targetRobots);
+      this.addAction(senderRobot, action);
+      _xblockexpression = this.addSendedMessage(senderRobot, message);
+    }
+    return Boolean.valueOf(_xblockexpression);
+  }
+  
+  public boolean addAction(final DynamicRobot senderRobot, final Action action) {
+    EList<Action> _actions = senderRobot.getActions();
+    return _actions.add(action);
+  }
+  
+  public boolean addSendedMessage(final DynamicRobot senderRobot, final Message message) {
+    MessageRepository _messageRepository = senderRobot.getMessageRepository();
+    EList<Message> _sendedMessages = _messageRepository.getSendedMessages();
+    return _sendedMessages.add(message);
+  }
+  
+  public boolean reachableRobot(final DynamicRobot origin, final DynamicRobot target) {
+    EList<RobotCollaboration> _collaborations = origin.getCollaborations();
+    for (final RobotCollaboration collab : _collaborations) {
+      DynamicRobot _collaborator = collab.getCollaborator();
+      boolean _equals = Objects.equal(_collaborator, target);
+      if (_equals) {
+        return true;
+      }
+    }
+    return false;
   }
   
   protected Boolean _parseStatement(final CollaborationStatement statement, final Resource resourceOfBehaviour) {
@@ -184,6 +317,19 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(statement, resourceOfBehaviour).toString());
+    }
+  }
+  
+  public Boolean parseMessageTarget(final MessageTarget target, final DynamicRobot senderRobot, final Message message) {
+    if (target instanceof AllTarget) {
+      return _parseMessageTarget((AllTarget)target, senderRobot, message);
+    } else if (target instanceof MultiTarget) {
+      return _parseMessageTarget((MultiTarget)target, senderRobot, message);
+    } else if (target instanceof UniTarget) {
+      return _parseMessageTarget((UniTarget)target, senderRobot, message);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(target, senderRobot, message).toString());
     }
   }
 }
