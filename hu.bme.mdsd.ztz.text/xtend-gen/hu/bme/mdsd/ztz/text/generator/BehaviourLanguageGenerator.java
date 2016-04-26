@@ -9,15 +9,18 @@ import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
+import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
+import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
@@ -120,6 +123,23 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
     return Boolean.valueOf(_xblockexpression);
   }
   
+  protected Boolean _parseStatement(final DetectionStatement statement, final Resource resourceOfBehaviour) {
+    boolean _xblockexpression = false;
+    {
+      final DynamicRobot robot = statement.getRobot();
+      AreaObject _object = statement.getObject();
+      this.removeAreaObject(robot, _object);
+      final DetectedObject detectedObject = BehaviourFactory.eINSTANCE.createDetectedObject();
+      AreaObject _object_1 = statement.getObject();
+      detectedObject.setObject(_object_1);
+      boolean _isObstacle = statement.isObstacle();
+      detectedObject.setObstacle(_isObstacle);
+      EList<DetectedObject> _detectedObjects = robot.getDetectedObjects();
+      _xblockexpression = _detectedObjects.add(detectedObject);
+    }
+    return Boolean.valueOf(_xblockexpression);
+  }
+  
   protected Boolean _parseStatement(final MessageStatement statement, final Resource resourceOfBehaviour) {
     Boolean _xblockexpression = null;
     {
@@ -128,6 +148,36 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
       final MessageTarget messageTarget = statement.getTarget();
       final Message message = statement.getMessage();
       _xblockexpression = this.parseMessageTarget(messageTarget, senderRobot, message);
+    }
+    return _xblockexpression;
+  }
+  
+  public boolean detected(final DynamicRobot robot, final AreaObject areaObject) {
+    EList<DetectedObject> _detectedObjects = robot.getDetectedObjects();
+    for (final DetectedObject detectedObj : _detectedObjects) {
+      AreaObject _object = detectedObj.getObject();
+      boolean _equals = Objects.equal(_object, areaObject);
+      if (_equals) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean removeAreaObject(final DynamicRobot robot, final AreaObject areaObject) {
+    boolean _xblockexpression = false;
+    {
+      DetectedObject removeObject = null;
+      EList<DetectedObject> _detectedObjects = robot.getDetectedObjects();
+      for (final DetectedObject detectedObj : _detectedObjects) {
+        AreaObject _object = detectedObj.getObject();
+        boolean _equals = Objects.equal(_object, areaObject);
+        if (_equals) {
+          removeObject = detectedObj;
+        }
+      }
+      EList<DetectedObject> _detectedObjects_1 = robot.getDetectedObjects();
+      _xblockexpression = _detectedObjects_1.remove(removeObject);
     }
     return _xblockexpression;
   }
@@ -327,6 +377,8 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
       return _parseStatement((ActionStatement)statement, resourceOfBehaviour);
     } else if (statement instanceof CollaborationStatement) {
       return _parseStatement((CollaborationStatement)statement, resourceOfBehaviour);
+    } else if (statement instanceof DetectionStatement) {
+      return _parseStatement((DetectionStatement)statement, resourceOfBehaviour);
     } else if (statement instanceof MessageStatement) {
       return _parseStatement((MessageStatement)statement, resourceOfBehaviour);
     } else {

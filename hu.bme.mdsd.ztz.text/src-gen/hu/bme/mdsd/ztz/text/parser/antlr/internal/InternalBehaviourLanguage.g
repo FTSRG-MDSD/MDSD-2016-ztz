@@ -548,6 +548,15 @@ ruleStatement returns [EObject current=null]
 			$current = $this_CollaborationStatement_2.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getStatementAccess().getDetectionStatementParserRuleCall_3());
+		}
+		this_DetectionStatement_3=ruleDetectionStatement
+		{
+			$current = $this_DetectionStatement_3.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -782,6 +791,69 @@ ruleCollaborationStatement returns [EObject current=null]
 				)
 			)
 		)*
+	)
+;
+
+// Entry rule entryRuleDetectionStatement
+entryRuleDetectionStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDetectionStatementRule()); }
+	iv_ruleDetectionStatement=ruleDetectionStatement
+	{ $current=$iv_ruleDetectionStatement.current; }
+	EOF;
+
+// Rule DetectionStatement
+ruleDetectionStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDetectionStatementRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getDetectionStatementAccess().getRobotDynamicRobotCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1='detect'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDetectionStatementAccess().getDetectKeyword_1());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDetectionStatementRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getDetectionStatementAccess().getObjectAreaObjectCrossReference_2_0());
+				}
+			)
+		)
+		(
+			(
+				lv_obstacle_3_0='obstacle'
+				{
+					newLeafNode(lv_obstacle_3_0, grammarAccess.getDetectionStatementAccess().getObstacleObstacleKeyword_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDetectionStatementRule());
+					}
+					setWithLastConsumed($current, "obstacle", true, "obstacle");
+				}
+			)
+		)?
 	)
 ;
 

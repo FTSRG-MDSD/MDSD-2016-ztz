@@ -106,6 +106,11 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
         return createCollaborationStatementAdapter();
       }
       @Override
+      public Adapter caseDetectionStatement(DetectionStatement object)
+      {
+        return createDetectionStatementAdapter();
+      }
+      @Override
       public Adapter caseMessageTarget(MessageTarget object)
       {
         return createMessageTargetAdapter();
@@ -233,6 +238,21 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCollaborationStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement <em>Detection Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
+   * @generated
+   */
+  public Adapter createDetectionStatementAdapter()
   {
     return null;
   }

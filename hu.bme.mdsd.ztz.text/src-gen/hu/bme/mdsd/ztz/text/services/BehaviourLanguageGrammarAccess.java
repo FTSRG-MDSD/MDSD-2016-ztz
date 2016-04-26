@@ -319,12 +319,13 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final RuleCall cActionStatementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMessageStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cCollaborationStatementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cDetectionStatementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Statement:
-		//	ActionStatement | MessageStatement | CollaborationStatement;
+		//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ActionStatement | MessageStatement | CollaborationStatement
+		//ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ActionStatement
@@ -335,6 +336,9 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//CollaborationStatement
 		public RuleCall getCollaborationStatementParserRuleCall_2() { return cCollaborationStatementParserRuleCall_2; }
+		
+		//DetectionStatement
+		public RuleCall getDetectionStatementParserRuleCall_3() { return cDetectionStatementParserRuleCall_3; }
 	}
 	public class ActionStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.ActionStatement");
@@ -480,6 +484,53 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//RobotCollaboration
 		public RuleCall getCollaborationRobotCollaborationParserRuleCall_3_1_0() { return cCollaborationRobotCollaborationParserRuleCall_3_1_0; }
+	}
+	public class DetectionStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.DetectionStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cRobotAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cRobotDynamicRobotCrossReference_0_0 = (CrossReference)cRobotAssignment_0.eContents().get(0);
+		private final RuleCall cRobotDynamicRobotIDTerminalRuleCall_0_0_1 = (RuleCall)cRobotDynamicRobotCrossReference_0_0.eContents().get(1);
+		private final Keyword cDetectKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cObjectAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cObjectAreaObjectCrossReference_2_0 = (CrossReference)cObjectAssignment_2.eContents().get(0);
+		private final RuleCall cObjectAreaObjectIDTerminalRuleCall_2_0_1 = (RuleCall)cObjectAreaObjectCrossReference_2_0.eContents().get(1);
+		private final Assignment cObstacleAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cObstacleObstacleKeyword_3_0 = (Keyword)cObstacleAssignment_3.eContents().get(0);
+		
+		//DetectionStatement:
+		//	robot=[DynamicRobot] 'detect' object=[drone::AreaObject] obstacle?='obstacle'?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//robot=[DynamicRobot] 'detect' object=[drone::AreaObject] obstacle?='obstacle'?
+		public Group getGroup() { return cGroup; }
+		
+		//robot=[DynamicRobot]
+		public Assignment getRobotAssignment_0() { return cRobotAssignment_0; }
+		
+		//[DynamicRobot]
+		public CrossReference getRobotDynamicRobotCrossReference_0_0() { return cRobotDynamicRobotCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getRobotDynamicRobotIDTerminalRuleCall_0_0_1() { return cRobotDynamicRobotIDTerminalRuleCall_0_0_1; }
+		
+		//'detect'
+		public Keyword getDetectKeyword_1() { return cDetectKeyword_1; }
+		
+		//object=[drone::AreaObject]
+		public Assignment getObjectAssignment_2() { return cObjectAssignment_2; }
+		
+		//[drone::AreaObject]
+		public CrossReference getObjectAreaObjectCrossReference_2_0() { return cObjectAreaObjectCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getObjectAreaObjectIDTerminalRuleCall_2_0_1() { return cObjectAreaObjectIDTerminalRuleCall_2_0_1; }
+		
+		//obstacle?='obstacle'?
+		public Assignment getObstacleAssignment_3() { return cObstacleAssignment_3; }
+		
+		//'obstacle'
+		public Keyword getObstacleObstacleKeyword_3_0() { return cObstacleObstacleKeyword_3_0; }
 	}
 	public class MessageTargetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MessageTarget");
@@ -1036,61 +1087,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
 	}
-	public class DetectedObjectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.DetectedObject");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cDetectedObjectAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cObstacleAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cObstacleObstacleKeyword_1_0 = (Keyword)cObstacleAssignment_1.eContents().get(0);
-		private final Keyword cDetectedObjectKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cObjectKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cObjectAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cObjectAreaObjectCrossReference_5_0 = (CrossReference)cObjectAssignment_5.eContents().get(0);
-		private final RuleCall cObjectAreaObjectIDTerminalRuleCall_5_0_1 = (RuleCall)cObjectAreaObjectCrossReference_5_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		
-		//DetectedObject:
-		//	{DetectedObject} obstacle?='obstacle'?
-		//	'DetectedObject'
-		//	'{'
-		//	'object' object=[drone::AreaObject]
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{DetectedObject} obstacle?='obstacle'? 'DetectedObject' '{' 'object' object=[drone::AreaObject] '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{DetectedObject}
-		public Action getDetectedObjectAction_0() { return cDetectedObjectAction_0; }
-		
-		//obstacle?='obstacle'?
-		public Assignment getObstacleAssignment_1() { return cObstacleAssignment_1; }
-		
-		//'obstacle'
-		public Keyword getObstacleObstacleKeyword_1_0() { return cObstacleObstacleKeyword_1_0; }
-		
-		//'DetectedObject'
-		public Keyword getDetectedObjectKeyword_2() { return cDetectedObjectKeyword_2; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//'object'
-		public Keyword getObjectKeyword_4() { return cObjectKeyword_4; }
-		
-		//object=[drone::AreaObject]
-		public Assignment getObjectAssignment_5() { return cObjectAssignment_5; }
-		
-		//[drone::AreaObject]
-		public CrossReference getObjectAreaObjectCrossReference_5_0() { return cObjectAreaObjectCrossReference_5_0; }
-		
-		//ID
-		public RuleCall getObjectAreaObjectIDTerminalRuleCall_5_0_1() { return cObjectAreaObjectIDTerminalRuleCall_5_0_1; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
-	}
 	public class RobotCollaborationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.RobotCollaboration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1109,6 +1105,10 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final RuleCall cPropertiesPropertyParserRuleCall_2_3_1_0 = (RuleCall)cPropertiesAssignment_2_3_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		
+		////DetectedObject returns DetectedObject:
+		////	{DetectedObject}
+		////	' ' object=[drone::AreaObject] (obstacle?='obstacle')?
+		////;
 		//RobotCollaboration:
 		//	{RobotCollaboration} collaborator=[DynamicRobot] ('properties' '{' properties+=Property ("," properties+=Property)*
 		//	'}')?;
@@ -1159,86 +1159,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_2_4() { return cRightCurlyBracketKeyword_2_4; }
-	}
-	public class MessageRepositoryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MessageRepository");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMessageRepositoryAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMessageRepositoryKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cSendedMessagesKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cSendedMessagesAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cSendedMessagesMessageParserRuleCall_4_2_0 = (RuleCall)cSendedMessagesAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cSendedMessagesAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cSendedMessagesMessageParserRuleCall_4_3_1_0 = (RuleCall)cSendedMessagesAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//MessageRepository:
-		//	{MessageRepository}
-		//	'MessageRepository'
-		//	name=EString
-		//	'{' ('sendedMessages' '{' sendedMessages+=Message ("," sendedMessages+=Message)* '}')?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{MessageRepository} 'MessageRepository' name=EString '{' ('sendedMessages' '{' sendedMessages+=Message (","
-		//sendedMessages+=Message)* '}')? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{MessageRepository}
-		public Action getMessageRepositoryAction_0() { return cMessageRepositoryAction_0; }
-		
-		//'MessageRepository'
-		public Keyword getMessageRepositoryKeyword_1() { return cMessageRepositoryKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('sendedMessages' '{' sendedMessages+=Message ("," sendedMessages+=Message)* '}')?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'sendedMessages'
-		public Keyword getSendedMessagesKeyword_4_0() { return cSendedMessagesKeyword_4_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
-		
-		//sendedMessages+=Message
-		public Assignment getSendedMessagesAssignment_4_2() { return cSendedMessagesAssignment_4_2; }
-		
-		//Message
-		public RuleCall getSendedMessagesMessageParserRuleCall_4_2_0() { return cSendedMessagesMessageParserRuleCall_4_2_0; }
-		
-		//("," sendedMessages+=Message)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
-		
-		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
-		
-		//sendedMessages+=Message
-		public Assignment getSendedMessagesAssignment_4_3_1() { return cSendedMessagesAssignment_4_3_1; }
-		
-		//Message
-		public RuleCall getSendedMessagesMessageParserRuleCall_4_3_1_0() { return cSendedMessagesMessageParserRuleCall_4_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 	public class Action_ImplElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Action_Impl");
@@ -1877,454 +1797,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_1_6() { return cRightCurlyBracketKeyword_1_6; }
 	}
-	public class UnicastCommunicationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.UnicastCommunication");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cUnicastCommunicationKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCurrentTaskExecutionKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cCurrentTaskExecutionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cCurrentTaskExecutionTaskExecutionCrossReference_3_1_0 = (CrossReference)cCurrentTaskExecutionAssignment_3_1.eContents().get(0);
-		private final RuleCall cCurrentTaskExecutionTaskExecutionEStringParserRuleCall_3_1_0_1 = (RuleCall)cCurrentTaskExecutionTaskExecutionCrossReference_3_1_0.eContents().get(1);
-		private final Keyword cMessageKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cMessageAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cMessageMessageCrossReference_5_0 = (CrossReference)cMessageAssignment_5.eContents().get(0);
-		private final RuleCall cMessageMessageEStringParserRuleCall_5_0_1 = (RuleCall)cMessageMessageCrossReference_5_0.eContents().get(1);
-		private final Keyword cTargetKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cTargetAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final CrossReference cTargetDynamicRobotCrossReference_7_0 = (CrossReference)cTargetAssignment_7.eContents().get(0);
-		private final RuleCall cTargetDynamicRobotEStringParserRuleCall_7_0_1 = (RuleCall)cTargetDynamicRobotCrossReference_7_0.eContents().get(1);
-		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cPropertiesKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
-		private final Assignment cPropertiesAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
-		private final RuleCall cPropertiesPropertyParserRuleCall_8_2_0 = (RuleCall)cPropertiesAssignment_8_2.eContents().get(0);
-		private final Group cGroup_8_3 = (Group)cGroup_8.eContents().get(3);
-		private final Keyword cCommaKeyword_8_3_0 = (Keyword)cGroup_8_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_8_3_1 = (Assignment)cGroup_8_3.eContents().get(1);
-		private final RuleCall cPropertiesPropertyParserRuleCall_8_3_1_0 = (RuleCall)cPropertiesAssignment_8_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_8_4 = (Keyword)cGroup_8.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		
-		//UnicastCommunication:
-		//	'UnicastCommunication'
-		//	name=EString
-		//	'{' ('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-		//	'message' message=[Message|EString]
-		//	'target' target=[DynamicRobot|EString] ('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'UnicastCommunication' name=EString '{' ('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])? 'message'
-		//message=[Message|EString] 'target' target=[DynamicRobot|EString] ('properties' '{' properties+=Property (","
-		//properties+=Property)* '}')? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//'UnicastCommunication'
-		public Keyword getUnicastCommunicationKeyword_0() { return cUnicastCommunicationKeyword_0; }
-		
-		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'currentTaskExecution'
-		public Keyword getCurrentTaskExecutionKeyword_3_0() { return cCurrentTaskExecutionKeyword_3_0; }
-		
-		//currentTaskExecution=[TaskExecution|EString]
-		public Assignment getCurrentTaskExecutionAssignment_3_1() { return cCurrentTaskExecutionAssignment_3_1; }
-		
-		//[TaskExecution|EString]
-		public CrossReference getCurrentTaskExecutionTaskExecutionCrossReference_3_1_0() { return cCurrentTaskExecutionTaskExecutionCrossReference_3_1_0; }
-		
-		//EString
-		public RuleCall getCurrentTaskExecutionTaskExecutionEStringParserRuleCall_3_1_0_1() { return cCurrentTaskExecutionTaskExecutionEStringParserRuleCall_3_1_0_1; }
-		
-		//'message'
-		public Keyword getMessageKeyword_4() { return cMessageKeyword_4; }
-		
-		//message=[Message|EString]
-		public Assignment getMessageAssignment_5() { return cMessageAssignment_5; }
-		
-		//[Message|EString]
-		public CrossReference getMessageMessageCrossReference_5_0() { return cMessageMessageCrossReference_5_0; }
-		
-		//EString
-		public RuleCall getMessageMessageEStringParserRuleCall_5_0_1() { return cMessageMessageEStringParserRuleCall_5_0_1; }
-		
-		//'target'
-		public Keyword getTargetKeyword_6() { return cTargetKeyword_6; }
-		
-		//target=[DynamicRobot|EString]
-		public Assignment getTargetAssignment_7() { return cTargetAssignment_7; }
-		
-		//[DynamicRobot|EString]
-		public CrossReference getTargetDynamicRobotCrossReference_7_0() { return cTargetDynamicRobotCrossReference_7_0; }
-		
-		//EString
-		public RuleCall getTargetDynamicRobotEStringParserRuleCall_7_0_1() { return cTargetDynamicRobotEStringParserRuleCall_7_0_1; }
-		
-		//('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		public Group getGroup_8() { return cGroup_8; }
-		
-		//'properties'
-		public Keyword getPropertiesKeyword_8_0() { return cPropertiesKeyword_8_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_8_1() { return cLeftCurlyBracketKeyword_8_1; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_8_2() { return cPropertiesAssignment_8_2; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_8_2_0() { return cPropertiesPropertyParserRuleCall_8_2_0; }
-		
-		//("," properties+=Property)*
-		public Group getGroup_8_3() { return cGroup_8_3; }
-		
-		//","
-		public Keyword getCommaKeyword_8_3_0() { return cCommaKeyword_8_3_0; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_8_3_1() { return cPropertiesAssignment_8_3_1; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_8_3_1_0() { return cPropertiesPropertyParserRuleCall_8_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_8_4() { return cRightCurlyBracketKeyword_8_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
-	}
-	public class MulticastCommunicationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MulticastCommunication");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cMulticastCommunicationKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCurrentTaskExecutionKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cCurrentTaskExecutionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cCurrentTaskExecutionTaskExecutionCrossReference_3_1_0 = (CrossReference)cCurrentTaskExecutionAssignment_3_1.eContents().get(0);
-		private final RuleCall cCurrentTaskExecutionTaskExecutionEStringParserRuleCall_3_1_0_1 = (RuleCall)cCurrentTaskExecutionTaskExecutionCrossReference_3_1_0.eContents().get(1);
-		private final Keyword cMessageKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cMessageAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cMessageMessageCrossReference_5_0 = (CrossReference)cMessageAssignment_5.eContents().get(0);
-		private final RuleCall cMessageMessageEStringParserRuleCall_5_0_1 = (RuleCall)cMessageMessageCrossReference_5_0.eContents().get(1);
-		private final Keyword cTargetsKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cLeftParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cTargetsAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final CrossReference cTargetsDynamicRobotCrossReference_8_0 = (CrossReference)cTargetsAssignment_8.eContents().get(0);
-		private final RuleCall cTargetsDynamicRobotEStringParserRuleCall_8_0_1 = (RuleCall)cTargetsDynamicRobotCrossReference_8_0.eContents().get(1);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cCommaKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cTargetsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final CrossReference cTargetsDynamicRobotCrossReference_9_1_0 = (CrossReference)cTargetsAssignment_9_1.eContents().get(0);
-		private final RuleCall cTargetsDynamicRobotEStringParserRuleCall_9_1_0_1 = (RuleCall)cTargetsDynamicRobotCrossReference_9_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cPropertiesKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
-		private final Assignment cPropertiesAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
-		private final RuleCall cPropertiesPropertyParserRuleCall_11_2_0 = (RuleCall)cPropertiesAssignment_11_2.eContents().get(0);
-		private final Group cGroup_11_3 = (Group)cGroup_11.eContents().get(3);
-		private final Keyword cCommaKeyword_11_3_0 = (Keyword)cGroup_11_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
-		private final RuleCall cPropertiesPropertyParserRuleCall_11_3_1_0 = (RuleCall)cPropertiesAssignment_11_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		
-		//MulticastCommunication:
-		//	'MulticastCommunication'
-		//	name=EString
-		//	'{' ('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-		//	'message' message=[Message|EString]
-		//	'targets' '(' targets+=[DynamicRobot|EString] ("," targets+=[DynamicRobot|EString])* ')' ('properties' '{'
-		//	properties+=Property ("," properties+=Property)* '}')?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'MulticastCommunication' name=EString '{' ('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-		//'message' message=[Message|EString] 'targets' '(' targets+=[DynamicRobot|EString] (","
-		//targets+=[DynamicRobot|EString])* ')' ('properties' '{' properties+=Property ("," properties+=Property)* '}')? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//'MulticastCommunication'
-		public Keyword getMulticastCommunicationKeyword_0() { return cMulticastCommunicationKeyword_0; }
-		
-		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'currentTaskExecution'
-		public Keyword getCurrentTaskExecutionKeyword_3_0() { return cCurrentTaskExecutionKeyword_3_0; }
-		
-		//currentTaskExecution=[TaskExecution|EString]
-		public Assignment getCurrentTaskExecutionAssignment_3_1() { return cCurrentTaskExecutionAssignment_3_1; }
-		
-		//[TaskExecution|EString]
-		public CrossReference getCurrentTaskExecutionTaskExecutionCrossReference_3_1_0() { return cCurrentTaskExecutionTaskExecutionCrossReference_3_1_0; }
-		
-		//EString
-		public RuleCall getCurrentTaskExecutionTaskExecutionEStringParserRuleCall_3_1_0_1() { return cCurrentTaskExecutionTaskExecutionEStringParserRuleCall_3_1_0_1; }
-		
-		//'message'
-		public Keyword getMessageKeyword_4() { return cMessageKeyword_4; }
-		
-		//message=[Message|EString]
-		public Assignment getMessageAssignment_5() { return cMessageAssignment_5; }
-		
-		//[Message|EString]
-		public CrossReference getMessageMessageCrossReference_5_0() { return cMessageMessageCrossReference_5_0; }
-		
-		//EString
-		public RuleCall getMessageMessageEStringParserRuleCall_5_0_1() { return cMessageMessageEStringParserRuleCall_5_0_1; }
-		
-		//'targets'
-		public Keyword getTargetsKeyword_6() { return cTargetsKeyword_6; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_7() { return cLeftParenthesisKeyword_7; }
-		
-		//targets+=[DynamicRobot|EString]
-		public Assignment getTargetsAssignment_8() { return cTargetsAssignment_8; }
-		
-		//[DynamicRobot|EString]
-		public CrossReference getTargetsDynamicRobotCrossReference_8_0() { return cTargetsDynamicRobotCrossReference_8_0; }
-		
-		//EString
-		public RuleCall getTargetsDynamicRobotEStringParserRuleCall_8_0_1() { return cTargetsDynamicRobotEStringParserRuleCall_8_0_1; }
-		
-		//("," targets+=[DynamicRobot|EString])*
-		public Group getGroup_9() { return cGroup_9; }
-		
-		//","
-		public Keyword getCommaKeyword_9_0() { return cCommaKeyword_9_0; }
-		
-		//targets+=[DynamicRobot|EString]
-		public Assignment getTargetsAssignment_9_1() { return cTargetsAssignment_9_1; }
-		
-		//[DynamicRobot|EString]
-		public CrossReference getTargetsDynamicRobotCrossReference_9_1_0() { return cTargetsDynamicRobotCrossReference_9_1_0; }
-		
-		//EString
-		public RuleCall getTargetsDynamicRobotEStringParserRuleCall_9_1_0_1() { return cTargetsDynamicRobotEStringParserRuleCall_9_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_10() { return cRightParenthesisKeyword_10; }
-		
-		//('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		public Group getGroup_11() { return cGroup_11; }
-		
-		//'properties'
-		public Keyword getPropertiesKeyword_11_0() { return cPropertiesKeyword_11_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_11_1() { return cLeftCurlyBracketKeyword_11_1; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_11_2() { return cPropertiesAssignment_11_2; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_11_2_0() { return cPropertiesPropertyParserRuleCall_11_2_0; }
-		
-		//("," properties+=Property)*
-		public Group getGroup_11_3() { return cGroup_11_3; }
-		
-		//","
-		public Keyword getCommaKeyword_11_3_0() { return cCommaKeyword_11_3_0; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_11_3_1() { return cPropertiesAssignment_11_3_1; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_11_3_1_0() { return cPropertiesPropertyParserRuleCall_11_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_11_4() { return cRightCurlyBracketKeyword_11_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
-	}
-	public class BroadcastCommunicationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.BroadcastCommunication");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cBroadcastCommunicationKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCurrentTaskExecutionKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cCurrentTaskExecutionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cCurrentTaskExecutionTaskExecutionCrossReference_3_1_0 = (CrossReference)cCurrentTaskExecutionAssignment_3_1.eContents().get(0);
-		private final RuleCall cCurrentTaskExecutionTaskExecutionEStringParserRuleCall_3_1_0_1 = (RuleCall)cCurrentTaskExecutionTaskExecutionCrossReference_3_1_0.eContents().get(1);
-		private final Keyword cMessageKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cMessageAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cMessageMessageCrossReference_5_0 = (CrossReference)cMessageAssignment_5.eContents().get(0);
-		private final RuleCall cMessageMessageEStringParserRuleCall_5_0_1 = (RuleCall)cMessageMessageCrossReference_5_0.eContents().get(1);
-		private final Keyword cTargetsKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cLeftParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cTargetsAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final CrossReference cTargetsDynamicRobotCrossReference_8_0 = (CrossReference)cTargetsAssignment_8.eContents().get(0);
-		private final RuleCall cTargetsDynamicRobotEStringParserRuleCall_8_0_1 = (RuleCall)cTargetsDynamicRobotCrossReference_8_0.eContents().get(1);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cCommaKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cTargetsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final CrossReference cTargetsDynamicRobotCrossReference_9_1_0 = (CrossReference)cTargetsAssignment_9_1.eContents().get(0);
-		private final RuleCall cTargetsDynamicRobotEStringParserRuleCall_9_1_0_1 = (RuleCall)cTargetsDynamicRobotCrossReference_9_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cPropertiesKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
-		private final Assignment cPropertiesAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
-		private final RuleCall cPropertiesPropertyParserRuleCall_11_2_0 = (RuleCall)cPropertiesAssignment_11_2.eContents().get(0);
-		private final Group cGroup_11_3 = (Group)cGroup_11.eContents().get(3);
-		private final Keyword cCommaKeyword_11_3_0 = (Keyword)cGroup_11_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
-		private final RuleCall cPropertiesPropertyParserRuleCall_11_3_1_0 = (RuleCall)cPropertiesAssignment_11_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		
-		//BroadcastCommunication:
-		//	'BroadcastCommunication'
-		//	name=EString
-		//	'{' ('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-		//	'message' message=[Message|EString]
-		//	'targets' '(' targets+=[DynamicRobot|EString] ("," targets+=[DynamicRobot|EString])* ')' ('properties' '{'
-		//	properties+=Property ("," properties+=Property)* '}')?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'BroadcastCommunication' name=EString '{' ('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-		//'message' message=[Message|EString] 'targets' '(' targets+=[DynamicRobot|EString] (","
-		//targets+=[DynamicRobot|EString])* ')' ('properties' '{' properties+=Property ("," properties+=Property)* '}')? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//'BroadcastCommunication'
-		public Keyword getBroadcastCommunicationKeyword_0() { return cBroadcastCommunicationKeyword_0; }
-		
-		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'currentTaskExecution'
-		public Keyword getCurrentTaskExecutionKeyword_3_0() { return cCurrentTaskExecutionKeyword_3_0; }
-		
-		//currentTaskExecution=[TaskExecution|EString]
-		public Assignment getCurrentTaskExecutionAssignment_3_1() { return cCurrentTaskExecutionAssignment_3_1; }
-		
-		//[TaskExecution|EString]
-		public CrossReference getCurrentTaskExecutionTaskExecutionCrossReference_3_1_0() { return cCurrentTaskExecutionTaskExecutionCrossReference_3_1_0; }
-		
-		//EString
-		public RuleCall getCurrentTaskExecutionTaskExecutionEStringParserRuleCall_3_1_0_1() { return cCurrentTaskExecutionTaskExecutionEStringParserRuleCall_3_1_0_1; }
-		
-		//'message'
-		public Keyword getMessageKeyword_4() { return cMessageKeyword_4; }
-		
-		//message=[Message|EString]
-		public Assignment getMessageAssignment_5() { return cMessageAssignment_5; }
-		
-		//[Message|EString]
-		public CrossReference getMessageMessageCrossReference_5_0() { return cMessageMessageCrossReference_5_0; }
-		
-		//EString
-		public RuleCall getMessageMessageEStringParserRuleCall_5_0_1() { return cMessageMessageEStringParserRuleCall_5_0_1; }
-		
-		//'targets'
-		public Keyword getTargetsKeyword_6() { return cTargetsKeyword_6; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_7() { return cLeftParenthesisKeyword_7; }
-		
-		//targets+=[DynamicRobot|EString]
-		public Assignment getTargetsAssignment_8() { return cTargetsAssignment_8; }
-		
-		//[DynamicRobot|EString]
-		public CrossReference getTargetsDynamicRobotCrossReference_8_0() { return cTargetsDynamicRobotCrossReference_8_0; }
-		
-		//EString
-		public RuleCall getTargetsDynamicRobotEStringParserRuleCall_8_0_1() { return cTargetsDynamicRobotEStringParserRuleCall_8_0_1; }
-		
-		//("," targets+=[DynamicRobot|EString])*
-		public Group getGroup_9() { return cGroup_9; }
-		
-		//","
-		public Keyword getCommaKeyword_9_0() { return cCommaKeyword_9_0; }
-		
-		//targets+=[DynamicRobot|EString]
-		public Assignment getTargetsAssignment_9_1() { return cTargetsAssignment_9_1; }
-		
-		//[DynamicRobot|EString]
-		public CrossReference getTargetsDynamicRobotCrossReference_9_1_0() { return cTargetsDynamicRobotCrossReference_9_1_0; }
-		
-		//EString
-		public RuleCall getTargetsDynamicRobotEStringParserRuleCall_9_1_0_1() { return cTargetsDynamicRobotEStringParserRuleCall_9_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_10() { return cRightParenthesisKeyword_10; }
-		
-		//('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-		public Group getGroup_11() { return cGroup_11; }
-		
-		//'properties'
-		public Keyword getPropertiesKeyword_11_0() { return cPropertiesKeyword_11_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_11_1() { return cLeftCurlyBracketKeyword_11_1; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_11_2() { return cPropertiesAssignment_11_2; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_11_2_0() { return cPropertiesPropertyParserRuleCall_11_2_0; }
-		
-		//("," properties+=Property)*
-		public Group getGroup_11_3() { return cGroup_11_3; }
-		
-		//","
-		public Keyword getCommaKeyword_11_3_0() { return cCommaKeyword_11_3_0; }
-		
-		//properties+=Property
-		public Assignment getPropertiesAssignment_11_3_1() { return cPropertiesAssignment_11_3_1; }
-		
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_11_3_1_0() { return cPropertiesPropertyParserRuleCall_11_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_11_4() { return cRightCurlyBracketKeyword_11_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
-	}
 	public class EIntElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.EInt");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -2449,6 +1921,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	private final ActionStatementElements pActionStatement;
 	private final MessageStatementElements pMessageStatement;
 	private final CollaborationStatementElements pCollaborationStatement;
+	private final DetectionStatementElements pDetectionStatement;
 	private final MessageTargetElements pMessageTarget;
 	private final UniTargetElements pUniTarget;
 	private final MultiTargetElements pMultiTarget;
@@ -2457,9 +1930,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	private final TaskRequirementElements pTaskRequirement;
 	private final BehaviouralPropertyKeyContainerElements pBehaviouralPropertyKeyContainer;
 	private final EStringElements pEString;
-	private final DetectedObjectElements pDetectedObject;
 	private final RobotCollaborationElements pRobotCollaboration;
-	private final MessageRepositoryElements pMessageRepository;
 	private final RobotStatusElements eRobotStatus;
 	private final Action_ImplElements pAction_Impl;
 	private final PropertyElements pProperty;
@@ -2470,9 +1941,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	private final StringValueElements pStringValue;
 	private final EBooleanElements pEBoolean;
 	private final MessageElements pMessage;
-	private final UnicastCommunicationElements pUnicastCommunication;
-	private final MulticastCommunicationElements pMulticastCommunication;
-	private final BroadcastCommunicationElements pBroadcastCommunication;
 	private final TaskExecutionStatusElements eTaskExecutionStatus;
 	private final EIntElements pEInt;
 	
@@ -2494,6 +1962,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		this.pActionStatement = new ActionStatementElements();
 		this.pMessageStatement = new MessageStatementElements();
 		this.pCollaborationStatement = new CollaborationStatementElements();
+		this.pDetectionStatement = new DetectionStatementElements();
 		this.pMessageTarget = new MessageTargetElements();
 		this.pUniTarget = new UniTargetElements();
 		this.pMultiTarget = new MultiTargetElements();
@@ -2502,9 +1971,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		this.pTaskRequirement = new TaskRequirementElements();
 		this.pBehaviouralPropertyKeyContainer = new BehaviouralPropertyKeyContainerElements();
 		this.pEString = new EStringElements();
-		this.pDetectedObject = new DetectedObjectElements();
 		this.pRobotCollaboration = new RobotCollaborationElements();
-		this.pMessageRepository = new MessageRepositoryElements();
 		this.eRobotStatus = new RobotStatusElements();
 		this.pAction_Impl = new Action_ImplElements();
 		this.pProperty = new PropertyElements();
@@ -2515,9 +1982,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		this.pStringValue = new StringValueElements();
 		this.pEBoolean = new EBooleanElements();
 		this.pMessage = new MessageElements();
-		this.pUnicastCommunication = new UnicastCommunicationElements();
-		this.pMulticastCommunication = new MulticastCommunicationElements();
-		this.pBroadcastCommunication = new BroadcastCommunicationElements();
 		this.eTaskExecutionStatus = new TaskExecutionStatusElements();
 		this.pEInt = new EIntElements();
 	}
@@ -2608,7 +2072,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 	
 	//Statement:
-	//	ActionStatement | MessageStatement | CollaborationStatement;
+	//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement;
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
@@ -2645,6 +2109,16 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	public ParserRule getCollaborationStatementRule() {
 		return getCollaborationStatementAccess().getRule();
+	}
+	
+	//DetectionStatement:
+	//	robot=[DynamicRobot] 'detect' object=[drone::AreaObject] obstacle?='obstacle'?;
+	public DetectionStatementElements getDetectionStatementAccess() {
+		return pDetectionStatement;
+	}
+	
+	public ParserRule getDetectionStatementRule() {
+		return getDetectionStatementAccess().getRule();
 	}
 	
 	//MessageTarget:
@@ -2742,20 +2216,10 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getEStringAccess().getRule();
 	}
 	
-	//DetectedObject:
-	//	{DetectedObject} obstacle?='obstacle'?
-	//	'DetectedObject'
-	//	'{'
-	//	'object' object=[drone::AreaObject]
-	//	'}';
-	public DetectedObjectElements getDetectedObjectAccess() {
-		return pDetectedObject;
-	}
-	
-	public ParserRule getDetectedObjectRule() {
-		return getDetectedObjectAccess().getRule();
-	}
-	
+	////DetectedObject returns DetectedObject:
+	////	{DetectedObject}
+	////	' ' object=[drone::AreaObject] (obstacle?='obstacle')?
+	////;
 	//RobotCollaboration:
 	//	{RobotCollaboration} collaborator=[DynamicRobot] ('properties' '{' properties+=Property ("," properties+=Property)*
 	//	'}')?;
@@ -2765,20 +2229,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	public ParserRule getRobotCollaborationRule() {
 		return getRobotCollaborationAccess().getRule();
-	}
-	
-	//MessageRepository:
-	//	{MessageRepository}
-	//	'MessageRepository'
-	//	name=EString
-	//	'{' ('sendedMessages' '{' sendedMessages+=Message ("," sendedMessages+=Message)* '}')?
-	//	'}';
-	public MessageRepositoryElements getMessageRepositoryAccess() {
-		return pMessageRepository;
-	}
-	
-	public ParserRule getMessageRepositoryRule() {
-		return getMessageRepositoryAccess().getRule();
 	}
 	
 	//enum RobotStatus:
@@ -2899,53 +2349,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	public ParserRule getMessageRule() {
 		return getMessageAccess().getRule();
-	}
-	
-	//UnicastCommunication:
-	//	'UnicastCommunication'
-	//	name=EString
-	//	'{' ('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-	//	'message' message=[Message|EString]
-	//	'target' target=[DynamicRobot|EString] ('properties' '{' properties+=Property ("," properties+=Property)* '}')?
-	//	'}';
-	public UnicastCommunicationElements getUnicastCommunicationAccess() {
-		return pUnicastCommunication;
-	}
-	
-	public ParserRule getUnicastCommunicationRule() {
-		return getUnicastCommunicationAccess().getRule();
-	}
-	
-	//MulticastCommunication:
-	//	'MulticastCommunication'
-	//	name=EString
-	//	'{' ('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-	//	'message' message=[Message|EString]
-	//	'targets' '(' targets+=[DynamicRobot|EString] ("," targets+=[DynamicRobot|EString])* ')' ('properties' '{'
-	//	properties+=Property ("," properties+=Property)* '}')?
-	//	'}';
-	public MulticastCommunicationElements getMulticastCommunicationAccess() {
-		return pMulticastCommunication;
-	}
-	
-	public ParserRule getMulticastCommunicationRule() {
-		return getMulticastCommunicationAccess().getRule();
-	}
-	
-	//BroadcastCommunication:
-	//	'BroadcastCommunication'
-	//	name=EString
-	//	'{' ('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-	//	'message' message=[Message|EString]
-	//	'targets' '(' targets+=[DynamicRobot|EString] ("," targets+=[DynamicRobot|EString])* ')' ('properties' '{'
-	//	properties+=Property ("," properties+=Property)* '}')?
-	//	'}';
-	public BroadcastCommunicationElements getBroadcastCommunicationAccess() {
-		return pBroadcastCommunication;
-	}
-	
-	public ParserRule getBroadcastCommunicationRule() {
-		return getBroadcastCommunicationAccess().getRule();
 	}
 	
 	//enum TaskExecutionStatus:

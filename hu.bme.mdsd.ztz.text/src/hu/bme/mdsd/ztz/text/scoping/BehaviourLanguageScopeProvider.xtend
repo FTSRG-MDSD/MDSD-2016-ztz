@@ -25,6 +25,9 @@ import hu.bme.mdsd.ztz.model.drone.PropertyKey
 import hu.bme.mdsd.ztz.model.drone.MeasureValue
 import hu.bme.mdsd.ztz.model.drone.MeasureDimension
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties
+import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
 
 /**
  * This class contains custom scoping description.
@@ -78,9 +81,11 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 	}
 	
 	
-	def dispatch IScope scopeForContext(DetectedObject context, EReference reference, ResourceManager manager) {
-		if (reference == BehaviourPackage.Literals.DETECTED_OBJECT__OBJECT && manager.resource != null) {
-			return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(getContainer(manager), AreaObject))
+	def dispatch IScope scopeForContext(DetectionStatement context, EReference reference, ResourceManager manager) {
+		if (manager.resource != null) {
+			if (reference == BehaviourLanguagePackage.Literals.DETECTION_STATEMENT__OBJECT) {
+				return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(getContainer(manager), AreaObject))
+			}
 		}
 		super.getScope(context, reference)
 	}

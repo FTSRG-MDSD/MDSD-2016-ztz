@@ -289,6 +289,52 @@ public interface BehaviourLanguagePackage extends EPackage
   int COLLABORATION_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.DetectionStatementImpl <em>Detection Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.DetectionStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getDetectionStatement()
+   * @generated
+   */
+  int DETECTION_STATEMENT = 6;
+
+  /**
+   * The feature id for the '<em><b>Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DETECTION_STATEMENT__ROBOT = STATEMENT__ROBOT;
+
+  /**
+   * The feature id for the '<em><b>Object</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DETECTION_STATEMENT__OBJECT = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Obstacle</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DETECTION_STATEMENT__OBSTACLE = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Detection Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DETECTION_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -296,7 +342,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageTarget()
    * @generated
    */
-  int MESSAGE_TARGET = 6;
+  int MESSAGE_TARGET = 7;
 
   /**
    * The number of structural features of the '<em>Message Target</em>' class.
@@ -315,7 +361,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getUniTarget()
    * @generated
    */
-  int UNI_TARGET = 7;
+  int UNI_TARGET = 8;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -343,7 +389,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMultiTarget()
    * @generated
    */
-  int MULTI_TARGET = 8;
+  int MULTI_TARGET = 9;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference list.
@@ -371,7 +417,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getAllTarget()
    * @generated
    */
-  int ALL_TARGET = 9;
+  int ALL_TARGET = 10;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' attribute.
@@ -561,6 +607,38 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    */
   EReference getCollaborationStatement_Collaboration();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement <em>Detection Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Detection Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
+   * @generated
+   */
+  EClass getDetectionStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#getObject <em>Object</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Object</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#getObject()
+   * @see #getDetectionStatement()
+   * @generated
+   */
+  EReference getDetectionStatement_Object();
+
+  /**
+   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#isObstacle <em>Obstacle</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Obstacle</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#isObstacle()
+   * @see #getDetectionStatement()
+   * @generated
+   */
+  EAttribute getDetectionStatement_Obstacle();
 
   /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget <em>Message Target</em>}'.
@@ -797,6 +875,32 @@ public interface BehaviourLanguagePackage extends EPackage
      * @generated
      */
     EReference COLLABORATION_STATEMENT__COLLABORATION = eINSTANCE.getCollaborationStatement_Collaboration();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.DetectionStatementImpl <em>Detection Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.DetectionStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getDetectionStatement()
+     * @generated
+     */
+    EClass DETECTION_STATEMENT = eINSTANCE.getDetectionStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Object</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DETECTION_STATEMENT__OBJECT = eINSTANCE.getDetectionStatement_Object();
+
+    /**
+     * The meta object literal for the '<em><b>Obstacle</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DETECTION_STATEMENT__OBSTACLE = eINSTANCE.getDetectionStatement_Obstacle();
 
     /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.

@@ -37,6 +37,9 @@ import org.eclipse.xtend.lib.annotations.Delegate
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
+import hu.bme.mdsd.ztz.model.behaviour.DetectedObject
+import hu.bme.mdsd.ztz.model.drone.AreaObject
 
 /**
  * Generates code from your model files on save.
@@ -92,6 +95,16 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 		}
 	}
 
+	def dispatch parseStatement(DetectionStatement statement, Resource resourceOfBehaviour) {
+		val robot = statement.robot
+		robot.removeAreaObject(statement.object)
+		
+		val detectedObject = BehaviourFactory.eINSTANCE.createDetectedObject
+		detectedObject.object = statement.object
+		detectedObject.obstacle = statement.obstacle
+		robot.detectedObjects.add(detectedObject)
+	}
+
 	def dispatch parseStatement(MessageStatement statement, Resource resourceOfBehaviour) {
 		val senderRobot = statement.robot
 		initMessageRepository(senderRobot)
@@ -101,6 +114,25 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 
 		messageTarget.parseMessageTarget(senderRobot, message)
 		
+	}
+	
+	def boolean detected(DynamicRobot robot, AreaObject areaObject) {
+		for (DetectedObject detectedObj : robot.detectedObjects) {
+			if (detectedObj.object == areaObject) {
+				return true
+			}
+		}
+		return false
+	}
+	
+	def removeAreaObject(DynamicRobot robot, AreaObject areaObject) {
+		var DetectedObject removeObject 
+		for (DetectedObject detectedObj : robot.detectedObjects) {
+			if (detectedObj.object == areaObject) {
+				removeObject = detectedObj
+			}
+		}
+		robot.detectedObjects.remove(removeObject)
 	}
 	
 	def MessageRepository initMessageRepository(DynamicRobot robot) {

@@ -5,7 +5,6 @@ package hu.bme.mdsd.ztz.text.scoping;
 
 import com.google.common.base.Objects;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
-import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
@@ -21,6 +20,8 @@ import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
 import hu.bme.mdsd.ztz.model.drone.Task;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.scoping.AbstractBehaviourLanguageScopeProvider;
 import java.util.Arrays;
@@ -139,22 +140,18 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
     return _xblockexpression;
   }
   
-  protected IScope _scopeForContext(final DetectedObject context, final EReference reference, final ResourceManager manager) {
+  protected IScope _scopeForContext(final DetectionStatement context, final EReference reference, final ResourceManager manager) {
     IScope _xblockexpression = null;
     {
-      boolean _and = false;
-      boolean _equals = Objects.equal(reference, BehaviourPackage.Literals.DETECTED_OBJECT__OBJECT);
-      if (!_equals) {
-        _and = false;
-      } else {
-        Resource _resource = manager.getResource();
-        boolean _notEquals = (!Objects.equal(_resource, null));
-        _and = _notEquals;
-      }
-      if (_and) {
-        RobotMissionContainer _container = this.getContainer(manager);
-        List<AreaObject> _allContentsOfType = EcoreUtil2.<AreaObject>getAllContentsOfType(_container, AreaObject.class);
-        return Scopes.scopeFor(_allContentsOfType);
+      Resource _resource = manager.getResource();
+      boolean _notEquals = (!Objects.equal(_resource, null));
+      if (_notEquals) {
+        boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.DETECTION_STATEMENT__OBJECT);
+        if (_equals) {
+          RobotMissionContainer _container = this.getContainer(manager);
+          List<AreaObject> _allContentsOfType = EcoreUtil2.<AreaObject>getAllContentsOfType(_container, AreaObject.class);
+          return Scopes.scopeFor(_allContentsOfType);
+        }
       }
       _xblockexpression = super.getScope(context, reference);
     }
@@ -245,8 +242,8 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
       return _scopeForContext((TaskRequirement)context, reference, manager);
     } else if (context instanceof MeasureValue) {
       return _scopeForContext((MeasureValue)context, reference, manager);
-    } else if (context instanceof DetectedObject) {
-      return _scopeForContext((DetectedObject)context, reference, manager);
+    } else if (context instanceof DetectionStatement) {
+      return _scopeForContext((DetectionStatement)context, reference, manager);
     } else if (context instanceof CapabilityProperties) {
       return _scopeForContext((CapabilityProperties)context, reference, manager);
     } else if (context instanceof Property) {

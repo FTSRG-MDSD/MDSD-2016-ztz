@@ -78,6 +78,15 @@ public interface BehaviourLanguageFactory extends EFactory
   CollaborationStatement createCollaborationStatement();
 
   /**
+   * Returns a new object of class '<em>Detection Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Detection Statement</em>'.
+   * @generated
+   */
+  DetectionStatement createDetectionStatement();
+
+  /**
    * Returns a new object of class '<em>Message Target</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

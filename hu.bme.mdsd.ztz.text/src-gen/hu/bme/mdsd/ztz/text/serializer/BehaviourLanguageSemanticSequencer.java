@@ -7,16 +7,11 @@ import com.google.inject.Inject;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviouralPropertyKeyContainer;
-import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
-import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
-import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
-import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement;
-import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
@@ -28,6 +23,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
@@ -67,23 +63,11 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 			case BehaviourPackage.BEHAVIOURAL_PROPERTY_KEY_CONTAINER:
 				sequence_BehaviouralPropertyKeyContainer(context, (BehaviouralPropertyKeyContainer) semanticObject); 
 				return; 
-			case BehaviourPackage.BROADCAST_COMMUNICATION:
-				sequence_BroadcastCommunication(context, (BroadcastCommunication) semanticObject); 
-				return; 
-			case BehaviourPackage.DETECTED_OBJECT:
-				sequence_DetectedObject(context, (DetectedObject) semanticObject); 
-				return; 
 			case BehaviourPackage.DYNAMIC_ROBOT:
 				sequence_DynamicRobot(context, (DynamicRobot) semanticObject); 
 				return; 
 			case BehaviourPackage.MESSAGE:
 				sequence_Message(context, (Message) semanticObject); 
-				return; 
-			case BehaviourPackage.MESSAGE_REPOSITORY:
-				sequence_MessageRepository(context, (MessageRepository) semanticObject); 
-				return; 
-			case BehaviourPackage.MULTICAST_COMMUNICATION:
-				sequence_MulticastCommunication(context, (MulticastCommunication) semanticObject); 
 				return; 
 			case BehaviourPackage.ROBOT_COLLABORATION:
 				sequence_RobotCollaboration(context, (RobotCollaboration) semanticObject); 
@@ -93,9 +77,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case BehaviourPackage.TASK_REQUIREMENT:
 				sequence_TaskRequirement(context, (TaskRequirement) semanticObject); 
-				return; 
-			case BehaviourPackage.UNICAST_COMMUNICATION:
-				sequence_UnicastCommunication(context, (UnicastCommunication) semanticObject); 
 				return; 
 			}
 		else if (epackage == BehaviourLanguagePackage.eINSTANCE)
@@ -111,6 +92,9 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case BehaviourLanguagePackage.COLLABORATION_STATEMENT:
 				sequence_CollaborationStatement(context, (CollaborationStatement) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.DETECTION_STATEMENT:
+				sequence_DetectionStatement(context, (DetectionStatement) semanticObject); 
 				return; 
 			case BehaviourLanguagePackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
@@ -234,25 +218,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     BroadcastCommunication returns BroadcastCommunication
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=EString 
-	 *         currentTaskExecution=[TaskExecution|EString]? 
-	 *         message=[Message|EString] 
-	 *         targets+=[DynamicRobot|EString] 
-	 *         targets+=[DynamicRobot|EString]* 
-	 *         (properties+=Property properties+=Property*)?
-	 *     )
-	 */
-	protected void sequence_BroadcastCommunication(ISerializationContext context, BroadcastCommunication semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     CapabilityProperties returns CapabilityProperties
 	 *
 	 * Constraint:
@@ -278,12 +243,13 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     DetectedObject returns DetectedObject
+	 *     Statement returns DetectionStatement
+	 *     DetectionStatement returns DetectionStatement
 	 *
 	 * Constraint:
-	 *     (obstacle?='obstacle'? object=[AreaObject|ID])
+	 *     (robot=[DynamicRobot|ID] object=[AreaObject|ID] obstacle?='obstacle'?)
 	 */
-	protected void sequence_DetectedObject(ISerializationContext context, DetectedObject semanticObject) {
+	protected void sequence_DetectionStatement(ISerializationContext context, DetectionStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -342,18 +308,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     MessageRepository returns MessageRepository
-	 *
-	 * Constraint:
-	 *     (name=EString (sendedMessages+=Message sendedMessages+=Message*)?)
-	 */
-	protected void sequence_MessageRepository(ISerializationContext context, MessageRepository semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Statement returns MessageStatement
 	 *     MessageStatement returns MessageStatement
 	 *
@@ -405,25 +359,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     (target+=[DynamicRobot|ID] target+=[DynamicRobot|ID]*)
 	 */
 	protected void sequence_MultiTarget(ISerializationContext context, MultiTarget semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     MulticastCommunication returns MulticastCommunication
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=EString 
-	 *         currentTaskExecution=[TaskExecution|EString]? 
-	 *         message=[Message|EString] 
-	 *         targets+=[DynamicRobot|EString] 
-	 *         targets+=[DynamicRobot|EString]* 
-	 *         (properties+=Property properties+=Property*)?
-	 *     )
-	 */
-	protected void sequence_MulticastCommunication(ISerializationContext context, MulticastCommunication semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -552,24 +487,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getUniTargetAccess().getTargetDynamicRobotIDTerminalRuleCall_0_1(), semanticObject.getTarget());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     UnicastCommunication returns UnicastCommunication
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=EString 
-	 *         currentTaskExecution=[TaskExecution|EString]? 
-	 *         message=[Message|EString] 
-	 *         target=[DynamicRobot|EString] 
-	 *         (properties+=Property properties+=Property*)?
-	 *     )
-	 */
-	protected void sequence_UnicastCommunication(ISerializationContext context, UnicastCommunication semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

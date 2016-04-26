@@ -5,12 +5,15 @@ package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 
+import hu.bme.mdsd.ztz.model.drone.DronePackage;
+
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
@@ -74,6 +77,13 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * @generated
    */
   private EClass collaborationStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass detectionStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -334,6 +344,36 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getDetectionStatement()
+  {
+    return detectionStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDetectionStatement_Object()
+  {
+    return (EReference)detectionStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDetectionStatement_Obstacle()
+  {
+    return (EAttribute)detectionStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMessageTarget()
   {
     return messageTargetEClass;
@@ -451,6 +491,10 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     collaborationStatementEClass = createEClass(COLLABORATION_STATEMENT);
     createEReference(collaborationStatementEClass, COLLABORATION_STATEMENT__COLLABORATION);
 
+    detectionStatementEClass = createEClass(DETECTION_STATEMENT);
+    createEReference(detectionStatementEClass, DETECTION_STATEMENT__OBJECT);
+    createEAttribute(detectionStatementEClass, DETECTION_STATEMENT__OBSTACLE);
+
     messageTargetEClass = createEClass(MESSAGE_TARGET);
 
     uniTargetEClass = createEClass(UNI_TARGET);
@@ -489,6 +533,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
 
     // Obtain other dependent packages
     BehaviourPackage theBehaviourPackage = (BehaviourPackage)EPackage.Registry.INSTANCE.getEPackage(BehaviourPackage.eNS_URI);
+    DronePackage theDronePackage = (DronePackage)EPackage.Registry.INSTANCE.getEPackage(DronePackage.eNS_URI);
 
     // Create type parameters
 
@@ -498,6 +543,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     actionStatementEClass.getESuperTypes().add(this.getStatement());
     messageStatementEClass.getESuperTypes().add(this.getStatement());
     collaborationStatementEClass.getESuperTypes().add(this.getStatement());
+    detectionStatementEClass.getESuperTypes().add(this.getStatement());
     uniTargetEClass.getESuperTypes().add(this.getMessageTarget());
     multiTargetEClass.getESuperTypes().add(this.getMessageTarget());
     allTargetEClass.getESuperTypes().add(this.getMessageTarget());
@@ -524,6 +570,10 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
 
     initEClass(collaborationStatementEClass, CollaborationStatement.class, "CollaborationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCollaborationStatement_Collaboration(), theBehaviourPackage.getRobotCollaboration(), null, "collaboration", null, 0, -1, CollaborationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(detectionStatementEClass, DetectionStatement.class, "DetectionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDetectionStatement_Object(), theDronePackage.getAreaObject(), null, "object", null, 0, 1, DetectionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDetectionStatement_Obstacle(), ecorePackage.getEBoolean(), "obstacle", null, 0, 1, DetectionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(messageTargetEClass, MessageTarget.class, "MessageTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
