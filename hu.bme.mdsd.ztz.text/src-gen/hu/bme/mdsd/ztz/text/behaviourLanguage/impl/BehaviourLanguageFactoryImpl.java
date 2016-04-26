@@ -72,6 +72,7 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
       case BehaviourLanguagePackage.MESSAGE_STATEMENT: return createMessageStatement();
       case BehaviourLanguagePackage.COLLABORATION_STATEMENT: return createCollaborationStatement();
       case BehaviourLanguagePackage.DETECTION_STATEMENT: return createDetectionStatement();
+      case BehaviourLanguagePackage.EXECUTION_STATEMENT: return createExecutionStatement();
       case BehaviourLanguagePackage.MESSAGE_TARGET: return createMessageTarget();
       case BehaviourLanguagePackage.UNI_TARGET: return createUniTarget();
       case BehaviourLanguagePackage.MULTI_TARGET: return createMultiTarget();
@@ -156,6 +157,17 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
   {
     DetectionStatementImpl detectionStatement = new DetectionStatementImpl();
     return detectionStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExecutionStatement createExecutionStatement()
+  {
+    ExecutionStatementImpl executionStatement = new ExecutionStatementImpl();
+    return executionStatement;
   }
 
   /**

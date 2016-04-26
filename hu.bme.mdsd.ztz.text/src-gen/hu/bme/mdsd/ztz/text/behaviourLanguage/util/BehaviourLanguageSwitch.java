@@ -126,6 +126,14 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case BehaviourLanguagePackage.EXECUTION_STATEMENT:
+      {
+        ExecutionStatement executionStatement = (ExecutionStatement)theEObject;
+        T result = caseExecutionStatement(executionStatement);
+        if (result == null) result = caseStatement(executionStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case BehaviourLanguagePackage.MESSAGE_TARGET:
       {
         MessageTarget messageTarget = (MessageTarget)theEObject;
@@ -269,6 +277,22 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDetectionStatement(DetectionStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Execution Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Execution Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExecutionStatement(ExecutionStatement object)
   {
     return null;
   }

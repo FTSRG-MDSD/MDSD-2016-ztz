@@ -14,6 +14,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
@@ -84,6 +85,13 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * @generated
    */
   private EClass detectionStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass executionStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -374,6 +382,26 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getExecutionStatement()
+  {
+    return executionStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExecutionStatement_Execution()
+  {
+    return (EReference)executionStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMessageTarget()
   {
     return messageTargetEClass;
@@ -495,6 +523,9 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     createEReference(detectionStatementEClass, DETECTION_STATEMENT__OBJECT);
     createEAttribute(detectionStatementEClass, DETECTION_STATEMENT__OBSTACLE);
 
+    executionStatementEClass = createEClass(EXECUTION_STATEMENT);
+    createEReference(executionStatementEClass, EXECUTION_STATEMENT__EXECUTION);
+
     messageTargetEClass = createEClass(MESSAGE_TARGET);
 
     uniTargetEClass = createEClass(UNI_TARGET);
@@ -544,6 +575,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     messageStatementEClass.getESuperTypes().add(this.getStatement());
     collaborationStatementEClass.getESuperTypes().add(this.getStatement());
     detectionStatementEClass.getESuperTypes().add(this.getStatement());
+    executionStatementEClass.getESuperTypes().add(this.getStatement());
     uniTargetEClass.getESuperTypes().add(this.getMessageTarget());
     multiTargetEClass.getESuperTypes().add(this.getMessageTarget());
     allTargetEClass.getESuperTypes().add(this.getMessageTarget());
@@ -574,6 +606,9 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     initEClass(detectionStatementEClass, DetectionStatement.class, "DetectionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDetectionStatement_Object(), theDronePackage.getAreaObject(), null, "object", null, 0, 1, DetectionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDetectionStatement_Obstacle(), ecorePackage.getEBoolean(), "obstacle", null, 0, 1, DetectionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(executionStatementEClass, ExecutionStatement.class, "ExecutionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExecutionStatement_Execution(), theBehaviourPackage.getTaskExecution(), null, "execution", null, 0, 1, ExecutionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(messageTargetEClass, MessageTarget.class, "MessageTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

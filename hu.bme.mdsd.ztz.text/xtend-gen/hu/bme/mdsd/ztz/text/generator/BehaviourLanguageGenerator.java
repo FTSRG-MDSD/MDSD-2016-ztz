@@ -15,12 +15,14 @@ import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
@@ -104,23 +106,55 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
   protected Boolean _parseStatement(final ActionStatement statement, final Resource resourceOfBehaviour) {
     boolean _xblockexpression = false;
     {
-      DynamicRobot _robot = statement.getRobot();
-      EList<Action> _actions = _robot.getActions();
+      final DynamicRobot robot = statement.getRobot();
       Action _action = statement.getAction();
-      _actions.add(_action);
+      TaskExecution execution = _action.getCurrentTaskExecution();
+      this.addExecution(execution, robot);
+      EList<Action> _actions = robot.getActions();
+      Action _action_1 = statement.getAction();
+      _actions.add(_action_1);
       boolean _xifexpression = false;
       EList<Action> _moreactions = statement.getMoreactions();
       boolean _isEmpty = _moreactions.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
-        DynamicRobot _robot_1 = statement.getRobot();
-        EList<Action> _actions_1 = _robot_1.getActions();
-        EList<Action> _moreactions_1 = statement.getMoreactions();
-        _xifexpression = _actions_1.addAll(_moreactions_1);
+        boolean _xblockexpression_1 = false;
+        {
+          EList<Action> _moreactions_1 = statement.getMoreactions();
+          for (final Action action : _moreactions_1) {
+            {
+              TaskExecution _currentTaskExecution = action.getCurrentTaskExecution();
+              execution = _currentTaskExecution;
+              this.addExecution(execution, robot);
+            }
+          }
+          DynamicRobot _robot = statement.getRobot();
+          EList<Action> _actions_1 = _robot.getActions();
+          EList<Action> _moreactions_2 = statement.getMoreactions();
+          _xblockexpression_1 = _actions_1.addAll(_moreactions_2);
+        }
+        _xifexpression = _xblockexpression_1;
       }
       _xblockexpression = _xifexpression;
     }
     return Boolean.valueOf(_xblockexpression);
+  }
+  
+  public boolean addExecution(final TaskExecution execution, final DynamicRobot robot) {
+    boolean _xifexpression = false;
+    boolean _notEquals = (!Objects.equal(execution, null));
+    if (_notEquals) {
+      boolean _xifexpression_1 = false;
+      EList<TaskExecution> _executedTasks = robot.getExecutedTasks();
+      boolean _contains = _executedTasks.contains(execution);
+      boolean _not = (!_contains);
+      if (_not) {
+        EList<TaskExecution> _executedTasks_1 = robot.getExecutedTasks();
+        _xifexpression_1 = _executedTasks_1.add(execution);
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
   }
   
   protected Boolean _parseStatement(final DetectionStatement statement, final Resource resourceOfBehaviour) {
@@ -136,6 +170,25 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
       detectedObject.setObstacle(_isObstacle);
       EList<DetectedObject> _detectedObjects = robot.getDetectedObjects();
       _xblockexpression = _detectedObjects.add(detectedObject);
+    }
+    return Boolean.valueOf(_xblockexpression);
+  }
+  
+  protected Boolean _parseStatement(final ExecutionStatement statement, final Resource resourceOfBehaviour) {
+    boolean _xblockexpression = false;
+    {
+      final DynamicRobot robot = statement.getRobot();
+      boolean _xifexpression = false;
+      EList<TaskExecution> _executedTasks = robot.getExecutedTasks();
+      TaskExecution _execution = statement.getExecution();
+      boolean _contains = _executedTasks.contains(_execution);
+      boolean _not = (!_contains);
+      if (_not) {
+        EList<TaskExecution> _executedTasks_1 = robot.getExecutedTasks();
+        TaskExecution _execution_1 = statement.getExecution();
+        _xifexpression = _executedTasks_1.add(_execution_1);
+      }
+      _xblockexpression = _xifexpression;
     }
     return Boolean.valueOf(_xblockexpression);
   }
@@ -379,6 +432,8 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
       return _parseStatement((CollaborationStatement)statement, resourceOfBehaviour);
     } else if (statement instanceof DetectionStatement) {
       return _parseStatement((DetectionStatement)statement, resourceOfBehaviour);
+    } else if (statement instanceof ExecutionStatement) {
+      return _parseStatement((ExecutionStatement)statement, resourceOfBehaviour);
     } else if (statement instanceof MessageStatement) {
       return _parseStatement((MessageStatement)statement, resourceOfBehaviour);
     } else {

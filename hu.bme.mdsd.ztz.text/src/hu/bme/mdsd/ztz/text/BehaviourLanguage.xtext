@@ -11,10 +11,8 @@ BehaviourLanguage:
 	(statements+=Statement)*
 ;
 
-
 Import:
 	'import' importURI=STRING;
-
 
 BehaviourContainer returns BehaviourContainer:
 	{BehaviourContainer}
@@ -27,27 +25,21 @@ BehaviourContainer returns BehaviourContainer:
 	'}'
 ;
 
-
 PropertyValue returns drone::PropertyValue:
 	StringValue | MeasureValue;
-
 
 DynamicRobot returns DynamicRobot:
 	name=EString ':' robot=[drone::Robot]
 //	'{'
 //		'status' status=RobotStatus
-//		'robot' robot=[drone::Robot]
 //		('executedTasks' '(' executedTasks+=[TaskExecution|EString] ( "," executedTasks+=[TaskExecution|EString])* ')' )?
-//		('detectedObjects' '{' detectedObjects+=DetectedObject ( "," detectedObjects+=DetectedObject)* '}' )?
-//		('collaborations' collaborations=RobotCollaboration)?
-//		('messageRepository' messageRepository=MessageRepository)?
 //		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
 //	'}'
 ;
 
 
 Statement:
-	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement
+	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement
 ;
 
 
@@ -68,6 +60,10 @@ CollaborationStatement:
 
 DetectionStatement:
 	robot=[DynamicRobot] 'detect' object=[drone::AreaObject] (obstacle?='obstacle')?
+;
+
+ExecutionStatement:
+	robot=[DynamicRobot] 'exec' execution=[TaskExecution]
 ;
 
 MessageTarget:

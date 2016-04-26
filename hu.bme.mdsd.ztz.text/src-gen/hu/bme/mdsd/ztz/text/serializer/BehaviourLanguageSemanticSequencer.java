@@ -24,6 +24,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
@@ -95,6 +96,9 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case BehaviourLanguagePackage.DETECTION_STATEMENT:
 				sequence_DetectionStatement(context, (DetectionStatement) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.EXECUTION_STATEMENT:
+				sequence_ExecutionStatement(context, (ExecutionStatement) semanticObject); 
 				return; 
 			case BehaviourLanguagePackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
@@ -271,6 +275,28 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getDynamicRobotAccess().getNameEStringParserRuleCall_0_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getDynamicRobotAccess().getRobotRobotIDTerminalRuleCall_2_0_1(), semanticObject.getRobot());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns ExecutionStatement
+	 *     ExecutionStatement returns ExecutionStatement
+	 *
+	 * Constraint:
+	 *     (robot=[DynamicRobot|ID] execution=[TaskExecution|ID])
+	 */
+	protected void sequence_ExecutionStatement(ISerializationContext context, ExecutionStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.STATEMENT__ROBOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.STATEMENT__ROBOT));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.EXECUTION_STATEMENT__EXECUTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.EXECUTION_STATEMENT__EXECUTION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExecutionStatementAccess().getRobotDynamicRobotIDTerminalRuleCall_0_0_1(), semanticObject.getRobot());
+		feeder.accept(grammarAccess.getExecutionStatementAccess().getExecutionTaskExecutionIDTerminalRuleCall_2_0_1(), semanticObject.getExecution());
 		feeder.finish();
 	}
 	

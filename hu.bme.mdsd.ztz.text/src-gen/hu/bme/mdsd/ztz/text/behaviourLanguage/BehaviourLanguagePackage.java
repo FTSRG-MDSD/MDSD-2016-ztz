@@ -335,6 +335,43 @@ public interface BehaviourLanguagePackage extends EPackage
   int DETECTION_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ExecutionStatementImpl <em>Execution Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ExecutionStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getExecutionStatement()
+   * @generated
+   */
+  int EXECUTION_STATEMENT = 7;
+
+  /**
+   * The feature id for the '<em><b>Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXECUTION_STATEMENT__ROBOT = STATEMENT__ROBOT;
+
+  /**
+   * The feature id for the '<em><b>Execution</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXECUTION_STATEMENT__EXECUTION = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Execution Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXECUTION_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -342,7 +379,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageTarget()
    * @generated
    */
-  int MESSAGE_TARGET = 7;
+  int MESSAGE_TARGET = 8;
 
   /**
    * The number of structural features of the '<em>Message Target</em>' class.
@@ -361,7 +398,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getUniTarget()
    * @generated
    */
-  int UNI_TARGET = 8;
+  int UNI_TARGET = 9;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -389,7 +426,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMultiTarget()
    * @generated
    */
-  int MULTI_TARGET = 9;
+  int MULTI_TARGET = 10;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference list.
@@ -417,7 +454,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getAllTarget()
    * @generated
    */
-  int ALL_TARGET = 10;
+  int ALL_TARGET = 11;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' attribute.
@@ -639,6 +676,27 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    */
   EAttribute getDetectionStatement_Obstacle();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement <em>Execution Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Execution Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement
+   * @generated
+   */
+  EClass getExecutionStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement#getExecution <em>Execution</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Execution</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement#getExecution()
+   * @see #getExecutionStatement()
+   * @generated
+   */
+  EReference getExecutionStatement_Execution();
 
   /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget <em>Message Target</em>}'.
@@ -901,6 +959,24 @@ public interface BehaviourLanguagePackage extends EPackage
      * @generated
      */
     EAttribute DETECTION_STATEMENT__OBSTACLE = eINSTANCE.getDetectionStatement_Obstacle();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ExecutionStatementImpl <em>Execution Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ExecutionStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getExecutionStatement()
+     * @generated
+     */
+    EClass EXECUTION_STATEMENT = eINSTANCE.getExecutionStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Execution</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXECUTION_STATEMENT__EXECUTION = eINSTANCE.getExecutionStatement_Execution();
 
     /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.

@@ -87,6 +87,15 @@ public interface BehaviourLanguageFactory extends EFactory
   DetectionStatement createDetectionStatement();
 
   /**
+   * Returns a new object of class '<em>Execution Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Execution Statement</em>'.
+   * @generated
+   */
+  ExecutionStatement createExecutionStatement();
+
+  /**
    * Returns a new object of class '<em>Message Target</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

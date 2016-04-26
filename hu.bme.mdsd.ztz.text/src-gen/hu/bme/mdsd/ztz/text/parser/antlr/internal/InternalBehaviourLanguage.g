@@ -557,6 +557,15 @@ ruleStatement returns [EObject current=null]
 			$current = $this_DetectionStatement_3.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getStatementAccess().getExecutionStatementParserRuleCall_4());
+		}
+		this_ExecutionStatement_4=ruleExecutionStatement
+		{
+			$current = $this_ExecutionStatement_4.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -854,6 +863,55 @@ ruleDetectionStatement returns [EObject current=null]
 				}
 			)
 		)?
+	)
+;
+
+// Entry rule entryRuleExecutionStatement
+entryRuleExecutionStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExecutionStatementRule()); }
+	iv_ruleExecutionStatement=ruleExecutionStatement
+	{ $current=$iv_ruleExecutionStatement.current; }
+	EOF;
+
+// Rule ExecutionStatement
+ruleExecutionStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getExecutionStatementRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getExecutionStatementAccess().getRobotDynamicRobotCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1='exec'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getExecutionStatementAccess().getExecKeyword_1());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getExecutionStatementRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getExecutionStatementAccess().getExecutionTaskExecutionCrossReference_2_0());
+				}
+			)
+		)
 	)
 ;
 

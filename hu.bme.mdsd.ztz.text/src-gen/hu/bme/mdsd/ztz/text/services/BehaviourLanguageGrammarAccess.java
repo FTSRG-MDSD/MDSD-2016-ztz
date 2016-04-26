@@ -320,12 +320,13 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final RuleCall cMessageStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cCollaborationStatementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cDetectionStatementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cExecutionStatementParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//Statement:
-		//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement;
+		//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement
+		//ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ActionStatement
@@ -339,6 +340,9 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//DetectionStatement
 		public RuleCall getDetectionStatementParserRuleCall_3() { return cDetectionStatementParserRuleCall_3; }
+		
+		//ExecutionStatement
+		public RuleCall getExecutionStatementParserRuleCall_4() { return cExecutionStatementParserRuleCall_4; }
 	}
 	public class ActionStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.ActionStatement");
@@ -531,6 +535,45 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//'obstacle'
 		public Keyword getObstacleObstacleKeyword_3_0() { return cObstacleObstacleKeyword_3_0; }
+	}
+	public class ExecutionStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.ExecutionStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cRobotAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cRobotDynamicRobotCrossReference_0_0 = (CrossReference)cRobotAssignment_0.eContents().get(0);
+		private final RuleCall cRobotDynamicRobotIDTerminalRuleCall_0_0_1 = (RuleCall)cRobotDynamicRobotCrossReference_0_0.eContents().get(1);
+		private final Keyword cExecKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cExecutionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cExecutionTaskExecutionCrossReference_2_0 = (CrossReference)cExecutionAssignment_2.eContents().get(0);
+		private final RuleCall cExecutionTaskExecutionIDTerminalRuleCall_2_0_1 = (RuleCall)cExecutionTaskExecutionCrossReference_2_0.eContents().get(1);
+		
+		//ExecutionStatement:
+		//	robot=[DynamicRobot] 'exec' execution=[TaskExecution];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//robot=[DynamicRobot] 'exec' execution=[TaskExecution]
+		public Group getGroup() { return cGroup; }
+		
+		//robot=[DynamicRobot]
+		public Assignment getRobotAssignment_0() { return cRobotAssignment_0; }
+		
+		//[DynamicRobot]
+		public CrossReference getRobotDynamicRobotCrossReference_0_0() { return cRobotDynamicRobotCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getRobotDynamicRobotIDTerminalRuleCall_0_0_1() { return cRobotDynamicRobotIDTerminalRuleCall_0_0_1; }
+		
+		//'exec'
+		public Keyword getExecKeyword_1() { return cExecKeyword_1; }
+		
+		//execution=[TaskExecution]
+		public Assignment getExecutionAssignment_2() { return cExecutionAssignment_2; }
+		
+		//[TaskExecution]
+		public CrossReference getExecutionTaskExecutionCrossReference_2_0() { return cExecutionTaskExecutionCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getExecutionTaskExecutionIDTerminalRuleCall_2_0_1() { return cExecutionTaskExecutionIDTerminalRuleCall_2_0_1; }
 	}
 	public class MessageTargetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MessageTarget");
@@ -1918,6 +1961,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	private final MessageStatementElements pMessageStatement;
 	private final CollaborationStatementElements pCollaborationStatement;
 	private final DetectionStatementElements pDetectionStatement;
+	private final ExecutionStatementElements pExecutionStatement;
 	private final MessageTargetElements pMessageTarget;
 	private final UniTargetElements pUniTarget;
 	private final MultiTargetElements pMultiTarget;
@@ -1959,6 +2003,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		this.pMessageStatement = new MessageStatementElements();
 		this.pCollaborationStatement = new CollaborationStatementElements();
 		this.pDetectionStatement = new DetectionStatementElements();
+		this.pExecutionStatement = new ExecutionStatementElements();
 		this.pMessageTarget = new MessageTargetElements();
 		this.pUniTarget = new UniTargetElements();
 		this.pMultiTarget = new MultiTargetElements();
@@ -2068,7 +2113,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 	
 	//Statement:
-	//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement;
+	//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement;
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
@@ -2115,6 +2160,16 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	public ParserRule getDetectionStatementRule() {
 		return getDetectionStatementAccess().getRule();
+	}
+	
+	//ExecutionStatement:
+	//	robot=[DynamicRobot] 'exec' execution=[TaskExecution];
+	public ExecutionStatementElements getExecutionStatementAccess() {
+		return pExecutionStatement;
+	}
+	
+	public ParserRule getExecutionStatementRule() {
+		return getExecutionStatementAccess().getRule();
 	}
 	
 	//MessageTarget:

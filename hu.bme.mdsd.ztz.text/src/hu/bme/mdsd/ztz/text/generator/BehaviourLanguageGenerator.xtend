@@ -8,15 +8,20 @@ import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage
 import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication
+import hu.bme.mdsd.ztz.model.behaviour.DetectedObject
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.model.behaviour.Message
 import hu.bme.mdsd.ztz.model.behaviour.MessageRepository
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication
+import hu.bme.mdsd.ztz.model.drone.AreaObject
 import hu.bme.mdsd.ztz.model.drone.Robot
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget
@@ -37,9 +42,6 @@ import org.eclipse.xtend.lib.annotations.Delegate
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
-import hu.bme.mdsd.ztz.model.behaviour.DetectedObject
-import hu.bme.mdsd.ztz.model.drone.AreaObject
 
 /**
  * Generates code from your model files on save.
@@ -89,9 +91,25 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 	}
 
 	def dispatch parseStatement(ActionStatement statement, Resource resourceOfBehaviour) {
-		statement.robot.actions.add(statement.action)
+		val robot = statement.robot 
+		var execution = statement.action.currentTaskExecution
+		
+		addExecution(execution, robot)
+		robot.actions.add(statement.action)
 		if (!statement.moreactions.empty) {
+			for (Action action : statement.moreactions) {
+				execution = action.currentTaskExecution
+				addExecution(execution, robot)
+			}
 			statement.robot.actions.addAll(statement.moreactions)
+		}
+	}
+	
+	def addExecution(TaskExecution execution, DynamicRobot robot) {
+		if (execution != null) {
+			if (!robot.executedTasks.contains(execution)) {
+				robot.executedTasks.add(execution)
+			}
 		}
 	}
 
@@ -104,6 +122,15 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 		detectedObject.obstacle = statement.obstacle
 		robot.detectedObjects.add(detectedObject)
 	}
+
+	def dispatch parseStatement(ExecutionStatement statement, Resource resourceOfBehaviour) {
+		val robot = statement.robot
+		
+		if (!robot.executedTasks.contains(statement.execution)) {
+			robot.executedTasks.add(statement.execution)
+		}
+	}
+	
 
 	def dispatch parseStatement(MessageStatement statement, Resource resourceOfBehaviour) {
 		val senderRobot = statement.robot
