@@ -26,6 +26,8 @@ import hu.bme.mdsd.ztz.model.drone.MeasureDimension
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 
 /**
  * This class contains custom scoping description.
@@ -37,13 +39,18 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 
 	override getScope(EObject context, EReference reference) {
 		val manager = ResourceManager.instance
+		if (manager.importedModelPath.empty) {
+			val imp = (context.eResource.contents.get(0) as BehaviourLanguage).importModel
+			if (imp.importURI.endsWith(manager.acceptedDomain)){
+				manager.load(imp)
+			}	
+		}
 		return scopeForContext(context, reference, manager)
 	}
 	
 	def dispatch IScope scopeForContext(EObject context, EReference reference, ResourceManager manager) {
 		super.getScope(context, reference)
 	}
-
 
 	def dispatch IScope scopeForContext(DynamicRobot context, EReference reference, ResourceManager manager) {
 		if (reference == BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT && manager.resource != null) {

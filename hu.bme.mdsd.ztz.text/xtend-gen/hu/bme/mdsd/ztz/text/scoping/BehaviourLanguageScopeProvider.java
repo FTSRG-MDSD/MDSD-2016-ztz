@@ -20,8 +20,10 @@ import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
 import hu.bme.mdsd.ztz.model.drone.Task;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.scoping.AbstractBehaviourLanguageScopeProvider;
 import java.util.Arrays;
@@ -45,6 +47,20 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
   @Override
   public IScope getScope(final EObject context, final EReference reference) {
     final ResourceManager manager = ResourceManager.getInstance();
+    String _importedModelPath = manager.getImportedModelPath();
+    boolean _isEmpty = _importedModelPath.isEmpty();
+    if (_isEmpty) {
+      Resource _eResource = context.eResource();
+      EList<EObject> _contents = _eResource.getContents();
+      EObject _get = _contents.get(0);
+      final Import imp = ((BehaviourLanguage) _get).getImportModel();
+      String _importURI = imp.getImportURI();
+      String _acceptedDomain = manager.getAcceptedDomain();
+      boolean _endsWith = _importURI.endsWith(_acceptedDomain);
+      if (_endsWith) {
+        manager.load(imp);
+      }
+    }
     return this.scopeForContext(context, reference, manager);
   }
   
