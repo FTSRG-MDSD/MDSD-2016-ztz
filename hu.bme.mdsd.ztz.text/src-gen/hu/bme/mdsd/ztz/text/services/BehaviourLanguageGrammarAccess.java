@@ -905,32 +905,19 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Assignment cStatusAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final RuleCall cStatusTaskExecutionStatusEnumRuleCall_4_1_0 = (RuleCall)cStatusAssignment_4_1.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cExecutorsKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cExecutorsAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final CrossReference cExecutorsDynamicRobotCrossReference_5_2_0 = (CrossReference)cExecutorsAssignment_5_2.eContents().get(0);
-		private final RuleCall cExecutorsDynamicRobotIDTerminalRuleCall_5_2_0_1 = (RuleCall)cExecutorsDynamicRobotCrossReference_5_2_0.eContents().get(1);
-		private final Group cGroup_5_3 = (Group)cGroup_5.eContents().get(3);
-		private final Keyword cCommaKeyword_5_3_0 = (Keyword)cGroup_5_3.eContents().get(0);
-		private final Assignment cExecutorsAssignment_5_3_1 = (Assignment)cGroup_5_3.eContents().get(1);
-		private final CrossReference cExecutorsDynamicRobotCrossReference_5_3_1_0 = (CrossReference)cExecutorsAssignment_5_3_1.eContents().get(0);
-		private final RuleCall cExecutorsDynamicRobotIDTerminalRuleCall_5_3_1_0_1 = (RuleCall)cExecutorsDynamicRobotCrossReference_5_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cExecutionTimeKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cExecutionTimeAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cExecutionTimeMeasureValueParserRuleCall_6_1_0 = (RuleCall)cExecutionTimeAssignment_6_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cExecutionTimeKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cExecutionTimeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cExecutionTimeMeasureValueParserRuleCall_5_1_0 = (RuleCall)cExecutionTimeAssignment_5_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//TaskExecution:
 		//	name=EString ':' task=[drone::Task]
-		//	'{' ('status' status=TaskExecutionStatus)? ('executors' '(' executors+=[DynamicRobot] (","
-		//	executors+=[DynamicRobot])* ')')? ('executionTime' executionTime=MeasureValue)?
+		//	'{' ('status' status=TaskExecutionStatus)? ('executionTime' executionTime=MeasureValue)?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=EString ':' task=[drone::Task] '{' ('status' status=TaskExecutionStatus)? ('executors' '('
-		//executors+=[DynamicRobot] ("," executors+=[DynamicRobot])* ')')? ('executionTime' executionTime=MeasureValue)? '}'
+		//name=EString ':' task=[drone::Task] '{' ('status' status=TaskExecutionStatus)? ('executionTime'
+		//executionTime=MeasureValue)? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//name=EString
@@ -966,56 +953,20 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//TaskExecutionStatus
 		public RuleCall getStatusTaskExecutionStatusEnumRuleCall_4_1_0() { return cStatusTaskExecutionStatusEnumRuleCall_4_1_0; }
 		
-		//('executors' '(' executors+=[DynamicRobot] ("," executors+=[DynamicRobot])* ')')?
+		//('executionTime' executionTime=MeasureValue)?
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//'executors'
-		public Keyword getExecutorsKeyword_5_0() { return cExecutorsKeyword_5_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_5_1() { return cLeftParenthesisKeyword_5_1; }
-		
-		//executors+=[DynamicRobot]
-		public Assignment getExecutorsAssignment_5_2() { return cExecutorsAssignment_5_2; }
-		
-		//[DynamicRobot]
-		public CrossReference getExecutorsDynamicRobotCrossReference_5_2_0() { return cExecutorsDynamicRobotCrossReference_5_2_0; }
-		
-		//ID
-		public RuleCall getExecutorsDynamicRobotIDTerminalRuleCall_5_2_0_1() { return cExecutorsDynamicRobotIDTerminalRuleCall_5_2_0_1; }
-		
-		//("," executors+=[DynamicRobot])*
-		public Group getGroup_5_3() { return cGroup_5_3; }
-		
-		//","
-		public Keyword getCommaKeyword_5_3_0() { return cCommaKeyword_5_3_0; }
-		
-		//executors+=[DynamicRobot]
-		public Assignment getExecutorsAssignment_5_3_1() { return cExecutorsAssignment_5_3_1; }
-		
-		//[DynamicRobot]
-		public CrossReference getExecutorsDynamicRobotCrossReference_5_3_1_0() { return cExecutorsDynamicRobotCrossReference_5_3_1_0; }
-		
-		//ID
-		public RuleCall getExecutorsDynamicRobotIDTerminalRuleCall_5_3_1_0_1() { return cExecutorsDynamicRobotIDTerminalRuleCall_5_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
-		
-		//('executionTime' executionTime=MeasureValue)?
-		public Group getGroup_6() { return cGroup_6; }
-		
 		//'executionTime'
-		public Keyword getExecutionTimeKeyword_6_0() { return cExecutionTimeKeyword_6_0; }
+		public Keyword getExecutionTimeKeyword_5_0() { return cExecutionTimeKeyword_5_0; }
 		
 		//executionTime=MeasureValue
-		public Assignment getExecutionTimeAssignment_6_1() { return cExecutionTimeAssignment_6_1; }
+		public Assignment getExecutionTimeAssignment_5_1() { return cExecutionTimeAssignment_5_1; }
 		
 		//MeasureValue
-		public RuleCall getExecutionTimeMeasureValueParserRuleCall_6_1_0() { return cExecutionTimeMeasureValueParserRuleCall_6_1_0; }
+		public RuleCall getExecutionTimeMeasureValueParserRuleCall_5_1_0() { return cExecutionTimeMeasureValueParserRuleCall_5_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	public class TaskRequirementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskRequirement");
@@ -2481,8 +2432,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	//TaskExecution:
 	//	name=EString ':' task=[drone::Task]
-	//	'{' ('status' status=TaskExecutionStatus)? ('executors' '(' executors+=[DynamicRobot] (","
-	//	executors+=[DynamicRobot])* ')')? ('executionTime' executionTime=MeasureValue)?
+	//	'{' ('status' status=TaskExecutionStatus)? ('executionTime' executionTime=MeasureValue)?
 	//	'}';
 	public TaskExecutionElements getTaskExecutionAccess() {
 		return pTaskExecution;

@@ -74,8 +74,6 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTaskExecutionAccess().getGroup(), "rule__TaskExecution__Group__0");
 					put(grammarAccess.getTaskExecutionAccess().getGroup_4(), "rule__TaskExecution__Group_4__0");
 					put(grammarAccess.getTaskExecutionAccess().getGroup_5(), "rule__TaskExecution__Group_5__0");
-					put(grammarAccess.getTaskExecutionAccess().getGroup_5_3(), "rule__TaskExecution__Group_5_3__0");
-					put(grammarAccess.getTaskExecutionAccess().getGroup_6(), "rule__TaskExecution__Group_6__0");
 					put(grammarAccess.getTaskRequirementAccess().getGroup(), "rule__TaskRequirement__Group__0");
 					put(grammarAccess.getTaskRequirementAccess().getGroup_7(), "rule__TaskRequirement__Group_7__0");
 					put(grammarAccess.getTaskRequirementAccess().getGroup_8(), "rule__TaskRequirement__Group_8__0");
@@ -160,9 +158,7 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTaskExecutionAccess().getNameAssignment_0(), "rule__TaskExecution__NameAssignment_0");
 					put(grammarAccess.getTaskExecutionAccess().getTaskAssignment_2(), "rule__TaskExecution__TaskAssignment_2");
 					put(grammarAccess.getTaskExecutionAccess().getStatusAssignment_4_1(), "rule__TaskExecution__StatusAssignment_4_1");
-					put(grammarAccess.getTaskExecutionAccess().getExecutorsAssignment_5_2(), "rule__TaskExecution__ExecutorsAssignment_5_2");
-					put(grammarAccess.getTaskExecutionAccess().getExecutorsAssignment_5_3_1(), "rule__TaskExecution__ExecutorsAssignment_5_3_1");
-					put(grammarAccess.getTaskExecutionAccess().getExecutionTimeAssignment_6_1(), "rule__TaskExecution__ExecutionTimeAssignment_6_1");
+					put(grammarAccess.getTaskExecutionAccess().getExecutionTimeAssignment_5_1(), "rule__TaskExecution__ExecutionTimeAssignment_5_1");
 					put(grammarAccess.getTaskRequirementAccess().getNameAssignment_1(), "rule__TaskRequirement__NameAssignment_1");
 					put(grammarAccess.getTaskRequirementAccess().getParticipantsAssignment_4(), "rule__TaskRequirement__ParticipantsAssignment_4");
 					put(grammarAccess.getTaskRequirementAccess().getTaskExecutionAssignment_6(), "rule__TaskRequirement__TaskExecutionAssignment_6");

@@ -507,13 +507,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     TaskExecution returns TaskExecution
 	 *
 	 * Constraint:
-	 *     (
-	 *         name=EString 
-	 *         task=[Task|ID] 
-	 *         status=TaskExecutionStatus? 
-	 *         (executors+=[DynamicRobot|ID] executors+=[DynamicRobot|ID]*)? 
-	 *         executionTime=MeasureValue?
-	 *     )
+	 *     (name=EString task=[Task|ID] status=TaskExecutionStatus? executionTime=MeasureValue?)
 	 */
 	protected void sequence_TaskExecution(ISerializationContext context, TaskExecution semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -101,7 +101,6 @@ TaskExecution returns TaskExecution:
 	name=EString ':' task=[drone::Task]
 	'{'
 		('status' status=TaskExecutionStatus)?
-		('executors' '(' executors+=[DynamicRobot] ( "," executors+=[DynamicRobot])* ')' )?
 		('executionTime' executionTime=MeasureValue)?
 	'}';
 

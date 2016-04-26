@@ -1504,62 +1504,16 @@ ruleTaskExecution returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_6='executors'
+			otherlv_6='executionTime'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getTaskExecutionAccess().getExecutorsKeyword_5_0());
-			}
-			otherlv_7='('
-			{
-				newLeafNode(otherlv_7, grammarAccess.getTaskExecutionAccess().getLeftParenthesisKeyword_5_1());
+				newLeafNode(otherlv_6, grammarAccess.getTaskExecutionAccess().getExecutionTimeKeyword_5_0());
 			}
 			(
 				(
 					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTaskExecutionRule());
-						}
+						newCompositeNode(grammarAccess.getTaskExecutionAccess().getExecutionTimeMeasureValueParserRuleCall_5_1_0());
 					}
-					otherlv_8=RULE_ID
-					{
-						newLeafNode(otherlv_8, grammarAccess.getTaskExecutionAccess().getExecutorsDynamicRobotCrossReference_5_2_0());
-					}
-				)
-			)
-			(
-				otherlv_9=','
-				{
-					newLeafNode(otherlv_9, grammarAccess.getTaskExecutionAccess().getCommaKeyword_5_3_0());
-				}
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getTaskExecutionRule());
-							}
-						}
-						otherlv_10=RULE_ID
-						{
-							newLeafNode(otherlv_10, grammarAccess.getTaskExecutionAccess().getExecutorsDynamicRobotCrossReference_5_3_1_0());
-						}
-					)
-				)
-			)*
-			otherlv_11=')'
-			{
-				newLeafNode(otherlv_11, grammarAccess.getTaskExecutionAccess().getRightParenthesisKeyword_5_4());
-			}
-		)?
-		(
-			otherlv_12='executionTime'
-			{
-				newLeafNode(otherlv_12, grammarAccess.getTaskExecutionAccess().getExecutionTimeKeyword_6_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getTaskExecutionAccess().getExecutionTimeMeasureValueParserRuleCall_6_1_0());
-					}
-					lv_executionTime_13_0=ruleMeasureValue
+					lv_executionTime_7_0=ruleMeasureValue
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTaskExecutionRule());
@@ -1567,16 +1521,16 @@ ruleTaskExecution returns [EObject current=null]
 						set(
 							$current,
 							"executionTime",
-							lv_executionTime_13_0,
+							lv_executionTime_7_0,
 							"hu.bme.mdsd.ztz.text.BehaviourLanguage.MeasureValue");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)?
-		otherlv_14='}'
+		otherlv_8='}'
 		{
-			newLeafNode(otherlv_14, grammarAccess.getTaskExecutionAccess().getRightCurlyBracketKeyword_7());
+			newLeafNode(otherlv_8, grammarAccess.getTaskExecutionAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;

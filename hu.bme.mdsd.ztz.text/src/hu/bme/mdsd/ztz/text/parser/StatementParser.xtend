@@ -18,10 +18,8 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
 import java.util.HashSet
-import java.util.Iterator
 import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
-import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
@@ -31,16 +29,11 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
 class StatementParser {
 	
 	def parseStatements(Resource resource, Resource resourceOfBehaviour) {
-//		val Iterator<AtomicStatement> statementIter = resource.allContents.filter(typeof(AtomicStatement))
 		val statements = (resource.contents.get(0) as BehaviourLanguage).statements
 	
 		for (Statement statement : statements) {
 			statement.parseStatement(resourceOfBehaviour)
 		}
-//		while (statementIter.hasNext) {
-//			val statement = statementIter.next()
-//			statement.parseStatement(resourceOfBehaviour)
-//		}
 	}
 
 	def dispatch parseStatement(ConditionalStatement conditionalStatement, Resource resourceOfBehaviour) {
@@ -157,7 +150,6 @@ class StatementParser {
 
 
 	def dispatch parseMessageTarget(UniTarget target, DynamicRobot senderRobot, Message message) {
-		println("uni target")
 		if (!reachableRobot(senderRobot, target.target)) {
 			println("not reachable")
 			return null

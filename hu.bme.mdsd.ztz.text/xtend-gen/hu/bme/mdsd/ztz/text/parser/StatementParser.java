@@ -258,7 +258,6 @@ public class StatementParser {
   protected Boolean _parseMessageTarget(final UniTarget target, final DynamicRobot senderRobot, final Message message) {
     boolean _xblockexpression = false;
     {
-      InputOutput.<String>println("uni target");
       DynamicRobot _target = target.getTarget();
       boolean _reachableRobot = this.reachableRobot(senderRobot, _target);
       boolean _not = (!_reachableRobot);
