@@ -120,24 +120,12 @@ EString returns ecore::EString:
 	STRING | ID;
 
 
-//DetectedObject returns DetectedObject:
-//	{DetectedObject}
-//	' ' object=[drone::AreaObject] (obstacle?='obstacle')?
-//;
-
 RobotCollaboration returns RobotCollaboration:
 		{RobotCollaboration}
 		collaborator=[DynamicRobot]
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 ;
 
-//MessageRepository returns MessageRepository:
-//	{MessageRepository}
-//	'MessageRepository'
-//	name=EString
-//	'{'
-//		('sendedMessages' '{' sendedMessages+=Message ( "," sendedMessages+=Message)* '}' )?
-//	'}';
 
 enum RobotStatus returns RobotStatus:
 				Ready = 'Ready' | TurnedOff = 'TurnedOff' | Waiting = 'Waiting' | Executing = 'Executing';
@@ -211,36 +199,6 @@ Message returns Message:
 
 ;
 
-
-//UnicastCommunication returns UnicastCommunication:
-//	'UnicastCommunication'
-//	name=EString
-//	'{'
-//		('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-//		'message' message=[Message|EString]
-//		'target' target=[DynamicRobot|EString]
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//	'}';
-//
-//MulticastCommunication returns MulticastCommunication:
-//	'MulticastCommunication'
-//	name=EString
-//	'{'
-//		('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-//		'message' message=[Message|EString]
-//		'targets' '(' targets+=[DynamicRobot|EString] ( "," targets+=[DynamicRobot|EString])* ')' 
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//	'}';
-//
-//BroadcastCommunication returns BroadcastCommunication:
-//	'BroadcastCommunication'
-//	name=EString
-//	'{'
-//		('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
-//		'message' message=[Message|EString]
-//		'targets' '(' targets+=[DynamicRobot|EString] ( "," targets+=[DynamicRobot|EString])* ')' 
-//		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//	'}';
 
 enum TaskExecutionStatus returns TaskExecutionStatus:
 				Ready = 'Ready' | Finished = 'Finished' | Suspended = 'Suspended' | InProgress = 'InProgress' | Waiting = 'Waiting';

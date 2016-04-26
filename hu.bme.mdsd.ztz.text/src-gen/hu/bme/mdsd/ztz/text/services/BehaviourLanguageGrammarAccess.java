@@ -1105,10 +1105,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final RuleCall cPropertiesPropertyParserRuleCall_2_3_1_0 = (RuleCall)cPropertiesAssignment_2_3_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		
-		////DetectedObject returns DetectedObject:
-		////	{DetectedObject}
-		////	' ' object=[drone::AreaObject] (obstacle?='obstacle')?
-		////;
 		//RobotCollaboration:
 		//	{RobotCollaboration} collaborator=[DynamicRobot] ('properties' '{' properties+=Property ("," properties+=Property)*
 		//	'}')?;
@@ -2216,10 +2212,6 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getEStringAccess().getRule();
 	}
 	
-	////DetectedObject returns DetectedObject:
-	////	{DetectedObject}
-	////	' ' object=[drone::AreaObject] (obstacle?='obstacle')?
-	////;
 	//RobotCollaboration:
 	//	{RobotCollaboration} collaborator=[DynamicRobot] ('properties' '{' properties+=Property ("," properties+=Property)*
 	//	'}')?;
