@@ -4,7 +4,6 @@
 package hu.bme.mdsd.ztz.text.scoping
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage
-import hu.bme.mdsd.ztz.model.behaviour.DetectedObject
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.model.behaviour.Message
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution
@@ -26,7 +25,6 @@ import hu.bme.mdsd.ztz.model.drone.MeasureValue
 import hu.bme.mdsd.ztz.model.drone.MeasureDimension
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
 
 /**
