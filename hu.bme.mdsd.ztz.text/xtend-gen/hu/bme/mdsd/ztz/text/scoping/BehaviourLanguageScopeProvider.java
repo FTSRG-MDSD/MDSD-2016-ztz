@@ -24,11 +24,14 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.scoping.AbstractBehaviourLanguageScopeProvider;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -240,6 +243,32 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
     return _xblockexpression;
   }
   
+  protected IScope _scopeForContext(final TaskStatusCondition context, final EReference reference, final ResourceManager manager) {
+    IScope _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.TASK_STATUS_CONDITION__TASK_STATUS);
+      if (_equals) {
+        EList<EEnumLiteral> _eLiterals = BehaviourPackage.Literals.TASK_EXECUTION_STATUS.getELiterals();
+        return Scopes.scopeFor(_eLiterals);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
+  
+  protected IScope _scopeForContext(final RobotStatusCondition context, final EReference reference, final ResourceManager manager) {
+    IScope _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.ROBOT_STATUS_CONDITION__ROBOT_STATUS);
+      if (_equals) {
+        EList<EEnumLiteral> _eLiterals = BehaviourPackage.Literals.ROBOT_STATUS.getELiterals();
+        return Scopes.scopeFor(_eLiterals);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
+  }
+  
   protected RobotMissionContainer getContainer(final ResourceManager manager) {
     Resource _resource = manager.getResource();
     EList<EObject> _contents = _resource.getContents();
@@ -248,7 +277,9 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
   }
   
   public IScope scopeForContext(final EObject context, final EReference reference, final ResourceManager manager) {
-    if (context instanceof DynamicRobot) {
+    if (context instanceof DetectionStatement) {
+      return _scopeForContext((DetectionStatement)context, reference, manager);
+    } else if (context instanceof DynamicRobot) {
       return _scopeForContext((DynamicRobot)context, reference, manager);
     } else if (context instanceof Message) {
       return _scopeForContext((Message)context, reference, manager);
@@ -258,8 +289,10 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
       return _scopeForContext((TaskRequirement)context, reference, manager);
     } else if (context instanceof MeasureValue) {
       return _scopeForContext((MeasureValue)context, reference, manager);
-    } else if (context instanceof DetectionStatement) {
-      return _scopeForContext((DetectionStatement)context, reference, manager);
+    } else if (context instanceof RobotStatusCondition) {
+      return _scopeForContext((RobotStatusCondition)context, reference, manager);
+    } else if (context instanceof TaskStatusCondition) {
+      return _scopeForContext((TaskStatusCondition)context, reference, manager);
     } else if (context instanceof CapabilityProperties) {
       return _scopeForContext((CapabilityProperties)context, reference, manager);
     } else if (context instanceof Property) {

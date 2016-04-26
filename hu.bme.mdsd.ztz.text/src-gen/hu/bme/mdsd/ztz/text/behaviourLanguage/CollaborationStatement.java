@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface CollaborationStatement extends Statement
+public interface CollaborationStatement extends AtomicStatement
 {
   /**
    * Returns the value of the '<em><b>Collaboration</b></em>' containment reference list.

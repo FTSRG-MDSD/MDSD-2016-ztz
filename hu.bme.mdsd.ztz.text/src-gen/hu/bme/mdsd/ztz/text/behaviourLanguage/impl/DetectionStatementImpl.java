@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class DetectionStatementImpl extends StatementImpl implements DetectionStatement
+public class DetectionStatementImpl extends AtomicStatementImpl implements DetectionStatement
 {
   /**
    * The cached value of the '{@link #getObject() <em>Object</em>}' reference.

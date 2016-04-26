@@ -68,6 +68,8 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
       case BehaviourLanguagePackage.BEHAVIOUR_LANGUAGE: return createBehaviourLanguage();
       case BehaviourLanguagePackage.IMPORT: return createImport();
       case BehaviourLanguagePackage.STATEMENT: return createStatement();
+      case BehaviourLanguagePackage.ATOMIC_STATEMENT: return createAtomicStatement();
+      case BehaviourLanguagePackage.CONDITIONAL_STATEMENT: return createConditionalStatement();
       case BehaviourLanguagePackage.ACTION_STATEMENT: return createActionStatement();
       case BehaviourLanguagePackage.MESSAGE_STATEMENT: return createMessageStatement();
       case BehaviourLanguagePackage.COLLABORATION_STATEMENT: return createCollaborationStatement();
@@ -77,6 +79,9 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
       case BehaviourLanguagePackage.UNI_TARGET: return createUniTarget();
       case BehaviourLanguagePackage.MULTI_TARGET: return createMultiTarget();
       case BehaviourLanguagePackage.ALL_TARGET: return createAllTarget();
+      case BehaviourLanguagePackage.CONDITION: return createCondition();
+      case BehaviourLanguagePackage.TASK_STATUS_CONDITION: return createTaskStatusCondition();
+      case BehaviourLanguagePackage.ROBOT_STATUS_CONDITION: return createRobotStatusCondition();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -113,6 +118,28 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
   {
     StatementImpl statement = new StatementImpl();
     return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AtomicStatement createAtomicStatement()
+  {
+    AtomicStatementImpl atomicStatement = new AtomicStatementImpl();
+    return atomicStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConditionalStatement createConditionalStatement()
+  {
+    ConditionalStatementImpl conditionalStatement = new ConditionalStatementImpl();
+    return conditionalStatement;
   }
 
   /**
@@ -212,6 +239,39 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
   {
     AllTargetImpl allTarget = new AllTargetImpl();
     return allTarget;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Condition createCondition()
+  {
+    ConditionImpl condition = new ConditionImpl();
+    return condition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TaskStatusCondition createTaskStatusCondition()
+  {
+    TaskStatusConditionImpl taskStatusCondition = new TaskStatusConditionImpl();
+    return taskStatusCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RobotStatusCondition createRobotStatusCondition()
+  {
+    RobotStatusConditionImpl robotStatusCondition = new RobotStatusConditionImpl();
+    return robotStatusCondition;
   }
 
   /**

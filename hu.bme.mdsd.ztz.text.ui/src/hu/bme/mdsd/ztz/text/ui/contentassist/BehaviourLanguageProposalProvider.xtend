@@ -9,4 +9,6 @@ package hu.bme.mdsd.ztz.text.ui.contentassist
  * on how to customize the content assistant.
  */
 class BehaviourLanguageProposalProvider extends AbstractBehaviourLanguageProposalProvider {
+
+	
 }

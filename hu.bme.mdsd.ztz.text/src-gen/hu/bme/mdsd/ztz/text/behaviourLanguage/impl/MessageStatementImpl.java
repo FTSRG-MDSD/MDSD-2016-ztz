@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class MessageStatementImpl extends StatementImpl implements MessageStatement
+public class MessageStatementImpl extends AtomicStatementImpl implements MessageStatement
 {
   /**
    * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.

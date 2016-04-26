@@ -9,17 +9,22 @@ import hu.bme.mdsd.ztz.model.drone.DronePackage;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Condition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -57,6 +62,20 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * @generated
    */
   private EClass statementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass atomicStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conditionalStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,6 +139,27 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * @generated
    */
   private EClass allTargetEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conditionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass taskStatusConditionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass robotStatusConditionEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -262,9 +302,59 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getStatement_Robot()
+  public EClass getAtomicStatement()
   {
-    return (EReference)statementEClass.getEStructuralFeatures().get(0);
+    return atomicStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAtomicStatement_Robot()
+  {
+    return (EReference)atomicStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConditionalStatement()
+  {
+    return conditionalStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionalStatement_Condition()
+  {
+    return (EReference)conditionalStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionalStatement_Statements()
+  {
+    return (EReference)conditionalStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionalStatement_OtherStatements()
+  {
+    return (EReference)conditionalStatementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -472,6 +562,96 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCondition()
+  {
+    return conditionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCondition_Equal()
+  {
+    return (EAttribute)conditionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCondition_NotEqual()
+  {
+    return (EAttribute)conditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTaskStatusCondition()
+  {
+    return taskStatusConditionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTaskStatusCondition_Task()
+  {
+    return (EReference)taskStatusConditionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTaskStatusCondition_TaskStatus()
+  {
+    return (EAttribute)taskStatusConditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRobotStatusCondition()
+  {
+    return robotStatusConditionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRobotStatusCondition_Robot()
+  {
+    return (EReference)robotStatusConditionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRobotStatusCondition_RobotStatus()
+  {
+    return (EAttribute)robotStatusConditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public BehaviourLanguageFactory getBehaviourLanguageFactory()
   {
     return (BehaviourLanguageFactory)getEFactoryInstance();
@@ -506,7 +686,14 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     createEAttribute(importEClass, IMPORT__IMPORT_URI);
 
     statementEClass = createEClass(STATEMENT);
-    createEReference(statementEClass, STATEMENT__ROBOT);
+
+    atomicStatementEClass = createEClass(ATOMIC_STATEMENT);
+    createEReference(atomicStatementEClass, ATOMIC_STATEMENT__ROBOT);
+
+    conditionalStatementEClass = createEClass(CONDITIONAL_STATEMENT);
+    createEReference(conditionalStatementEClass, CONDITIONAL_STATEMENT__CONDITION);
+    createEReference(conditionalStatementEClass, CONDITIONAL_STATEMENT__STATEMENTS);
+    createEReference(conditionalStatementEClass, CONDITIONAL_STATEMENT__OTHER_STATEMENTS);
 
     actionStatementEClass = createEClass(ACTION_STATEMENT);
     createEReference(actionStatementEClass, ACTION_STATEMENT__ACTION);
@@ -536,6 +723,18 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
 
     allTargetEClass = createEClass(ALL_TARGET);
     createEAttribute(allTargetEClass, ALL_TARGET__TARGET);
+
+    conditionEClass = createEClass(CONDITION);
+    createEAttribute(conditionEClass, CONDITION__EQUAL);
+    createEAttribute(conditionEClass, CONDITION__NOT_EQUAL);
+
+    taskStatusConditionEClass = createEClass(TASK_STATUS_CONDITION);
+    createEReference(taskStatusConditionEClass, TASK_STATUS_CONDITION__TASK);
+    createEAttribute(taskStatusConditionEClass, TASK_STATUS_CONDITION__TASK_STATUS);
+
+    robotStatusConditionEClass = createEClass(ROBOT_STATUS_CONDITION);
+    createEReference(robotStatusConditionEClass, ROBOT_STATUS_CONDITION__ROBOT);
+    createEAttribute(robotStatusConditionEClass, ROBOT_STATUS_CONDITION__ROBOT_STATUS);
   }
 
   /**
@@ -571,14 +770,18 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    actionStatementEClass.getESuperTypes().add(this.getStatement());
-    messageStatementEClass.getESuperTypes().add(this.getStatement());
-    collaborationStatementEClass.getESuperTypes().add(this.getStatement());
-    detectionStatementEClass.getESuperTypes().add(this.getStatement());
-    executionStatementEClass.getESuperTypes().add(this.getStatement());
+    atomicStatementEClass.getESuperTypes().add(this.getStatement());
+    conditionalStatementEClass.getESuperTypes().add(this.getStatement());
+    actionStatementEClass.getESuperTypes().add(this.getAtomicStatement());
+    messageStatementEClass.getESuperTypes().add(this.getAtomicStatement());
+    collaborationStatementEClass.getESuperTypes().add(this.getAtomicStatement());
+    detectionStatementEClass.getESuperTypes().add(this.getAtomicStatement());
+    executionStatementEClass.getESuperTypes().add(this.getAtomicStatement());
     uniTargetEClass.getESuperTypes().add(this.getMessageTarget());
     multiTargetEClass.getESuperTypes().add(this.getMessageTarget());
     allTargetEClass.getESuperTypes().add(this.getMessageTarget());
+    taskStatusConditionEClass.getESuperTypes().add(this.getCondition());
+    robotStatusConditionEClass.getESuperTypes().add(this.getCondition());
 
     // Initialize classes and features; add operations and parameters
     initEClass(behaviourLanguageEClass, BehaviourLanguage.class, "BehaviourLanguage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -590,7 +793,14 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     initEAttribute(getImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(atomicStatementEClass, AtomicStatement.class, "AtomicStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAtomicStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, AtomicStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conditionalStatementEClass, ConditionalStatement.class, "ConditionalStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditionalStatement_Condition(), this.getCondition(), null, "condition", null, 0, 1, ConditionalStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionalStatement_Statements(), this.getStatement(), null, "statements", null, 0, -1, ConditionalStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionalStatement_OtherStatements(), this.getStatement(), null, "otherStatements", null, 0, -1, ConditionalStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getActionStatement_Action(), theBehaviourPackage.getAction(), null, "action", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -620,6 +830,18 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
 
     initEClass(allTargetEClass, AllTarget.class, "AllTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAllTarget_Target(), ecorePackage.getEString(), "target", null, 0, 1, AllTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCondition_Equal(), ecorePackage.getEBoolean(), "equal", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCondition_NotEqual(), ecorePackage.getEBoolean(), "notEqual", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(taskStatusConditionEClass, TaskStatusCondition.class, "TaskStatusCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTaskStatusCondition_Task(), theBehaviourPackage.getTaskExecution(), null, "task", null, 0, 1, TaskStatusCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTaskStatusCondition_TaskStatus(), theBehaviourPackage.getTaskExecutionStatus(), "taskStatus", null, 0, 1, TaskStatusCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(robotStatusConditionEClass, RobotStatusCondition.class, "RobotStatusCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRobotStatusCondition_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, RobotStatusCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRobotStatusCondition_RobotStatus(), theBehaviourPackage.getRobotStatus(), "robotStatus", null, 0, 1, RobotStatusCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

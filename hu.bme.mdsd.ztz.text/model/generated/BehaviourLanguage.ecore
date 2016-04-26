@@ -13,32 +13,41 @@
   <eClassifiers xsi:type="ecore:EClass" name="Import">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Statement">
+  <eClassifiers xsi:type="ecore:EClass" name="Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="robot" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ActionStatement" eSuperTypes="#//Statement">
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalStatement" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//Statement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="otherStatements" upperBound="-1"
+        eType="#//Statement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActionStatement" eSuperTypes="#//AtomicStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//Action"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="moreactions" upperBound="-1"
         eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//Action"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MessageStatement" eSuperTypes="#//Statement">
+  <eClassifiers xsi:type="ecore:EClass" name="MessageStatement" eSuperTypes="#//AtomicStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//MessageTarget"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="message" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//Message"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CollaborationStatement" eSuperTypes="#//Statement">
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborationStatement" eSuperTypes="#//AtomicStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="collaboration" upperBound="-1"
         eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//RobotCollaboration"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DetectionStatement" eSuperTypes="#//Statement">
+  <eClassifiers xsi:type="ecore:EClass" name="DetectionStatement" eSuperTypes="#//AtomicStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="object" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/drone.ecore#//AreaObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="obstacle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExecutionStatement" eSuperTypes="#//Statement">
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionStatement" eSuperTypes="#//AtomicStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="execution" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecution"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageTarget"/>
@@ -51,5 +60,17 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AllTarget" eSuperTypes="#//MessageTarget">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="equal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notEqual" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskStatusCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecution"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="taskStatus" eType="ecore:EEnum platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecutionStatus"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RobotStatusCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="robot" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="robotStatus" eType="ecore:EEnum platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//RobotStatus"/>
   </eClassifiers>
 </ecore:EPackage>

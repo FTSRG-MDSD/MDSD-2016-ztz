@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ActionStatement extends Statement
+public interface ActionStatement extends AtomicStatement
 {
   /**
    * Returns the value of the '<em><b>Action</b></em>' containment reference.

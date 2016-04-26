@@ -91,6 +91,16 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
         return createStatementAdapter();
       }
       @Override
+      public Adapter caseAtomicStatement(AtomicStatement object)
+      {
+        return createAtomicStatementAdapter();
+      }
+      @Override
+      public Adapter caseConditionalStatement(ConditionalStatement object)
+      {
+        return createConditionalStatementAdapter();
+      }
+      @Override
       public Adapter caseActionStatement(ActionStatement object)
       {
         return createActionStatementAdapter();
@@ -134,6 +144,21 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
       public Adapter caseAllTarget(AllTarget object)
       {
         return createAllTargetAdapter();
+      }
+      @Override
+      public Adapter caseCondition(Condition object)
+      {
+        return createConditionAdapter();
+      }
+      @Override
+      public Adapter caseTaskStatusCondition(TaskStatusCondition object)
+      {
+        return createTaskStatusConditionAdapter();
+      }
+      @Override
+      public Adapter caseRobotStatusCondition(RobotStatusCondition object)
+      {
+        return createRobotStatusConditionAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -198,6 +223,36 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement <em>Atomic Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement
+   * @generated
+   */
+  public Adapter createAtomicStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement <em>Conditional Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
+   * @generated
+   */
+  public Adapter createConditionalStatementAdapter()
   {
     return null;
   }
@@ -333,6 +388,51 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAllTargetAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Condition
+   * @generated
+   */
+  public Adapter createConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition <em>Task Status Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
+   * @generated
+   */
+  public Adapter createTaskStatusConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition <em>Robot Status Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
+   * @generated
+   */
+  public Adapter createRobotStatusConditionAdapter()
   {
     return null;
   }

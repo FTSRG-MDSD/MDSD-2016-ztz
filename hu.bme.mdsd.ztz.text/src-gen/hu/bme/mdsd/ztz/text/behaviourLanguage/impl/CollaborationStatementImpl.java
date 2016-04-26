@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class CollaborationStatementImpl extends StatementImpl implements CollaborationStatement
+public class CollaborationStatementImpl extends AtomicStatementImpl implements CollaborationStatement
 {
   /**
    * The cached value of the '{@link #getCollaboration() <em>Collaboration</em>}' containment reference list.

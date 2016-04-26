@@ -51,6 +51,24 @@ public interface BehaviourLanguageFactory extends EFactory
   Statement createStatement();
 
   /**
+   * Returns a new object of class '<em>Atomic Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atomic Statement</em>'.
+   * @generated
+   */
+  AtomicStatement createAtomicStatement();
+
+  /**
+   * Returns a new object of class '<em>Conditional Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditional Statement</em>'.
+   * @generated
+   */
+  ConditionalStatement createConditionalStatement();
+
+  /**
    * Returns a new object of class '<em>Action Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -130,6 +148,33 @@ public interface BehaviourLanguageFactory extends EFactory
    * @generated
    */
   AllTarget createAllTarget();
+
+  /**
+   * Returns a new object of class '<em>Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Condition</em>'.
+   * @generated
+   */
+  Condition createCondition();
+
+  /**
+   * Returns a new object of class '<em>Task Status Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Task Status Condition</em>'.
+   * @generated
+   */
+  TaskStatusCondition createTaskStatusCondition();
+
+  /**
+   * Returns a new object of class '<em>Robot Status Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Robot Status Condition</em>'.
+   * @generated
+   */
+  RobotStatusCondition createRobotStatusCondition();
 
   /**
    * Returns the package supported by this factory.

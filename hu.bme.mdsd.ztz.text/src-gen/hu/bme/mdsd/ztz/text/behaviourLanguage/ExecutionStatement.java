@@ -21,7 +21,7 @@ import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
  * @model
  * @generated
  */
-public interface ExecutionStatement extends Statement
+public interface ExecutionStatement extends AtomicStatement
 {
   /**
    * Returns the value of the '<em><b>Execution</b></em>' reference.

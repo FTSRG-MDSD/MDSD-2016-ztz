@@ -16,22 +16,60 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget
-import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
 import java.util.HashSet
 import java.util.Iterator
 import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
 
 class StatementParser {
 	
 	def parseStatements(Resource resource, Resource resourceOfBehaviour) {
-		val Iterator<Statement> statementIter = resource.allContents.filter(typeof(Statement))
-
-		while (statementIter.hasNext) {
-			val statement = statementIter.next()
+//		val Iterator<AtomicStatement> statementIter = resource.allContents.filter(typeof(AtomicStatement))
+		val statements = (resource.contents.get(0) as BehaviourLanguage).statements
+	
+		for (Statement statement : statements) {
 			statement.parseStatement(resourceOfBehaviour)
 		}
+//		while (statementIter.hasNext) {
+//			val statement = statementIter.next()
+//			statement.parseStatement(resourceOfBehaviour)
+//		}
+	}
+
+	def dispatch parseStatement(ConditionalStatement conditionalStatement, Resource resourceOfBehaviour) {
+		if (conditionalStatement.condition.trueCondition()) {
+			for (Statement st : conditionalStatement.statements) {
+				st.parseStatement(resourceOfBehaviour)
+			}
+		} else if (conditionalStatement.otherStatements != null){
+			for (Statement st : conditionalStatement.otherStatements) {
+				st.parseStatement(resourceOfBehaviour)
+			}
+		}
+	}
+
+	def dispatch trueCondition(TaskStatusCondition condition) {
+		if (condition.equal) {
+			return condition.task.status == condition.taskStatus	
+		} else if (condition.notEqual) {
+			return condition.task.status != condition.taskStatus
+		}
+	}
+	
+	def dispatch trueCondition(RobotStatusCondition condition) {
+		if (condition.equal) {
+			return condition.robot.status == condition.robotStatus	
+		} else if (condition.notEqual) {
+			return condition.robot.status != condition.robotStatus
+		}
+		
 	}
 
 	def dispatch parseStatement(ActionStatement statement, Resource resourceOfBehaviour) {

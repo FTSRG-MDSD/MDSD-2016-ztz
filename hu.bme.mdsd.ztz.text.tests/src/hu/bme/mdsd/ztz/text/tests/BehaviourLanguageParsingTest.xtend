@@ -40,7 +40,7 @@ class BehaviourLanguageParsingTest{
 		'''
 		import "something"
 		
-		BehaviourContainer {
+		Declaration {
 			
 		}
 		''')

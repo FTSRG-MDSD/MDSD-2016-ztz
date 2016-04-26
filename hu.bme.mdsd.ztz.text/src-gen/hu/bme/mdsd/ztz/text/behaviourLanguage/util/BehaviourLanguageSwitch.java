@@ -94,10 +94,27 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case BehaviourLanguagePackage.ATOMIC_STATEMENT:
+      {
+        AtomicStatement atomicStatement = (AtomicStatement)theEObject;
+        T result = caseAtomicStatement(atomicStatement);
+        if (result == null) result = caseStatement(atomicStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.CONDITIONAL_STATEMENT:
+      {
+        ConditionalStatement conditionalStatement = (ConditionalStatement)theEObject;
+        T result = caseConditionalStatement(conditionalStatement);
+        if (result == null) result = caseStatement(conditionalStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case BehaviourLanguagePackage.ACTION_STATEMENT:
       {
         ActionStatement actionStatement = (ActionStatement)theEObject;
         T result = caseActionStatement(actionStatement);
+        if (result == null) result = caseAtomicStatement(actionStatement);
         if (result == null) result = caseStatement(actionStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -106,6 +123,7 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
       {
         MessageStatement messageStatement = (MessageStatement)theEObject;
         T result = caseMessageStatement(messageStatement);
+        if (result == null) result = caseAtomicStatement(messageStatement);
         if (result == null) result = caseStatement(messageStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -114,6 +132,7 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
       {
         CollaborationStatement collaborationStatement = (CollaborationStatement)theEObject;
         T result = caseCollaborationStatement(collaborationStatement);
+        if (result == null) result = caseAtomicStatement(collaborationStatement);
         if (result == null) result = caseStatement(collaborationStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -122,6 +141,7 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
       {
         DetectionStatement detectionStatement = (DetectionStatement)theEObject;
         T result = caseDetectionStatement(detectionStatement);
+        if (result == null) result = caseAtomicStatement(detectionStatement);
         if (result == null) result = caseStatement(detectionStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -130,6 +150,7 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
       {
         ExecutionStatement executionStatement = (ExecutionStatement)theEObject;
         T result = caseExecutionStatement(executionStatement);
+        if (result == null) result = caseAtomicStatement(executionStatement);
         if (result == null) result = caseStatement(executionStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -162,6 +183,29 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
         AllTarget allTarget = (AllTarget)theEObject;
         T result = caseAllTarget(allTarget);
         if (result == null) result = caseMessageTarget(allTarget);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.CONDITION:
+      {
+        Condition condition = (Condition)theEObject;
+        T result = caseCondition(condition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.TASK_STATUS_CONDITION:
+      {
+        TaskStatusCondition taskStatusCondition = (TaskStatusCondition)theEObject;
+        T result = caseTaskStatusCondition(taskStatusCondition);
+        if (result == null) result = caseCondition(taskStatusCondition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.ROBOT_STATUS_CONDITION:
+      {
+        RobotStatusCondition robotStatusCondition = (RobotStatusCondition)theEObject;
+        T result = caseRobotStatusCondition(robotStatusCondition);
+        if (result == null) result = caseCondition(robotStatusCondition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -213,6 +257,38 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStatement(Statement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Atomic Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Atomic Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAtomicStatement(AtomicStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Conditional Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Conditional Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConditionalStatement(ConditionalStatement object)
   {
     return null;
   }
@@ -357,6 +433,54 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAllTarget(AllTarget object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCondition(Condition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Task Status Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Task Status Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTaskStatusCondition(TaskStatusCondition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Robot Status Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Robot Status Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRobotStatusCondition(RobotStatusCondition object)
   {
     return null;
   }

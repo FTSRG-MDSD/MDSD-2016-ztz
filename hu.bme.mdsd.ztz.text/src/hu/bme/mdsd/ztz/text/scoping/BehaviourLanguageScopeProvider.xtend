@@ -26,8 +26,9 @@ import hu.bme.mdsd.ztz.model.drone.MeasureDimension
 import hu.bme.mdsd.ztz.model.drone.CapabilityProperties
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
-import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
 
 /**
  * This class contains custom scoping description.
@@ -116,8 +117,24 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 		super.getScope(context, reference)
 	}
 	
+	def dispatch IScope scopeForContext(TaskStatusCondition context, EReference reference, ResourceManager manager) {
+		if (reference == BehaviourLanguagePackage.Literals.TASK_STATUS_CONDITION__TASK_STATUS) {
+			return Scopes.scopeFor(BehaviourPackage.Literals.TASK_EXECUTION_STATUS.ELiterals)
+		}
+		super.getScope(context, reference)
+	}
+	
+	def dispatch IScope scopeForContext(RobotStatusCondition context, EReference reference, ResourceManager manager) {
+		if (reference == BehaviourLanguagePackage.Literals.ROBOT_STATUS_CONDITION__ROBOT_STATUS) {
+			return Scopes.scopeFor(BehaviourPackage.Literals.ROBOT_STATUS.ELiterals)
+		}
+		super.getScope(context, reference)
+	}
+	
 	protected def RobotMissionContainer getContainer(ResourceManager manager) {
 		manager.resource.contents.get(0) as RobotMissionContainer
 	}
+
+	
 
 }

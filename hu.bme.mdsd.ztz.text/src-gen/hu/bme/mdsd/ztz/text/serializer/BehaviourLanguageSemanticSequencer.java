@@ -23,11 +23,14 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.services.BehaviourLanguageGrammarAccess;
 import java.util.Set;
@@ -94,6 +97,9 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 			case BehaviourLanguagePackage.COLLABORATION_STATEMENT:
 				sequence_CollaborationStatement(context, (CollaborationStatement) semanticObject); 
 				return; 
+			case BehaviourLanguagePackage.CONDITIONAL_STATEMENT:
+				sequence_ConditionalStatement(context, (ConditionalStatement) semanticObject); 
+				return; 
 			case BehaviourLanguagePackage.DETECTION_STATEMENT:
 				sequence_DetectionStatement(context, (DetectionStatement) semanticObject); 
 				return; 
@@ -108,6 +114,12 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case BehaviourLanguagePackage.MULTI_TARGET:
 				sequence_MultiTarget(context, (MultiTarget) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.ROBOT_STATUS_CONDITION:
+				sequence_RobotStatusCondition(context, (RobotStatusCondition) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.TASK_STATUS_CONDITION:
+				sequence_TaskStatusCondition(context, (TaskStatusCondition) semanticObject); 
 				return; 
 			case BehaviourLanguagePackage.UNI_TARGET:
 				sequence_UniTarget(context, (UniTarget) semanticObject); 
@@ -138,6 +150,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * Contexts:
 	 *     Statement returns ActionStatement
+	 *     AtomicStatement returns ActionStatement
 	 *     ActionStatement returns ActionStatement
 	 *
 	 * Constraint:
@@ -235,6 +248,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * Contexts:
 	 *     Statement returns CollaborationStatement
+	 *     AtomicStatement returns CollaborationStatement
 	 *     CollaborationStatement returns CollaborationStatement
 	 *
 	 * Constraint:
@@ -247,7 +261,21 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
+	 *     Statement returns ConditionalStatement
+	 *     ConditionalStatement returns ConditionalStatement
+	 *
+	 * Constraint:
+	 *     (condition=Condition statements+=Statement+ otherStatements+=Statement*)
+	 */
+	protected void sequence_ConditionalStatement(ISerializationContext context, ConditionalStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Statement returns DetectionStatement
+	 *     AtomicStatement returns DetectionStatement
 	 *     DetectionStatement returns DetectionStatement
 	 *
 	 * Constraint:
@@ -282,6 +310,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * Contexts:
 	 *     Statement returns ExecutionStatement
+	 *     AtomicStatement returns ExecutionStatement
 	 *     ExecutionStatement returns ExecutionStatement
 	 *
 	 * Constraint:
@@ -289,8 +318,8 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 */
 	protected void sequence_ExecutionStatement(ISerializationContext context, ExecutionStatement semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.STATEMENT__ROBOT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.STATEMENT__ROBOT));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT__ROBOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT__ROBOT));
 			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.EXECUTION_STATEMENT__EXECUTION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.EXECUTION_STATEMENT__EXECUTION));
 		}
@@ -335,6 +364,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * Contexts:
 	 *     Statement returns MessageStatement
+	 *     AtomicStatement returns MessageStatement
 	 *     MessageStatement returns MessageStatement
 	 *
 	 * Constraint:
@@ -342,8 +372,8 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 */
 	protected void sequence_MessageStatement(ISerializationContext context, MessageStatement semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.STATEMENT__ROBOT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.STATEMENT__ROBOT));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT__ROBOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT__ROBOT));
 			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__TARGET) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__TARGET));
 			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__MESSAGE) == ValueTransient.YES)
@@ -442,6 +472,19 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
+	 *     Condition returns RobotStatusCondition
+	 *     RobotStatusCondition returns RobotStatusCondition
+	 *
+	 * Constraint:
+	 *     (robot=[DynamicRobot|ID] (equal?='==' | notEqual?='!=') robotStatus=RobotStatus)
+	 */
+	protected void sequence_RobotStatusCondition(ISerializationContext context, RobotStatusCondition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     PropertyValue returns StringValue
 	 *     StringValue returns StringValue
 	 *
@@ -493,6 +536,19 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     )
 	 */
 	protected void sequence_TaskRequirement(ISerializationContext context, TaskRequirement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Condition returns TaskStatusCondition
+	 *     TaskStatusCondition returns TaskStatusCondition
+	 *
+	 * Constraint:
+	 *     (task=[TaskExecution|ID] (equal?='==' | notEqual?='!=') taskStatus=TaskExecutionStatus)
+	 */
+	protected void sequence_TaskStatusCondition(ISerializationContext context, TaskStatusCondition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -1,7 +1,6 @@
 package hu.bme.mdsd.ztz.text.parser;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
@@ -11,25 +10,30 @@ import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
+import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Condition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.InputOutput;
@@ -37,14 +41,71 @@ import org.eclipse.xtext.xbase.lib.InputOutput;
 @SuppressWarnings("all")
 public class StatementParser {
   public void parseStatements(final Resource resource, final Resource resourceOfBehaviour) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    final Iterator<Statement> statementIter = Iterators.<Statement>filter(_allContents, Statement.class);
-    while (statementIter.hasNext()) {
-      {
-        final Statement statement = statementIter.next();
-        this.parseStatement(statement, resourceOfBehaviour);
+    EList<EObject> _contents = resource.getContents();
+    EObject _get = _contents.get(0);
+    final EList<Statement> statements = ((BehaviourLanguage) _get).getStatements();
+    for (final Statement statement : statements) {
+      this.parseStatement(statement, resourceOfBehaviour);
+    }
+  }
+  
+  protected Boolean _parseStatement(final ConditionalStatement conditionalStatement, final Resource resourceOfBehaviour) {
+    Condition _condition = conditionalStatement.getCondition();
+    boolean _trueCondition = this.trueCondition(_condition);
+    if (_trueCondition) {
+      EList<Statement> _statements = conditionalStatement.getStatements();
+      for (final Statement st : _statements) {
+        this.parseStatement(st, resourceOfBehaviour);
+      }
+    } else {
+      EList<Statement> _otherStatements = conditionalStatement.getOtherStatements();
+      boolean _notEquals = (!Objects.equal(_otherStatements, null));
+      if (_notEquals) {
+        EList<Statement> _otherStatements_1 = conditionalStatement.getOtherStatements();
+        for (final Statement st_1 : _otherStatements_1) {
+          this.parseStatement(st_1, resourceOfBehaviour);
+        }
       }
     }
+    return null;
+  }
+  
+  protected boolean _trueCondition(final TaskStatusCondition condition) {
+    boolean _isEqual = condition.isEqual();
+    if (_isEqual) {
+      TaskExecution _task = condition.getTask();
+      TaskExecutionStatus _status = _task.getStatus();
+      TaskExecutionStatus _taskStatus = condition.getTaskStatus();
+      return Objects.equal(_status, _taskStatus);
+    } else {
+      boolean _isNotEqual = condition.isNotEqual();
+      if (_isNotEqual) {
+        TaskExecution _task_1 = condition.getTask();
+        TaskExecutionStatus _status_1 = _task_1.getStatus();
+        TaskExecutionStatus _taskStatus_1 = condition.getTaskStatus();
+        return (!Objects.equal(_status_1, _taskStatus_1));
+      }
+    }
+    return false;
+  }
+  
+  protected boolean _trueCondition(final RobotStatusCondition condition) {
+    boolean _isEqual = condition.isEqual();
+    if (_isEqual) {
+      DynamicRobot _robot = condition.getRobot();
+      RobotStatus _status = _robot.getStatus();
+      RobotStatus _robotStatus = condition.getRobotStatus();
+      return Objects.equal(_status, _robotStatus);
+    } else {
+      boolean _isNotEqual = condition.isNotEqual();
+      if (_isNotEqual) {
+        DynamicRobot _robot_1 = condition.getRobot();
+        RobotStatus _status_1 = _robot_1.getStatus();
+        RobotStatus _robotStatus_1 = condition.getRobotStatus();
+        return (!Objects.equal(_status_1, _robotStatus_1));
+      }
+    }
+    return false;
   }
   
   protected Boolean _parseStatement(final ActionStatement statement, final Resource resourceOfBehaviour) {
@@ -345,9 +406,22 @@ public class StatementParser {
       return _parseStatement((ExecutionStatement)statement, resourceOfBehaviour);
     } else if (statement instanceof MessageStatement) {
       return _parseStatement((MessageStatement)statement, resourceOfBehaviour);
+    } else if (statement instanceof ConditionalStatement) {
+      return _parseStatement((ConditionalStatement)statement, resourceOfBehaviour);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(statement, resourceOfBehaviour).toString());
+    }
+  }
+  
+  public boolean trueCondition(final Condition condition) {
+    if (condition instanceof RobotStatusCondition) {
+      return _trueCondition((RobotStatusCondition)condition);
+    } else if (condition instanceof TaskStatusCondition) {
+      return _trueCondition((TaskStatusCondition)condition);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(condition).toString());
     }
   }
   

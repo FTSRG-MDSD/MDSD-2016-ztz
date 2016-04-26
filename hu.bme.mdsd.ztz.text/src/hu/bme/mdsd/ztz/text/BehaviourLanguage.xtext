@@ -32,31 +32,33 @@ DynamicRobot returns DynamicRobot:
 	name=EString ':' robot=[drone::Robot]
 //	'{'
 //		'status' status=RobotStatus
-//		('executedTasks' '(' executedTasks+=[TaskExecution|EString] ( "," executedTasks+=[TaskExecution|EString])* ')' )?
-//		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
 //	'}'
 ;
 
 
 Statement:
+	AtomicStatement | ConditionalStatement
+;
+
+AtomicStatement:
 	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement
 ;
 
+ConditionalStatement:
+	'if' condition=Condition 'then' '{' (statements+=Statement)+ '}' ('else' '{' (otherStatements+=Statement)+ '}')?
+;
 
 ActionStatement:
 	robot=[DynamicRobot] 'do' action=Action_Impl ('->' moreactions+=Action_Impl)*
 ;
 
-
 MessageStatement:
 	robot=[DynamicRobot] 'send' target=MessageTarget message=Message
 ;
 
-
 CollaborationStatement:
 	robot=[DynamicRobot] 'know' collaboration+=RobotCollaboration (',' collaboration+=RobotCollaboration )*
 ;
-
 
 DetectionStatement:
 	robot=[DynamicRobot] 'detect' object=[drone::AreaObject] (obstacle?='obstacle')?
@@ -74,13 +76,25 @@ UniTarget:
 	target = [DynamicRobot]
 ;
 
-
 MultiTarget:
 	'(' target+=[DynamicRobot] (',' target+=[DynamicRobot] )*')'
 ;
 
 AllTarget:
 	target='*'
+;
+
+
+Condition:
+	TaskStatusCondition | RobotStatusCondition
+;
+
+TaskStatusCondition:
+	task=[TaskExecution] ((equal?='==') | (notEqual?='!=')) taskStatus=TaskExecutionStatus
+;
+
+RobotStatusCondition:
+	robot=[DynamicRobot] ((equal?='==') | (notEqual?='!=')) robotStatus=RobotStatus
 ;
 
 TaskExecution returns TaskExecution:
@@ -124,15 +138,13 @@ RobotCollaboration returns RobotCollaboration:
 
 
 enum RobotStatus returns RobotStatus:
-				Ready = 'Ready' | TurnedOff = 'TurnedOff' | Waiting = 'Waiting' | Executing = 'Executing';
+	Ready = 'Ready' | TurnedOff = 'TurnedOff' | Waiting = 'Waiting' | Executing = 'Executing'
+;
 
 Action_Impl returns Action:
 	{Action}
 	name=EString ('(' currentTaskExecution=[TaskExecution] ')')?
-//	'{'
-//		('currentTaskExecution' currentTaskExecution=[TaskExecution|EString])?
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-//	'}'
 ;
 
 
@@ -185,7 +197,7 @@ Message returns Message:
 	(
 	'{'
 		('TaskExecutions' '(' involvedTaskExecutions+=[TaskExecution] ( "," involvedTaskExecutions+=[TaskExecution])* ')' )?
-		('ReferredObjects' '(' referredObjects+=[drone::AreaObject] ( "," referredObjects+=[drone::AreaObject])* ')' )?
+		('Objects' '(' referredObjects+=[drone::AreaObject] ( "," referredObjects+=[drone::AreaObject])* ')' )?
 		('Follows' follows=[Message])?
 		('Properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 		('TTL' TTL=MeasureValue)?
@@ -197,7 +209,8 @@ Message returns Message:
 
 
 enum TaskExecutionStatus returns TaskExecutionStatus:
-				Ready = 'Ready' | Finished = 'Finished' | Suspended = 'Suspended' | InProgress = 'InProgress' | Waiting = 'Waiting';
+	Ready = 'Ready' | Finished = 'Finished' | Suspended = 'Suspended' | InProgress = 'InProgress' | Waiting = 'Waiting'
+;
 
 EInt returns ecore::EInt:
 	'-'? INT;

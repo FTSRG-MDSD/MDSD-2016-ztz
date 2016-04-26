@@ -22,7 +22,7 @@ import hu.bme.mdsd.ztz.model.drone.AreaObject;
  * @model
  * @generated
  */
-public interface DetectionStatement extends Statement
+public interface DetectionStatement extends AtomicStatement
 {
   /**
    * Returns the value of the '<em><b>Object</b></em>' reference.

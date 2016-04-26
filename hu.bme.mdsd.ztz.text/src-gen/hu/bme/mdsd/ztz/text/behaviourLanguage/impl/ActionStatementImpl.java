@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ActionStatementImpl extends StatementImpl implements ActionStatement
+public class ActionStatementImpl extends AtomicStatementImpl implements ActionStatement
 {
   /**
    * The cached value of the '{@link #getAction() <em>Action</em>}' containment reference.

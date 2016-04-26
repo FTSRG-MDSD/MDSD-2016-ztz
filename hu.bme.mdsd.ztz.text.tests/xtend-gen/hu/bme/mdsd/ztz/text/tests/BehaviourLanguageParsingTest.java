@@ -47,7 +47,7 @@ public class BehaviourLanguageParsingTest {
       _builder.append("import \"something\"");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("BehaviourContainer {");
+      _builder.append("Declaration {");
       _builder.newLine();
       _builder.append("\t");
       _builder.newLine();

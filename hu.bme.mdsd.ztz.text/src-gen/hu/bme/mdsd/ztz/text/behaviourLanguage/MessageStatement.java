@@ -22,7 +22,7 @@ import hu.bme.mdsd.ztz.model.behaviour.Message;
  * @model
  * @generated
  */
-public interface MessageStatement extends Statement
+public interface MessageStatement extends AtomicStatement
 {
   /**
    * Returns the value of the '<em><b>Target</b></em>' containment reference.
