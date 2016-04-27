@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drone:RobotMissionContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:drone="http://www.mdsd.hu/drone">
+  <missions name="FindLostPuppy">
+    <tasks name="Search">
+      <descriptor targets="//@areaObjects.2"/>
+    </tasks>
+    <tasks name="Find">
+      <descriptor targets="//@areaObjects.0"/>
+    </tasks>
+    <tasks name="BaitAndCatch">
+      <descriptor targets="//@areaObjects.0 //@areaObjects.1"/>
+    </tasks>
+    <tasks name="BringHome">
+      <descriptor targets="//@areaObjects.0 //@areaObjects.3"/>
+    </tasks>
+    <tasks name="NotifyOwner">
+      <descriptor/>
+    </tasks>
+  </missions>
+  <robots name="Stan" capabilities="//@capabilities.5 //@capabilities.4 //@capabilities.1">
+    <position>
+      <coordinates/>
+    </position>
+    <size>
+      <width value="0.3">
+        <dimension href="robots.drone#//@measureDimensions.2"/>
+      </width>
+      <height value="0.4">
+        <dimension href="robots.drone#//@measureDimensions.2"/>
+      </height>
+      <length value="0.3">
+        <dimension href="robots.drone#//@measureDimensions.2"/>
+      </length>
+    </size>
+    <batteries>
+      <capacity value="3000.0" dimension="//@measureDimensions.1"/>
+      <voltage value="11.1" dimension="//@measureDimensions.2"/>
+      <rechargeTime value="120.0">
+        <dimension href="robots.drone#//@measureDimensions.1"/>
+      </rechargeTime>
+    </batteries>
+    <equipments name="SnackContainer" facilitate="//@capabilities.5"/>
+    <equipments name="SimCard" facilitate="//@capabilities.1"/>
+    <equipments name="Wheels" facilitate="//@capabilities.4"/>
+    <communicationRange value="50.0">
+      <dimension href="robots.drone#//@measureDimensions.2"/>
+    </communicationRange>
+    <weight value="2.5">
+      <dimension href="robots.drone#//@measureDimensions.5"/>
+    </weight>
+  </robots>
+  <robots name="Lewis" capabilities="//@capabilities.3 //@capabilities.5 //@capabilities.4">
+    <position>
+      <coordinates/>
+    </position>
+    <size>
+      <width value="0.5">
+        <dimension href="robots.drone#//@measureDimensions.2"/>
+      </width>
+      <height value="1.0">
+        <dimension href="robots.drone#//@measureDimensions.2"/>
+      </height>
+      <length value="0.3">
+        <dimension href="robots.drone#//@measureDimensions.2"/>
+      </length>
+    </size>
+    <batteries>
+      <capacity value="3000.0" dimension="//@measureDimensions.1"/>
+      <voltage value="11.1" dimension="//@measureDimensions.2"/>
+      <rechargeTime value="120.0">
+        <dimension href="robots.drone#//@measureDimensions.1"/>
+      </rechargeTime>
+    </batteries>
+    <equipments name="SpeechSynthesizer" facilitate="//@capabilities.5"/>
+    <equipments name="DogLead"/>
+    <equipments name="Wheels" facilitate="//@capabilities.4"/>
+    <communicationRange value="10.0">
+      <dimension href="robots.drone#//@measureDimensions.2"/>
+    </communicationRange>
+    <weight value="5.8">
+      <dimension href="robots.drone#//@measureDimensions.5"/>
+    </weight>
+  </robots>
+  <robots name="Annie" capabilities="//@capabilities.2 //@capabilities.0">
+    <position>
+      <coordinates/>
+    </position>
+    <size>
+      <width value="0.2">
+        <dimension href="robots.drone#//@measureDimensions.2"/>
+      </width>
+      <height value="0.2">
+        <dimension href="robots.drone#//@measureDimensions.2"/>
+      </height>
+      <length value="0.2">
+        <dimension href="robots.drone#//@measureDimensions.2"/>
+      </length>
+    </size>
+    <batteries>
+      <capacity value="3000.0" dimension="//@measureDimensions.1"/>
+      <voltage value="11.1" dimension="//@measureDimensions.2"/>
+      <rechargeTime value="120.0">
+        <dimension href="robots.drone#//@measureDimensions.1"/>
+      </rechargeTime>
+    </batteries>
+    <equipments name="Propeller" facilitate="//@capabilities.2"/>
+    <equipments name="Camera" facilitate="//@capabilities.0"/>
+    <communicationRange value="34.0">
+      <dimension href="robots.drone#//@measureDimensions.2"/>
+    </communicationRange>
+    <weight value="1.2">
+      <dimension href="robots.drone#//@measureDimensions.5"/>
+    </weight>
+  </robots>
+  <measureDimensions name="Centimeter"/>
+  <measureDimensions name="mAh"/>
+  <measureDimensions name="V"/>
+  <areaObjects name="Puppy">
+    <positions>
+      <coordinates latitude="9.0" longitude="12.0"/>
+    </positions>
+  </areaObjects>
+  <areaObjects name="Bone">
+    <positions>
+      <coordinates/>
+    </positions>
+  </areaObjects>
+  <areaObjects name="SearchArea">
+    <positions>
+      <coordinates latitude="5.0" longitude="5.0"/>
+      <coordinates latitude="20.0" longitude="20.0"/>
+    </positions>
+  </areaObjects>
+  <areaObjects name="Home">
+    <positions>
+      <coordinates/>
+    </positions>
+  </areaObjects>
+  <capabilities name="Detecting"/>
+  <capabilities name="Calling"/>
+  <capabilities name="Flying"/>
+  <capabilities name="DogCatching"/>
+  <capabilities name="Walking"/>
+  <capabilities name="Baiting"/>
+</drone:RobotMissionContainer>

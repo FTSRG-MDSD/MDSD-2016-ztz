@@ -57,7 +57,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="RobotParts" label="Robot Parts" activeByDefault="true">
-        <nodeMappings name="EquipmentNode" labelDirectEdit="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@toolSections.0/@ownedTools[name='EquipmentRename']" domainClass="drone.Equipment">
+        <nodeMappings name="EquipmentNode" labelDirectEdit="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@toolSections.0/@ownedTools[name='EquipmentRename']" semanticCandidatesExpression="aql:self.robots.equipments->concat(self.temporalElements)" domainClass="drone.Equipment">
           <borderedNodeMappings name="EquipmentFacilitateNode" semanticCandidatesExpression="feature:facilitate" domainClass="drone.Capability">
             <style xsi:type="style:SquareDescription" showIcon="false" labelPosition="node" resizeKind="NSEW" width="8" height="2">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
