@@ -46,7 +46,7 @@
           </style>
         </nodeMappings>
         <nodeMappings name="positionNode" label="PositionNode" semanticCandidatesExpression="aql:self.areaObjects.positions" domainClass="drone.Position">
-          <style xsi:type="style:EllipseNodeDescription" showIcon="false" labelExpression="Position" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:EllipseNodeDescription" showIcon="false" labelExpression="Position" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -122,21 +122,21 @@
           </style>
         </edgeMappings>
         <containerMappings name="coordinateContainerNode" semanticCandidatesExpression="aql:self.areaObjects.positions.coordinates" domainClass="drone.Coordinate" childrenPresentation="List">
-          <subNodeMappings name="AltitudeNode" semanticCandidatesExpression="aql:self" domainClass="Coordinate">
+          <subNodeMappings name="AltitudeNode" labelDirectEdit="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AltitudeModification']" semanticCandidatesExpression="aql:self" domainClass="Coordinate">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Altitude: ' + self.altitude.toString()" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="LatitudeNode" semanticCandidatesExpression="aql:self" domainClass="drone.Coordinate">
+          <subNodeMappings name="LatitudeNode" labelDirectEdit="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='LatitudeModification']" semanticCandidatesExpression="aql:self" domainClass="drone.Coordinate">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Latitude: ' + self.latitude.toString()" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="LongitudeNode" semanticCandidatesExpression="aql:self" domainClass="Coordinate">
+          <subNodeMappings name="LongitudeNode" labelDirectEdit="//@ownedViewpoints[name='areaobjectdiagram']/@ownedRepresentations[name='missionAreaObjectDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='LongitudeModification']" semanticCandidatesExpression="aql:self" domainClass="Coordinate">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Longitude: ' + self.longitude.toString()" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -277,6 +277,33 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="LatitudeModification">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="ModifyLatitude" id="hu.bme.mdsd.ztz.model.design.SetCoordinateByLabelAction">
+                <parameters name="label" value="var:0"/>
+                <parameters name="type" value="latitude"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="AltitudeModification">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="ModifyAltitude" id="hu.bme.mdsd.ztz.model.design.SetCoordinateByLabelAction">
+                <parameters name="label" value="var:0"/>
+                <parameters name="type" value="altitude"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="LongitudeModification">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="ModifyLongitude" id="hu.bme.mdsd.ztz.model.design.SetCoordinateByLabelAction">
+                <parameters name="label" value="var:0"/>
+                <parameters name="type" value="longitude"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>

@@ -26,7 +26,7 @@ public class SetCapabilityPropertyByLabelAction implements IExternalJavaAction {
 		DroneFactory factory = DroneFactory.eINSTANCE;
 		
 		Property prop = (Property) selections.iterator().next();
-		RobotMissionContainer container = (RobotMissionContainer) prop.eContainer().eContainer();
+		RobotMissionContainer container = (RobotMissionContainer) prop.eContainer().eContainer().eContainer();
 	
 		String label = (String) parameters.get("label");
 		String[] propertyParameters = label.split("[^0-9.&&\\s]|:\\s+");

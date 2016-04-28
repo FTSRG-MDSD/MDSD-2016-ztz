@@ -22,15 +22,9 @@
       <coordinates/>
     </position>
     <size>
-      <width value="0.3">
-        <dimension href="robots.drone#//@measureDimensions.2"/>
-      </width>
-      <height value="0.4">
-        <dimension href="robots.drone#//@measureDimensions.2"/>
-      </height>
-      <length value="0.3">
-        <dimension href="robots.drone#//@measureDimensions.2"/>
-      </length>
+      <width value="0.3" dimension="//@measureDimensions.0"/>
+      <height value="0.4" dimension="//@measureDimensions.0"/>
+      <length value="0.3" dimension="//@measureDimensions.0"/>
     </size>
     <batteries>
       <capacity value="3000.0" dimension="//@measureDimensions.1"/>
@@ -42,9 +36,7 @@
     <equipments name="SnackContainer" facilitate="//@capabilities.5"/>
     <equipments name="SimCard" facilitate="//@capabilities.1"/>
     <equipments name="Wheels" facilitate="//@capabilities.4"/>
-    <communicationRange value="50.0">
-      <dimension href="robots.drone#//@measureDimensions.2"/>
-    </communicationRange>
+    <communicationRange value="50.0" dimension="//@measureDimensions.0"/>
     <weight value="2.5">
       <dimension href="robots.drone#//@measureDimensions.5"/>
     </weight>
@@ -54,15 +46,9 @@
       <coordinates/>
     </position>
     <size>
-      <width value="0.5">
-        <dimension href="robots.drone#//@measureDimensions.2"/>
-      </width>
-      <height value="1.0">
-        <dimension href="robots.drone#//@measureDimensions.2"/>
-      </height>
-      <length value="0.3">
-        <dimension href="robots.drone#//@measureDimensions.2"/>
-      </length>
+      <width value="0.5" dimension="//@measureDimensions.0"/>
+      <height value="1.0" dimension="//@measureDimensions.0"/>
+      <length value="0.3" dimension="//@measureDimensions.0"/>
     </size>
     <batteries>
       <capacity value="3000.0" dimension="//@measureDimensions.1"/>
@@ -74,9 +60,7 @@
     <equipments name="SpeechSynthesizer" facilitate="//@capabilities.5"/>
     <equipments name="DogLead"/>
     <equipments name="Wheels" facilitate="//@capabilities.4"/>
-    <communicationRange value="10.0">
-      <dimension href="robots.drone#//@measureDimensions.2"/>
-    </communicationRange>
+    <communicationRange value="10.0" dimension="//@measureDimensions.0"/>
     <weight value="5.8">
       <dimension href="robots.drone#//@measureDimensions.5"/>
     </weight>
@@ -86,15 +70,9 @@
       <coordinates/>
     </position>
     <size>
-      <width value="0.2">
-        <dimension href="robots.drone#//@measureDimensions.2"/>
-      </width>
-      <height value="0.2">
-        <dimension href="robots.drone#//@measureDimensions.2"/>
-      </height>
-      <length value="0.2">
-        <dimension href="robots.drone#//@measureDimensions.2"/>
-      </length>
+      <width value="0.2" dimension="//@measureDimensions.0"/>
+      <height value="0.2" dimension="//@measureDimensions.0"/>
+      <length value="0.2" dimension="//@measureDimensions.0"/>
     </size>
     <batteries>
       <capacity value="3000.0" dimension="//@measureDimensions.1"/>
@@ -105,14 +83,12 @@
     </batteries>
     <equipments name="Propeller" facilitate="//@capabilities.2"/>
     <equipments name="Camera" facilitate="//@capabilities.0"/>
-    <communicationRange value="34.0">
-      <dimension href="robots.drone#//@measureDimensions.2"/>
-    </communicationRange>
+    <communicationRange value="34.0" dimension="//@measureDimensions.0"/>
     <weight value="1.2">
       <dimension href="robots.drone#//@measureDimensions.5"/>
     </weight>
   </robots>
-  <measureDimensions name="Centimeter"/>
+  <measureDimensions name="m"/>
   <measureDimensions name="mAh"/>
   <measureDimensions name="V"/>
   <areaObjects name="Puppy">

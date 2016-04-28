@@ -20,14 +20,17 @@ public class SetMeasureValueByLabelAction implements IExternalJavaAction {
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		MeasureValue measureValue = (MeasureValue) selections.iterator().next();
 		
-		RobotMissionContainer container = (RobotMissionContainer) measureValue.eContainer().eContainer();
+		EObject tmp = measureValue;
+		while (!(tmp instanceof RobotMissionContainer))
+			tmp = tmp.eContainer();
+		RobotMissionContainer container = (RobotMissionContainer) tmp;
 				
 		String label = (String) parameters.get("label");
 		String[] measureValueParameters = label.split("[^0-9.&&\\s]|:\\s+");
 		
 		int numIndex = -1, dimensionIndex = -1;
 		for (int i=0;i<measureValueParameters.length;++i) {
-			if (measureValueParameters[0].matches("[0-9.]")) {
+			if (measureValueParameters[i].matches("[0-9.]+")) {
 				numIndex = i;
 			} else {
 				dimensionIndex = i;
@@ -37,7 +40,7 @@ public class SetMeasureValueByLabelAction implements IExternalJavaAction {
 		if (numIndex != -1) {
 			float goodValue;
 			try {
-				goodValue = Float.parseFloat(measureValueParameters[1]);
+				goodValue = Float.parseFloat(measureValueParameters[numIndex]);
 				measureValue.setValue(goodValue);
 			} catch (NumberFormatException ex) {
 			}
@@ -46,7 +49,7 @@ public class SetMeasureValueByLabelAction implements IExternalJavaAction {
 		if (dimensionIndex != -1) {
 			MeasureDimension goodDimension = null;
 			for (MeasureDimension dim : container.getMeasureDimensions()) {
-				if (dim.getName().equals(measureValueParameters[2])) {
+				if (dim.getName().equals(measureValueParameters[dimensionIndex])) {
 					goodDimension = dim;
 					break;
 				}

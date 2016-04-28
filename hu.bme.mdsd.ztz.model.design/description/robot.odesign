@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="robot" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="robot" version="10.1.3.201511131800">
   <ownedViewpoints name="robotdiagram" modelFileExtension="drone">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="RobotPartsDiagram" domainClass="drone.RobotMissionContainer">
       <validationSet>
@@ -11,6 +11,19 @@
         </ownedRules>
         <ownedRules xsi:type="validation:SemanticValidationRule" name="EquipmentCapNotConnectedRobot" level="ERROR" message="The equipment has a facility not connected to the Robot as capability." targetClass="drone.Equipment">
           <audits auditExpression="aql:self.eContainer().capabilities->includesAll(self.facilitate)"/>
+          <fixes name="Connect Equipment Capability to Robot">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer()">
+                <subModelOperations xsi:type="tool:SetValue" featureName="capabilities" valueExpression="aql:self.capabilities->concat(self.equipments.facilitate)"/>
+              </firstModelOperations>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PositionWithoutAssignment" level="WARNING" message="The element is not assigned." targetClass="drone.Position">
+          <audits auditExpression="aql:not self.eContainer().oclIsTypeOf(drone::RobotMissionContainer)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="CoordinateWithoutPosition" level="WARNING" message="The element is not assigned." targetClass="drone.Coordinate">
+          <audits auditExpression="aql:not self.eContainer().oclIsTypeOf(drone::RobotMissionContainer)"/>
         </ownedRules>
       </validationSet>
       <defaultLayer name="Default">
@@ -35,23 +48,23 @@
           </style>
         </nodeMappings>
         <toolSections name="RobotSection" label="Robot">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="RobotCreation" label="New Robot" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="RobotCreation" label="New Robot" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Robot" referenceName="robots">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Robot"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.Robot" referenceName="robots">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New Robot"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="RobotRename">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="RobotRename">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -133,7 +146,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="BatteryNode" domainClass="drone.Battery" childrenPresentation="List">
+        <containerMappings name="BatteryNode" semanticCandidatesExpression="aql:self.robots.batteries" domainClass="drone.Battery" childrenPresentation="List">
           <subNodeMappings name="CapacityNode" labelDirectEdit="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@toolSections.0/@ownedTools[name='WeightLabel']" semanticCandidatesExpression="aql:self.capacity" domainClass="drone.MeasureValue">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Capacity: ' + self.value + ' ' + self.dimension.name" labelPosition="node" resizeKind="NSEW" width="10" height="3">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -163,183 +176,183 @@
           </style>
         </containerMappings>
         <toolSections name="RobotPartsSection" label="Robot Parts">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="EquipmentCreation" label="New Equipment" elementsToSelect="aql:container" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@nodeMappings[name='EquipmentNode']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="EquipmentCreation" label="New Equipment" elementsToSelect="aql:container" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@nodeMappings[name='EquipmentNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Equipment" referenceName="temporalElements">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Equipment"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.Equipment" referenceName="temporalElements">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New Equipment"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="BatteryCreation" label="New Battery" containerMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@containerMappings[name='BatteryNode']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="BatteryCreation" label="New Battery" containerMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@containerMappings[name='BatteryNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Battery" referenceName="temporalElements">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.MeasureValue" referenceName="capacity" variableName="capacity"/>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.MeasureValue" referenceName="voltage" variableName="voltage"/>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.MeasureValue" referenceName="rechargeTime" variableName="rechargeTime"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.Battery" referenceName="temporalElements">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.MeasureValue" referenceName="capacity" variableName="capacity"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.MeasureValue" referenceName="voltage" variableName="voltage"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.MeasureValue" referenceName="rechargeTime" variableName="rechargeTime"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CapabilityCreation" label="New Capability" precondition="aql:container.oclIsTypeOf(drone::RobotMissionContainer)" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@nodeMappings[name='CapabilityNode']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CapabilityCreation" label="New Capability" precondition="aql:container.oclIsTypeOf(drone::RobotMissionContainer)" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@nodeMappings[name='CapabilityNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Capability" referenceName="capabilities">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Capability"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.Capability" referenceName="capabilities">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New Capability"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="CapPropContainerCreation" label="New Capability Property Container" precondition="aql:container.oclIsTypeOf(drone::Robot)" candidatesExpression="aql:container.eContainerOrSelf(drone::RobotMissionContainer).capabilities" iconPath="" windowTitle="Select Capability for Robot">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="CapPropContainerCreation" label="New Capability Property Container" precondition="aql:container.oclIsTypeOf(drone::Robot)" candidatesExpression="aql:container.eContainerOrSelf(drone::RobotMissionContainer).capabilities" iconPath="" windowTitle="Select Capability for Robot">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.CapabilityProperties" referenceName="capabilityProperties">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="capability" valueExpression="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.CapabilityProperties" referenceName="capabilityProperties">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="capability" valueExpression="var:element"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:container.capabilities->excludes(element)">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="capabilities" valueExpression="var:element"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.capabilities->excludes(element)">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="capabilities" valueExpression="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CapPropItemCreation" label="New Capability Property" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@containerMappings[name='CapabilityPropertyContainer']/@subNodeMappings[name='CapPropItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CapPropItemCreation" label="New Capability Property" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@containerMappings[name='CapabilityPropertyContainer']/@subNodeMappings[name='CapPropItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Property" referenceName="properties"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.Property" referenceName="properties"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateWeightNode" label="Add Weight to Robot" precondition="aql:container.oclIsTypeOf(drone::Robot) and container.weight = null" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']/@borderedNodeMappings[name='WeightNode']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CreateWeightNode" label="Add Weight to Robot" precondition="aql:container.oclIsTypeOf(drone::Robot) and container.weight = null" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']/@borderedNodeMappings[name='WeightNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="MeasureValue" referenceName="weight"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="MeasureValue" referenceName="weight"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateRangeNode" label="Add Range to Robot" precondition="aql:container.oclIsTypeOf(drone::Robot) and container.communicationRange = null" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']/@borderedNodeMappings[name='CommunicationRangeNode']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CreateRangeNode" label="Add Range to Robot" precondition="aql:container.oclIsTypeOf(drone::Robot) and container.communicationRange = null" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']/@borderedNodeMappings[name='CommunicationRangeNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.MeasureValue" referenceName="communicationRange"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.MeasureValue" referenceName="communicationRange"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RobotEquipmentRelationCreation" label="Add Equipment To Robot" precondition="aql:preTarget.oclIsTypeOf(drone::Equipment) and preTarget.eContainer().oclIsTypeOf(drone::RobotMissionContainer)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@edgeMappings[name='RobotEquipmentRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Robot)">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="RobotEquipmentRelationCreation" label="Add Equipment To Robot" precondition="aql:preTarget.oclIsTypeOf(drone::Equipment) and preTarget.eContainer().oclIsTypeOf(drone::RobotMissionContainer)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@edgeMappings[name='RobotEquipmentRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Robot)">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="equipments" valueExpression="var:target">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainerOrSelf(drone::RobotMissionContainer)">
-                    <subModelOperations xsi:type="tool_1:Unset" featureName="temporalElements" elementExpression="target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="equipments" valueExpression="var:target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.eContainerOrSelf(drone::RobotMissionContainer)">
+                    <subModelOperations xsi:type="tool:Unset" featureName="temporalElements" elementExpression="target"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RobotCapRelationCreation" label="Add Capability to Robot" precondition="aql:preTarget.oclIsTypeOf(drone::Capability)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@edgeMappings[name='RobotCapabilityRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Robot)">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="RobotCapRelationCreation" label="Add Capability to Robot" precondition="aql:preTarget.oclIsTypeOf(drone::Capability)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@edgeMappings[name='RobotCapabilityRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Robot)">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="capabilities" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="capabilities" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RobotBatteryRelationCreation" label="Add Battery To Robot" precondition="aql:preTarget.oclIsTypeOf(drone::Battery) and preTarget.eContainer().oclIsTypeOf(drone::RobotMissionContainer)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@edgeMappings[name='RobotBatteryRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Robot)">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="RobotBatteryRelationCreation" label="Add Battery To Robot" precondition="aql:preTarget.oclIsTypeOf(drone::Battery) and preTarget.eContainer().oclIsTypeOf(drone::RobotMissionContainer)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='RobotParts']/@edgeMappings[name='RobotBatteryRelation']" connectionStartPrecondition="aql:preSource.oclIsTypeOf(drone::Robot)">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="batteries" valueExpression="var:target">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainerOrSelf(drone::RobotMissionContainer)">
-                    <subModelOperations xsi:type="tool_1:Unset" featureName="temporalElements" elementExpression="target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="batteries" valueExpression="var:target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.eContainerOrSelf(drone::RobotMissionContainer)">
+                    <subModelOperations xsi:type="tool:Unset" featureName="temporalElements" elementExpression="target"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="EquipCapCreation" label="Edit Equipment Facilities" precondition="aql:container.oclIsTypeOf(drone::Equipment)" candidatesExpression="aql:container.eContainerOrSelf(drone::RobotMissionContainer).capabilities" preSelectedCandidatesExpression="aql:container.facilitate">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="EquipCapCreation" label="Edit Equipment Facilities" precondition="aql:container.oclIsTypeOf(drone::Equipment)" candidatesExpression="aql:container.eContainerOrSelf(drone::RobotMissionContainer).capabilities" preSelectedCandidatesExpression="aql:container.facilitate">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="facilitate" elementExpression="aql:self.facilitate->select(i | element->excludes(i))">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="facilitate" valueExpression="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:Unset" featureName="facilitate" elementExpression="aql:self.facilitate->select(i | element->excludes(i))">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="facilitate" valueExpression="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="SetCapPropLabel">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="SetCapPropLabel">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetCapabilityPropertyByLabel" id="hu.bme.mdsd.ztz.model.design.SetCapabilityPropertyByLabelAction">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="SetCapabilityPropertyByLabel" id="hu.bme.mdsd.ztz.model.design.SetCapabilityPropertyByLabelAction">
                 <parameters name="label" value="var:0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="EquipmentRename">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="EquipmentRename">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="WeightLabel">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="WeightLabel">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetWeightByLabel" id="hu.bme.mdsd.ztz.model.design.SetMeasureValueByLabelAction">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="SetWeightByLabel" id="hu.bme.mdsd.ztz.model.design.SetMeasureValueByLabelAction">
                 <parameters name="label" value="var:0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="CapabilityRename">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="CapabilityRename">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="RemoveEquipmentFromRobot">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="RemoveEquipmentFromRobot">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="element">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="equipments" elementExpression="aql:elementView.targetNode.target">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="element">
-                        <subModelOperations xsi:type="tool_1:Unset" featureName="equipments" elementExpression="aql:elementView.oclAsType(DEdge).targetNode.oclAsType(DNode).target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="element">
+                <subModelOperations xsi:type="tool:Unset" featureName="equipments" elementExpression="aql:elementView.targetNode.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="element">
+                        <subModelOperations xsi:type="tool:Unset" featureName="equipments" elementExpression="aql:elementView.oclAsType(DEdge).targetNode.oclAsType(DNode).target"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -347,27 +360,27 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="RemoveCapabilityFromRobot">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="RemoveCapabilityFromRobot">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="element">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="capabilities" elementExpression="aql:elementView.targetNode.target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="element">
+                <subModelOperations xsi:type="tool:Unset" featureName="capabilities" elementExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="RemoveBatteryFromRobot">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="RemoveBatteryFromRobot">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="element">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="batteries" elementExpression="aql:elementView.targetNode.target">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="element">
-                        <subModelOperations xsi:type="tool_1:Unset" featureName="equipments" elementExpression="aql:elementView.oclAsType(DEdge).targetNode.oclAsType(DNode).target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="element">
+                <subModelOperations xsi:type="tool:Unset" featureName="batteries" elementExpression="aql:elementView.targetNode.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="element">
+                        <subModelOperations xsi:type="tool:Unset" featureName="equipments" elementExpression="aql:elementView.oclAsType(DEdge).targetNode.oclAsType(DNode).target"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -378,59 +391,52 @@
         </toolSections>
       </additionalLayers>
       <additionalLayers name="PositionsLayer" label="Positions" activeByDefault="true">
-        <nodeMappings name="notAssignedCoordinate" semanticCandidatesExpression="aql:self.temporalElements" domainClass="drone.Coordinate">
-          <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="Not Assigned Coordinate" labelPosition="node" resizeKind="NSEW" width="5" height="3">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="RobotPositionNode" semanticCandidatesExpression="aql:self.robots.position" domainClass="drone.Position">
+        <nodeMappings name="RobotPositionNode" semanticCandidatesExpression="aql:self.robots.position->concat(self.temporalElements)" domainClass="drone.Position">
           <style xsi:type="style:EllipseNodeDescription" showIcon="false" labelExpression="Position" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
+          <conditionnalStyles predicateExpression="aql:self.eContainer().oclIsTypeOf(drone::RobotMissionContainer)">
+            <style xsi:type="style:EllipseNodeDescription" showIcon="false" labelExpression="Not Assigned Position" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="notAssignedPosition" semanticCandidatesExpression="aql:self.temporalElements" domainClass="drone.Position">
-          <style xsi:type="style:EllipseNodeDescription" showIcon="false" labelExpression="Not Assigned Position" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-          </style>
-        </nodeMappings>
-        <edgeMappings name="RobotPositionRelation" deletionDescription="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@toolSections.0/@ownedTools[name='RemovePositionFromRobot']" sourceMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']" targetMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@nodeMappings[name='RobotPositionNode'] //@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@nodeMappings[name='notAssignedPosition']" targetFinderExpression="aql:self.position">
-          <style sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
+        <edgeMappings name="RobotPositionRelation" deletionDescription="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@toolSections.0/@ownedTools[name='RemovePositionFromRobot']" sourceMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']" targetMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@nodeMappings[name='RobotPositionNode']" targetFinderExpression="aql:self.position">
+          <style sourceArrow="FillDiamond" targetArrow="InputFillClosedArrow" sizeComputationExpression="2" foldingStyle="SOURCE">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="PositionCoordinateRelation" deletionDescription="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@toolSections.0/@ownedTools[name='RemoveCoordinateFromPosition']" sourceMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@nodeMappings[name='RobotPositionNode']" targetMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@containerMappings[name='RobotCoordinateContainerNode'] //@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@nodeMappings[name='notAssignedCoordinate']" targetFinderExpression="aql:self.coordinates">
-          <style sourceArrow="Diamond" targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
+        <edgeMappings name="PositionCoordinateRelation" deletionDescription="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@toolSections.0/@ownedTools[name='RemoveCoordinateFromPosition']" sourceMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@nodeMappings[name='RobotPositionNode']" targetMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@containerMappings[name='RobotCoordinateContainerNode']" targetFinderExpression="aql:self.coordinates">
+          <style sourceArrow="Diamond" targetArrow="InputFillClosedArrow" sizeComputationExpression="2" foldingStyle="SOURCE">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="RobotCoordinateContainerNode" semanticCandidatesExpression="aql:self.robots.position.coordinates" domainClass="drone.Coordinate" childrenPresentation="List">
-          <subNodeMappings name="AltitudeNode" semanticCandidatesExpression="aql:self" domainClass="drone.Coordinate">
+        <containerMappings name="RobotCoordinateContainerNode" semanticCandidatesExpression="aql:self.robots.position.coordinates->concat(self.temporalElements)" domainClass="drone.Coordinate" childrenPresentation="List">
+          <subNodeMappings name="AltitudeNode" labelDirectEdit="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@toolSections.0/@ownedTools[name='AltitudeModification']" semanticCandidatesExpression="aql:self" domainClass="drone.Coordinate">
             <style xsi:type="style:SquareDescription" labelExpression="aql:'Altitude: ' + self.altitude.toString()" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="LatitudeNode" semanticCandidatesExpression="aql:self" domainClass="drone.Coordinate">
+          <subNodeMappings name="LatitudeNode" labelDirectEdit="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@toolSections.0/@ownedTools[name='LatitudeModification']" semanticCandidatesExpression="aql:self" domainClass="drone.Coordinate">
             <style xsi:type="style:SquareDescription" labelExpression="aql:'Latitude: ' + self.latitude.toString()" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="LongitudeNode" semanticCandidatesExpression="aql:self" domainClass="drone.Coordinate">
+          <subNodeMappings name="LongitudeNode" labelDirectEdit="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@toolSections.0/@ownedTools[name='LongitudeModification']" semanticCandidatesExpression="aql:self" domainClass="drone.Coordinate">
             <style xsi:type="style:SquareDescription" labelExpression="aql:'Longitude: ' + self.longitude.toString()" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -443,87 +449,115 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
+          <conditionnalStyles predicateExpression="aql:self.eContainer().oclIsTypeOf(drone::RobotMissionContainer)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Not Assigned Coordinates">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
         </containerMappings>
         <toolSections name="PositionSection" label="Position">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="PositionCreation" label="New Position" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@nodeMappings[name='notAssignedPosition']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="PositionCreation" label="New Position" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@nodeMappings[name='RobotPositionNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Position" referenceName="temporalElements"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.Position" referenceName="temporalElements"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CoordinateCreation" label="New Coordinate" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@nodeMappings[name='notAssignedCoordinate']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="CoordinateCreation" label="New Coordinate" containerMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@containerMappings[name='RobotCoordinateContainerNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Coordinate" referenceName="temporalElements"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.Coordinate" referenceName="temporalElements"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RobotPositionRelationCreation" label="Add Position to Robot" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@edgeMappings[name='RobotPositionRelation']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="RobotPositionRelationCreation" label="Add Position to Robot" precondition="aql: preTarget.eContainer().oclIsTypeOf(drone::RobotMissionContainer)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@edgeMappings[name='RobotPositionRelation']" connectionStartPrecondition="aql:preSource.position = null">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="position" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="position" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="PositionCoordinateRelationCreation" label="Add Coordinates to Position" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@edgeMappings[name='PositionCoordinateRelation']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="PositionCoordinateRelationCreation" label="Add Coordinates to Position" precondition="aql: preTarget.eContainer().oclIsTypeOf(drone::RobotMissionContainer)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='PositionsLayer']/@edgeMappings[name='PositionCoordinateRelation']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="coordinates" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="coordinates" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="RemovePositionFromRobot">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="RemovePositionFromRobot">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
+                <subModelOperations xsi:type="tool:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="RemoveCoordinateFromPosition">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="RemoveCoordinateFromPosition">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
+                <subModelOperations xsi:type="tool:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="LatitudeModification">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="ModifyLatitude" id="hu.bme.mdsd.ztz.model.design.SetCoordinateByLabelAction">
+                <parameters name="label" value="var:0"/>
+                <parameters name="type" value="latitude"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="AltitudeModification">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="ModifyAltitude" id="hu.bme.mdsd.ztz.model.design.SetCoordinateByLabelAction">
+                <parameters name="label" value="var:0"/>
+                <parameters name="type" value="altitude"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="LongitudeModification">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="ModifyLongitude" id="hu.bme.mdsd.ztz.model.design.SetCoordinateByLabelAction">
+                <parameters name="label" value="var:0"/>
+                <parameters name="type" value="longitude"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
       </additionalLayers>
       <additionalLayers name="Sizes" activeByDefault="true">
-        <nodeMappings name="notAssignedSize" semanticCandidatesExpression="aql:self.temporalElements" domainClass="drone.Size">
-          <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="Not Assigned Size" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-          </style>
-        </nodeMappings>
-        <edgeMappings name="RobotSizeRelation" deletionDescription="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@toolSections.0/@ownedTools[name='RemoveSizeFromRobot']" sourceMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']" targetMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@containerMappings[name='RobotSizeNode'] //@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@nodeMappings[name='notAssignedSize']" targetFinderExpression="aql:self.size">
-          <style sourceArrow="FillDiamond" sizeComputationExpression="2">
+        <edgeMappings name="RobotSizeRelation" deletionDescription="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@toolSections.0/@ownedTools[name='RemoveSizeFromRobot']" sourceMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@defaultLayer/@nodeMappings[name='RobotNode']" targetMapping="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@containerMappings[name='RobotSizeNode']" targetFinderExpression="aql:self.size">
+          <style sourceArrow="FillDiamond" sizeComputationExpression="2" foldingStyle="SOURCE">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="RobotSizeNode" semanticCandidatesExpression="aql:self.robots.size" domainClass="drone.Size" childrenPresentation="List">
+        <containerMappings name="RobotSizeNode" semanticCandidatesExpression="aql:self.robots.size->concat(self.temporalElements)" domainClass="drone.Size" childrenPresentation="List">
           <subNodeMappings name="WidthNode" labelDirectEdit="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@toolSections.0/@ownedTools[name='EditSizeItems']" semanticCandidatesExpression="aql:self.width" domainClass="MeasureValue">
             <style xsi:type="style:SquareDescription" labelExpression="aql:'Width: ' + self.value + ' ' + self.dimension.name" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -545,56 +579,64 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" hideLabelByDefault="true">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Size" hideLabelByDefault="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
+          <conditionnalStyles predicateExpression="aql:self.eContainer().oclIsTypeOf(drone::RobotMissionContainer)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Not Assigned Size">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
         </containerMappings>
         <toolSections name="Size">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="New Size" nodeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@nodeMappings[name='notAssignedSize']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="SizeCreation" label="New Size" containerMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@containerMappings[name='RobotSizeNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.Size" referenceName="temporalElements">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.MeasureValue" referenceName="width" variableName="width"/>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.MeasureValue" referenceName="height" variableName="height"/>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="drone.MeasureValue" referenceName="length" variableName="length"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.Size" referenceName="temporalElements">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.MeasureValue" referenceName="width" variableName="width"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.MeasureValue" referenceName="height" variableName="height"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="drone.MeasureValue" referenceName="length" variableName="length"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RobotSizeRelationCreation" label="Add Size to Robot" precondition="aql:preTarget.eContainer().oclIsTypeOf(drone::RobotMissionContainer)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@edgeMappings[name='RobotSizeRelation']" connectionStartPrecondition="aql:preSource.size = null">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="RobotSizeRelationCreation2" label="Add Size to Robot" precondition="aql:preTarget.eContainer().oclIsTypeOf(drone::RobotMissionContainer)" edgeMappings="//@ownedViewpoints[name='robotdiagram']/@ownedRepresentations[name='RobotPartsDiagram']/@additionalLayers[name='Sizes']/@edgeMappings[name='RobotSizeRelation']" connectionStartPrecondition="aql:preSource.size = null">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="size" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="size" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="RemoveSizeFromRobot">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="RemoveSizeFromRobot">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainerOrSelf(drone::RobotMissionContainer)">
+                <subModelOperations xsi:type="tool:SetValue" featureName="temporalElements" valueExpression="aql:elementView.targetNode.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSizeItems">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="EditSizeItems">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetSizeItemsByLabel" id="hu.bme.mdsd.ztz.model.design.SetMeasureValueByLabelAction">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="SetSizeItemsByLabel" id="hu.bme.mdsd.ztz.model.design.SetMeasureValueByLabelAction">
                 <parameters name="label" value="var:0"/>
               </firstModelOperations>
             </initialOperation>

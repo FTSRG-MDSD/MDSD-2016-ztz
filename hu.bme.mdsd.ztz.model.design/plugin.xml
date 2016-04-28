@@ -21,4 +21,11 @@
            id="hu.bme.mdsd.ztz.model.design.SetMeasureValueByLabelAction">
      </javaActions>
   </extension>
+  <extension
+        point="org.eclipse.sirius.externalJavaAction">
+     <javaActions
+           actionClass="hu.bme.mdsd.ztz.model.design.SetCoordinateByLabelAction"
+           id="hu.bme.mdsd.ztz.model.design.SetCoordinateByLabelAction">
+     </javaActions>
+  </extension>
 </plugin>
