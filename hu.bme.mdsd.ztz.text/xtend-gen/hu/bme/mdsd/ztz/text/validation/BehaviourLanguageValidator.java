@@ -4,15 +4,24 @@
 package hu.bme.mdsd.ztz.text.validation;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
@@ -125,5 +134,106 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
         }
       }
     }
+  }
+  
+  @Check
+  public void checkUniqueTaskExecutionNames(final TaskExecution taskExecution) {
+    Resource _eResource = taskExecution.eResource();
+    TreeIterator<EObject> _allContents = _eResource.getAllContents();
+    final Iterator<TaskExecution> taskIterator = Iterators.<TaskExecution>filter(_allContents, TaskExecution.class);
+    while (taskIterator.hasNext()) {
+      {
+        TaskExecution otherMessage = taskIterator.next();
+        boolean _notEquals = (!Objects.equal(otherMessage, taskExecution));
+        if (_notEquals) {
+          String _name = otherMessage.getName();
+          String _name_1 = taskExecution.getName();
+          boolean _equals = _name.equals(_name_1);
+          if (_equals) {
+            this.error("Messages cannot have the same name", taskExecution, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_TASK_EXECUTION_NAME);
+          }
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void checkUniqueMessageStatement(final MessageStatement statement) {
+    final DynamicRobot robot = statement.getRobot();
+    EObject _eContainer = statement.eContainer();
+    EList<Statement> _statements = ((BehaviourLanguage) _eContainer).getStatements();
+    final Iterable<CollaborationStatement> collabStatements = Iterables.<CollaborationStatement>filter(_statements, CollaborationStatement.class);
+    final MessageTarget target = statement.getTarget();
+    if ((target instanceof UniTarget)) {
+      DynamicRobot _target = ((UniTarget)target).getTarget();
+      boolean _inCollaboration = this.inCollaboration(collabStatements, robot, _target);
+      boolean _not = (!_inCollaboration);
+      if (_not) {
+        this.error("Target robot is not in collaboration with the sender robot", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
+      }
+    } else {
+      if ((target instanceof MultiTarget)) {
+        EList<DynamicRobot> _target_1 = ((MultiTarget)target).getTarget();
+        for (final DynamicRobot targetRobot : _target_1) {
+          boolean _inCollaboration_1 = this.inCollaboration(collabStatements, robot, targetRobot);
+          boolean _not_1 = (!_inCollaboration_1);
+          if (_not_1) {
+            this.error("Target robot is not in collaboration with the sender robot", target, BehaviourLanguagePackage.Literals.MULTI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
+          }
+        }
+      } else {
+        if ((target instanceof AllTarget)) {
+          boolean _hasCollaboration = this.hasCollaboration(collabStatements, robot);
+          boolean _not_2 = (!_hasCollaboration);
+          if (_not_2) {
+            this.error("The sender robot is not in collaboration with anyone", target, BehaviourLanguagePackage.Literals.ALL_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean hasCollaboration(final Iterable<CollaborationStatement> collabStatements, final DynamicRobot robot) {
+    for (final CollaborationStatement stat : collabStatements) {
+      DynamicRobot _robot = stat.getRobot();
+      boolean _equals = Objects.equal(_robot, robot);
+      if (_equals) {
+        return true;
+      } else {
+        EList<RobotCollaboration> _collaboration = stat.getCollaboration();
+        for (final RobotCollaboration collab : _collaboration) {
+          DynamicRobot _collaborator = collab.getCollaborator();
+          boolean _equals_1 = Objects.equal(_collaborator, robot);
+          if (_equals_1) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean inCollaboration(final Iterable<CollaborationStatement> collabStatements, final DynamicRobot robot, final DynamicRobot targetRobot) {
+    for (final CollaborationStatement stat : collabStatements) {
+      DynamicRobot _robot = stat.getRobot();
+      boolean _equals = Objects.equal(_robot, targetRobot);
+      if (_equals) {
+        return true;
+      } else {
+        DynamicRobot _robot_1 = stat.getRobot();
+        boolean _equals_1 = Objects.equal(_robot_1, robot);
+        if (_equals_1) {
+          EList<RobotCollaboration> _collaboration = stat.getCollaboration();
+          for (final RobotCollaboration collab : _collaboration) {
+            DynamicRobot _collaborator = collab.getCollaborator();
+            boolean _equals_2 = Objects.equal(_collaborator, targetRobot);
+            if (_equals_2) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+    return false;
   }
 }

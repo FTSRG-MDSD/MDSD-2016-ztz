@@ -7,7 +7,6 @@ import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
-import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
@@ -32,6 +31,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
+import hu.bme.mdsd.ztz.text.util.RobotUtil;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -169,7 +169,7 @@ public class StatementParser {
     {
       final DynamicRobot robot = statement.getRobot();
       AreaObject _object = statement.getObject();
-      this.removeAreaObject(robot, _object);
+      RobotUtil.removeAreaObject(robot, _object);
       final DetectedObject detectedObject = BehaviourFactory.eINSTANCE.createDetectedObject();
       AreaObject _object_1 = statement.getObject();
       detectedObject.setObject(_object_1);
@@ -204,7 +204,7 @@ public class StatementParser {
     Boolean _xblockexpression = null;
     {
       final DynamicRobot senderRobot = statement.getRobot();
-      this.initMessageRepository(senderRobot);
+      RobotUtil.initMessageRepository(senderRobot);
       final MessageTarget messageTarget = statement.getTarget();
       final Message message = statement.getMessage();
       _xblockexpression = this.parseMessageTarget(messageTarget, senderRobot, message);
@@ -226,69 +226,24 @@ public class StatementParser {
     return null;
   }
   
-  public boolean detected(final DynamicRobot robot, final AreaObject areaObject) {
-    EList<DetectedObject> _detectedObjects = robot.getDetectedObjects();
-    for (final DetectedObject detectedObj : _detectedObjects) {
-      AreaObject _object = detectedObj.getObject();
-      boolean _equals = Objects.equal(_object, areaObject);
-      if (_equals) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean removeAreaObject(final DynamicRobot robot, final AreaObject areaObject) {
-    boolean _xblockexpression = false;
-    {
-      DetectedObject removeObject = null;
-      EList<DetectedObject> _detectedObjects = robot.getDetectedObjects();
-      for (final DetectedObject detectedObj : _detectedObjects) {
-        AreaObject _object = detectedObj.getObject();
-        boolean _equals = Objects.equal(_object, areaObject);
-        if (_equals) {
-          removeObject = detectedObj;
-        }
-      }
-      EList<DetectedObject> _detectedObjects_1 = robot.getDetectedObjects();
-      _xblockexpression = _detectedObjects_1.remove(removeObject);
-    }
-    return _xblockexpression;
-  }
-  
-  public MessageRepository initMessageRepository(final DynamicRobot robot) {
-    MessageRepository messageRepository = robot.getMessageRepository();
-    MessageRepository _messageRepository = robot.getMessageRepository();
-    boolean _equals = Objects.equal(_messageRepository, null);
-    if (_equals) {
-      MessageRepository _createMessageRepository = BehaviourFactory.eINSTANCE.createMessageRepository();
-      messageRepository = _createMessageRepository;
-      String _name = robot.getName();
-      String _plus = (_name + "MessageRepository");
-      messageRepository.setName(_plus);
-      messageRepository.setRobot(robot);
-    }
-    return messageRepository;
-  }
-  
   protected Boolean _parseMessageTarget(final UniTarget target, final DynamicRobot senderRobot, final Message message) {
     boolean _xblockexpression = false;
     {
       DynamicRobot _target = target.getTarget();
-      boolean _reachableRobot = this.reachableRobot(senderRobot, _target);
+      boolean _reachableRobot = RobotUtil.reachableRobot(senderRobot, _target);
       boolean _not = (!_reachableRobot);
       if (_not) {
         InputOutput.<String>println("not reachable");
         return null;
       }
       DynamicRobot _target_1 = target.getTarget();
-      this.initMessageRepository(_target_1);
+      RobotUtil.initMessageRepository(_target_1);
       final UnicastCommunication action = BehaviourFactory.eINSTANCE.createUnicastCommunication();
       action.setMessage(message);
       DynamicRobot _target_2 = target.getTarget();
       action.setTarget(_target_2);
-      this.addAction(senderRobot, action);
-      _xblockexpression = this.addSendedMessage(senderRobot, message);
+      RobotUtil.addAction(senderRobot, action);
+      _xblockexpression = RobotUtil.addSendedMessage(senderRobot, message);
     }
     return Boolean.valueOf(_xblockexpression);
   }
@@ -298,7 +253,7 @@ public class StatementParser {
     {
       EList<DynamicRobot> _target = target.getTarget();
       for (final DynamicRobot targetRobot : _target) {
-        boolean _reachableRobot = this.reachableRobot(senderRobot, targetRobot);
+        boolean _reachableRobot = RobotUtil.reachableRobot(senderRobot, targetRobot);
         boolean _not = (!_reachableRobot);
         if (_not) {
           return null;
@@ -306,15 +261,15 @@ public class StatementParser {
       }
       EList<DynamicRobot> _target_1 = target.getTarget();
       for (final DynamicRobot targetRobot_1 : _target_1) {
-        this.initMessageRepository(targetRobot_1);
+        RobotUtil.initMessageRepository(targetRobot_1);
       }
       final MulticastCommunication action = BehaviourFactory.eINSTANCE.createMulticastCommunication();
       action.setMessage(message);
       EList<DynamicRobot> _targets = action.getTargets();
       EList<DynamicRobot> _target_2 = target.getTarget();
       _targets.addAll(_target_2);
-      this.addAction(senderRobot, action);
-      _xblockexpression = this.addSendedMessage(senderRobot, message);
+      RobotUtil.addAction(senderRobot, action);
+      _xblockexpression = RobotUtil.addSendedMessage(senderRobot, message);
     }
     return Boolean.valueOf(_xblockexpression);
   }
@@ -336,37 +291,14 @@ public class StatementParser {
         targetRobots.add(_collaborator);
       }
       for (final DynamicRobot robot : targetRobots) {
-        this.initMessageRepository(robot);
+        RobotUtil.initMessageRepository(robot);
       }
       EList<DynamicRobot> _targets = action.getTargets();
       _targets.addAll(targetRobots);
-      this.addAction(senderRobot, action);
-      _xblockexpression = this.addSendedMessage(senderRobot, message);
+      RobotUtil.addAction(senderRobot, action);
+      _xblockexpression = RobotUtil.addSendedMessage(senderRobot, message);
     }
     return Boolean.valueOf(_xblockexpression);
-  }
-  
-  public boolean addAction(final DynamicRobot senderRobot, final Action action) {
-    EList<Action> _actions = senderRobot.getActions();
-    return _actions.add(action);
-  }
-  
-  public boolean addSendedMessage(final DynamicRobot senderRobot, final Message message) {
-    MessageRepository _messageRepository = senderRobot.getMessageRepository();
-    EList<Message> _sendedMessages = _messageRepository.getSendedMessages();
-    return _sendedMessages.add(message);
-  }
-  
-  public boolean reachableRobot(final DynamicRobot origin, final DynamicRobot target) {
-    EList<RobotCollaboration> _collaborations = origin.getCollaborations();
-    for (final RobotCollaboration collab : _collaborations) {
-      DynamicRobot _collaborator = collab.getCollaborator();
-      boolean _equals = Objects.equal(_collaborator, target);
-      if (_equals) {
-        return true;
-      }
-    }
-    return false;
   }
   
   protected Boolean _parseStatement(final CollaborationStatement statement, final Resource resourceOfBehaviour) {

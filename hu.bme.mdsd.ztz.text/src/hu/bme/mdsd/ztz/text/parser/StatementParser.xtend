@@ -27,8 +27,11 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement
+import static extension hu.bme.mdsd.ztz.text.util.RobotUtil.*
 
 class StatementParser {
+	
+	
 	
 	def parseStatements(Resource resource, Resource resourceOfBehaviour) {
 		val statements = (resource.contents.get(0) as BehaviourLanguage).statements
@@ -131,35 +134,35 @@ class StatementParser {
 		task.status = statement.status		
 	}
 	
-	def boolean detected(DynamicRobot robot, AreaObject areaObject) {
-		for (DetectedObject detectedObj : robot.detectedObjects) {
-			if (detectedObj.object == areaObject) {
-				return true
-			}
-		}
-		return false
-	}
-	
-	def removeAreaObject(DynamicRobot robot, AreaObject areaObject) {
-		var DetectedObject removeObject 
-		for (DetectedObject detectedObj : robot.detectedObjects) {
-			if (detectedObj.object == areaObject) {
-				removeObject = detectedObj
-			}
-		}
-		robot.detectedObjects.remove(removeObject)
-	}
-	
-	def MessageRepository initMessageRepository(DynamicRobot robot) {
-		var MessageRepository messageRepository = robot.messageRepository
-		
-		if (robot.messageRepository == null) {
-			messageRepository = BehaviourFactory.eINSTANCE.createMessageRepository()
-			messageRepository.name = robot.name + "MessageRepository"
-			messageRepository.robot = robot
-		}
-		return messageRepository
-	}
+//	def boolean detected(DynamicRobot robot, AreaObject areaObject) {
+//		for (DetectedObject detectedObj : robot.detectedObjects) {
+//			if (detectedObj.object == areaObject) {
+//				return true
+//			}
+//		}
+//		return false
+//	}
+//	
+//	def removeAreaObject(DynamicRobot robot, AreaObject areaObject) {
+//		var DetectedObject removeObject 
+//		for (DetectedObject detectedObj : robot.detectedObjects) {
+//			if (detectedObj.object == areaObject) {
+//				removeObject = detectedObj
+//			}
+//		}
+//		robot.detectedObjects.remove(removeObject)
+//	}
+//	
+//	def MessageRepository initMessageRepository(DynamicRobot robot) {
+//		var MessageRepository messageRepository = robot.messageRepository
+//		
+//		if (robot.messageRepository == null) {
+//			messageRepository = BehaviourFactory.eINSTANCE.createMessageRepository()
+//			messageRepository.name = robot.name + "MessageRepository"
+//			messageRepository.robot = robot
+//		}
+//		return messageRepository
+//	}
 
 
 	def dispatch parseMessageTarget(UniTarget target, DynamicRobot senderRobot, Message message) {
@@ -212,24 +215,24 @@ class StatementParser {
 		addSendedMessage(senderRobot, message)
 	}
 	
-	def addAction(DynamicRobot senderRobot, Action action) {
-		senderRobot.actions.add(action)
-	}
-
-
-	def addSendedMessage(DynamicRobot senderRobot, Message message) {
-		senderRobot.messageRepository.sendedMessages.add(message)
-	}
-	
-	
-	def boolean reachableRobot(DynamicRobot origin, DynamicRobot target) {
-		for (RobotCollaboration collab : origin.collaborations) {
-			if (collab.collaborator == target) {
-				return true
-			}
-		}
-		return false
-	}
+//	def addAction(DynamicRobot senderRobot, Action action) {
+//		senderRobot.actions.add(action)
+//	}
+//
+//
+//	def addSendedMessage(DynamicRobot senderRobot, Message message) {
+//		senderRobot.messageRepository.sendedMessages.add(message)
+//	}
+//	
+//	
+//	def boolean reachableRobot(DynamicRobot origin, DynamicRobot target) {
+//		for (RobotCollaboration collab : origin.collaborations) {
+//			if (collab.collaborator == target) {
+//				return true
+//			}
+//		}
+//		return false
+//	}
 
 	def dispatch parseStatement(CollaborationStatement statement, Resource resourceOfBehaviour) {
 		val robot = statement.robot
