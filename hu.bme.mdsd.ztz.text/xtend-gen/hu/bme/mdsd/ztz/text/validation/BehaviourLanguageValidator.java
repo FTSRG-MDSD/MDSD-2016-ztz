@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 
 /**
  * This class contains custom validation rules.
@@ -47,9 +48,27 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
         Resource _xblockexpression = null;
         {
           final ResourceManager manager = ResourceManager.getInstance();
-          _xblockexpression = manager.load(imp);
+          Resource _xtrycatchfinallyexpression = null;
+          try {
+            _xtrycatchfinallyexpression = manager.load(imp);
+          } catch (final Throwable _t) {
+            if (_t instanceof Exception) {
+              final Exception e = (Exception)_t;
+              String _message = e.getMessage();
+              this.error(_message, BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT);
+            } else {
+              throw Exceptions.sneakyThrow(_t);
+            }
+          }
+          _xblockexpression = _xtrycatchfinallyexpression;
         }
         _xifexpression_1 = _xblockexpression;
+      } else {
+        ResourceManager _instance_1 = ResourceManager.getInstance();
+        String _acceptedDomain_1 = _instance_1.getAcceptedDomain();
+        String _plus = ("The resource must be an instance of " + _acceptedDomain_1);
+        this.error(_plus, 
+          BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT);
       }
       _xifexpression = _xifexpression_1;
     }

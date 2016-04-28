@@ -11,8 +11,6 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage
 import hu.bme.mdsd.ztz.model.drone.DronePackage
 import hu.bme.mdsd.ztz.model.behaviour.Message
 
@@ -30,7 +28,16 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 			error("Import cannot be empty", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT)
 		} else if (imp.importURI.endsWith(ResourceManager.instance.acceptedDomain)){
 			val manager = ResourceManager.instance
-			manager.load(imp)
+			try {
+				manager.load(imp)
+			}
+			catch (Exception e) {
+				error(e.message, BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT)
+			}
+		} else {
+			error("The resource must be an instance of " + ResourceManager.instance.acceptedDomain, 
+				BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT
+			)
 		}
 	}
 	
