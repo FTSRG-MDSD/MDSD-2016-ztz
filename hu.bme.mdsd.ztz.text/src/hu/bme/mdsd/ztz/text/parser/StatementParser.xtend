@@ -2,13 +2,9 @@ package hu.bme.mdsd.ztz.text.parser
 
 import hu.bme.mdsd.ztz.model.behaviour.Action
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
-import hu.bme.mdsd.ztz.model.behaviour.DetectedObject
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.model.behaviour.Message
-import hu.bme.mdsd.ztz.model.behaviour.MessageRepository
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
-import hu.bme.mdsd.ztz.model.behaviour.TaskExecution
-import hu.bme.mdsd.ztz.model.drone.AreaObject
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
@@ -30,8 +26,6 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement
 import static extension hu.bme.mdsd.ztz.text.util.RobotUtil.*
 
 class StatementParser {
-	
-	
 	
 	def parseStatements(Resource resource, Resource resourceOfBehaviour) {
 		val statements = (resource.contents.get(0) as BehaviourLanguage).statements
@@ -74,25 +68,17 @@ class StatementParser {
 		val robot = statement.robot 
 		var execution = statement.action.currentTaskExecution
 		
-		addExecution(execution, robot)
+		robot.addExecution(execution)
 		robot.actions.add(statement.action)
 		if (!statement.moreactions.empty) {
 			for (Action action : statement.moreactions) {
 				execution = action.currentTaskExecution
-				addExecution(execution, robot)
+				robot.addExecution(execution)
 			}
 			statement.robot.actions.addAll(statement.moreactions)
 		}
 	}
 	
-	def addExecution(TaskExecution execution, DynamicRobot robot) {
-		if (execution != null) {
-			if (!robot.executedTasks.contains(execution)) {
-				robot.executedTasks.add(execution)
-			}
-		}
-	}
-
 	def dispatch parseStatement(DetectionStatement statement, Resource resourceOfBehaviour) {
 		val robot = statement.robot
 		robot.removeAreaObject(statement.object)
@@ -111,13 +97,12 @@ class StatementParser {
 		}
 	}
 	
-
 	def dispatch parseStatement(MessageStatement statement, Resource resourceOfBehaviour) {
 		val senderRobot = statement.robot
 		initMessageRepository(senderRobot)
 
-		val messageTarget = statement.target 
-		val message = statement.message
+		var messageTarget = statement.target
+		var message = statement.message
 
 		messageTarget.parseMessageTarget(senderRobot, message)
 		
@@ -134,37 +119,6 @@ class StatementParser {
 		task.status = statement.status		
 	}
 	
-//	def boolean detected(DynamicRobot robot, AreaObject areaObject) {
-//		for (DetectedObject detectedObj : robot.detectedObjects) {
-//			if (detectedObj.object == areaObject) {
-//				return true
-//			}
-//		}
-//		return false
-//	}
-//	
-//	def removeAreaObject(DynamicRobot robot, AreaObject areaObject) {
-//		var DetectedObject removeObject 
-//		for (DetectedObject detectedObj : robot.detectedObjects) {
-//			if (detectedObj.object == areaObject) {
-//				removeObject = detectedObj
-//			}
-//		}
-//		robot.detectedObjects.remove(removeObject)
-//	}
-//	
-//	def MessageRepository initMessageRepository(DynamicRobot robot) {
-//		var MessageRepository messageRepository = robot.messageRepository
-//		
-//		if (robot.messageRepository == null) {
-//			messageRepository = BehaviourFactory.eINSTANCE.createMessageRepository()
-//			messageRepository.name = robot.name + "MessageRepository"
-//			messageRepository.robot = robot
-//		}
-//		return messageRepository
-//	}
-
-
 	def dispatch parseMessageTarget(UniTarget target, DynamicRobot senderRobot, Message message) {
 		if (!reachableRobot(senderRobot, target.target)) {
 			println("not reachable")
@@ -215,25 +169,6 @@ class StatementParser {
 		addSendedMessage(senderRobot, message)
 	}
 	
-//	def addAction(DynamicRobot senderRobot, Action action) {
-//		senderRobot.actions.add(action)
-//	}
-//
-//
-//	def addSendedMessage(DynamicRobot senderRobot, Message message) {
-//		senderRobot.messageRepository.sendedMessages.add(message)
-//	}
-//	
-//	
-//	def boolean reachableRobot(DynamicRobot origin, DynamicRobot target) {
-//		for (RobotCollaboration collab : origin.collaborations) {
-//			if (collab.collaborator == target) {
-//				return true
-//			}
-//		}
-//		return false
-//	}
-
 	def dispatch parseStatement(CollaborationStatement statement, Resource resourceOfBehaviour) {
 		val robot = statement.robot
 

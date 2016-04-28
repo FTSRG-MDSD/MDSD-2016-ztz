@@ -8,6 +8,7 @@ import hu.bme.mdsd.ztz.model.behaviour.MessageRepository
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
 import hu.bme.mdsd.ztz.model.drone.AreaObject
 import hu.bme.mdsd.ztz.model.behaviour.DetectedObject
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution
 
 class RobotUtil {
 
@@ -38,6 +39,15 @@ class RobotUtil {
 		}
 		return messageRepository
 	}
+
+	def static addExecution(DynamicRobot robot, TaskExecution execution) {
+		if (execution != null) {
+			if (!robot.executedTasks.contains(execution)) {
+				robot.executedTasks.add(execution)
+			}
+		}
+	}
+
 
 	def static boolean detected(DynamicRobot robot, AreaObject areaObject) {
 		for (DetectedObject detectedObj : robot.detectedObjects) {

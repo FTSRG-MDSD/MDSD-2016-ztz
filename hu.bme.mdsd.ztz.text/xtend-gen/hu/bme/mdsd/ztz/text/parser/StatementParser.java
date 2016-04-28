@@ -116,7 +116,7 @@ public class StatementParser {
       final DynamicRobot robot = statement.getRobot();
       Action _action = statement.getAction();
       TaskExecution execution = _action.getCurrentTaskExecution();
-      this.addExecution(execution, robot);
+      RobotUtil.addExecution(robot, execution);
       EList<Action> _actions = robot.getActions();
       Action _action_1 = statement.getAction();
       _actions.add(_action_1);
@@ -132,7 +132,7 @@ public class StatementParser {
             {
               TaskExecution _currentTaskExecution = action.getCurrentTaskExecution();
               execution = _currentTaskExecution;
-              this.addExecution(execution, robot);
+              RobotUtil.addExecution(robot, execution);
             }
           }
           DynamicRobot _robot = statement.getRobot();
@@ -145,23 +145,6 @@ public class StatementParser {
       _xblockexpression = _xifexpression;
     }
     return Boolean.valueOf(_xblockexpression);
-  }
-  
-  public boolean addExecution(final TaskExecution execution, final DynamicRobot robot) {
-    boolean _xifexpression = false;
-    boolean _notEquals = (!Objects.equal(execution, null));
-    if (_notEquals) {
-      boolean _xifexpression_1 = false;
-      EList<TaskExecution> _executedTasks = robot.getExecutedTasks();
-      boolean _contains = _executedTasks.contains(execution);
-      boolean _not = (!_contains);
-      if (_not) {
-        EList<TaskExecution> _executedTasks_1 = robot.getExecutedTasks();
-        _xifexpression_1 = _executedTasks_1.add(execution);
-      }
-      _xifexpression = _xifexpression_1;
-    }
-    return _xifexpression;
   }
   
   protected Boolean _parseStatement(final DetectionStatement statement, final Resource resourceOfBehaviour) {
@@ -205,8 +188,8 @@ public class StatementParser {
     {
       final DynamicRobot senderRobot = statement.getRobot();
       RobotUtil.initMessageRepository(senderRobot);
-      final MessageTarget messageTarget = statement.getTarget();
-      final Message message = statement.getMessage();
+      MessageTarget messageTarget = statement.getTarget();
+      Message message = statement.getMessage();
       _xblockexpression = this.parseMessageTarget(messageTarget, senderRobot, message);
     }
     return _xblockexpression;

@@ -8,6 +8,7 @@ import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import org.eclipse.emf.common.util.EList;
 
@@ -49,6 +50,23 @@ public class RobotUtil {
       messageRepository.setRobot(robot);
     }
     return messageRepository;
+  }
+  
+  public static boolean addExecution(final DynamicRobot robot, final TaskExecution execution) {
+    boolean _xifexpression = false;
+    boolean _notEquals = (!Objects.equal(execution, null));
+    if (_notEquals) {
+      boolean _xifexpression_1 = false;
+      EList<TaskExecution> _executedTasks = robot.getExecutedTasks();
+      boolean _contains = _executedTasks.contains(execution);
+      boolean _not = (!_contains);
+      if (_not) {
+        EList<TaskExecution> _executedTasks_1 = robot.getExecutedTasks();
+        _xifexpression_1 = _executedTasks_1.add(execution);
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
   }
   
   public static boolean detected(final DynamicRobot robot, final AreaObject areaObject) {

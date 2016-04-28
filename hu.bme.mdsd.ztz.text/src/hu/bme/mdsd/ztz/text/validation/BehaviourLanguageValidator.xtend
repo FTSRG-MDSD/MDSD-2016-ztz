@@ -10,7 +10,6 @@ import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution
 import hu.bme.mdsd.ztz.model.drone.DronePackage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
@@ -19,7 +18,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
 import org.eclipse.xtext.validation.Check
-
+import java.util.Iterator
 
 /**
  * This class contains custom validation rules. 
@@ -101,7 +100,7 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 	@Check
 	def checkUniqueMessageStatement(MessageStatement statement) {
 		val robot = statement.robot
-		val collabStatements = (statement.eContainer as BehaviourLanguage).statements.filter(CollaborationStatement)
+		val collabStatements = statement.eResource.allContents.filter(CollaborationStatement)
 		val target = statement.target 
 		
 		if (target instanceof UniTarget) {
@@ -122,8 +121,9 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		}
 	}
 	
-	def boolean hasCollaboration(Iterable<CollaborationStatement> collabStatements, DynamicRobot robot) {
-		for (CollaborationStatement stat : collabStatements) {
+	def boolean hasCollaboration(Iterator<CollaborationStatement> collabStatements, DynamicRobot robot) {
+		while(collabStatements.hasNext) {
+			var stat = collabStatements.next
 				if (stat.robot == robot) {
 					return true		
 				} else {
@@ -133,12 +133,13 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 						}
 					}
 				}
-			}
+		}
 		return false
 	}
 	
-	def inCollaboration(Iterable<CollaborationStatement> collabStatements, DynamicRobot robot, DynamicRobot targetRobot) {
-		for (CollaborationStatement stat : collabStatements) {
+	def inCollaboration(Iterator<CollaborationStatement> collabStatements, DynamicRobot robot, DynamicRobot targetRobot) {
+		while(collabStatements.hasNext) {
+			var stat = collabStatements.next
 			if (stat.robot == targetRobot) {
 				return true
 			} else if (stat.robot == robot) {
@@ -151,4 +152,5 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		}
 		return false
 	}
+	
 }

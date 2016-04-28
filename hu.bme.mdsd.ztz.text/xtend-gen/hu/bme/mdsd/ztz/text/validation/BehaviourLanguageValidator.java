@@ -4,7 +4,6 @@
 package hu.bme.mdsd.ztz.text.validation;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
@@ -13,14 +12,12 @@ import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
@@ -160,9 +157,9 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
   @Check
   public void checkUniqueMessageStatement(final MessageStatement statement) {
     final DynamicRobot robot = statement.getRobot();
-    EObject _eContainer = statement.eContainer();
-    EList<Statement> _statements = ((BehaviourLanguage) _eContainer).getStatements();
-    final Iterable<CollaborationStatement> collabStatements = Iterables.<CollaborationStatement>filter(_statements, CollaborationStatement.class);
+    Resource _eResource = statement.eResource();
+    TreeIterator<EObject> _allContents = _eResource.getAllContents();
+    final Iterator<CollaborationStatement> collabStatements = Iterators.<CollaborationStatement>filter(_allContents, CollaborationStatement.class);
     final MessageTarget target = statement.getTarget();
     if ((target instanceof UniTarget)) {
       DynamicRobot _target = ((UniTarget)target).getTarget();
@@ -193,19 +190,22 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
     }
   }
   
-  public boolean hasCollaboration(final Iterable<CollaborationStatement> collabStatements, final DynamicRobot robot) {
-    for (final CollaborationStatement stat : collabStatements) {
-      DynamicRobot _robot = stat.getRobot();
-      boolean _equals = Objects.equal(_robot, robot);
-      if (_equals) {
-        return true;
-      } else {
-        EList<RobotCollaboration> _collaboration = stat.getCollaboration();
-        for (final RobotCollaboration collab : _collaboration) {
-          DynamicRobot _collaborator = collab.getCollaborator();
-          boolean _equals_1 = Objects.equal(_collaborator, robot);
-          if (_equals_1) {
-            return true;
+  public boolean hasCollaboration(final Iterator<CollaborationStatement> collabStatements, final DynamicRobot robot) {
+    while (collabStatements.hasNext()) {
+      {
+        CollaborationStatement stat = collabStatements.next();
+        DynamicRobot _robot = stat.getRobot();
+        boolean _equals = Objects.equal(_robot, robot);
+        if (_equals) {
+          return true;
+        } else {
+          EList<RobotCollaboration> _collaboration = stat.getCollaboration();
+          for (final RobotCollaboration collab : _collaboration) {
+            DynamicRobot _collaborator = collab.getCollaborator();
+            boolean _equals_1 = Objects.equal(_collaborator, robot);
+            if (_equals_1) {
+              return true;
+            }
           }
         }
       }
@@ -213,22 +213,25 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
     return false;
   }
   
-  public boolean inCollaboration(final Iterable<CollaborationStatement> collabStatements, final DynamicRobot robot, final DynamicRobot targetRobot) {
-    for (final CollaborationStatement stat : collabStatements) {
-      DynamicRobot _robot = stat.getRobot();
-      boolean _equals = Objects.equal(_robot, targetRobot);
-      if (_equals) {
-        return true;
-      } else {
-        DynamicRobot _robot_1 = stat.getRobot();
-        boolean _equals_1 = Objects.equal(_robot_1, robot);
-        if (_equals_1) {
-          EList<RobotCollaboration> _collaboration = stat.getCollaboration();
-          for (final RobotCollaboration collab : _collaboration) {
-            DynamicRobot _collaborator = collab.getCollaborator();
-            boolean _equals_2 = Objects.equal(_collaborator, targetRobot);
-            if (_equals_2) {
-              return true;
+  public boolean inCollaboration(final Iterator<CollaborationStatement> collabStatements, final DynamicRobot robot, final DynamicRobot targetRobot) {
+    while (collabStatements.hasNext()) {
+      {
+        CollaborationStatement stat = collabStatements.next();
+        DynamicRobot _robot = stat.getRobot();
+        boolean _equals = Objects.equal(_robot, targetRobot);
+        if (_equals) {
+          return true;
+        } else {
+          DynamicRobot _robot_1 = stat.getRobot();
+          boolean _equals_1 = Objects.equal(_robot_1, robot);
+          if (_equals_1) {
+            EList<RobotCollaboration> _collaboration = stat.getCollaboration();
+            for (final RobotCollaboration collab : _collaboration) {
+              DynamicRobot _collaborator = collab.getCollaborator();
+              boolean _equals_2 = Objects.equal(_collaborator, targetRobot);
+              if (_equals_2) {
+                return true;
+              }
             }
           }
         }

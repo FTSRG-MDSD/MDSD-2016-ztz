@@ -106,6 +106,8 @@ RobotStatusCondition:
 	robot=[DynamicRobot] ((equal?='==') | (notEqual?='!=')) robotStatus=RobotStatus
 ;
 
+
+
 TaskExecution returns TaskExecution:
 	name=EString ':' task=[drone::Task]
 	'{'
