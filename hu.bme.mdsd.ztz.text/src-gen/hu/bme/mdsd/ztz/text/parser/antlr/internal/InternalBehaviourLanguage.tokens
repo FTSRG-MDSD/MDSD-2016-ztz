@@ -1,13 +1,13 @@
-'!='=35
-'('=31
-')'=32
-'*'=33
+'!='=36
+'('=32
+')'=33
+'*'=34
 ','=15
 '-'=54
 '->'=25
 '.'=55
 ':'=20
-'=='=34
+'=='=35
 'BehaviouralPropertyKeyContainer'=45
 'CapabilityProperties'=52
 'Declaration'=12
@@ -52,7 +52,7 @@
 'properties'=43
 'requiredCapabilities'=42
 'send'=26
-'status'=36
+'set'=31
 'taskExecution'=40
 'then'=22
 'value'=49

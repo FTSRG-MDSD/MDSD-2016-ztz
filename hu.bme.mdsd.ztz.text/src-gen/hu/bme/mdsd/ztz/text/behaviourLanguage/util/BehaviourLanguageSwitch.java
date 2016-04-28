@@ -155,6 +155,35 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case BehaviourLanguagePackage.STATUS_STATEMENT:
+      {
+        StatusStatement statusStatement = (StatusStatement)theEObject;
+        T result = caseStatusStatement(statusStatement);
+        if (result == null) result = caseAtomicStatement(statusStatement);
+        if (result == null) result = caseStatement(statusStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT:
+      {
+        RobotStatusStatement robotStatusStatement = (RobotStatusStatement)theEObject;
+        T result = caseRobotStatusStatement(robotStatusStatement);
+        if (result == null) result = caseStatusStatement(robotStatusStatement);
+        if (result == null) result = caseAtomicStatement(robotStatusStatement);
+        if (result == null) result = caseStatement(robotStatusStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.TASK_STATUS_STATEMENT:
+      {
+        TaskStatusStatement taskStatusStatement = (TaskStatusStatement)theEObject;
+        T result = caseTaskStatusStatement(taskStatusStatement);
+        if (result == null) result = caseStatusStatement(taskStatusStatement);
+        if (result == null) result = caseAtomicStatement(taskStatusStatement);
+        if (result == null) result = caseStatement(taskStatusStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case BehaviourLanguagePackage.MESSAGE_TARGET:
       {
         MessageTarget messageTarget = (MessageTarget)theEObject;
@@ -369,6 +398,54 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExecutionStatement(ExecutionStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Status Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Status Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStatusStatement(StatusStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Robot Status Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Robot Status Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRobotStatusStatement(RobotStatusStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Task Status Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Task Status Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTaskStatusStatement(TaskStatusStatement object)
   {
     return null;
   }

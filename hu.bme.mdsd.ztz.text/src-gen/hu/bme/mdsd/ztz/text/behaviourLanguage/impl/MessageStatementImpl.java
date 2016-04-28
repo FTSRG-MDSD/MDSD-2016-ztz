@@ -3,6 +3,7 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl#getRobot <em>Robot</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl#getMessage <em>Message</em>}</li>
  * </ul>
@@ -33,6 +35,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class MessageStatementImpl extends AtomicStatementImpl implements MessageStatement
 {
+  /**
+   * The cached value of the '{@link #getRobot() <em>Robot</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRobot()
+   * @generated
+   * @ordered
+   */
+  protected DynamicRobot robot;
+
   /**
    * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -72,6 +84,49 @@ public class MessageStatementImpl extends AtomicStatementImpl implements Message
   protected EClass eStaticClass()
   {
     return BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot getRobot()
+  {
+    if (robot != null && robot.eIsProxy())
+    {
+      InternalEObject oldRobot = (InternalEObject)robot;
+      robot = (DynamicRobot)eResolveProxy(oldRobot);
+      if (robot != oldRobot)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourLanguagePackage.MESSAGE_STATEMENT__ROBOT, oldRobot, robot));
+      }
+    }
+    return robot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot basicGetRobot()
+  {
+    return robot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRobot(DynamicRobot newRobot)
+  {
+    DynamicRobot oldRobot = robot;
+    robot = newRobot;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.MESSAGE_STATEMENT__ROBOT, oldRobot, robot));
   }
 
   /**
@@ -198,6 +253,9 @@ public class MessageStatementImpl extends AtomicStatementImpl implements Message
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.MESSAGE_STATEMENT__ROBOT:
+        if (resolve) return getRobot();
+        return basicGetRobot();
       case BehaviourLanguagePackage.MESSAGE_STATEMENT__TARGET:
         return getTarget();
       case BehaviourLanguagePackage.MESSAGE_STATEMENT__MESSAGE:
@@ -216,6 +274,9 @@ public class MessageStatementImpl extends AtomicStatementImpl implements Message
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.MESSAGE_STATEMENT__ROBOT:
+        setRobot((DynamicRobot)newValue);
+        return;
       case BehaviourLanguagePackage.MESSAGE_STATEMENT__TARGET:
         setTarget((MessageTarget)newValue);
         return;
@@ -236,6 +297,9 @@ public class MessageStatementImpl extends AtomicStatementImpl implements Message
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.MESSAGE_STATEMENT__ROBOT:
+        setRobot((DynamicRobot)null);
+        return;
       case BehaviourLanguagePackage.MESSAGE_STATEMENT__TARGET:
         setTarget((MessageTarget)null);
         return;
@@ -256,6 +320,8 @@ public class MessageStatementImpl extends AtomicStatementImpl implements Message
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.MESSAGE_STATEMENT__ROBOT:
+        return robot != null;
       case BehaviourLanguagePackage.MESSAGE_STATEMENT__TARGET:
         return target != null;
       case BehaviourLanguagePackage.MESSAGE_STATEMENT__MESSAGE:

@@ -3,6 +3,7 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage;
 
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement#getRobot <em>Robot</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement#getCollaboration <em>Collaboration</em>}</li>
  * </ul>
  *
@@ -25,6 +27,32 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CollaborationStatement extends AtomicStatement
 {
+  /**
+   * Returns the value of the '<em><b>Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Robot</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Robot</em>' reference.
+   * @see #setRobot(DynamicRobot)
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCollaborationStatement_Robot()
+   * @model
+   * @generated
+   */
+  DynamicRobot getRobot();
+
+  /**
+   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement#getRobot <em>Robot</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Robot</em>' reference.
+   * @see #getRobot()
+   * @generated
+   */
+  void setRobot(DynamicRobot value);
+
   /**
    * Returns the value of the '<em><b>Collaboration</b></em>' containment reference list.
    * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration}.

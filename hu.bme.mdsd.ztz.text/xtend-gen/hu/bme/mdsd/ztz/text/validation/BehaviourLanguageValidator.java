@@ -64,7 +64,7 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       DynamicRobot _collaborator = collab.getCollaborator();
       boolean _equals = Objects.equal(_robot, _collaborator);
       if (_equals) {
-        this.error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT__ROBOT, ErrorCodes.SAME_COLLABORATOR);
+        this.error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.COLLABORATION_STATEMENT__ROBOT, ErrorCodes.SAME_COLLABORATOR);
       }
     }
   }

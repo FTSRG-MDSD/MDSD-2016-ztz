@@ -340,12 +340,14 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final RuleCall cCollaborationStatementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cDetectionStatementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cExecutionStatementParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cStatusStatementParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//AtomicStatement:
-		//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement;
+		//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement |
+		//	StatusStatement;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement
+		//ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement | StatusStatement
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ActionStatement
@@ -362,6 +364,9 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//ExecutionStatement
 		public RuleCall getExecutionStatementParserRuleCall_4() { return cExecutionStatementParserRuleCall_4; }
+		
+		//StatusStatement
+		public RuleCall getStatusStatementParserRuleCall_5() { return cStatusStatementParserRuleCall_5; }
 	}
 	public class ConditionalStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.ConditionalStatement");
@@ -661,6 +666,95 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//ID
 		public RuleCall getExecutionTaskExecutionIDTerminalRuleCall_2_0_1() { return cExecutionTaskExecutionIDTerminalRuleCall_2_0_1; }
 	}
+	public class StatusStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.StatusStatement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cRobotStatusStatementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cTaskStatusStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//StatusStatement:
+		//	RobotStatusStatement | TaskStatusStatement;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//RobotStatusStatement | TaskStatusStatement
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//RobotStatusStatement
+		public RuleCall getRobotStatusStatementParserRuleCall_0() { return cRobotStatusStatementParserRuleCall_0; }
+		
+		//TaskStatusStatement
+		public RuleCall getTaskStatusStatementParserRuleCall_1() { return cTaskStatusStatementParserRuleCall_1; }
+	}
+	public class RobotStatusStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.RobotStatusStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cRobotAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cRobotDynamicRobotCrossReference_0_0 = (CrossReference)cRobotAssignment_0.eContents().get(0);
+		private final RuleCall cRobotDynamicRobotIDTerminalRuleCall_0_0_1 = (RuleCall)cRobotDynamicRobotCrossReference_0_0.eContents().get(1);
+		private final Keyword cSetKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cStatusAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStatusRobotStatusEnumRuleCall_2_0 = (RuleCall)cStatusAssignment_2.eContents().get(0);
+		
+		//RobotStatusStatement:
+		//	robot=[DynamicRobot] 'set' status=RobotStatus;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//robot=[DynamicRobot] 'set' status=RobotStatus
+		public Group getGroup() { return cGroup; }
+		
+		//robot=[DynamicRobot]
+		public Assignment getRobotAssignment_0() { return cRobotAssignment_0; }
+		
+		//[DynamicRobot]
+		public CrossReference getRobotDynamicRobotCrossReference_0_0() { return cRobotDynamicRobotCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getRobotDynamicRobotIDTerminalRuleCall_0_0_1() { return cRobotDynamicRobotIDTerminalRuleCall_0_0_1; }
+		
+		//'set'
+		public Keyword getSetKeyword_1() { return cSetKeyword_1; }
+		
+		//status=RobotStatus
+		public Assignment getStatusAssignment_2() { return cStatusAssignment_2; }
+		
+		//RobotStatus
+		public RuleCall getStatusRobotStatusEnumRuleCall_2_0() { return cStatusRobotStatusEnumRuleCall_2_0; }
+	}
+	public class TaskStatusStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskStatusStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTaskAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cTaskTaskExecutionCrossReference_0_0 = (CrossReference)cTaskAssignment_0.eContents().get(0);
+		private final RuleCall cTaskTaskExecutionIDTerminalRuleCall_0_0_1 = (RuleCall)cTaskTaskExecutionCrossReference_0_0.eContents().get(1);
+		private final Keyword cSetKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cStatusAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStatusTaskExecutionStatusEnumRuleCall_2_0 = (RuleCall)cStatusAssignment_2.eContents().get(0);
+		
+		//TaskStatusStatement:
+		//	task=[TaskExecution] 'set' status=TaskExecutionStatus;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//task=[TaskExecution] 'set' status=TaskExecutionStatus
+		public Group getGroup() { return cGroup; }
+		
+		//task=[TaskExecution]
+		public Assignment getTaskAssignment_0() { return cTaskAssignment_0; }
+		
+		//[TaskExecution]
+		public CrossReference getTaskTaskExecutionCrossReference_0_0() { return cTaskTaskExecutionCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getTaskTaskExecutionIDTerminalRuleCall_0_0_1() { return cTaskTaskExecutionIDTerminalRuleCall_0_0_1; }
+		
+		//'set'
+		public Keyword getSetKeyword_1() { return cSetKeyword_1; }
+		
+		//status=TaskExecutionStatus
+		public Assignment getStatusAssignment_2() { return cStatusAssignment_2; }
+		
+		//TaskExecutionStatus
+		public RuleCall getStatusTaskExecutionStatusEnumRuleCall_2_0() { return cStatusTaskExecutionStatusEnumRuleCall_2_0; }
+	}
 	public class MessageTargetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MessageTarget");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -901,23 +995,18 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final RuleCall cTaskTaskIDTerminalRuleCall_2_0_1 = (RuleCall)cTaskTaskCrossReference_2_0.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cStatusKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cStatusAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cStatusTaskExecutionStatusEnumRuleCall_4_1_0 = (RuleCall)cStatusAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cExecutionTimeKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cExecutionTimeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cExecutionTimeMeasureValueParserRuleCall_5_1_0 = (RuleCall)cExecutionTimeAssignment_5_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cExecutionTimeKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cExecutionTimeAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cExecutionTimeMeasureValueParserRuleCall_4_1_0 = (RuleCall)cExecutionTimeAssignment_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//TaskExecution:
 		//	name=EString ':' task=[drone::Task]
-		//	'{' ('status' status=TaskExecutionStatus)? ('executionTime' executionTime=MeasureValue)?
+		//	'{' ('executionTime' executionTime=MeasureValue)?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=EString ':' task=[drone::Task] '{' ('status' status=TaskExecutionStatus)? ('executionTime'
-		//executionTime=MeasureValue)? '}'
+		//name=EString ':' task=[drone::Task] '{' ('executionTime' executionTime=MeasureValue)? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//name=EString
@@ -941,32 +1030,20 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//('status' status=TaskExecutionStatus)?
+		//('executionTime' executionTime=MeasureValue)?
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//'status'
-		public Keyword getStatusKeyword_4_0() { return cStatusKeyword_4_0; }
-		
-		//status=TaskExecutionStatus
-		public Assignment getStatusAssignment_4_1() { return cStatusAssignment_4_1; }
-		
-		//TaskExecutionStatus
-		public RuleCall getStatusTaskExecutionStatusEnumRuleCall_4_1_0() { return cStatusTaskExecutionStatusEnumRuleCall_4_1_0; }
-		
-		//('executionTime' executionTime=MeasureValue)?
-		public Group getGroup_5() { return cGroup_5; }
-		
 		//'executionTime'
-		public Keyword getExecutionTimeKeyword_5_0() { return cExecutionTimeKeyword_5_0; }
+		public Keyword getExecutionTimeKeyword_4_0() { return cExecutionTimeKeyword_4_0; }
 		
 		//executionTime=MeasureValue
-		public Assignment getExecutionTimeAssignment_5_1() { return cExecutionTimeAssignment_5_1; }
+		public Assignment getExecutionTimeAssignment_4_1() { return cExecutionTimeAssignment_4_1; }
 		
 		//MeasureValue
-		public RuleCall getExecutionTimeMeasureValueParserRuleCall_5_1_0() { return cExecutionTimeMeasureValueParserRuleCall_5_1_0; }
+		public RuleCall getExecutionTimeMeasureValueParserRuleCall_4_1_0() { return cExecutionTimeMeasureValueParserRuleCall_4_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 	public class TaskRequirementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskRequirement");
@@ -2122,6 +2199,9 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	private final CollaborationStatementElements pCollaborationStatement;
 	private final DetectionStatementElements pDetectionStatement;
 	private final ExecutionStatementElements pExecutionStatement;
+	private final StatusStatementElements pStatusStatement;
+	private final RobotStatusStatementElements pRobotStatusStatement;
+	private final TaskStatusStatementElements pTaskStatusStatement;
 	private final MessageTargetElements pMessageTarget;
 	private final UniTargetElements pUniTarget;
 	private final MultiTargetElements pMultiTarget;
@@ -2169,6 +2249,9 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		this.pCollaborationStatement = new CollaborationStatementElements();
 		this.pDetectionStatement = new DetectionStatementElements();
 		this.pExecutionStatement = new ExecutionStatementElements();
+		this.pStatusStatement = new StatusStatementElements();
+		this.pRobotStatusStatement = new RobotStatusStatementElements();
+		this.pTaskStatusStatement = new TaskStatusStatementElements();
 		this.pMessageTarget = new MessageTargetElements();
 		this.pUniTarget = new UniTargetElements();
 		this.pMultiTarget = new MultiTargetElements();
@@ -2291,7 +2374,8 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 	
 	//AtomicStatement:
-	//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement;
+	//	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement |
+	//	StatusStatement;
 	public AtomicStatementElements getAtomicStatementAccess() {
 		return pAtomicStatement;
 	}
@@ -2358,6 +2442,36 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	public ParserRule getExecutionStatementRule() {
 		return getExecutionStatementAccess().getRule();
+	}
+	
+	//StatusStatement:
+	//	RobotStatusStatement | TaskStatusStatement;
+	public StatusStatementElements getStatusStatementAccess() {
+		return pStatusStatement;
+	}
+	
+	public ParserRule getStatusStatementRule() {
+		return getStatusStatementAccess().getRule();
+	}
+	
+	//RobotStatusStatement:
+	//	robot=[DynamicRobot] 'set' status=RobotStatus;
+	public RobotStatusStatementElements getRobotStatusStatementAccess() {
+		return pRobotStatusStatement;
+	}
+	
+	public ParserRule getRobotStatusStatementRule() {
+		return getRobotStatusStatementAccess().getRule();
+	}
+	
+	//TaskStatusStatement:
+	//	task=[TaskExecution] 'set' status=TaskExecutionStatus;
+	public TaskStatusStatementElements getTaskStatusStatementAccess() {
+		return pTaskStatusStatement;
+	}
+	
+	public ParserRule getTaskStatusStatementRule() {
+		return getTaskStatusStatementAccess().getRule();
 	}
 	
 	//MessageTarget:
@@ -2432,7 +2546,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	//TaskExecution:
 	//	name=EString ':' task=[drone::Task]
-	//	'{' ('status' status=TaskExecutionStatus)? ('executionTime' executionTime=MeasureValue)?
+	//	'{' ('executionTime' executionTime=MeasureValue)?
 	//	'}';
 	public TaskExecutionElements getTaskExecutionAccess() {
 		return pTaskExecution;

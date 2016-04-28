@@ -3,6 +3,7 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
@@ -10,12 +11,15 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -28,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.CollaborationStatementImpl#getRobot <em>Robot</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.CollaborationStatementImpl#getCollaboration <em>Collaboration</em>}</li>
  * </ul>
  *
@@ -35,6 +40,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class CollaborationStatementImpl extends AtomicStatementImpl implements CollaborationStatement
 {
+  /**
+   * The cached value of the '{@link #getRobot() <em>Robot</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRobot()
+   * @generated
+   * @ordered
+   */
+  protected DynamicRobot robot;
+
   /**
    * The cached value of the '{@link #getCollaboration() <em>Collaboration</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -64,6 +79,49 @@ public class CollaborationStatementImpl extends AtomicStatementImpl implements C
   protected EClass eStaticClass()
   {
     return BehaviourLanguagePackage.Literals.COLLABORATION_STATEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot getRobot()
+  {
+    if (robot != null && robot.eIsProxy())
+    {
+      InternalEObject oldRobot = (InternalEObject)robot;
+      robot = (DynamicRobot)eResolveProxy(oldRobot);
+      if (robot != oldRobot)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourLanguagePackage.COLLABORATION_STATEMENT__ROBOT, oldRobot, robot));
+      }
+    }
+    return robot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot basicGetRobot()
+  {
+    return robot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRobot(DynamicRobot newRobot)
+  {
+    DynamicRobot oldRobot = robot;
+    robot = newRobot;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.COLLABORATION_STATEMENT__ROBOT, oldRobot, robot));
   }
 
   /**
@@ -106,6 +164,9 @@ public class CollaborationStatementImpl extends AtomicStatementImpl implements C
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.COLLABORATION_STATEMENT__ROBOT:
+        if (resolve) return getRobot();
+        return basicGetRobot();
       case BehaviourLanguagePackage.COLLABORATION_STATEMENT__COLLABORATION:
         return getCollaboration();
     }
@@ -123,6 +184,9 @@ public class CollaborationStatementImpl extends AtomicStatementImpl implements C
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.COLLABORATION_STATEMENT__ROBOT:
+        setRobot((DynamicRobot)newValue);
+        return;
       case BehaviourLanguagePackage.COLLABORATION_STATEMENT__COLLABORATION:
         getCollaboration().clear();
         getCollaboration().addAll((Collection<? extends RobotCollaboration>)newValue);
@@ -141,6 +205,9 @@ public class CollaborationStatementImpl extends AtomicStatementImpl implements C
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.COLLABORATION_STATEMENT__ROBOT:
+        setRobot((DynamicRobot)null);
+        return;
       case BehaviourLanguagePackage.COLLABORATION_STATEMENT__COLLABORATION:
         getCollaboration().clear();
         return;
@@ -158,6 +225,8 @@ public class CollaborationStatementImpl extends AtomicStatementImpl implements C
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.COLLABORATION_STATEMENT__ROBOT:
+        return robot != null;
       case BehaviourLanguagePackage.COLLABORATION_STATEMENT__COLLABORATION:
         return collaboration != null && !collaboration.isEmpty();
     }

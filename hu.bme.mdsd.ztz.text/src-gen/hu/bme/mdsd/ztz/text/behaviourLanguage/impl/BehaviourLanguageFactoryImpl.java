@@ -75,6 +75,9 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
       case BehaviourLanguagePackage.COLLABORATION_STATEMENT: return createCollaborationStatement();
       case BehaviourLanguagePackage.DETECTION_STATEMENT: return createDetectionStatement();
       case BehaviourLanguagePackage.EXECUTION_STATEMENT: return createExecutionStatement();
+      case BehaviourLanguagePackage.STATUS_STATEMENT: return createStatusStatement();
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT: return createRobotStatusStatement();
+      case BehaviourLanguagePackage.TASK_STATUS_STATEMENT: return createTaskStatusStatement();
       case BehaviourLanguagePackage.MESSAGE_TARGET: return createMessageTarget();
       case BehaviourLanguagePackage.UNI_TARGET: return createUniTarget();
       case BehaviourLanguagePackage.MULTI_TARGET: return createMultiTarget();
@@ -195,6 +198,39 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
   {
     ExecutionStatementImpl executionStatement = new ExecutionStatementImpl();
     return executionStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StatusStatement createStatusStatement()
+  {
+    StatusStatementImpl statusStatement = new StatusStatementImpl();
+    return statusStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RobotStatusStatement createRobotStatusStatement()
+  {
+    RobotStatusStatementImpl robotStatusStatement = new RobotStatusStatementImpl();
+    return robotStatusStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TaskStatusStatement createTaskStatusStatement()
+  {
+    TaskStatusStatementImpl taskStatusStatement = new TaskStatusStatementImpl();
+    return taskStatusStatement;
   }
 
   /**

@@ -3,6 +3,8 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
@@ -23,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.DetectionStatementImpl#getRobot <em>Robot</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.DetectionStatementImpl#getObject <em>Object</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.DetectionStatementImpl#isObstacle <em>Obstacle</em>}</li>
  * </ul>
@@ -31,6 +34,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class DetectionStatementImpl extends AtomicStatementImpl implements DetectionStatement
 {
+  /**
+   * The cached value of the '{@link #getRobot() <em>Robot</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRobot()
+   * @generated
+   * @ordered
+   */
+  protected DynamicRobot robot;
+
   /**
    * The cached value of the '{@link #getObject() <em>Object</em>}' reference.
    * <!-- begin-user-doc -->
@@ -80,6 +93,49 @@ public class DetectionStatementImpl extends AtomicStatementImpl implements Detec
   protected EClass eStaticClass()
   {
     return BehaviourLanguagePackage.Literals.DETECTION_STATEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot getRobot()
+  {
+    if (robot != null && robot.eIsProxy())
+    {
+      InternalEObject oldRobot = (InternalEObject)robot;
+      robot = (DynamicRobot)eResolveProxy(oldRobot);
+      if (robot != oldRobot)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourLanguagePackage.DETECTION_STATEMENT__ROBOT, oldRobot, robot));
+      }
+    }
+    return robot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot basicGetRobot()
+  {
+    return robot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRobot(DynamicRobot newRobot)
+  {
+    DynamicRobot oldRobot = robot;
+    robot = newRobot;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.DETECTION_STATEMENT__ROBOT, oldRobot, robot));
   }
 
   /**
@@ -158,6 +214,9 @@ public class DetectionStatementImpl extends AtomicStatementImpl implements Detec
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.DETECTION_STATEMENT__ROBOT:
+        if (resolve) return getRobot();
+        return basicGetRobot();
       case BehaviourLanguagePackage.DETECTION_STATEMENT__OBJECT:
         if (resolve) return getObject();
         return basicGetObject();
@@ -177,6 +236,9 @@ public class DetectionStatementImpl extends AtomicStatementImpl implements Detec
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.DETECTION_STATEMENT__ROBOT:
+        setRobot((DynamicRobot)newValue);
+        return;
       case BehaviourLanguagePackage.DETECTION_STATEMENT__OBJECT:
         setObject((AreaObject)newValue);
         return;
@@ -197,6 +259,9 @@ public class DetectionStatementImpl extends AtomicStatementImpl implements Detec
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.DETECTION_STATEMENT__ROBOT:
+        setRobot((DynamicRobot)null);
+        return;
       case BehaviourLanguagePackage.DETECTION_STATEMENT__OBJECT:
         setObject((AreaObject)null);
         return;
@@ -217,6 +282,8 @@ public class DetectionStatementImpl extends AtomicStatementImpl implements Detec
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.DETECTION_STATEMENT__ROBOT:
+        return robot != null;
       case BehaviourLanguagePackage.DETECTION_STATEMENT__OBJECT:
         return object != null;
       case BehaviourLanguagePackage.DETECTION_STATEMENT__OBSTACLE:

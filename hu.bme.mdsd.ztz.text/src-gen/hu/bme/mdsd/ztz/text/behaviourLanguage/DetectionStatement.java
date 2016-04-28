@@ -3,6 +3,8 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage;
 
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 
 /**
@@ -14,6 +16,7 @@ import hu.bme.mdsd.ztz.model.drone.AreaObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#getRobot <em>Robot</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#getObject <em>Object</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#isObstacle <em>Obstacle</em>}</li>
  * </ul>
@@ -24,6 +27,32 @@ import hu.bme.mdsd.ztz.model.drone.AreaObject;
  */
 public interface DetectionStatement extends AtomicStatement
 {
+  /**
+   * Returns the value of the '<em><b>Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Robot</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Robot</em>' reference.
+   * @see #setRobot(DynamicRobot)
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getDetectionStatement_Robot()
+   * @model
+   * @generated
+   */
+  DynamicRobot getRobot();
+
+  /**
+   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#getRobot <em>Robot</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Robot</em>' reference.
+   * @see #getRobot()
+   * @generated
+   */
+  void setRobot(DynamicRobot value);
+
   /**
    * Returns the value of the '<em><b>Object</b></em>' reference.
    * <!-- begin-user-doc -->

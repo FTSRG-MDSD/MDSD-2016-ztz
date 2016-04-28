@@ -25,6 +25,8 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement
 
 class StatementParser {
 	
@@ -116,6 +118,17 @@ class StatementParser {
 
 		messageTarget.parseMessageTarget(senderRobot, message)
 		
+	}
+	
+	def dispatch parseStatement(RobotStatusStatement statement, Resource resourceOfBehaviour) {
+		val robot = statement.robot
+		
+		robot.status = statement.status	
+	}
+	
+	def dispatch parseStatement(TaskStatusStatement statement, Resource resourceOfBehaviour) {
+		val task = statement.task
+		task.status = statement.status		
 	}
 	
 	def boolean detected(DynamicRobot robot, AreaObject areaObject) {

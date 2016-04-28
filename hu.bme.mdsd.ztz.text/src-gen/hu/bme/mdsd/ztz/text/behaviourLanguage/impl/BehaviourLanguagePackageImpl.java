@@ -23,8 +23,11 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -111,6 +114,27 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * @generated
    */
   private EClass executionStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass statusStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass robotStatusStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass taskStatusStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -312,16 +336,6 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAtomicStatement_Robot()
-  {
-    return (EReference)atomicStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getConditionalStatement()
   {
     return conditionalStatementEClass;
@@ -372,7 +386,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getActionStatement_Action()
+  public EReference getActionStatement_Robot()
   {
     return (EReference)actionStatementEClass.getEStructuralFeatures().get(0);
   }
@@ -382,9 +396,19 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getActionStatement_Moreactions()
+  public EReference getActionStatement_Action()
   {
     return (EReference)actionStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActionStatement_Moreactions()
+  {
+    return (EReference)actionStatementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -402,7 +426,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMessageStatement_Target()
+  public EReference getMessageStatement_Robot()
   {
     return (EReference)messageStatementEClass.getEStructuralFeatures().get(0);
   }
@@ -412,9 +436,19 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMessageStatement_Message()
+  public EReference getMessageStatement_Target()
   {
     return (EReference)messageStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMessageStatement_Message()
+  {
+    return (EReference)messageStatementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -432,9 +466,19 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCollaborationStatement_Collaboration()
+  public EReference getCollaborationStatement_Robot()
   {
     return (EReference)collaborationStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCollaborationStatement_Collaboration()
+  {
+    return (EReference)collaborationStatementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -452,7 +496,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDetectionStatement_Object()
+  public EReference getDetectionStatement_Robot()
   {
     return (EReference)detectionStatementEClass.getEStructuralFeatures().get(0);
   }
@@ -462,9 +506,19 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getDetectionStatement_Object()
+  {
+    return (EReference)detectionStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getDetectionStatement_Obstacle()
   {
-    return (EAttribute)detectionStatementEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)detectionStatementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -482,9 +536,89 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExecutionStatement_Execution()
+  public EReference getExecutionStatement_Robot()
   {
     return (EReference)executionStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExecutionStatement_Execution()
+  {
+    return (EReference)executionStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStatusStatement()
+  {
+    return statusStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRobotStatusStatement()
+  {
+    return robotStatusStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRobotStatusStatement_Robot()
+  {
+    return (EReference)robotStatusStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRobotStatusStatement_Status()
+  {
+    return (EAttribute)robotStatusStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTaskStatusStatement()
+  {
+    return taskStatusStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTaskStatusStatement_Task()
+  {
+    return (EReference)taskStatusStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTaskStatusStatement_Status()
+  {
+    return (EAttribute)taskStatusStatementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -688,7 +822,6 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     statementEClass = createEClass(STATEMENT);
 
     atomicStatementEClass = createEClass(ATOMIC_STATEMENT);
-    createEReference(atomicStatementEClass, ATOMIC_STATEMENT__ROBOT);
 
     conditionalStatementEClass = createEClass(CONDITIONAL_STATEMENT);
     createEReference(conditionalStatementEClass, CONDITIONAL_STATEMENT__CONDITION);
@@ -696,22 +829,37 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     createEReference(conditionalStatementEClass, CONDITIONAL_STATEMENT__OTHER_STATEMENTS);
 
     actionStatementEClass = createEClass(ACTION_STATEMENT);
+    createEReference(actionStatementEClass, ACTION_STATEMENT__ROBOT);
     createEReference(actionStatementEClass, ACTION_STATEMENT__ACTION);
     createEReference(actionStatementEClass, ACTION_STATEMENT__MOREACTIONS);
 
     messageStatementEClass = createEClass(MESSAGE_STATEMENT);
+    createEReference(messageStatementEClass, MESSAGE_STATEMENT__ROBOT);
     createEReference(messageStatementEClass, MESSAGE_STATEMENT__TARGET);
     createEReference(messageStatementEClass, MESSAGE_STATEMENT__MESSAGE);
 
     collaborationStatementEClass = createEClass(COLLABORATION_STATEMENT);
+    createEReference(collaborationStatementEClass, COLLABORATION_STATEMENT__ROBOT);
     createEReference(collaborationStatementEClass, COLLABORATION_STATEMENT__COLLABORATION);
 
     detectionStatementEClass = createEClass(DETECTION_STATEMENT);
+    createEReference(detectionStatementEClass, DETECTION_STATEMENT__ROBOT);
     createEReference(detectionStatementEClass, DETECTION_STATEMENT__OBJECT);
     createEAttribute(detectionStatementEClass, DETECTION_STATEMENT__OBSTACLE);
 
     executionStatementEClass = createEClass(EXECUTION_STATEMENT);
+    createEReference(executionStatementEClass, EXECUTION_STATEMENT__ROBOT);
     createEReference(executionStatementEClass, EXECUTION_STATEMENT__EXECUTION);
+
+    statusStatementEClass = createEClass(STATUS_STATEMENT);
+
+    robotStatusStatementEClass = createEClass(ROBOT_STATUS_STATEMENT);
+    createEReference(robotStatusStatementEClass, ROBOT_STATUS_STATEMENT__ROBOT);
+    createEAttribute(robotStatusStatementEClass, ROBOT_STATUS_STATEMENT__STATUS);
+
+    taskStatusStatementEClass = createEClass(TASK_STATUS_STATEMENT);
+    createEReference(taskStatusStatementEClass, TASK_STATUS_STATEMENT__TASK);
+    createEAttribute(taskStatusStatementEClass, TASK_STATUS_STATEMENT__STATUS);
 
     messageTargetEClass = createEClass(MESSAGE_TARGET);
 
@@ -777,6 +925,9 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     collaborationStatementEClass.getESuperTypes().add(this.getAtomicStatement());
     detectionStatementEClass.getESuperTypes().add(this.getAtomicStatement());
     executionStatementEClass.getESuperTypes().add(this.getAtomicStatement());
+    statusStatementEClass.getESuperTypes().add(this.getAtomicStatement());
+    robotStatusStatementEClass.getESuperTypes().add(this.getStatusStatement());
+    taskStatusStatementEClass.getESuperTypes().add(this.getStatusStatement());
     uniTargetEClass.getESuperTypes().add(this.getMessageTarget());
     multiTargetEClass.getESuperTypes().add(this.getMessageTarget());
     allTargetEClass.getESuperTypes().add(this.getMessageTarget());
@@ -795,7 +946,6 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(atomicStatementEClass, AtomicStatement.class, "AtomicStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAtomicStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, AtomicStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionalStatementEClass, ConditionalStatement.class, "ConditionalStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConditionalStatement_Condition(), this.getCondition(), null, "condition", null, 0, 1, ConditionalStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -803,22 +953,37 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     initEReference(getConditionalStatement_OtherStatements(), this.getStatement(), null, "otherStatements", null, 0, -1, ConditionalStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getActionStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getActionStatement_Action(), theBehaviourPackage.getAction(), null, "action", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getActionStatement_Moreactions(), theBehaviourPackage.getAction(), null, "moreactions", null, 0, -1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(messageStatementEClass, MessageStatement.class, "MessageStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMessageStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, MessageStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMessageStatement_Target(), this.getMessageTarget(), null, "target", null, 0, 1, MessageStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMessageStatement_Message(), theBehaviourPackage.getMessage(), null, "message", null, 0, 1, MessageStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(collaborationStatementEClass, CollaborationStatement.class, "CollaborationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCollaborationStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, CollaborationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCollaborationStatement_Collaboration(), theBehaviourPackage.getRobotCollaboration(), null, "collaboration", null, 0, -1, CollaborationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(detectionStatementEClass, DetectionStatement.class, "DetectionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDetectionStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, DetectionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDetectionStatement_Object(), theDronePackage.getAreaObject(), null, "object", null, 0, 1, DetectionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDetectionStatement_Obstacle(), ecorePackage.getEBoolean(), "obstacle", null, 0, 1, DetectionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(executionStatementEClass, ExecutionStatement.class, "ExecutionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExecutionStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, ExecutionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExecutionStatement_Execution(), theBehaviourPackage.getTaskExecution(), null, "execution", null, 0, 1, ExecutionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(statusStatementEClass, StatusStatement.class, "StatusStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(robotStatusStatementEClass, RobotStatusStatement.class, "RobotStatusStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRobotStatusStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, RobotStatusStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRobotStatusStatement_Status(), theBehaviourPackage.getRobotStatus(), "status", null, 0, 1, RobotStatusStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(taskStatusStatementEClass, TaskStatusStatement.class, "TaskStatusStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTaskStatusStatement_Task(), theBehaviourPackage.getTaskExecution(), null, "task", null, 0, 1, TaskStatusStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTaskStatusStatement_Status(), theBehaviourPackage.getTaskExecutionStatus(), "status", null, 0, 1, TaskStatusStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(messageTargetEClass, MessageTarget.class, "MessageTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

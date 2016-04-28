@@ -30,9 +30,6 @@ PropertyValue returns drone::PropertyValue:
 
 DynamicRobot returns DynamicRobot:
 	name=EString ':' robot=[drone::Robot]
-//	'{'
-//		'status' status=RobotStatus
-//	'}'
 ;
 
 
@@ -41,7 +38,7 @@ Statement:
 ;
 
 AtomicStatement:
-	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement
+	ActionStatement | MessageStatement | CollaborationStatement | DetectionStatement | ExecutionStatement | StatusStatement
 ;
 
 ConditionalStatement:
@@ -66,6 +63,18 @@ DetectionStatement:
 
 ExecutionStatement:
 	robot=[DynamicRobot] 'exec' execution=[TaskExecution]
+;
+
+StatusStatement:
+	RobotStatusStatement | TaskStatusStatement
+;
+
+RobotStatusStatement:
+	robot=[DynamicRobot] 'set' status=RobotStatus	
+;
+
+TaskStatusStatement:
+	task=[TaskExecution] 'set' status=TaskExecutionStatus
 ;
 
 MessageTarget:
@@ -100,7 +109,6 @@ RobotStatusCondition:
 TaskExecution returns TaskExecution:
 	name=EString ':' task=[drone::Task]
 	'{'
-		('status' status=TaskExecutionStatus)?
 		('executionTime' executionTime=MeasureValue)?
 	'}';
 

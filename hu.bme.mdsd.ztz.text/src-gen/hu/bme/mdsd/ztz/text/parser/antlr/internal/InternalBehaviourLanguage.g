@@ -602,6 +602,15 @@ ruleAtomicStatement returns [EObject current=null]
 			$current = $this_ExecutionStatement_4.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getAtomicStatementAccess().getStatusStatementParserRuleCall_5());
+		}
+		this_StatusStatement_5=ruleStatusStatement
+		{
+			$current = $this_StatusStatement_5.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -1057,6 +1066,152 @@ ruleExecutionStatement returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleStatusStatement
+entryRuleStatusStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getStatusStatementRule()); }
+	iv_ruleStatusStatement=ruleStatusStatement
+	{ $current=$iv_ruleStatusStatement.current; }
+	EOF;
+
+// Rule StatusStatement
+ruleStatusStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getStatusStatementAccess().getRobotStatusStatementParserRuleCall_0());
+		}
+		this_RobotStatusStatement_0=ruleRobotStatusStatement
+		{
+			$current = $this_RobotStatusStatement_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getStatusStatementAccess().getTaskStatusStatementParserRuleCall_1());
+		}
+		this_TaskStatusStatement_1=ruleTaskStatusStatement
+		{
+			$current = $this_TaskStatusStatement_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleRobotStatusStatement
+entryRuleRobotStatusStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getRobotStatusStatementRule()); }
+	iv_ruleRobotStatusStatement=ruleRobotStatusStatement
+	{ $current=$iv_ruleRobotStatusStatement.current; }
+	EOF;
+
+// Rule RobotStatusStatement
+ruleRobotStatusStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRobotStatusStatementRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getRobotStatusStatementAccess().getRobotDynamicRobotCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1='set'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getRobotStatusStatementAccess().getSetKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getRobotStatusStatementAccess().getStatusRobotStatusEnumRuleCall_2_0());
+				}
+				lv_status_2_0=ruleRobotStatus
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getRobotStatusStatementRule());
+					}
+					set(
+						$current,
+						"status",
+						lv_status_2_0,
+						"hu.bme.mdsd.ztz.text.BehaviourLanguage.RobotStatus");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleTaskStatusStatement
+entryRuleTaskStatusStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTaskStatusStatementRule()); }
+	iv_ruleTaskStatusStatement=ruleTaskStatusStatement
+	{ $current=$iv_ruleTaskStatusStatement.current; }
+	EOF;
+
+// Rule TaskStatusStatement
+ruleTaskStatusStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTaskStatusStatementRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getTaskStatusStatementAccess().getTaskTaskExecutionCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1='set'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getTaskStatusStatementAccess().getSetKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTaskStatusStatementAccess().getStatusTaskExecutionStatusEnumRuleCall_2_0());
+				}
+				lv_status_2_0=ruleTaskExecutionStatus
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTaskStatusStatementRule());
+					}
+					set(
+						$current,
+						"status",
+						lv_status_2_0,
+						"hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskExecutionStatus");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
 // Entry rule entryRuleMessageTarget
 entryRuleMessageTarget returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getMessageTargetRule()); }
@@ -1479,41 +1634,16 @@ ruleTaskExecution returns [EObject current=null]
 			newLeafNode(otherlv_3, grammarAccess.getTaskExecutionAccess().getLeftCurlyBracketKeyword_3());
 		}
 		(
-			otherlv_4='status'
+			otherlv_4='executionTime'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getTaskExecutionAccess().getStatusKeyword_4_0());
+				newLeafNode(otherlv_4, grammarAccess.getTaskExecutionAccess().getExecutionTimeKeyword_4_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTaskExecutionAccess().getStatusTaskExecutionStatusEnumRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getTaskExecutionAccess().getExecutionTimeMeasureValueParserRuleCall_4_1_0());
 					}
-					lv_status_5_0=ruleTaskExecutionStatus
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getTaskExecutionRule());
-						}
-						set(
-							$current,
-							"status",
-							lv_status_5_0,
-							"hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskExecutionStatus");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		(
-			otherlv_6='executionTime'
-			{
-				newLeafNode(otherlv_6, grammarAccess.getTaskExecutionAccess().getExecutionTimeKeyword_5_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getTaskExecutionAccess().getExecutionTimeMeasureValueParserRuleCall_5_1_0());
-					}
-					lv_executionTime_7_0=ruleMeasureValue
+					lv_executionTime_5_0=ruleMeasureValue
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTaskExecutionRule());
@@ -1521,16 +1651,16 @@ ruleTaskExecution returns [EObject current=null]
 						set(
 							$current,
 							"executionTime",
-							lv_executionTime_7_0,
+							lv_executionTime_5_0,
 							"hu.bme.mdsd.ztz.text.BehaviourLanguage.MeasureValue");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)?
-		otherlv_8='}'
+		otherlv_6='}'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getTaskExecutionAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_6, grammarAccess.getTaskExecutionAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;

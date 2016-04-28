@@ -30,7 +30,9 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.services.BehaviourLanguageGrammarAccess;
 import java.util.Set;
@@ -118,8 +120,14 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 			case BehaviourLanguagePackage.ROBOT_STATUS_CONDITION:
 				sequence_RobotStatusCondition(context, (RobotStatusCondition) semanticObject); 
 				return; 
+			case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT:
+				sequence_RobotStatusStatement(context, (RobotStatusStatement) semanticObject); 
+				return; 
 			case BehaviourLanguagePackage.TASK_STATUS_CONDITION:
 				sequence_TaskStatusCondition(context, (TaskStatusCondition) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.TASK_STATUS_STATEMENT:
+				sequence_TaskStatusStatement(context, (TaskStatusStatement) semanticObject); 
 				return; 
 			case BehaviourLanguagePackage.UNI_TARGET:
 				sequence_UniTarget(context, (UniTarget) semanticObject); 
@@ -318,8 +326,8 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 */
 	protected void sequence_ExecutionStatement(ISerializationContext context, ExecutionStatement semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT__ROBOT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT__ROBOT));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.EXECUTION_STATEMENT__ROBOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.EXECUTION_STATEMENT__ROBOT));
 			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.EXECUTION_STATEMENT__EXECUTION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.EXECUTION_STATEMENT__EXECUTION));
 		}
@@ -372,8 +380,8 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 */
 	protected void sequence_MessageStatement(ISerializationContext context, MessageStatement semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT__ROBOT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT__ROBOT));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__ROBOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__ROBOT));
 			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__TARGET) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__TARGET));
 			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__MESSAGE) == ValueTransient.YES)
@@ -485,6 +493,30 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
+	 *     Statement returns RobotStatusStatement
+	 *     AtomicStatement returns RobotStatusStatement
+	 *     StatusStatement returns RobotStatusStatement
+	 *     RobotStatusStatement returns RobotStatusStatement
+	 *
+	 * Constraint:
+	 *     (robot=[DynamicRobot|ID] status=RobotStatus)
+	 */
+	protected void sequence_RobotStatusStatement(ISerializationContext context, RobotStatusStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.ROBOT_STATUS_STATEMENT__ROBOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.ROBOT_STATUS_STATEMENT__ROBOT));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.ROBOT_STATUS_STATEMENT__STATUS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.ROBOT_STATUS_STATEMENT__STATUS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRobotStatusStatementAccess().getRobotDynamicRobotIDTerminalRuleCall_0_0_1(), semanticObject.getRobot());
+		feeder.accept(grammarAccess.getRobotStatusStatementAccess().getStatusRobotStatusEnumRuleCall_2_0(), semanticObject.getStatus());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     PropertyValue returns StringValue
 	 *     StringValue returns StringValue
 	 *
@@ -507,7 +539,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     TaskExecution returns TaskExecution
 	 *
 	 * Constraint:
-	 *     (name=EString task=[Task|ID] status=TaskExecutionStatus? executionTime=MeasureValue?)
+	 *     (name=EString task=[Task|ID] executionTime=MeasureValue?)
 	 */
 	protected void sequence_TaskExecution(ISerializationContext context, TaskExecution semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -544,6 +576,30 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 */
 	protected void sequence_TaskStatusCondition(ISerializationContext context, TaskStatusCondition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns TaskStatusStatement
+	 *     AtomicStatement returns TaskStatusStatement
+	 *     StatusStatement returns TaskStatusStatement
+	 *     TaskStatusStatement returns TaskStatusStatement
+	 *
+	 * Constraint:
+	 *     (task=[TaskExecution|ID] status=TaskExecutionStatus)
+	 */
+	protected void sequence_TaskStatusStatement(ISerializationContext context, TaskStatusStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.TASK_STATUS_STATEMENT__TASK) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.TASK_STATUS_STATEMENT__TASK));
+			if (transientValues.isValueTransient(semanticObject, BehaviourLanguagePackage.Literals.TASK_STATUS_STATEMENT__STATUS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehaviourLanguagePackage.Literals.TASK_STATUS_STATEMENT__STATUS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTaskStatusStatementAccess().getTaskTaskExecutionIDTerminalRuleCall_0_0_1(), semanticObject.getTask());
+		feeder.accept(grammarAccess.getTaskStatusStatementAccess().getStatusTaskExecutionStatusEnumRuleCall_2_0(), semanticObject.getStatus());
+		feeder.finish();
 	}
 	
 	

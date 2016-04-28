@@ -161,22 +161,13 @@ public interface BehaviourLanguagePackage extends EPackage
   int ATOMIC_STATEMENT = 3;
 
   /**
-   * The feature id for the '<em><b>Robot</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOMIC_STATEMENT__ROBOT = STATEMENT_FEATURE_COUNT + 0;
-
-  /**
    * The number of structural features of the '<em>Atomic Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATOMIC_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+  int ATOMIC_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionalStatementImpl <em>Conditional Statement</em>}' class.
@@ -241,7 +232,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION_STATEMENT__ROBOT = ATOMIC_STATEMENT__ROBOT;
+  int ACTION_STATEMENT__ROBOT = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Action</b></em>' containment reference.
@@ -250,7 +241,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION_STATEMENT__ACTION = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
+  int ACTION_STATEMENT__ACTION = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Moreactions</b></em>' containment reference list.
@@ -259,7 +250,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION_STATEMENT__MOREACTIONS = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
+  int ACTION_STATEMENT__MOREACTIONS = ATOMIC_STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Action Statement</em>' class.
@@ -268,7 +259,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 2;
+  int ACTION_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl <em>Message Statement</em>}' class.
@@ -287,7 +278,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE_STATEMENT__ROBOT = ATOMIC_STATEMENT__ROBOT;
+  int MESSAGE_STATEMENT__ROBOT = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -296,7 +287,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE_STATEMENT__TARGET = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
+  int MESSAGE_STATEMENT__TARGET = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Message</b></em>' containment reference.
@@ -305,7 +296,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE_STATEMENT__MESSAGE = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
+  int MESSAGE_STATEMENT__MESSAGE = ATOMIC_STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Message Statement</em>' class.
@@ -314,7 +305,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 2;
+  int MESSAGE_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.CollaborationStatementImpl <em>Collaboration Statement</em>}' class.
@@ -333,7 +324,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COLLABORATION_STATEMENT__ROBOT = ATOMIC_STATEMENT__ROBOT;
+  int COLLABORATION_STATEMENT__ROBOT = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Collaboration</b></em>' containment reference list.
@@ -342,7 +333,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COLLABORATION_STATEMENT__COLLABORATION = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
+  int COLLABORATION_STATEMENT__COLLABORATION = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Collaboration Statement</em>' class.
@@ -351,7 +342,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COLLABORATION_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
+  int COLLABORATION_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.DetectionStatementImpl <em>Detection Statement</em>}' class.
@@ -370,7 +361,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DETECTION_STATEMENT__ROBOT = ATOMIC_STATEMENT__ROBOT;
+  int DETECTION_STATEMENT__ROBOT = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Object</b></em>' reference.
@@ -379,7 +370,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DETECTION_STATEMENT__OBJECT = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
+  int DETECTION_STATEMENT__OBJECT = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Obstacle</b></em>' attribute.
@@ -388,7 +379,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DETECTION_STATEMENT__OBSTACLE = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
+  int DETECTION_STATEMENT__OBSTACLE = ATOMIC_STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Detection Statement</em>' class.
@@ -397,7 +388,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DETECTION_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 2;
+  int DETECTION_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ExecutionStatementImpl <em>Execution Statement</em>}' class.
@@ -416,7 +407,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXECUTION_STATEMENT__ROBOT = ATOMIC_STATEMENT__ROBOT;
+  int EXECUTION_STATEMENT__ROBOT = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Execution</b></em>' reference.
@@ -425,7 +416,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXECUTION_STATEMENT__EXECUTION = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
+  int EXECUTION_STATEMENT__EXECUTION = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Execution Statement</em>' class.
@@ -434,7 +425,100 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXECUTION_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
+  int EXECUTION_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.StatusStatementImpl <em>Status Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.StatusStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getStatusStatement()
+   * @generated
+   */
+  int STATUS_STATEMENT = 10;
+
+  /**
+   * The number of structural features of the '<em>Status Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATUS_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl <em>Robot Status Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getRobotStatusStatement()
+   * @generated
+   */
+  int ROBOT_STATUS_STATEMENT = 11;
+
+  /**
+   * The feature id for the '<em><b>Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROBOT_STATUS_STATEMENT__ROBOT = STATUS_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROBOT_STATUS_STATEMENT__STATUS = STATUS_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Robot Status Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROBOT_STATUS_STATEMENT_FEATURE_COUNT = STATUS_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusStatementImpl <em>Task Status Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getTaskStatusStatement()
+   * @generated
+   */
+  int TASK_STATUS_STATEMENT = 12;
+
+  /**
+   * The feature id for the '<em><b>Task</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK_STATUS_STATEMENT__TASK = STATUS_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK_STATUS_STATEMENT__STATUS = STATUS_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Task Status Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK_STATUS_STATEMENT_FEATURE_COUNT = STATUS_STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.
@@ -444,7 +528,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageTarget()
    * @generated
    */
-  int MESSAGE_TARGET = 10;
+  int MESSAGE_TARGET = 13;
 
   /**
    * The number of structural features of the '<em>Message Target</em>' class.
@@ -463,7 +547,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getUniTarget()
    * @generated
    */
-  int UNI_TARGET = 11;
+  int UNI_TARGET = 14;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -491,7 +575,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMultiTarget()
    * @generated
    */
-  int MULTI_TARGET = 12;
+  int MULTI_TARGET = 15;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference list.
@@ -519,7 +603,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getAllTarget()
    * @generated
    */
-  int ALL_TARGET = 13;
+  int ALL_TARGET = 16;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' attribute.
@@ -547,7 +631,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getCondition()
    * @generated
    */
-  int CONDITION = 14;
+  int CONDITION = 17;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -584,7 +668,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getTaskStatusCondition()
    * @generated
    */
-  int TASK_STATUS_CONDITION = 15;
+  int TASK_STATUS_CONDITION = 18;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -639,7 +723,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getRobotStatusCondition()
    * @generated
    */
-  int ROBOT_STATUS_CONDITION = 16;
+  int ROBOT_STATUS_CONDITION = 19;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -772,17 +856,6 @@ public interface BehaviourLanguagePackage extends EPackage
   EClass getAtomicStatement();
 
   /**
-   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement#getRobot <em>Robot</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Robot</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement#getRobot()
-   * @see #getAtomicStatement()
-   * @generated
-   */
-  EReference getAtomicStatement_Robot();
-
-  /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement <em>Conditional Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -836,6 +909,17 @@ public interface BehaviourLanguagePackage extends EPackage
   EClass getActionStatement();
 
   /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement#getRobot <em>Robot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Robot</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement#getRobot()
+   * @see #getActionStatement()
+   * @generated
+   */
+  EReference getActionStatement_Robot();
+
+  /**
    * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement#getAction <em>Action</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -866,6 +950,17 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    */
   EClass getMessageStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement#getRobot <em>Robot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Robot</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement#getRobot()
+   * @see #getMessageStatement()
+   * @generated
+   */
+  EReference getMessageStatement_Robot();
 
   /**
    * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement#getTarget <em>Target</em>}'.
@@ -900,6 +995,17 @@ public interface BehaviourLanguagePackage extends EPackage
   EClass getCollaborationStatement();
 
   /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement#getRobot <em>Robot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Robot</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement#getRobot()
+   * @see #getCollaborationStatement()
+   * @generated
+   */
+  EReference getCollaborationStatement_Robot();
+
+  /**
    * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement#getCollaboration <em>Collaboration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -919,6 +1025,17 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    */
   EClass getDetectionStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#getRobot <em>Robot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Robot</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#getRobot()
+   * @see #getDetectionStatement()
+   * @generated
+   */
+  EReference getDetectionStatement_Robot();
 
   /**
    * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement#getObject <em>Object</em>}'.
@@ -953,6 +1070,17 @@ public interface BehaviourLanguagePackage extends EPackage
   EClass getExecutionStatement();
 
   /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement#getRobot <em>Robot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Robot</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement#getRobot()
+   * @see #getExecutionStatement()
+   * @generated
+   */
+  EReference getExecutionStatement_Robot();
+
+  /**
    * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement#getExecution <em>Execution</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -962,6 +1090,80 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    */
   EReference getExecutionStatement_Execution();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement <em>Status Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Status Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement
+   * @generated
+   */
+  EClass getStatusStatement();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement <em>Robot Status Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Robot Status Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement
+   * @generated
+   */
+  EClass getRobotStatusStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement#getRobot <em>Robot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Robot</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement#getRobot()
+   * @see #getRobotStatusStatement()
+   * @generated
+   */
+  EReference getRobotStatusStatement_Robot();
+
+  /**
+   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement#getStatus <em>Status</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Status</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement#getStatus()
+   * @see #getRobotStatusStatement()
+   * @generated
+   */
+  EAttribute getRobotStatusStatement_Status();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement <em>Task Status Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Task Status Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement
+   * @generated
+   */
+  EClass getTaskStatusStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement#getTask <em>Task</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Task</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement#getTask()
+   * @see #getTaskStatusStatement()
+   * @generated
+   */
+  EReference getTaskStatusStatement_Task();
+
+  /**
+   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement#getStatus <em>Status</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Status</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement#getStatus()
+   * @see #getTaskStatusStatement()
+   * @generated
+   */
+  EAttribute getTaskStatusStatement_Status();
 
   /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget <em>Message Target</em>}'.
@@ -1228,14 +1430,6 @@ public interface BehaviourLanguagePackage extends EPackage
     EClass ATOMIC_STATEMENT = eINSTANCE.getAtomicStatement();
 
     /**
-     * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ATOMIC_STATEMENT__ROBOT = eINSTANCE.getAtomicStatement_Robot();
-
-    /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionalStatementImpl <em>Conditional Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1280,6 +1474,14 @@ public interface BehaviourLanguagePackage extends EPackage
     EClass ACTION_STATEMENT = eINSTANCE.getActionStatement();
 
     /**
+     * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION_STATEMENT__ROBOT = eINSTANCE.getActionStatement_Robot();
+
+    /**
      * The meta object literal for the '<em><b>Action</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1304,6 +1506,14 @@ public interface BehaviourLanguagePackage extends EPackage
      * @generated
      */
     EClass MESSAGE_STATEMENT = eINSTANCE.getMessageStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MESSAGE_STATEMENT__ROBOT = eINSTANCE.getMessageStatement_Robot();
 
     /**
      * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
@@ -1332,6 +1542,14 @@ public interface BehaviourLanguagePackage extends EPackage
     EClass COLLABORATION_STATEMENT = eINSTANCE.getCollaborationStatement();
 
     /**
+     * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COLLABORATION_STATEMENT__ROBOT = eINSTANCE.getCollaborationStatement_Robot();
+
+    /**
      * The meta object literal for the '<em><b>Collaboration</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1348,6 +1566,14 @@ public interface BehaviourLanguagePackage extends EPackage
      * @generated
      */
     EClass DETECTION_STATEMENT = eINSTANCE.getDetectionStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DETECTION_STATEMENT__ROBOT = eINSTANCE.getDetectionStatement_Robot();
 
     /**
      * The meta object literal for the '<em><b>Object</b></em>' reference feature.
@@ -1376,12 +1602,82 @@ public interface BehaviourLanguagePackage extends EPackage
     EClass EXECUTION_STATEMENT = eINSTANCE.getExecutionStatement();
 
     /**
+     * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXECUTION_STATEMENT__ROBOT = eINSTANCE.getExecutionStatement_Robot();
+
+    /**
      * The meta object literal for the '<em><b>Execution</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference EXECUTION_STATEMENT__EXECUTION = eINSTANCE.getExecutionStatement_Execution();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.StatusStatementImpl <em>Status Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.StatusStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getStatusStatement()
+     * @generated
+     */
+    EClass STATUS_STATEMENT = eINSTANCE.getStatusStatement();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl <em>Robot Status Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getRobotStatusStatement()
+     * @generated
+     */
+    EClass ROBOT_STATUS_STATEMENT = eINSTANCE.getRobotStatusStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ROBOT_STATUS_STATEMENT__ROBOT = eINSTANCE.getRobotStatusStatement_Robot();
+
+    /**
+     * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ROBOT_STATUS_STATEMENT__STATUS = eINSTANCE.getRobotStatusStatement_Status();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusStatementImpl <em>Task Status Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getTaskStatusStatement()
+     * @generated
+     */
+    EClass TASK_STATUS_STATEMENT = eINSTANCE.getTaskStatusStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Task</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TASK_STATUS_STATEMENT__TASK = eINSTANCE.getTaskStatusStatement_Task();
+
+    /**
+     * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TASK_STATUS_STATEMENT__STATUS = eINSTANCE.getTaskStatusStatement_Status();
 
     /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.

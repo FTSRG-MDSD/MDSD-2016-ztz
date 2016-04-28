@@ -3,26 +3,26 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
-import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Atomic Statement</b></em>'.
+ * An implementation of the model object '<em><b>Status Statement</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class AtomicStatementImpl extends StatementImpl implements AtomicStatement
+public class StatusStatementImpl extends AtomicStatementImpl implements StatusStatement
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AtomicStatementImpl()
+  protected StatusStatementImpl()
   {
     super();
   }
@@ -35,7 +35,7 @@ public class AtomicStatementImpl extends StatementImpl implements AtomicStatemen
   @Override
   protected EClass eStaticClass()
   {
-    return BehaviourLanguagePackage.Literals.ATOMIC_STATEMENT;
+    return BehaviourLanguagePackage.Literals.STATUS_STATEMENT;
   }
 
-} //AtomicStatementImpl
+} //StatusStatementImpl

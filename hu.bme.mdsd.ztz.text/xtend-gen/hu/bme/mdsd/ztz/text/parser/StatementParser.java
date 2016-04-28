@@ -27,8 +27,10 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -208,6 +210,20 @@ public class StatementParser {
       _xblockexpression = this.parseMessageTarget(messageTarget, senderRobot, message);
     }
     return _xblockexpression;
+  }
+  
+  protected Boolean _parseStatement(final RobotStatusStatement statement, final Resource resourceOfBehaviour) {
+    final DynamicRobot robot = statement.getRobot();
+    RobotStatus _status = statement.getStatus();
+    robot.setStatus(_status);
+    return null;
+  }
+  
+  protected Boolean _parseStatement(final TaskStatusStatement statement, final Resource resourceOfBehaviour) {
+    final TaskExecution task = statement.getTask();
+    TaskExecutionStatus _status = statement.getStatus();
+    task.setStatus(_status);
+    return null;
   }
   
   public boolean detected(final DynamicRobot robot, final AreaObject areaObject) {
@@ -395,7 +411,11 @@ public class StatementParser {
   }
   
   public Boolean parseStatement(final Statement statement, final Resource resourceOfBehaviour) {
-    if (statement instanceof ActionStatement) {
+    if (statement instanceof RobotStatusStatement) {
+      return _parseStatement((RobotStatusStatement)statement, resourceOfBehaviour);
+    } else if (statement instanceof TaskStatusStatement) {
+      return _parseStatement((TaskStatusStatement)statement, resourceOfBehaviour);
+    } else if (statement instanceof ActionStatement) {
       return _parseStatement((ActionStatement)statement, resourceOfBehaviour);
     } else if (statement instanceof CollaborationStatement) {
       return _parseStatement((CollaborationStatement)statement, resourceOfBehaviour);

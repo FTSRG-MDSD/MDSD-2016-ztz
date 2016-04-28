@@ -114,6 +114,33 @@ public interface BehaviourLanguageFactory extends EFactory
   ExecutionStatement createExecutionStatement();
 
   /**
+   * Returns a new object of class '<em>Status Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Status Statement</em>'.
+   * @generated
+   */
+  StatusStatement createStatusStatement();
+
+  /**
+   * Returns a new object of class '<em>Robot Status Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Robot Status Statement</em>'.
+   * @generated
+   */
+  RobotStatusStatement createRobotStatusStatement();
+
+  /**
+   * Returns a new object of class '<em>Task Status Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Task Status Statement</em>'.
+   * @generated
+   */
+  TaskStatusStatement createTaskStatusStatement();
+
+  /**
    * Returns a new object of class '<em>Message Target</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

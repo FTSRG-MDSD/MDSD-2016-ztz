@@ -15,31 +15,43 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//Import/importURI"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//Statement"/>
-    <genClasses ecoreClass="BehaviourLanguage.ecore#//AtomicStatement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//AtomicStatement/robot"/>
-    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//AtomicStatement"/>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//ConditionalStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ConditionalStatement/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ConditionalStatement/statements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ConditionalStatement/otherStatements"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//ActionStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ActionStatement/robot"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ActionStatement/action"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ActionStatement/moreactions"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//MessageStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MessageStatement/robot"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MessageStatement/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MessageStatement/message"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//CollaborationStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//CollaborationStatement/robot"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//CollaborationStatement/collaboration"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//DetectionStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//DetectionStatement/robot"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//DetectionStatement/object"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//DetectionStatement/obstacle"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//ExecutionStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ExecutionStatement/robot"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ExecutionStatement/execution"/>
+    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//StatusStatement"/>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//RobotStatusStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//RobotStatusStatement/robot"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//RobotStatusStatement/status"/>
+    </genClasses>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//TaskStatusStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//TaskStatusStatement/task"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//TaskStatusStatement/status"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//MessageTarget"/>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//UniTarget">

@@ -38,6 +38,7 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPropertyValueAccess().getAlternatives(), "rule__PropertyValue__Alternatives");
 					put(grammarAccess.getStatementAccess().getAlternatives(), "rule__Statement__Alternatives");
 					put(grammarAccess.getAtomicStatementAccess().getAlternatives(), "rule__AtomicStatement__Alternatives");
+					put(grammarAccess.getStatusStatementAccess().getAlternatives(), "rule__StatusStatement__Alternatives");
 					put(grammarAccess.getMessageTargetAccess().getAlternatives(), "rule__MessageTarget__Alternatives");
 					put(grammarAccess.getConditionAccess().getAlternatives(), "rule__Condition__Alternatives");
 					put(grammarAccess.getTaskStatusConditionAccess().getAlternatives_1(), "rule__TaskStatusCondition__Alternatives_1");
@@ -67,13 +68,14 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCollaborationStatementAccess().getGroup_3(), "rule__CollaborationStatement__Group_3__0");
 					put(grammarAccess.getDetectionStatementAccess().getGroup(), "rule__DetectionStatement__Group__0");
 					put(grammarAccess.getExecutionStatementAccess().getGroup(), "rule__ExecutionStatement__Group__0");
+					put(grammarAccess.getRobotStatusStatementAccess().getGroup(), "rule__RobotStatusStatement__Group__0");
+					put(grammarAccess.getTaskStatusStatementAccess().getGroup(), "rule__TaskStatusStatement__Group__0");
 					put(grammarAccess.getMultiTargetAccess().getGroup(), "rule__MultiTarget__Group__0");
 					put(grammarAccess.getMultiTargetAccess().getGroup_2(), "rule__MultiTarget__Group_2__0");
 					put(grammarAccess.getTaskStatusConditionAccess().getGroup(), "rule__TaskStatusCondition__Group__0");
 					put(grammarAccess.getRobotStatusConditionAccess().getGroup(), "rule__RobotStatusCondition__Group__0");
 					put(grammarAccess.getTaskExecutionAccess().getGroup(), "rule__TaskExecution__Group__0");
 					put(grammarAccess.getTaskExecutionAccess().getGroup_4(), "rule__TaskExecution__Group_4__0");
-					put(grammarAccess.getTaskExecutionAccess().getGroup_5(), "rule__TaskExecution__Group_5__0");
 					put(grammarAccess.getTaskRequirementAccess().getGroup(), "rule__TaskRequirement__Group__0");
 					put(grammarAccess.getTaskRequirementAccess().getGroup_7(), "rule__TaskRequirement__Group_7__0");
 					put(grammarAccess.getTaskRequirementAccess().getGroup_8(), "rule__TaskRequirement__Group_8__0");
@@ -143,6 +145,10 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDetectionStatementAccess().getObstacleAssignment_3(), "rule__DetectionStatement__ObstacleAssignment_3");
 					put(grammarAccess.getExecutionStatementAccess().getRobotAssignment_0(), "rule__ExecutionStatement__RobotAssignment_0");
 					put(grammarAccess.getExecutionStatementAccess().getExecutionAssignment_2(), "rule__ExecutionStatement__ExecutionAssignment_2");
+					put(grammarAccess.getRobotStatusStatementAccess().getRobotAssignment_0(), "rule__RobotStatusStatement__RobotAssignment_0");
+					put(grammarAccess.getRobotStatusStatementAccess().getStatusAssignment_2(), "rule__RobotStatusStatement__StatusAssignment_2");
+					put(grammarAccess.getTaskStatusStatementAccess().getTaskAssignment_0(), "rule__TaskStatusStatement__TaskAssignment_0");
+					put(grammarAccess.getTaskStatusStatementAccess().getStatusAssignment_2(), "rule__TaskStatusStatement__StatusAssignment_2");
 					put(grammarAccess.getUniTargetAccess().getTargetAssignment(), "rule__UniTarget__TargetAssignment");
 					put(grammarAccess.getMultiTargetAccess().getTargetAssignment_1(), "rule__MultiTarget__TargetAssignment_1");
 					put(grammarAccess.getMultiTargetAccess().getTargetAssignment_2_1(), "rule__MultiTarget__TargetAssignment_2_1");
@@ -157,8 +163,7 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRobotStatusConditionAccess().getRobotStatusAssignment_2(), "rule__RobotStatusCondition__RobotStatusAssignment_2");
 					put(grammarAccess.getTaskExecutionAccess().getNameAssignment_0(), "rule__TaskExecution__NameAssignment_0");
 					put(grammarAccess.getTaskExecutionAccess().getTaskAssignment_2(), "rule__TaskExecution__TaskAssignment_2");
-					put(grammarAccess.getTaskExecutionAccess().getStatusAssignment_4_1(), "rule__TaskExecution__StatusAssignment_4_1");
-					put(grammarAccess.getTaskExecutionAccess().getExecutionTimeAssignment_5_1(), "rule__TaskExecution__ExecutionTimeAssignment_5_1");
+					put(grammarAccess.getTaskExecutionAccess().getExecutionTimeAssignment_4_1(), "rule__TaskExecution__ExecutionTimeAssignment_4_1");
 					put(grammarAccess.getTaskRequirementAccess().getNameAssignment_1(), "rule__TaskRequirement__NameAssignment_1");
 					put(grammarAccess.getTaskRequirementAccess().getParticipantsAssignment_4(), "rule__TaskRequirement__ParticipantsAssignment_4");
 					put(grammarAccess.getTaskRequirementAccess().getTaskExecutionAssignment_6(), "rule__TaskRequirement__TaskExecutionAssignment_6");

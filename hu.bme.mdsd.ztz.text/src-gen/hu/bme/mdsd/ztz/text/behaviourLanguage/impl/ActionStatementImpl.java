@@ -4,6 +4,7 @@
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.Action;
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl#getRobot <em>Robot</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl#getAction <em>Action</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl#getMoreactions <em>Moreactions</em>}</li>
  * </ul>
@@ -39,6 +41,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ActionStatementImpl extends AtomicStatementImpl implements ActionStatement
 {
+  /**
+   * The cached value of the '{@link #getRobot() <em>Robot</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRobot()
+   * @generated
+   * @ordered
+   */
+  protected DynamicRobot robot;
+
   /**
    * The cached value of the '{@link #getAction() <em>Action</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -78,6 +90,49 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
   protected EClass eStaticClass()
   {
     return BehaviourLanguagePackage.Literals.ACTION_STATEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot getRobot()
+  {
+    if (robot != null && robot.eIsProxy())
+    {
+      InternalEObject oldRobot = (InternalEObject)robot;
+      robot = (DynamicRobot)eResolveProxy(oldRobot);
+      if (robot != oldRobot)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourLanguagePackage.ACTION_STATEMENT__ROBOT, oldRobot, robot));
+      }
+    }
+    return robot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot basicGetRobot()
+  {
+    return robot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRobot(DynamicRobot newRobot)
+  {
+    DynamicRobot oldRobot = robot;
+    robot = newRobot;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.ACTION_STATEMENT__ROBOT, oldRobot, robot));
   }
 
   /**
@@ -170,6 +225,9 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.ACTION_STATEMENT__ROBOT:
+        if (resolve) return getRobot();
+        return basicGetRobot();
       case BehaviourLanguagePackage.ACTION_STATEMENT__ACTION:
         return getAction();
       case BehaviourLanguagePackage.ACTION_STATEMENT__MOREACTIONS:
@@ -189,6 +247,9 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.ACTION_STATEMENT__ROBOT:
+        setRobot((DynamicRobot)newValue);
+        return;
       case BehaviourLanguagePackage.ACTION_STATEMENT__ACTION:
         setAction((Action)newValue);
         return;
@@ -210,6 +271,9 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.ACTION_STATEMENT__ROBOT:
+        setRobot((DynamicRobot)null);
+        return;
       case BehaviourLanguagePackage.ACTION_STATEMENT__ACTION:
         setAction((Action)null);
         return;
@@ -230,6 +294,8 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
   {
     switch (featureID)
     {
+      case BehaviourLanguagePackage.ACTION_STATEMENT__ROBOT:
+        return robot != null;
       case BehaviourLanguagePackage.ACTION_STATEMENT__ACTION:
         return action != null;
       case BehaviourLanguagePackage.ACTION_STATEMENT__MOREACTIONS:

@@ -126,6 +126,21 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
         return createExecutionStatementAdapter();
       }
       @Override
+      public Adapter caseStatusStatement(StatusStatement object)
+      {
+        return createStatusStatementAdapter();
+      }
+      @Override
+      public Adapter caseRobotStatusStatement(RobotStatusStatement object)
+      {
+        return createRobotStatusStatementAdapter();
+      }
+      @Override
+      public Adapter caseTaskStatusStatement(TaskStatusStatement object)
+      {
+        return createTaskStatusStatementAdapter();
+      }
+      @Override
       public Adapter caseMessageTarget(MessageTarget object)
       {
         return createMessageTargetAdapter();
@@ -328,6 +343,51 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExecutionStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement <em>Status Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement
+   * @generated
+   */
+  public Adapter createStatusStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement <em>Robot Status Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement
+   * @generated
+   */
+  public Adapter createRobotStatusStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement <em>Task Status Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement
+   * @generated
+   */
+  public Adapter createTaskStatusStatementAdapter()
   {
     return null;
   }

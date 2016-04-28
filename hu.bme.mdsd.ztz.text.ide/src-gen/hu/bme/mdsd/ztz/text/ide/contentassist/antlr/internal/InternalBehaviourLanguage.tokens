@@ -1,6 +1,6 @@
 '!='=70
-'('=39
-')'=40
+'('=40
+')'=41
 '*'=68
 ','=25
 '-'=59
@@ -52,7 +52,7 @@
 'properties'=48
 'requiredCapabilities'=47
 'send'=35
-'status'=41
+'set'=39
 'taskExecution'=45
 'then'=31
 'value'=54

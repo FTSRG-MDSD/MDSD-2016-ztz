@@ -4,10 +4,10 @@
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
-import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
+import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -18,19 +18,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Execution Statement</b></em>'.
+ * An implementation of the model object '<em><b>Robot Status Statement</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ExecutionStatementImpl#getRobot <em>Robot</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ExecutionStatementImpl#getExecution <em>Execution</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl#getRobot <em>Robot</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ExecutionStatementImpl extends AtomicStatementImpl implements ExecutionStatement
+public class RobotStatusStatementImpl extends StatusStatementImpl implements RobotStatusStatement
 {
   /**
    * The cached value of the '{@link #getRobot() <em>Robot</em>}' reference.
@@ -43,21 +43,31 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
   protected DynamicRobot robot;
 
   /**
-   * The cached value of the '{@link #getExecution() <em>Execution</em>}' reference.
+   * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExecution()
+   * @see #getStatus()
    * @generated
    * @ordered
    */
-  protected TaskExecution execution;
+  protected static final RobotStatus STATUS_EDEFAULT = RobotStatus.READY;
+
+  /**
+   * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStatus()
+   * @generated
+   * @ordered
+   */
+  protected RobotStatus status = STATUS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ExecutionStatementImpl()
+  protected RobotStatusStatementImpl()
   {
     super();
   }
@@ -70,7 +80,7 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
   @Override
   protected EClass eStaticClass()
   {
-    return BehaviourLanguagePackage.Literals.EXECUTION_STATEMENT;
+    return BehaviourLanguagePackage.Literals.ROBOT_STATUS_STATEMENT;
   }
 
   /**
@@ -87,7 +97,7 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
       if (robot != oldRobot)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourLanguagePackage.EXECUTION_STATEMENT__ROBOT, oldRobot, robot));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT, oldRobot, robot));
       }
     }
     return robot;
@@ -113,7 +123,7 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
     DynamicRobot oldRobot = robot;
     robot = newRobot;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.EXECUTION_STATEMENT__ROBOT, oldRobot, robot));
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT, oldRobot, robot));
   }
 
   /**
@@ -121,19 +131,9 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
    * <!-- end-user-doc -->
    * @generated
    */
-  public TaskExecution getExecution()
+  public RobotStatus getStatus()
   {
-    if (execution != null && execution.eIsProxy())
-    {
-      InternalEObject oldExecution = (InternalEObject)execution;
-      execution = (TaskExecution)eResolveProxy(oldExecution);
-      if (execution != oldExecution)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourLanguagePackage.EXECUTION_STATEMENT__EXECUTION, oldExecution, execution));
-      }
-    }
-    return execution;
+    return status;
   }
 
   /**
@@ -141,22 +141,12 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
    * <!-- end-user-doc -->
    * @generated
    */
-  public TaskExecution basicGetExecution()
+  public void setStatus(RobotStatus newStatus)
   {
-    return execution;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExecution(TaskExecution newExecution)
-  {
-    TaskExecution oldExecution = execution;
-    execution = newExecution;
+    RobotStatus oldStatus = status;
+    status = newStatus == null ? STATUS_EDEFAULT : newStatus;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.EXECUTION_STATEMENT__EXECUTION, oldExecution, execution));
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS, oldStatus, status));
   }
 
   /**
@@ -169,12 +159,11 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
   {
     switch (featureID)
     {
-      case BehaviourLanguagePackage.EXECUTION_STATEMENT__ROBOT:
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT:
         if (resolve) return getRobot();
         return basicGetRobot();
-      case BehaviourLanguagePackage.EXECUTION_STATEMENT__EXECUTION:
-        if (resolve) return getExecution();
-        return basicGetExecution();
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS:
+        return getStatus();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -189,11 +178,11 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
   {
     switch (featureID)
     {
-      case BehaviourLanguagePackage.EXECUTION_STATEMENT__ROBOT:
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT:
         setRobot((DynamicRobot)newValue);
         return;
-      case BehaviourLanguagePackage.EXECUTION_STATEMENT__EXECUTION:
-        setExecution((TaskExecution)newValue);
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS:
+        setStatus((RobotStatus)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -209,11 +198,11 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
   {
     switch (featureID)
     {
-      case BehaviourLanguagePackage.EXECUTION_STATEMENT__ROBOT:
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT:
         setRobot((DynamicRobot)null);
         return;
-      case BehaviourLanguagePackage.EXECUTION_STATEMENT__EXECUTION:
-        setExecution((TaskExecution)null);
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS:
+        setStatus(STATUS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -229,12 +218,29 @@ public class ExecutionStatementImpl extends AtomicStatementImpl implements Execu
   {
     switch (featureID)
     {
-      case BehaviourLanguagePackage.EXECUTION_STATEMENT__ROBOT:
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT:
         return robot != null;
-      case BehaviourLanguagePackage.EXECUTION_STATEMENT__EXECUTION:
-        return execution != null;
+      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS:
+        return status != STATUS_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
 
-} //ExecutionStatementImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (status: ");
+    result.append(status);
+    result.append(')');
+    return result.toString();
+  }
+
+} //RobotStatusStatementImpl
