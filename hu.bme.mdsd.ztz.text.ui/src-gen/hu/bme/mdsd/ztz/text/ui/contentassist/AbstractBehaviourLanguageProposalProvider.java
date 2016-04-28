@@ -150,9 +150,6 @@ public abstract class AbstractBehaviourLanguageProposalProvider extends Terminal
 	public void completeTaskExecution_ExecutionTime(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeTaskRequirement_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
-	}
 	public void completeTaskRequirement_Participants(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
@@ -169,9 +166,6 @@ public abstract class AbstractBehaviourLanguageProposalProvider extends Terminal
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeTaskRequirement_CapabilityProperties(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
-	}
-	public void completeBehaviouralPropertyKeyContainer_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeBehaviouralPropertyKeyContainer_Keys(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {

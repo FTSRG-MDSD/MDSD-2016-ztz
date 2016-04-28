@@ -234,7 +234,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     BehaviouralPropertyKeyContainer returns BehaviouralPropertyKeyContainer
 	 *
 	 * Constraint:
-	 *     (name=EString (keys+=PropertyKey keys+=PropertyKey*)?)
+	 *     (keys+=PropertyKey keys+=PropertyKey*)
 	 */
 	protected void sequence_BehaviouralPropertyKeyContainer(ISerializationContext context, BehaviouralPropertyKeyContainer semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -362,10 +362,19 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     MeasureValue returns MeasureValue
 	 *
 	 * Constraint:
-	 *     (value=EFloat? dimension=[MeasureDimension|ID])
+	 *     (value=EFloat dimension=[MeasureDimension|ID])
 	 */
 	protected void sequence_MeasureValue(ISerializationContext context, MeasureValue semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.MEASURE_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.MEASURE_VALUE__VALUE));
+			if (transientValues.isValueTransient(semanticObject, DronePackage.Literals.MEASURE_VALUE__DIMENSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.MEASURE_VALUE__DIMENSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMeasureValueAccess().getValueEFloatParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getMeasureValueAccess().getDimensionMeasureDimensionIDTerminalRuleCall_3_0_1(), semanticObject.getDimension());
+		feeder.finish();
 	}
 	
 	
@@ -440,7 +449,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.NAMED_ELEMENT__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPropertyKeyAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPropertyKeyAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -460,8 +469,8 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.PROPERTY__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPropertyAccess().getKeyPropertyKeyIDTerminalRuleCall_3_0_1(), semanticObject.getKey());
-		feeder.accept(grammarAccess.getPropertyAccess().getValuePropertyValueParserRuleCall_5_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getPropertyAccess().getKeyPropertyKeyIDTerminalRuleCall_1_0_1(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getPropertyAccess().getValuePropertyValueParserRuleCall_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -529,7 +538,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DronePackage.Literals.STRING_VALUE__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStringValueAccess().getValueEStringParserRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getStringValueAccess().getValueEStringParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -552,7 +561,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *
 	 * Constraint:
 	 *     (
-	 *         name=EString 
 	 *         participants=EInt 
 	 *         taskExecution=[TaskExecution|ID] 
 	 *         prerequisite=[TaskExecution|ID]? 

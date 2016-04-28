@@ -32,7 +32,6 @@ DynamicRobot returns DynamicRobot:
 	name=EString ':' robot=[drone::Robot]
 ;
 
-
 Statement:
 	AtomicStatement | ConditionalStatement
 ;
@@ -93,7 +92,6 @@ AllTarget:
 	target='*'
 ;
 
-
 Condition:
 	TaskStatusCondition | RobotStatusCondition
 ;
@@ -106,18 +104,14 @@ RobotStatusCondition:
 	robot=[DynamicRobot] ((equal?='==') | (notEqual?='!=')) robotStatus=RobotStatus
 ;
 
-
-
 TaskExecution returns TaskExecution:
 	name=EString ':' task=[drone::Task]
 	'{'
 		('executionTime' executionTime=MeasureValue)?
-	'}';
-
+	'}'
+;
 
 TaskRequirement returns TaskRequirement:
-	'TaskRequirement'
-	name=EString
 	'{'
 		'participants' participants=EInt
 		'taskExecution' taskExecution=[TaskExecution]
@@ -129,11 +123,10 @@ TaskRequirement returns TaskRequirement:
 
 BehaviouralPropertyKeyContainer returns BehaviouralPropertyKeyContainer:
 	{BehaviouralPropertyKeyContainer}
-	'BehaviouralPropertyKeyContainer'
-	name=EString
 	'{'
-		('keys' '{' keys+=PropertyKey ( "," keys+=PropertyKey)* '}' )?
-	'}';
+		keys+=PropertyKey ( "," keys+=PropertyKey)*
+	'}'
+;
 
 EString returns ecore::EString:
 	STRING | ID;
@@ -145,7 +138,6 @@ RobotCollaboration returns RobotCollaboration:
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 ;
 
-
 enum RobotStatus returns RobotStatus:
 	Ready = 'Ready' | TurnedOff = 'TurnedOff' | Waiting = 'Waiting' | Executing = 'Executing'
 ;
@@ -156,20 +148,13 @@ Action_Impl returns Action:
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
 ;
 
-
 Property returns drone::Property:
-	'Property'
-	'{'
-		'key' key=[drone::PropertyKey]
-		'value' value=PropertyValue
-	'}';
+	'[' key=[drone::PropertyKey] '=' value=PropertyValue ']'
+;
 
 MeasureValue returns drone::MeasureValue:
-	'MeasureValue'
-	'{'
-		('value' value=EFloat)?
-		'dimension' dimension=[drone::MeasureDimension]
-	'}';
+	'measure 'value=EFloat 'in' dimension=[drone::MeasureDimension]
+;
 
 
 CapabilityProperties returns drone::CapabilityProperties:
@@ -177,7 +162,8 @@ CapabilityProperties returns drone::CapabilityProperties:
 	'{'
 		'capability' capability=[drone::Capability]
 		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
-	'}';
+	'}'
+;
 
 
 
@@ -187,14 +173,11 @@ EFloat returns ecore::EFloat:
 
 PropertyKey returns drone::PropertyKey:
 	{drone::PropertyKey}
-	'PropertyKey'
 	name=EString;
 
 StringValue returns drone::StringValue:
-	'StringValue'
-	'{'
-		'value' value=EString
-	'}';
+	value=EString
+;
 
 
 EBoolean returns ecore::EBoolean:

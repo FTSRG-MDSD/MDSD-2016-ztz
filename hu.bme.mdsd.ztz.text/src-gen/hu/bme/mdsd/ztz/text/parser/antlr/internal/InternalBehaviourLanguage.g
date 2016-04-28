@@ -1681,43 +1681,20 @@ ruleTaskRequirement returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='TaskRequirement'
+		otherlv_0='{'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getTaskRequirementAccess().getTaskRequirementKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getTaskRequirementAccess().getLeftCurlyBracketKeyword_0());
+		}
+		otherlv_1='participants'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getTaskRequirementAccess().getParticipantsKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTaskRequirementAccess().getNameEStringParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getTaskRequirementAccess().getParticipantsEIntParserRuleCall_2_0());
 				}
-				lv_name_1_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTaskRequirementRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_1_0,
-						"hu.bme.mdsd.ztz.text.BehaviourLanguage.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_2='{'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getTaskRequirementAccess().getLeftCurlyBracketKeyword_2());
-		}
-		otherlv_3='participants'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getTaskRequirementAccess().getParticipantsKeyword_3());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getTaskRequirementAccess().getParticipantsEIntParserRuleCall_4_0());
-				}
-				lv_participants_4_0=ruleEInt
+				lv_participants_2_0=ruleEInt
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTaskRequirementRule());
@@ -1725,15 +1702,15 @@ ruleTaskRequirement returns [EObject current=null]
 					set(
 						$current,
 						"participants",
-						lv_participants_4_0,
+						lv_participants_2_0,
 						"hu.bme.mdsd.ztz.text.BehaviourLanguage.EInt");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_5='taskExecution'
+		otherlv_3='taskExecution'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getTaskRequirementAccess().getTaskExecutionKeyword_5());
+			newLeafNode(otherlv_3, grammarAccess.getTaskRequirementAccess().getTaskExecutionKeyword_3());
 		}
 		(
 			(
@@ -1742,16 +1719,16 @@ ruleTaskRequirement returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getTaskRequirementRule());
 					}
 				}
-				otherlv_6=RULE_ID
+				otherlv_4=RULE_ID
 				{
-					newLeafNode(otherlv_6, grammarAccess.getTaskRequirementAccess().getTaskExecutionTaskExecutionCrossReference_6_0());
+					newLeafNode(otherlv_4, grammarAccess.getTaskRequirementAccess().getTaskExecutionTaskExecutionCrossReference_4_0());
 				}
 			)
 		)
 		(
-			otherlv_7='prerequisite'
+			otherlv_5='prerequisite'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getTaskRequirementAccess().getPrerequisiteKeyword_7_0());
+				newLeafNode(otherlv_5, grammarAccess.getTaskRequirementAccess().getPrerequisiteKeyword_5_0());
 			}
 			(
 				(
@@ -1760,21 +1737,21 @@ ruleTaskRequirement returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getTaskRequirementRule());
 						}
 					}
-					otherlv_8=RULE_ID
+					otherlv_6=RULE_ID
 					{
-						newLeafNode(otherlv_8, grammarAccess.getTaskRequirementAccess().getPrerequisiteTaskExecutionCrossReference_7_1_0());
+						newLeafNode(otherlv_6, grammarAccess.getTaskRequirementAccess().getPrerequisiteTaskExecutionCrossReference_5_1_0());
 					}
 				)
 			)
 		)?
 		(
-			otherlv_9='requiredCapabilities'
+			otherlv_7='requiredCapabilities'
 			{
-				newLeafNode(otherlv_9, grammarAccess.getTaskRequirementAccess().getRequiredCapabilitiesKeyword_8_0());
+				newLeafNode(otherlv_7, grammarAccess.getTaskRequirementAccess().getRequiredCapabilitiesKeyword_6_0());
 			}
-			otherlv_10='('
+			otherlv_8='('
 			{
-				newLeafNode(otherlv_10, grammarAccess.getTaskRequirementAccess().getLeftParenthesisKeyword_8_1());
+				newLeafNode(otherlv_8, grammarAccess.getTaskRequirementAccess().getLeftParenthesisKeyword_6_1());
 			}
 			(
 				(
@@ -1783,16 +1760,16 @@ ruleTaskRequirement returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getTaskRequirementRule());
 						}
 					}
-					otherlv_11=RULE_ID
+					otherlv_9=RULE_ID
 					{
-						newLeafNode(otherlv_11, grammarAccess.getTaskRequirementAccess().getRequiredCapabilitiesCapabilityCrossReference_8_2_0());
+						newLeafNode(otherlv_9, grammarAccess.getTaskRequirementAccess().getRequiredCapabilitiesCapabilityCrossReference_6_2_0());
 					}
 				)
 			)
 			(
-				otherlv_12=','
+				otherlv_10=','
 				{
-					newLeafNode(otherlv_12, grammarAccess.getTaskRequirementAccess().getCommaKeyword_8_3_0());
+					newLeafNode(otherlv_10, grammarAccess.getTaskRequirementAccess().getCommaKeyword_6_3_0());
 				}
 				(
 					(
@@ -1801,33 +1778,33 @@ ruleTaskRequirement returns [EObject current=null]
 								$current = createModelElement(grammarAccess.getTaskRequirementRule());
 							}
 						}
-						otherlv_13=RULE_ID
+						otherlv_11=RULE_ID
 						{
-							newLeafNode(otherlv_13, grammarAccess.getTaskRequirementAccess().getRequiredCapabilitiesCapabilityCrossReference_8_3_1_0());
+							newLeafNode(otherlv_11, grammarAccess.getTaskRequirementAccess().getRequiredCapabilitiesCapabilityCrossReference_6_3_1_0());
 						}
 					)
 				)
 			)*
-			otherlv_14=')'
+			otherlv_12=')'
 			{
-				newLeafNode(otherlv_14, grammarAccess.getTaskRequirementAccess().getRightParenthesisKeyword_8_4());
+				newLeafNode(otherlv_12, grammarAccess.getTaskRequirementAccess().getRightParenthesisKeyword_6_4());
 			}
 		)?
 		(
-			otherlv_15='properties'
+			otherlv_13='properties'
 			{
-				newLeafNode(otherlv_15, grammarAccess.getTaskRequirementAccess().getPropertiesKeyword_9_0());
+				newLeafNode(otherlv_13, grammarAccess.getTaskRequirementAccess().getPropertiesKeyword_7_0());
 			}
-			otherlv_16='{'
+			otherlv_14='{'
 			{
-				newLeafNode(otherlv_16, grammarAccess.getTaskRequirementAccess().getLeftCurlyBracketKeyword_9_1());
+				newLeafNode(otherlv_14, grammarAccess.getTaskRequirementAccess().getLeftCurlyBracketKeyword_7_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTaskRequirementAccess().getPropertiesPropertyParserRuleCall_9_2_0());
+						newCompositeNode(grammarAccess.getTaskRequirementAccess().getPropertiesPropertyParserRuleCall_7_2_0());
 					}
-					lv_properties_17_0=ruleProperty
+					lv_properties_15_0=ruleProperty
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTaskRequirementRule());
@@ -1835,23 +1812,23 @@ ruleTaskRequirement returns [EObject current=null]
 						add(
 							$current,
 							"properties",
-							lv_properties_17_0,
+							lv_properties_15_0,
 							"hu.bme.mdsd.ztz.text.BehaviourLanguage.Property");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_18=','
+				otherlv_16=','
 				{
-					newLeafNode(otherlv_18, grammarAccess.getTaskRequirementAccess().getCommaKeyword_9_3_0());
+					newLeafNode(otherlv_16, grammarAccess.getTaskRequirementAccess().getCommaKeyword_7_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getTaskRequirementAccess().getPropertiesPropertyParserRuleCall_9_3_1_0());
+							newCompositeNode(grammarAccess.getTaskRequirementAccess().getPropertiesPropertyParserRuleCall_7_3_1_0());
 						}
-						lv_properties_19_0=ruleProperty
+						lv_properties_17_0=ruleProperty
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getTaskRequirementRule());
@@ -1859,33 +1836,33 @@ ruleTaskRequirement returns [EObject current=null]
 							add(
 								$current,
 								"properties",
-								lv_properties_19_0,
+								lv_properties_17_0,
 								"hu.bme.mdsd.ztz.text.BehaviourLanguage.Property");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
 			)*
-			otherlv_20='}'
+			otherlv_18='}'
 			{
-				newLeafNode(otherlv_20, grammarAccess.getTaskRequirementAccess().getRightCurlyBracketKeyword_9_4());
+				newLeafNode(otherlv_18, grammarAccess.getTaskRequirementAccess().getRightCurlyBracketKeyword_7_4());
 			}
 		)?
 		(
-			otherlv_21='capabilityProperties'
+			otherlv_19='capabilityProperties'
 			{
-				newLeafNode(otherlv_21, grammarAccess.getTaskRequirementAccess().getCapabilityPropertiesKeyword_10_0());
+				newLeafNode(otherlv_19, grammarAccess.getTaskRequirementAccess().getCapabilityPropertiesKeyword_8_0());
 			}
-			otherlv_22='{'
+			otherlv_20='{'
 			{
-				newLeafNode(otherlv_22, grammarAccess.getTaskRequirementAccess().getLeftCurlyBracketKeyword_10_1());
+				newLeafNode(otherlv_20, grammarAccess.getTaskRequirementAccess().getLeftCurlyBracketKeyword_8_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTaskRequirementAccess().getCapabilityPropertiesCapabilityPropertiesParserRuleCall_10_2_0());
+						newCompositeNode(grammarAccess.getTaskRequirementAccess().getCapabilityPropertiesCapabilityPropertiesParserRuleCall_8_2_0());
 					}
-					lv_capabilityProperties_23_0=ruleCapabilityProperties
+					lv_capabilityProperties_21_0=ruleCapabilityProperties
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTaskRequirementRule());
@@ -1893,23 +1870,23 @@ ruleTaskRequirement returns [EObject current=null]
 						add(
 							$current,
 							"capabilityProperties",
-							lv_capabilityProperties_23_0,
+							lv_capabilityProperties_21_0,
 							"hu.bme.mdsd.ztz.text.BehaviourLanguage.CapabilityProperties");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_24=','
+				otherlv_22=','
 				{
-					newLeafNode(otherlv_24, grammarAccess.getTaskRequirementAccess().getCommaKeyword_10_3_0());
+					newLeafNode(otherlv_22, grammarAccess.getTaskRequirementAccess().getCommaKeyword_8_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getTaskRequirementAccess().getCapabilityPropertiesCapabilityPropertiesParserRuleCall_10_3_1_0());
+							newCompositeNode(grammarAccess.getTaskRequirementAccess().getCapabilityPropertiesCapabilityPropertiesParserRuleCall_8_3_1_0());
 						}
-						lv_capabilityProperties_25_0=ruleCapabilityProperties
+						lv_capabilityProperties_23_0=ruleCapabilityProperties
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getTaskRequirementRule());
@@ -1917,21 +1894,21 @@ ruleTaskRequirement returns [EObject current=null]
 							add(
 								$current,
 								"capabilityProperties",
-								lv_capabilityProperties_25_0,
+								lv_capabilityProperties_23_0,
 								"hu.bme.mdsd.ztz.text.BehaviourLanguage.CapabilityProperties");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
 			)*
-			otherlv_26='}'
+			otherlv_24='}'
 			{
-				newLeafNode(otherlv_26, grammarAccess.getTaskRequirementAccess().getRightCurlyBracketKeyword_10_4());
+				newLeafNode(otherlv_24, grammarAccess.getTaskRequirementAccess().getRightCurlyBracketKeyword_8_4());
 			}
 		)?
-		otherlv_27='}'
+		otherlv_25='}'
 		{
-			newLeafNode(otherlv_27, grammarAccess.getTaskRequirementAccess().getRightCurlyBracketKeyword_11());
+			newLeafNode(otherlv_25, grammarAccess.getTaskRequirementAccess().getRightCurlyBracketKeyword_9());
 		}
 	)
 ;
@@ -1959,48 +1936,40 @@ ruleBehaviouralPropertyKeyContainer returns [EObject current=null]
 					$current);
 			}
 		)
-		otherlv_1='BehaviouralPropertyKeyContainer'
+		otherlv_1='{'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getBehaviouralPropertyKeyContainerKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getLeftCurlyBracketKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getBehaviouralPropertyKeyContainerAccess().getNameEStringParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getBehaviouralPropertyKeyContainerAccess().getKeysPropertyKeyParserRuleCall_2_0());
 				}
-				lv_name_2_0=ruleEString
+				lv_keys_2_0=rulePropertyKey
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getBehaviouralPropertyKeyContainerRule());
 					}
-					set(
+					add(
 						$current,
-						"name",
-						lv_name_2_0,
-						"hu.bme.mdsd.ztz.text.BehaviourLanguage.EString");
+						"keys",
+						lv_keys_2_0,
+						"hu.bme.mdsd.ztz.text.BehaviourLanguage.PropertyKey");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_3='{'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getLeftCurlyBracketKeyword_3());
-		}
 		(
-			otherlv_4='keys'
+			otherlv_3=','
 			{
-				newLeafNode(otherlv_4, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getKeysKeyword_4_0());
-			}
-			otherlv_5='{'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getLeftCurlyBracketKeyword_4_1());
+				newLeafNode(otherlv_3, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getCommaKeyword_3_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getBehaviouralPropertyKeyContainerAccess().getKeysPropertyKeyParserRuleCall_4_2_0());
+						newCompositeNode(grammarAccess.getBehaviouralPropertyKeyContainerAccess().getKeysPropertyKeyParserRuleCall_3_1_0());
 					}
-					lv_keys_6_0=rulePropertyKey
+					lv_keys_4_0=rulePropertyKey
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBehaviouralPropertyKeyContainerRule());
@@ -2008,45 +1977,16 @@ ruleBehaviouralPropertyKeyContainer returns [EObject current=null]
 						add(
 							$current,
 							"keys",
-							lv_keys_6_0,
+							lv_keys_4_0,
 							"hu.bme.mdsd.ztz.text.BehaviourLanguage.PropertyKey");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			(
-				otherlv_7=','
-				{
-					newLeafNode(otherlv_7, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getCommaKeyword_4_3_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getBehaviouralPropertyKeyContainerAccess().getKeysPropertyKeyParserRuleCall_4_3_1_0());
-						}
-						lv_keys_8_0=rulePropertyKey
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getBehaviouralPropertyKeyContainerRule());
-							}
-							add(
-								$current,
-								"keys",
-								lv_keys_8_0,
-								"hu.bme.mdsd.ztz.text.BehaviourLanguage.PropertyKey");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)*
-			otherlv_9='}'
-			{
-				newLeafNode(otherlv_9, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getRightCurlyBracketKeyword_4_4());
-			}
-		)?
-		otherlv_10='}'
+		)*
+		otherlv_5='}'
 		{
-			newLeafNode(otherlv_10, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getRightCurlyBracketKeyword_5());
+			newLeafNode(otherlv_5, grammarAccess.getBehaviouralPropertyKeyContainerAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;
@@ -2324,17 +2264,9 @@ ruleProperty returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Property'
+		otherlv_0='['
 		{
-			newLeafNode(otherlv_0, grammarAccess.getPropertyAccess().getPropertyKeyword_0());
-		}
-		otherlv_1='{'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_1());
-		}
-		otherlv_2='key'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getPropertyAccess().getKeyKeyword_2());
+			newLeafNode(otherlv_0, grammarAccess.getPropertyAccess().getLeftSquareBracketKeyword_0());
 		}
 		(
 			(
@@ -2343,22 +2275,22 @@ ruleProperty returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getPropertyRule());
 					}
 				}
-				otherlv_3=RULE_ID
+				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_3, grammarAccess.getPropertyAccess().getKeyPropertyKeyCrossReference_3_0());
+					newLeafNode(otherlv_1, grammarAccess.getPropertyAccess().getKeyPropertyKeyCrossReference_1_0());
 				}
 			)
 		)
-		otherlv_4='value'
+		otherlv_2='='
 		{
-			newLeafNode(otherlv_4, grammarAccess.getPropertyAccess().getValueKeyword_4());
+			newLeafNode(otherlv_2, grammarAccess.getPropertyAccess().getEqualsSignKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPropertyAccess().getValuePropertyValueParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getPropertyAccess().getValuePropertyValueParserRuleCall_3_0());
 				}
-				lv_value_5_0=rulePropertyValue
+				lv_value_3_0=rulePropertyValue
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPropertyRule());
@@ -2366,15 +2298,15 @@ ruleProperty returns [EObject current=null]
 					set(
 						$current,
 						"value",
-						lv_value_5_0,
+						lv_value_3_0,
 						"hu.bme.mdsd.ztz.text.BehaviourLanguage.PropertyValue");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_6='}'
+		otherlv_4=']'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_4, grammarAccess.getPropertyAccess().getRightSquareBracketKeyword_4());
 		}
 	)
 ;
@@ -2395,42 +2327,32 @@ ruleMeasureValue returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='MeasureValue'
+		otherlv_0='measure '
 		{
-			newLeafNode(otherlv_0, grammarAccess.getMeasureValueAccess().getMeasureValueKeyword_0());
-		}
-		otherlv_1='{'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getMeasureValueAccess().getLeftCurlyBracketKeyword_1());
+			newLeafNode(otherlv_0, grammarAccess.getMeasureValueAccess().getMeasureKeyword_0());
 		}
 		(
-			otherlv_2='value'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getMeasureValueAccess().getValueKeyword_2_0());
-			}
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getMeasureValueAccess().getValueEFloatParserRuleCall_2_1_0());
+				{
+					newCompositeNode(grammarAccess.getMeasureValueAccess().getValueEFloatParserRuleCall_1_0());
+				}
+				lv_value_1_0=ruleEFloat
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMeasureValueRule());
 					}
-					lv_value_3_0=ruleEFloat
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getMeasureValueRule());
-						}
-						set(
-							$current,
-							"value",
-							lv_value_3_0,
-							"hu.bme.mdsd.ztz.text.BehaviourLanguage.EFloat");
-						afterParserOrEnumRuleCall();
-					}
-				)
+					set(
+						$current,
+						"value",
+						lv_value_1_0,
+						"hu.bme.mdsd.ztz.text.BehaviourLanguage.EFloat");
+					afterParserOrEnumRuleCall();
+				}
 			)
-		)?
-		otherlv_4='dimension'
+		)
+		otherlv_2='in'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getMeasureValueAccess().getDimensionKeyword_3());
+			newLeafNode(otherlv_2, grammarAccess.getMeasureValueAccess().getInKeyword_2());
 		}
 		(
 			(
@@ -2439,16 +2361,12 @@ ruleMeasureValue returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getMeasureValueRule());
 					}
 				}
-				otherlv_5=RULE_ID
+				otherlv_3=RULE_ID
 				{
-					newLeafNode(otherlv_5, grammarAccess.getMeasureValueAccess().getDimensionMeasureDimensionCrossReference_4_0());
+					newLeafNode(otherlv_3, grammarAccess.getMeasureValueAccess().getDimensionMeasureDimensionCrossReference_3_0());
 				}
 			)
 		)
-		otherlv_6='}'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getMeasureValueAccess().getRightCurlyBracketKeyword_5());
-		}
 	)
 ;
 
@@ -2657,16 +2575,12 @@ rulePropertyKey returns [EObject current=null]
 					$current);
 			}
 		)
-		otherlv_1='PropertyKey'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getPropertyKeyAccess().getPropertyKeyKeyword_1());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPropertyKeyAccess().getNameEStringParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getPropertyKeyAccess().getNameEStringParserRuleCall_1_0());
 				}
-				lv_name_2_0=ruleEString
+				lv_name_1_0=ruleEString
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPropertyKeyRule());
@@ -2674,7 +2588,7 @@ rulePropertyKey returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"hu.bme.mdsd.ztz.text.BehaviourLanguage.EString");
 					afterParserOrEnumRuleCall();
 				}
@@ -2699,41 +2613,23 @@ ruleStringValue returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='StringValue'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getStringValueAccess().getStringValueKeyword_0());
-		}
-		otherlv_1='{'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getStringValueAccess().getLeftCurlyBracketKeyword_1());
-		}
-		otherlv_2='value'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getStringValueAccess().getValueKeyword_2());
-		}
 		(
-			(
-				{
-					newCompositeNode(grammarAccess.getStringValueAccess().getValueEStringParserRuleCall_3_0());
+			{
+				newCompositeNode(grammarAccess.getStringValueAccess().getValueEStringParserRuleCall_0());
+			}
+			lv_value_0_0=ruleEString
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getStringValueRule());
 				}
-				lv_value_3_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getStringValueRule());
-					}
-					set(
-						$current,
-						"value",
-						lv_value_3_0,
-						"hu.bme.mdsd.ztz.text.BehaviourLanguage.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
+				set(
+					$current,
+					"value",
+					lv_value_0_0,
+					"hu.bme.mdsd.ztz.text.BehaviourLanguage.EString");
+				afterParserOrEnumRuleCall();
+			}
 		)
-		otherlv_4='}'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getStringValueAccess().getRightCurlyBracketKeyword_4());
-		}
 	)
 ;
 
