@@ -8,6 +8,27 @@
         </ownedRules>
         <ownedRules xsi:type="validation:SemanticValidationRule" name="MultipleCapabilityProperties" level="ERROR" message="The element has multiple Capability Property Containers defined for a Capability." targetClass="drone.Robot">
           <audits auditExpression="aql: self.capabilityProperties->select( cp | self.capabilityProperties->excluding(cp).capability->includes(cp.capability))->isEmpty()"/>
+          <fixes name="MergeCapProps">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="aql:self.eContainer().robots->select(r | r = self)" iteratorName="robot">
+                <subModelOperations xsi:type="tool:For" expression="aql:self.capabilities" iteratorName="c">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:robot.capabilityProperties->select(cp | cp.capability = c)->first()">
+                    <subModelOperations xsi:type="tool:For" expression="aql:robot.capabilityProperties->select(cp | cp = self)" iteratorName="capProp">
+                      <subModelOperations xsi:type="tool:For" expression="aql:robot.capabilityProperties->select(cp | cp.capability = c and cp &lt;> capProp)" iteratorName="capPropTmp">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:capProp">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="properties" valueExpression="aql:self.properties->concat(capPropTmp.properties)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:capPropTmp">
+                              <subModelOperations xsi:type="tool:RemoveElement"/>
+                            </subModelOperations>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </fixes>
         </ownedRules>
         <ownedRules xsi:type="validation:SemanticValidationRule" name="EquipmentCapNotConnectedRobot" level="ERROR" message="The equipment has a facility not connected to the Robot as capability." targetClass="drone.Equipment">
           <audits auditExpression="aql:self.eContainer().capabilities->includesAll(self.facilitate)"/>
