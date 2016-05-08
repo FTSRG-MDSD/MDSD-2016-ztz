@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Google Maps Sliding Marker Move Demo</title>
+
+    <link href="map.css" rel="stylesheet" />
+
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script src="lib/markerAnimate.js"></script>
+    <script src="lib/SlidingMarker.js"></script>
+
+    <script>
+        var marker, map;
+		var coords = [new google.maps.LatLng(32.520204, 34.937258), new google.maps.LatLng(52.520204, 54.937258)];
+		var intervalId = 0;
+		
+        function initialize() {
+            //var myLatlng = new google.maps.LatLng(32.520204, 34.937258);
+            var mapOptions = {
+                zoom: 4,
+                center: coords[0],
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+            marker = new SlidingMarker({
+                position: coords[0],
+                map: map,
+                title: 'I\m sliding marker'
+            });
+
+            var $log = $("#log");
+            
+            $log.html();
+            
+            google.maps.event.addListener(marker, 'position_changed', function () {
+                $log.html($log.html() + "marker.position_changed<br/>");
+            });
+
+        }
+
+
+        ///////////////////////////////////////////////////
+
+		function printEvent(instance, eventName) {
+                google.maps.event.addListener(instance, eventName, function () {
+                    console.log("Event: " + eventName);
+                });
+        }
+
+
+		function buttonHandler(event) {
+				marker.setDuration(duration);
+				marker.setEasing("linear");
+				marker.setPosition(coords[1]);
+				
+		}
+
+
+        $(function () {
+            initialize();
+	
+			var myLatlng = new google.maps.LatLng(33.520204, 33.937258);
+	
+            var clickHandler = function (event, clickType) {
+                var duration = parseInt($('#durationOption').val());
+				alert(clickType);
+                if (duration < 0) {
+                    duration = 1;
+                    $('#durationOption').val(duration);
+                }
+
+                marker.setDuration(duration);
+				marker.setEasing("linear");
+
+                if (clickType === "left") {
+                    marker.setPosition(event.latLng);
+                } else if (clickType === "right"){
+                    marker.setPositionNotAnimated(event.latLng);
+                } else if (clickType === "button"){
+					marker.setPosition(coords[1]);
+				}
+            };
+            
+            var leftClickHandler = function(event) { clickHandler(event, "left") };
+            var rightClickHandler = function(event) { clickHandler(event, "right") };
+
+            google.maps.event.addListener(map, 'click', leftClickHandler);
+            google.maps.event.addListener(map, 'rightclick', rightClickHandler);
+			
+			//var buttonHandler = function(event) {
+				//marker.setDuration(duration);
+				//marker.setEasing("linear");
+				//marker.setPosition(coords[1]);
+			//};
+			
+			var nextButtonClickHandler = function(event) {
+				window.clearInterval(intervalId);
+				intervalId = 0;
+				buttonHandler(event);
+			}
+			
+			document.getElementById("nextButton").addEventListener("click", nextButtonClickHandler);
+			document.getElementById("autoButton").addEventListener("click", function() {
+				intervalId = setInterval(function() {
+					buttonHandler();
+					}, 1000
+				);
+			});
+
+
+            var printEvent = function (instance, eventName) {
+                google.maps.event.addListener(instance, eventName, function () {
+                    console.log("Event: " + eventName);
+                });
+            };
+
+            printEvent(marker, "click");
+            printEvent(marker, "map_changed");
+            printEvent(marker, "position_changed");
+            printEvent(marker, "animationposition_changed");
+
+            if (window.location.hash == "#iframe") {
+                $('#backLink').hide();
+                $('#controls').css('height', '55px');
+            }
+
+        });
+		
+	
+	var duration = parseInt($('#durationOption').val());
+    if (duration < 0) {
+        duration = 1;
+        $('#durationOption').val(duration);
+	}
+
+    </script>
+</head>
+<body>
+    <div id="map_canvas"></div>
+
+    <div id="controls" class="control">
+       <!--  <div class="row">
+            <label for="easingOption">Easing:</label>
+            <select id="easingOption">
+                <option value="linear">linear</option>
+                <option value="swing">swing</option>
+                <option value="easeInQuad">easeInQuad</option>
+                <option value="easeOutQuad">easeOutQuad</option>
+                <option value="easeInOutQuad">easeInOutQuad</option>
+                <option value="easeInCubic">easeInCubic</option>
+                <option value="easeOutCubic">easeOutCubic</option>
+                <option value="easeInOutCubic">easeInOutCubic</option>
+                <option value="easeInQuart">easeInQuart</option>
+                <option value="easeOutQuart">easeOutQuart</option>
+                <option value="easeInOutQuart">easeInOutQuart</option>
+                <option value="easeInQuint">easeInQuint</option>
+                <option value="easeOutQuint">easeOutQuint</option>
+                <option value="easeInOutQuint" selected>easeInOutQuint</option>
+                <option value="easeInSine">easeInSine</option>
+                <option value="easeOutSine">easeOutSine</option>
+                <option value="easeInOutSine">easeInOutSine</option>
+                <option value="easeInExpo">easeInExpo</option>
+                <option value="easeOutExpo">easeOutExpo</option>
+                <option value="easeInOutExpo">easeInOutExpo</option>
+                <option value="easeInCirc">easeInCirc</option>
+                <option value="easeOutCirc">easeOutCirc</option>
+                <option value="easeInOutCirc">easeInOutCirc</option>
+                <option value="easeInElastic">easeInElastic</option>
+                <option value="easeOutElastic">easeOutElastic</option>
+                <option value="easeInOutElastic">easeInOutElastic</option>
+                <option value="easeInBack">easeInBack</option>
+                <option value="easeOutBack">easeOutBack</option>
+                <option value="easeInOutBack">easeInOutBack</option>
+                <option value="easeInBounce">easeInBounce</option>
+                <option value="easeOutBounce">easeOutBounce</option>
+                <option value="easeInOutBounce">easeInOutBounce</option>
+            </select>
+        </div> -->
+        <div class="row">
+            <label for="durationOption">Duration:</label>
+            <input type="number" id="durationOption" value="1000">
+			<button id="nextButton">Next</button>
+			<button id="autoButton">Auto</button>
+        </div>
+        <div class="row" id="backLink">
+            <a href="https://github.com/terikon/marker-animate-unobtrusive">Source &rarr;</a>
+        </div>
+
+    </div>
+
+    <div id="log" class="control">
+    </div>
+
+</body>
+</html>
