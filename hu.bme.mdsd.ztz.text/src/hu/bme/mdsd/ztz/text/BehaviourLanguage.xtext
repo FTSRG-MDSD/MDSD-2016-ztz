@@ -135,7 +135,7 @@ EString returns ecore::EString:
 RobotCollaboration returns RobotCollaboration:
 		{RobotCollaboration}
 		collaborator=[DynamicRobot]
-		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+		( '{' properties+=Property ( "," properties+=Property)* '}' )?
 ;
 
 enum RobotStatus returns RobotStatus:
@@ -145,7 +145,7 @@ enum RobotStatus returns RobotStatus:
 Action_Impl returns Action:
 	{Action}
 	name=EString ('(' currentTaskExecution=[TaskExecution] ')')?
-		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+	('{' properties+=Property ( "," properties+=Property)* '}' )?
 ;
 
 Property returns drone::Property:
@@ -161,10 +161,9 @@ CapabilityProperties returns drone::CapabilityProperties:
 	'CapabilityProperties'
 	'{'
 		'capability' capability=[drone::Capability]
-		('properties' '{' properties+=Property ( "," properties+=Property)* '}' )?
+		( '{' properties+=Property ( "," properties+=Property)* '}' )?
 	'}'
 ;
-
 
 
 EFloat returns ecore::EFloat:

@@ -1235,10 +1235,10 @@ public class InternalBehaviourLanguageLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalBehaviourLanguage.g:8991:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalBehaviourLanguage.g:8991:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalBehaviourLanguage.g:8910:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalBehaviourLanguage.g:8910:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalBehaviourLanguage.g:8991:11: ( '^' )?
+            // InternalBehaviourLanguage.g:8910:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1247,7 +1247,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalBehaviourLanguage.g:8991:11: '^'
+                    // InternalBehaviourLanguage.g:8910:11: '^'
                     {
                     match('^'); 
 
@@ -1265,7 +1265,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalBehaviourLanguage.g:8991:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalBehaviourLanguage.g:8910:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -1314,10 +1314,10 @@ public class InternalBehaviourLanguageLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalBehaviourLanguage.g:8993:10: ( ( '0' .. '9' )+ )
-            // InternalBehaviourLanguage.g:8993:12: ( '0' .. '9' )+
+            // InternalBehaviourLanguage.g:8912:10: ( ( '0' .. '9' )+ )
+            // InternalBehaviourLanguage.g:8912:12: ( '0' .. '9' )+
             {
-            // InternalBehaviourLanguage.g:8993:12: ( '0' .. '9' )+
+            // InternalBehaviourLanguage.g:8912:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1331,7 +1331,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalBehaviourLanguage.g:8993:13: '0' .. '9'
+            	    // InternalBehaviourLanguage.g:8912:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1363,10 +1363,10 @@ public class InternalBehaviourLanguageLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalBehaviourLanguage.g:8995:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalBehaviourLanguage.g:8995:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalBehaviourLanguage.g:8914:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalBehaviourLanguage.g:8914:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalBehaviourLanguage.g:8995:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalBehaviourLanguage.g:8914:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1384,10 +1384,10 @@ public class InternalBehaviourLanguageLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalBehaviourLanguage.g:8995:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalBehaviourLanguage.g:8914:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalBehaviourLanguage.g:8995:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalBehaviourLanguage.g:8914:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -1403,7 +1403,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalBehaviourLanguage.g:8995:21: '\\\\' .
+                    	    // InternalBehaviourLanguage.g:8914:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1411,7 +1411,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalBehaviourLanguage.g:8995:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalBehaviourLanguage.g:8914:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1436,10 +1436,10 @@ public class InternalBehaviourLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalBehaviourLanguage.g:8995:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalBehaviourLanguage.g:8914:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalBehaviourLanguage.g:8995:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalBehaviourLanguage.g:8914:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1455,7 +1455,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalBehaviourLanguage.g:8995:54: '\\\\' .
+                    	    // InternalBehaviourLanguage.g:8914:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1463,7 +1463,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalBehaviourLanguage.g:8995:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalBehaviourLanguage.g:8914:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1506,12 +1506,12 @@ public class InternalBehaviourLanguageLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalBehaviourLanguage.g:8997:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalBehaviourLanguage.g:8997:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalBehaviourLanguage.g:8916:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalBehaviourLanguage.g:8916:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalBehaviourLanguage.g:8997:24: ( options {greedy=false; } : . )*
+            // InternalBehaviourLanguage.g:8916:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -1536,7 +1536,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalBehaviourLanguage.g:8997:52: .
+            	    // InternalBehaviourLanguage.g:8916:52: .
             	    {
             	    matchAny(); 
 
@@ -1566,12 +1566,12 @@ public class InternalBehaviourLanguageLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalBehaviourLanguage.g:8999:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalBehaviourLanguage.g:8999:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalBehaviourLanguage.g:8918:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalBehaviourLanguage.g:8918:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalBehaviourLanguage.g:8999:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalBehaviourLanguage.g:8918:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1584,7 +1584,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalBehaviourLanguage.g:8999:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalBehaviourLanguage.g:8918:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1604,7 +1604,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalBehaviourLanguage.g:8999:40: ( ( '\\r' )? '\\n' )?
+            // InternalBehaviourLanguage.g:8918:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1613,9 +1613,9 @@ public class InternalBehaviourLanguageLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalBehaviourLanguage.g:8999:41: ( '\\r' )? '\\n'
+                    // InternalBehaviourLanguage.g:8918:41: ( '\\r' )? '\\n'
                     {
-                    // InternalBehaviourLanguage.g:8999:41: ( '\\r' )?
+                    // InternalBehaviourLanguage.g:8918:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1624,7 +1624,7 @@ public class InternalBehaviourLanguageLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalBehaviourLanguage.g:8999:41: '\\r'
+                            // InternalBehaviourLanguage.g:8918:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1656,10 +1656,10 @@ public class InternalBehaviourLanguageLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalBehaviourLanguage.g:9001:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalBehaviourLanguage.g:9001:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalBehaviourLanguage.g:8920:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalBehaviourLanguage.g:8920:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalBehaviourLanguage.g:9001:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalBehaviourLanguage.g:8920:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1713,8 +1713,8 @@ public class InternalBehaviourLanguageLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalBehaviourLanguage.g:9003:16: ( . )
-            // InternalBehaviourLanguage.g:9003:18: .
+            // InternalBehaviourLanguage.g:8922:16: ( . )
+            // InternalBehaviourLanguage.g:8922:18: .
             {
             matchAny(); 
 
