@@ -4,6 +4,7 @@
 package hu.bme.mdsd.ztz.text.scoping;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
@@ -29,8 +30,11 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.scoping.AbstractBehaviourLanguageScopeProvider;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -38,6 +42,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * This class contains custom scoping description.
@@ -192,7 +198,13 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
       if (_and) {
         RobotMissionContainer _container = this.getContainer(manager);
         List<PropertyKey> _allContentsOfType = EcoreUtil2.<PropertyKey>getAllContentsOfType(_container, PropertyKey.class);
-        return Scopes.scopeFor(_allContentsOfType);
+        final Set<PropertyKey> droneProperties = IterableExtensions.<PropertyKey>toSet(_allContentsOfType);
+        Resource _eResource = context.eResource();
+        TreeIterator<EObject> _allContents = _eResource.getAllContents();
+        Iterator<PropertyKey> _filter = Iterators.<PropertyKey>filter(_allContents, PropertyKey.class);
+        Set<PropertyKey> _set = IteratorExtensions.<PropertyKey>toSet(_filter);
+        droneProperties.addAll(_set);
+        return Scopes.scopeFor(droneProperties);
       }
       _xblockexpression = super.getScope(context, reference);
     }

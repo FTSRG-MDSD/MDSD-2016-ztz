@@ -98,7 +98,9 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 	
 	def dispatch IScope scopeForContext(hu.bme.mdsd.ztz.model.drone.Property context, EReference reference, ResourceManager manager) {
 		if (reference == DronePackage.Literals.PROPERTY__KEY && manager.resource != null) {
-			return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(getContainer(manager), PropertyKey))
+			val droneProperties = EcoreUtil2.getAllContentsOfType(getContainer(manager), PropertyKey).toSet
+			droneProperties.addAll(context.eResource.allContents.filter(PropertyKey).toSet)
+			return Scopes.scopeFor(droneProperties)
 		}
 		super.getScope(context, reference)
 	}
