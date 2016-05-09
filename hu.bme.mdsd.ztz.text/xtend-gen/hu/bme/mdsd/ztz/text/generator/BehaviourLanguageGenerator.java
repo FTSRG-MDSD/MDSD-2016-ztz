@@ -111,6 +111,6 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
   
   protected void generateActions(final Resource resource, final IFileSystemAccess2 fsa, final JsonNode jsonNode) {
     String _string = jsonNode.toString();
-    fsa.generateFile("out.json", _string);
+    fsa.generateFile("drone_actions.json", _string);
   }
 }

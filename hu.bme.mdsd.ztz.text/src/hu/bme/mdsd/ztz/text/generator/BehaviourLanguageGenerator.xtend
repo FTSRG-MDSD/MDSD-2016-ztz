@@ -75,11 +75,7 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 	}
 	
 	protected def generateActions(Resource resource, IFileSystemAccess2 fsa, JsonNode jsonNode) {
-//		val jsonGenerator = new JsonGenerator()
-		fsa.generateFile("out.json", jsonNode.toString)
-//		jsonGenerator.generateJson(resource, fsa, orderedStatements)
+		fsa.generateFile("drone_actions.json", jsonNode.toString)
 	}
-
-	
 
 }

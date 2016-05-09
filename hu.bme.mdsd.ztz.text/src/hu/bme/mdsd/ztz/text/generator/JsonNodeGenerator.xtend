@@ -8,7 +8,6 @@ import org.eclipse.emf.common.util.EList
 import hu.bme.mdsd.ztz.model.drone.StringValue
 import hu.bme.mdsd.ztz.model.drone.MeasureValue
 import hu.bme.mdsd.ztz.model.behaviour.DetectedObject
-import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication
 import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication
