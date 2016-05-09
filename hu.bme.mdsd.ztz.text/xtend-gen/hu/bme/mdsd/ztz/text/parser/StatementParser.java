@@ -32,32 +32,42 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.util.RobotUtil;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtend.lib.annotations.AccessorType;
+import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.xbase.lib.Pure;
 
 @SuppressWarnings("all")
 public class StatementParser {
-  public void parseStatements(final Resource resource, final Resource resourceOfBehaviour) {
+  @Accessors(AccessorType.PUBLIC_GETTER)
+  private List<Statement> orderedStatements;
+  
+  public List<Statement> parseStatements(final Resource resource) {
     EList<EObject> _contents = resource.getContents();
     EObject _get = _contents.get(0);
     final EList<Statement> statements = ((BehaviourLanguage) _get).getStatements();
+    ArrayList<Statement> _arrayList = new ArrayList<Statement>();
+    this.orderedStatements = _arrayList;
     for (final Statement statement : statements) {
-      this.parseStatement(statement, resourceOfBehaviour);
+      this.parseStatement(statement);
     }
+    return this.orderedStatements;
   }
   
-  protected Boolean _parseStatement(final ConditionalStatement conditionalStatement, final Resource resourceOfBehaviour) {
+  protected Boolean _parseStatement(final ConditionalStatement conditionalStatement) {
     Condition _condition = conditionalStatement.getCondition();
     boolean _trueCondition = this.trueCondition(_condition);
     if (_trueCondition) {
       EList<Statement> _statements = conditionalStatement.getStatements();
       for (final Statement st : _statements) {
-        this.parseStatement(st, resourceOfBehaviour);
+        this.parseStatement(st);
       }
     } else {
       EList<Statement> _otherStatements = conditionalStatement.getOtherStatements();
@@ -65,7 +75,7 @@ public class StatementParser {
       if (_notEquals) {
         EList<Statement> _otherStatements_1 = conditionalStatement.getOtherStatements();
         for (final Statement st_1 : _otherStatements_1) {
-          this.parseStatement(st_1, resourceOfBehaviour);
+          this.parseStatement(st_1);
         }
       }
     }
@@ -110,7 +120,7 @@ public class StatementParser {
     return false;
   }
   
-  protected Boolean _parseStatement(final ActionStatement statement, final Resource resourceOfBehaviour) {
+  protected Boolean _parseStatement(final ActionStatement statement) {
     boolean _xblockexpression = false;
     {
       final DynamicRobot robot = statement.getRobot();
@@ -120,6 +130,7 @@ public class StatementParser {
       EList<Action> _actions = robot.getActions();
       Action _action_1 = statement.getAction();
       _actions.add(_action_1);
+      this.orderedStatements.add(statement);
       boolean _xifexpression = false;
       EList<Action> _moreactions = statement.getMoreactions();
       boolean _isEmpty = _moreactions.isEmpty();
@@ -147,7 +158,7 @@ public class StatementParser {
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseStatement(final DetectionStatement statement, final Resource resourceOfBehaviour) {
+  protected Boolean _parseStatement(final DetectionStatement statement) {
     boolean _xblockexpression = false;
     {
       final DynamicRobot robot = statement.getRobot();
@@ -159,12 +170,13 @@ public class StatementParser {
       boolean _isObstacle = statement.isObstacle();
       detectedObject.setObstacle(_isObstacle);
       EList<DetectedObject> _detectedObjects = robot.getDetectedObjects();
-      _xblockexpression = _detectedObjects.add(detectedObject);
+      _detectedObjects.add(detectedObject);
+      _xblockexpression = this.orderedStatements.add(statement);
     }
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseStatement(final ExecutionStatement statement, final Resource resourceOfBehaviour) {
+  protected Boolean _parseStatement(final ExecutionStatement statement) {
     boolean _xblockexpression = false;
     {
       final DynamicRobot robot = statement.getRobot();
@@ -174,16 +186,21 @@ public class StatementParser {
       boolean _contains = _executedTasks.contains(_execution);
       boolean _not = (!_contains);
       if (_not) {
-        EList<TaskExecution> _executedTasks_1 = robot.getExecutedTasks();
-        TaskExecution _execution_1 = statement.getExecution();
-        _xifexpression = _executedTasks_1.add(_execution_1);
+        boolean _xblockexpression_1 = false;
+        {
+          EList<TaskExecution> _executedTasks_1 = robot.getExecutedTasks();
+          TaskExecution _execution_1 = statement.getExecution();
+          _executedTasks_1.add(_execution_1);
+          _xblockexpression_1 = this.orderedStatements.add(statement);
+        }
+        _xifexpression = _xblockexpression_1;
       }
       _xblockexpression = _xifexpression;
     }
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseStatement(final MessageStatement statement, final Resource resourceOfBehaviour) {
+  protected Boolean _parseStatement(final MessageStatement statement) {
     Boolean _xblockexpression = null;
     {
       final DynamicRobot senderRobot = statement.getRobot();
@@ -195,14 +212,14 @@ public class StatementParser {
     return _xblockexpression;
   }
   
-  protected Boolean _parseStatement(final RobotStatusStatement statement, final Resource resourceOfBehaviour) {
+  protected Boolean _parseStatement(final RobotStatusStatement statement) {
     final DynamicRobot robot = statement.getRobot();
     RobotStatus _status = statement.getStatus();
     robot.setStatus(_status);
     return null;
   }
   
-  protected Boolean _parseStatement(final TaskStatusStatement statement, final Resource resourceOfBehaviour) {
+  protected Boolean _parseStatement(final TaskStatusStatement statement) {
     final TaskExecution task = statement.getTask();
     TaskExecutionStatus _status = statement.getStatus();
     task.setStatus(_status);
@@ -216,7 +233,6 @@ public class StatementParser {
       boolean _reachableRobot = RobotUtil.reachableRobot(senderRobot, _target);
       boolean _not = (!_reachableRobot);
       if (_not) {
-        InputOutput.<String>println("not reachable");
         return null;
       }
       DynamicRobot _target_1 = target.getTarget();
@@ -284,7 +300,7 @@ public class StatementParser {
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseStatement(final CollaborationStatement statement, final Resource resourceOfBehaviour) {
+  protected Boolean _parseStatement(final CollaborationStatement statement) {
     final DynamicRobot robot = statement.getRobot();
     final HashSet<DynamicRobot> connectedRobots = new HashSet<DynamicRobot>();
     EList<RobotCollaboration> _collaboration = statement.getCollaboration();
@@ -320,31 +336,32 @@ public class StatementParser {
         newOppositeCollaboration.setCollaborator(robot);
         EList<RobotCollaboration> _collaborations_1 = r.getCollaborations();
         _collaborations_1.add(newOppositeCollaboration);
+        this.orderedStatements.add(statement);
       }
     }
     return null;
   }
   
-  public Boolean parseStatement(final Statement statement, final Resource resourceOfBehaviour) {
+  public Boolean parseStatement(final Statement statement) {
     if (statement instanceof RobotStatusStatement) {
-      return _parseStatement((RobotStatusStatement)statement, resourceOfBehaviour);
+      return _parseStatement((RobotStatusStatement)statement);
     } else if (statement instanceof TaskStatusStatement) {
-      return _parseStatement((TaskStatusStatement)statement, resourceOfBehaviour);
+      return _parseStatement((TaskStatusStatement)statement);
     } else if (statement instanceof ActionStatement) {
-      return _parseStatement((ActionStatement)statement, resourceOfBehaviour);
+      return _parseStatement((ActionStatement)statement);
     } else if (statement instanceof CollaborationStatement) {
-      return _parseStatement((CollaborationStatement)statement, resourceOfBehaviour);
+      return _parseStatement((CollaborationStatement)statement);
     } else if (statement instanceof DetectionStatement) {
-      return _parseStatement((DetectionStatement)statement, resourceOfBehaviour);
+      return _parseStatement((DetectionStatement)statement);
     } else if (statement instanceof ExecutionStatement) {
-      return _parseStatement((ExecutionStatement)statement, resourceOfBehaviour);
+      return _parseStatement((ExecutionStatement)statement);
     } else if (statement instanceof MessageStatement) {
-      return _parseStatement((MessageStatement)statement, resourceOfBehaviour);
+      return _parseStatement((MessageStatement)statement);
     } else if (statement instanceof ConditionalStatement) {
-      return _parseStatement((ConditionalStatement)statement, resourceOfBehaviour);
+      return _parseStatement((ConditionalStatement)statement);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(statement, resourceOfBehaviour).toString());
+        Arrays.<Object>asList(statement).toString());
     }
   }
   
@@ -370,5 +387,10 @@ public class StatementParser {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(target, senderRobot, message).toString());
     }
+  }
+  
+  @Pure
+  public List<Statement> getOrderedStatements() {
+    return this.orderedStatements;
   }
 }

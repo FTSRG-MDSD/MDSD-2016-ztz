@@ -16,6 +16,14 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import hu.bme.mdsd.ztz.text.parser.StatementParser
+import java.util.List
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.node.JsonNodeFactory
+import com.fasterxml.jackson.core.JsonFactory
+import com.fasterxml.jackson.core.JsonGenerator
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.node.ObjectNode
 
 /**
  * Generates code from your model files on save.
@@ -28,7 +36,15 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 		val manager = ResourceManager.instance
 		importResource(resource, manager)
 
-		generateBehaviour(resource, fsa)
+		val Iterator<BehaviourContainer> containerIterator = resource.allContents.filter(typeof(BehaviourContainer))
+		if (containerIterator.hasNext) {
+			val statementParser = new StatementParser()
+			val orderedStatements = statementParser.parseStatements(resource)
+	
+			generateBehaviour(resource, fsa)
+			
+			generateActions(resource, fsa, orderedStatements)
+		}
 	}
 
 	def protected importResource(Resource resource, ResourceManager manager) {
@@ -61,11 +77,13 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 
 			resourceOfBehaviour.getContents().add(container)
 
-			val statementParser = new StatementParser()
-			statementParser.parseStatements(resource, resourceOfBehaviour)
-
 			resourceOfBehaviour.save(null)
 		}
+	}
+	
+	protected def generateActions(Resource resource, IFileSystemAccess2 fsa, List<Statement> orderedStatements) {
+		val JsonNodeFactory factory = new JsonNodeFactory(false);
+		val ObjectMapper mapper = new ObjectMapper
 	}
 
 }

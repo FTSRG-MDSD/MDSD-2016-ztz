@@ -3,12 +3,16 @@
  */
 package hu.bme.mdsd.ztz.text.generator;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.parser.StatementParser;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -34,7 +38,15 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     final ResourceManager manager = ResourceManager.getInstance();
     this.importResource(resource, manager);
-    this.generateBehaviour(resource, fsa);
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    final Iterator<BehaviourContainer> containerIterator = Iterators.<BehaviourContainer>filter(_allContents, BehaviourContainer.class);
+    boolean _hasNext = containerIterator.hasNext();
+    if (_hasNext) {
+      final StatementParser statementParser = new StatementParser();
+      final List<Statement> orderedStatements = statementParser.parseStatements(resource);
+      this.generateBehaviour(resource, fsa);
+      this.generateActions(resource, fsa, orderedStatements);
+    }
   }
   
   protected Resource importResource(final Resource resource, final ResourceManager manager) {
@@ -93,12 +105,15 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
         _contents.clear();
         EList<EObject> _contents_1 = resourceOfBehaviour.getContents();
         _contents_1.add(container);
-        final StatementParser statementParser = new StatementParser();
-        statementParser.parseStatements(resource, resourceOfBehaviour);
         resourceOfBehaviour.save(null);
       }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  protected void generateActions(final Resource resource, final IFileSystemAccess2 fsa, final List<Statement> orderedStatements) {
+    final JsonNodeFactory factory = new JsonNodeFactory(false);
+    final ObjectMapper mapper = new ObjectMapper();
   }
 }

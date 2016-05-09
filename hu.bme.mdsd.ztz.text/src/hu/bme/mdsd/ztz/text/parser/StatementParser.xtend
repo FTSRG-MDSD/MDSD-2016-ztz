@@ -24,25 +24,34 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement
 import static extension hu.bme.mdsd.ztz.text.util.RobotUtil.*
+import java.util.List
+import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
 
 class StatementParser {
 	
-	def parseStatements(Resource resource, Resource resourceOfBehaviour) {
+	@Accessors(PUBLIC_GETTER)
+	var List<Statement> orderedStatements
+	
+	def List<Statement> parseStatements(Resource resource) {
 		val statements = (resource.contents.get(0) as BehaviourLanguage).statements
 	
+		orderedStatements = new ArrayList<Statement>
 		for (Statement statement : statements) {
-			statement.parseStatement(resourceOfBehaviour)
+			statement.parseStatement()
 		}
+		
+		return orderedStatements
 	}
 
-	def dispatch parseStatement(ConditionalStatement conditionalStatement, Resource resourceOfBehaviour) {
+	def dispatch parseStatement(ConditionalStatement conditionalStatement) {
 		if (conditionalStatement.condition.trueCondition()) {
 			for (Statement st : conditionalStatement.statements) {
-				st.parseStatement(resourceOfBehaviour)
+				st.parseStatement()
 			}
 		} else if (conditionalStatement.otherStatements != null){
 			for (Statement st : conditionalStatement.otherStatements) {
-				st.parseStatement(resourceOfBehaviour)
+				st.parseStatement()
 			}
 		}
 	}
@@ -64,12 +73,14 @@ class StatementParser {
 		
 	}
 
-	def dispatch parseStatement(ActionStatement statement, Resource resourceOfBehaviour) {
+	def dispatch parseStatement(ActionStatement statement) {
 		val robot = statement.robot 
 		var execution = statement.action.currentTaskExecution
 		
 		robot.addExecution(execution)
 		robot.actions.add(statement.action)
+		orderedStatements.add(statement)
+		
 		if (!statement.moreactions.empty) {
 			for (Action action : statement.moreactions) {
 				execution = action.currentTaskExecution
@@ -79,7 +90,7 @@ class StatementParser {
 		}
 	}
 	
-	def dispatch parseStatement(DetectionStatement statement, Resource resourceOfBehaviour) {
+	def dispatch parseStatement(DetectionStatement statement) {
 		val robot = statement.robot
 		robot.removeAreaObject(statement.object)
 		
@@ -87,17 +98,19 @@ class StatementParser {
 		detectedObject.object = statement.object
 		detectedObject.obstacle = statement.obstacle
 		robot.detectedObjects.add(detectedObject)
+		orderedStatements.add(statement)
 	}
 
-	def dispatch parseStatement(ExecutionStatement statement, Resource resourceOfBehaviour) {
+	def dispatch parseStatement(ExecutionStatement statement) {
 		val robot = statement.robot
 		
 		if (!robot.executedTasks.contains(statement.execution)) {
 			robot.executedTasks.add(statement.execution)
+			orderedStatements.add(statement)
 		}
 	}
 	
-	def dispatch parseStatement(MessageStatement statement, Resource resourceOfBehaviour) {
+	def dispatch parseStatement(MessageStatement statement) {
 		val senderRobot = statement.robot
 		initMessageRepository(senderRobot)
 
@@ -108,20 +121,19 @@ class StatementParser {
 		
 	}
 	
-	def dispatch parseStatement(RobotStatusStatement statement, Resource resourceOfBehaviour) {
+	def dispatch parseStatement(RobotStatusStatement statement) {
 		val robot = statement.robot
 		
 		robot.status = statement.status	
 	}
 	
-	def dispatch parseStatement(TaskStatusStatement statement, Resource resourceOfBehaviour) {
+	def dispatch parseStatement(TaskStatusStatement statement) {
 		val task = statement.task
 		task.status = statement.status		
 	}
 	
 	def dispatch parseMessageTarget(UniTarget target, DynamicRobot senderRobot, Message message) {
 		if (!reachableRobot(senderRobot, target.target)) {
-			println("not reachable")
 			return null
 		}
 		target.target.initMessageRepository()
@@ -169,7 +181,7 @@ class StatementParser {
 		addSendedMessage(senderRobot, message)
 	}
 	
-	def dispatch parseStatement(CollaborationStatement statement, Resource resourceOfBehaviour) {
+	def dispatch parseStatement(CollaborationStatement statement) {
 		val robot = statement.robot
 
 		val connectedRobots = new HashSet<DynamicRobot>()
@@ -195,6 +207,7 @@ class StatementParser {
 			val newOppositeCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration()
 			newOppositeCollaboration.collaborator = robot
 			r.collaborations.add(newOppositeCollaboration)
+			orderedStatements.add(statement)
 		}
 	}
 	
