@@ -3,16 +3,13 @@
  */
 package hu.bme.mdsd.ztz.text.generator;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.parser.StatementParser;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -43,9 +40,9 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
     boolean _hasNext = containerIterator.hasNext();
     if (_hasNext) {
       final StatementParser statementParser = new StatementParser();
-      final List<Statement> orderedStatements = statementParser.parseStatements(resource);
+      final JsonNode jsonNode = statementParser.parseStatements(resource);
       this.generateBehaviour(resource, fsa);
-      this.generateActions(resource, fsa, orderedStatements);
+      this.generateActions(resource, fsa, jsonNode);
     }
   }
   
@@ -112,8 +109,8 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
     }
   }
   
-  protected void generateActions(final Resource resource, final IFileSystemAccess2 fsa, final List<Statement> orderedStatements) {
-    final JsonNodeFactory factory = new JsonNodeFactory(false);
-    final ObjectMapper mapper = new ObjectMapper();
+  protected void generateActions(final Resource resource, final IFileSystemAccess2 fsa, final JsonNode jsonNode) {
+    String _string = jsonNode.toString();
+    fsa.generateFile("out.json", _string);
   }
 }

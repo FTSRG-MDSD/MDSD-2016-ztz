@@ -1,5 +1,8 @@
 package hu.bme.mdsd.ztz.text.parser
 
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.node.ArrayNode
+import com.fasterxml.jackson.databind.node.JsonNodeFactory
 import hu.bme.mdsd.ztz.model.behaviour.Action
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
@@ -7,41 +10,49 @@ import hu.bme.mdsd.ztz.model.behaviour.Message
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
+import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
+import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
+import hu.bme.mdsd.ztz.text.generator.JsonNodeGenerator
 import java.util.HashSet
 import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
-import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
-import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
-import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement
+
 import static extension hu.bme.mdsd.ztz.text.util.RobotUtil.*
-import java.util.List
-import java.util.ArrayList
-import org.eclipse.xtend.lib.annotations.Accessors
 
 class StatementParser {
 	
-	@Accessors(PUBLIC_GETTER)
-	var List<Statement> orderedStatements
+	var JsonNodeFactory factory
 	
-	def List<Statement> parseStatements(Resource resource) {
+	@Extension
+	var JsonNodeGenerator jsonGenerator
+	var ArrayNode rootNode
+	
+	new() {
+		factory = new JsonNodeFactory(false)
+		rootNode = factory.arrayNode
+		jsonGenerator = new JsonNodeGenerator
+	}
+	
+	def JsonNode parseStatements(Resource resource) {
 		val statements = (resource.contents.get(0) as BehaviourLanguage).statements
 	
-		orderedStatements = new ArrayList<Statement>
+//		orderedStatements = new ArrayList<Statement>
 		for (Statement statement : statements) {
 			statement.parseStatement()
 		}
 		
-		return orderedStatements
+		return rootNode
 	}
 
 	def dispatch parseStatement(ConditionalStatement conditionalStatement) {
@@ -78,15 +89,27 @@ class StatementParser {
 		var execution = statement.action.currentTaskExecution
 		
 		robot.addExecution(execution)
-		robot.actions.add(statement.action)
-		orderedStatements.add(statement)
+		val action = statement.action
+		robot.actions.add(action)
+
+		var node = factory.objectNode
+		newActionNode(action, robot, node)
+		rootNode.add(node)
 		
 		if (!statement.moreactions.empty) {
-			for (Action action : statement.moreactions) {
-				execution = action.currentTaskExecution
+			for (Action otherAction : statement.moreactions) {
+				execution = otherAction.currentTaskExecution
 				robot.addExecution(execution)
 			}
-			statement.robot.actions.addAll(statement.moreactions)
+			val moreActions = statement.moreactions
+			println(moreActions)
+			for (Action act : moreActions) {
+				println(act)
+				node = factory.objectNode
+				newActionNode(act, robot, node)
+				rootNode.add(node)
+			}
+			statement.robot.actions.addAll(moreActions)
 		}
 	}
 	
@@ -98,7 +121,7 @@ class StatementParser {
 		detectedObject.object = statement.object
 		detectedObject.obstacle = statement.obstacle
 		robot.detectedObjects.add(detectedObject)
-		orderedStatements.add(statement)
+//		orderedStatements.add(statement)
 	}
 
 	def dispatch parseStatement(ExecutionStatement statement) {
@@ -106,7 +129,7 @@ class StatementParser {
 		
 		if (!robot.executedTasks.contains(statement.execution)) {
 			robot.executedTasks.add(statement.execution)
-			orderedStatements.add(statement)
+//			orderedStatements.add(statement)
 		}
 	}
 	
@@ -207,7 +230,7 @@ class StatementParser {
 			val newOppositeCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration()
 			newOppositeCollaboration.collaborator = robot
 			r.collaborations.add(newOppositeCollaboration)
-			orderedStatements.add(statement)
+//			orderedStatements.add(statement)
 		}
 	}
 	

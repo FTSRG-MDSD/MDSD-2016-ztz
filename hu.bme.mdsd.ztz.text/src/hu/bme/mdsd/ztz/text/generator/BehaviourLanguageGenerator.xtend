@@ -3,9 +3,11 @@
  */
 package hu.bme.mdsd.ztz.text.generator
 
+import com.fasterxml.jackson.databind.JsonNode
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
+import hu.bme.mdsd.ztz.text.parser.StatementParser
 import java.util.Iterator
 import java.util.Map
 import org.eclipse.emf.ecore.resource.Resource
@@ -15,15 +17,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import hu.bme.mdsd.ztz.text.parser.StatementParser
-import java.util.List
-import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.node.JsonNodeFactory
-import com.fasterxml.jackson.core.JsonFactory
-import com.fasterxml.jackson.core.JsonGenerator
-import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.node.ObjectNode
 
 /**
  * Generates code from your model files on save.
@@ -39,11 +32,11 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 		val Iterator<BehaviourContainer> containerIterator = resource.allContents.filter(typeof(BehaviourContainer))
 		if (containerIterator.hasNext) {
 			val statementParser = new StatementParser()
-			val orderedStatements = statementParser.parseStatements(resource)
+			val jsonNode = statementParser.parseStatements(resource)
 	
 			generateBehaviour(resource, fsa)
 			
-			generateActions(resource, fsa, orderedStatements)
+			generateActions(resource, fsa, jsonNode)
 		}
 	}
 
@@ -81,9 +74,12 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 		}
 	}
 	
-	protected def generateActions(Resource resource, IFileSystemAccess2 fsa, List<Statement> orderedStatements) {
-		val JsonNodeFactory factory = new JsonNodeFactory(false);
-		val ObjectMapper mapper = new ObjectMapper
+	protected def generateActions(Resource resource, IFileSystemAccess2 fsa, JsonNode jsonNode) {
+//		val jsonGenerator = new JsonGenerator()
+		fsa.generateFile("out.json", jsonNode.toString)
+//		jsonGenerator.generateJson(resource, fsa, orderedStatements)
 	}
+
+	
 
 }

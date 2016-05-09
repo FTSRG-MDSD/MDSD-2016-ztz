@@ -1,5 +1,9 @@
 package hu.bme.mdsd.ztz.text.parser;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.base.Objects;
 import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
@@ -31,34 +35,43 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
+import hu.bme.mdsd.ztz.text.generator.JsonNodeGenerator;
 import hu.bme.mdsd.ztz.text.util.RobotUtil;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtend.lib.annotations.AccessorType;
-import org.eclipse.xtend.lib.annotations.Accessors;
-import org.eclipse.xtext.xbase.lib.Pure;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class StatementParser {
-  @Accessors(AccessorType.PUBLIC_GETTER)
-  private List<Statement> orderedStatements;
+  private JsonNodeFactory factory;
   
-  public List<Statement> parseStatements(final Resource resource) {
+  @Extension
+  private JsonNodeGenerator jsonGenerator;
+  
+  private ArrayNode rootNode;
+  
+  public StatementParser() {
+    JsonNodeFactory _jsonNodeFactory = new JsonNodeFactory(false);
+    this.factory = _jsonNodeFactory;
+    ArrayNode _arrayNode = this.factory.arrayNode();
+    this.rootNode = _arrayNode;
+    JsonNodeGenerator _jsonNodeGenerator = new JsonNodeGenerator();
+    this.jsonGenerator = _jsonNodeGenerator;
+  }
+  
+  public JsonNode parseStatements(final Resource resource) {
     EList<EObject> _contents = resource.getContents();
     EObject _get = _contents.get(0);
     final EList<Statement> statements = ((BehaviourLanguage) _get).getStatements();
-    ArrayList<Statement> _arrayList = new ArrayList<Statement>();
-    this.orderedStatements = _arrayList;
     for (final Statement statement : statements) {
       this.parseStatement(statement);
     }
-    return this.orderedStatements;
+    return this.rootNode;
   }
   
   protected Boolean _parseStatement(final ConditionalStatement conditionalStatement) {
@@ -127,10 +140,12 @@ public class StatementParser {
       Action _action = statement.getAction();
       TaskExecution execution = _action.getCurrentTaskExecution();
       RobotUtil.addExecution(robot, execution);
+      final Action action = statement.getAction();
       EList<Action> _actions = robot.getActions();
-      Action _action_1 = statement.getAction();
-      _actions.add(_action_1);
-      this.orderedStatements.add(statement);
+      _actions.add(action);
+      ObjectNode node = this.factory.objectNode();
+      this.jsonGenerator.newActionNode(action, robot, node);
+      this.rootNode.add(node);
       boolean _xifexpression = false;
       EList<Action> _moreactions = statement.getMoreactions();
       boolean _isEmpty = _moreactions.isEmpty();
@@ -139,17 +154,27 @@ public class StatementParser {
         boolean _xblockexpression_1 = false;
         {
           EList<Action> _moreactions_1 = statement.getMoreactions();
-          for (final Action action : _moreactions_1) {
+          for (final Action otherAction : _moreactions_1) {
             {
-              TaskExecution _currentTaskExecution = action.getCurrentTaskExecution();
+              TaskExecution _currentTaskExecution = otherAction.getCurrentTaskExecution();
               execution = _currentTaskExecution;
               RobotUtil.addExecution(robot, execution);
             }
           }
+          final EList<Action> moreActions = statement.getMoreactions();
+          InputOutput.<EList<Action>>println(moreActions);
+          for (final Action act : moreActions) {
+            {
+              InputOutput.<Action>println(act);
+              ObjectNode _objectNode = this.factory.objectNode();
+              node = _objectNode;
+              this.jsonGenerator.newActionNode(act, robot, node);
+              this.rootNode.add(node);
+            }
+          }
           DynamicRobot _robot = statement.getRobot();
           EList<Action> _actions_1 = _robot.getActions();
-          EList<Action> _moreactions_2 = statement.getMoreactions();
-          _xblockexpression_1 = _actions_1.addAll(_moreactions_2);
+          _xblockexpression_1 = _actions_1.addAll(moreActions);
         }
         _xifexpression = _xblockexpression_1;
       }
@@ -170,8 +195,7 @@ public class StatementParser {
       boolean _isObstacle = statement.isObstacle();
       detectedObject.setObstacle(_isObstacle);
       EList<DetectedObject> _detectedObjects = robot.getDetectedObjects();
-      _detectedObjects.add(detectedObject);
-      _xblockexpression = this.orderedStatements.add(statement);
+      _xblockexpression = _detectedObjects.add(detectedObject);
     }
     return Boolean.valueOf(_xblockexpression);
   }
@@ -186,14 +210,9 @@ public class StatementParser {
       boolean _contains = _executedTasks.contains(_execution);
       boolean _not = (!_contains);
       if (_not) {
-        boolean _xblockexpression_1 = false;
-        {
-          EList<TaskExecution> _executedTasks_1 = robot.getExecutedTasks();
-          TaskExecution _execution_1 = statement.getExecution();
-          _executedTasks_1.add(_execution_1);
-          _xblockexpression_1 = this.orderedStatements.add(statement);
-        }
-        _xifexpression = _xblockexpression_1;
+        EList<TaskExecution> _executedTasks_1 = robot.getExecutedTasks();
+        TaskExecution _execution_1 = statement.getExecution();
+        _xifexpression = _executedTasks_1.add(_execution_1);
       }
       _xblockexpression = _xifexpression;
     }
@@ -336,7 +355,6 @@ public class StatementParser {
         newOppositeCollaboration.setCollaborator(robot);
         EList<RobotCollaboration> _collaborations_1 = r.getCollaborations();
         _collaborations_1.add(newOppositeCollaboration);
-        this.orderedStatements.add(statement);
       }
     }
     return null;
@@ -387,10 +405,5 @@ public class StatementParser {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(target, senderRobot, message).toString());
     }
-  }
-  
-  @Pure
-  public List<Statement> getOrderedStatements() {
-    return this.orderedStatements;
   }
 }
