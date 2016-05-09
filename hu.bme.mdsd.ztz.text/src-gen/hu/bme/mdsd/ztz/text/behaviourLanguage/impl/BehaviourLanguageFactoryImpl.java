@@ -70,6 +70,7 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
       case BehaviourLanguagePackage.STATEMENT: return createStatement();
       case BehaviourLanguagePackage.ATOMIC_STATEMENT: return createAtomicStatement();
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT: return createConditionalStatement();
+      case BehaviourLanguagePackage.SYNCHRONOUS_STATEMENT: return createSynchronousStatement();
       case BehaviourLanguagePackage.ACTION_STATEMENT: return createActionStatement();
       case BehaviourLanguagePackage.MESSAGE_STATEMENT: return createMessageStatement();
       case BehaviourLanguagePackage.COLLABORATION_STATEMENT: return createCollaborationStatement();
@@ -143,6 +144,17 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
   {
     ConditionalStatementImpl conditionalStatement = new ConditionalStatementImpl();
     return conditionalStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SynchronousStatement createSynchronousStatement()
+  {
+    SynchronousStatementImpl synchronousStatement = new SynchronousStatementImpl();
+    return synchronousStatement;
   }
 
   /**

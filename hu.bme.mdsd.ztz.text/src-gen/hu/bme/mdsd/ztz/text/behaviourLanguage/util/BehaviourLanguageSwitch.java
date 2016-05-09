@@ -110,6 +110,14 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case BehaviourLanguagePackage.SYNCHRONOUS_STATEMENT:
+      {
+        SynchronousStatement synchronousStatement = (SynchronousStatement)theEObject;
+        T result = caseSynchronousStatement(synchronousStatement);
+        if (result == null) result = caseStatement(synchronousStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case BehaviourLanguagePackage.ACTION_STATEMENT:
       {
         ActionStatement actionStatement = (ActionStatement)theEObject;
@@ -318,6 +326,22 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConditionalStatement(ConditionalStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Synchronous Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Synchronous Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSynchronousStatement(SynchronousStatement object)
   {
     return null;
   }

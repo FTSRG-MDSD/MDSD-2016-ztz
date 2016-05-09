@@ -33,7 +33,7 @@ DynamicRobot returns DynamicRobot:
 ;
 
 Statement:
-	AtomicStatement | ConditionalStatement
+	AtomicStatement | ConditionalStatement | SynchronousStatement
 ;
 
 AtomicStatement:
@@ -42,6 +42,10 @@ AtomicStatement:
 
 ConditionalStatement:
 	'if' condition=Condition 'then' '{' (statements+=Statement)+ '}' ('else' '{' (otherStatements+=Statement)+ '}')?
+;
+
+SynchronousStatement:
+	'sync' '{' (statements+=AtomicStatement)+ '}'
 ;
 
 ActionStatement:

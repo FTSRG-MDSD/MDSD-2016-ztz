@@ -539,6 +539,15 @@ ruleStatement returns [EObject current=null]
 			$current = $this_ConditionalStatement_1.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getStatementAccess().getSynchronousStatementParserRuleCall_2());
+		}
+		this_SynchronousStatement_2=ruleSynchronousStatement
+		{
+			$current = $this_SynchronousStatement_2.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -717,6 +726,56 @@ ruleConditionalStatement returns [EObject current=null]
 				newLeafNode(otherlv_9, grammarAccess.getConditionalStatementAccess().getRightCurlyBracketKeyword_6_3());
 			}
 		)?
+	)
+;
+
+// Entry rule entryRuleSynchronousStatement
+entryRuleSynchronousStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSynchronousStatementRule()); }
+	iv_ruleSynchronousStatement=ruleSynchronousStatement
+	{ $current=$iv_ruleSynchronousStatement.current; }
+	EOF;
+
+// Rule SynchronousStatement
+ruleSynchronousStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='sync'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getSynchronousStatementAccess().getSyncKeyword_0());
+		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getSynchronousStatementAccess().getLeftCurlyBracketKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSynchronousStatementAccess().getStatementsAtomicStatementParserRuleCall_2_0());
+				}
+				lv_statements_2_0=ruleAtomicStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSynchronousStatementRule());
+					}
+					add(
+						$current,
+						"statements",
+						lv_statements_2_0,
+						"hu.bme.mdsd.ztz.text.BehaviourLanguage.AtomicStatement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_3='}'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getSynchronousStatementAccess().getRightCurlyBracketKeyword_3());
+		}
 	)
 ;
 

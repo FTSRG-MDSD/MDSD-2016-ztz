@@ -318,12 +318,13 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cAtomicStatementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cConditionalStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cSynchronousStatementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//Statement:
-		//	AtomicStatement | ConditionalStatement;
+		//	AtomicStatement | ConditionalStatement | SynchronousStatement;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//AtomicStatement | ConditionalStatement
+		//AtomicStatement | ConditionalStatement | SynchronousStatement
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//AtomicStatement
@@ -331,6 +332,9 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//ConditionalStatement
 		public RuleCall getConditionalStatementParserRuleCall_1() { return cConditionalStatementParserRuleCall_1; }
+		
+		//SynchronousStatement
+		public RuleCall getSynchronousStatementParserRuleCall_2() { return cSynchronousStatementParserRuleCall_2; }
 	}
 	public class AtomicStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.AtomicStatement");
@@ -434,6 +438,37 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6_3() { return cRightCurlyBracketKeyword_6_3; }
+	}
+	public class SynchronousStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.SynchronousStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSyncKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cStatementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStatementsAtomicStatementParserRuleCall_2_0 = (RuleCall)cStatementsAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//SynchronousStatement:
+		//	'sync' '{' statements+=AtomicStatement+ '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'sync' '{' statements+=AtomicStatement+ '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'sync'
+		public Keyword getSyncKeyword_0() { return cSyncKeyword_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//statements+=AtomicStatement+
+		public Assignment getStatementsAssignment_2() { return cStatementsAssignment_2; }
+		
+		//AtomicStatement
+		public RuleCall getStatementsAtomicStatementParserRuleCall_2_0() { return cStatementsAtomicStatementParserRuleCall_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class ActionStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.ActionStatement");
@@ -2076,6 +2111,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	private final StatementElements pStatement;
 	private final AtomicStatementElements pAtomicStatement;
 	private final ConditionalStatementElements pConditionalStatement;
+	private final SynchronousStatementElements pSynchronousStatement;
 	private final ActionStatementElements pActionStatement;
 	private final MessageStatementElements pMessageStatement;
 	private final CollaborationStatementElements pCollaborationStatement;
@@ -2126,6 +2162,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		this.pStatement = new StatementElements();
 		this.pAtomicStatement = new AtomicStatementElements();
 		this.pConditionalStatement = new ConditionalStatementElements();
+		this.pSynchronousStatement = new SynchronousStatementElements();
 		this.pActionStatement = new ActionStatementElements();
 		this.pMessageStatement = new MessageStatementElements();
 		this.pCollaborationStatement = new CollaborationStatementElements();
@@ -2246,7 +2283,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 	
 	//Statement:
-	//	AtomicStatement | ConditionalStatement;
+	//	AtomicStatement | ConditionalStatement | SynchronousStatement;
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
@@ -2274,6 +2311,16 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	public ParserRule getConditionalStatementRule() {
 		return getConditionalStatementAccess().getRule();
+	}
+	
+	//SynchronousStatement:
+	//	'sync' '{' statements+=AtomicStatement+ '}';
+	public SynchronousStatementElements getSynchronousStatementAccess() {
+		return pSynchronousStatement;
+	}
+	
+	public ParserRule getSynchronousStatementRule() {
+		return getSynchronousStatementAccess().getRule();
 	}
 	
 	//ActionStatement:

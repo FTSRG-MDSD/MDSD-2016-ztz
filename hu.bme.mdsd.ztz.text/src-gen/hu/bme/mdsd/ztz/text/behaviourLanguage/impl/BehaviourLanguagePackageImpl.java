@@ -26,6 +26,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
@@ -79,6 +80,13 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * @generated
    */
   private EClass conditionalStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass synchronousStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -369,6 +377,26 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
   public EReference getConditionalStatement_OtherStatements()
   {
     return (EReference)conditionalStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSynchronousStatement()
+  {
+    return synchronousStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSynchronousStatement_Statements()
+  {
+    return (EReference)synchronousStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -828,6 +856,9 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     createEReference(conditionalStatementEClass, CONDITIONAL_STATEMENT__STATEMENTS);
     createEReference(conditionalStatementEClass, CONDITIONAL_STATEMENT__OTHER_STATEMENTS);
 
+    synchronousStatementEClass = createEClass(SYNCHRONOUS_STATEMENT);
+    createEReference(synchronousStatementEClass, SYNCHRONOUS_STATEMENT__STATEMENTS);
+
     actionStatementEClass = createEClass(ACTION_STATEMENT);
     createEReference(actionStatementEClass, ACTION_STATEMENT__ROBOT);
     createEReference(actionStatementEClass, ACTION_STATEMENT__ACTION);
@@ -920,6 +951,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     // Add supertypes to classes
     atomicStatementEClass.getESuperTypes().add(this.getStatement());
     conditionalStatementEClass.getESuperTypes().add(this.getStatement());
+    synchronousStatementEClass.getESuperTypes().add(this.getStatement());
     actionStatementEClass.getESuperTypes().add(this.getAtomicStatement());
     messageStatementEClass.getESuperTypes().add(this.getAtomicStatement());
     collaborationStatementEClass.getESuperTypes().add(this.getAtomicStatement());
@@ -951,6 +983,9 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     initEReference(getConditionalStatement_Condition(), this.getCondition(), null, "condition", null, 0, 1, ConditionalStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConditionalStatement_Statements(), this.getStatement(), null, "statements", null, 0, -1, ConditionalStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConditionalStatement_OtherStatements(), this.getStatement(), null, "otherStatements", null, 0, -1, ConditionalStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(synchronousStatementEClass, SynchronousStatement.class, "SynchronousStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSynchronousStatement_Statements(), this.getAtomicStatement(), null, "statements", null, 0, -1, SynchronousStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getActionStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

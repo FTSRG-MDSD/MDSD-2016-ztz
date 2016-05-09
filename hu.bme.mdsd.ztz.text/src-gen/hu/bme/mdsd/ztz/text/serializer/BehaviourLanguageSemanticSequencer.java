@@ -31,6 +31,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
@@ -122,6 +123,9 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT:
 				sequence_RobotStatusStatement(context, (RobotStatusStatement) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.SYNCHRONOUS_STATEMENT:
+				sequence_SynchronousStatement(context, (SynchronousStatement) semanticObject); 
 				return; 
 			case BehaviourLanguagePackage.TASK_STATUS_CONDITION:
 				sequence_TaskStatusCondition(context, (TaskStatusCondition) semanticObject); 
@@ -540,6 +544,19 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getStringValueAccess().getValueEStringParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns SynchronousStatement
+	 *     SynchronousStatement returns SynchronousStatement
+	 *
+	 * Constraint:
+	 *     statements+=AtomicStatement+
+	 */
+	protected void sequence_SynchronousStatement(ISerializationContext context, SynchronousStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

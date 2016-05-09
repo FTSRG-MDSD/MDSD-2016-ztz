@@ -29,6 +29,7 @@ import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
 
 import static extension hu.bme.mdsd.ztz.text.util.RobotUtil.*
+import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
 
 class StatementParser {
 	
@@ -36,33 +37,40 @@ class StatementParser {
 	
 	@Extension
 	var JsonNodeGenerator jsonGenerator
-	var ArrayNode rootNode
 	
 	new() {
 		factory = new JsonNodeFactory(false)
-		rootNode = factory.arrayNode
 		jsonGenerator = new JsonNodeGenerator
 	}
 	
 	def JsonNode parseStatements(Resource resource) {
 		val statements = (resource.contents.get(0) as BehaviourLanguage).statements
 	
-//		orderedStatements = new ArrayList<Statement>
+		var ArrayNode rootNode= factory.arrayNode
 		for (Statement statement : statements) {
-			statement.parseStatement()
+			statement.parseStatement(rootNode)
 		}
 		
 		return rootNode
 	}
 
-	def dispatch parseStatement(ConditionalStatement conditionalStatement) {
+	def dispatch parseStatement(SynchronousStatement synchronousStatement, ArrayNode containerNode) {
+		val node = factory.objectNode
+		node.set("Sync", factory.arrayNode)
+		for (Statement  stat: synchronousStatement.statements) {
+			stat.parseStatement(node.get("Sync") as ArrayNode)
+		}
+		containerNode.add(node)
+	}
+
+	def dispatch parseStatement(ConditionalStatement conditionalStatement, ArrayNode containerNode) {
 		if (conditionalStatement.condition.trueCondition()) {
 			for (Statement st : conditionalStatement.statements) {
-				st.parseStatement()
+				st.parseStatement(containerNode)
 			}
 		} else if (conditionalStatement.otherStatements != null){
 			for (Statement st : conditionalStatement.otherStatements) {
-				st.parseStatement()
+				st.parseStatement(containerNode)
 			}
 		}
 	}
@@ -84,7 +92,7 @@ class StatementParser {
 		
 	}
 
-	def dispatch parseStatement(ActionStatement statement) {
+	def dispatch parseStatement(ActionStatement statement, ArrayNode containerNode) {
 		val robot = statement.robot 
 		var execution = statement.action.currentTaskExecution
 		
@@ -94,7 +102,7 @@ class StatementParser {
 
 		var node = factory.objectNode
 		newActionNode(action, robot, node)
-		rootNode.add(node)
+		containerNode.add(node)
 		
 		if (!statement.moreactions.empty) {
 			for (Action otherAction : statement.moreactions) {
@@ -102,18 +110,16 @@ class StatementParser {
 				robot.addExecution(execution)
 			}
 			val moreActions = statement.moreactions
-			println(moreActions)
 			for (Action act : moreActions) {
-				println(act)
 				node = factory.objectNode
 				newActionNode(act, robot, node)
-				rootNode.add(node)
+				containerNode.add(node)
 			}
 			statement.robot.actions.addAll(moreActions)
 		}
 	}
 	
-	def dispatch parseStatement(DetectionStatement statement) {
+	def dispatch parseStatement(DetectionStatement statement, ArrayNode containerNode) {
 		val robot = statement.robot
 		robot.removeAreaObject(statement.object)
 		
@@ -124,7 +130,7 @@ class StatementParser {
 //		orderedStatements.add(statement)
 	}
 
-	def dispatch parseStatement(ExecutionStatement statement) {
+	def dispatch parseStatement(ExecutionStatement statement, ArrayNode containerNode) {
 		val robot = statement.robot
 		
 		if (!robot.executedTasks.contains(statement.execution)) {
@@ -133,7 +139,7 @@ class StatementParser {
 		}
 	}
 	
-	def dispatch parseStatement(MessageStatement statement) {
+	def dispatch parseStatement(MessageStatement statement, ArrayNode containerNode) {
 		val senderRobot = statement.robot
 		initMessageRepository(senderRobot)
 
@@ -144,13 +150,13 @@ class StatementParser {
 		
 	}
 	
-	def dispatch parseStatement(RobotStatusStatement statement) {
+	def dispatch parseStatement(RobotStatusStatement statement, ArrayNode containerNode) {
 		val robot = statement.robot
 		
 		robot.status = statement.status	
 	}
 	
-	def dispatch parseStatement(TaskStatusStatement statement) {
+	def dispatch parseStatement(TaskStatusStatement statement, ArrayNode containerNode) {
 		val task = statement.task
 		task.status = statement.status		
 	}
@@ -204,7 +210,7 @@ class StatementParser {
 		addSendedMessage(senderRobot, message)
 	}
 	
-	def dispatch parseStatement(CollaborationStatement statement) {
+	def dispatch parseStatement(CollaborationStatement statement, ArrayNode containerNode) {
 		val robot = statement.robot
 
 		val connectedRobots = new HashSet<DynamicRobot>()

@@ -20,6 +20,7 @@ import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Condition;
@@ -32,6 +33,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
@@ -44,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class StatementParser {
@@ -53,13 +54,9 @@ public class StatementParser {
   @Extension
   private JsonNodeGenerator jsonGenerator;
   
-  private ArrayNode rootNode;
-  
   public StatementParser() {
     JsonNodeFactory _jsonNodeFactory = new JsonNodeFactory(false);
     this.factory = _jsonNodeFactory;
-    ArrayNode _arrayNode = this.factory.arrayNode();
-    this.rootNode = _arrayNode;
     JsonNodeGenerator _jsonNodeGenerator = new JsonNodeGenerator();
     this.jsonGenerator = _jsonNodeGenerator;
   }
@@ -68,19 +65,36 @@ public class StatementParser {
     EList<EObject> _contents = resource.getContents();
     EObject _get = _contents.get(0);
     final EList<Statement> statements = ((BehaviourLanguage) _get).getStatements();
+    ArrayNode rootNode = this.factory.arrayNode();
     for (final Statement statement : statements) {
-      this.parseStatement(statement);
+      this.parseStatement(statement, rootNode);
     }
-    return this.rootNode;
+    return rootNode;
   }
   
-  protected Boolean _parseStatement(final ConditionalStatement conditionalStatement) {
+  protected Object _parseStatement(final SynchronousStatement synchronousStatement, final ArrayNode containerNode) {
+    ArrayNode _xblockexpression = null;
+    {
+      final ObjectNode node = this.factory.objectNode();
+      ArrayNode _arrayNode = this.factory.arrayNode();
+      node.set("Sync", _arrayNode);
+      EList<AtomicStatement> _statements = synchronousStatement.getStatements();
+      for (final Statement stat : _statements) {
+        JsonNode _get = node.get("Sync");
+        this.parseStatement(stat, ((ArrayNode) _get));
+      }
+      _xblockexpression = containerNode.add(node);
+    }
+    return _xblockexpression;
+  }
+  
+  protected Object _parseStatement(final ConditionalStatement conditionalStatement, final ArrayNode containerNode) {
     Condition _condition = conditionalStatement.getCondition();
     boolean _trueCondition = this.trueCondition(_condition);
     if (_trueCondition) {
       EList<Statement> _statements = conditionalStatement.getStatements();
       for (final Statement st : _statements) {
-        this.parseStatement(st);
+        this.parseStatement(st, containerNode);
       }
     } else {
       EList<Statement> _otherStatements = conditionalStatement.getOtherStatements();
@@ -88,7 +102,7 @@ public class StatementParser {
       if (_notEquals) {
         EList<Statement> _otherStatements_1 = conditionalStatement.getOtherStatements();
         for (final Statement st_1 : _otherStatements_1) {
-          this.parseStatement(st_1);
+          this.parseStatement(st_1, containerNode);
         }
       }
     }
@@ -133,7 +147,7 @@ public class StatementParser {
     return false;
   }
   
-  protected Boolean _parseStatement(final ActionStatement statement) {
+  protected Object _parseStatement(final ActionStatement statement, final ArrayNode containerNode) {
     boolean _xblockexpression = false;
     {
       final DynamicRobot robot = statement.getRobot();
@@ -145,7 +159,7 @@ public class StatementParser {
       _actions.add(action);
       ObjectNode node = this.factory.objectNode();
       this.jsonGenerator.newActionNode(action, robot, node);
-      this.rootNode.add(node);
+      containerNode.add(node);
       boolean _xifexpression = false;
       EList<Action> _moreactions = statement.getMoreactions();
       boolean _isEmpty = _moreactions.isEmpty();
@@ -162,14 +176,12 @@ public class StatementParser {
             }
           }
           final EList<Action> moreActions = statement.getMoreactions();
-          InputOutput.<EList<Action>>println(moreActions);
           for (final Action act : moreActions) {
             {
-              InputOutput.<Action>println(act);
               ObjectNode _objectNode = this.factory.objectNode();
               node = _objectNode;
               this.jsonGenerator.newActionNode(act, robot, node);
-              this.rootNode.add(node);
+              containerNode.add(node);
             }
           }
           DynamicRobot _robot = statement.getRobot();
@@ -183,7 +195,7 @@ public class StatementParser {
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseStatement(final DetectionStatement statement) {
+  protected Object _parseStatement(final DetectionStatement statement, final ArrayNode containerNode) {
     boolean _xblockexpression = false;
     {
       final DynamicRobot robot = statement.getRobot();
@@ -200,7 +212,7 @@ public class StatementParser {
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseStatement(final ExecutionStatement statement) {
+  protected Object _parseStatement(final ExecutionStatement statement, final ArrayNode containerNode) {
     boolean _xblockexpression = false;
     {
       final DynamicRobot robot = statement.getRobot();
@@ -219,7 +231,7 @@ public class StatementParser {
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseStatement(final MessageStatement statement) {
+  protected Object _parseStatement(final MessageStatement statement, final ArrayNode containerNode) {
     Boolean _xblockexpression = null;
     {
       final DynamicRobot senderRobot = statement.getRobot();
@@ -231,14 +243,14 @@ public class StatementParser {
     return _xblockexpression;
   }
   
-  protected Boolean _parseStatement(final RobotStatusStatement statement) {
+  protected Object _parseStatement(final RobotStatusStatement statement, final ArrayNode containerNode) {
     final DynamicRobot robot = statement.getRobot();
     RobotStatus _status = statement.getStatus();
     robot.setStatus(_status);
     return null;
   }
   
-  protected Boolean _parseStatement(final TaskStatusStatement statement) {
+  protected Object _parseStatement(final TaskStatusStatement statement, final ArrayNode containerNode) {
     final TaskExecution task = statement.getTask();
     TaskExecutionStatus _status = statement.getStatus();
     task.setStatus(_status);
@@ -319,7 +331,7 @@ public class StatementParser {
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseStatement(final CollaborationStatement statement) {
+  protected Object _parseStatement(final CollaborationStatement statement, final ArrayNode containerNode) {
     final DynamicRobot robot = statement.getRobot();
     final HashSet<DynamicRobot> connectedRobots = new HashSet<DynamicRobot>();
     EList<RobotCollaboration> _collaboration = statement.getCollaboration();
@@ -360,26 +372,28 @@ public class StatementParser {
     return null;
   }
   
-  public Boolean parseStatement(final Statement statement) {
+  public Object parseStatement(final Statement statement, final ArrayNode containerNode) {
     if (statement instanceof RobotStatusStatement) {
-      return _parseStatement((RobotStatusStatement)statement);
+      return _parseStatement((RobotStatusStatement)statement, containerNode);
     } else if (statement instanceof TaskStatusStatement) {
-      return _parseStatement((TaskStatusStatement)statement);
+      return _parseStatement((TaskStatusStatement)statement, containerNode);
     } else if (statement instanceof ActionStatement) {
-      return _parseStatement((ActionStatement)statement);
+      return _parseStatement((ActionStatement)statement, containerNode);
     } else if (statement instanceof CollaborationStatement) {
-      return _parseStatement((CollaborationStatement)statement);
+      return _parseStatement((CollaborationStatement)statement, containerNode);
     } else if (statement instanceof DetectionStatement) {
-      return _parseStatement((DetectionStatement)statement);
+      return _parseStatement((DetectionStatement)statement, containerNode);
     } else if (statement instanceof ExecutionStatement) {
-      return _parseStatement((ExecutionStatement)statement);
+      return _parseStatement((ExecutionStatement)statement, containerNode);
     } else if (statement instanceof MessageStatement) {
-      return _parseStatement((MessageStatement)statement);
+      return _parseStatement((MessageStatement)statement, containerNode);
     } else if (statement instanceof ConditionalStatement) {
-      return _parseStatement((ConditionalStatement)statement);
+      return _parseStatement((ConditionalStatement)statement, containerNode);
+    } else if (statement instanceof SynchronousStatement) {
+      return _parseStatement((SynchronousStatement)statement, containerNode);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(statement).toString());
+        Arrays.<Object>asList(statement, containerNode).toString());
     }
   }
   

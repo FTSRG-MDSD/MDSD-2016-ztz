@@ -216,6 +216,34 @@ public interface BehaviourLanguagePackage extends EPackage
   int CONDITIONAL_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
 
   /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.SynchronousStatementImpl <em>Synchronous Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.SynchronousStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getSynchronousStatement()
+   * @generated
+   */
+  int SYNCHRONOUS_STATEMENT = 5;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYNCHRONOUS_STATEMENT__STATEMENTS = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Synchronous Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYNCHRONOUS_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl <em>Action Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -223,7 +251,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getActionStatement()
    * @generated
    */
-  int ACTION_STATEMENT = 5;
+  int ACTION_STATEMENT = 6;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -269,7 +297,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageStatement()
    * @generated
    */
-  int MESSAGE_STATEMENT = 6;
+  int MESSAGE_STATEMENT = 7;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -315,7 +343,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getCollaborationStatement()
    * @generated
    */
-  int COLLABORATION_STATEMENT = 7;
+  int COLLABORATION_STATEMENT = 8;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -352,7 +380,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getDetectionStatement()
    * @generated
    */
-  int DETECTION_STATEMENT = 8;
+  int DETECTION_STATEMENT = 9;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -398,7 +426,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getExecutionStatement()
    * @generated
    */
-  int EXECUTION_STATEMENT = 9;
+  int EXECUTION_STATEMENT = 10;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -435,7 +463,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getStatusStatement()
    * @generated
    */
-  int STATUS_STATEMENT = 10;
+  int STATUS_STATEMENT = 11;
 
   /**
    * The number of structural features of the '<em>Status Statement</em>' class.
@@ -454,7 +482,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getRobotStatusStatement()
    * @generated
    */
-  int ROBOT_STATUS_STATEMENT = 11;
+  int ROBOT_STATUS_STATEMENT = 12;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -491,7 +519,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getTaskStatusStatement()
    * @generated
    */
-  int TASK_STATUS_STATEMENT = 12;
+  int TASK_STATUS_STATEMENT = 13;
 
   /**
    * The feature id for the '<em><b>Task</b></em>' reference.
@@ -528,7 +556,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageTarget()
    * @generated
    */
-  int MESSAGE_TARGET = 13;
+  int MESSAGE_TARGET = 14;
 
   /**
    * The number of structural features of the '<em>Message Target</em>' class.
@@ -547,7 +575,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getUniTarget()
    * @generated
    */
-  int UNI_TARGET = 14;
+  int UNI_TARGET = 15;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -575,7 +603,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMultiTarget()
    * @generated
    */
-  int MULTI_TARGET = 15;
+  int MULTI_TARGET = 16;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference list.
@@ -603,7 +631,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getAllTarget()
    * @generated
    */
-  int ALL_TARGET = 16;
+  int ALL_TARGET = 17;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' attribute.
@@ -631,7 +659,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getCondition()
    * @generated
    */
-  int CONDITION = 17;
+  int CONDITION = 18;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -668,7 +696,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getTaskStatusCondition()
    * @generated
    */
-  int TASK_STATUS_CONDITION = 18;
+  int TASK_STATUS_CONDITION = 19;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -723,7 +751,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getRobotStatusCondition()
    * @generated
    */
-  int ROBOT_STATUS_CONDITION = 19;
+  int ROBOT_STATUS_CONDITION = 20;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -897,6 +925,27 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    */
   EReference getConditionalStatement_OtherStatements();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement <em>Synchronous Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Synchronous Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
+   * @generated
+   */
+  EClass getSynchronousStatement();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement#getStatements <em>Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement#getStatements()
+   * @see #getSynchronousStatement()
+   * @generated
+   */
+  EReference getSynchronousStatement_Statements();
 
   /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement <em>Action Statement</em>}'.
@@ -1462,6 +1511,24 @@ public interface BehaviourLanguagePackage extends EPackage
      * @generated
      */
     EReference CONDITIONAL_STATEMENT__OTHER_STATEMENTS = eINSTANCE.getConditionalStatement_OtherStatements();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.SynchronousStatementImpl <em>Synchronous Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.SynchronousStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getSynchronousStatement()
+     * @generated
+     */
+    EClass SYNCHRONOUS_STATEMENT = eINSTANCE.getSynchronousStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SYNCHRONOUS_STATEMENT__STATEMENTS = eINSTANCE.getSynchronousStatement_Statements();
 
     /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl <em>Action Statement</em>}' class.

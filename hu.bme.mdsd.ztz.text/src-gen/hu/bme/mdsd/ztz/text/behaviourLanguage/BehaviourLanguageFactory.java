@@ -69,6 +69,15 @@ public interface BehaviourLanguageFactory extends EFactory
   ConditionalStatement createConditionalStatement();
 
   /**
+   * Returns a new object of class '<em>Synchronous Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Synchronous Statement</em>'.
+   * @generated
+   */
+  SynchronousStatement createSynchronousStatement();
+
+  /**
    * Returns a new object of class '<em>Action Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
