@@ -241,7 +241,7 @@ public class StatementParser {
       RobotUtil.initMessageRepository(senderRobot);
       MessageTarget messageTarget = statement.getTarget();
       Message message = statement.getMessage();
-      _xblockexpression = this.parseMessageTarget(messageTarget, senderRobot, message);
+      _xblockexpression = this.parseMessageTarget(messageTarget, senderRobot, containerNode, message);
     }
     return _xblockexpression;
   }
@@ -260,7 +260,7 @@ public class StatementParser {
     return null;
   }
   
-  protected Boolean _parseMessageTarget(final UniTarget target, final DynamicRobot senderRobot, final Message message) {
+  protected Boolean _parseMessageTarget(final UniTarget target, final DynamicRobot senderRobot, final ArrayNode containerNode, final Message message) {
     boolean _xblockexpression = false;
     {
       DynamicRobot _target = target.getTarget();
@@ -275,13 +275,16 @@ public class StatementParser {
       action.setMessage(message);
       DynamicRobot _target_2 = target.getTarget();
       action.setTarget(_target_2);
+      ObjectNode node = this.factory.objectNode();
+      this.jsonGenerator.newActionNode(action, senderRobot, node);
+      containerNode.add(node);
       RobotUtil.addAction(senderRobot, action);
       _xblockexpression = RobotUtil.addSendedMessage(senderRobot, message);
     }
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseMessageTarget(final MultiTarget target, final DynamicRobot senderRobot, final Message message) {
+  protected Boolean _parseMessageTarget(final MultiTarget target, final DynamicRobot senderRobot, final ArrayNode containerNode, final Message message) {
     boolean _xblockexpression = false;
     {
       EList<DynamicRobot> _target = target.getTarget();
@@ -301,13 +304,16 @@ public class StatementParser {
       EList<DynamicRobot> _targets = action.getTargets();
       EList<DynamicRobot> _target_2 = target.getTarget();
       _targets.addAll(_target_2);
+      ObjectNode node = this.factory.objectNode();
+      this.jsonGenerator.newActionNode(action, senderRobot, node);
+      containerNode.add(node);
       RobotUtil.addAction(senderRobot, action);
       _xblockexpression = RobotUtil.addSendedMessage(senderRobot, message);
     }
     return Boolean.valueOf(_xblockexpression);
   }
   
-  protected Boolean _parseMessageTarget(final AllTarget target, final DynamicRobot senderRobot, final Message message) {
+  protected Boolean _parseMessageTarget(final AllTarget target, final DynamicRobot senderRobot, final ArrayNode containerNode, final Message message) {
     boolean _xblockexpression = false;
     {
       EList<RobotCollaboration> _collaborations = senderRobot.getCollaborations();
@@ -328,6 +334,9 @@ public class StatementParser {
       }
       EList<DynamicRobot> _targets = action.getTargets();
       _targets.addAll(targetRobots);
+      ObjectNode node = this.factory.objectNode();
+      this.jsonGenerator.newActionNode(action, senderRobot, node);
+      containerNode.add(node);
       RobotUtil.addAction(senderRobot, action);
       _xblockexpression = RobotUtil.addSendedMessage(senderRobot, message);
     }
@@ -411,16 +420,16 @@ public class StatementParser {
     }
   }
   
-  public Boolean parseMessageTarget(final MessageTarget target, final DynamicRobot senderRobot, final Message message) {
+  public Boolean parseMessageTarget(final MessageTarget target, final DynamicRobot senderRobot, final ArrayNode containerNode, final Message message) {
     if (target instanceof AllTarget) {
-      return _parseMessageTarget((AllTarget)target, senderRobot, message);
+      return _parseMessageTarget((AllTarget)target, senderRobot, containerNode, message);
     } else if (target instanceof MultiTarget) {
-      return _parseMessageTarget((MultiTarget)target, senderRobot, message);
+      return _parseMessageTarget((MultiTarget)target, senderRobot, containerNode, message);
     } else if (target instanceof UniTarget) {
-      return _parseMessageTarget((UniTarget)target, senderRobot, message);
+      return _parseMessageTarget((UniTarget)target, senderRobot, containerNode, message);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(target, senderRobot, message).toString());
+        Arrays.<Object>asList(target, senderRobot, containerNode, message).toString());
     }
   }
 }

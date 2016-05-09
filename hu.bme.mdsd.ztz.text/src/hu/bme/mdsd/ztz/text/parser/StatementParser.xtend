@@ -132,7 +132,6 @@ class StatementParser {
 		containerNode.add(node)
 		
 		robot.detectedObjects.add(detectedObject)
-//		orderedStatements.add(statement)
 	}
 
 	def dispatch parseStatement(ExecutionStatement statement, ArrayNode containerNode) {
@@ -151,7 +150,7 @@ class StatementParser {
 		var messageTarget = statement.target
 		var message = statement.message
 
-		messageTarget.parseMessageTarget(senderRobot, message)
+		messageTarget.parseMessageTarget(senderRobot, containerNode, message)
 		
 	}
 	
@@ -166,7 +165,7 @@ class StatementParser {
 		task.status = statement.status		
 	}
 	
-	def dispatch parseMessageTarget(UniTarget target, DynamicRobot senderRobot, Message message) {
+	def dispatch parseMessageTarget(UniTarget target, DynamicRobot senderRobot, ArrayNode containerNode, Message message) {
 		if (!reachableRobot(senderRobot, target.target)) {
 			return null
 		}
@@ -174,11 +173,16 @@ class StatementParser {
 		val action = BehaviourFactory.eINSTANCE.createUnicastCommunication()
 		action.message = message
 		action.target = target.target
+		
+		var node = factory.objectNode
+		newActionNode(action, senderRobot, node)
+		containerNode.add(node)
+		
 		senderRobot.addAction(action)
 		addSendedMessage(senderRobot, message)
 	}
 	
-	def dispatch parseMessageTarget(MultiTarget target, DynamicRobot senderRobot, Message message) {
+	def dispatch parseMessageTarget(MultiTarget target, DynamicRobot senderRobot, ArrayNode containerNode, Message message) {
 		for (DynamicRobot targetRobot : target.target) {
 			if (!reachableRobot(senderRobot, targetRobot)) {
 				return null
@@ -190,11 +194,16 @@ class StatementParser {
 		val action = BehaviourFactory.eINSTANCE.createMulticastCommunication()
 		action.message = message
 		action.targets.addAll(target.target)
+		
+		var node = factory.objectNode
+		newActionNode(action, senderRobot, node)
+		containerNode.add(node)
+		
 		senderRobot.addAction(action)
 		addSendedMessage(senderRobot, message)
 	}
 	
-	def dispatch parseMessageTarget(AllTarget target, DynamicRobot senderRobot, Message message) {
+	def dispatch parseMessageTarget(AllTarget target, DynamicRobot senderRobot, ArrayNode containerNode, Message message) {
 		if (senderRobot.collaborations.empty) {
 			return null
 		}
@@ -211,6 +220,11 @@ class StatementParser {
 		}
 		
 		action.targets.addAll(targetRobots)
+		
+		var node = factory.objectNode
+		newActionNode(action, senderRobot, node)
+		containerNode.add(node)
+		
 		senderRobot.addAction(action)
 		addSendedMessage(senderRobot, message)
 	}

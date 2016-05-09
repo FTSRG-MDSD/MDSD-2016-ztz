@@ -1,12 +1,17 @@
 package hu.bme.mdsd.ztz.text.generator;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.base.Objects;
 import hu.bme.mdsd.ztz.model.behaviour.Action;
+import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.Message;
+import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
+import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
@@ -14,6 +19,7 @@ import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.PropertyValue;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.StringValue;
+import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 
 @SuppressWarnings("all")
@@ -25,7 +31,7 @@ public class JsonNodeGenerator {
     this.factory = _jsonNodeFactory;
   }
   
-  public JsonNode newActionNode(final Action action, final DynamicRobot robot, final ObjectNode node) {
+  protected JsonNode _newActionNode(final Action action, final DynamicRobot robot, final ObjectNode node) {
     JsonNode _xblockexpression = null;
     {
       final ObjectNode nestedNode = this.factory.objectNode();
@@ -37,6 +43,64 @@ public class JsonNodeGenerator {
       EList<Property> _properties = action.getProperties();
       this.newPropertiesNode(nestedNode, _properties);
       _xblockexpression = node.set("Action", nestedNode);
+    }
+    return _xblockexpression;
+  }
+  
+  protected JsonNode _newActionNode(final UnicastCommunication action, final DynamicRobot robot, final ObjectNode node) {
+    JsonNode _xblockexpression = null;
+    {
+      final ObjectNode nestedNode = this.factory.objectNode();
+      Message _message = action.getMessage();
+      String _name = _message.getName();
+      nestedNode.put("Message", _name);
+      DynamicRobot _target = action.getTarget();
+      Robot _robot = _target.getRobot();
+      String _name_1 = _robot.getName();
+      nestedNode.put("Target", _name_1);
+      _xblockexpression = node.set("UnicastCommunication", nestedNode);
+    }
+    return _xblockexpression;
+  }
+  
+  protected JsonNode _newActionNode(final MulticastCommunication action, final DynamicRobot robot, final ObjectNode node) {
+    JsonNode _xblockexpression = null;
+    {
+      final ObjectNode nestedNode = this.factory.objectNode();
+      Message _message = action.getMessage();
+      String _name = _message.getName();
+      nestedNode.put("Message", _name);
+      ArrayNode _arrayNode = this.factory.arrayNode();
+      nestedNode.set("Targets", _arrayNode);
+      EList<DynamicRobot> _targets = action.getTargets();
+      for (final DynamicRobot targetRobot : _targets) {
+        JsonNode _get = nestedNode.get("Targets");
+        Robot _robot = targetRobot.getRobot();
+        String _name_1 = _robot.getName();
+        ((ArrayNode) _get).add(_name_1);
+      }
+      _xblockexpression = node.set("MulticastCommunication", nestedNode);
+    }
+    return _xblockexpression;
+  }
+  
+  protected JsonNode _newActionNode(final BroadcastCommunication action, final DynamicRobot robot, final ObjectNode node) {
+    JsonNode _xblockexpression = null;
+    {
+      final ObjectNode nestedNode = this.factory.objectNode();
+      Message _message = action.getMessage();
+      String _name = _message.getName();
+      nestedNode.put("Message", _name);
+      ArrayNode _arrayNode = this.factory.arrayNode();
+      nestedNode.set("Targets", _arrayNode);
+      EList<DynamicRobot> _targets = action.getTargets();
+      for (final DynamicRobot targetRobot : _targets) {
+        JsonNode _get = nestedNode.get("Targets");
+        Robot _robot = targetRobot.getRobot();
+        String _name_1 = _robot.getName();
+        ((ArrayNode) _get).add(_name_1);
+      }
+      _xblockexpression = node.set("BoradcastCommunication", nestedNode);
     }
     return _xblockexpression;
   }
@@ -100,5 +164,20 @@ public class JsonNodeGenerator {
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
+  }
+  
+  public JsonNode newActionNode(final Action action, final DynamicRobot robot, final ObjectNode node) {
+    if (action instanceof BroadcastCommunication) {
+      return _newActionNode((BroadcastCommunication)action, robot, node);
+    } else if (action instanceof MulticastCommunication) {
+      return _newActionNode((MulticastCommunication)action, robot, node);
+    } else if (action instanceof UnicastCommunication) {
+      return _newActionNode((UnicastCommunication)action, robot, node);
+    } else if (action != null) {
+      return _newActionNode(action, robot, node);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(action, robot, node).toString());
+    }
   }
 }
