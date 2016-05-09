@@ -126,6 +126,11 @@ class StatementParser {
 		val detectedObject = BehaviourFactory.eINSTANCE.createDetectedObject
 		detectedObject.object = statement.object
 		detectedObject.obstacle = statement.obstacle
+		
+		var node = factory.objectNode
+		newDetectionNode(robot, detectedObject, node)
+		containerNode.add(node)
+		
 		robot.detectedObjects.add(detectedObject)
 //		orderedStatements.add(statement)
 	}

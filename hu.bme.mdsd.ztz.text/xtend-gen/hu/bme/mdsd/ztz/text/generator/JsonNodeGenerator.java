@@ -5,11 +5,14 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.base.Objects;
 import hu.bme.mdsd.ztz.model.behaviour.Action;
+import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.PropertyValue;
+import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.StringValue;
 import org.eclipse.emf.common.util.EList;
 
@@ -28,11 +31,27 @@ public class JsonNodeGenerator {
       final ObjectNode nestedNode = this.factory.objectNode();
       String _name = action.getName();
       nestedNode.put("Action", _name);
-      String _name_1 = robot.getName();
+      Robot _robot = robot.getRobot();
+      String _name_1 = _robot.getName();
       nestedNode.put("Robot", _name_1);
       EList<Property> _properties = action.getProperties();
       this.newPropertiesNode(nestedNode, _properties);
       _xblockexpression = node.set("Action", nestedNode);
+    }
+    return _xblockexpression;
+  }
+  
+  public JsonNode newDetectionNode(final DynamicRobot robot, final DetectedObject detectedObject, final ObjectNode node) {
+    JsonNode _xblockexpression = null;
+    {
+      final ObjectNode nestedNode = this.factory.objectNode();
+      Robot _robot = robot.getRobot();
+      String _name = _robot.getName();
+      nestedNode.put("Robot", _name);
+      AreaObject _object = detectedObject.getObject();
+      String _name_1 = _object.getName();
+      nestedNode.put("DetectedObject", _name_1);
+      _xblockexpression = node.set("Detection", nestedNode);
     }
     return _xblockexpression;
   }

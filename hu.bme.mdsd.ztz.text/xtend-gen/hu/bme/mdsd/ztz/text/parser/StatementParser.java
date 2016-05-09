@@ -206,6 +206,9 @@ public class StatementParser {
       detectedObject.setObject(_object_1);
       boolean _isObstacle = statement.isObstacle();
       detectedObject.setObstacle(_isObstacle);
+      ObjectNode node = this.factory.objectNode();
+      this.jsonGenerator.newDetectionNode(robot, detectedObject, node);
+      containerNode.add(node);
       EList<DetectedObject> _detectedObjects = robot.getDetectedObjects();
       _xblockexpression = _detectedObjects.add(detectedObject);
     }

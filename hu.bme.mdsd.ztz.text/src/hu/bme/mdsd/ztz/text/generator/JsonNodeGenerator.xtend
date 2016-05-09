@@ -7,6 +7,7 @@ import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import org.eclipse.emf.common.util.EList
 import hu.bme.mdsd.ztz.model.drone.StringValue
 import hu.bme.mdsd.ztz.model.drone.MeasureValue
+import hu.bme.mdsd.ztz.model.behaviour.DetectedObject
 
 class JsonNodeGenerator {
 
@@ -19,11 +20,19 @@ class JsonNodeGenerator {
 	def newActionNode(Action action, DynamicRobot robot, ObjectNode node) {
 		val nestedNode = factory.objectNode
 		nestedNode.put("Action", action.name)
-		nestedNode.put("Robot", robot.name)
+		nestedNode.put("Robot", robot.robot.name)
 		
 		newPropertiesNode(nestedNode, action.properties)
 		
 		node.set("Action", nestedNode)
+	}
+
+	def newDetectionNode(DynamicRobot robot, DetectedObject detectedObject, ObjectNode node) {
+		val nestedNode = factory.objectNode
+		nestedNode.put("Robot", robot.robot.name)
+		nestedNode.put("DetectedObject", detectedObject.object.name)
+		
+		node.set("Detection", nestedNode)
 	}
 
 	def newPropertiesNode(ObjectNode containerNode, EList<hu.bme.mdsd.ztz.model.drone.Property> properties) {
