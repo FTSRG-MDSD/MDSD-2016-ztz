@@ -553,7 +553,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     SynchronousStatement returns SynchronousStatement
 	 *
 	 * Constraint:
-	 *     statements+=AtomicStatement+
+	 *     (statements+=ActionStatement | statements+=MessageStatement | statements+=DetectionStatement)+
 	 */
 	protected void sequence_SynchronousStatement(ISerializationContext context, SynchronousStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -755,21 +755,55 @@ ruleSynchronousStatement returns [EObject current=null]
 		}
 		(
 			(
-				{
-					newCompositeNode(grammarAccess.getSynchronousStatementAccess().getStatementsAtomicStatementParserRuleCall_2_0());
-				}
-				lv_statements_2_0=ruleAtomicStatement
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSynchronousStatementRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getSynchronousStatementAccess().getStatementsActionStatementParserRuleCall_2_0_0());
 					}
-					add(
-						$current,
-						"statements",
-						lv_statements_2_0,
-						"hu.bme.mdsd.ztz.text.BehaviourLanguage.AtomicStatement");
-					afterParserOrEnumRuleCall();
-				}
+					lv_statements_2_1=ruleActionStatement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSynchronousStatementRule());
+						}
+						add(
+							$current,
+							"statements",
+							lv_statements_2_1,
+							"hu.bme.mdsd.ztz.text.BehaviourLanguage.ActionStatement");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getSynchronousStatementAccess().getStatementsMessageStatementParserRuleCall_2_0_1());
+					}
+					lv_statements_2_2=ruleMessageStatement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSynchronousStatementRule());
+						}
+						add(
+							$current,
+							"statements",
+							lv_statements_2_2,
+							"hu.bme.mdsd.ztz.text.BehaviourLanguage.MessageStatement");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getSynchronousStatementAccess().getStatementsDetectionStatementParserRuleCall_2_0_2());
+					}
+					lv_statements_2_3=ruleDetectionStatement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSynchronousStatementRule());
+						}
+						add(
+							$current,
+							"statements",
+							lv_statements_2_3,
+							"hu.bme.mdsd.ztz.text.BehaviourLanguage.DetectionStatement");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
 		)+
 		otherlv_3='}'

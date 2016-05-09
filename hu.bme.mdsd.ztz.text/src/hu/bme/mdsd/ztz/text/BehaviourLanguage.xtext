@@ -45,7 +45,7 @@ ConditionalStatement:
 ;
 
 SynchronousStatement:
-	'sync' '{' (statements+=AtomicStatement)+ '}'
+	'sync' '{' (statements+=(ActionStatement | MessageStatement | DetectionStatement))+ '}'
 ;
 
 ActionStatement:

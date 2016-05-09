@@ -38,6 +38,7 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPropertyValueAccess().getAlternatives(), "rule__PropertyValue__Alternatives");
 					put(grammarAccess.getStatementAccess().getAlternatives(), "rule__Statement__Alternatives");
 					put(grammarAccess.getAtomicStatementAccess().getAlternatives(), "rule__AtomicStatement__Alternatives");
+					put(grammarAccess.getSynchronousStatementAccess().getStatementsAlternatives_2_0(), "rule__SynchronousStatement__StatementsAlternatives_2_0");
 					put(grammarAccess.getStatusStatementAccess().getAlternatives(), "rule__StatusStatement__Alternatives");
 					put(grammarAccess.getMessageTargetAccess().getAlternatives(), "rule__MessageTarget__Alternatives");
 					put(grammarAccess.getConditionAccess().getAlternatives(), "rule__Condition__Alternatives");

@@ -445,14 +445,17 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Keyword cSyncKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cStatementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cStatementsAtomicStatementParserRuleCall_2_0 = (RuleCall)cStatementsAssignment_2.eContents().get(0);
+		private final Alternatives cStatementsAlternatives_2_0 = (Alternatives)cStatementsAssignment_2.eContents().get(0);
+		private final RuleCall cStatementsActionStatementParserRuleCall_2_0_0 = (RuleCall)cStatementsAlternatives_2_0.eContents().get(0);
+		private final RuleCall cStatementsMessageStatementParserRuleCall_2_0_1 = (RuleCall)cStatementsAlternatives_2_0.eContents().get(1);
+		private final RuleCall cStatementsDetectionStatementParserRuleCall_2_0_2 = (RuleCall)cStatementsAlternatives_2_0.eContents().get(2);
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//SynchronousStatement:
-		//	'sync' '{' statements+=AtomicStatement+ '}';
+		//	'sync' '{' statements+=(ActionStatement | MessageStatement | DetectionStatement)+ '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'sync' '{' statements+=AtomicStatement+ '}'
+		//'sync' '{' statements+=(ActionStatement | MessageStatement | DetectionStatement)+ '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'sync'
@@ -461,11 +464,20 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//statements+=AtomicStatement+
+		//statements+=(ActionStatement | MessageStatement | DetectionStatement)+
 		public Assignment getStatementsAssignment_2() { return cStatementsAssignment_2; }
 		
-		//AtomicStatement
-		public RuleCall getStatementsAtomicStatementParserRuleCall_2_0() { return cStatementsAtomicStatementParserRuleCall_2_0; }
+		//(ActionStatement | MessageStatement | DetectionStatement)
+		public Alternatives getStatementsAlternatives_2_0() { return cStatementsAlternatives_2_0; }
+		
+		//ActionStatement
+		public RuleCall getStatementsActionStatementParserRuleCall_2_0_0() { return cStatementsActionStatementParserRuleCall_2_0_0; }
+		
+		//MessageStatement
+		public RuleCall getStatementsMessageStatementParserRuleCall_2_0_1() { return cStatementsMessageStatementParserRuleCall_2_0_1; }
+		
+		//DetectionStatement
+		public RuleCall getStatementsDetectionStatementParserRuleCall_2_0_2() { return cStatementsDetectionStatementParserRuleCall_2_0_2; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
@@ -2314,7 +2326,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 	
 	//SynchronousStatement:
-	//	'sync' '{' statements+=AtomicStatement+ '}';
+	//	'sync' '{' statements+=(ActionStatement | MessageStatement | DetectionStatement)+ '}';
 	public SynchronousStatementElements getSynchronousStatementAccess() {
 		return pSynchronousStatement;
 	}

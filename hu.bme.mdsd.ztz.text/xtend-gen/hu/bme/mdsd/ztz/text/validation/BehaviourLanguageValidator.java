@@ -11,18 +11,27 @@ import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -43,7 +52,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
     String _importURI = imp.getImportURI();
     boolean _isEmpty = _importURI.isEmpty();
     if (_isEmpty) {
-      this.error("Import cannot be empty", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT);
+      this.error("Import cannot be empty", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, 
+        ErrorCodes.INVALID_IMPORT);
     } else {
       Resource _xifexpression_1 = null;
       String _importURI_1 = imp.getImportURI();
@@ -74,7 +84,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
         String _acceptedDomain_1 = _instance_1.getAcceptedDomain();
         String _plus = ("The resource must be an instance of " + _acceptedDomain_1);
         this.error(_plus, 
-          BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT);
+          BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, 
+          ErrorCodes.INVALID_IMPORT);
       }
       _xifexpression = _xifexpression_1;
     }
@@ -89,7 +100,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       DynamicRobot _collaborator = collab.getCollaborator();
       boolean _equals = Objects.equal(_robot, _collaborator);
       if (_equals) {
-        this.error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.COLLABORATION_STATEMENT__ROBOT, ErrorCodes.SAME_COLLABORATOR);
+        this.error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.COLLABORATION_STATEMENT__ROBOT, 
+          ErrorCodes.SAME_COLLABORATOR);
       }
     }
   }
@@ -106,7 +118,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
         String _name_1 = robot.getName();
         boolean _equals = _name.equals(_name_1);
         if (_equals) {
-          this.error("Robots cannot have the same name", robot, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_ROBOT_NAME);
+          this.error("Robots cannot have the same name", robot, DronePackage.Literals.NAMED_ELEMENT__NAME, 
+            ErrorCodes.SAME_ROBOT_NAME);
         }
       }
     }
@@ -126,7 +139,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
           String _name_1 = message.getName();
           boolean _equals = _name.equals(_name_1);
           if (_equals) {
-            this.error("Messages cannot have the same name", message, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_MESSAGE_NAME);
+            this.error("Messages cannot have the same name", message, DronePackage.Literals.NAMED_ELEMENT__NAME, 
+              ErrorCodes.SAME_MESSAGE_NAME);
           }
         }
       }
@@ -147,7 +161,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
           String _name_1 = taskExecution.getName();
           boolean _equals = _name.equals(_name_1);
           if (_equals) {
-            this.error("Messages cannot have the same name", taskExecution, DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_TASK_EXECUTION_NAME);
+            this.error("Messages cannot have the same name", taskExecution, 
+              DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_TASK_EXECUTION_NAME);
           }
         }
       }
@@ -166,7 +181,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       boolean _inCollaboration = this.inCollaboration(collabStatements, robot, _target);
       boolean _not = (!_inCollaboration);
       if (_not) {
-        this.error("Target robot is not in collaboration with the sender robot", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
+        this.error("Target robot is not in collaboration with the sender robot", target, 
+          BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
       }
     } else {
       if ((target instanceof MultiTarget)) {
@@ -175,7 +191,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
           boolean _inCollaboration_1 = this.inCollaboration(collabStatements, robot, targetRobot);
           boolean _not_1 = (!_inCollaboration_1);
           if (_not_1) {
-            this.error("Target robot is not in collaboration with the sender robot", target, BehaviourLanguagePackage.Literals.MULTI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
+            this.error("Target robot is not in collaboration with the sender robot", target, 
+              BehaviourLanguagePackage.Literals.MULTI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
           }
         }
       } else {
@@ -183,7 +200,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
           boolean _hasCollaboration = this.hasCollaboration(collabStatements, robot);
           boolean _not_2 = (!_hasCollaboration);
           if (_not_2) {
-            this.error("The sender robot is not in collaboration with anyone", target, BehaviourLanguagePackage.Literals.ALL_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
+            this.error("The sender robot is not in collaboration with anyone", target, 
+              BehaviourLanguagePackage.Literals.ALL_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
           }
         }
       }
@@ -238,5 +256,93 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       }
     }
     return false;
+  }
+  
+  @Check
+  public void checkSynchronousStatement(final SynchronousStatement synchronousStatement) {
+    final HashMap<DynamicRobot, Integer> robotOccurrence = new HashMap<DynamicRobot, Integer>();
+    EList<AtomicStatement> _statements = synchronousStatement.getStatements();
+    for (final Statement statement : _statements) {
+      {
+        this.findRobotOccurrence(statement, robotOccurrence);
+        Set<Map.Entry<DynamicRobot, Integer>> _entrySet = robotOccurrence.entrySet();
+        for (final Map.Entry<DynamicRobot, Integer> entry : _entrySet) {
+          Integer _value = entry.getValue();
+          boolean _greaterThan = ((_value).intValue() > 1);
+          if (_greaterThan) {
+            this.error("A synchronous statement cannot contain more actions belonging to the same robot", 
+              BehaviourLanguagePackage.Literals.SYNCHRONOUS_STATEMENT__STATEMENTS);
+          }
+        }
+      }
+    }
+  }
+  
+  protected Integer _findRobotOccurrence(final ActionStatement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {
+    Integer _xblockexpression = null;
+    {
+      DynamicRobot _robot = statement.getRobot();
+      int occurred = this.getOccurrence(robotOccurence, _robot);
+      DynamicRobot _robot_1 = statement.getRobot();
+      _xblockexpression = robotOccurence.put(_robot_1, Integer.valueOf(occurred));
+    }
+    return _xblockexpression;
+  }
+  
+  protected Integer _findRobotOccurrence(final MessageStatement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {
+    Integer _xblockexpression = null;
+    {
+      DynamicRobot _robot = statement.getRobot();
+      int occurred = this.getOccurrence(robotOccurence, _robot);
+      DynamicRobot _robot_1 = statement.getRobot();
+      _xblockexpression = robotOccurence.put(_robot_1, Integer.valueOf(occurred));
+    }
+    return _xblockexpression;
+  }
+  
+  protected Integer _findRobotOccurrence(final DetectionStatement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {
+    Integer _xblockexpression = null;
+    {
+      DynamicRobot _robot = statement.getRobot();
+      int occurred = this.getOccurrence(robotOccurence, _robot);
+      DynamicRobot _robot_1 = statement.getRobot();
+      _xblockexpression = robotOccurence.put(_robot_1, Integer.valueOf(occurred));
+    }
+    return _xblockexpression;
+  }
+  
+  protected Integer _findRobotOccurrence(final Statement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {
+    return null;
+  }
+  
+  public int getOccurrence(final HashMap<DynamicRobot, Integer> robotOccurence, final DynamicRobot robot) {
+    int _xblockexpression = (int) 0;
+    {
+      int occurred = 0;
+      int _xifexpression = (int) 0;
+      boolean _containsKey = robotOccurence.containsKey(robot);
+      if (_containsKey) {
+        _xifexpression = occurred = 2;
+      } else {
+        _xifexpression = occurred = 1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+  
+  public Integer findRobotOccurrence(final Statement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {
+    if (statement instanceof ActionStatement) {
+      return _findRobotOccurrence((ActionStatement)statement, robotOccurence);
+    } else if (statement instanceof DetectionStatement) {
+      return _findRobotOccurrence((DetectionStatement)statement, robotOccurence);
+    } else if (statement instanceof MessageStatement) {
+      return _findRobotOccurrence((MessageStatement)statement, robotOccurence);
+    } else if (statement != null) {
+      return _findRobotOccurrence(statement, robotOccurence);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(statement, robotOccurence).toString());
+    }
   }
 }
