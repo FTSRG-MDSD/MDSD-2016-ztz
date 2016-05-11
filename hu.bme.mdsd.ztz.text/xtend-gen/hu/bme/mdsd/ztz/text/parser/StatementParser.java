@@ -18,6 +18,9 @@ import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
@@ -88,6 +91,10 @@ public class StatementParser {
     return _xblockexpression;
   }
   
+  protected Object _parseStatement(final ActionDeclarationStatement synchronousStatement, final ArrayNode containerNode) {
+    return null;
+  }
+  
   protected Object _parseStatement(final ConditionalStatement conditionalStatement, final ArrayNode containerNode) {
     Condition _condition = conditionalStatement.getCondition();
     boolean _trueCondition = this.trueCondition(_condition);
@@ -148,51 +155,61 @@ public class StatementParser {
   }
   
   protected Object _parseStatement(final ActionStatement statement, final ArrayNode containerNode) {
-    boolean _xblockexpression = false;
-    {
-      final DynamicRobot robot = statement.getRobot();
-      Action _action = statement.getAction();
-      TaskExecution execution = _action.getCurrentTaskExecution();
-      RobotUtil.addExecution(robot, execution);
-      final Action action = statement.getAction();
-      EList<Action> _actions = robot.getActions();
-      _actions.add(action);
-      ObjectNode node = this.factory.objectNode();
-      this.jsonGenerator.newActionNode(action, robot, node);
-      containerNode.add(node);
-      boolean _xifexpression = false;
-      EList<Action> _moreactions = statement.getMoreactions();
-      boolean _isEmpty = _moreactions.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        boolean _xblockexpression_1 = false;
+    final DynamicRobot robot = statement.getRobot();
+    ActionImplementation _action = statement.getAction();
+    TaskExecution execution = _action.getCurrentTaskExecution();
+    RobotUtil.addExecution(robot, execution);
+    final ActionImplementation actionImpl = statement.getAction();
+    Action action = BehaviourFactory.eINSTANCE.createAction();
+    ActionDeclarationStatement _declaration = actionImpl.getDeclaration();
+    String _name = _declaration.getName();
+    action.setName(_name);
+    TaskExecution _currentTaskExecution = actionImpl.getCurrentTaskExecution();
+    action.setCurrentTaskExecution(_currentTaskExecution);
+    EList<Property> _properties = action.getProperties();
+    EList<Property> _properties_1 = actionImpl.getProperties();
+    _properties.addAll(_properties_1);
+    EList<Action> _actions = robot.getActions();
+    _actions.add(action);
+    ObjectNode node = this.factory.objectNode();
+    this.jsonGenerator.newActionNode(action, robot, node);
+    containerNode.add(node);
+    EList<ActionImplementation> _moreactions = statement.getMoreactions();
+    boolean _isEmpty = _moreactions.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      EList<ActionImplementation> _moreactions_1 = statement.getMoreactions();
+      for (final ActionImplementation otherAction : _moreactions_1) {
         {
-          EList<Action> _moreactions_1 = statement.getMoreactions();
-          for (final Action otherAction : _moreactions_1) {
-            {
-              TaskExecution _currentTaskExecution = otherAction.getCurrentTaskExecution();
-              execution = _currentTaskExecution;
-              RobotUtil.addExecution(robot, execution);
-            }
-          }
-          final EList<Action> moreActions = statement.getMoreactions();
-          for (final Action act : moreActions) {
-            {
-              ObjectNode _objectNode = this.factory.objectNode();
-              node = _objectNode;
-              this.jsonGenerator.newActionNode(act, robot, node);
-              containerNode.add(node);
-            }
-          }
+          TaskExecution _currentTaskExecution_1 = otherAction.getCurrentTaskExecution();
+          execution = _currentTaskExecution_1;
+          RobotUtil.addExecution(robot, execution);
+        }
+      }
+      final EList<ActionImplementation> moreActions = statement.getMoreactions();
+      for (final ActionImplementation act : moreActions) {
+        {
+          Action _createAction = BehaviourFactory.eINSTANCE.createAction();
+          action = _createAction;
+          ActionDeclarationStatement _declaration_1 = act.getDeclaration();
+          String _name_1 = _declaration_1.getName();
+          action.setName(_name_1);
+          TaskExecution _currentTaskExecution_1 = act.getCurrentTaskExecution();
+          action.setCurrentTaskExecution(_currentTaskExecution_1);
+          EList<Property> _properties_2 = action.getProperties();
+          EList<Property> _properties_3 = act.getProperties();
+          _properties_2.addAll(_properties_3);
+          ObjectNode _objectNode = this.factory.objectNode();
+          node = _objectNode;
+          this.jsonGenerator.newActionNode(action, robot, node);
+          containerNode.add(node);
           DynamicRobot _robot = statement.getRobot();
           EList<Action> _actions_1 = _robot.getActions();
-          _xblockexpression_1 = _actions_1.addAll(moreActions);
+          _actions_1.add(action);
         }
-        _xifexpression = _xblockexpression_1;
       }
-      _xblockexpression = _xifexpression;
     }
-    return Boolean.valueOf(_xblockexpression);
+    return null;
   }
   
   protected Object _parseStatement(final DetectionStatement statement, final ArrayNode containerNode) {
@@ -399,6 +416,8 @@ public class StatementParser {
       return _parseStatement((ExecutionStatement)statement, containerNode);
     } else if (statement instanceof MessageStatement) {
       return _parseStatement((MessageStatement)statement, containerNode);
+    } else if (statement instanceof ActionDeclarationStatement) {
+      return _parseStatement((ActionDeclarationStatement)statement, containerNode);
     } else if (statement instanceof ConditionalStatement) {
       return _parseStatement((ConditionalStatement)statement, containerNode);
     } else if (statement instanceof SynchronousStatement) {

@@ -21,11 +21,13 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class BehaviourLanguageSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected BehaviourLanguageGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_ActionDeclarationStatement___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q;
 	protected AbstractElementAlias match_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (BehaviourLanguageGrammarAccess) access;
+		match_ActionDeclarationStatement___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getActionDeclarationStatementAccess().getLeftCurlyBracketKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getActionDeclarationStatementAccess().getRightCurlyBracketKeyword_2_2()));
 		match_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_1_6()));
 	}
 	
@@ -41,12 +43,25 @@ public class BehaviourLanguageSyntacticSequencer extends AbstractSyntacticSequen
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q.equals(syntax))
+			if (match_ActionDeclarationStatement___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q.equals(syntax))
+				emit_ActionDeclarationStatement___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q.equals(syntax))
 				emit_Message___LeftCurlyBracketKeyword_1_0_RightCurlyBracketKeyword_1_6__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     ('{' '}')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=EString (ambiguity) (rule end)
+	 */
+	protected void emit_ActionDeclarationStatement___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     ('{' '}')?

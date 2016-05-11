@@ -33,7 +33,7 @@ DynamicRobot returns DynamicRobot:
 ;
 
 Statement:
-	AtomicStatement | ConditionalStatement | SynchronousStatement
+	AtomicStatement | ConditionalStatement | SynchronousStatement | ActionDeclarationStatement
 ;
 
 AtomicStatement:
@@ -48,8 +48,16 @@ SynchronousStatement:
 	'sync' '{' (statements+=(ActionStatement | MessageStatement | DetectionStatement))+ '}'
 ;
 
+ActionDeclarationStatement:
+	'action' name=EString ('{' (properties+=[drone::PropertyKey])* '}')?
+;
+
 ActionStatement:
-	robot=[DynamicRobot] 'do' action=Action_Impl ('->' moreactions+=Action_Impl)*
+	robot=[DynamicRobot] 'do' action=ActionImplementation ('->' moreactions+=ActionImplementation)*
+;
+
+ActionImplementation:
+	declaration=[ActionDeclarationStatement] ('(' currentTaskExecution=[TaskExecution] ')')? ('{' properties+=Property ( "," properties+=Property)* '}')?
 ;
 
 MessageStatement:
@@ -146,11 +154,11 @@ enum RobotStatus returns RobotStatus:
 	Ready = 'Ready' | TurnedOff = 'TurnedOff' | Waiting = 'Waiting' | Executing = 'Executing'
 ;
 
-Action_Impl returns Action:
-	{Action}
-	name=EString ('(' currentTaskExecution=[TaskExecution] ')')?
-	('{' properties+=Property ( "," properties+=Property)* '}' )?
-;
+//Action_Impl returns Action:
+//	{Action}
+//	name=EString ('(' currentTaskExecution=[TaskExecution] ')')?
+//	('{' properties+=Property ( "," properties+=Property)* '}' )?
+//;
 
 Property returns drone::Property:
 	'[' key=[drone::PropertyKey] '=' value=PropertyValue ']'

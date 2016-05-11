@@ -3,7 +3,6 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage;
 
-import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 
 import org.eclipse.emf.common.util.EList;
@@ -63,12 +62,12 @@ public interface ActionStatement extends AtomicStatement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Action</em>' containment reference.
-   * @see #setAction(Action)
+   * @see #setAction(ActionImplementation)
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getActionStatement_Action()
    * @model containment="true"
    * @generated
    */
-  Action getAction();
+  ActionImplementation getAction();
 
   /**
    * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement#getAction <em>Action</em>}' containment reference.
@@ -78,11 +77,11 @@ public interface ActionStatement extends AtomicStatement
    * @see #getAction()
    * @generated
    */
-  void setAction(Action value);
+  void setAction(ActionImplementation value);
 
   /**
    * Returns the value of the '<em><b>Moreactions</b></em>' containment reference list.
-   * The list contents are of type {@link hu.bme.mdsd.ztz.model.behaviour.Action}.
+   * The list contents are of type {@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Moreactions</em>' containment reference list isn't clear,
@@ -94,6 +93,6 @@ public interface ActionStatement extends AtomicStatement
    * @model containment="true"
    * @generated
    */
-  EList<Action> getMoreactions();
+  EList<ActionImplementation> getMoreactions();
 
 } // ActionStatement

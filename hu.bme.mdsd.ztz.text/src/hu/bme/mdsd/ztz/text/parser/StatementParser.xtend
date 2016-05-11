@@ -30,6 +30,8 @@ import org.eclipse.emf.ecore.resource.Resource
 
 import static extension hu.bme.mdsd.ztz.text.util.RobotUtil.*
 import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
 
 class StatementParser {
 	
@@ -63,6 +65,10 @@ class StatementParser {
 		containerNode.add(node)
 	}
 
+	def dispatch parseStatement(ActionDeclarationStatement synchronousStatement, ArrayNode containerNode) {
+		
+	} 
+
 	def dispatch parseStatement(ConditionalStatement conditionalStatement, ArrayNode containerNode) {
 		if (conditionalStatement.condition.trueCondition()) {
 			for (Statement st : conditionalStatement.statements) {
@@ -95,9 +101,15 @@ class StatementParser {
 	def dispatch parseStatement(ActionStatement statement, ArrayNode containerNode) {
 		val robot = statement.robot 
 		var execution = statement.action.currentTaskExecution
+//		var execution = statement.action.
 		
 		robot.addExecution(execution)
-		val action = statement.action
+		val actionImpl = statement.action
+		var action = BehaviourFactory.eINSTANCE.createAction
+		
+		action.name = actionImpl.declaration.name
+		action.currentTaskExecution = actionImpl.currentTaskExecution
+		action.properties.addAll(actionImpl.properties)
 		robot.actions.add(action)
 
 		var node = factory.objectNode
@@ -105,17 +117,23 @@ class StatementParser {
 		containerNode.add(node)
 		
 		if (!statement.moreactions.empty) {
-			for (Action otherAction : statement.moreactions) {
+			for (ActionImplementation otherAction : statement.moreactions) {
 				execution = otherAction.currentTaskExecution
 				robot.addExecution(execution)
 			}
 			val moreActions = statement.moreactions
-			for (Action act : moreActions) {
+			for (ActionImplementation act : moreActions) {
+				action = BehaviourFactory.eINSTANCE.createAction
+				
+				action.name = act.declaration.name
+				action.currentTaskExecution = act.currentTaskExecution
+				action.properties.addAll(act.properties)
+				
 				node = factory.objectNode
-				newActionNode(act, robot, node)
+				newActionNode(action, robot, node)
 				containerNode.add(node)
+				statement.robot.actions.add(action)
 			}
-			statement.robot.actions.addAll(moreActions)
 		}
 	}
 	

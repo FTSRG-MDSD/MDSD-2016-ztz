@@ -29,6 +29,8 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 
 /**
  * This class contains custom scoping description.
@@ -97,12 +99,27 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 	}
 	
 	def dispatch IScope scopeForContext(hu.bme.mdsd.ztz.model.drone.Property context, EReference reference, ResourceManager manager) {
+		if (context.eContainer instanceof ActionImplementation) {
+			
+		}
 		if (reference == DronePackage.Literals.PROPERTY__KEY && manager.resource != null) {
+			val container = context.eContainer 
+			if (container instanceof ActionImplementation) {
+				return Scopes.scopeFor(container.declaration.properties)	
+			}
 			val droneProperties = EcoreUtil2.getAllContentsOfType(getContainer(manager), PropertyKey).toSet
 			droneProperties.addAll(context.eResource.allContents.filter(PropertyKey).toSet)
 			return Scopes.scopeFor(droneProperties)
 		}
 		super.getScope(context, reference)
+	}
+	
+	def dispatch IScope scopeForContext(ActionDeclarationStatement context, EReference reference, ResourceManager manager) {
+		if (reference == BehaviourLanguagePackage.Literals.ACTION_DECLARATION_STATEMENT__PROPERTIES) {
+			val droneProperties = EcoreUtil2.getAllContentsOfType(getContainer(manager), PropertyKey).toSet
+			droneProperties.addAll(context.eResource.allContents.filter(PropertyKey).toSet)
+			return Scopes.scopeFor(droneProperties)
+		}
 	}
 	
 	def dispatch IScope scopeForContext(MeasureValue context, EReference reference, ResourceManager manager) {

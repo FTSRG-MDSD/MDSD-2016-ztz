@@ -11,6 +11,10 @@ import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
+import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.model.drone.PropertyKey;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
@@ -29,6 +33,7 @@ import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -329,6 +334,50 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
+  }
+  
+  @Check
+  public void checkPropertyKeysForActionDeclarations(final ActionDeclarationStatement statement) {
+    final HashMap<PropertyKey, String> keys = new HashMap<PropertyKey, String>();
+    EList<PropertyKey> _properties = statement.getProperties();
+    for (final PropertyKey key : _properties) {
+      {
+        boolean _containsKey = keys.containsKey(key);
+        if (_containsKey) {
+          this.error("An action cannot contain the same property twice", key, BehaviourLanguagePackage.Literals.ACTION_DECLARATION_STATEMENT__PROPERTIES);
+          return;
+        }
+        keys.put(key, "");
+      }
+    }
+  }
+  
+  @Check
+  public void checkPropertyKeysForActionImplementation(final ActionImplementation actionImplementation) {
+    EList<Property> _properties = actionImplementation.getProperties();
+    int _size = _properties.size();
+    ActionDeclarationStatement _declaration = actionImplementation.getDeclaration();
+    EList<PropertyKey> _properties_1 = _declaration.getProperties();
+    int _size_1 = _properties_1.size();
+    boolean _notEquals = (_size != _size_1);
+    if (_notEquals) {
+      this.error("An action must have as many properties as its declaration has", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES);
+    }
+    final HashSet<PropertyKey> keys = new HashSet<PropertyKey>();
+    EList<Property> _properties_2 = actionImplementation.getProperties();
+    for (final Property property : _properties_2) {
+      PropertyKey _key = property.getKey();
+      keys.add(_key);
+    }
+    ActionDeclarationStatement _declaration_1 = actionImplementation.getDeclaration();
+    EList<PropertyKey> _properties_3 = _declaration_1.getProperties();
+    for (final PropertyKey key : _properties_3) {
+      boolean _contains = keys.contains(key);
+      boolean _not = (!_contains);
+      if (_not) {
+        this.error("An action must have the same properties as its declaration", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES);
+      }
+    }
   }
   
   public Integer findRobotOccurrence(final Statement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {

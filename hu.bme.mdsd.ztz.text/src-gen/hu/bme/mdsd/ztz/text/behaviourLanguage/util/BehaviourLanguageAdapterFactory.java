@@ -106,9 +106,19 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
         return createSynchronousStatementAdapter();
       }
       @Override
+      public Adapter caseActionDeclarationStatement(ActionDeclarationStatement object)
+      {
+        return createActionDeclarationStatementAdapter();
+      }
+      @Override
       public Adapter caseActionStatement(ActionStatement object)
       {
         return createActionStatementAdapter();
+      }
+      @Override
+      public Adapter caseActionImplementation(ActionImplementation object)
+      {
+        return createActionImplementationAdapter();
       }
       @Override
       public Adapter caseMessageStatement(MessageStatement object)
@@ -293,6 +303,21 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement <em>Action Declaration Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+   * @generated
+   */
+  public Adapter createActionDeclarationStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement <em>Action Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -303,6 +328,21 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createActionStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation <em>Action Implementation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
+   * @generated
+   */
+  public Adapter createActionImplementationAdapter()
   {
     return null;
   }

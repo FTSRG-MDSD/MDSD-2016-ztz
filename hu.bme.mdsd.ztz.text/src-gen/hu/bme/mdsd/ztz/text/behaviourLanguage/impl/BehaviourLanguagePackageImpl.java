@@ -7,6 +7,8 @@ import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
@@ -93,7 +95,21 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass actionDeclarationStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass actionStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionImplementationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -404,6 +420,36 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getActionDeclarationStatement()
+  {
+    return actionDeclarationStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getActionDeclarationStatement_Name()
+  {
+    return (EAttribute)actionDeclarationStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActionDeclarationStatement_Properties()
+  {
+    return (EReference)actionDeclarationStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getActionStatement()
   {
     return actionStatementEClass;
@@ -437,6 +483,46 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
   public EReference getActionStatement_Moreactions()
   {
     return (EReference)actionStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getActionImplementation()
+  {
+    return actionImplementationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActionImplementation_Declaration()
+  {
+    return (EReference)actionImplementationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActionImplementation_CurrentTaskExecution()
+  {
+    return (EReference)actionImplementationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActionImplementation_Properties()
+  {
+    return (EReference)actionImplementationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -859,10 +945,19 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     synchronousStatementEClass = createEClass(SYNCHRONOUS_STATEMENT);
     createEReference(synchronousStatementEClass, SYNCHRONOUS_STATEMENT__STATEMENTS);
 
+    actionDeclarationStatementEClass = createEClass(ACTION_DECLARATION_STATEMENT);
+    createEAttribute(actionDeclarationStatementEClass, ACTION_DECLARATION_STATEMENT__NAME);
+    createEReference(actionDeclarationStatementEClass, ACTION_DECLARATION_STATEMENT__PROPERTIES);
+
     actionStatementEClass = createEClass(ACTION_STATEMENT);
     createEReference(actionStatementEClass, ACTION_STATEMENT__ROBOT);
     createEReference(actionStatementEClass, ACTION_STATEMENT__ACTION);
     createEReference(actionStatementEClass, ACTION_STATEMENT__MOREACTIONS);
+
+    actionImplementationEClass = createEClass(ACTION_IMPLEMENTATION);
+    createEReference(actionImplementationEClass, ACTION_IMPLEMENTATION__DECLARATION);
+    createEReference(actionImplementationEClass, ACTION_IMPLEMENTATION__CURRENT_TASK_EXECUTION);
+    createEReference(actionImplementationEClass, ACTION_IMPLEMENTATION__PROPERTIES);
 
     messageStatementEClass = createEClass(MESSAGE_STATEMENT);
     createEReference(messageStatementEClass, MESSAGE_STATEMENT__ROBOT);
@@ -952,6 +1047,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     atomicStatementEClass.getESuperTypes().add(this.getStatement());
     conditionalStatementEClass.getESuperTypes().add(this.getStatement());
     synchronousStatementEClass.getESuperTypes().add(this.getStatement());
+    actionDeclarationStatementEClass.getESuperTypes().add(this.getStatement());
     actionStatementEClass.getESuperTypes().add(this.getAtomicStatement());
     messageStatementEClass.getESuperTypes().add(this.getAtomicStatement());
     collaborationStatementEClass.getESuperTypes().add(this.getAtomicStatement());
@@ -987,10 +1083,19 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     initEClass(synchronousStatementEClass, SynchronousStatement.class, "SynchronousStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSynchronousStatement_Statements(), this.getAtomicStatement(), null, "statements", null, 0, -1, SynchronousStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(actionDeclarationStatementEClass, ActionDeclarationStatement.class, "ActionDeclarationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getActionDeclarationStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ActionDeclarationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionDeclarationStatement_Properties(), theDronePackage.getPropertyKey(), null, "properties", null, 0, -1, ActionDeclarationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getActionStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getActionStatement_Action(), theBehaviourPackage.getAction(), null, "action", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getActionStatement_Moreactions(), theBehaviourPackage.getAction(), null, "moreactions", null, 0, -1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionStatement_Action(), this.getActionImplementation(), null, "action", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionStatement_Moreactions(), this.getActionImplementation(), null, "moreactions", null, 0, -1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(actionImplementationEClass, ActionImplementation.class, "ActionImplementation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getActionImplementation_Declaration(), this.getActionDeclarationStatement(), null, "declaration", null, 0, 1, ActionImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionImplementation_CurrentTaskExecution(), theBehaviourPackage.getTaskExecution(), null, "currentTaskExecution", null, 0, 1, ActionImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionImplementation_Properties(), theDronePackage.getProperty(), null, "properties", null, 0, -1, ActionImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(messageStatementEClass, MessageStatement.class, "MessageStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMessageStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, MessageStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

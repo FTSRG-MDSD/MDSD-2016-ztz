@@ -71,7 +71,9 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
       case BehaviourLanguagePackage.ATOMIC_STATEMENT: return createAtomicStatement();
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT: return createConditionalStatement();
       case BehaviourLanguagePackage.SYNCHRONOUS_STATEMENT: return createSynchronousStatement();
+      case BehaviourLanguagePackage.ACTION_DECLARATION_STATEMENT: return createActionDeclarationStatement();
       case BehaviourLanguagePackage.ACTION_STATEMENT: return createActionStatement();
+      case BehaviourLanguagePackage.ACTION_IMPLEMENTATION: return createActionImplementation();
       case BehaviourLanguagePackage.MESSAGE_STATEMENT: return createMessageStatement();
       case BehaviourLanguagePackage.COLLABORATION_STATEMENT: return createCollaborationStatement();
       case BehaviourLanguagePackage.DETECTION_STATEMENT: return createDetectionStatement();
@@ -162,10 +164,32 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
+  public ActionDeclarationStatement createActionDeclarationStatement()
+  {
+    ActionDeclarationStatementImpl actionDeclarationStatement = new ActionDeclarationStatementImpl();
+    return actionDeclarationStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ActionStatement createActionStatement()
   {
     ActionStatementImpl actionStatement = new ActionStatementImpl();
     return actionStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ActionImplementation createActionImplementation()
+  {
+    ActionImplementationImpl actionImplementation = new ActionImplementationImpl();
+    return actionImplementation;
   }
 
   /**

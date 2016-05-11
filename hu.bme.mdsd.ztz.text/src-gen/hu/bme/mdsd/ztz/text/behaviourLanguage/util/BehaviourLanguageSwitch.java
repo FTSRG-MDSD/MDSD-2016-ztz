@@ -118,12 +118,27 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case BehaviourLanguagePackage.ACTION_DECLARATION_STATEMENT:
+      {
+        ActionDeclarationStatement actionDeclarationStatement = (ActionDeclarationStatement)theEObject;
+        T result = caseActionDeclarationStatement(actionDeclarationStatement);
+        if (result == null) result = caseStatement(actionDeclarationStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case BehaviourLanguagePackage.ACTION_STATEMENT:
       {
         ActionStatement actionStatement = (ActionStatement)theEObject;
         T result = caseActionStatement(actionStatement);
         if (result == null) result = caseAtomicStatement(actionStatement);
         if (result == null) result = caseStatement(actionStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BehaviourLanguagePackage.ACTION_IMPLEMENTATION:
+      {
+        ActionImplementation actionImplementation = (ActionImplementation)theEObject;
+        T result = caseActionImplementation(actionImplementation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -347,6 +362,22 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Action Declaration Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action Declaration Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionDeclarationStatement(ActionDeclarationStatement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Action Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -358,6 +389,22 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseActionStatement(ActionStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action Implementation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action Implementation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionImplementation(ActionImplementation object)
   {
     return null;
   }

@@ -18,6 +18,8 @@ import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.StringValue;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
@@ -61,9 +63,6 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == BehaviourPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case BehaviourPackage.ACTION:
-				sequence_Action_Impl(context, (hu.bme.mdsd.ztz.model.behaviour.Action) semanticObject); 
-				return; 
 			case BehaviourPackage.BEHAVIOUR_CONTAINER:
 				sequence_BehaviourContainer(context, (BehaviourContainer) semanticObject); 
 				return; 
@@ -88,6 +87,12 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 			}
 		else if (epackage == BehaviourLanguagePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case BehaviourLanguagePackage.ACTION_DECLARATION_STATEMENT:
+				sequence_ActionDeclarationStatement(context, (ActionDeclarationStatement) semanticObject); 
+				return; 
+			case BehaviourLanguagePackage.ACTION_IMPLEMENTATION:
+				sequence_ActionImplementation(context, (ActionImplementation) semanticObject); 
+				return; 
 			case BehaviourLanguagePackage.ACTION_STATEMENT:
 				sequence_ActionStatement(context, (ActionStatement) semanticObject); 
 				return; 
@@ -161,26 +166,39 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	
 	/**
 	 * Contexts:
-	 *     Statement returns ActionStatement
-	 *     AtomicStatement returns ActionStatement
-	 *     ActionStatement returns ActionStatement
+	 *     Statement returns ActionDeclarationStatement
+	 *     ActionDeclarationStatement returns ActionDeclarationStatement
 	 *
 	 * Constraint:
-	 *     (robot=[DynamicRobot|ID] action=Action_Impl moreactions+=Action_Impl*)
+	 *     (name=EString properties+=[PropertyKey|ID]*)
 	 */
-	protected void sequence_ActionStatement(ISerializationContext context, ActionStatement semanticObject) {
+	protected void sequence_ActionDeclarationStatement(ISerializationContext context, ActionDeclarationStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Action_Impl returns Action
+	 *     ActionImplementation returns ActionImplementation
 	 *
 	 * Constraint:
-	 *     (name=EString currentTaskExecution=[TaskExecution|ID]? (properties+=Property properties+=Property*)?)
+	 *     (declaration=[ActionDeclarationStatement|ID] currentTaskExecution=[TaskExecution|ID]? (properties+=Property properties+=Property*)?)
 	 */
-	protected void sequence_Action_Impl(ISerializationContext context, hu.bme.mdsd.ztz.model.behaviour.Action semanticObject) {
+	protected void sequence_ActionImplementation(ISerializationContext context, ActionImplementation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns ActionStatement
+	 *     AtomicStatement returns ActionStatement
+	 *     ActionStatement returns ActionStatement
+	 *
+	 * Constraint:
+	 *     (robot=[DynamicRobot|ID] action=ActionImplementation moreactions+=ActionImplementation*)
+	 */
+	protected void sequence_ActionStatement(ISerializationContext context, ActionStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

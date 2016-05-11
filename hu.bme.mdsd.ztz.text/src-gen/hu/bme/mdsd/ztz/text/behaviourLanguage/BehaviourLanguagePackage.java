@@ -244,6 +244,43 @@ public interface BehaviourLanguagePackage extends EPackage
   int SYNCHRONOUS_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionDeclarationStatementImpl <em>Action Declaration Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionDeclarationStatementImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getActionDeclarationStatement()
+   * @generated
+   */
+  int ACTION_DECLARATION_STATEMENT = 6;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_DECLARATION_STATEMENT__NAME = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_DECLARATION_STATEMENT__PROPERTIES = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Action Declaration Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_DECLARATION_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl <em>Action Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -251,7 +288,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getActionStatement()
    * @generated
    */
-  int ACTION_STATEMENT = 6;
+  int ACTION_STATEMENT = 7;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -290,6 +327,52 @@ public interface BehaviourLanguagePackage extends EPackage
   int ACTION_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 3;
 
   /**
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionImplementationImpl <em>Action Implementation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionImplementationImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getActionImplementation()
+   * @generated
+   */
+  int ACTION_IMPLEMENTATION = 8;
+
+  /**
+   * The feature id for the '<em><b>Declaration</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_IMPLEMENTATION__DECLARATION = 0;
+
+  /**
+   * The feature id for the '<em><b>Current Task Execution</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_IMPLEMENTATION__CURRENT_TASK_EXECUTION = 1;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_IMPLEMENTATION__PROPERTIES = 2;
+
+  /**
+   * The number of structural features of the '<em>Action Implementation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_IMPLEMENTATION_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl <em>Message Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -297,7 +380,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageStatement()
    * @generated
    */
-  int MESSAGE_STATEMENT = 7;
+  int MESSAGE_STATEMENT = 9;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -343,7 +426,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getCollaborationStatement()
    * @generated
    */
-  int COLLABORATION_STATEMENT = 8;
+  int COLLABORATION_STATEMENT = 10;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -380,7 +463,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getDetectionStatement()
    * @generated
    */
-  int DETECTION_STATEMENT = 9;
+  int DETECTION_STATEMENT = 11;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -426,7 +509,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getExecutionStatement()
    * @generated
    */
-  int EXECUTION_STATEMENT = 10;
+  int EXECUTION_STATEMENT = 12;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -463,7 +546,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getStatusStatement()
    * @generated
    */
-  int STATUS_STATEMENT = 11;
+  int STATUS_STATEMENT = 13;
 
   /**
    * The number of structural features of the '<em>Status Statement</em>' class.
@@ -482,7 +565,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getRobotStatusStatement()
    * @generated
    */
-  int ROBOT_STATUS_STATEMENT = 12;
+  int ROBOT_STATUS_STATEMENT = 14;
 
   /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
@@ -519,7 +602,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getTaskStatusStatement()
    * @generated
    */
-  int TASK_STATUS_STATEMENT = 13;
+  int TASK_STATUS_STATEMENT = 15;
 
   /**
    * The feature id for the '<em><b>Task</b></em>' reference.
@@ -556,7 +639,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMessageTarget()
    * @generated
    */
-  int MESSAGE_TARGET = 14;
+  int MESSAGE_TARGET = 16;
 
   /**
    * The number of structural features of the '<em>Message Target</em>' class.
@@ -575,7 +658,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getUniTarget()
    * @generated
    */
-  int UNI_TARGET = 15;
+  int UNI_TARGET = 17;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -603,7 +686,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMultiTarget()
    * @generated
    */
-  int MULTI_TARGET = 16;
+  int MULTI_TARGET = 18;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference list.
@@ -631,7 +714,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getAllTarget()
    * @generated
    */
-  int ALL_TARGET = 17;
+  int ALL_TARGET = 19;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' attribute.
@@ -659,7 +742,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getCondition()
    * @generated
    */
-  int CONDITION = 18;
+  int CONDITION = 20;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -696,7 +779,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getTaskStatusCondition()
    * @generated
    */
-  int TASK_STATUS_CONDITION = 19;
+  int TASK_STATUS_CONDITION = 21;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -751,7 +834,7 @@ public interface BehaviourLanguagePackage extends EPackage
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getRobotStatusCondition()
    * @generated
    */
-  int ROBOT_STATUS_CONDITION = 20;
+  int ROBOT_STATUS_CONDITION = 22;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -948,6 +1031,38 @@ public interface BehaviourLanguagePackage extends EPackage
   EReference getSynchronousStatement_Statements();
 
   /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement <em>Action Declaration Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Action Declaration Statement</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+   * @generated
+   */
+  EClass getActionDeclarationStatement();
+
+  /**
+   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement#getName()
+   * @see #getActionDeclarationStatement()
+   * @generated
+   */
+  EAttribute getActionDeclarationStatement_Name();
+
+  /**
+   * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement#getProperties <em>Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Properties</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement#getProperties()
+   * @see #getActionDeclarationStatement()
+   * @generated
+   */
+  EReference getActionDeclarationStatement_Properties();
+
+  /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement <em>Action Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -989,6 +1104,49 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    */
   EReference getActionStatement_Moreactions();
+
+  /**
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation <em>Action Implementation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Action Implementation</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
+   * @generated
+   */
+  EClass getActionImplementation();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getDeclaration <em>Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Declaration</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getDeclaration()
+   * @see #getActionImplementation()
+   * @generated
+   */
+  EReference getActionImplementation_Declaration();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getCurrentTaskExecution <em>Current Task Execution</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Current Task Execution</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getCurrentTaskExecution()
+   * @see #getActionImplementation()
+   * @generated
+   */
+  EReference getActionImplementation_CurrentTaskExecution();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getProperties <em>Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Properties</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getProperties()
+   * @see #getActionImplementation()
+   * @generated
+   */
+  EReference getActionImplementation_Properties();
 
   /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement <em>Message Statement</em>}'.
@@ -1531,6 +1689,32 @@ public interface BehaviourLanguagePackage extends EPackage
     EReference SYNCHRONOUS_STATEMENT__STATEMENTS = eINSTANCE.getSynchronousStatement_Statements();
 
     /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionDeclarationStatementImpl <em>Action Declaration Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionDeclarationStatementImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getActionDeclarationStatement()
+     * @generated
+     */
+    EClass ACTION_DECLARATION_STATEMENT = eINSTANCE.getActionDeclarationStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ACTION_DECLARATION_STATEMENT__NAME = eINSTANCE.getActionDeclarationStatement_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Properties</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION_DECLARATION_STATEMENT__PROPERTIES = eINSTANCE.getActionDeclarationStatement_Properties();
+
+    /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionStatementImpl <em>Action Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1563,6 +1747,40 @@ public interface BehaviourLanguagePackage extends EPackage
      * @generated
      */
     EReference ACTION_STATEMENT__MOREACTIONS = eINSTANCE.getActionStatement_Moreactions();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionImplementationImpl <em>Action Implementation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionImplementationImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getActionImplementation()
+     * @generated
+     */
+    EClass ACTION_IMPLEMENTATION = eINSTANCE.getActionImplementation();
+
+    /**
+     * The meta object literal for the '<em><b>Declaration</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION_IMPLEMENTATION__DECLARATION = eINSTANCE.getActionImplementation_Declaration();
+
+    /**
+     * The meta object literal for the '<em><b>Current Task Execution</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION_IMPLEMENTATION__CURRENT_TASK_EXECUTION = eINSTANCE.getActionImplementation_CurrentTaskExecution();
+
+    /**
+     * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION_IMPLEMENTATION__PROPERTIES = eINSTANCE.getActionImplementation_Properties();
 
     /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl <em>Message Statement</em>}' class.

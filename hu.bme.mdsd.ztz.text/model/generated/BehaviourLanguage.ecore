@@ -27,12 +27,23 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
         eType="#//AtomicStatement" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActionDeclarationStatement" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" unique="false"
+        upperBound="-1" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/drone.ecore#//PropertyKey"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActionStatement" eSuperTypes="#//AtomicStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="robot" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//Action"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//ActionImplementation"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="moreactions" upperBound="-1"
-        eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//Action"
+        eType="#//ActionImplementation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActionImplementation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declaration" eType="#//ActionDeclarationStatement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentTaskExecution" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecution"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/drone.ecore#//Property"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageStatement" eSuperTypes="#//AtomicStatement">

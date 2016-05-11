@@ -21,6 +21,8 @@ import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
 import hu.bme.mdsd.ztz.model.drone.Task;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
@@ -186,6 +188,9 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
   protected IScope _scopeForContext(final Property context, final EReference reference, final ResourceManager manager) {
     IScope _xblockexpression = null;
     {
+      EObject _eContainer = context.eContainer();
+      if ((_eContainer instanceof ActionImplementation)) {
+      }
       boolean _and = false;
       boolean _equals = Objects.equal(reference, DronePackage.Literals.PROPERTY__KEY);
       if (!_equals) {
@@ -196,6 +201,12 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
         _and = _notEquals;
       }
       if (_and) {
+        final EObject container = context.eContainer();
+        if ((container instanceof ActionImplementation)) {
+          ActionDeclarationStatement _declaration = ((ActionImplementation)container).getDeclaration();
+          EList<PropertyKey> _properties = _declaration.getProperties();
+          return Scopes.scopeFor(_properties);
+        }
         RobotMissionContainer _container = this.getContainer(manager);
         List<PropertyKey> _allContentsOfType = EcoreUtil2.<PropertyKey>getAllContentsOfType(_container, PropertyKey.class);
         final Set<PropertyKey> droneProperties = IterableExtensions.<PropertyKey>toSet(_allContentsOfType);
@@ -209,6 +220,22 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
       _xblockexpression = super.getScope(context, reference);
     }
     return _xblockexpression;
+  }
+  
+  protected IScope _scopeForContext(final ActionDeclarationStatement context, final EReference reference, final ResourceManager manager) {
+    boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.ACTION_DECLARATION_STATEMENT__PROPERTIES);
+    if (_equals) {
+      RobotMissionContainer _container = this.getContainer(manager);
+      List<PropertyKey> _allContentsOfType = EcoreUtil2.<PropertyKey>getAllContentsOfType(_container, PropertyKey.class);
+      final Set<PropertyKey> droneProperties = IterableExtensions.<PropertyKey>toSet(_allContentsOfType);
+      Resource _eResource = context.eResource();
+      TreeIterator<EObject> _allContents = _eResource.getAllContents();
+      Iterator<PropertyKey> _filter = Iterators.<PropertyKey>filter(_allContents, PropertyKey.class);
+      Set<PropertyKey> _set = IteratorExtensions.<PropertyKey>toSet(_filter);
+      droneProperties.addAll(_set);
+      return Scopes.scopeFor(droneProperties);
+    }
+    return null;
   }
   
   protected IScope _scopeForContext(final MeasureValue context, final EReference reference, final ResourceManager manager) {
@@ -301,6 +328,8 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
       return _scopeForContext((TaskRequirement)context, reference, manager);
     } else if (context instanceof MeasureValue) {
       return _scopeForContext((MeasureValue)context, reference, manager);
+    } else if (context instanceof ActionDeclarationStatement) {
+      return _scopeForContext((ActionDeclarationStatement)context, reference, manager);
     } else if (context instanceof RobotStatusCondition) {
       return _scopeForContext((RobotStatusCondition)context, reference, manager);
     } else if (context instanceof TaskStatusCondition) {

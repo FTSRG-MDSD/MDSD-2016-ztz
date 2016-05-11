@@ -78,6 +78,15 @@ public interface BehaviourLanguageFactory extends EFactory
   SynchronousStatement createSynchronousStatement();
 
   /**
+   * Returns a new object of class '<em>Action Declaration Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action Declaration Statement</em>'.
+   * @generated
+   */
+  ActionDeclarationStatement createActionDeclarationStatement();
+
+  /**
    * Returns a new object of class '<em>Action Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,6 +94,15 @@ public interface BehaviourLanguageFactory extends EFactory
    * @generated
    */
   ActionStatement createActionStatement();
+
+  /**
+   * Returns a new object of class '<em>Action Implementation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action Implementation</em>'.
+   * @generated
+   */
+  ActionImplementation createActionImplementation();
 
   /**
    * Returns a new object of class '<em>Message Statement</em>'.

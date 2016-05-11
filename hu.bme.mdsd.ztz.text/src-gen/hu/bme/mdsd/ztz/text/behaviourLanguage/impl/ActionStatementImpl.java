@@ -3,9 +3,9 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
-import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 
@@ -59,7 +59,7 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
    * @generated
    * @ordered
    */
-  protected Action action;
+  protected ActionImplementation action;
 
   /**
    * The cached value of the '{@link #getMoreactions() <em>Moreactions</em>}' containment reference list.
@@ -69,7 +69,7 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
    * @generated
    * @ordered
    */
-  protected EList<Action> moreactions;
+  protected EList<ActionImplementation> moreactions;
 
   /**
    * <!-- begin-user-doc -->
@@ -140,7 +140,7 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
    * <!-- end-user-doc -->
    * @generated
    */
-  public Action getAction()
+  public ActionImplementation getAction()
   {
     return action;
   }
@@ -150,9 +150,9 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetAction(Action newAction, NotificationChain msgs)
+  public NotificationChain basicSetAction(ActionImplementation newAction, NotificationChain msgs)
   {
-    Action oldAction = action;
+    ActionImplementation oldAction = action;
     action = newAction;
     if (eNotificationRequired())
     {
@@ -167,7 +167,7 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAction(Action newAction)
+  public void setAction(ActionImplementation newAction)
   {
     if (newAction != action)
     {
@@ -188,11 +188,11 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Action> getMoreactions()
+  public EList<ActionImplementation> getMoreactions()
   {
     if (moreactions == null)
     {
-      moreactions = new EObjectContainmentEList<Action>(Action.class, this, BehaviourLanguagePackage.ACTION_STATEMENT__MOREACTIONS);
+      moreactions = new EObjectContainmentEList<ActionImplementation>(ActionImplementation.class, this, BehaviourLanguagePackage.ACTION_STATEMENT__MOREACTIONS);
     }
     return moreactions;
   }
@@ -251,11 +251,11 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
         setRobot((DynamicRobot)newValue);
         return;
       case BehaviourLanguagePackage.ACTION_STATEMENT__ACTION:
-        setAction((Action)newValue);
+        setAction((ActionImplementation)newValue);
         return;
       case BehaviourLanguagePackage.ACTION_STATEMENT__MOREACTIONS:
         getMoreactions().clear();
-        getMoreactions().addAll((Collection<? extends Action>)newValue);
+        getMoreactions().addAll((Collection<? extends ActionImplementation>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -275,7 +275,7 @@ public class ActionStatementImpl extends AtomicStatementImpl implements ActionSt
         setRobot((DynamicRobot)null);
         return;
       case BehaviourLanguagePackage.ACTION_STATEMENT__ACTION:
-        setAction((Action)null);
+        setAction((ActionImplementation)null);
         return;
       case BehaviourLanguagePackage.ACTION_STATEMENT__MOREACTIONS:
         getMoreactions().clear();

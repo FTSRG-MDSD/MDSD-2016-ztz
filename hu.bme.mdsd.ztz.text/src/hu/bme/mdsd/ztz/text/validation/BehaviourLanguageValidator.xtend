@@ -25,6 +25,11 @@ import java.util.HashMap
 import java.util.Iterator
 import java.util.Map.Entry
 import org.eclipse.xtext.validation.Check
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+import hu.bme.mdsd.ztz.model.drone.PropertyKey
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
+import java.util.HashSet
 
 /**
  * This class contains custom validation rules. 
@@ -204,6 +209,34 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 			occurred = 2
 		} else {
 			occurred = 1
+		}
+	}
+
+	@Check
+	def checkPropertyKeysForActionDeclarations(ActionDeclarationStatement statement) {
+		val keys = new HashMap<PropertyKey, String>()
+		for (PropertyKey key : statement.properties) {
+			if (keys.containsKey(key)) {
+				error("An action cannot contain the same property twice", key, BehaviourLanguagePackage.Literals.ACTION_DECLARATION_STATEMENT__PROPERTIES)
+				return
+			}
+			keys.put(key, "")
+		}
+	}
+	
+	@Check
+	def checkPropertyKeysForActionImplementation(ActionImplementation actionImplementation) {
+		if (actionImplementation.properties.size != actionImplementation.declaration.properties.size) {
+			error("An action must have as many properties as its declaration has", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES)
+		}
+		val keys = new HashSet<PropertyKey>()
+		for (hu.bme.mdsd.ztz.model.drone.Property property : actionImplementation.properties) {
+			keys.add(property.key)
+		}
+		for (PropertyKey key : actionImplementation.declaration.properties)  {
+			if (!keys.contains(key)) {
+				error("An action must have the same properties as its declaration", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES)	
+			}
 		}
 	}
 
