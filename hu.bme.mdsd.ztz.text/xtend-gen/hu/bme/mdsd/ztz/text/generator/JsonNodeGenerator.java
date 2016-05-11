@@ -100,7 +100,7 @@ public class JsonNodeGenerator {
         String _name_1 = _robot.getName();
         ((ArrayNode) _get).add(_name_1);
       }
-      _xblockexpression = node.set("BoradcastCommunication", nestedNode);
+      _xblockexpression = node.set("BroadcastCommunication", nestedNode);
     }
     return _xblockexpression;
   }

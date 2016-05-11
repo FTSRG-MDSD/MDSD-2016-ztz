@@ -58,7 +58,7 @@ class JsonNodeGenerator {
 			(nestedNode.get("Targets") as ArrayNode).add(targetRobot.robot.name)
 		}
 		
-		node.set("BoradcastCommunication", nestedNode)
+		node.set("BroadcastCommunication", nestedNode)
 	}
 
 	def newDetectionNode(DynamicRobot robot, DetectedObject detectedObject, ObjectNode node) {
