@@ -18,9 +18,9 @@
 		var coords = [new google.maps.LatLng(32.520204, 34.937258), new google.maps.LatLng(52.520204, 54.937258)];
 		var intervalId = 0;
 		var actions;
+		var actionId = 0;
 		
         function initialize() {
-            //var myLatlng = new google.maps.LatLng(32.520204, 34.937258);
             var mapOptions = {
                 zoom: 4,
                 center: coords[0],
@@ -37,20 +37,11 @@
             var $log = $("#log");
             
             $log.html();
-            
 			
             google.maps.event.addListener(marker, 'position_changed', function () {
                 $log.html($log.html() + "marker.position_changed<br/>");
             });
-			
-			//var rawFile = new XMLHttpRequest();
-			//var raw_json = rawFile.open("GET", "file:///./drone_actions.json", false);
-			//actions = JSON.parse(raw_json);
-
         }
-
-
-        ///////////////////////////////////////////////////
 
 		function printEvent(instance, eventName) {
                 google.maps.event.addListener(instance, eventName, function () {
@@ -58,15 +49,38 @@
                 });
         }
 
-
 		function buttonHandler(event) {
+				if (actions == null) {
+                    return;
+                }
+				var key = Object.keys(actions[actionId]);
+				if (key == "Sync") {
+                    for (i = 0; i < actions[actionId][key].length; i++) {
+                        handleAction(actions[actionId][key][i])
+                    }
+                } else {
+					handleAction(actions[actionId])
+				}
 				marker.setDuration(duration);
 				marker.setEasing("linear");
 				marker.setPosition(coords[1]);
-				
+				actionId++;
+				if (actionId == actions.length) {
+                    actionId = 0;
+                }
 		}
 
-
+		function handleAction(action) {
+			var key = Object.keys(action);
+            if (key == "Detection") {
+                console.log(action[key]["Robot"] + " detects");
+            } else if (key == "UnicastCommunication") {
+				console.log("Message sent to " + action[key]["Target"]);
+            } else if (key == "Action") {
+                console.log(action[key]["Robot"] + " does" + action[key]["Action"]);
+			}
+		}
+		
         $(function () {
             initialize();
 	
@@ -98,12 +112,6 @@
             google.maps.event.addListener(map, 'click', leftClickHandler);
             google.maps.event.addListener(map, 'rightclick', rightClickHandler);
 			
-			//var buttonHandler = function(event) {
-				//marker.setDuration(duration);
-				//marker.setEasing("linear");
-				//marker.setPosition(coords[1]);
-			//};
-			
 			var nextButtonClickHandler = function(event) {
 				window.clearInterval(intervalId);
 				intervalId = 0;
@@ -125,10 +133,10 @@
                 });
             };
 
-            printEvent(marker, "click");
-            printEvent(marker, "map_changed");
-            printEvent(marker, "position_changed");
-            printEvent(marker, "animationposition_changed");
+            //printEvent(marker, "click");
+            //printEvent(marker, "map_changed");
+            //printEvent(marker, "position_changed");
+            //printEvent(marker, "animationposition_changed");
 
             if (window.location.hash == "#iframe") {
                 $('#backLink').hide();
@@ -148,10 +156,9 @@
 		var reader = new FileReader();
 
 		reader.onload = function(event) {
-			var actions = JSON.parse(event.target.result);
+			actions = JSON.parse(event.target.result);
 			document.getElementById("nextButton").style.visibility = "visible";
 			document.getElementById("autoButton").style.visibility = "visible";
-			//alert(jsonObj[0].Detection.Robot);
 		}
 
 		reader.readAsText(event.target.files[0]);
@@ -164,10 +171,8 @@
 
     <div id="controls" class="control">
         <div class="row">
-			<!-- <input type="file" id="myFile" multiple size="50" onchange="uploadFile()"> -->
 			<input class='file-upload-button' id="selectedFile" type="file" title=" " style="display: none;" />
 			<input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" />
-
 		</div>
 		<div class="row">
             <label for="durationOption">Duration:</label>
@@ -182,7 +187,6 @@
         <div class="row" id="backLink">
             <a href="https://github.com/terikon/marker-animate-unobtrusive">Source &rarr;</a>
         </div>
-
     </div>
 
     <div id="log" class="control">
