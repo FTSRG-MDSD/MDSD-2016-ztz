@@ -19,6 +19,7 @@
 		var intervalId = 0;
 		var actions;
 		var actionId = 0;
+		var $log;
 		
         function initialize() {
             var mapOptions = {
@@ -34,13 +35,12 @@
                 title: 'I\m sliding marker'
             });
 
-            var $log = $("#log");
-            
+            $log = $("#log");
             $log.html();
 			
-            google.maps.event.addListener(marker, 'position_changed', function () {
-                $log.html($log.html() + "marker.position_changed<br/>");
-            });
+            //google.maps.event.addListener(marker, 'position_changed', function () {
+            //    $log.html($log.html() + "marker.position_changed<br/>");
+            //});
         }
 
 		function printEvent(instance, eventName) {
@@ -53,6 +53,11 @@
 				if (actions == null) {
                     return;
                 }
+				if (actionId == actions.length) {
+                    actionId = 0;
+					$log.html("");
+                }
+				
 				var key = Object.keys(actions[actionId]);
 				if (key == "Sync") {
                     for (i = 0; i < actions[actionId][key].length; i++) {
@@ -65,20 +70,28 @@
 				marker.setEasing("linear");
 				marker.setPosition(coords[1]);
 				actionId++;
-				if (actionId == actions.length) {
-                    actionId = 0;
-                }
+//				if (actionId == actions.length) {
+//                    actionId = 0;
+//					$log.html("");
+//                }
 		}
 
 		function handleAction(action) {
 			var key = Object.keys(action);
             if (key == "Detection") {
-                console.log(action[key]["Robot"] + " detects");
+                //console.log(action[key]["Robot"] + " detects");
+				$log.html($log.html() + action[key]["Robot"] + " detects<br/>");
             } else if (key == "UnicastCommunication") {
-				console.log("Message sent to " + action[key]["Target"]);
+				$log.html($log.html() + "Message sent to " + action[key]["Target"] + "<br/>");
             } else if (key == "Action") {
-                console.log(action[key]["Robot"] + " does" + action[key]["Action"]);
-			}
+                $log.html($log.html() + action[key]["Robot"] + " does " + action[key]["Action"] + "<br/>");
+			} else if (key == "BroadcastCommunication") {
+                //code
+            } else if (key == "MulticastCommunication") {
+                //code
+            } else if (key == "UnicastCommunication") {
+                //code
+            }
 		}
 		
         $(function () {
@@ -132,11 +145,6 @@
                     console.log("Event: " + eventName);
                 });
             };
-
-            //printEvent(marker, "click");
-            //printEvent(marker, "map_changed");
-            //printEvent(marker, "position_changed");
-            //printEvent(marker, "animationposition_changed");
 
             if (window.location.hash == "#iframe") {
                 $('#backLink').hide();
