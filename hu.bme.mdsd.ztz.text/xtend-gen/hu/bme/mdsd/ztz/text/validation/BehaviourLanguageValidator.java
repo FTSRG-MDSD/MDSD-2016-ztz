@@ -4,6 +4,7 @@
 package hu.bme.mdsd.ztz.text.validation;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
@@ -44,6 +45,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * This class contains custom validation rules.
@@ -398,6 +400,21 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
           }
         }
       }
+    }
+  }
+  
+  @Check
+  public void checkActionWithoutDeclarations(final ActionImplementation action) {
+    EObject _eContainer = action.eContainer();
+    EObject _eContainer_1 = _eContainer.eContainer();
+    final BehaviourLanguage container = ((BehaviourLanguage) _eContainer_1);
+    EList<Statement> _statements = container.getStatements();
+    Iterable<ActionDeclarationStatement> _filter = Iterables.<ActionDeclarationStatement>filter(_statements, ActionDeclarationStatement.class);
+    int _size = IterableExtensions.size(_filter);
+    boolean _equals = (_size == 0);
+    if (_equals) {
+      this.error("A robot cannot do an action without an action declaration. Declare an action with the action keyword.", action, 
+        BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__DECLARATION);
     }
   }
   
