@@ -17,6 +17,7 @@
         var marker, map;
 		var coords = [new google.maps.LatLng(32.520204, 34.937258), new google.maps.LatLng(52.520204, 54.937258)];
 		var intervalId = 0;
+		var actions;
 		
         function initialize() {
             //var myLatlng = new google.maps.LatLng(32.520204, 34.937258);
@@ -37,9 +38,14 @@
             
             $log.html();
             
+			
             google.maps.event.addListener(marker, 'position_changed', function () {
                 $log.html($log.html() + "marker.position_changed<br/>");
             });
+			
+			//var rawFile = new XMLHttpRequest();
+			//var raw_json = rawFile.open("GET", "file:///./drone_actions.json", false);
+			//actions = JSON.parse(raw_json);
 
         }
 
@@ -138,54 +144,40 @@
         $('#durationOption').val(duration);
 	}
 
+	$(document).on('change', '.file-upload-button', function(event) {
+		var reader = new FileReader();
+
+		reader.onload = function(event) {
+			var actions = JSON.parse(event.target.result);
+			document.getElementById("nextButton").style.visibility = "visible";
+			document.getElementById("autoButton").style.visibility = "visible";
+			//alert(jsonObj[0].Detection.Robot);
+		}
+
+		reader.readAsText(event.target.files[0]);
+	});
+
     </script>
 </head>
 <body>
     <div id="map_canvas"></div>
 
     <div id="controls" class="control">
-       <!--  <div class="row">
-            <label for="easingOption">Easing:</label>
-            <select id="easingOption">
-                <option value="linear">linear</option>
-                <option value="swing">swing</option>
-                <option value="easeInQuad">easeInQuad</option>
-                <option value="easeOutQuad">easeOutQuad</option>
-                <option value="easeInOutQuad">easeInOutQuad</option>
-                <option value="easeInCubic">easeInCubic</option>
-                <option value="easeOutCubic">easeOutCubic</option>
-                <option value="easeInOutCubic">easeInOutCubic</option>
-                <option value="easeInQuart">easeInQuart</option>
-                <option value="easeOutQuart">easeOutQuart</option>
-                <option value="easeInOutQuart">easeInOutQuart</option>
-                <option value="easeInQuint">easeInQuint</option>
-                <option value="easeOutQuint">easeOutQuint</option>
-                <option value="easeInOutQuint" selected>easeInOutQuint</option>
-                <option value="easeInSine">easeInSine</option>
-                <option value="easeOutSine">easeOutSine</option>
-                <option value="easeInOutSine">easeInOutSine</option>
-                <option value="easeInExpo">easeInExpo</option>
-                <option value="easeOutExpo">easeOutExpo</option>
-                <option value="easeInOutExpo">easeInOutExpo</option>
-                <option value="easeInCirc">easeInCirc</option>
-                <option value="easeOutCirc">easeOutCirc</option>
-                <option value="easeInOutCirc">easeInOutCirc</option>
-                <option value="easeInElastic">easeInElastic</option>
-                <option value="easeOutElastic">easeOutElastic</option>
-                <option value="easeInOutElastic">easeInOutElastic</option>
-                <option value="easeInBack">easeInBack</option>
-                <option value="easeOutBack">easeOutBack</option>
-                <option value="easeInOutBack">easeInOutBack</option>
-                <option value="easeInBounce">easeInBounce</option>
-                <option value="easeOutBounce">easeOutBounce</option>
-                <option value="easeInOutBounce">easeInOutBounce</option>
-            </select>
-        </div> -->
         <div class="row">
+			<!-- <input type="file" id="myFile" multiple size="50" onchange="uploadFile()"> -->
+			<input class='file-upload-button' id="selectedFile" type="file" title=" " style="display: none;" />
+			<input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" />
+
+		</div>
+		<div class="row">
             <label for="durationOption">Duration:</label>
-            <input type="number" id="durationOption" value="1000">
-			<button id="nextButton">Next</button>
-			<button id="autoButton">Auto</button>
+            <input type="number" id="durationOption" value="1000"><p\>
+		</div>
+		<div class="row">
+			<button id="nextButton"  style="visibility:hidden;">Next</button>
+		</div>
+		<div class="row">
+			<button id="autoButton" style="visibility:hidden;">Auto</button>
         </div>
         <div class="row" id="backLink">
             <a href="https://github.com/terikon/marker-animate-unobtrusive">Source &rarr;</a>
