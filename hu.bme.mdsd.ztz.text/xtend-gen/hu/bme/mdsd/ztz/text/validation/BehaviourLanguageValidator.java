@@ -18,6 +18,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
@@ -376,6 +377,26 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       boolean _not = (!_contains);
       if (_not) {
         this.error("An action must have the same properties as its declaration", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES);
+      }
+    }
+  }
+  
+  @Check
+  public void checkUniqueActionName(final ActionDeclarationStatement actionStatement) {
+    EObject _eContainer = actionStatement.eContainer();
+    final BehaviourLanguage container = ((BehaviourLanguage) _eContainer);
+    EList<Statement> _statements = container.getStatements();
+    for (final Statement otherStatement : _statements) {
+      boolean _notEquals = (!Objects.equal(otherStatement, actionStatement));
+      if (_notEquals) {
+        if ((otherStatement instanceof ActionDeclarationStatement)) {
+          String _name = ((ActionDeclarationStatement)otherStatement).getName();
+          String _name_1 = actionStatement.getName();
+          boolean _equals = _name.equals(_name_1);
+          if (_equals) {
+            this.error("Action declarations cannot have the same name", actionStatement, BehaviourLanguagePackage.Literals.ACTION_DECLARATION_STATEMENT__NAME);
+          }
+        }
       }
     }
   }

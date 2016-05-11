@@ -239,5 +239,19 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 			}
 		}
 	}
+	
+	@Check
+	def checkUniqueActionName(ActionDeclarationStatement actionStatement) {
+		val container = actionStatement.eContainer as BehaviourLanguage
+		for (Statement otherStatement : container.statements) {
+			if (otherStatement != actionStatement) {
+				if (otherStatement instanceof ActionDeclarationStatement) {
+					if (otherStatement.name.equals(actionStatement.name)) {
+						error("Action declarations cannot have the same name", actionStatement, BehaviourLanguagePackage.Literals.ACTION_DECLARATION_STATEMENT__NAME)
+					}
+				}
+			}
+		}
+	}
 
 }
