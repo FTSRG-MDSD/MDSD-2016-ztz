@@ -69,6 +69,12 @@ public class StatementParser {
     EObject _get = _contents.get(0);
     final EList<Statement> statements = ((BehaviourLanguage) _get).getStatements();
     ArrayNode rootNode = this.factory.arrayNode();
+    final ObjectNode initNode = this.factory.objectNode();
+    ObjectNode _objectNode = this.factory.objectNode();
+    initNode.set("Status", _objectNode);
+    JsonNode _get_1 = initNode.get("Status");
+    this.jsonGenerator.newStatusNode(((ObjectNode) _get_1), resource);
+    rootNode.add(initNode);
     for (final Statement statement : statements) {
       this.parseStatement(statement, rootNode);
     }

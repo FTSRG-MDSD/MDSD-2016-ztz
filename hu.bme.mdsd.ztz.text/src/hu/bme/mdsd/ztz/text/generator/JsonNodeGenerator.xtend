@@ -12,6 +12,8 @@ import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication
 import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication
 import com.fasterxml.jackson.databind.node.ArrayNode
+import org.eclipse.emf.ecore.resource.Resource
+import hu.bme.mdsd.ztz.model.drone.Robot
 
 class JsonNodeGenerator {
 
@@ -19,6 +21,41 @@ class JsonNodeGenerator {
 
 	new() {
 		factory = new JsonNodeFactory(false)
+	}
+
+	def newInitNode(ObjectNode node, Resource resource) {
+		node.set("Robots", factory.arrayNode)
+		for (DynamicRobot dynamicRobot : resource.allContents.filter(DynamicRobot).toSet) {
+			var robotsNode = factory.objectNode
+			robotsNode.put("DynamicRobot", dynamicRobot.name)
+			robotsNode.put("Robot", dynamicRobot.robot.name)
+			(node.get("Robots") as ArrayNode).add(robotsNode)
+		}
+		return node
+		
+	}
+	
+	def newStatusNode(ObjectNode node, Resource resource) {
+		node.set("Robots", factory.arrayNode)
+		for (DynamicRobot dynamicRobot : resource.allContents.filter(DynamicRobot).toSet) {
+			var robotsNode = factory.objectNode
+			robotsNode.put("Robot", dynamicRobot.robot.name)
+			robotsNode.put("Lat", dynamicRobot.robot.position.coordinates.get(0).latitude.toString)
+			robotsNode.put("Long", dynamicRobot.robot.position.coordinates.get(0).longitude.toString)
+			
+			robotsNode.set("Size", newSizeNode(dynamicRobot.robot))
+			
+			(node.get("Robots") as ArrayNode).add(robotsNode)
+		}
+		return node
+	}
+
+	def newSizeNode(Robot robot) {
+		val node = factory.objectNode
+		node.put("Width", robot.size.width.value.toString + " " + robot.size.width.dimension.name)
+		node.put("Height", robot.size.height.value.toString + " " + robot.size.width.dimension.name)
+		node.put("Length", robot.size.length.value.toString + " " + robot.size.width.dimension.name)
+		return node
 	}
 
 	def dispatch newActionNode(Action action, DynamicRobot robot, ObjectNode node) {

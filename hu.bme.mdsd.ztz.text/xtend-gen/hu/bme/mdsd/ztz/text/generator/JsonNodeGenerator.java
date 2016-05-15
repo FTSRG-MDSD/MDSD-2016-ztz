@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.Action;
 import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
@@ -13,14 +14,24 @@ import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.Coordinate;
+import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
+import hu.bme.mdsd.ztz.model.drone.Position;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.PropertyValue;
 import hu.bme.mdsd.ztz.model.drone.Robot;
+import hu.bme.mdsd.ztz.model.drone.Size;
 import hu.bme.mdsd.ztz.model.drone.StringValue;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
 public class JsonNodeGenerator {
@@ -29,6 +40,101 @@ public class JsonNodeGenerator {
   public JsonNodeGenerator() {
     JsonNodeFactory _jsonNodeFactory = new JsonNodeFactory(false);
     this.factory = _jsonNodeFactory;
+  }
+  
+  public ObjectNode newInitNode(final ObjectNode node, final Resource resource) {
+    ArrayNode _arrayNode = this.factory.arrayNode();
+    node.set("Robots", _arrayNode);
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterator<DynamicRobot> _filter = Iterators.<DynamicRobot>filter(_allContents, DynamicRobot.class);
+    Set<DynamicRobot> _set = IteratorExtensions.<DynamicRobot>toSet(_filter);
+    for (final DynamicRobot dynamicRobot : _set) {
+      {
+        ObjectNode robotsNode = this.factory.objectNode();
+        String _name = dynamicRobot.getName();
+        robotsNode.put("DynamicRobot", _name);
+        Robot _robot = dynamicRobot.getRobot();
+        String _name_1 = _robot.getName();
+        robotsNode.put("Robot", _name_1);
+        JsonNode _get = node.get("Robots");
+        ((ArrayNode) _get).add(robotsNode);
+      }
+    }
+    return node;
+  }
+  
+  public ObjectNode newStatusNode(final ObjectNode node, final Resource resource) {
+    ArrayNode _arrayNode = this.factory.arrayNode();
+    node.set("Robots", _arrayNode);
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterator<DynamicRobot> _filter = Iterators.<DynamicRobot>filter(_allContents, DynamicRobot.class);
+    Set<DynamicRobot> _set = IteratorExtensions.<DynamicRobot>toSet(_filter);
+    for (final DynamicRobot dynamicRobot : _set) {
+      {
+        ObjectNode robotsNode = this.factory.objectNode();
+        Robot _robot = dynamicRobot.getRobot();
+        String _name = _robot.getName();
+        robotsNode.put("Robot", _name);
+        Robot _robot_1 = dynamicRobot.getRobot();
+        Position _position = _robot_1.getPosition();
+        EList<Coordinate> _coordinates = _position.getCoordinates();
+        Coordinate _get = _coordinates.get(0);
+        float _latitude = _get.getLatitude();
+        String _string = Float.valueOf(_latitude).toString();
+        robotsNode.put("Lat", _string);
+        Robot _robot_2 = dynamicRobot.getRobot();
+        Position _position_1 = _robot_2.getPosition();
+        EList<Coordinate> _coordinates_1 = _position_1.getCoordinates();
+        Coordinate _get_1 = _coordinates_1.get(0);
+        float _longitude = _get_1.getLongitude();
+        String _string_1 = Float.valueOf(_longitude).toString();
+        robotsNode.put("Long", _string_1);
+        Robot _robot_3 = dynamicRobot.getRobot();
+        ObjectNode _newSizeNode = this.newSizeNode(_robot_3);
+        robotsNode.set("Size", _newSizeNode);
+        JsonNode _get_2 = node.get("Robots");
+        ((ArrayNode) _get_2).add(robotsNode);
+      }
+    }
+    return node;
+  }
+  
+  public ObjectNode newSizeNode(final Robot robot) {
+    final ObjectNode node = this.factory.objectNode();
+    Size _size = robot.getSize();
+    MeasureValue _width = _size.getWidth();
+    float _value = _width.getValue();
+    String _string = Float.valueOf(_value).toString();
+    String _plus = (_string + " ");
+    Size _size_1 = robot.getSize();
+    MeasureValue _width_1 = _size_1.getWidth();
+    MeasureDimension _dimension = _width_1.getDimension();
+    String _name = _dimension.getName();
+    String _plus_1 = (_plus + _name);
+    node.put("Width", _plus_1);
+    Size _size_2 = robot.getSize();
+    MeasureValue _height = _size_2.getHeight();
+    float _value_1 = _height.getValue();
+    String _string_1 = Float.valueOf(_value_1).toString();
+    String _plus_2 = (_string_1 + " ");
+    Size _size_3 = robot.getSize();
+    MeasureValue _width_2 = _size_3.getWidth();
+    MeasureDimension _dimension_1 = _width_2.getDimension();
+    String _name_1 = _dimension_1.getName();
+    String _plus_3 = (_plus_2 + _name_1);
+    node.put("Height", _plus_3);
+    Size _size_4 = robot.getSize();
+    MeasureValue _length = _size_4.getLength();
+    float _value_2 = _length.getValue();
+    String _string_2 = Float.valueOf(_value_2).toString();
+    String _plus_4 = (_string_2 + " ");
+    Size _size_5 = robot.getSize();
+    MeasureValue _width_3 = _size_5.getWidth();
+    MeasureDimension _dimension_2 = _width_3.getDimension();
+    String _name_2 = _dimension_2.getName();
+    String _plus_5 = (_plus_4 + _name_2);
+    node.put("Length", _plus_5);
+    return node;
   }
   
   protected JsonNode _newActionNode(final Action action, final DynamicRobot robot, final ObjectNode node) {

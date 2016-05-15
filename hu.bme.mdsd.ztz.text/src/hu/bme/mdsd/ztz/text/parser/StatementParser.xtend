@@ -3,7 +3,6 @@ package hu.bme.mdsd.ztz.text.parser
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.JsonNodeFactory
-import hu.bme.mdsd.ztz.model.behaviour.Action
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.model.behaviour.Message
@@ -32,6 +31,7 @@ import static extension hu.bme.mdsd.ztz.text.util.RobotUtil.*
 import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+import com.fasterxml.jackson.databind.node.ObjectNode
 
 class StatementParser {
 	
@@ -49,6 +49,17 @@ class StatementParser {
 		val statements = (resource.contents.get(0) as BehaviourLanguage).statements
 	
 		var ArrayNode rootNode= factory.arrayNode
+		
+		// init node
+		val initNode = factory.objectNode
+//		initNode.set("Init", factory.objectNode)
+//		newInitNode(initNode.get("Init") as ObjectNode, resource)		
+		
+		initNode.set("Status", factory.objectNode)
+		newStatusNode(initNode.get("Status") as ObjectNode, resource)
+		
+		rootNode.add(initNode)
+		
 		for (Statement statement : statements) {
 			statement.parseStatement(rootNode)
 		}
