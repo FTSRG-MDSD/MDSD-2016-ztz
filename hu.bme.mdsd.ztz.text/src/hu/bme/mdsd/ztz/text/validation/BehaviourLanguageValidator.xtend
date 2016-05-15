@@ -269,7 +269,7 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 	
 	@Check
 	def checkActionWithoutDeclarations(ActionImplementation action) {
-		val container = action.eContainer.eContainer as BehaviourLanguage 
+		val container = action.eResource.contents.get(0) as BehaviourLanguage 
 		if (container.statements.filter(ActionDeclarationStatement).size == 0) {
 			error("A robot cannot do an action without an action declaration. Declare an action with the action keyword.", action, 
 				BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__DECLARATION)

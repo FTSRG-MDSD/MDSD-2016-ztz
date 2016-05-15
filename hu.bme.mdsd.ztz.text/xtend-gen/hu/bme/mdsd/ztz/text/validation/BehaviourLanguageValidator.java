@@ -425,9 +425,10 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
   
   @Check
   public void checkActionWithoutDeclarations(final ActionImplementation action) {
-    EObject _eContainer = action.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    final BehaviourLanguage container = ((BehaviourLanguage) _eContainer_1);
+    Resource _eResource = action.eResource();
+    EList<EObject> _contents = _eResource.getContents();
+    EObject _get = _contents.get(0);
+    final BehaviourLanguage container = ((BehaviourLanguage) _get);
     EList<Statement> _statements = container.getStatements();
     Iterable<ActionDeclarationStatement> _filter = Iterables.<ActionDeclarationStatement>filter(_statements, ActionDeclarationStatement.class);
     int _size = IterableExtensions.size(_filter);
