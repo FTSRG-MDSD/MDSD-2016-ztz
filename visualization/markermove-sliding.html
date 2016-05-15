@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Google Maps Sliding Marker Move Demo</title>
+    <title>Robot Visualization</title>
 
     <link href="map.css" rel="stylesheet" />
 
@@ -22,7 +22,6 @@
 		var markers;
         var map;
 		var mapOptions;
-		var coords = [new google.maps.LatLng(32.520204, 34.937258), new google.maps.LatLng(52.520204, 54.937258)];
 		var intervalId = 0;
 		var actions;
 		var actionId = 0;
@@ -31,7 +30,7 @@
         function initialize() {
             mapOptions = {
                 zoom: 4,
-                center: coords[0],
+                center: new google.maps.LatLng(32.520204, 34.937258),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             }
             map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
@@ -39,34 +38,24 @@
             $log.html();
         }
 
-		function printEvent(instance, eventName) {
-                google.maps.event.addListener(instance, eventName, function () {
-                    console.log("Event: " + eventName);
-                });
-        }
-
 		function buttonHandler(event) {
-				if (actions == null) {
-                    return;
-                }
-				if (actionId == actions.length) {
-                    actionId = 0;
-					$log.html("");
-                }
+			if (actions == null) {
+               return;
+            }
+			if (actionId == actions.length) {
+				actionId = 0;
+				$log.html("");
+            }
 				
-				var key = Object.keys(actions[actionId]);
-				if (actionId == 0) {
-                    actionId++;
+			var key = Object.keys(actions[actionId]);
+			if (key == "Sync") {
+                for (i = 0; i < actions[actionId][key].length; i++) {
+                    handleAction(actions[actionId][key][i])
                 }
-				
-				if (key == "Sync") {
-                    for (i = 0; i < actions[actionId][key].length; i++) {
-                        handleAction(actions[actionId][key][i])
-                    }
-				} else {
-					handleAction(actions[actionId])
-				}
-				actionId++;
+			} else {
+				handleAction(actions[actionId])
+			}
+			actionId++;
 		}
 
 		function handleAction(action) {
@@ -80,8 +69,10 @@
 				if (action[key]["Action"] == "Move") {
 					markers.get(action[key]["Robot"]).setDuration(duration);
 					markers.get(action[key]["Robot"]).setEasing("linear");
-					markers.get(action[key]["Robot"]).setPosition(new google.maps.LatLng(action[key]["Properties"]["Lat"],
-															  action[key]["Properties"]["Long"]));
+					markers.get(action[key]["Robot"]).setPosition(new google.maps.LatLng(
+																	action[key]["Properties"]["Lat"],
+																	action[key]["Properties"]["Long"]
+																	));
                 }
 			} else if (key == "BroadcastCommunication") {
                 //code
@@ -90,7 +81,7 @@
             } else if (key == "UnicastCommunication") {
                 //code
             } else if (key == "Status") {
-                //code
+                initPositions(action[key])
             }
 		}
 		
@@ -139,13 +130,6 @@
 				);
 			});
 
-
-            var printEvent = function (instance, eventName) {
-                google.maps.event.addListener(instance, eventName, function () {
-                    console.log("Event: " + eventName);
-                });
-            };
-
             if (window.location.hash == "#iframe") {
                 $('#backLink').hide();
                 $('#controls').css('height', '55px');
@@ -154,11 +138,11 @@
         });
 		
 	
-	var duration = parseInt($('#durationOption').val());
-    if (duration < 0) {
-        duration = 1;
-        $('#durationOption').val(duration);
-	}
+		var duration = parseInt($('#durationOption').val());
+	    if (duration < 0) {
+			duration = 1;
+	        $('#durationOption').val(duration);
+		}
 
 	$(document).on('change', '.file-upload-button', function(event) {
 		var reader = new FileReader();
@@ -168,27 +152,33 @@
 			markers = new Map();
 			for (i = 0; i < actions[0]["Status"]["Robots"].length; i++) {
 				var name = actions[0]["Status"]["Robots"][i]["Robot"];
-				var lat = actions[0]["Status"]["Robots"][i]["Lat"];
-				var long = actions[0]["Status"]["Robots"][i]["Long"];
 				
 				markers.set(name, new MarkerWithLabel({
-					position: new google.maps.LatLng(lat, long),
 	                map: map,
 					title: 'Robot',
 					labelContent: name
 					})
 				);
-				
-				map.setCenter(markers.get(name).getPosition())
 			}
+			initPositions(actions[0]["Status"]);
+			map.setCenter(markers.get(name).getPosition())
+			actionId++;
 			
 			document.getElementById("nextButton").style.visibility = "visible";
 			document.getElementById("autoButton").style.visibility = "visible";
 		}
-
 		reader.readAsText(event.target.files[0]);
 	});
 
+	
+	function initPositions(action) {
+        for (i = 0; i < action["Robots"].length; i++) {
+			markers.get(action["Robots"][i]["Robot"]).setPositionNotAnimated(new google.maps.LatLng(
+																	action["Robots"][i]["Lat"],
+																	action["Robots"][i]["Long"]
+														));
+		}
+    }
     </script>
 </head>
 <body>
