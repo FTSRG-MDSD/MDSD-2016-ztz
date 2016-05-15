@@ -12,9 +12,16 @@
     <script src="lib/jquery.easing.1.3.js"></script>
     <script src="lib/markerAnimate.js"></script>
     <script src="lib/SlidingMarker.js"></script>
+	<script>
+        SlidingMarker.initializeGlobally();
+    </script>
+	<script src="lib/markerwithlabel.terikon.js"></script>
+	<script src="lib/collections.min.js"></script>
 
     <script>
-        var marker, map;
+		var markers;
+        var map;
+		var mapOptions;
 		var coords = [new google.maps.LatLng(32.520204, 34.937258), new google.maps.LatLng(52.520204, 54.937258)];
 		var intervalId = 0;
 		var actions;
@@ -22,25 +29,14 @@
 		var $log;
 		
         function initialize() {
-            var mapOptions = {
+            mapOptions = {
                 zoom: 4,
                 center: coords[0],
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             }
             map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
-            marker = new SlidingMarker({
-                position: coords[0],
-                map: map,
-                title: 'I\m sliding marker'
-            });
-
             $log = $("#log");
             $log.html();
-			
-            //google.maps.event.addListener(marker, 'position_changed', function () {
-            //    $log.html($log.html() + "marker.position_changed<br/>");
-            //});
         }
 
 		function printEvent(instance, eventName) {
@@ -59,37 +55,41 @@
                 }
 				
 				var key = Object.keys(actions[actionId]);
+				if (actionId == 0) {
+                    actionId++;
+                }
+				
 				if (key == "Sync") {
                     for (i = 0; i < actions[actionId][key].length; i++) {
                         handleAction(actions[actionId][key][i])
                     }
-                } else {
+				} else {
 					handleAction(actions[actionId])
 				}
-				marker.setDuration(duration);
-				marker.setEasing("linear");
-				marker.setPosition(coords[1]);
 				actionId++;
-//				if (actionId == actions.length) {
-//                    actionId = 0;
-//					$log.html("");
-//                }
 		}
 
 		function handleAction(action) {
 			var key = Object.keys(action);
             if (key == "Detection") {
-                //console.log(action[key]["Robot"] + " detects");
 				$log.html($log.html() + action[key]["Robot"] + " detects<br/>");
             } else if (key == "UnicastCommunication") {
 				$log.html($log.html() + "Message sent to " + action[key]["Target"] + "<br/>");
             } else if (key == "Action") {
                 $log.html($log.html() + action[key]["Robot"] + " does " + action[key]["Action"] + "<br/>");
+				if (action[key]["Action"] == "Move") {
+					markers.get(action[key]["Robot"]).setDuration(duration);
+					markers.get(action[key]["Robot"]).setEasing("linear");
+					markers.get(action[key]["Robot"]).setPosition(new google.maps.LatLng(action[key]["Properties"]["Lat"],
+															  action[key]["Properties"]["Long"]));
+                }
 			} else if (key == "BroadcastCommunication") {
                 //code
             } else if (key == "MulticastCommunication") {
                 //code
             } else if (key == "UnicastCommunication") {
+                //code
+            } else if (key == "Status") {
                 //code
             }
 		}
@@ -99,31 +99,31 @@
 	
 			var myLatlng = new google.maps.LatLng(33.520204, 33.937258);
 	
-            var clickHandler = function (event, clickType) {
-                var duration = parseInt($('#durationOption').val());
-				alert(clickType);
-                if (duration < 0) {
-                    duration = 1;
-                    $('#durationOption').val(duration);
-                }
-
-                marker.setDuration(duration);
-				marker.setEasing("linear");
-
-                if (clickType === "left") {
-                    marker.setPosition(event.latLng);
-                } else if (clickType === "right"){
-                    marker.setPositionNotAnimated(event.latLng);
-                } else if (clickType === "button"){
-					marker.setPosition(coords[1]);
-				}
-            };
+//            var clickHandler = function (event, clickType) {
+//                var duration = parseInt($('#durationOption').val());
+//				alert(clickType);
+//                if (duration < 0) {
+//                    duration = 1;
+//                    $('#durationOption').val(duration);
+//                }
+//
+//                marker.setDuration(duration);
+//				marker.setEasing("linear");
+//
+//                if (clickType === "left") {
+//                    marker.setPosition(event.latLng);
+//                } else if (clickType === "right"){
+//                    marker.setPositionNotAnimated(event.latLng);
+//                } else if (clickType === "button"){
+//					marker.setPosition(coords[1]);
+//				}
+//            };
             
-            var leftClickHandler = function(event) { clickHandler(event, "left") };
-            var rightClickHandler = function(event) { clickHandler(event, "right") };
+            //var leftClickHandler = function(event) { clickHandler(event, "left") };
+            //var rightClickHandler = function(event) { clickHandler(event, "right") };
 
-            google.maps.event.addListener(map, 'click', leftClickHandler);
-            google.maps.event.addListener(map, 'rightclick', rightClickHandler);
+            //google.maps.event.addListener(map, 'click', leftClickHandler);
+            //google.maps.event.addListener(map, 'rightclick', rightClickHandler);
 			
 			var nextButtonClickHandler = function(event) {
 				window.clearInterval(intervalId);
@@ -165,6 +165,23 @@
 
 		reader.onload = function(event) {
 			actions = JSON.parse(event.target.result);
+			markers = new Map();
+			for (i = 0; i < actions[0]["Status"]["Robots"].length; i++) {
+				var name = actions[0]["Status"]["Robots"][i]["Robot"];
+				var lat = actions[0]["Status"]["Robots"][i]["Lat"];
+				var long = actions[0]["Status"]["Robots"][i]["Long"];
+				
+				markers.set(name, new MarkerWithLabel({
+					position: new google.maps.LatLng(lat, long),
+	                map: map,
+					title: 'Robot',
+					labelContent: name
+					})
+				);
+				
+				map.setCenter(markers.get(name).getPosition())
+			}
+			
 			document.getElementById("nextButton").style.visibility = "visible";
 			document.getElementById("autoButton").style.visibility = "visible";
 		}
