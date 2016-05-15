@@ -12,11 +12,15 @@ import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
+import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.Capability;
 import hu.bme.mdsd.ztz.model.drone.Coordinate;
+import hu.bme.mdsd.ztz.model.drone.Equipment;
 import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
+import hu.bme.mdsd.ztz.model.drone.Mission;
 import hu.bme.mdsd.ztz.model.drone.Position;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
@@ -92,6 +96,39 @@ public class JsonNodeGenerator {
         Robot _robot_3 = dynamicRobot.getRobot();
         ObjectNode _newSizeNode = this.newSizeNode(_robot_3);
         robotsNode.set("Size", _newSizeNode);
+        RobotStatus _status = dynamicRobot.getStatus();
+        String _string_2 = _status.toString();
+        robotsNode.put("Status", _string_2);
+        float _xifexpression = (float) 0;
+        Robot _robot_4 = dynamicRobot.getRobot();
+        MeasureValue _communicationRange = _robot_4.getCommunicationRange();
+        boolean _notEquals = (!Objects.equal(_communicationRange, null));
+        if (_notEquals) {
+          Robot _robot_5 = dynamicRobot.getRobot();
+          MeasureValue _communicationRange_1 = _robot_5.getCommunicationRange();
+          _xifexpression = _communicationRange_1.getValue();
+        } else {
+          _xifexpression = 0;
+        }
+        robotsNode.put("Range", _xifexpression);
+        String _xifexpression_1 = null;
+        Robot _robot_6 = dynamicRobot.getRobot();
+        Mission _mission = _robot_6.getMission();
+        boolean _notEquals_1 = (!Objects.equal(_mission, null));
+        if (_notEquals_1) {
+          Robot _robot_7 = dynamicRobot.getRobot();
+          Mission _mission_1 = _robot_7.getMission();
+          _xifexpression_1 = _mission_1.getName();
+        } else {
+          _xifexpression_1 = "";
+        }
+        robotsNode.put("Mission", _xifexpression_1);
+        Robot _robot_8 = dynamicRobot.getRobot();
+        ArrayNode _newCapabilitiesNode = this.newCapabilitiesNode(_robot_8);
+        robotsNode.set("Capabilities", _newCapabilitiesNode);
+        Robot _robot_9 = dynamicRobot.getRobot();
+        ArrayNode _newEquipmentsNode = this.newEquipmentsNode(_robot_9);
+        robotsNode.set("Equipments", _newEquipmentsNode);
         JsonNode _get_2 = node.get("Robots");
         ((ArrayNode) _get_2).add(robotsNode);
       }
@@ -134,6 +171,26 @@ public class JsonNodeGenerator {
     String _name_2 = _dimension_2.getName();
     String _plus_5 = (_plus_4 + _name_2);
     node.put("Length", _plus_5);
+    return node;
+  }
+  
+  public ArrayNode newCapabilitiesNode(final Robot robot) {
+    final ArrayNode node = this.factory.arrayNode();
+    EList<Capability> _capabilities = robot.getCapabilities();
+    for (final Capability cap : _capabilities) {
+      String _name = cap.getName();
+      node.add(_name);
+    }
+    return node;
+  }
+  
+  public ArrayNode newEquipmentsNode(final Robot robot) {
+    final ArrayNode node = this.factory.arrayNode();
+    EList<Equipment> _equipments = robot.getEquipments();
+    for (final Equipment e : _equipments) {
+      String _name = e.getName();
+      node.add(_name);
+    }
     return node;
   }
   

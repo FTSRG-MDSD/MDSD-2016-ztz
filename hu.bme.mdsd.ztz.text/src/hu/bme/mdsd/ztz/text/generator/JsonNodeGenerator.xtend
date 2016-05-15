@@ -14,6 +14,8 @@ import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication
 import com.fasterxml.jackson.databind.node.ArrayNode
 import org.eclipse.emf.ecore.resource.Resource
 import hu.bme.mdsd.ztz.model.drone.Robot
+import hu.bme.mdsd.ztz.model.drone.Capability
+import hu.bme.mdsd.ztz.model.drone.Equipment
 
 class JsonNodeGenerator {
 
@@ -44,6 +46,14 @@ class JsonNodeGenerator {
 			robotsNode.put("Long", dynamicRobot.robot.position.coordinates.get(0).longitude.toString)
 			
 			robotsNode.set("Size", newSizeNode(dynamicRobot.robot))
+			robotsNode.put("Status", dynamicRobot.status.toString)
+			robotsNode.put("Range", if (dynamicRobot.robot.communicationRange != null) 
+				dynamicRobot.robot.communicationRange.value 
+				else 0
+			)
+			robotsNode.put("Mission", if (dynamicRobot.robot.mission != null) dynamicRobot.robot.mission.name else "")
+			robotsNode.set("Capabilities", newCapabilitiesNode(dynamicRobot.robot))
+			robotsNode.set("Equipments", newEquipmentsNode(dynamicRobot.robot))
 			
 			(node.get("Robots") as ArrayNode).add(robotsNode)
 		}
@@ -55,6 +65,22 @@ class JsonNodeGenerator {
 		node.put("Width", robot.size.width.value.toString + " " + robot.size.width.dimension.name)
 		node.put("Height", robot.size.height.value.toString + " " + robot.size.width.dimension.name)
 		node.put("Length", robot.size.length.value.toString + " " + robot.size.width.dimension.name)
+		return node
+	}
+	
+	def newCapabilitiesNode(Robot robot) {
+		val node = factory.arrayNode
+		for (Capability cap : robot.capabilities) {
+			node.add(cap.name)
+		}
+		return node
+	}
+
+	def newEquipmentsNode(Robot robot) {
+		val node = factory.arrayNode
+		for (Equipment e : robot.equipments) {
+			node.add(e.name)
+		}
 		return node
 	}
 

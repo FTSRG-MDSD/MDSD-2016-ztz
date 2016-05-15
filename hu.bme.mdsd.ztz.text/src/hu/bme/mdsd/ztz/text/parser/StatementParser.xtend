@@ -50,11 +50,7 @@ class StatementParser {
 	
 		var ArrayNode rootNode= factory.arrayNode
 		
-		// init node
 		val initNode = factory.objectNode
-//		initNode.set("Init", factory.objectNode)
-//		newInitNode(initNode.get("Init") as ObjectNode, resource)		
-		
 		initNode.set("Status", factory.objectNode)
 		newStatusNode(initNode.get("Status") as ObjectNode, resource)
 		

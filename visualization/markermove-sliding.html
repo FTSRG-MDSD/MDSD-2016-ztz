@@ -20,12 +20,14 @@
 
     <script>
 		var markers;
+		var robotStatuses;
         var map;
 		var mapOptions;
 		var intervalId = 0;
 		var actions;
 		var actionId = 0;
 		var $log;
+		var $status;
 		
         function initialize() {
             mapOptions = {
@@ -36,6 +38,8 @@
             map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
             $log = $("#log");
             $log.html();
+			$status = $("#status");
+			$status.html();
         }
 
 		function buttonHandler(event) {
@@ -85,37 +89,16 @@
             }
 		}
 		
+		function showStatus(marker) {
+			var name = marker.labelContent;
+			var status = robotStatuses.get(name)
+			$status.html("Name: " + name + "<br\>" +
+						 "Status: " + status["Status"]);
+        }
+		
         $(function () {
             initialize();
 	
-			var myLatlng = new google.maps.LatLng(33.520204, 33.937258);
-	
-//            var clickHandler = function (event, clickType) {
-//                var duration = parseInt($('#durationOption').val());
-//				alert(clickType);
-//                if (duration < 0) {
-//                    duration = 1;
-//                    $('#durationOption').val(duration);
-//                }
-//
-//                marker.setDuration(duration);
-//				marker.setEasing("linear");
-//
-//                if (clickType === "left") {
-//                    marker.setPosition(event.latLng);
-//                } else if (clickType === "right"){
-//                    marker.setPositionNotAnimated(event.latLng);
-//                } else if (clickType === "button"){
-//					marker.setPosition(coords[1]);
-//				}
-//            };
-            
-            //var leftClickHandler = function(event) { clickHandler(event, "left") };
-            //var rightClickHandler = function(event) { clickHandler(event, "right") };
-
-            //google.maps.event.addListener(map, 'click', leftClickHandler);
-            //google.maps.event.addListener(map, 'rightclick', rightClickHandler);
-			
 			var nextButtonClickHandler = function(event) {
 				window.clearInterval(intervalId);
 				intervalId = 0;
@@ -134,9 +117,7 @@
                 $('#backLink').hide();
                 $('#controls').css('height', '55px');
             }
-
         });
-		
 	
 		var duration = parseInt($('#durationOption').val());
 	    if (duration < 0) {
@@ -150,6 +131,7 @@
 		reader.onload = function(event) {
 			actions = JSON.parse(event.target.result);
 			markers = new Map();
+			robotStatuses = new Map();
 			for (i = 0; i < actions[0]["Status"]["Robots"].length; i++) {
 				var name = actions[0]["Status"]["Robots"][i]["Robot"];
 				
@@ -159,6 +141,10 @@
 					labelContent: name
 					})
 				);
+				markers.get(name).addListener('click', function(name) {
+					showStatus(this);
+				});
+				robotStatuses.set(name, actions[0]["Status"]["Robots"][i])
 			}
 			initPositions(actions[0]["Status"]);
 			map.setCenter(markers.get(name).getPosition())
@@ -206,6 +192,8 @@
 
     <div id="log" class="control">
     </div>
+	<div id="status" class="control">
+	</div>
 
 </body>
 </html>
