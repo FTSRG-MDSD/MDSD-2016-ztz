@@ -7,6 +7,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
@@ -14,6 +15,7 @@ import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
+import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
@@ -128,6 +130,24 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
         if (_equals) {
           this.error("Robots cannot have the same name", robot, DronePackage.Literals.NAMED_ELEMENT__NAME, 
             ErrorCodes.SAME_ROBOT_NAME);
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void checkUniqueRobots(final DynamicRobot dynamicRobot) {
+    EObject _eContainer = dynamicRobot.eContainer();
+    final BehaviourContainer container = ((BehaviourContainer) _eContainer);
+    EList<DynamicRobot> _dynamicRobots = container.getDynamicRobots();
+    for (final DynamicRobot otherDynamicRobot : _dynamicRobots) {
+      boolean _notEquals = (!Objects.equal(otherDynamicRobot, dynamicRobot));
+      if (_notEquals) {
+        Robot _robot = otherDynamicRobot.getRobot();
+        Robot _robot_1 = dynamicRobot.getRobot();
+        boolean _equals = Objects.equal(_robot, _robot_1);
+        if (_equals) {
+          this.error("Cannot instantiate a robot with a dynamic robot more than once", dynamicRobot, BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT);
         }
       }
     }

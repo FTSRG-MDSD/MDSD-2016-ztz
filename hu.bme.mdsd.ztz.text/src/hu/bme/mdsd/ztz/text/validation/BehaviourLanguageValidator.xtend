@@ -30,6 +30,7 @@ import hu.bme.mdsd.ztz.model.drone.PropertyKey
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 import java.util.HashSet
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage
 
 /**
  * This class contains custom validation rules. 
@@ -77,6 +78,18 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 				if (otherRobot.name.equals(robot.name)) {
 					error("Robots cannot have the same name", robot, DronePackage.Literals.NAMED_ELEMENT__NAME,
 						ErrorCodes.SAME_ROBOT_NAME)
+				}
+			}
+		}
+	}
+	
+	@Check
+	def checkUniqueRobots(DynamicRobot dynamicRobot) {
+		val container = dynamicRobot.eContainer as BehaviourContainer
+		for (DynamicRobot otherDynamicRobot : container.dynamicRobots) {
+			if (otherDynamicRobot != dynamicRobot) {
+				if (otherDynamicRobot.robot == dynamicRobot.robot) {
+					error("Cannot instantiate a robot with a dynamic robot more than once", dynamicRobot, BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT)
 				}
 			}
 		}
