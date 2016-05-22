@@ -4,8 +4,10 @@ import desmoj.core.dist.ContDistNormal;
 import desmoj.core.dist.ContDistUniform;
 import desmoj.core.simulator.Model;
 import desmoj.core.simulator.Queue;
+import desmoj.core.simulator.TimeInstant;
 import hu.bme.mdsd.ztz.model.simulation.entities.AreaObjectEntity;
 import hu.bme.mdsd.ztz.model.simulation.entities.RobotEntity;
+import hu.bme.mdsd.ztz.model.simulation.events.RobotStepEvent;
 
 public class RobotMissionSimulationModel extends Model {
 	
@@ -14,11 +16,14 @@ public class RobotMissionSimulationModel extends Model {
 	
 	public Queue<RobotEntity> robotsQueue;
 	public Queue<AreaObjectEntity> pathQueue;
+	public RobotEntity thisRobot;
+	public AreaObjectEntity currentArea;
 	
 	
 	private ContDist discoveryTime;
 	private ContDist communicationTime;
 	private ContDist robotArrivalTime;
+	private ContDist robotNextStepTime;
 	
 	public int getDiscoveryTime(){
 		int value = discoveryTime.sample().intValue();
@@ -32,6 +37,11 @@ public class RobotMissionSimulationModel extends Model {
 	
 	public int getRobotArrivalTime(){
 		int value = robotArrivalTime.sample().intValue();
+		return value <= 0? 1 : value;
+	}
+	
+	public int getRobotNextStepTime(){
+		int value = robotNextStepTime.sample().intValue();
 		return value <= 0? 1 : value;
 	}
 
@@ -49,7 +59,8 @@ public class RobotMissionSimulationModel extends Model {
 	@Override
 	public void doInitialSchedules() {
 		// TODO Auto-generated method stub
-
+		RobotStepEvent event = new RobotStepEvent(this,"Robot first step event", true);
+		event.schedule(new TimeInstant(0));
 	}
 
 	@Override
@@ -58,7 +69,8 @@ public class RobotMissionSimulationModel extends Model {
 		robotsQueue = new Queue<RobotEntity>(this, "Robots queue", true, false);
 		pathQueue = new Queue<AreaObjectEntity>(this,"AreaObject's queue",true,false);
 		
-		robotArrivalTime = new ContDistNormal(this, "Robot arrival time", 4*60, 1*60, true, false);
+		robotArrivalTime = new ContDistNormal(this, "Robot arrival time", 1*60, 1*60, true, false);
+		robotNextStepTime = new ContDistNormal(this, "Robot next step time", 4*60, 1*60, true, false);
 		discoveryTime = new ContDistUniform(this,"Discover time",1*60,3*60,true,false);
 		communicationTime = new ContDistUniform(this, "Communication time", 1*60, 10*60, true, false);
 		
