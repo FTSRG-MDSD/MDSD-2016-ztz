@@ -17,6 +17,8 @@ import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import org.eclipse.jface.text.Position
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
 
 /**
  * Custom quickfixes.
@@ -35,34 +37,52 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 		val modificationContext = modificationContextFactory.createModificationContext(issue)
 		acceptor.accept(issue, "Add new collaboration", "", "") [
 			element, context |
-			val messageTarget = element as MessageTarget
-			val statement = messageTarget.eContainer as MessageStatement			
-			val language = statement.eContainer as BehaviourLanguage
-			
-			if (messageTarget instanceof UniTarget) {
-				val newCollaborationStatement = BehaviourLanguageFactory.eINSTANCE.createCollaborationStatement
-				newCollaborationStatement.robot = statement.robot
+				val messageTarget = element as MessageTarget
+				val statement = messageTarget.eContainer as MessageStatement			
+				val language = statement.eContainer as BehaviourLanguage
 				
-				val newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration
-				newCollaboration.collaborator = messageTarget.target
-				
-				newCollaborationStatement.collaboration.add(newCollaboration)
-				language.statements.add(0, newCollaborationStatement)
-			}
+				if (messageTarget instanceof UniTarget) {
+					val newCollaborationStatement = BehaviourLanguageFactory.eINSTANCE.createCollaborationStatement
+					newCollaborationStatement.robot = statement.robot
+					
+					val newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration
+					newCollaboration.collaborator = messageTarget.target
+					
+					newCollaborationStatement.collaboration.add(newCollaboration)
+					language.statements.add(0, newCollaborationStatement)
+				}
 			
 		]
 	}
 
-	@Fix(ErrorCodes.SAME_MESSAGE_NAME)
-	def changeMessageName(Issue issue, IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, 'Change message', 'Change the message name.', 'upcase.png') [
-			element, context |
+//	@Fix(ErrorCodes.SAME_MESSAGE_NAME)
+//	def changeMessageName(Issue issue, IssueResolutionAcceptor acceptor) {
+//		acceptor.accept(issue, 'Change message', 'Change the message name.', 'upcase.png') [
+//			element, context |
 //			val xtextDocument = context.xtextDocument
 //			val firstLetter = xtextDocument.get(issue.offset, 1)
 //			xtextDocument.replace(issue.offset, 1, firstLetter.toUpperCase)
-			val message = element as Message
-			val oldMessageName = message.name 
-			message.name = oldMessageName + "2"
+//			val message = element as Message
+//			val oldMessageName = message.name 
+//			message.name = oldMessageName + "2"
+//		]
+//	}
+	
+	@Fix(ErrorCodes.MISSING_ACTION_DECLARATION)
+	def fixMissingActionDeclaration(Issue issue, IssueResolutionAcceptor acceptor) {
+		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		
+		acceptor.accept(issue, "Add new action", "", "") [
+			element, context |
+				val actionImp = element as ActionImplementation
+				val language = actionImp.eResource.contents.get(0) as BehaviourLanguage
+				
+				val ActionDeclarationStatement newActionDeclaration = BehaviourLanguageFactory.eINSTANCE.createActionDeclarationStatement
+				newActionDeclaration.name = "newAction"
+				newActionDeclaration.properties.addAll(actionImp.declaration.properties)
+				
+				language.statements.add(0, newActionDeclaration)
+			
 		]
 	}
 

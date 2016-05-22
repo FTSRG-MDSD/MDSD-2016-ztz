@@ -437,6 +437,17 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       this.error("A robot cannot do an action without an action declaration. Declare an action with the action keyword.", action, 
         BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__DECLARATION);
     }
+    ActionDeclarationStatement _declaration = action.getDeclaration();
+    boolean _notEquals = (!Objects.equal(_declaration, null));
+    if (_notEquals) {
+      ActionDeclarationStatement _declaration_1 = action.getDeclaration();
+      String _name = _declaration_1.getName();
+      boolean _equals_1 = Objects.equal(_name, null);
+      if (_equals_1) {
+        this.error("A robot cannot do an action without an action declaration. Declare an action with the action keyword.", action, 
+          BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__DECLARATION, ErrorCodes.MISSING_ACTION_DECLARATION);
+      }
+    }
   }
   
   public Integer findRobotOccurrence(final Statement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {

@@ -5,8 +5,10 @@ package hu.bme.mdsd.ztz.text.ui.quickfix;
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
-import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
+import hu.bme.mdsd.ztz.model.drone.PropertyKey;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
@@ -17,6 +19,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
 import org.eclipse.xtext.ui.editor.model.edit.IssueModificationContext;
@@ -63,13 +66,25 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
     acceptor.accept(issue, "Add new collaboration", "", "", _function);
   }
   
-  @Fix(ErrorCodes.SAME_MESSAGE_NAME)
-  public void changeMessageName(final Issue issue, final IssueResolutionAcceptor acceptor) {
+  @Fix(ErrorCodes.MISSING_ACTION_DECLARATION)
+  public void fixMissingActionDeclaration(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
+    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
-      final Message message = ((Message) element);
-      final String oldMessageName = message.getName();
-      message.setName((oldMessageName + "2"));
+      final ActionImplementation actionImp = ((ActionImplementation) element);
+      Resource _eResource = actionImp.eResource();
+      EList<EObject> _contents = _eResource.getContents();
+      EObject _get = _contents.get(0);
+      final BehaviourLanguage language = ((BehaviourLanguage) _get);
+      final ActionDeclarationStatement newActionDeclaration = BehaviourLanguageFactory.eINSTANCE.createActionDeclarationStatement();
+      newActionDeclaration.setName("newAction");
+      EList<PropertyKey> _properties = newActionDeclaration.getProperties();
+      ActionDeclarationStatement _declaration = actionImp.getDeclaration();
+      EList<PropertyKey> _properties_1 = _declaration.getProperties();
+      _properties.addAll(_properties_1);
+      EList<Statement> _statements = language.getStatements();
+      _statements.add(0, newActionDeclaration);
     };
-    acceptor.accept(issue, "Change message", "Change the message name.", "upcase.png", _function);
+    acceptor.accept(issue, "Add new action", "", "", _function);
   }
 }

@@ -274,6 +274,15 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 			error("A robot cannot do an action without an action declaration. Declare an action with the action keyword.", action, 
 				BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__DECLARATION)
 		}
+		
+		if (action.declaration != null) {
+			if (action.declaration.name == null) {
+				error("A robot cannot do an action without an action declaration. Declare an action with the action keyword.", action,
+					BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__DECLARATION, ErrorCodes.MISSING_ACTION_DECLARATION)
+			}
+		}
 	}
+	
+	
 
 }
