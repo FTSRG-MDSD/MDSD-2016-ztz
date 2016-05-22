@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import hu.bme.mdsd.ztz.model.drone.Robot
 import hu.bme.mdsd.ztz.model.drone.Capability
 import hu.bme.mdsd.ztz.model.drone.Equipment
+import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer
 
 class JsonNodeGenerator {
 
@@ -56,6 +57,30 @@ class JsonNodeGenerator {
 			robotsNode.set("Equipments", newEquipmentsNode(dynamicRobot.robot))
 			
 			(node.get("Robots") as ArrayNode).add(robotsNode)
+		}
+		
+		if (!(node.get("Robots") as ArrayNode).empty) {
+			node.set("Objects", factory.arrayNode)
+		
+			val areaObjects = (resource.allContents
+				.filter(DynamicRobot).next().robot
+				.eContainer as RobotMissionContainer)
+				.areaObjects
+			for (element : areaObjects) {
+				val areaObject = factory.objectNode
+				areaObject.put("Name", element.name)
+				areaObject.set("Positions", factory.arrayNode)
+				for (position : element.positions) {
+					for (coordinate : position.coordinates) {
+						val positionNode = factory.objectNode
+						positionNode.put("Lat", coordinate.latitude.toString)
+						positionNode.put("Long", coordinate.longitude.toString)
+				  		(areaObject.get("Positions") as ArrayNode).add(positionNode)
+				    }
+				}
+				(node.get("Objects") as ArrayNode).add(areaObject)
+			}
+			
 		}
 		return node
 	}
@@ -135,20 +160,8 @@ class JsonNodeGenerator {
 	def newDetectionNode(DynamicRobot robot, DetectedObject detectedObject, ObjectNode node) {
 		val nestedNode = factory.objectNode
 		nestedNode.put("Robot", robot.robot.name)
-		val detectedNode = factory.objectNode
-		detectedNode.put("Object", detectedObject.object.name)
-		detectedNode.set("Positions", factory.arrayNode)
-		for (position : detectedObject.object.positions) {
-			for (coordinate : position.coordinates) {
-				val positionNode = factory.objectNode
-				positionNode.put("Lat", coordinate.latitude.toString)
-				positionNode.put("Long", coordinate.longitude.toString)
-				
-				(detectedNode.get("Positions") as ArrayNode).add(positionNode)
-			}
-		}
-			
-		nestedNode.set("Target", detectedNode)
+		nestedNode.put("Target", detectedObject.object.name)
+		
 		node.set("Detection", nestedNode)
 	}
 

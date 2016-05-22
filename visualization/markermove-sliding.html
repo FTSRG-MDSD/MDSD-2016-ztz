@@ -21,6 +21,7 @@
     <script>
 		var markers;
 		var robotStatuses;
+		var areaObjects;
         var map;
 		var mapOptions;
 		var intervalId = 0;
@@ -28,6 +29,7 @@
 		var actionId = 0;
 		var $log;
 		var $status;
+		var isAuto = false;
 		
         function initialize() {
             mapOptions = {
@@ -65,35 +67,60 @@
 		function handleAction(action) {
 			var key = Object.keys(action);
             if (key == "Detection") {
-				$log.html($log.html() + action[key]["Robot"] + " detects<br/>");
+				$log.html($log.html() + action[key]["Robot"] + " detects " + action[key]["Target"] + "<br/>");
+				//TODO -> marker
             } else if (key == "UnicastCommunication") {
-				$log.html($log.html() + "Message sent to " + action[key]["Target"] + "<br/>");
+            	var from = action[key]["From"];
+				var range = robotStatuses.get(from)["Range"];
+				$log.html($log.html() + "Message sent to " + action[key]["Target"] + " from " + from + "<br/>");
+				drawCommunicationCircle(markers.get(from), range);
+
             } else if (key == "Action") {
                 $log.html($log.html() + action[key]["Robot"] + " does " + action[key]["Action"] + "<br/>");
 				if (action[key]["Action"] == "Move") {
-					markers.get(action[key]["Robot"]).setDuration(duration);
-					markers.get(action[key]["Robot"]).setEasing("linear");
-					markers.get(action[key]["Robot"]).setPosition(new google.maps.LatLng(
-																	action[key]["Properties"]["Lat"],
-																	action[key]["Properties"]["Long"]
-																	));
+					moveMarkerToPosition(action[key]["Robot"],
+											new google.maps.LatLng(
+												action[key]["Properties"]["Lat"],
+												action[key]["Properties"]["Long"]
+											));
+                } else if (action[key]["Action"] == "MoveToTarget") {
+                	var target = action[key]["Targets"][0];
+                	moveMarkerToPosition(action[key]["Robot"], markers.get(target).getPosition());
+                } else if (action[key]["Action"] == "Bring") {
+                	var targets = action[key]["Targets"]
+                	var newPosition = new google.maps.LatLng(
+												action[key]["Properties"]["Lat"],
+												action[key]["Properties"]["Long"]
+											);
+                	moveMarkerToPosition(action[key]["Robot"], newPosition);
+                	for (var i = 0; i < targets.length; ++i) {
+                		if (areaObjects.get(targets[i])["Positions"].length == 1) {
+                			moveMarkerToPosition(targets[i], newPosition);
+                		}
+                	}
+
                 }
 			} else if (key == "BroadcastCommunication") {
                 //code
             } else if (key == "MulticastCommunication") {
                 //code
-            } else if (key == "UnicastCommunication") {
-                //code
             } else if (key == "Status") {
                 initPositions(action[key])
             }
+		}
+
+		function moveMarkerToPosition(name, position) {
+			markers.get(name).setDuration(duration);
+			markers.get(name).setEasing("linear");
+			markers.get(name).setPosition(position);
 		}
 		
 		function showStatus(marker) {
 			var name = marker.labelContent;
 			var status = robotStatuses.get(name)
 			$status.html("Name: " + name + "<br\>" +
-						 "Status: " + status["Status"]);
+						 "Status: " + status["Status"] + "<br>" + 
+						 "Range: " + status["Range"]);
         }
 		
         $(function () {
@@ -107,10 +134,20 @@
 			
 			document.getElementById("nextButton").addEventListener("click", nextButtonClickHandler);
 			document.getElementById("autoButton").addEventListener("click", function() {
-				intervalId = setInterval(function() {
-					buttonHandler();
-					}, 1000
-				);
+				if (isAuto) {
+					window.clearInterval(intervalId)
+					isAuto = false;
+					$("#autoButton")[0].innerHTML = "Auto"
+				} else {
+					intervalId = setInterval(function() {
+						buttonHandler();
+						}, 1000
+					);
+					isAuto = true;
+					$("#autoButton")[0].innerHTML = "Stop"
+				}
+
+				
 			});
 
             if (window.location.hash == "#iframe") {
@@ -119,11 +156,18 @@
             }
         });
 	
-		var duration = parseInt($('#durationOption').val());
+
+	var duration = parseInt($('#durationOption').val());
+	$('#durationOption').on('change keydown paste input', refreshDuration)
+
+	function refreshDuration() {
+		duration = parseInt($('#durationOption').val());
 	    if (duration < 0) {
 			duration = 1;
 	        $('#durationOption').val(duration);
+	        
 		}
+	}
 
 	$(document).on('change', '.file-upload-button', function(event) {
 		var reader = new FileReader();
@@ -132,6 +176,7 @@
 			actions = JSON.parse(event.target.result);
 			markers = new Map();
 			robotStatuses = new Map();
+			areaObjects = new Map();
 			for (i = 0; i < actions[0]["Status"]["Robots"].length; i++) {
 				var name = actions[0]["Status"]["Robots"][i]["Robot"];
 				
@@ -146,7 +191,25 @@
 				});
 				robotStatuses.set(name, actions[0]["Status"]["Robots"][i])
 			}
+
+			for (i = 0; i < actions[0]["Status"]["Objects"].length; i++) {
+				var areaObject = actions[0]["Status"]["Objects"][i];
+				var name = areaObject["Name"];
+
+				if (areaObject["Positions"].length == 1) {
+					markers.set(name, new MarkerWithLabel({
+						map: map,
+						title: 'Object',
+						labelContent: name,
+						icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+					}));
+				}
+				
+				areaObjects.set(name, areaObject);
+			}
+
 			initPositions(actions[0]["Status"]);
+
 			map.setCenter(markers.get(name).getPosition())
 			actionId++;
 			
@@ -159,11 +222,39 @@
 	
 	function initPositions(action) {
         for (i = 0; i < action["Robots"].length; i++) {
-			markers.get(action["Robots"][i]["Robot"]).setPositionNotAnimated(new google.maps.LatLng(
-																	action["Robots"][i]["Lat"],
-																	action["Robots"][i]["Long"]
+        	var robot = action["Robots"][i];
+        	var name = robot["Robot"]
+        	markers.get(name).setAnimation(google.maps.Animation.DROP);
+			markers.get(name).setPositionNotAnimated(new google.maps.LatLng(
+																	robot["Lat"],
+																	robot["Long"]
 														));
 		}
+		for (i = 0; i < action["Objects"].length; i++) {			
+			var areaObject = action["Objects"][i]
+			var name = areaObject["Name"]
+			if (areaObject["Positions"].length == 1) {
+				markers.get(name).setAnimation(google.maps.Animation.DROP);
+				markers.get(name).setPositionNotAnimated(new google.maps.LatLng(
+																	areaObject["Positions"][0]["Lat"],
+																	areaObject["Positions"][0]["Long"]
+														));
+			}
+		}
+    }
+
+    function drawCommunicationCircle(marker, range) {
+    	var circle = new google.maps.Circle({
+			strokeColor: '#FF0000',
+			strokeOpacity: 0.8,
+			strokeWeight: 1,
+			fillColor: '#FF0000',
+			fillOpacity: 0.6,
+			map: map,
+			center: marker.getPosition(),
+			radius: parseInt(range)*300
+		});
+		window.setTimeout(function() { circle.setMap(null)}, duration*0.8);
     }
     </script>
 </head>
