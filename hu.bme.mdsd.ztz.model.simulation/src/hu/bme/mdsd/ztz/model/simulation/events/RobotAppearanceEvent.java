@@ -18,11 +18,12 @@ public class RobotAppearanceEvent extends ExternalEvent{
 	@Override
 	public void eventRoutine()  {
 		// TODO Auto-generated method stub
-		model.robotsQueue.insert(new RobotEntity(model,"Robot",false));
+		RobotEntity robi = new RobotEntity(model,"Robot",false);
+		model.robotsQueue.insert(robi);
 		
 		if(!model.robotsQueue.isEmpty()){
 			CommunicationEvent comevent = new CommunicationEvent(model, "Communication event", true);
-			comevent.schedule(model.robotsQueue.last(), model.thisRobot, new TimeSpan(model.getCommunicationTime()));
+			comevent.schedule(model.thisRobot, robi, new TimeSpan(model.getCommunicationTime()));
 		}
 		schedule(new TimeSpan(model.getRobotArrivalTime()));
 	}

@@ -71,10 +71,10 @@ public class RobotMissionSimulationModel extends Model {
 		robotsQueue = new Queue<RobotEntity>(this, "Robots queue", true, false);
 		pathQueue = new Queue<AreaObjectEntity>(this,"AreaObject's queue",true,false);
 		
-		robotArrivalTime = new ContDistNormal(this, "Robot arrival time", 1*60, 1*60, true, false);
-		robotNextStepTime = new ContDistUniform(this, "Robot next step time", 20, 1*60, true, false);
-		discoveryTime = new ContDistUniform(this,"Discover time",20,3*60,true,false);
-		communicationTime = new ContDistUniform(this, "Communication time", 10, 20, true, false);
+		robotArrivalTime = new ContDistNormal(this, "Robot arrival time", 10*60, 5*60, true, false);
+		robotNextStepTime = new ContDistUniform(this, "Robot next step time", 20*60, 60*60, true, false);
+		discoveryTime = new ContDistUniform(this,"Discover time",1*60,10*60,true,false);
+		communicationTime = new ContDistUniform(this, "Communication time", 1*60, 10*60, true, false);
 		
 		for (int i = 0; i < AREAOBJECTS; i++) {
 			pathQueue.insert(new AreaObjectEntity(this, "AreaObject", false));			

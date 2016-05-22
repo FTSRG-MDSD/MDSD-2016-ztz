@@ -28,21 +28,27 @@ public class RobotStepEvent extends ExternalEvent{
 			
 			//clear the robots, new area -> new robots queue
 			model.robotsQueue.removeAll();
-			CommunicationEvent comevent = new CommunicationEvent(model, "Com event", false);
-			comevent.cancel();
+			CommunicationEvent comevent = new CommunicationEvent(model, "Communication event", false);
+			if(comevent.isScheduled()){
+				comevent.cancel();
+			}
 			
 			RobotAppearanceEvent robotAppearenceEvent = new RobotAppearanceEvent(model, "New robot comes", true);
-			robotAppearenceEvent.cancel();
+			if(robotAppearenceEvent.isScheduled()){
+				robotAppearenceEvent.cancel();
+			}
 			robotAppearenceEvent.schedule(new TimeSpan(model.getRobotArrivalTime()));
 			
 			//schedule discovering
 			DiscoverEvent discoverEvent = new DiscoverEvent(model, "Discover event", true);
-			discoverEvent.cancel();
+			if(discoverEvent.isScheduled()){
+				discoverEvent.cancel();
+			}
 			discoverEvent.schedule(model.thisRobot, model.currentArea,new TimeSpan(model.getDiscoveryTime()));
 		
 			//schedule move away
 			RobotStepEvent event = new RobotStepEvent(model, "Next step event", true);
-			event.schedule(new TimeSpan(model.getRobotNextStepTime()));
+			event.schedule(new TimeSpan(model.getRobotNextStepTime()+ discoverEvent.getRealTimeConstraint()));
 		}
 				
 		
