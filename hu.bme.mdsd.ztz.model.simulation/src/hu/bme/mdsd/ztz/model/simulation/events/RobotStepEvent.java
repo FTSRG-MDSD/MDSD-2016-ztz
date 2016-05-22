@@ -45,10 +45,7 @@ public class RobotStepEvent extends ExternalEvent{
 				discoverEvent.cancel();
 			}
 			discoverEvent.schedule(model.thisRobot, model.currentArea,new TimeSpan(model.getDiscoveryTime()));
-		
-			//schedule move away
-			RobotStepEvent event = new RobotStepEvent(model, "Next step event", true);
-			event.schedule(new TimeSpan(model.getRobotNextStepTime()+ discoverEvent.getRealTimeConstraint()));
+					
 		}
 				
 		
