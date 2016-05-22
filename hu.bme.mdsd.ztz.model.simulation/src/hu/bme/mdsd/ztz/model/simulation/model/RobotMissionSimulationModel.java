@@ -12,7 +12,7 @@ import hu.bme.mdsd.ztz.model.simulation.events.RobotStepEvent;
 public class RobotMissionSimulationModel extends Model {
 	
 	private static final int ROBOTS = 1;
-	private static final int AREAOBJECTS = 3;
+	private static final int AREAOBJECTS = 30;
 	
 	public Queue<RobotEntity> robotsQueue;
 	public Queue<AreaObjectEntity> pathQueue;
@@ -66,13 +66,15 @@ public class RobotMissionSimulationModel extends Model {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
+		this.thisRobot = new RobotEntity(this,"Robot@mission",false);
+		
 		robotsQueue = new Queue<RobotEntity>(this, "Robots queue", true, false);
 		pathQueue = new Queue<AreaObjectEntity>(this,"AreaObject's queue",true,false);
 		
 		robotArrivalTime = new ContDistNormal(this, "Robot arrival time", 1*60, 1*60, true, false);
-		robotNextStepTime = new ContDistNormal(this, "Robot next step time", 4*60, 1*60, true, false);
-		discoveryTime = new ContDistUniform(this,"Discover time",1*60,3*60,true,false);
-		communicationTime = new ContDistUniform(this, "Communication time", 1*60, 10*60, true, false);
+		robotNextStepTime = new ContDistUniform(this, "Robot next step time", 20, 1*60, true, false);
+		discoveryTime = new ContDistUniform(this,"Discover time",20,3*60,true,false);
+		communicationTime = new ContDistUniform(this, "Communication time", 10, 20, true, false);
 		
 		for (int i = 0; i < AREAOBJECTS; i++) {
 			pathQueue.insert(new AreaObjectEntity(this, "AreaObject", false));			

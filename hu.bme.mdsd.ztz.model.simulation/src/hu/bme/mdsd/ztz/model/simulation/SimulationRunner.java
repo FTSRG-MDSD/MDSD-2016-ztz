@@ -11,9 +11,9 @@ public class SimulationRunner {
 	public static void main(String[] args) {
 		RobotMissionSimulationModel model = new RobotMissionSimulationModel(null, "RobotMissionSimulationModel", true, false);
 		
-		Experiment experiment = new Experiment("Experiment");
-		experiment.setEpsilon(TimeUnit.SECONDS);
-		experiment.setReferenceUnit(TimeUnit.SECONDS);
+		Experiment experiment = new Experiment("Experiment",TimeUnit.SECONDS,TimeUnit.SECONDS,null);
+		//experiment.setEpsilon(TimeUnit.SECONDS);
+		//experiment.setReferenceUnit(TimeUnit.SECONDS);
 		
 		model.connectToExperiment(experiment);
 		
