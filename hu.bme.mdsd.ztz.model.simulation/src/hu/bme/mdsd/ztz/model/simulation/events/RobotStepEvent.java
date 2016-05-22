@@ -32,11 +32,14 @@ public class RobotStepEvent extends ExternalEvent{
 			robotAppearenceEvent.schedule(new TimeSpan(model.getRobotArrivalTime()));
 			
 			//schedule discovering
-			
+			DiscoverEvent discoverEvent = new DiscoverEvent(model, "Discover event", true);
+			discoverEvent.schedule(model.thisRobot, model.currentArea);
 			//schedule communication
 			
-			//schedule move away
 			
+			//schedule move away
+			RobotStepEvent event = new RobotStepEvent(model, "Next step event", true);
+			event.schedule();
 		}
 				
 		
