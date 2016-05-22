@@ -20,6 +20,7 @@ import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
 import org.eclipse.xtext.ui.editor.model.edit.IssueModificationContext;
@@ -72,12 +73,16 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
     final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
       final ActionImplementation actionImp = ((ActionImplementation) element);
+      final IXtextDocument document = context.getXtextDocument();
+      Integer _offset = issue.getOffset();
+      Integer _length = issue.getLength();
+      final String actionName = document.get((_offset).intValue(), (_length).intValue());
       Resource _eResource = actionImp.eResource();
       EList<EObject> _contents = _eResource.getContents();
       EObject _get = _contents.get(0);
       final BehaviourLanguage language = ((BehaviourLanguage) _get);
       final ActionDeclarationStatement newActionDeclaration = BehaviourLanguageFactory.eINSTANCE.createActionDeclarationStatement();
-      newActionDeclaration.setName("newAction");
+      newActionDeclaration.setName(actionName);
       EList<PropertyKey> _properties = newActionDeclaration.getProperties();
       ActionDeclarationStatement _declaration = actionImp.getDeclaration();
       EList<PropertyKey> _properties_1 = _declaration.getProperties();

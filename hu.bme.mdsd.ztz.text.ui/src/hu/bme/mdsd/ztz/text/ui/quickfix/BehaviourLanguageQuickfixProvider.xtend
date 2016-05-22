@@ -19,6 +19,7 @@ import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import org.eclipse.jface.text.Position
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
 
 /**
  * Custom quickfixes.
@@ -75,10 +76,13 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 		acceptor.accept(issue, "Add new action", "", "") [
 			element, context |
 				val actionImp = element as ActionImplementation
+				val document = context.xtextDocument				
+				val actionName = document.get(issue.offset,issue.length)
+
 				val language = actionImp.eResource.contents.get(0) as BehaviourLanguage
 				
 				val ActionDeclarationStatement newActionDeclaration = BehaviourLanguageFactory.eINSTANCE.createActionDeclarationStatement
-				newActionDeclaration.name = "newAction"
+				newActionDeclaration.name = actionName
 				newActionDeclaration.properties.addAll(actionImp.declaration.properties)
 				
 				language.statements.add(0, newActionDeclaration)
