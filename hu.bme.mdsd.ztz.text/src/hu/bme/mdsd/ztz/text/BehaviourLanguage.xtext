@@ -41,7 +41,7 @@ AtomicStatement:
 ;
 
 ConditionalStatement:
-	'if' condition=Condition 'then' '{' (statements+=Statement)+ '}' ('else' '{' (otherStatements+=Statement)+ '}')?
+	'if' condition+=Condition ('or' condition+=Condition)* 'then' '{' (statements+=Statement)+ '}' ('else' '{' (otherStatements+=Statement)+ '}')?
 ;
 
 SynchronousStatement:
@@ -105,15 +105,14 @@ AllTarget:
 ;
 
 Condition:
-	TaskStatusCondition | RobotStatusCondition
+	{Condition}
+	(leftTask=[TaskExecution] '.' 'status' compare=('==' | '!=') rightStatus=TaskExecutionStatus) |
+	(leftRobot=[DynamicRobot] '.' 'status' compare=('==' | '!=') rightStatus=RobotStatus) |
+	(leftMeasure=MeasureComparable  compare=('>'|'<'|'>='|'<='|'==' | '!=') rightMeasure=MeasureComparable)
 ;
 
-TaskStatusCondition:
-	task=[TaskExecution] ((equal?='==') | (notEqual?='!=')) taskStatus=TaskExecutionStatus
-;
-
-RobotStatusCondition:
-	robot=[DynamicRobot] ((equal?='==') | (notEqual?='!=')) robotStatus=RobotStatus
+MeasureComparable:
+	(container=[DynamicRobot] '.' member=[drone::PropertyKey]) | value=PropertyValue
 ;
 
 TaskExecution returns TaskExecution:
@@ -152,8 +151,8 @@ RobotCollaboration returns RobotCollaboration:
 		( '{' properties+=Property ( "," properties+=Property)* '}' )?
 ;
 
-enum RobotStatus returns RobotStatus:
-	Ready = 'Ready' | TurnedOff = 'TurnedOff' | Waiting = 'Waiting' | Executing = 'Executing'
+enum RobotStatus returns EObject:
+	Ready = 'RobotReady' | TurnedOff = 'RobotTurnedOff' | Waiting = 'RobotWaiting' | Executing = 'RobotExecuting'
 ;
 
 //Action_Impl returns Action:
@@ -213,8 +212,8 @@ Message returns Message:
 ;
 
 
-enum TaskExecutionStatus returns TaskExecutionStatus:
-	Ready = 'Ready' | Finished = 'Finished' | Suspended = 'Suspended' | InProgress = 'InProgress' | Waiting = 'Waiting'
+enum TaskExecutionStatus returns EObject:
+	Ready = 'TaskReady' | Finished = 'TaskFinished' | Suspended = 'TaskSuspended' | InProgress = 'TaskInProgress' | Waiting = 'TaskWaiting'
 ;
 
 EInt returns ecore::EInt:

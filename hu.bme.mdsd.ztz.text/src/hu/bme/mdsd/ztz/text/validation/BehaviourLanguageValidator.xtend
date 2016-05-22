@@ -4,15 +4,24 @@
 package hu.bme.mdsd.ztz.text.validation
 
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.model.behaviour.Message
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution
 import hu.bme.mdsd.ztz.model.drone.DronePackage
+import hu.bme.mdsd.ztz.model.drone.MeasureValue
+import hu.bme.mdsd.ztz.model.drone.Property
+import hu.bme.mdsd.ztz.model.drone.PropertyKey
+import hu.bme.mdsd.ztz.model.drone.StringValue
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Condition
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
@@ -22,15 +31,11 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
 import java.util.HashMap
+import java.util.HashSet
 import java.util.Iterator
 import java.util.Map.Entry
 import org.eclipse.xtext.validation.Check
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
-import hu.bme.mdsd.ztz.model.drone.PropertyKey
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
-import java.util.HashSet
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage
+import hu.bme.mdsd.ztz.text.util.RobotUtil
 
 /**
  * This class contains custom validation rules. 
@@ -243,7 +248,7 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 			error("An action must have as many properties as its declaration has", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES)
 		}
 		val keys = new HashSet<PropertyKey>()
-		for (hu.bme.mdsd.ztz.model.drone.Property property : actionImplementation.properties) {
+		for (Property property : actionImplementation.properties) {
 			keys.add(property.key)
 		}
 		for (PropertyKey key : actionImplementation.declaration.properties)  {
@@ -273,6 +278,26 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		if (container.statements.filter(ActionDeclarationStatement).size == 0) {
 			error("A robot cannot do an action without an action declaration. Declare an action with the action keyword.", action, 
 				BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__DECLARATION)
+		}
+	}
+	
+	@Check
+	def propertyConditionsNotMatch(Condition condition) {
+		if (condition.leftMeasure != null && condition.rightMeasure != null) {
+			val left = RobotUtil.getPropertyValueFromComparable(condition.leftMeasure)
+			val right = RobotUtil.getPropertyValueFromComparable(condition.rightMeasure)
+			if (left instanceof StringValue != right instanceof StringValue) {
+				error("The types of the properties in the condition does not match.",condition,
+					BehaviourLanguagePackage.Literals.CONDITION__COMPARE)
+			} else if (left instanceof MeasureValue) {
+				if (RobotUtil.convertTo(left as MeasureValue, (right as MeasureValue).dimension) == null
+						&& RobotUtil.convertTo(right as MeasureValue, (left as MeasureValue).dimension) == null
+				) {
+					error("No conversion available between the dimensions of the properties in the condition.", condition,
+						BehaviourLanguagePackage.Literals.CONDITION__COMPARE
+					)
+				}
+			}
 		}
 	}
 
