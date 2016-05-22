@@ -57,7 +57,10 @@ ActionStatement:
 ;
 
 ActionImplementation:
-	declaration=[ActionDeclarationStatement] ('(' currentTaskExecution=[TaskExecution] ')')? ('{' properties+=Property ( "," properties+=Property)* '}')?
+	declaration=[ActionDeclarationStatement]
+	('(' currentTaskExecution=[TaskExecution] ')')?
+	('{' properties+=Property ( "," properties+=Property)* '}')?
+	('[' targets+=[drone::AreaObject] (',' targets+=[drone::AreaObject])* ']')?
 ;
 
 MessageStatement:

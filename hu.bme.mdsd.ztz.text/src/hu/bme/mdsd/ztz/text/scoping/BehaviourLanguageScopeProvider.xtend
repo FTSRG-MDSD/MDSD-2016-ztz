@@ -206,6 +206,13 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 	protected def RobotMissionContainer getContainer(ResourceManager manager) {
 		manager.resource.contents.get(0) as RobotMissionContainer
 	}
+	
+	def dispatch IScope scopeForContext(ActionImplementation context, EReference reference, ResourceManager manager) {
+		if (reference == BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__TARGETS && manager != null) {
+			return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(getContainer(manager), AreaObject))
+		}
+		return super.getScope(context, reference)
+	}
 
 	
 

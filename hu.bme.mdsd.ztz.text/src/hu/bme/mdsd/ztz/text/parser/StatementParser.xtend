@@ -31,6 +31,9 @@ import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
 
 import static extension hu.bme.mdsd.ztz.text.util.RobotUtil.*
+import hu.bme.mdsd.ztz.model.drone.DroneFactory
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
+import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer
 
 class StatementParser {
 	
@@ -155,8 +158,22 @@ class StatementParser {
 		var action = BehaviourFactory.eINSTANCE.createAction
 		
 		action.name = actionImpl.declaration.name
+		if (actionImpl.currentTaskExecution == null) {
+			val task = DroneFactory.eINSTANCE.createTask;
+			(robot.robot.eContainer as RobotMissionContainer).temporalElements.add(task)
+			val taskExecution = BehaviourFactory.eINSTANCE.createTaskExecution
+			taskExecution.task = task
+			actionImpl.currentTaskExecution = taskExecution;
+			(robot.eContainer as BehaviourContainer).taskExecutions.add(taskExecution)
+		}
 		action.currentTaskExecution = actionImpl.currentTaskExecution
 		action.properties.addAll(actionImpl.properties)
+		
+		if (action.currentTaskExecution.task.descriptor == null) {
+			val descriptor = DroneFactory.eINSTANCE.createTaskDescriptor
+			action.currentTaskExecution.task.descriptor = descriptor
+		}
+		action.currentTaskExecution.task.descriptor.targets.addAll(actionImpl.targets)
 		robot.actions.add(action)
 
 		var node = factory.objectNode

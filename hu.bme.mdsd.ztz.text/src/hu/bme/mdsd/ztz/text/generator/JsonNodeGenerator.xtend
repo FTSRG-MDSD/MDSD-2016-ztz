@@ -91,11 +91,17 @@ class JsonNodeGenerator {
 		
 		newPropertiesNode(nestedNode, action.properties)
 		
+		nestedNode.set("Targets", factory.arrayNode)
+		for(targets : action.currentTaskExecution.task.descriptor.targets) {
+			(nestedNode.get("Targets") as ArrayNode).add(targets.name)
+		}
+		
 		node.set("Action", nestedNode)
 	}
 
 	def dispatch newActionNode(UnicastCommunication action, DynamicRobot robot, ObjectNode node) {
 		val nestedNode = factory.objectNode
+		nestedNode.put("From", robot.robot.name)
 		nestedNode.put("Message", action.message.name)
 		nestedNode.put("Target", action.target.robot.name)
 		
@@ -104,6 +110,7 @@ class JsonNodeGenerator {
 	
 	def dispatch newActionNode(MulticastCommunication action, DynamicRobot robot, ObjectNode node) {
 		val nestedNode = factory.objectNode
+		nestedNode.put("From", robot.robot.name)
 		nestedNode.put("Message", action.message.name)
 		nestedNode.set("Targets", factory.arrayNode)
 		for(DynamicRobot targetRobot : action.targets) {
@@ -115,6 +122,7 @@ class JsonNodeGenerator {
 	
 	def dispatch newActionNode(BroadcastCommunication action, DynamicRobot robot, ObjectNode node) {
 		val nestedNode = factory.objectNode
+		nestedNode.put("From", robot.robot.name)
 		nestedNode.put("Message", action.message.name)
 		nestedNode.set("Targets", factory.arrayNode)
 		for(DynamicRobot targetRobot : action.targets) {
@@ -127,8 +135,20 @@ class JsonNodeGenerator {
 	def newDetectionNode(DynamicRobot robot, DetectedObject detectedObject, ObjectNode node) {
 		val nestedNode = factory.objectNode
 		nestedNode.put("Robot", robot.robot.name)
-		nestedNode.put("DetectedObject", detectedObject.object.name)
-		
+		val detectedNode = factory.objectNode
+		detectedNode.put("Object", detectedObject.object.name)
+		detectedNode.set("Positions", factory.arrayNode)
+		for (position : detectedObject.object.positions) {
+			for (coordinate : position.coordinates) {
+				val positionNode = factory.objectNode
+				positionNode.put("Lat", coordinate.latitude.toString)
+				positionNode.put("Long", coordinate.longitude.toString)
+				
+				(detectedNode.get("Positions") as ArrayNode).add(positionNode)
+			}
+		}
+			
+		nestedNode.set("Target", detectedNode)
 		node.set("Detection", nestedNode)
 	}
 
