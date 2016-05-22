@@ -4,6 +4,19 @@
 package hu.bme.mdsd.ztz.text.ui.quickfix
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
+import org.eclipse.xtext.validation.Issue
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
+import org.eclipse.xtext.ui.editor.quickfix.Fix
+import hu.bme.mdsd.ztz.text.validation.ErrorCodes
+import hu.bme.mdsd.ztz.model.behaviour.Message
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
+import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
+import org.eclipse.jface.text.Position
 
 /**
  * Custom quickfixes.
@@ -12,13 +25,46 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
  */
 class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 
-//	@Fix(BehaviourLanguageValidator.INVALID_NAME)
-//	def capitalizeName(Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 'Capitalize name', 'Capitalize the name.', 'upcase.png') [
-//			context |
+	@Fix(ErrorCodes.SAME_COLLABORATOR)
+	def fixSameCollaborator(Issue issue, IssueResolutionAcceptor acceptor) {
+		
+	}
+
+	@Fix(ErrorCodes.NOT_IN_COLLABORATION)
+	def fixMissingCollaboration(Issue issue, IssueResolutionAcceptor acceptor) {
+		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		acceptor.accept(issue, "Add new collaboration", "", "") [
+			element, context |
+			val messageTarget = element as MessageTarget
+			val statement = messageTarget.eContainer as MessageStatement			
+			val language = statement.eContainer as BehaviourLanguage
+			
+			if (messageTarget instanceof UniTarget) {
+				val newCollaborationStatement = BehaviourLanguageFactory.eINSTANCE.createCollaborationStatement
+				newCollaborationStatement.robot = statement.robot
+				
+				val newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration
+				newCollaboration.collaborator = messageTarget.target
+				
+				newCollaborationStatement.collaboration.add(newCollaboration)
+				language.statements.add(0, newCollaborationStatement)
+			}
+			
+		]
+	}
+
+	@Fix(ErrorCodes.SAME_MESSAGE_NAME)
+	def changeMessageName(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Change message', 'Change the message name.', 'upcase.png') [
+			element, context |
 //			val xtextDocument = context.xtextDocument
 //			val firstLetter = xtextDocument.get(issue.offset, 1)
 //			xtextDocument.replace(issue.offset, 1, firstLetter.toUpperCase)
-//		]
-//	}
+			val message = element as Message
+			val oldMessageName = message.name 
+			message.name = oldMessageName + "2"
+		]
+	}
+
+
 }

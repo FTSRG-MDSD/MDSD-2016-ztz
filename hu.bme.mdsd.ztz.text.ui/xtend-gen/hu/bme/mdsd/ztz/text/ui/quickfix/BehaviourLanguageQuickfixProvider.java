@@ -3,7 +3,27 @@
  */
 package hu.bme.mdsd.ztz.text.ui.quickfix;
 
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.Message;
+import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
+import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
+import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
+import org.eclipse.xtext.ui.editor.model.edit.IssueModificationContext;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
+import org.eclipse.xtext.ui.editor.quickfix.Fix;
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
+import org.eclipse.xtext.validation.Issue;
 
 /**
  * Custom quickfixes.
@@ -12,4 +32,44 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
  */
 @SuppressWarnings("all")
 public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
+  @Fix(ErrorCodes.SAME_COLLABORATOR)
+  public Object fixSameCollaborator(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    return null;
+  }
+  
+  @Fix(ErrorCodes.NOT_IN_COLLABORATION)
+  public void fixMissingCollaboration(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
+    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final MessageTarget messageTarget = ((MessageTarget) element);
+      EObject _eContainer = messageTarget.eContainer();
+      final MessageStatement statement = ((MessageStatement) _eContainer);
+      EObject _eContainer_1 = statement.eContainer();
+      final BehaviourLanguage language = ((BehaviourLanguage) _eContainer_1);
+      if ((messageTarget instanceof UniTarget)) {
+        final CollaborationStatement newCollaborationStatement = BehaviourLanguageFactory.eINSTANCE.createCollaborationStatement();
+        DynamicRobot _robot = statement.getRobot();
+        newCollaborationStatement.setRobot(_robot);
+        final RobotCollaboration newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration();
+        DynamicRobot _target = ((UniTarget)messageTarget).getTarget();
+        newCollaboration.setCollaborator(_target);
+        EList<RobotCollaboration> _collaboration = newCollaborationStatement.getCollaboration();
+        _collaboration.add(newCollaboration);
+        EList<Statement> _statements = language.getStatements();
+        _statements.add(0, newCollaborationStatement);
+      }
+    };
+    acceptor.accept(issue, "Add new collaboration", "", "", _function);
+  }
+  
+  @Fix(ErrorCodes.SAME_MESSAGE_NAME)
+  public void changeMessageName(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final Message message = ((Message) element);
+      final String oldMessageName = message.getName();
+      message.setName((oldMessageName + "2"));
+    };
+    acceptor.accept(issue, "Change message", "Change the message name.", "upcase.png", _function);
+  }
 }

@@ -120,11 +120,13 @@ TaskExecution returns TaskExecution:
 	name=EString ':' task=[drone::Task]
 	'{'
 		('executionTime' executionTime=MeasureValue)?
+		('requirement' requirement=[TaskRequirement])?
 	'}'
 ;
 
 TaskRequirement returns TaskRequirement:
 	'{'
+		'name' name=EString
 		'participants' participants=EInt
 		'taskExecution' taskExecution=[TaskExecution]
 		('prerequisite' prerequisite=[TaskExecution])?

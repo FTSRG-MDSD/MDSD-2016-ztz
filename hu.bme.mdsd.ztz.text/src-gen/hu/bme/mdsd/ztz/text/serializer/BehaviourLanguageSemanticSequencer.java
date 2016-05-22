@@ -583,7 +583,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     TaskExecution returns TaskExecution
 	 *
 	 * Constraint:
-	 *     (name=EString task=[Task|ID] executionTime=MeasureValue?)
+	 *     (name=EString task=[Task|ID] executionTime=MeasureValue? requirement=[TaskRequirement|ID]?)
 	 */
 	protected void sequence_TaskExecution(ISerializationContext context, TaskExecution semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -596,6 +596,7 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *
 	 * Constraint:
 	 *     (
+	 *         name=EString 
 	 *         participants=EInt 
 	 *         taskExecution=[TaskExecution|ID] 
 	 *         prerequisite=[TaskExecution|ID]? 
