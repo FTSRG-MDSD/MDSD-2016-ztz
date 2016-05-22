@@ -181,14 +181,9 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
         return createConditionAdapter();
       }
       @Override
-      public Adapter caseTaskStatusCondition(TaskStatusCondition object)
+      public Adapter caseMeasureComparable(MeasureComparable object)
       {
-        return createTaskStatusConditionAdapter();
-      }
-      @Override
-      public Adapter caseRobotStatusCondition(RobotStatusCondition object)
-      {
-        return createRobotStatusConditionAdapter();
+        return createMeasureComparableAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -528,31 +523,16 @@ public class BehaviourLanguageAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition <em>Task Status Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable <em>Measure Comparable</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable
    * @generated
    */
-  public Adapter createTaskStatusConditionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition <em>Robot Status Condition</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
-   * @generated
-   */
-  public Adapter createRobotStatusConditionAdapter()
+  public Adapter createMeasureComparableAdapter()
   {
     return null;
   }

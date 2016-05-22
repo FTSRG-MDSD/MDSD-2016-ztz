@@ -4,7 +4,6 @@
 package hu.bme.mdsd.ztz.text.behaviourLanguage;
 
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
-import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,7 +15,6 @@ import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
  * </p>
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement#getRobot <em>Robot</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getRobotStatusStatement()
@@ -50,34 +48,5 @@ public interface RobotStatusStatement extends StatusStatement
    * @generated
    */
   void setRobot(DynamicRobot value);
-
-  /**
-   * Returns the value of the '<em><b>Status</b></em>' attribute.
-   * The literals are from the enumeration {@link hu.bme.mdsd.ztz.model.behaviour.RobotStatus}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Status</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Status</em>' attribute.
-   * @see hu.bme.mdsd.ztz.model.behaviour.RobotStatus
-   * @see #setStatus(RobotStatus)
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getRobotStatusStatement_Status()
-   * @model
-   * @generated
-   */
-  RobotStatus getStatus();
-
-  /**
-   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement#getStatus <em>Status</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Status</em>' attribute.
-   * @see hu.bme.mdsd.ztz.model.behaviour.RobotStatus
-   * @see #getStatus()
-   * @generated
-   */
-  void setStatus(RobotStatus value);
 
 } // RobotStatusStatement

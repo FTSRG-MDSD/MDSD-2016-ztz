@@ -382,66 +382,84 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cConditionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cConditionConditionParserRuleCall_1_0 = (RuleCall)cConditionAssignment_1.eContents().get(0);
-		private final Keyword cThenKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cStatementsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cStatementsStatementParserRuleCall_4_0 = (RuleCall)cStatementsAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cElseKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
-		private final Assignment cOtherStatementsAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
-		private final RuleCall cOtherStatementsStatementParserRuleCall_6_2_0 = (RuleCall)cOtherStatementsAssignment_6_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6_3 = (Keyword)cGroup_6.eContents().get(3);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cOrKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cConditionAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cConditionConditionParserRuleCall_2_1_0 = (RuleCall)cConditionAssignment_2_1.eContents().get(0);
+		private final Keyword cThenKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cStatementsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cStatementsStatementParserRuleCall_5_0 = (RuleCall)cStatementsAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cElseKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
+		private final Assignment cOtherStatementsAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
+		private final RuleCall cOtherStatementsStatementParserRuleCall_7_2_0 = (RuleCall)cOtherStatementsAssignment_7_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7_3 = (Keyword)cGroup_7.eContents().get(3);
 		
 		//ConditionalStatement:
-		//	'if' condition=Condition 'then' '{' statements+=Statement+ '}' ('else' '{' otherStatements+=Statement+ '}')?;
+		//	'if' condition+=Condition ('or' condition+=Condition)* 'then' '{' statements+=Statement+ '}' ('else' '{'
+		//	otherStatements+=Statement+ '}')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'if' condition=Condition 'then' '{' statements+=Statement+ '}' ('else' '{' otherStatements+=Statement+ '}')?
+		//'if' condition+=Condition ('or' condition+=Condition)* 'then' '{' statements+=Statement+ '}' ('else' '{'
+		//otherStatements+=Statement+ '}')?
 		public Group getGroup() { return cGroup; }
 		
 		//'if'
 		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
 		
-		//condition=Condition
+		//condition+=Condition
 		public Assignment getConditionAssignment_1() { return cConditionAssignment_1; }
 		
 		//Condition
 		public RuleCall getConditionConditionParserRuleCall_1_0() { return cConditionConditionParserRuleCall_1_0; }
 		
+		//('or' condition+=Condition)*
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'or'
+		public Keyword getOrKeyword_2_0() { return cOrKeyword_2_0; }
+		
+		//condition+=Condition
+		public Assignment getConditionAssignment_2_1() { return cConditionAssignment_2_1; }
+		
+		//Condition
+		public RuleCall getConditionConditionParserRuleCall_2_1_0() { return cConditionConditionParserRuleCall_2_1_0; }
+		
 		//'then'
-		public Keyword getThenKeyword_2() { return cThenKeyword_2; }
+		public Keyword getThenKeyword_3() { return cThenKeyword_3; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 		
 		//statements+=Statement+
-		public Assignment getStatementsAssignment_4() { return cStatementsAssignment_4; }
+		public Assignment getStatementsAssignment_5() { return cStatementsAssignment_5; }
 		
 		//Statement
-		public RuleCall getStatementsStatementParserRuleCall_4_0() { return cStatementsStatementParserRuleCall_4_0; }
+		public RuleCall getStatementsStatementParserRuleCall_5_0() { return cStatementsStatementParserRuleCall_5_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 		
 		//('else' '{' otherStatements+=Statement+ '}')?
-		public Group getGroup_6() { return cGroup_6; }
+		public Group getGroup_7() { return cGroup_7; }
 		
 		//'else'
-		public Keyword getElseKeyword_6_0() { return cElseKeyword_6_0; }
+		public Keyword getElseKeyword_7_0() { return cElseKeyword_7_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
+		public Keyword getLeftCurlyBracketKeyword_7_1() { return cLeftCurlyBracketKeyword_7_1; }
 		
 		//otherStatements+=Statement+
-		public Assignment getOtherStatementsAssignment_6_2() { return cOtherStatementsAssignment_6_2; }
+		public Assignment getOtherStatementsAssignment_7_2() { return cOtherStatementsAssignment_7_2; }
 		
 		//Statement
-		public RuleCall getOtherStatementsStatementParserRuleCall_6_2_0() { return cOtherStatementsStatementParserRuleCall_6_2_0; }
+		public RuleCall getOtherStatementsStatementParserRuleCall_7_2_0() { return cOtherStatementsStatementParserRuleCall_7_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6_3() { return cRightCurlyBracketKeyword_6_3; }
+		public Keyword getRightCurlyBracketKeyword_7_3() { return cRightCurlyBracketKeyword_7_3; }
 	}
 	public class SynchronousStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.SynchronousStatement");
@@ -1049,123 +1067,224 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	public class ConditionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.Condition");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cTaskStatusConditionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cRobotStatusConditionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cConditionAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
+		private final Assignment cLeftTaskAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
+		private final CrossReference cLeftTaskTaskExecutionCrossReference_0_1_0_0 = (CrossReference)cLeftTaskAssignment_0_1_0.eContents().get(0);
+		private final RuleCall cLeftTaskTaskExecutionIDTerminalRuleCall_0_1_0_0_1 = (RuleCall)cLeftTaskTaskExecutionCrossReference_0_1_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
+		private final Keyword cStatusKeyword_0_1_2 = (Keyword)cGroup_0_1.eContents().get(2);
+		private final Assignment cCompareAssignment_0_1_3 = (Assignment)cGroup_0_1.eContents().get(3);
+		private final Alternatives cCompareAlternatives_0_1_3_0 = (Alternatives)cCompareAssignment_0_1_3.eContents().get(0);
+		private final Keyword cCompareEqualsSignEqualsSignKeyword_0_1_3_0_0 = (Keyword)cCompareAlternatives_0_1_3_0.eContents().get(0);
+		private final Keyword cCompareExclamationMarkEqualsSignKeyword_0_1_3_0_1 = (Keyword)cCompareAlternatives_0_1_3_0.eContents().get(1);
+		private final Assignment cRightStatusAssignment_0_1_4 = (Assignment)cGroup_0_1.eContents().get(4);
+		private final RuleCall cRightStatusTaskExecutionStatusEnumRuleCall_0_1_4_0 = (RuleCall)cRightStatusAssignment_0_1_4.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Assignment cLeftRobotAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final CrossReference cLeftRobotDynamicRobotCrossReference_1_0_0 = (CrossReference)cLeftRobotAssignment_1_0.eContents().get(0);
+		private final RuleCall cLeftRobotDynamicRobotIDTerminalRuleCall_1_0_0_1 = (RuleCall)cLeftRobotDynamicRobotCrossReference_1_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Keyword cStatusKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cCompareAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final Alternatives cCompareAlternatives_1_3_0 = (Alternatives)cCompareAssignment_1_3.eContents().get(0);
+		private final Keyword cCompareEqualsSignEqualsSignKeyword_1_3_0_0 = (Keyword)cCompareAlternatives_1_3_0.eContents().get(0);
+		private final Keyword cCompareExclamationMarkEqualsSignKeyword_1_3_0_1 = (Keyword)cCompareAlternatives_1_3_0.eContents().get(1);
+		private final Assignment cRightStatusAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
+		private final RuleCall cRightStatusRobotStatusEnumRuleCall_1_4_0 = (RuleCall)cRightStatusAssignment_1_4.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Assignment cLeftMeasureAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cLeftMeasureMeasureComparableParserRuleCall_2_0_0 = (RuleCall)cLeftMeasureAssignment_2_0.eContents().get(0);
+		private final Assignment cCompareAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final Alternatives cCompareAlternatives_2_1_0 = (Alternatives)cCompareAssignment_2_1.eContents().get(0);
+		private final Keyword cCompareGreaterThanSignKeyword_2_1_0_0 = (Keyword)cCompareAlternatives_2_1_0.eContents().get(0);
+		private final Keyword cCompareLessThanSignKeyword_2_1_0_1 = (Keyword)cCompareAlternatives_2_1_0.eContents().get(1);
+		private final Keyword cCompareGreaterThanSignEqualsSignKeyword_2_1_0_2 = (Keyword)cCompareAlternatives_2_1_0.eContents().get(2);
+		private final Keyword cCompareLessThanSignEqualsSignKeyword_2_1_0_3 = (Keyword)cCompareAlternatives_2_1_0.eContents().get(3);
+		private final Keyword cCompareEqualsSignEqualsSignKeyword_2_1_0_4 = (Keyword)cCompareAlternatives_2_1_0.eContents().get(4);
+		private final Keyword cCompareExclamationMarkEqualsSignKeyword_2_1_0_5 = (Keyword)cCompareAlternatives_2_1_0.eContents().get(5);
+		private final Assignment cRightMeasureAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final RuleCall cRightMeasureMeasureComparableParserRuleCall_2_2_0 = (RuleCall)cRightMeasureAssignment_2_2.eContents().get(0);
 		
 		//Condition:
-		//	TaskStatusCondition | RobotStatusCondition;
+		//	{Condition} (leftTask=[TaskExecution] '.' 'status' compare=('==' | '!=') rightStatus=TaskExecutionStatus) |
+		//	leftRobot=[DynamicRobot] '.' 'status' compare=('==' | '!=') rightStatus=RobotStatus | leftMeasure=MeasureComparable
+		//	compare=('>' | '<' | '>=' | '<=' | '==' | '!=') rightMeasure=MeasureComparable;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//TaskStatusCondition | RobotStatusCondition
+		//{Condition} (leftTask=[TaskExecution] '.' 'status' compare=('==' | '!=') rightStatus=TaskExecutionStatus) |
+		//leftRobot=[DynamicRobot] '.' 'status' compare=('==' | '!=') rightStatus=RobotStatus | leftMeasure=MeasureComparable
+		//compare=('>' | '<' | '>=' | '<=' | '==' | '!=') rightMeasure=MeasureComparable
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//TaskStatusCondition
-		public RuleCall getTaskStatusConditionParserRuleCall_0() { return cTaskStatusConditionParserRuleCall_0; }
+		//{Condition} (leftTask=[TaskExecution] '.' 'status' compare=('==' | '!=') rightStatus=TaskExecutionStatus)
+		public Group getGroup_0() { return cGroup_0; }
 		
-		//RobotStatusCondition
-		public RuleCall getRobotStatusConditionParserRuleCall_1() { return cRobotStatusConditionParserRuleCall_1; }
-	}
-	public class TaskStatusConditionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskStatusCondition");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTaskAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cTaskTaskExecutionCrossReference_0_0 = (CrossReference)cTaskAssignment_0.eContents().get(0);
-		private final RuleCall cTaskTaskExecutionIDTerminalRuleCall_0_0_1 = (RuleCall)cTaskTaskExecutionCrossReference_0_0.eContents().get(1);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cEqualAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final Keyword cEqualEqualsSignEqualsSignKeyword_1_0_0 = (Keyword)cEqualAssignment_1_0.eContents().get(0);
-		private final Assignment cNotEqualAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final Keyword cNotEqualExclamationMarkEqualsSignKeyword_1_1_0 = (Keyword)cNotEqualAssignment_1_1.eContents().get(0);
-		private final Assignment cTaskStatusAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTaskStatusTaskExecutionStatusEnumRuleCall_2_0 = (RuleCall)cTaskStatusAssignment_2.eContents().get(0);
+		//{Condition}
+		public Action getConditionAction_0_0() { return cConditionAction_0_0; }
 		
-		//TaskStatusCondition:
-		//	task=[TaskExecution] (equal?='==' | notEqual?='!=') taskStatus=TaskExecutionStatus;
-		@Override public ParserRule getRule() { return rule; }
+		//(leftTask=[TaskExecution] '.' 'status' compare=('==' | '!=') rightStatus=TaskExecutionStatus)
+		public Group getGroup_0_1() { return cGroup_0_1; }
 		
-		//task=[TaskExecution] (equal?='==' | notEqual?='!=') taskStatus=TaskExecutionStatus
-		public Group getGroup() { return cGroup; }
-		
-		//task=[TaskExecution]
-		public Assignment getTaskAssignment_0() { return cTaskAssignment_0; }
+		//leftTask=[TaskExecution]
+		public Assignment getLeftTaskAssignment_0_1_0() { return cLeftTaskAssignment_0_1_0; }
 		
 		//[TaskExecution]
-		public CrossReference getTaskTaskExecutionCrossReference_0_0() { return cTaskTaskExecutionCrossReference_0_0; }
+		public CrossReference getLeftTaskTaskExecutionCrossReference_0_1_0_0() { return cLeftTaskTaskExecutionCrossReference_0_1_0_0; }
 		
 		//ID
-		public RuleCall getTaskTaskExecutionIDTerminalRuleCall_0_0_1() { return cTaskTaskExecutionIDTerminalRuleCall_0_0_1; }
+		public RuleCall getLeftTaskTaskExecutionIDTerminalRuleCall_0_1_0_0_1() { return cLeftTaskTaskExecutionIDTerminalRuleCall_0_1_0_0_1; }
 		
-		//(equal?='==' | notEqual?='!=')
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//'.'
+		public Keyword getFullStopKeyword_0_1_1() { return cFullStopKeyword_0_1_1; }
 		
-		//equal?='=='
-		public Assignment getEqualAssignment_1_0() { return cEqualAssignment_1_0; }
+		//'status'
+		public Keyword getStatusKeyword_0_1_2() { return cStatusKeyword_0_1_2; }
+		
+		//compare=('==' | '!=')
+		public Assignment getCompareAssignment_0_1_3() { return cCompareAssignment_0_1_3; }
+		
+		//('==' | '!=')
+		public Alternatives getCompareAlternatives_0_1_3_0() { return cCompareAlternatives_0_1_3_0; }
 		
 		//'=='
-		public Keyword getEqualEqualsSignEqualsSignKeyword_1_0_0() { return cEqualEqualsSignEqualsSignKeyword_1_0_0; }
-		
-		//notEqual?='!='
-		public Assignment getNotEqualAssignment_1_1() { return cNotEqualAssignment_1_1; }
+		public Keyword getCompareEqualsSignEqualsSignKeyword_0_1_3_0_0() { return cCompareEqualsSignEqualsSignKeyword_0_1_3_0_0; }
 		
 		//'!='
-		public Keyword getNotEqualExclamationMarkEqualsSignKeyword_1_1_0() { return cNotEqualExclamationMarkEqualsSignKeyword_1_1_0; }
+		public Keyword getCompareExclamationMarkEqualsSignKeyword_0_1_3_0_1() { return cCompareExclamationMarkEqualsSignKeyword_0_1_3_0_1; }
 		
-		//taskStatus=TaskExecutionStatus
-		public Assignment getTaskStatusAssignment_2() { return cTaskStatusAssignment_2; }
+		//rightStatus=TaskExecutionStatus
+		public Assignment getRightStatusAssignment_0_1_4() { return cRightStatusAssignment_0_1_4; }
 		
 		//TaskExecutionStatus
-		public RuleCall getTaskStatusTaskExecutionStatusEnumRuleCall_2_0() { return cTaskStatusTaskExecutionStatusEnumRuleCall_2_0; }
-	}
-	public class RobotStatusConditionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.RobotStatusCondition");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cRobotAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cRobotDynamicRobotCrossReference_0_0 = (CrossReference)cRobotAssignment_0.eContents().get(0);
-		private final RuleCall cRobotDynamicRobotIDTerminalRuleCall_0_0_1 = (RuleCall)cRobotDynamicRobotCrossReference_0_0.eContents().get(1);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cEqualAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final Keyword cEqualEqualsSignEqualsSignKeyword_1_0_0 = (Keyword)cEqualAssignment_1_0.eContents().get(0);
-		private final Assignment cNotEqualAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final Keyword cNotEqualExclamationMarkEqualsSignKeyword_1_1_0 = (Keyword)cNotEqualAssignment_1_1.eContents().get(0);
-		private final Assignment cRobotStatusAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRobotStatusRobotStatusEnumRuleCall_2_0 = (RuleCall)cRobotStatusAssignment_2.eContents().get(0);
+		public RuleCall getRightStatusTaskExecutionStatusEnumRuleCall_0_1_4_0() { return cRightStatusTaskExecutionStatusEnumRuleCall_0_1_4_0; }
 		
-		//RobotStatusCondition:
-		//	robot=[DynamicRobot] (equal?='==' | notEqual?='!=') robotStatus=RobotStatus;
-		@Override public ParserRule getRule() { return rule; }
+		//leftRobot=[DynamicRobot] '.' 'status' compare=('==' | '!=') rightStatus=RobotStatus
+		public Group getGroup_1() { return cGroup_1; }
 		
-		//robot=[DynamicRobot] (equal?='==' | notEqual?='!=') robotStatus=RobotStatus
-		public Group getGroup() { return cGroup; }
-		
-		//robot=[DynamicRobot]
-		public Assignment getRobotAssignment_0() { return cRobotAssignment_0; }
+		//leftRobot=[DynamicRobot]
+		public Assignment getLeftRobotAssignment_1_0() { return cLeftRobotAssignment_1_0; }
 		
 		//[DynamicRobot]
-		public CrossReference getRobotDynamicRobotCrossReference_0_0() { return cRobotDynamicRobotCrossReference_0_0; }
+		public CrossReference getLeftRobotDynamicRobotCrossReference_1_0_0() { return cLeftRobotDynamicRobotCrossReference_1_0_0; }
 		
 		//ID
-		public RuleCall getRobotDynamicRobotIDTerminalRuleCall_0_0_1() { return cRobotDynamicRobotIDTerminalRuleCall_0_0_1; }
+		public RuleCall getLeftRobotDynamicRobotIDTerminalRuleCall_1_0_0_1() { return cLeftRobotDynamicRobotIDTerminalRuleCall_1_0_0_1; }
 		
-		//(equal?='==' | notEqual?='!=')
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//'.'
+		public Keyword getFullStopKeyword_1_1() { return cFullStopKeyword_1_1; }
 		
-		//equal?='=='
-		public Assignment getEqualAssignment_1_0() { return cEqualAssignment_1_0; }
+		//'status'
+		public Keyword getStatusKeyword_1_2() { return cStatusKeyword_1_2; }
+		
+		//compare=('==' | '!=')
+		public Assignment getCompareAssignment_1_3() { return cCompareAssignment_1_3; }
+		
+		//('==' | '!=')
+		public Alternatives getCompareAlternatives_1_3_0() { return cCompareAlternatives_1_3_0; }
 		
 		//'=='
-		public Keyword getEqualEqualsSignEqualsSignKeyword_1_0_0() { return cEqualEqualsSignEqualsSignKeyword_1_0_0; }
-		
-		//notEqual?='!='
-		public Assignment getNotEqualAssignment_1_1() { return cNotEqualAssignment_1_1; }
+		public Keyword getCompareEqualsSignEqualsSignKeyword_1_3_0_0() { return cCompareEqualsSignEqualsSignKeyword_1_3_0_0; }
 		
 		//'!='
-		public Keyword getNotEqualExclamationMarkEqualsSignKeyword_1_1_0() { return cNotEqualExclamationMarkEqualsSignKeyword_1_1_0; }
+		public Keyword getCompareExclamationMarkEqualsSignKeyword_1_3_0_1() { return cCompareExclamationMarkEqualsSignKeyword_1_3_0_1; }
 		
-		//robotStatus=RobotStatus
-		public Assignment getRobotStatusAssignment_2() { return cRobotStatusAssignment_2; }
+		//rightStatus=RobotStatus
+		public Assignment getRightStatusAssignment_1_4() { return cRightStatusAssignment_1_4; }
 		
 		//RobotStatus
-		public RuleCall getRobotStatusRobotStatusEnumRuleCall_2_0() { return cRobotStatusRobotStatusEnumRuleCall_2_0; }
+		public RuleCall getRightStatusRobotStatusEnumRuleCall_1_4_0() { return cRightStatusRobotStatusEnumRuleCall_1_4_0; }
+		
+		//leftMeasure=MeasureComparable compare=('>' | '<' | '>=' | '<=' | '==' | '!=') rightMeasure=MeasureComparable
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//leftMeasure=MeasureComparable
+		public Assignment getLeftMeasureAssignment_2_0() { return cLeftMeasureAssignment_2_0; }
+		
+		//MeasureComparable
+		public RuleCall getLeftMeasureMeasureComparableParserRuleCall_2_0_0() { return cLeftMeasureMeasureComparableParserRuleCall_2_0_0; }
+		
+		//compare=('>' | '<' | '>=' | '<=' | '==' | '!=')
+		public Assignment getCompareAssignment_2_1() { return cCompareAssignment_2_1; }
+		
+		//('>' | '<' | '>=' | '<=' | '==' | '!=')
+		public Alternatives getCompareAlternatives_2_1_0() { return cCompareAlternatives_2_1_0; }
+		
+		//'>'
+		public Keyword getCompareGreaterThanSignKeyword_2_1_0_0() { return cCompareGreaterThanSignKeyword_2_1_0_0; }
+		
+		//'<'
+		public Keyword getCompareLessThanSignKeyword_2_1_0_1() { return cCompareLessThanSignKeyword_2_1_0_1; }
+		
+		//'>='
+		public Keyword getCompareGreaterThanSignEqualsSignKeyword_2_1_0_2() { return cCompareGreaterThanSignEqualsSignKeyword_2_1_0_2; }
+		
+		//'<='
+		public Keyword getCompareLessThanSignEqualsSignKeyword_2_1_0_3() { return cCompareLessThanSignEqualsSignKeyword_2_1_0_3; }
+		
+		//'=='
+		public Keyword getCompareEqualsSignEqualsSignKeyword_2_1_0_4() { return cCompareEqualsSignEqualsSignKeyword_2_1_0_4; }
+		
+		//'!='
+		public Keyword getCompareExclamationMarkEqualsSignKeyword_2_1_0_5() { return cCompareExclamationMarkEqualsSignKeyword_2_1_0_5; }
+		
+		//rightMeasure=MeasureComparable
+		public Assignment getRightMeasureAssignment_2_2() { return cRightMeasureAssignment_2_2; }
+		
+		//MeasureComparable
+		public RuleCall getRightMeasureMeasureComparableParserRuleCall_2_2_0() { return cRightMeasureMeasureComparableParserRuleCall_2_2_0; }
+	}
+	public class MeasureComparableElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MeasureComparable");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Assignment cContainerAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final CrossReference cContainerDynamicRobotCrossReference_0_0_0 = (CrossReference)cContainerAssignment_0_0.eContents().get(0);
+		private final RuleCall cContainerDynamicRobotIDTerminalRuleCall_0_0_0_1 = (RuleCall)cContainerDynamicRobotCrossReference_0_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cMemberAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final CrossReference cMemberPropertyKeyCrossReference_0_2_0 = (CrossReference)cMemberAssignment_0_2.eContents().get(0);
+		private final RuleCall cMemberPropertyKeyIDTerminalRuleCall_0_2_0_1 = (RuleCall)cMemberPropertyKeyCrossReference_0_2_0.eContents().get(1);
+		private final Assignment cValueAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cValuePropertyValueParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//MeasureComparable:
+		//	container=[DynamicRobot] '.' member=[drone::PropertyKey] | value=PropertyValue;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//container=[DynamicRobot] '.' member=[drone::PropertyKey] | value=PropertyValue
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//container=[DynamicRobot] '.' member=[drone::PropertyKey]
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//container=[DynamicRobot]
+		public Assignment getContainerAssignment_0_0() { return cContainerAssignment_0_0; }
+		
+		//[DynamicRobot]
+		public CrossReference getContainerDynamicRobotCrossReference_0_0_0() { return cContainerDynamicRobotCrossReference_0_0_0; }
+		
+		//ID
+		public RuleCall getContainerDynamicRobotIDTerminalRuleCall_0_0_0_1() { return cContainerDynamicRobotIDTerminalRuleCall_0_0_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_0_1() { return cFullStopKeyword_0_1; }
+		
+		//member=[drone::PropertyKey]
+		public Assignment getMemberAssignment_0_2() { return cMemberAssignment_0_2; }
+		
+		//[drone::PropertyKey]
+		public CrossReference getMemberPropertyKeyCrossReference_0_2_0() { return cMemberPropertyKeyCrossReference_0_2_0; }
+		
+		//ID
+		public RuleCall getMemberPropertyKeyIDTerminalRuleCall_0_2_0_1() { return cMemberPropertyKeyIDTerminalRuleCall_0_2_0_1; }
+		
+		//value=PropertyValue
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//PropertyValue
+		public RuleCall getValuePropertyValueParserRuleCall_1_0() { return cValuePropertyValueParserRuleCall_1_0; }
 	}
 	public class TaskExecutionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskExecution");
@@ -2114,95 +2233,97 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.RobotStatus");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cReadyEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cReadyReadyKeyword_0_0 = (Keyword)cReadyEnumLiteralDeclaration_0.eContents().get(0);
+		private final Keyword cReadyRobotReadyKeyword_0_0 = (Keyword)cReadyEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cTurnedOffEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cTurnedOffTurnedOffKeyword_1_0 = (Keyword)cTurnedOffEnumLiteralDeclaration_1.eContents().get(0);
+		private final Keyword cTurnedOffRobotTurnedOffKeyword_1_0 = (Keyword)cTurnedOffEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cWaitingEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cWaitingWaitingKeyword_2_0 = (Keyword)cWaitingEnumLiteralDeclaration_2.eContents().get(0);
+		private final Keyword cWaitingRobotWaitingKeyword_2_0 = (Keyword)cWaitingEnumLiteralDeclaration_2.eContents().get(0);
 		private final EnumLiteralDeclaration cExecutingEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cExecutingExecutingKeyword_3_0 = (Keyword)cExecutingEnumLiteralDeclaration_3.eContents().get(0);
+		private final Keyword cExecutingRobotExecutingKeyword_3_0 = (Keyword)cExecutingEnumLiteralDeclaration_3.eContents().get(0);
 		
-		//enum RobotStatus:
-		//	Ready | TurnedOff | Waiting | Executing;
+		//enum RobotStatus returns EObject:
+		//	Ready='RobotReady' | TurnedOff='RobotTurnedOff' | Waiting='RobotWaiting' | Executing='RobotExecuting';
 		public EnumRule getRule() { return rule; }
 		
-		//Ready | TurnedOff | Waiting | Executing
+		//Ready='RobotReady' | TurnedOff='RobotTurnedOff' | Waiting='RobotWaiting' | Executing='RobotExecuting'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//Ready
+		//Ready='RobotReady'
 		public EnumLiteralDeclaration getReadyEnumLiteralDeclaration_0() { return cReadyEnumLiteralDeclaration_0; }
 		
-		//'Ready'
-		public Keyword getReadyReadyKeyword_0_0() { return cReadyReadyKeyword_0_0; }
+		//'RobotReady'
+		public Keyword getReadyRobotReadyKeyword_0_0() { return cReadyRobotReadyKeyword_0_0; }
 		
-		//TurnedOff
+		//TurnedOff='RobotTurnedOff'
 		public EnumLiteralDeclaration getTurnedOffEnumLiteralDeclaration_1() { return cTurnedOffEnumLiteralDeclaration_1; }
 		
-		//'TurnedOff'
-		public Keyword getTurnedOffTurnedOffKeyword_1_0() { return cTurnedOffTurnedOffKeyword_1_0; }
+		//'RobotTurnedOff'
+		public Keyword getTurnedOffRobotTurnedOffKeyword_1_0() { return cTurnedOffRobotTurnedOffKeyword_1_0; }
 		
-		//Waiting
+		//Waiting='RobotWaiting'
 		public EnumLiteralDeclaration getWaitingEnumLiteralDeclaration_2() { return cWaitingEnumLiteralDeclaration_2; }
 		
-		//'Waiting'
-		public Keyword getWaitingWaitingKeyword_2_0() { return cWaitingWaitingKeyword_2_0; }
+		//'RobotWaiting'
+		public Keyword getWaitingRobotWaitingKeyword_2_0() { return cWaitingRobotWaitingKeyword_2_0; }
 		
-		//Executing
+		//Executing='RobotExecuting'
 		public EnumLiteralDeclaration getExecutingEnumLiteralDeclaration_3() { return cExecutingEnumLiteralDeclaration_3; }
 		
-		//'Executing'
-		public Keyword getExecutingExecutingKeyword_3_0() { return cExecutingExecutingKeyword_3_0; }
+		//'RobotExecuting'
+		public Keyword getExecutingRobotExecutingKeyword_3_0() { return cExecutingRobotExecutingKeyword_3_0; }
 	}
 	public class TaskExecutionStatusElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskExecutionStatus");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cReadyEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cReadyReadyKeyword_0_0 = (Keyword)cReadyEnumLiteralDeclaration_0.eContents().get(0);
+		private final Keyword cReadyTaskReadyKeyword_0_0 = (Keyword)cReadyEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cFinishedEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cFinishedFinishedKeyword_1_0 = (Keyword)cFinishedEnumLiteralDeclaration_1.eContents().get(0);
+		private final Keyword cFinishedTaskFinishedKeyword_1_0 = (Keyword)cFinishedEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cSuspendedEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cSuspendedSuspendedKeyword_2_0 = (Keyword)cSuspendedEnumLiteralDeclaration_2.eContents().get(0);
+		private final Keyword cSuspendedTaskSuspendedKeyword_2_0 = (Keyword)cSuspendedEnumLiteralDeclaration_2.eContents().get(0);
 		private final EnumLiteralDeclaration cInProgressEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cInProgressInProgressKeyword_3_0 = (Keyword)cInProgressEnumLiteralDeclaration_3.eContents().get(0);
+		private final Keyword cInProgressTaskInProgressKeyword_3_0 = (Keyword)cInProgressEnumLiteralDeclaration_3.eContents().get(0);
 		private final EnumLiteralDeclaration cWaitingEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
-		private final Keyword cWaitingWaitingKeyword_4_0 = (Keyword)cWaitingEnumLiteralDeclaration_4.eContents().get(0);
+		private final Keyword cWaitingTaskWaitingKeyword_4_0 = (Keyword)cWaitingEnumLiteralDeclaration_4.eContents().get(0);
 		
-		//enum TaskExecutionStatus:
-		//	Ready | Finished | Suspended | InProgress | Waiting;
+		//enum TaskExecutionStatus returns EObject:
+		//	Ready='TaskReady' | Finished='TaskFinished' | Suspended='TaskSuspended' | InProgress='TaskInProgress' |
+		//	Waiting='TaskWaiting';
 		public EnumRule getRule() { return rule; }
 		
-		//Ready | Finished | Suspended | InProgress | Waiting
+		//Ready='TaskReady' | Finished='TaskFinished' | Suspended='TaskSuspended' | InProgress='TaskInProgress' |
+		//Waiting='TaskWaiting'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//Ready
+		//Ready='TaskReady'
 		public EnumLiteralDeclaration getReadyEnumLiteralDeclaration_0() { return cReadyEnumLiteralDeclaration_0; }
 		
-		//'Ready'
-		public Keyword getReadyReadyKeyword_0_0() { return cReadyReadyKeyword_0_0; }
+		//'TaskReady'
+		public Keyword getReadyTaskReadyKeyword_0_0() { return cReadyTaskReadyKeyword_0_0; }
 		
-		//Finished
+		//Finished='TaskFinished'
 		public EnumLiteralDeclaration getFinishedEnumLiteralDeclaration_1() { return cFinishedEnumLiteralDeclaration_1; }
 		
-		//'Finished'
-		public Keyword getFinishedFinishedKeyword_1_0() { return cFinishedFinishedKeyword_1_0; }
+		//'TaskFinished'
+		public Keyword getFinishedTaskFinishedKeyword_1_0() { return cFinishedTaskFinishedKeyword_1_0; }
 		
-		//Suspended
+		//Suspended='TaskSuspended'
 		public EnumLiteralDeclaration getSuspendedEnumLiteralDeclaration_2() { return cSuspendedEnumLiteralDeclaration_2; }
 		
-		//'Suspended'
-		public Keyword getSuspendedSuspendedKeyword_2_0() { return cSuspendedSuspendedKeyword_2_0; }
+		//'TaskSuspended'
+		public Keyword getSuspendedTaskSuspendedKeyword_2_0() { return cSuspendedTaskSuspendedKeyword_2_0; }
 		
-		//InProgress
+		//InProgress='TaskInProgress'
 		public EnumLiteralDeclaration getInProgressEnumLiteralDeclaration_3() { return cInProgressEnumLiteralDeclaration_3; }
 		
-		//'InProgress'
-		public Keyword getInProgressInProgressKeyword_3_0() { return cInProgressInProgressKeyword_3_0; }
+		//'TaskInProgress'
+		public Keyword getInProgressTaskInProgressKeyword_3_0() { return cInProgressTaskInProgressKeyword_3_0; }
 		
-		//Waiting
+		//Waiting='TaskWaiting'
 		public EnumLiteralDeclaration getWaitingEnumLiteralDeclaration_4() { return cWaitingEnumLiteralDeclaration_4; }
 		
-		//'Waiting'
-		public Keyword getWaitingWaitingKeyword_4_0() { return cWaitingWaitingKeyword_4_0; }
+		//'TaskWaiting'
+		public Keyword getWaitingTaskWaitingKeyword_4_0() { return cWaitingTaskWaitingKeyword_4_0; }
 	}
 	
 	private final BehaviourLanguageElements pBehaviourLanguage;
@@ -2229,8 +2350,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	private final MultiTargetElements pMultiTarget;
 	private final AllTargetElements pAllTarget;
 	private final ConditionElements pCondition;
-	private final TaskStatusConditionElements pTaskStatusCondition;
-	private final RobotStatusConditionElements pRobotStatusCondition;
+	private final MeasureComparableElements pMeasureComparable;
 	private final TaskExecutionElements pTaskExecution;
 	private final TaskRequirementElements pTaskRequirement;
 	private final BehaviouralPropertyKeyContainerElements pBehaviouralPropertyKeyContainer;
@@ -2281,8 +2401,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		this.pMultiTarget = new MultiTargetElements();
 		this.pAllTarget = new AllTargetElements();
 		this.pCondition = new ConditionElements();
-		this.pTaskStatusCondition = new TaskStatusConditionElements();
-		this.pRobotStatusCondition = new RobotStatusConditionElements();
+		this.pMeasureComparable = new MeasureComparableElements();
 		this.pTaskExecution = new TaskExecutionElements();
 		this.pTaskRequirement = new TaskRequirementElements();
 		this.pBehaviouralPropertyKeyContainer = new BehaviouralPropertyKeyContainerElements();
@@ -2408,7 +2527,8 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 	
 	//ConditionalStatement:
-	//	'if' condition=Condition 'then' '{' statements+=Statement+ '}' ('else' '{' otherStatements+=Statement+ '}')?;
+	//	'if' condition+=Condition ('or' condition+=Condition)* 'then' '{' statements+=Statement+ '}' ('else' '{'
+	//	otherStatements+=Statement+ '}')?;
 	public ConditionalStatementElements getConditionalStatementAccess() {
 		return pConditionalStatement;
 	}
@@ -2569,7 +2689,9 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 	
 	//Condition:
-	//	TaskStatusCondition | RobotStatusCondition;
+	//	{Condition} (leftTask=[TaskExecution] '.' 'status' compare=('==' | '!=') rightStatus=TaskExecutionStatus) |
+	//	leftRobot=[DynamicRobot] '.' 'status' compare=('==' | '!=') rightStatus=RobotStatus | leftMeasure=MeasureComparable
+	//	compare=('>' | '<' | '>=' | '<=' | '==' | '!=') rightMeasure=MeasureComparable;
 	public ConditionElements getConditionAccess() {
 		return pCondition;
 	}
@@ -2578,24 +2700,14 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getConditionAccess().getRule();
 	}
 	
-	//TaskStatusCondition:
-	//	task=[TaskExecution] (equal?='==' | notEqual?='!=') taskStatus=TaskExecutionStatus;
-	public TaskStatusConditionElements getTaskStatusConditionAccess() {
-		return pTaskStatusCondition;
+	//MeasureComparable:
+	//	container=[DynamicRobot] '.' member=[drone::PropertyKey] | value=PropertyValue;
+	public MeasureComparableElements getMeasureComparableAccess() {
+		return pMeasureComparable;
 	}
 	
-	public ParserRule getTaskStatusConditionRule() {
-		return getTaskStatusConditionAccess().getRule();
-	}
-	
-	//RobotStatusCondition:
-	//	robot=[DynamicRobot] (equal?='==' | notEqual?='!=') robotStatus=RobotStatus;
-	public RobotStatusConditionElements getRobotStatusConditionAccess() {
-		return pRobotStatusCondition;
-	}
-	
-	public ParserRule getRobotStatusConditionRule() {
-		return getRobotStatusConditionAccess().getRule();
+	public ParserRule getMeasureComparableRule() {
+		return getMeasureComparableAccess().getRule();
 	}
 	
 	//TaskExecution:
@@ -2660,8 +2772,8 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getRobotCollaborationAccess().getRule();
 	}
 	
-	//enum RobotStatus:
-	//	Ready | TurnedOff | Waiting | Executing;
+	//enum RobotStatus returns EObject:
+	//	Ready='RobotReady' | TurnedOff='RobotTurnedOff' | Waiting='RobotWaiting' | Executing='RobotExecuting';
 	public RobotStatusElements getRobotStatusAccess() {
 		return eRobotStatus;
 	}
@@ -2762,8 +2874,9 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getMessageAccess().getRule();
 	}
 	
-	//enum TaskExecutionStatus:
-	//	Ready | Finished | Suspended | InProgress | Waiting;
+	//enum TaskExecutionStatus returns EObject:
+	//	Ready='TaskReady' | Finished='TaskFinished' | Suspended='TaskSuspended' | InProgress='TaskInProgress' |
+	//	Waiting='TaskWaiting';
 	public TaskExecutionStatusElements getTaskExecutionStatusAccess() {
 		return eTaskExecutionStatus;
 	}

@@ -3,35 +3,34 @@ package hu.bme.mdsd.ztz.text.parser
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.JsonNodeFactory
+import com.fasterxml.jackson.databind.node.ObjectNode
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.model.behaviour.Message
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
+import hu.bme.mdsd.ztz.model.drone.MeasureValue
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Condition
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget
-import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
-import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
-import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
 import hu.bme.mdsd.ztz.text.generator.JsonNodeGenerator
+import hu.bme.mdsd.ztz.text.util.RobotUtil
 import java.util.HashSet
 import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
 
 import static extension hu.bme.mdsd.ztz.text.util.RobotUtil.*
-import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
-import com.fasterxml.jackson.databind.node.ObjectNode
 
 class StatementParser {
 	
@@ -77,7 +76,7 @@ class StatementParser {
 	} 
 
 	def dispatch parseStatement(ConditionalStatement conditionalStatement, ArrayNode containerNode) {
-		if (conditionalStatement.condition.trueCondition()) {
+		if (conditionalStatement.condition.exists[it.trueCondition()]) {
 			for (Statement st : conditionalStatement.statements) {
 				st.parseStatement(containerNode)
 			}
@@ -87,23 +86,64 @@ class StatementParser {
 			}
 		}
 	}
-
-	def dispatch trueCondition(TaskStatusCondition condition) {
-		if (condition.equal) {
-			return condition.task.status == condition.taskStatus	
-		} else if (condition.notEqual) {
-			return condition.task.status != condition.taskStatus
+	
+	def trueCondition(Condition condition) {
+		if (condition.leftTask != null) {
+			return condition.leftTask.status.equals(condition.rightStatus) == condition.compare.equals("==")
+		} else if (condition.leftRobot != null) {
+			return condition.leftRobot.status.equals(condition.rightStatus) == condition.compare.equals("==")
+		} else if (condition.leftMeasure != null && condition.rightMeasure != null) {
+			val left = RobotUtil.getPropertyValueFromComparable(condition.leftMeasure)
+			val right = RobotUtil.getPropertyValueFromComparable(condition.rightMeasure)
+			
+			if (left instanceof MeasureValue && right instanceof MeasureValue)
+			{
+				val leftConversion = RobotUtil.convertTo(left as MeasureValue, (right as MeasureValue).dimension)
+				if (leftConversion != null) {
+					return compareMeasureValues(leftConversion, right as MeasureValue, condition.compare)
+				} else {
+					val rightConversion = RobotUtil.convertTo(right as MeasureValue, (left as MeasureValue).dimension)
+					return compareMeasureValues(rightConversion, left as MeasureValue, condition.compare)
+				}
+								
+			}
+			else {
+				return left.equals(right) == condition.compare.equals("==")
+			}
 		}
 	}
 	
-	def dispatch trueCondition(RobotStatusCondition condition) {
-		if (condition.equal) {
-			return condition.robot.status == condition.robotStatus	
-		} else if (condition.notEqual) {
-			return condition.robot.status != condition.robotStatus
-		}
-		
+	def compareMeasureValues(MeasureValue left, MeasureValue right, String comparison) {
+		if (comparison.equals(">"))
+			return left.value > right.value
+		else if (comparison.equals(">="))
+			return left.value >= right.value
+		else if (comparison.equals("<"))
+			return left.value < right.value
+		else if (comparison.equals("<="))
+			return left.value <= right.value
+		else if (comparison.equals("=="))
+			return left.value == right.value
+		else if (comparison.equals("!="))
+			return left.value != right.value
 	}
+
+//	def dispatch trueCondition(TaskStatusCondition condition) {
+//		if (condition.equal) {
+//			return condition.task.status == condition.taskStatus	
+//		} else if (condition.notEqual) {
+//			return condition.task.status != condition.taskStatus
+//		}
+//	}
+	
+//	def dispatch trueCondition(RobotStatusCondition condition) {
+//		if (condition.equal) {
+//			return condition.robot.status == condition.robotStatus	
+//		} else if (condition.notEqual) {
+//			return condition.robot.status != condition.robotStatus
+//		}
+//		
+//	}
 
 	def dispatch parseStatement(ActionStatement statement, ArrayNode containerNode) {
 		val robot = statement.robot 
@@ -179,16 +219,16 @@ class StatementParser {
 		
 	}
 	
-	def dispatch parseStatement(RobotStatusStatement statement, ArrayNode containerNode) {
-		val robot = statement.robot
-		
-		robot.status = statement.status	
-	}
-	
-	def dispatch parseStatement(TaskStatusStatement statement, ArrayNode containerNode) {
-		val task = statement.task
-		task.status = statement.status		
-	}
+//	def dispatch parseStatement(RobotStatusStatement statement, ArrayNode containerNode) {
+//		val robot = statement.robot
+//		
+//		robot.status = statement.status	
+//	}
+//	
+//	def dispatch parseStatement(TaskStatusStatement statement, ArrayNode containerNode) {
+//		val task = statement.task
+//		task.status = statement.status		
+//	}
 	
 	def dispatch parseMessageTarget(UniTarget target, DynamicRobot senderRobot, ArrayNode containerNode, Message message) {
 		if (!reachableRobot(senderRobot, target.target)) {

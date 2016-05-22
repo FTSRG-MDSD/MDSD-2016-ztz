@@ -25,10 +25,10 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.scoping.AbstractBehaviourLanguageScopeProvider;
 import java.util.Arrays;
@@ -37,15 +37,16 @@ import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 /**
  * This class contains custom scoping description.
@@ -225,17 +226,22 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
   protected IScope _scopeForContext(final ActionDeclarationStatement context, final EReference reference, final ResourceManager manager) {
     boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.ACTION_DECLARATION_STATEMENT__PROPERTIES);
     if (_equals) {
-      RobotMissionContainer _container = this.getContainer(manager);
-      List<PropertyKey> _allContentsOfType = EcoreUtil2.<PropertyKey>getAllContentsOfType(_container, PropertyKey.class);
-      final Set<PropertyKey> droneProperties = IterableExtensions.<PropertyKey>toSet(_allContentsOfType);
-      Resource _eResource = context.eResource();
-      TreeIterator<EObject> _allContents = _eResource.getAllContents();
-      Iterator<PropertyKey> _filter = Iterators.<PropertyKey>filter(_allContents, PropertyKey.class);
-      Set<PropertyKey> _set = IteratorExtensions.<PropertyKey>toSet(_filter);
-      droneProperties.addAll(_set);
-      return Scopes.scopeFor(droneProperties);
+      Set<PropertyKey> _allProperties = this.allProperties(context, manager);
+      return Scopes.scopeFor(_allProperties);
     }
     return null;
+  }
+  
+  public Set<PropertyKey> allProperties(final EObject context, final ResourceManager manager) {
+    RobotMissionContainer _container = this.getContainer(manager);
+    List<PropertyKey> _allContentsOfType = EcoreUtil2.<PropertyKey>getAllContentsOfType(_container, PropertyKey.class);
+    final Set<PropertyKey> droneProperties = IterableExtensions.<PropertyKey>toSet(_allContentsOfType);
+    Resource _eResource = context.eResource();
+    TreeIterator<EObject> _allContents = _eResource.getAllContents();
+    Iterator<PropertyKey> _filter = Iterators.<PropertyKey>filter(_allContents, PropertyKey.class);
+    Set<PropertyKey> _set = IteratorExtensions.<PropertyKey>toSet(_filter);
+    droneProperties.addAll(_set);
+    return droneProperties;
   }
   
   protected IScope _scopeForContext(final MeasureValue context, final EReference reference, final ResourceManager manager) {
@@ -282,30 +288,78 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
     return _xblockexpression;
   }
   
-  protected IScope _scopeForContext(final TaskStatusCondition context, final EReference reference, final ResourceManager manager) {
-    IScope _xblockexpression = null;
-    {
-      boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.TASK_STATUS_CONDITION__TASK_STATUS);
-      if (_equals) {
-        EList<EEnumLiteral> _eLiterals = BehaviourPackage.Literals.TASK_EXECUTION_STATUS.getELiterals();
-        return Scopes.scopeFor(_eLiterals);
+  protected IScope _scopeForContext(final MeasureComparable context, final EReference reference, final ResourceManager manager) {
+    IScope _xifexpression = null;
+    boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.MEASURE_COMPARABLE__CONTAINER);
+    if (_equals) {
+      Resource _eResource = context.eResource();
+      TreeIterator<EObject> _allContents = _eResource.getAllContents();
+      Iterator<DynamicRobot> _filter = Iterators.<DynamicRobot>filter(_allContents, DynamicRobot.class);
+      Set<DynamicRobot> _set = IteratorExtensions.<DynamicRobot>toSet(_filter);
+      return Scopes.scopeFor(_set);
+    } else {
+      IScope _xifexpression_1 = null;
+      boolean _equals_1 = Objects.equal(reference, BehaviourLanguagePackage.Literals.MEASURE_COMPARABLE__MEMBER);
+      if (_equals_1) {
+        DynamicRobot _container = context.getContainer();
+        Robot _robot = _container.getRobot();
+        EList<Property> _properties = _robot.getProperties();
+        final Function1<Property, PropertyKey> _function = (Property it) -> {
+          return it.getKey();
+        };
+        List<PropertyKey> _map = ListExtensions.<Property, PropertyKey>map(_properties, _function);
+        return Scopes.scopeFor(_map);
+      } else {
+        _xifexpression_1 = super.getScope(context, reference);
       }
-      _xblockexpression = super.getScope(context, reference);
+      _xifexpression = _xifexpression_1;
     }
-    return _xblockexpression;
+    return _xifexpression;
   }
   
-  protected IScope _scopeForContext(final RobotStatusCondition context, final EReference reference, final ResourceManager manager) {
-    IScope _xblockexpression = null;
-    {
-      boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.ROBOT_STATUS_CONDITION__ROBOT_STATUS);
-      if (_equals) {
-        EList<EEnumLiteral> _eLiterals = BehaviourPackage.Literals.ROBOT_STATUS.getELiterals();
-        return Scopes.scopeFor(_eLiterals);
-      }
-      _xblockexpression = super.getScope(context, reference);
+  protected IScope _scopeForContext(final ConditionalStatement context, final EReference reference, final ResourceManager manager) {
+    IScope _xifexpression = null;
+    boolean _or = false;
+    boolean _or_1 = false;
+    boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.CONDITION__LEFT_TASK);
+    if (_equals) {
+      _or_1 = true;
+    } else {
+      boolean _equals_1 = Objects.equal(reference, BehaviourLanguagePackage.Literals.CONDITION__LEFT_ROBOT);
+      _or_1 = _equals_1;
     }
-    return _xblockexpression;
+    if (_or_1) {
+      _or = true;
+    } else {
+      boolean _equals_2 = Objects.equal(reference, BehaviourLanguagePackage.Literals.MEASURE_COMPARABLE__CONTAINER);
+      _or = _equals_2;
+    }
+    if (_or) {
+      Resource _eResource = context.eResource();
+      TreeIterator<EObject> _allContents = _eResource.getAllContents();
+      final Function1<EObject, Boolean> _function = (EObject it) -> {
+        return Boolean.valueOf((it instanceof DynamicRobot));
+      };
+      Iterator<EObject> _filter = IteratorExtensions.<EObject>filter(_allContents, _function);
+      final Set<EObject> leftValues = IteratorExtensions.<EObject>toSet(_filter);
+      Resource _eResource_1 = context.eResource();
+      TreeIterator<EObject> _allContents_1 = _eResource_1.getAllContents();
+      Iterator<TaskExecution> _filter_1 = Iterators.<TaskExecution>filter(_allContents_1, TaskExecution.class);
+      Set<TaskExecution> _set = IteratorExtensions.<TaskExecution>toSet(_filter_1);
+      leftValues.addAll(_set);
+      return Scopes.scopeFor(leftValues);
+    } else {
+      IScope _xifexpression_1 = null;
+      boolean _equals_3 = Objects.equal(reference, BehaviourLanguagePackage.Literals.MEASURE_COMPARABLE__MEMBER);
+      if (_equals_3) {
+        Set<PropertyKey> _allProperties = this.allProperties(context, manager);
+        return Scopes.scopeFor(_allProperties);
+      } else {
+        _xifexpression_1 = super.getScope(context, reference);
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
   }
   
   protected RobotMissionContainer getContainer(final ResourceManager manager) {
@@ -330,14 +384,14 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
       return _scopeForContext((MeasureValue)context, reference, manager);
     } else if (context instanceof ActionDeclarationStatement) {
       return _scopeForContext((ActionDeclarationStatement)context, reference, manager);
-    } else if (context instanceof RobotStatusCondition) {
-      return _scopeForContext((RobotStatusCondition)context, reference, manager);
-    } else if (context instanceof TaskStatusCondition) {
-      return _scopeForContext((TaskStatusCondition)context, reference, manager);
+    } else if (context instanceof ConditionalStatement) {
+      return _scopeForContext((ConditionalStatement)context, reference, manager);
     } else if (context instanceof CapabilityProperties) {
       return _scopeForContext((CapabilityProperties)context, reference, manager);
     } else if (context instanceof Property) {
       return _scopeForContext((Property)context, reference, manager);
+    } else if (context instanceof MeasureComparable) {
+      return _scopeForContext((MeasureComparable)context, reference, manager);
     } else if (context != null) {
       return _scopeForContext(context, reference, manager);
     } else {

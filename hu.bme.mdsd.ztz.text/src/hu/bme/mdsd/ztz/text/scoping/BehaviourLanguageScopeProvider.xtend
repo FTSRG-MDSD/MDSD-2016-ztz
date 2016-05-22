@@ -10,27 +10,28 @@ import hu.bme.mdsd.ztz.model.behaviour.TaskExecution
 import hu.bme.mdsd.ztz.model.behaviour.TaskRequirement
 import hu.bme.mdsd.ztz.model.drone.AreaObject
 import hu.bme.mdsd.ztz.model.drone.Capability
+import hu.bme.mdsd.ztz.model.drone.CapabilityProperties
+import hu.bme.mdsd.ztz.model.drone.DronePackage
+import hu.bme.mdsd.ztz.model.drone.MeasureDimension
+import hu.bme.mdsd.ztz.model.drone.MeasureValue
+import hu.bme.mdsd.ztz.model.drone.Property
+import hu.bme.mdsd.ztz.model.drone.PropertyKey
 import hu.bme.mdsd.ztz.model.drone.Robot
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer
 import hu.bme.mdsd.ztz.model.drone.Task
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
-import hu.bme.mdsd.ztz.model.drone.DronePackage
-import hu.bme.mdsd.ztz.model.drone.PropertyKey
-import hu.bme.mdsd.ztz.model.drone.MeasureValue
-import hu.bme.mdsd.ztz.model.drone.MeasureDimension
-import hu.bme.mdsd.ztz.model.drone.CapabilityProperties
-import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
-import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
-import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 
 /**
  * This class contains custom scoping description.
@@ -54,6 +55,7 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 	def dispatch IScope scopeForContext(EObject context, EReference reference, ResourceManager manager) {
 		super.getScope(context, reference)
 	}
+	
 
 	def dispatch IScope scopeForContext(DynamicRobot context, EReference reference, ResourceManager manager) {
 		if (reference == BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT && manager.resource != null) {
@@ -98,7 +100,7 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 		super.getScope(context, reference)
 	}
 	
-	def dispatch IScope scopeForContext(hu.bme.mdsd.ztz.model.drone.Property context, EReference reference, ResourceManager manager) {
+	def dispatch IScope scopeForContext(Property context, EReference reference, ResourceManager manager) {
 		if (context.eContainer instanceof ActionImplementation) {
 			
 		}
@@ -116,11 +118,27 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 	
 	def dispatch IScope scopeForContext(ActionDeclarationStatement context, EReference reference, ResourceManager manager) {
 		if (reference == BehaviourLanguagePackage.Literals.ACTION_DECLARATION_STATEMENT__PROPERTIES) {
-			val droneProperties = EcoreUtil2.getAllContentsOfType(getContainer(manager), PropertyKey).toSet
-			droneProperties.addAll(context.eResource.allContents.filter(PropertyKey).toSet)
-			return Scopes.scopeFor(droneProperties)
+			return Scopes.scopeFor(allProperties(context, manager))
 		}
 	}
+	
+	def allProperties(EObject context, ResourceManager manager) {
+		val droneProperties = EcoreUtil2.getAllContentsOfType(getContainer(manager), PropertyKey).toSet
+		droneProperties.addAll(context.eResource.allContents.filter(PropertyKey).toSet)
+		return droneProperties
+	}
+	
+//	def dispatch IScope scopeForContext(PropertyCondition context, EReference reference, ResourceManager manager) {
+//		if (reference == BehaviourLanguagePackage.Literals.PROPERTY_CONDITION__ROBOT) {
+//			return Scopes.scopeFor(context.eResource.allContents.filter(DynamicRobot).toSet)
+//		}
+//		if (reference == BehaviourLanguagePackage.Literals.PROPERTY_CONDITION__PROPERTY) {
+//			val droneProperties = EcoreUtil2.getAllContentsOfType(getContainer(manager), PropertyKey).toSet
+//			droneProperties.addAll(context.eResource.allContents.filter(PropertyKey).toSet)
+//			return Scopes.scopeFor(droneProperties)
+//		}
+//	}
+	
 	
 	def dispatch IScope scopeForContext(MeasureValue context, EReference reference, ResourceManager manager) {
 		if (reference == DronePackage.Literals.MEASURE_VALUE__DIMENSION && manager.resource != null) {
@@ -136,19 +154,54 @@ class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageScopeProvi
 		super.getScope(context, reference)
 	}
 	
-	def dispatch IScope scopeForContext(TaskStatusCondition context, EReference reference, ResourceManager manager) {
-		if (reference == BehaviourLanguagePackage.Literals.TASK_STATUS_CONDITION__TASK_STATUS) {
-			return Scopes.scopeFor(BehaviourPackage.Literals.TASK_EXECUTION_STATUS.ELiterals)
-		}
+	
+	def dispatch IScope scopeForContext(MeasureComparable context, EReference reference, ResourceManager manager) {
+		if (reference == BehaviourLanguagePackage.Literals.MEASURE_COMPARABLE__CONTAINER) {
+			return Scopes.scopeFor(context.eResource.allContents.filter(DynamicRobot).toSet)
+		} else if (reference == BehaviourLanguagePackage.Literals.MEASURE_COMPARABLE__MEMBER) {
+//			return Scopes.scopeFor(context.container.robot.properties)
+			return Scopes.scopeFor(context.container.robot.properties.map[it.key])
+		} else
 		super.getScope(context, reference)
 	}
 	
-	def dispatch IScope scopeForContext(RobotStatusCondition context, EReference reference, ResourceManager manager) {
-		if (reference == BehaviourLanguagePackage.Literals.ROBOT_STATUS_CONDITION__ROBOT_STATUS) {
-			return Scopes.scopeFor(BehaviourPackage.Literals.ROBOT_STATUS.ELiterals)
-		}
+	
+	def dispatch IScope scopeForContext(ConditionalStatement context, EReference reference, ResourceManager manager) {
+		if (reference == BehaviourLanguagePackage.Literals.CONDITION__LEFT_TASK
+			|| reference == BehaviourLanguagePackage.Literals.CONDITION__LEFT_ROBOT
+			|| reference == BehaviourLanguagePackage.Literals.MEASURE_COMPARABLE__CONTAINER
+		) {
+			val leftValues = context.eResource.allContents.filter([it instanceof DynamicRobot]).toSet
+			leftValues.addAll(context.eResource.allContents.filter(TaskExecution).toSet)
+			
+			return Scopes.scopeFor(leftValues)
+			} else if (reference == BehaviourLanguagePackage.Literals.MEASURE_COMPARABLE__MEMBER) {
+				return Scopes.scopeFor(allProperties(context, manager))
+//		} 
+//		else if (reference == BehaviourLanguagePackage.Literals.CONDITION__RIGHT) {
+//			if (context.left instanceof DynamicRobot) {
+//				return Scopes.scopeFor(BehaviourPackage.Literals.ROBOT_STATUS.ELiterals)
+//			} else if (context instanceof TaskExecution) {
+//				return Scopes.scopeFor(BehaviourPackage.Literals.TASK_EXECUTION_STATUS.ELiterals)
+//			}
+		} else
 		super.getScope(context, reference)
 	}
+	
+	
+//	def dispatch IScope scopeForContext(TaskStatusCondition context, EReference reference, ResourceManager manager) {
+//		if (reference == BehaviourLanguagePackage.Literals.TASK_STATUS_CONDITION__TASK_STATUS) {
+//			return Scopes.scopeFor(BehaviourPackage.Literals.TASK_EXECUTION_STATUS.ELiterals)
+//		}
+//		super.getScope(context, reference)
+//	}
+	
+//	def dispatch IScope scopeForContext(RobotStatusCondition context, EReference reference, ResourceManager manager) {
+//		if (reference == BehaviourLanguagePackage.Literals.ROBOT_STATUS_CONDITION__ROBOT_STATUS) {
+//			return Scopes.scopeFor(BehaviourPackage.Literals.ROBOT_STATUS.ELiterals)
+//		}
+//		super.getScope(context, reference)
+//	}
 	
 	protected def RobotMissionContainer getContainer(ResourceManager manager) {
 		manager.resource.contents.get(0) as RobotMissionContainer

@@ -10,7 +10,20 @@ import hu.bme.mdsd.ztz.model.behaviour.MessageRepository;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.MeasureConversion;
+import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
+import hu.bme.mdsd.ztz.model.drone.MeasureValue;
+import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.model.drone.PropertyKey;
+import hu.bme.mdsd.ztz.model.drone.PropertyValue;
+import hu.bme.mdsd.ztz.model.drone.Robot;
+import hu.bme.mdsd.ztz.model.drone.impl.DroneFactoryImpl;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable;
+import java.util.HashMap;
+import java.util.Map;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class RobotUtil {
@@ -97,5 +110,89 @@ public class RobotUtil {
       _xblockexpression = _detectedObjects_1.remove(removeObject);
     }
     return _xblockexpression;
+  }
+  
+  public static MeasureValue convertTo(final MeasureValue value, final MeasureDimension dimension) {
+    MeasureDimension _dimension = value.getDimension();
+    boolean _equals = Objects.equal(_dimension, dimension);
+    if (_equals) {
+      return value;
+    } else {
+      final HashMap<MeasureDimension, Float> availableDimensions = new HashMap<MeasureDimension, Float>();
+      float _value = value.getValue();
+      MeasureDimension _dimension_1 = value.getDimension();
+      RobotUtil.convertTo(Float.valueOf(_value), _dimension_1, dimension, availableDimensions);
+      final Float convertedValue = availableDimensions.get(dimension);
+      boolean _notEquals = (!Objects.equal(convertedValue, null));
+      if (_notEquals) {
+        final MeasureValue convertedMeasureValue = DroneFactoryImpl.eINSTANCE.createMeasureValue();
+        convertedMeasureValue.setDimension(dimension);
+        convertedMeasureValue.setValue((convertedValue).floatValue());
+        return convertedMeasureValue;
+      } else {
+        return null;
+      }
+    }
+  }
+  
+  private static void convertTo(final Float value, final MeasureDimension currentDimension, final MeasureDimension dimension, final Map<MeasureDimension, Float> availableDimensions) {
+    EList<MeasureConversion> _conversions = currentDimension.getConversions();
+    for (final MeasureConversion conversion : _conversions) {
+      {
+        boolean _containsKey = availableDimensions.containsKey(dimension);
+        if (_containsKey) {
+          return;
+        }
+        MeasureDimension _dimension = conversion.getDimension();
+        boolean _containsKey_1 = availableDimensions.containsKey(_dimension);
+        boolean _not = (!_containsKey_1);
+        if (_not) {
+          float _rate = conversion.getRate();
+          final float convertedValue = ((value).floatValue() * _rate);
+          MeasureDimension _dimension_1 = conversion.getDimension();
+          availableDimensions.put(_dimension_1, Float.valueOf(convertedValue));
+          MeasureDimension _dimension_2 = conversion.getDimension();
+          boolean _equals = Objects.equal(_dimension_2, dimension);
+          if (_equals) {
+            return;
+          } else {
+            MeasureDimension _dimension_3 = conversion.getDimension();
+            RobotUtil.convertTo(Float.valueOf(convertedValue), _dimension_3, dimension, availableDimensions);
+          }
+        }
+      }
+    }
+  }
+  
+  public static PropertyValue getPropertyValueFromComparable(final MeasureComparable comparable) {
+    PropertyValue _value = comparable.getValue();
+    boolean _notEquals = (!Objects.equal(_value, null));
+    if (_notEquals) {
+      return comparable.getValue();
+    } else {
+      boolean _and = false;
+      DynamicRobot _container = comparable.getContainer();
+      boolean _notEquals_1 = (!Objects.equal(_container, null));
+      if (!_notEquals_1) {
+        _and = false;
+      } else {
+        PropertyKey _member = comparable.getMember();
+        boolean _notEquals_2 = (!Objects.equal(_member, null));
+        _and = _notEquals_2;
+      }
+      if (_and) {
+        DynamicRobot _container_1 = comparable.getContainer();
+        Robot _robot = _container_1.getRobot();
+        EList<Property> _properties = _robot.getProperties();
+        final Function1<Property, Boolean> _function = (Property prop) -> {
+          PropertyKey _key = prop.getKey();
+          PropertyKey _member_1 = comparable.getMember();
+          return Boolean.valueOf(_key.equals(_member_1));
+        };
+        Property _findFirst = IterableExtensions.<Property>findFirst(_properties, _function);
+        return _findFirst.getValue();
+      }
+    }
+    return null;
   }
 }

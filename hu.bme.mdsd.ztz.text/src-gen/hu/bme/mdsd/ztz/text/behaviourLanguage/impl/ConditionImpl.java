@@ -3,12 +3,19 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
+
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Condition;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.EObject;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -21,8 +28,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionImpl#isEqual <em>Equal</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionImpl#isNotEqual <em>Not Equal</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionImpl#getLeftTask <em>Left Task</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionImpl#getCompare <em>Compare</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionImpl#getRightStatus <em>Right Status</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionImpl#getLeftRobot <em>Left Robot</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionImpl#getLeftMeasure <em>Left Measure</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ConditionImpl#getRightMeasure <em>Right Measure</em>}</li>
  * </ul>
  *
  * @generated
@@ -30,44 +41,84 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ConditionImpl extends MinimalEObjectImpl.Container implements Condition
 {
   /**
-   * The default value of the '{@link #isEqual() <em>Equal</em>}' attribute.
+   * The cached value of the '{@link #getLeftTask() <em>Left Task</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isEqual()
+   * @see #getLeftTask()
    * @generated
    * @ordered
    */
-  protected static final boolean EQUAL_EDEFAULT = false;
+  protected TaskExecution leftTask;
 
   /**
-   * The cached value of the '{@link #isEqual() <em>Equal</em>}' attribute.
+   * The default value of the '{@link #getCompare() <em>Compare</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isEqual()
+   * @see #getCompare()
    * @generated
    * @ordered
    */
-  protected boolean equal = EQUAL_EDEFAULT;
+  protected static final String COMPARE_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #isNotEqual() <em>Not Equal</em>}' attribute.
+   * The cached value of the '{@link #getCompare() <em>Compare</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isNotEqual()
+   * @see #getCompare()
    * @generated
    * @ordered
    */
-  protected static final boolean NOT_EQUAL_EDEFAULT = false;
+  protected String compare = COMPARE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #isNotEqual() <em>Not Equal</em>}' attribute.
+   * The default value of the '{@link #getRightStatus() <em>Right Status</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isNotEqual()
+   * @see #getRightStatus()
    * @generated
    * @ordered
    */
-  protected boolean notEqual = NOT_EQUAL_EDEFAULT;
+  protected static final EObject RIGHT_STATUS_EDEFAULT = EObject.READY;
+
+  /**
+   * The cached value of the '{@link #getRightStatus() <em>Right Status</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRightStatus()
+   * @generated
+   * @ordered
+   */
+  protected EObject rightStatus = RIGHT_STATUS_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getLeftRobot() <em>Left Robot</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLeftRobot()
+   * @generated
+   * @ordered
+   */
+  protected DynamicRobot leftRobot;
+
+  /**
+   * The cached value of the '{@link #getLeftMeasure() <em>Left Measure</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLeftMeasure()
+   * @generated
+   * @ordered
+   */
+  protected MeasureComparable leftMeasure;
+
+  /**
+   * The cached value of the '{@link #getRightMeasure() <em>Right Measure</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRightMeasure()
+   * @generated
+   * @ordered
+   */
+  protected MeasureComparable rightMeasure;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,9 +146,19 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isEqual()
+  public TaskExecution getLeftTask()
   {
-    return equal;
+    if (leftTask != null && leftTask.eIsProxy())
+    {
+      InternalEObject oldLeftTask = (InternalEObject)leftTask;
+      leftTask = (TaskExecution)eResolveProxy(oldLeftTask);
+      if (leftTask != oldLeftTask)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourLanguagePackage.CONDITION__LEFT_TASK, oldLeftTask, leftTask));
+      }
+    }
+    return leftTask;
   }
 
   /**
@@ -105,12 +166,22 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setEqual(boolean newEqual)
+  public TaskExecution basicGetLeftTask()
   {
-    boolean oldEqual = equal;
-    equal = newEqual;
+    return leftTask;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLeftTask(TaskExecution newLeftTask)
+  {
+    TaskExecution oldLeftTask = leftTask;
+    leftTask = newLeftTask;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__EQUAL, oldEqual, equal));
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__LEFT_TASK, oldLeftTask, leftTask));
   }
 
   /**
@@ -118,9 +189,9 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isNotEqual()
+  public String getCompare()
   {
-    return notEqual;
+    return compare;
   }
 
   /**
@@ -128,12 +199,192 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNotEqual(boolean newNotEqual)
+  public void setCompare(String newCompare)
   {
-    boolean oldNotEqual = notEqual;
-    notEqual = newNotEqual;
+    String oldCompare = compare;
+    compare = newCompare;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__NOT_EQUAL, oldNotEqual, notEqual));
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__COMPARE, oldCompare, compare));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EObject getRightStatus()
+  {
+    return rightStatus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRightStatus(EObject newRightStatus)
+  {
+    EObject oldRightStatus = rightStatus;
+    rightStatus = newRightStatus == null ? RIGHT_STATUS_EDEFAULT : newRightStatus;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__RIGHT_STATUS, oldRightStatus, rightStatus));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot getLeftRobot()
+  {
+    if (leftRobot != null && leftRobot.eIsProxy())
+    {
+      InternalEObject oldLeftRobot = (InternalEObject)leftRobot;
+      leftRobot = (DynamicRobot)eResolveProxy(oldLeftRobot);
+      if (leftRobot != oldLeftRobot)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviourLanguagePackage.CONDITION__LEFT_ROBOT, oldLeftRobot, leftRobot));
+      }
+    }
+    return leftRobot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DynamicRobot basicGetLeftRobot()
+  {
+    return leftRobot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLeftRobot(DynamicRobot newLeftRobot)
+  {
+    DynamicRobot oldLeftRobot = leftRobot;
+    leftRobot = newLeftRobot;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__LEFT_ROBOT, oldLeftRobot, leftRobot));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MeasureComparable getLeftMeasure()
+  {
+    return leftMeasure;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLeftMeasure(MeasureComparable newLeftMeasure, NotificationChain msgs)
+  {
+    MeasureComparable oldLeftMeasure = leftMeasure;
+    leftMeasure = newLeftMeasure;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__LEFT_MEASURE, oldLeftMeasure, newLeftMeasure);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLeftMeasure(MeasureComparable newLeftMeasure)
+  {
+    if (newLeftMeasure != leftMeasure)
+    {
+      NotificationChain msgs = null;
+      if (leftMeasure != null)
+        msgs = ((InternalEObject)leftMeasure).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BehaviourLanguagePackage.CONDITION__LEFT_MEASURE, null, msgs);
+      if (newLeftMeasure != null)
+        msgs = ((InternalEObject)newLeftMeasure).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BehaviourLanguagePackage.CONDITION__LEFT_MEASURE, null, msgs);
+      msgs = basicSetLeftMeasure(newLeftMeasure, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__LEFT_MEASURE, newLeftMeasure, newLeftMeasure));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MeasureComparable getRightMeasure()
+  {
+    return rightMeasure;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRightMeasure(MeasureComparable newRightMeasure, NotificationChain msgs)
+  {
+    MeasureComparable oldRightMeasure = rightMeasure;
+    rightMeasure = newRightMeasure;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__RIGHT_MEASURE, oldRightMeasure, newRightMeasure);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRightMeasure(MeasureComparable newRightMeasure)
+  {
+    if (newRightMeasure != rightMeasure)
+    {
+      NotificationChain msgs = null;
+      if (rightMeasure != null)
+        msgs = ((InternalEObject)rightMeasure).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BehaviourLanguagePackage.CONDITION__RIGHT_MEASURE, null, msgs);
+      if (newRightMeasure != null)
+        msgs = ((InternalEObject)newRightMeasure).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BehaviourLanguagePackage.CONDITION__RIGHT_MEASURE, null, msgs);
+      msgs = basicSetRightMeasure(newRightMeasure, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITION__RIGHT_MEASURE, newRightMeasure, newRightMeasure));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case BehaviourLanguagePackage.CONDITION__LEFT_MEASURE:
+        return basicSetLeftMeasure(null, msgs);
+      case BehaviourLanguagePackage.CONDITION__RIGHT_MEASURE:
+        return basicSetRightMeasure(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -146,10 +397,20 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   {
     switch (featureID)
     {
-      case BehaviourLanguagePackage.CONDITION__EQUAL:
-        return isEqual();
-      case BehaviourLanguagePackage.CONDITION__NOT_EQUAL:
-        return isNotEqual();
+      case BehaviourLanguagePackage.CONDITION__LEFT_TASK:
+        if (resolve) return getLeftTask();
+        return basicGetLeftTask();
+      case BehaviourLanguagePackage.CONDITION__COMPARE:
+        return getCompare();
+      case BehaviourLanguagePackage.CONDITION__RIGHT_STATUS:
+        return getRightStatus();
+      case BehaviourLanguagePackage.CONDITION__LEFT_ROBOT:
+        if (resolve) return getLeftRobot();
+        return basicGetLeftRobot();
+      case BehaviourLanguagePackage.CONDITION__LEFT_MEASURE:
+        return getLeftMeasure();
+      case BehaviourLanguagePackage.CONDITION__RIGHT_MEASURE:
+        return getRightMeasure();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -164,11 +425,23 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   {
     switch (featureID)
     {
-      case BehaviourLanguagePackage.CONDITION__EQUAL:
-        setEqual((Boolean)newValue);
+      case BehaviourLanguagePackage.CONDITION__LEFT_TASK:
+        setLeftTask((TaskExecution)newValue);
         return;
-      case BehaviourLanguagePackage.CONDITION__NOT_EQUAL:
-        setNotEqual((Boolean)newValue);
+      case BehaviourLanguagePackage.CONDITION__COMPARE:
+        setCompare((String)newValue);
+        return;
+      case BehaviourLanguagePackage.CONDITION__RIGHT_STATUS:
+        setRightStatus((EObject)newValue);
+        return;
+      case BehaviourLanguagePackage.CONDITION__LEFT_ROBOT:
+        setLeftRobot((DynamicRobot)newValue);
+        return;
+      case BehaviourLanguagePackage.CONDITION__LEFT_MEASURE:
+        setLeftMeasure((MeasureComparable)newValue);
+        return;
+      case BehaviourLanguagePackage.CONDITION__RIGHT_MEASURE:
+        setRightMeasure((MeasureComparable)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -184,11 +457,23 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   {
     switch (featureID)
     {
-      case BehaviourLanguagePackage.CONDITION__EQUAL:
-        setEqual(EQUAL_EDEFAULT);
+      case BehaviourLanguagePackage.CONDITION__LEFT_TASK:
+        setLeftTask((TaskExecution)null);
         return;
-      case BehaviourLanguagePackage.CONDITION__NOT_EQUAL:
-        setNotEqual(NOT_EQUAL_EDEFAULT);
+      case BehaviourLanguagePackage.CONDITION__COMPARE:
+        setCompare(COMPARE_EDEFAULT);
+        return;
+      case BehaviourLanguagePackage.CONDITION__RIGHT_STATUS:
+        setRightStatus(RIGHT_STATUS_EDEFAULT);
+        return;
+      case BehaviourLanguagePackage.CONDITION__LEFT_ROBOT:
+        setLeftRobot((DynamicRobot)null);
+        return;
+      case BehaviourLanguagePackage.CONDITION__LEFT_MEASURE:
+        setLeftMeasure((MeasureComparable)null);
+        return;
+      case BehaviourLanguagePackage.CONDITION__RIGHT_MEASURE:
+        setRightMeasure((MeasureComparable)null);
         return;
     }
     super.eUnset(featureID);
@@ -204,10 +489,18 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   {
     switch (featureID)
     {
-      case BehaviourLanguagePackage.CONDITION__EQUAL:
-        return equal != EQUAL_EDEFAULT;
-      case BehaviourLanguagePackage.CONDITION__NOT_EQUAL:
-        return notEqual != NOT_EQUAL_EDEFAULT;
+      case BehaviourLanguagePackage.CONDITION__LEFT_TASK:
+        return leftTask != null;
+      case BehaviourLanguagePackage.CONDITION__COMPARE:
+        return COMPARE_EDEFAULT == null ? compare != null : !COMPARE_EDEFAULT.equals(compare);
+      case BehaviourLanguagePackage.CONDITION__RIGHT_STATUS:
+        return rightStatus != RIGHT_STATUS_EDEFAULT;
+      case BehaviourLanguagePackage.CONDITION__LEFT_ROBOT:
+        return leftRobot != null;
+      case BehaviourLanguagePackage.CONDITION__LEFT_MEASURE:
+        return leftMeasure != null;
+      case BehaviourLanguagePackage.CONDITION__RIGHT_MEASURE:
+        return rightMeasure != null;
     }
     return super.eIsSet(featureID);
   }
@@ -223,10 +516,10 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (equal: ");
-    result.append(equal);
-    result.append(", notEqual: ");
-    result.append(notEqual);
+    result.append(" (compare: ");
+    result.append(compare);
+    result.append(", rightStatus: ");
+    result.append(rightStatus);
     result.append(')');
     return result.toString();
   }

@@ -16,8 +16,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Statement"/>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicStatement" eSuperTypes="#//Statement"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalStatement" eSuperTypes="#//Statement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" upperBound="-1"
+        eType="#//Condition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
         eType="#//Statement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="otherStatements" upperBound="-1"
@@ -68,14 +68,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="robot" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="execution" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecution"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StatusStatement" eSuperTypes="#//AtomicStatement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StatusStatement" eSuperTypes="#//AtomicStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//EObject"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RobotStatusStatement" eSuperTypes="#//StatusStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="robot" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="ecore:EEnum platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//RobotStatus"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskStatusStatement" eSuperTypes="#//StatusStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="task" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecution"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="ecore:EEnum platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecutionStatus"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageTarget"/>
   <eClassifiers xsi:type="ecore:EClass" name="UniTarget" eSuperTypes="#//MessageTarget">
@@ -89,15 +89,28 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="equal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notEqual" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftTask" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecution"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="compare" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rightStatus" eType="#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftRobot" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftMeasure" eType="#//MeasureComparable"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightMeasure" eType="#//MeasureComparable"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskStatusCondition" eSuperTypes="#//Condition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="task" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecution"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="taskStatus" eType="ecore:EEnum platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//TaskExecutionStatus"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MeasureComparable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="member" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/drone.ecore#//PropertyKey"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/drone.ecore#//PropertyValue"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RobotStatusCondition" eSuperTypes="#//Condition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="robot" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="robotStatus" eType="ecore:EEnum platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//RobotStatus"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="EObject">
+    <eLiterals name="Ready" literal="RobotReady"/>
+    <eLiterals name="TurnedOff" value="1" literal="RobotTurnedOff"/>
+    <eLiterals name="Waiting" value="2" literal="RobotWaiting"/>
+    <eLiterals name="Executing" value="3" literal="RobotExecuting"/>
+    <eLiterals name="Finished" value="4" literal="TaskFinished"/>
+    <eLiterals name="Suspended" value="5" literal="TaskSuspended"/>
+    <eLiterals name="InProgress" value="6" literal="TaskInProgress"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -245,19 +245,10 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case BehaviourLanguagePackage.TASK_STATUS_CONDITION:
+      case BehaviourLanguagePackage.MEASURE_COMPARABLE:
       {
-        TaskStatusCondition taskStatusCondition = (TaskStatusCondition)theEObject;
-        T result = caseTaskStatusCondition(taskStatusCondition);
-        if (result == null) result = caseCondition(taskStatusCondition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case BehaviourLanguagePackage.ROBOT_STATUS_CONDITION:
-      {
-        RobotStatusCondition robotStatusCondition = (RobotStatusCondition)theEObject;
-        T result = caseRobotStatusCondition(robotStatusCondition);
-        if (result == null) result = caseCondition(robotStatusCondition);
+        MeasureComparable measureComparable = (MeasureComparable)theEObject;
+        T result = caseMeasureComparable(measureComparable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -602,33 +593,17 @@ public class BehaviourLanguageSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Task Status Condition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Measure Comparable</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Task Status Condition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Measure Comparable</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseTaskStatusCondition(TaskStatusCondition object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Robot Status Condition</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Robot Status Condition</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRobotStatusCondition(RobotStatusCondition object)
+  public T caseMeasureComparable(MeasureComparable object)
   {
     return null;
   }

@@ -3,6 +3,9 @@
  */
 package hu.bme.mdsd.ztz.text.behaviourLanguage;
 
+import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,8 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#isEqual <em>Equal</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#isNotEqual <em>Not Equal</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftTask <em>Left Task</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getCompare <em>Compare</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getRightStatus <em>Right Status</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftRobot <em>Left Robot</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftMeasure <em>Left Measure</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getRightMeasure <em>Right Measure</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCondition()
@@ -25,55 +32,162 @@ import org.eclipse.emf.ecore.EObject;
 public interface Condition extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Equal</b></em>' attribute.
+   * Returns the value of the '<em><b>Left Task</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Equal</em>' attribute isn't clear,
+   * If the meaning of the '<em>Left Task</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Equal</em>' attribute.
-   * @see #setEqual(boolean)
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCondition_Equal()
+   * @return the value of the '<em>Left Task</em>' reference.
+   * @see #setLeftTask(TaskExecution)
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCondition_LeftTask()
    * @model
    * @generated
    */
-  boolean isEqual();
+  TaskExecution getLeftTask();
 
   /**
-   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#isEqual <em>Equal</em>}' attribute.
+   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftTask <em>Left Task</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Equal</em>' attribute.
-   * @see #isEqual()
+   * @param value the new value of the '<em>Left Task</em>' reference.
+   * @see #getLeftTask()
    * @generated
    */
-  void setEqual(boolean value);
+  void setLeftTask(TaskExecution value);
 
   /**
-   * Returns the value of the '<em><b>Not Equal</b></em>' attribute.
+   * Returns the value of the '<em><b>Compare</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Not Equal</em>' attribute isn't clear,
+   * If the meaning of the '<em>Compare</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Not Equal</em>' attribute.
-   * @see #setNotEqual(boolean)
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCondition_NotEqual()
+   * @return the value of the '<em>Compare</em>' attribute.
+   * @see #setCompare(String)
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCondition_Compare()
    * @model
    * @generated
    */
-  boolean isNotEqual();
+  String getCompare();
 
   /**
-   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#isNotEqual <em>Not Equal</em>}' attribute.
+   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getCompare <em>Compare</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Not Equal</em>' attribute.
-   * @see #isNotEqual()
+   * @param value the new value of the '<em>Compare</em>' attribute.
+   * @see #getCompare()
    * @generated
    */
-  void setNotEqual(boolean value);
+  void setCompare(String value);
+
+  /**
+   * Returns the value of the '<em><b>Right Status</b></em>' attribute.
+   * The literals are from the enumeration {@link hu.bme.mdsd.ztz.text.behaviourLanguage.EObject}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Right Status</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Right Status</em>' attribute.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.EObject
+   * @see #setRightStatus(hu.bme.mdsd.ztz.text.behaviourLanguage.EObject)
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCondition_RightStatus()
+   * @model
+   * @generated
+   */
+  hu.bme.mdsd.ztz.text.behaviourLanguage.EObject getRightStatus();
+
+  /**
+   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getRightStatus <em>Right Status</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Right Status</em>' attribute.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.EObject
+   * @see #getRightStatus()
+   * @generated
+   */
+  void setRightStatus(hu.bme.mdsd.ztz.text.behaviourLanguage.EObject value);
+
+  /**
+   * Returns the value of the '<em><b>Left Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Left Robot</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Left Robot</em>' reference.
+   * @see #setLeftRobot(DynamicRobot)
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCondition_LeftRobot()
+   * @model
+   * @generated
+   */
+  DynamicRobot getLeftRobot();
+
+  /**
+   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftRobot <em>Left Robot</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Left Robot</em>' reference.
+   * @see #getLeftRobot()
+   * @generated
+   */
+  void setLeftRobot(DynamicRobot value);
+
+  /**
+   * Returns the value of the '<em><b>Left Measure</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Left Measure</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Left Measure</em>' containment reference.
+   * @see #setLeftMeasure(MeasureComparable)
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCondition_LeftMeasure()
+   * @model containment="true"
+   * @generated
+   */
+  MeasureComparable getLeftMeasure();
+
+  /**
+   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftMeasure <em>Left Measure</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Left Measure</em>' containment reference.
+   * @see #getLeftMeasure()
+   * @generated
+   */
+  void setLeftMeasure(MeasureComparable value);
+
+  /**
+   * Returns the value of the '<em><b>Right Measure</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Right Measure</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Right Measure</em>' containment reference.
+   * @see #setRightMeasure(MeasureComparable)
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getCondition_RightMeasure()
+   * @model containment="true"
+   * @generated
+   */
+  MeasureComparable getRightMeasure();
+
+  /**
+   * Sets the value of the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getRightMeasure <em>Right Measure</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Right Measure</em>' containment reference.
+   * @see #getRightMeasure()
+   * @generated
+   */
+  void setRightMeasure(MeasureComparable value);
 
 } // Condition

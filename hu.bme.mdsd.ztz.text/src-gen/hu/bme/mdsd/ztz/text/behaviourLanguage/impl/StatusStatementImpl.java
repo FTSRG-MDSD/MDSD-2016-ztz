@@ -4,19 +4,50 @@
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.EObject;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Status Statement</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.StatusStatementImpl#getStatus <em>Status</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class StatusStatementImpl extends AtomicStatementImpl implements StatusStatement
 {
+  /**
+   * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStatus()
+   * @generated
+   * @ordered
+   */
+  protected static final EObject STATUS_EDEFAULT = EObject.READY;
+
+  /**
+   * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStatus()
+   * @generated
+   * @ordered
+   */
+  protected EObject status = STATUS_EDEFAULT;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -36,6 +67,112 @@ public class StatusStatementImpl extends AtomicStatementImpl implements StatusSt
   protected EClass eStaticClass()
   {
     return BehaviourLanguagePackage.Literals.STATUS_STATEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EObject getStatus()
+  {
+    return status;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setStatus(EObject newStatus)
+  {
+    EObject oldStatus = status;
+    status = newStatus == null ? STATUS_EDEFAULT : newStatus;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.STATUS_STATEMENT__STATUS, oldStatus, status));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case BehaviourLanguagePackage.STATUS_STATEMENT__STATUS:
+        return getStatus();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case BehaviourLanguagePackage.STATUS_STATEMENT__STATUS:
+        setStatus((EObject)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case BehaviourLanguagePackage.STATUS_STATEMENT__STATUS:
+        setStatus(STATUS_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case BehaviourLanguagePackage.STATUS_STATEMENT__STATUS:
+        return status != STATUS_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (status: ");
+    result.append(status);
+    result.append(')');
+    return result.toString();
   }
 
 } //StatusStatementImpl

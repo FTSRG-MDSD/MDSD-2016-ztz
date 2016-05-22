@@ -10,15 +10,12 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -41,14 +38,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ConditionalStatementImpl extends StatementImpl implements ConditionalStatement
 {
   /**
-   * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
+   * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCondition()
    * @generated
    * @ordered
    */
-  protected Condition condition;
+  protected EList<Condition> condition;
 
   /**
    * The cached value of the '{@link #getStatements() <em>Statements</em>}' containment reference list.
@@ -96,47 +93,13 @@ public class ConditionalStatementImpl extends StatementImpl implements Condition
    * <!-- end-user-doc -->
    * @generated
    */
-  public Condition getCondition()
+  public EList<Condition> getCondition()
   {
+    if (condition == null)
+    {
+      condition = new EObjectContainmentEList<Condition>(Condition.class, this, BehaviourLanguagePackage.CONDITIONAL_STATEMENT__CONDITION);
+    }
     return condition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetCondition(Condition newCondition, NotificationChain msgs)
-  {
-    Condition oldCondition = condition;
-    condition = newCondition;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITIONAL_STATEMENT__CONDITION, oldCondition, newCondition);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setCondition(Condition newCondition)
-  {
-    if (newCondition != condition)
-    {
-      NotificationChain msgs = null;
-      if (condition != null)
-        msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BehaviourLanguagePackage.CONDITIONAL_STATEMENT__CONDITION, null, msgs);
-      if (newCondition != null)
-        msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BehaviourLanguagePackage.CONDITIONAL_STATEMENT__CONDITION, null, msgs);
-      msgs = basicSetCondition(newCondition, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.CONDITIONAL_STATEMENT__CONDITION, newCondition, newCondition));
   }
 
   /**
@@ -178,7 +141,7 @@ public class ConditionalStatementImpl extends StatementImpl implements Condition
     switch (featureID)
     {
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__CONDITION:
-        return basicSetCondition(null, msgs);
+        return ((InternalEList<?>)getCondition()).basicRemove(otherEnd, msgs);
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__STATEMENTS:
         return ((InternalEList<?>)getStatements()).basicRemove(otherEnd, msgs);
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__OTHER_STATEMENTS:
@@ -219,7 +182,8 @@ public class ConditionalStatementImpl extends StatementImpl implements Condition
     switch (featureID)
     {
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__CONDITION:
-        setCondition((Condition)newValue);
+        getCondition().clear();
+        getCondition().addAll((Collection<? extends Condition>)newValue);
         return;
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__STATEMENTS:
         getStatements().clear();
@@ -244,7 +208,7 @@ public class ConditionalStatementImpl extends StatementImpl implements Condition
     switch (featureID)
     {
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__CONDITION:
-        setCondition((Condition)null);
+        getCondition().clear();
         return;
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__STATEMENTS:
         getStatements().clear();
@@ -267,7 +231,7 @@ public class ConditionalStatementImpl extends StatementImpl implements Condition
     switch (featureID)
     {
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__CONDITION:
-        return condition != null;
+        return condition != null && !condition.isEmpty();
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__STATEMENTS:
         return statements != null && !statements.isEmpty();
       case BehaviourLanguagePackage.CONDITIONAL_STATEMENT__OTHER_STATEMENTS:

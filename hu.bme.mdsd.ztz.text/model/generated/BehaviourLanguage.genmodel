@@ -6,6 +6,15 @@
     complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.11" usedGenPackages="platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.genmodel#//behaviour platform:/resource/hu.bme.mdsd.ztz.model/model/drone.genmodel#//drone">
   <genPackages prefix="BehaviourLanguage" basePackage="hu.bme.mdsd.ztz.text" disposableProviderFactory="true"
       fileExtensions="drb" ecorePackage="BehaviourLanguage.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="BehaviourLanguage.ecore#//EObject">
+      <genEnumLiterals ecoreEnumLiteral="BehaviourLanguage.ecore#//EObject/Ready"/>
+      <genEnumLiterals ecoreEnumLiteral="BehaviourLanguage.ecore#//EObject/TurnedOff"/>
+      <genEnumLiterals ecoreEnumLiteral="BehaviourLanguage.ecore#//EObject/Waiting"/>
+      <genEnumLiterals ecoreEnumLiteral="BehaviourLanguage.ecore#//EObject/Executing"/>
+      <genEnumLiterals ecoreEnumLiteral="BehaviourLanguage.ecore#//EObject/Finished"/>
+      <genEnumLiterals ecoreEnumLiteral="BehaviourLanguage.ecore#//EObject/Suspended"/>
+      <genEnumLiterals ecoreEnumLiteral="BehaviourLanguage.ecore#//EObject/InProgress"/>
+    </genEnums>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//BehaviourLanguage">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//BehaviourLanguage/importModel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//BehaviourLanguage/container"/>
@@ -56,14 +65,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ExecutionStatement/robot"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ExecutionStatement/execution"/>
     </genClasses>
-    <genClasses ecoreClass="BehaviourLanguage.ecore#//StatusStatement"/>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//StatusStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//StatusStatement/status"/>
+    </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//RobotStatusStatement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//RobotStatusStatement/robot"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//RobotStatusStatement/status"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//TaskStatusStatement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//TaskStatusStatement/task"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//TaskStatusStatement/status"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//MessageTarget"/>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//UniTarget">
@@ -76,16 +85,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//AllTarget/target"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//Condition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//Condition/equal"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//Condition/notEqual"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//Condition/leftTask"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//Condition/compare"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//Condition/rightStatus"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//Condition/leftRobot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//Condition/leftMeasure"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//Condition/rightMeasure"/>
     </genClasses>
-    <genClasses ecoreClass="BehaviourLanguage.ecore#//TaskStatusCondition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//TaskStatusCondition/task"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//TaskStatusCondition/taskStatus"/>
-    </genClasses>
-    <genClasses ecoreClass="BehaviourLanguage.ecore#//RobotStatusCondition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//RobotStatusCondition/robot"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BehaviourLanguage.ecore#//RobotStatusCondition/robotStatus"/>
+    <genClasses ecoreClass="BehaviourLanguage.ecore#//MeasureComparable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MeasureComparable/container"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MeasureComparable/member"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MeasureComparable/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

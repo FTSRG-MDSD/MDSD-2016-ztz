@@ -6,6 +6,7 @@ package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -86,10 +87,43 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
       case BehaviourLanguagePackage.MULTI_TARGET: return createMultiTarget();
       case BehaviourLanguagePackage.ALL_TARGET: return createAllTarget();
       case BehaviourLanguagePackage.CONDITION: return createCondition();
-      case BehaviourLanguagePackage.TASK_STATUS_CONDITION: return createTaskStatusCondition();
-      case BehaviourLanguagePackage.ROBOT_STATUS_CONDITION: return createRobotStatusCondition();
+      case BehaviourLanguagePackage.MEASURE_COMPARABLE: return createMeasureComparable();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case BehaviourLanguagePackage.EOBJECT:
+        return createEObjectFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case BehaviourLanguagePackage.EOBJECT:
+        return convertEObjectToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -329,10 +363,10 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public TaskStatusCondition createTaskStatusCondition()
+  public MeasureComparable createMeasureComparable()
   {
-    TaskStatusConditionImpl taskStatusCondition = new TaskStatusConditionImpl();
-    return taskStatusCondition;
+    MeasureComparableImpl measureComparable = new MeasureComparableImpl();
+    return measureComparable;
   }
 
   /**
@@ -340,10 +374,21 @@ public class BehaviourLanguageFactoryImpl extends EFactoryImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public RobotStatusCondition createRobotStatusCondition()
+  public hu.bme.mdsd.ztz.text.behaviourLanguage.EObject createEObjectFromString(EDataType eDataType, String initialValue)
   {
-    RobotStatusConditionImpl robotStatusCondition = new RobotStatusConditionImpl();
-    return robotStatusCondition;
+    hu.bme.mdsd.ztz.text.behaviourLanguage.EObject result = hu.bme.mdsd.ztz.text.behaviourLanguage.EObject.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertEObjectToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

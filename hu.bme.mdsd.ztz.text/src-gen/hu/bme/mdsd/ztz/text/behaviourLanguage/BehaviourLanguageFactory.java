@@ -213,22 +213,13 @@ public interface BehaviourLanguageFactory extends EFactory
   Condition createCondition();
 
   /**
-   * Returns a new object of class '<em>Task Status Condition</em>'.
+   * Returns a new object of class '<em>Measure Comparable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Task Status Condition</em>'.
+   * @return a new object of class '<em>Measure Comparable</em>'.
    * @generated
    */
-  TaskStatusCondition createTaskStatusCondition();
-
-  /**
-   * Returns a new object of class '<em>Robot Status Condition</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Robot Status Condition</em>'.
-   * @generated
-   */
-  RobotStatusCondition createRobotStatusCondition();
+  MeasureComparable createMeasureComparable();
 
   /**
    * Returns the package supported by this factory.

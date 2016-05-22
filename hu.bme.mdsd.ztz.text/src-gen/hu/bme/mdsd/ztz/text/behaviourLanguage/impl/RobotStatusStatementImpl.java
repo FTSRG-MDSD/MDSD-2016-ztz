@@ -4,7 +4,6 @@
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
-import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement;
@@ -25,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl#getRobot <em>Robot</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,26 +39,6 @@ public class RobotStatusStatementImpl extends StatusStatementImpl implements Rob
    * @ordered
    */
   protected DynamicRobot robot;
-
-  /**
-   * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getStatus()
-   * @generated
-   * @ordered
-   */
-  protected static final RobotStatus STATUS_EDEFAULT = RobotStatus.READY;
-
-  /**
-   * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getStatus()
-   * @generated
-   * @ordered
-   */
-  protected RobotStatus status = STATUS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -131,29 +109,6 @@ public class RobotStatusStatementImpl extends StatusStatementImpl implements Rob
    * <!-- end-user-doc -->
    * @generated
    */
-  public RobotStatus getStatus()
-  {
-    return status;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setStatus(RobotStatus newStatus)
-  {
-    RobotStatus oldStatus = status;
-    status = newStatus == null ? STATUS_EDEFAULT : newStatus;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS, oldStatus, status));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -162,8 +117,6 @@ public class RobotStatusStatementImpl extends StatusStatementImpl implements Rob
       case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT:
         if (resolve) return getRobot();
         return basicGetRobot();
-      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS:
-        return getStatus();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -180,9 +133,6 @@ public class RobotStatusStatementImpl extends StatusStatementImpl implements Rob
     {
       case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT:
         setRobot((DynamicRobot)newValue);
-        return;
-      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS:
-        setStatus((RobotStatus)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -201,9 +151,6 @@ public class RobotStatusStatementImpl extends StatusStatementImpl implements Rob
       case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT:
         setRobot((DynamicRobot)null);
         return;
-      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS:
-        setStatus(STATUS_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -220,27 +167,8 @@ public class RobotStatusStatementImpl extends StatusStatementImpl implements Rob
     {
       case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__ROBOT:
         return robot != null;
-      case BehaviourLanguagePackage.ROBOT_STATUS_STATEMENT__STATUS:
-        return status != STATUS_EDEFAULT;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (status: ");
-    result.append(status);
-    result.append(')');
-    return result.toString();
   }
 
 } //RobotStatusStatementImpl

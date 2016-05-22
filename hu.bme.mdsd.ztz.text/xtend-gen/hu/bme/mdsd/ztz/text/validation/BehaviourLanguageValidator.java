@@ -13,9 +13,13 @@ import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
+import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
+import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
+import hu.bme.mdsd.ztz.model.drone.PropertyValue;
 import hu.bme.mdsd.ztz.model.drone.Robot;
+import hu.bme.mdsd.ztz.model.drone.StringValue;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
@@ -24,8 +28,10 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Condition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
@@ -33,6 +39,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
+import hu.bme.mdsd.ztz.text.util.RobotUtil;
 import hu.bme.mdsd.ztz.text.validation.AbstractBehaviourLanguageValidator;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
 import java.util.Arrays;
@@ -446,6 +453,49 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       if (_equals_1) {
         this.error("A robot cannot do an action without an action declaration. Declare an action with the action keyword.", action, 
           BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__DECLARATION, ErrorCodes.MISSING_ACTION_DECLARATION);
+      }
+    }
+  }
+  
+  @Check
+  public void propertyConditionsNotMatch(final Condition condition) {
+    boolean _and = false;
+    MeasureComparable _leftMeasure = condition.getLeftMeasure();
+    boolean _notEquals = (!Objects.equal(_leftMeasure, null));
+    if (!_notEquals) {
+      _and = false;
+    } else {
+      MeasureComparable _rightMeasure = condition.getRightMeasure();
+      boolean _notEquals_1 = (!Objects.equal(_rightMeasure, null));
+      _and = _notEquals_1;
+    }
+    if (_and) {
+      MeasureComparable _leftMeasure_1 = condition.getLeftMeasure();
+      final PropertyValue left = RobotUtil.getPropertyValueFromComparable(_leftMeasure_1);
+      MeasureComparable _rightMeasure_1 = condition.getRightMeasure();
+      final PropertyValue right = RobotUtil.getPropertyValueFromComparable(_rightMeasure_1);
+      if (((left instanceof StringValue) != (right instanceof StringValue))) {
+        this.error("The types of the properties in the condition does not match.", condition, 
+          BehaviourLanguagePackage.Literals.CONDITION__COMPARE);
+      } else {
+        if ((left instanceof MeasureValue)) {
+          boolean _and_1 = false;
+          MeasureDimension _dimension = ((MeasureValue) right).getDimension();
+          MeasureValue _convertTo = RobotUtil.convertTo(((MeasureValue) left), _dimension);
+          boolean _equals = Objects.equal(_convertTo, null);
+          if (!_equals) {
+            _and_1 = false;
+          } else {
+            MeasureDimension _dimension_1 = ((MeasureValue) left).getDimension();
+            MeasureValue _convertTo_1 = RobotUtil.convertTo(((MeasureValue) right), _dimension_1);
+            boolean _equals_1 = Objects.equal(_convertTo_1, null);
+            _and_1 = _equals_1;
+          }
+          if (_and_1) {
+            this.error("No conversion available between the dimensions of the properties in the condition.", condition, 
+              BehaviourLanguagePackage.Literals.CONDITION__COMPARE);
+          }
+        }
       }
     }
   }

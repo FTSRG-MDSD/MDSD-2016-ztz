@@ -5,6 +5,7 @@ package hu.bme.mdsd.ztz.text.behaviourLanguage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -180,7 +181,7 @@ public interface BehaviourLanguagePackage extends EPackage
   int CONDITIONAL_STATEMENT = 4;
 
   /**
-   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * The feature id for the '<em><b>Condition</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -549,13 +550,22 @@ public interface BehaviourLanguagePackage extends EPackage
   int STATUS_STATEMENT = 13;
 
   /**
+   * The feature id for the '<em><b>Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATUS_STATEMENT__STATUS = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Status Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STATUS_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
+  int STATUS_STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl <em>Robot Status Statement</em>}' class.
@@ -568,6 +578,15 @@ public interface BehaviourLanguagePackage extends EPackage
   int ROBOT_STATUS_STATEMENT = 14;
 
   /**
+   * The feature id for the '<em><b>Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROBOT_STATUS_STATEMENT__STATUS = STATUS_STATEMENT__STATUS;
+
+  /**
    * The feature id for the '<em><b>Robot</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -577,22 +596,13 @@ public interface BehaviourLanguagePackage extends EPackage
   int ROBOT_STATUS_STATEMENT__ROBOT = STATUS_STATEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Status</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROBOT_STATUS_STATEMENT__STATUS = STATUS_STATEMENT_FEATURE_COUNT + 1;
-
-  /**
    * The number of structural features of the '<em>Robot Status Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROBOT_STATUS_STATEMENT_FEATURE_COUNT = STATUS_STATEMENT_FEATURE_COUNT + 2;
+  int ROBOT_STATUS_STATEMENT_FEATURE_COUNT = STATUS_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusStatementImpl <em>Task Status Statement</em>}' class.
@@ -605,6 +615,15 @@ public interface BehaviourLanguagePackage extends EPackage
   int TASK_STATUS_STATEMENT = 15;
 
   /**
+   * The feature id for the '<em><b>Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK_STATUS_STATEMENT__STATUS = STATUS_STATEMENT__STATUS;
+
+  /**
    * The feature id for the '<em><b>Task</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -614,22 +633,13 @@ public interface BehaviourLanguagePackage extends EPackage
   int TASK_STATUS_STATEMENT__TASK = STATUS_STATEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Status</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_STATUS_STATEMENT__STATUS = STATUS_STATEMENT_FEATURE_COUNT + 1;
-
-  /**
    * The number of structural features of the '<em>Task Status Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK_STATUS_STATEMENT_FEATURE_COUNT = STATUS_STATEMENT_FEATURE_COUNT + 2;
+  int TASK_STATUS_STATEMENT_FEATURE_COUNT = STATUS_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.
@@ -745,22 +755,58 @@ public interface BehaviourLanguagePackage extends EPackage
   int CONDITION = 20;
 
   /**
-   * The feature id for the '<em><b>Equal</b></em>' attribute.
+   * The feature id for the '<em><b>Left Task</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITION__EQUAL = 0;
+  int CONDITION__LEFT_TASK = 0;
 
   /**
-   * The feature id for the '<em><b>Not Equal</b></em>' attribute.
+   * The feature id for the '<em><b>Compare</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITION__NOT_EQUAL = 1;
+  int CONDITION__COMPARE = 1;
+
+  /**
+   * The feature id for the '<em><b>Right Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION__RIGHT_STATUS = 2;
+
+  /**
+   * The feature id for the '<em><b>Left Robot</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION__LEFT_ROBOT = 3;
+
+  /**
+   * The feature id for the '<em><b>Left Measure</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION__LEFT_MEASURE = 4;
+
+  /**
+   * The feature id for the '<em><b>Right Measure</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION__RIGHT_MEASURE = 5;
 
   /**
    * The number of structural features of the '<em>Condition</em>' class.
@@ -769,117 +815,63 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION_FEATURE_COUNT = 2;
+  int CONDITION_FEATURE_COUNT = 6;
 
   /**
-   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusConditionImpl <em>Task Status Condition</em>}' class.
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MeasureComparableImpl <em>Measure Comparable</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusConditionImpl
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getTaskStatusCondition()
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MeasureComparableImpl
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMeasureComparable()
    * @generated
    */
-  int TASK_STATUS_CONDITION = 21;
+  int MEASURE_COMPARABLE = 21;
 
   /**
-   * The feature id for the '<em><b>Equal</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_STATUS_CONDITION__EQUAL = CONDITION__EQUAL;
-
-  /**
-   * The feature id for the '<em><b>Not Equal</b></em>' attribute.
+   * The feature id for the '<em><b>Container</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK_STATUS_CONDITION__NOT_EQUAL = CONDITION__NOT_EQUAL;
+  int MEASURE_COMPARABLE__CONTAINER = 0;
 
   /**
-   * The feature id for the '<em><b>Task</b></em>' reference.
+   * The feature id for the '<em><b>Member</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK_STATUS_CONDITION__TASK = CONDITION_FEATURE_COUNT + 0;
+  int MEASURE_COMPARABLE__MEMBER = 1;
 
   /**
-   * The feature id for the '<em><b>Task Status</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK_STATUS_CONDITION__TASK_STATUS = CONDITION_FEATURE_COUNT + 1;
+  int MEASURE_COMPARABLE__VALUE = 2;
 
   /**
-   * The number of structural features of the '<em>Task Status Condition</em>' class.
+   * The number of structural features of the '<em>Measure Comparable</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK_STATUS_CONDITION_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 2;
+  int MEASURE_COMPARABLE_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusConditionImpl <em>Robot Status Condition</em>}' class.
+   * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.EObject <em>EObject</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusConditionImpl
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getRobotStatusCondition()
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.EObject
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getEObject()
    * @generated
    */
-  int ROBOT_STATUS_CONDITION = 22;
-
-  /**
-   * The feature id for the '<em><b>Equal</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROBOT_STATUS_CONDITION__EQUAL = CONDITION__EQUAL;
-
-  /**
-   * The feature id for the '<em><b>Not Equal</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROBOT_STATUS_CONDITION__NOT_EQUAL = CONDITION__NOT_EQUAL;
-
-  /**
-   * The feature id for the '<em><b>Robot</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROBOT_STATUS_CONDITION__ROBOT = CONDITION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Robot Status</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROBOT_STATUS_CONDITION__ROBOT_STATUS = CONDITION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Robot Status Condition</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROBOT_STATUS_CONDITION_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 2;
+  int EOBJECT = 22;
 
 
   /**
@@ -977,10 +969,10 @@ public interface BehaviourLanguagePackage extends EPackage
   EClass getConditionalStatement();
 
   /**
-   * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement#getCondition <em>Condition</em>}'.
+   * Returns the meta object for the containment reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement#getCondition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @return the meta object for the containment reference list '<em>Condition</em>'.
    * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement#getCondition()
    * @see #getConditionalStatement()
    * @generated
@@ -1309,6 +1301,17 @@ public interface BehaviourLanguagePackage extends EPackage
   EClass getStatusStatement();
 
   /**
+   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement#getStatus <em>Status</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Status</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.StatusStatement#getStatus()
+   * @see #getStatusStatement()
+   * @generated
+   */
+  EAttribute getStatusStatement_Status();
+
+  /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement <em>Robot Status Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1330,17 +1333,6 @@ public interface BehaviourLanguagePackage extends EPackage
   EReference getRobotStatusStatement_Robot();
 
   /**
-   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement#getStatus <em>Status</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Status</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement#getStatus()
-   * @see #getRobotStatusStatement()
-   * @generated
-   */
-  EAttribute getRobotStatusStatement_Status();
-
-  /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement <em>Task Status Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1360,17 +1352,6 @@ public interface BehaviourLanguagePackage extends EPackage
    * @generated
    */
   EReference getTaskStatusStatement_Task();
-
-  /**
-   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement#getStatus <em>Status</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Status</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement#getStatus()
-   * @see #getTaskStatusStatement()
-   * @generated
-   */
-  EAttribute getTaskStatusStatement_Status();
 
   /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget <em>Message Target</em>}'.
@@ -1456,90 +1437,123 @@ public interface BehaviourLanguagePackage extends EPackage
   EClass getCondition();
 
   /**
-   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#isEqual <em>Equal</em>}'.
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftTask <em>Left Task</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Equal</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#isEqual()
+   * @return the meta object for the reference '<em>Left Task</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftTask()
    * @see #getCondition()
    * @generated
    */
-  EAttribute getCondition_Equal();
+  EReference getCondition_LeftTask();
 
   /**
-   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#isNotEqual <em>Not Equal</em>}'.
+   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getCompare <em>Compare</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Not Equal</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#isNotEqual()
+   * @return the meta object for the attribute '<em>Compare</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getCompare()
    * @see #getCondition()
    * @generated
    */
-  EAttribute getCondition_NotEqual();
+  EAttribute getCondition_Compare();
 
   /**
-   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition <em>Task Status Condition</em>}'.
+   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getRightStatus <em>Right Status</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Task Status Condition</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition
+   * @return the meta object for the attribute '<em>Right Status</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getRightStatus()
+   * @see #getCondition()
    * @generated
    */
-  EClass getTaskStatusCondition();
+  EAttribute getCondition_RightStatus();
 
   /**
-   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition#getTask <em>Task</em>}'.
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftRobot <em>Left Robot</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Task</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition#getTask()
-   * @see #getTaskStatusCondition()
+   * @return the meta object for the reference '<em>Left Robot</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftRobot()
+   * @see #getCondition()
    * @generated
    */
-  EReference getTaskStatusCondition_Task();
+  EReference getCondition_LeftRobot();
 
   /**
-   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition#getTaskStatus <em>Task Status</em>}'.
+   * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftMeasure <em>Left Measure</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Task Status</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition#getTaskStatus()
-   * @see #getTaskStatusCondition()
+   * @return the meta object for the containment reference '<em>Left Measure</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getLeftMeasure()
+   * @see #getCondition()
    * @generated
    */
-  EAttribute getTaskStatusCondition_TaskStatus();
+  EReference getCondition_LeftMeasure();
 
   /**
-   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition <em>Robot Status Condition</em>}'.
+   * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getRightMeasure <em>Right Measure</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Robot Status Condition</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition
+   * @return the meta object for the containment reference '<em>Right Measure</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.Condition#getRightMeasure()
+   * @see #getCondition()
    * @generated
    */
-  EClass getRobotStatusCondition();
+  EReference getCondition_RightMeasure();
 
   /**
-   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition#getRobot <em>Robot</em>}'.
+   * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable <em>Measure Comparable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Robot</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition#getRobot()
-   * @see #getRobotStatusCondition()
+   * @return the meta object for class '<em>Measure Comparable</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable
    * @generated
    */
-  EReference getRobotStatusCondition_Robot();
+  EClass getMeasureComparable();
 
   /**
-   * Returns the meta object for the attribute '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition#getRobotStatus <em>Robot Status</em>}'.
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable#getContainer <em>Container</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Robot Status</em>'.
-   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition#getRobotStatus()
-   * @see #getRobotStatusCondition()
+   * @return the meta object for the reference '<em>Container</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable#getContainer()
+   * @see #getMeasureComparable()
    * @generated
    */
-  EAttribute getRobotStatusCondition_RobotStatus();
+  EReference getMeasureComparable_Container();
+
+  /**
+   * Returns the meta object for the reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable#getMember <em>Member</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Member</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable#getMember()
+   * @see #getMeasureComparable()
+   * @generated
+   */
+  EReference getMeasureComparable_Member();
+
+  /**
+   * Returns the meta object for the containment reference '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable#getValue()
+   * @see #getMeasureComparable()
+   * @generated
+   */
+  EReference getMeasureComparable_Value();
+
+  /**
+   * Returns the meta object for enum '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.EObject <em>EObject</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>EObject</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.EObject
+   * @generated
+   */
+  EEnum getEObject();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1647,7 +1661,7 @@ public interface BehaviourLanguagePackage extends EPackage
     EClass CONDITIONAL_STATEMENT = eINSTANCE.getConditionalStatement();
 
     /**
-     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1913,6 +1927,14 @@ public interface BehaviourLanguagePackage extends EPackage
     EClass STATUS_STATEMENT = eINSTANCE.getStatusStatement();
 
     /**
+     * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STATUS_STATEMENT__STATUS = eINSTANCE.getStatusStatement_Status();
+
+    /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusStatementImpl <em>Robot Status Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1931,14 +1953,6 @@ public interface BehaviourLanguagePackage extends EPackage
     EReference ROBOT_STATUS_STATEMENT__ROBOT = eINSTANCE.getRobotStatusStatement_Robot();
 
     /**
-     * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ROBOT_STATUS_STATEMENT__STATUS = eINSTANCE.getRobotStatusStatement_Status();
-
-    /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusStatementImpl <em>Task Status Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1955,14 +1969,6 @@ public interface BehaviourLanguagePackage extends EPackage
      * @generated
      */
     EReference TASK_STATUS_STATEMENT__TASK = eINSTANCE.getTaskStatusStatement_Task();
-
-    /**
-     * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TASK_STATUS_STATEMENT__STATUS = eINSTANCE.getTaskStatusStatement_Status();
 
     /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageTargetImpl <em>Message Target</em>}' class.
@@ -2039,72 +2045,96 @@ public interface BehaviourLanguagePackage extends EPackage
     EClass CONDITION = eINSTANCE.getCondition();
 
     /**
-     * The meta object literal for the '<em><b>Equal</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Left Task</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CONDITION__EQUAL = eINSTANCE.getCondition_Equal();
+    EReference CONDITION__LEFT_TASK = eINSTANCE.getCondition_LeftTask();
 
     /**
-     * The meta object literal for the '<em><b>Not Equal</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Compare</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CONDITION__NOT_EQUAL = eINSTANCE.getCondition_NotEqual();
+    EAttribute CONDITION__COMPARE = eINSTANCE.getCondition_Compare();
 
     /**
-     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusConditionImpl <em>Task Status Condition</em>}' class.
+     * The meta object literal for the '<em><b>Right Status</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusConditionImpl
-     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getTaskStatusCondition()
      * @generated
      */
-    EClass TASK_STATUS_CONDITION = eINSTANCE.getTaskStatusCondition();
+    EAttribute CONDITION__RIGHT_STATUS = eINSTANCE.getCondition_RightStatus();
 
     /**
-     * The meta object literal for the '<em><b>Task</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Left Robot</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TASK_STATUS_CONDITION__TASK = eINSTANCE.getTaskStatusCondition_Task();
+    EReference CONDITION__LEFT_ROBOT = eINSTANCE.getCondition_LeftRobot();
 
     /**
-     * The meta object literal for the '<em><b>Task Status</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Left Measure</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TASK_STATUS_CONDITION__TASK_STATUS = eINSTANCE.getTaskStatusCondition_TaskStatus();
+    EReference CONDITION__LEFT_MEASURE = eINSTANCE.getCondition_LeftMeasure();
 
     /**
-     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusConditionImpl <em>Robot Status Condition</em>}' class.
+     * The meta object literal for the '<em><b>Right Measure</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.RobotStatusConditionImpl
-     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getRobotStatusCondition()
      * @generated
      */
-    EClass ROBOT_STATUS_CONDITION = eINSTANCE.getRobotStatusCondition();
+    EReference CONDITION__RIGHT_MEASURE = eINSTANCE.getCondition_RightMeasure();
 
     /**
-     * The meta object literal for the '<em><b>Robot</b></em>' reference feature.
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MeasureComparableImpl <em>Measure Comparable</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MeasureComparableImpl
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getMeasureComparable()
      * @generated
      */
-    EReference ROBOT_STATUS_CONDITION__ROBOT = eINSTANCE.getRobotStatusCondition_Robot();
+    EClass MEASURE_COMPARABLE = eINSTANCE.getMeasureComparable();
 
     /**
-     * The meta object literal for the '<em><b>Robot Status</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Container</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ROBOT_STATUS_CONDITION__ROBOT_STATUS = eINSTANCE.getRobotStatusCondition_RobotStatus();
+    EReference MEASURE_COMPARABLE__CONTAINER = eINSTANCE.getMeasureComparable_Container();
+
+    /**
+     * The meta object literal for the '<em><b>Member</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEASURE_COMPARABLE__MEMBER = eINSTANCE.getMeasureComparable_Member();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEASURE_COMPARABLE__VALUE = eINSTANCE.getMeasureComparable_Value();
+
+    /**
+     * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.EObject <em>EObject</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.EObject
+     * @see hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguagePackageImpl#getEObject()
+     * @generated
+     */
+    EEnum EOBJECT = eINSTANCE.getEObject();
 
   }
 

@@ -18,7 +18,10 @@ import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
+import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.model.drone.PropertyValue;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
@@ -30,15 +33,12 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Condition;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ExecutionStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MeasureComparable;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusCondition;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.RobotStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusCondition;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.generator.JsonNodeGenerator;
 import hu.bme.mdsd.ztz.text.util.RobotUtil;
@@ -49,6 +49,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class StatementParser {
@@ -102,9 +104,12 @@ public class StatementParser {
   }
   
   protected Object _parseStatement(final ConditionalStatement conditionalStatement, final ArrayNode containerNode) {
-    Condition _condition = conditionalStatement.getCondition();
-    boolean _trueCondition = this.trueCondition(_condition);
-    if (_trueCondition) {
+    EList<Condition> _condition = conditionalStatement.getCondition();
+    final Function1<Condition, Boolean> _function = (Condition it) -> {
+      return Boolean.valueOf(this.trueCondition(it));
+    };
+    boolean _exists = IterableExtensions.<Condition>exists(_condition, _function);
+    if (_exists) {
       EList<Statement> _statements = conditionalStatement.getStatements();
       for (final Statement st : _statements) {
         this.parseStatement(st, containerNode);
@@ -122,39 +127,115 @@ public class StatementParser {
     return null;
   }
   
-  protected boolean _trueCondition(final TaskStatusCondition condition) {
-    boolean _isEqual = condition.isEqual();
-    if (_isEqual) {
-      TaskExecution _task = condition.getTask();
-      TaskExecutionStatus _status = _task.getStatus();
-      TaskExecutionStatus _taskStatus = condition.getTaskStatus();
-      return Objects.equal(_status, _taskStatus);
+  public boolean trueCondition(final Condition condition) {
+    TaskExecution _leftTask = condition.getLeftTask();
+    boolean _notEquals = (!Objects.equal(_leftTask, null));
+    if (_notEquals) {
+      TaskExecution _leftTask_1 = condition.getLeftTask();
+      TaskExecutionStatus _status = _leftTask_1.getStatus();
+      hu.bme.mdsd.ztz.text.behaviourLanguage.EObject _rightStatus = condition.getRightStatus();
+      boolean _equals = _status.equals(_rightStatus);
+      String _compare = condition.getCompare();
+      boolean _equals_1 = _compare.equals("==");
+      return (_equals == _equals_1);
     } else {
-      boolean _isNotEqual = condition.isNotEqual();
-      if (_isNotEqual) {
-        TaskExecution _task_1 = condition.getTask();
-        TaskExecutionStatus _status_1 = _task_1.getStatus();
-        TaskExecutionStatus _taskStatus_1 = condition.getTaskStatus();
-        return (!Objects.equal(_status_1, _taskStatus_1));
+      DynamicRobot _leftRobot = condition.getLeftRobot();
+      boolean _notEquals_1 = (!Objects.equal(_leftRobot, null));
+      if (_notEquals_1) {
+        DynamicRobot _leftRobot_1 = condition.getLeftRobot();
+        RobotStatus _status_1 = _leftRobot_1.getStatus();
+        hu.bme.mdsd.ztz.text.behaviourLanguage.EObject _rightStatus_1 = condition.getRightStatus();
+        boolean _equals_2 = _status_1.equals(_rightStatus_1);
+        String _compare_1 = condition.getCompare();
+        boolean _equals_3 = _compare_1.equals("==");
+        return (_equals_2 == _equals_3);
+      } else {
+        boolean _and = false;
+        MeasureComparable _leftMeasure = condition.getLeftMeasure();
+        boolean _notEquals_2 = (!Objects.equal(_leftMeasure, null));
+        if (!_notEquals_2) {
+          _and = false;
+        } else {
+          MeasureComparable _rightMeasure = condition.getRightMeasure();
+          boolean _notEquals_3 = (!Objects.equal(_rightMeasure, null));
+          _and = _notEquals_3;
+        }
+        if (_and) {
+          MeasureComparable _leftMeasure_1 = condition.getLeftMeasure();
+          final PropertyValue left = RobotUtil.getPropertyValueFromComparable(_leftMeasure_1);
+          MeasureComparable _rightMeasure_1 = condition.getRightMeasure();
+          final PropertyValue right = RobotUtil.getPropertyValueFromComparable(_rightMeasure_1);
+          boolean _and_1 = false;
+          if (!(left instanceof MeasureValue)) {
+            _and_1 = false;
+          } else {
+            _and_1 = (right instanceof MeasureValue);
+          }
+          if (_and_1) {
+            MeasureDimension _dimension = ((MeasureValue) right).getDimension();
+            final MeasureValue leftConversion = RobotUtil.convertTo(((MeasureValue) left), _dimension);
+            boolean _notEquals_4 = (!Objects.equal(leftConversion, null));
+            if (_notEquals_4) {
+              String _compare_2 = condition.getCompare();
+              return this.compareMeasureValues(leftConversion, ((MeasureValue) right), _compare_2);
+            } else {
+              MeasureDimension _dimension_1 = ((MeasureValue) left).getDimension();
+              final MeasureValue rightConversion = RobotUtil.convertTo(((MeasureValue) right), _dimension_1);
+              String _compare_3 = condition.getCompare();
+              return this.compareMeasureValues(rightConversion, ((MeasureValue) left), _compare_3);
+            }
+          } else {
+            boolean _equals_4 = left.equals(right);
+            String _compare_4 = condition.getCompare();
+            boolean _equals_5 = _compare_4.equals("==");
+            return (_equals_4 == _equals_5);
+          }
+        }
       }
     }
     return false;
   }
   
-  protected boolean _trueCondition(final RobotStatusCondition condition) {
-    boolean _isEqual = condition.isEqual();
-    if (_isEqual) {
-      DynamicRobot _robot = condition.getRobot();
-      RobotStatus _status = _robot.getStatus();
-      RobotStatus _robotStatus = condition.getRobotStatus();
-      return Objects.equal(_status, _robotStatus);
+  public boolean compareMeasureValues(final MeasureValue left, final MeasureValue right, final String comparison) {
+    boolean _equals = comparison.equals(">");
+    if (_equals) {
+      float _value = left.getValue();
+      float _value_1 = right.getValue();
+      return (_value > _value_1);
     } else {
-      boolean _isNotEqual = condition.isNotEqual();
-      if (_isNotEqual) {
-        DynamicRobot _robot_1 = condition.getRobot();
-        RobotStatus _status_1 = _robot_1.getStatus();
-        RobotStatus _robotStatus_1 = condition.getRobotStatus();
-        return (!Objects.equal(_status_1, _robotStatus_1));
+      boolean _equals_1 = comparison.equals(">=");
+      if (_equals_1) {
+        float _value_2 = left.getValue();
+        float _value_3 = right.getValue();
+        return (_value_2 >= _value_3);
+      } else {
+        boolean _equals_2 = comparison.equals("<");
+        if (_equals_2) {
+          float _value_4 = left.getValue();
+          float _value_5 = right.getValue();
+          return (_value_4 < _value_5);
+        } else {
+          boolean _equals_3 = comparison.equals("<=");
+          if (_equals_3) {
+            float _value_6 = left.getValue();
+            float _value_7 = right.getValue();
+            return (_value_6 <= _value_7);
+          } else {
+            boolean _equals_4 = comparison.equals("==");
+            if (_equals_4) {
+              float _value_8 = left.getValue();
+              float _value_9 = right.getValue();
+              return (_value_8 == _value_9);
+            } else {
+              boolean _equals_5 = comparison.equals("!=");
+              if (_equals_5) {
+                float _value_10 = left.getValue();
+                float _value_11 = right.getValue();
+                return (_value_10 != _value_11);
+              }
+            }
+          }
+        }
       }
     }
     return false;
@@ -267,20 +348,6 @@ public class StatementParser {
       _xblockexpression = this.parseMessageTarget(messageTarget, senderRobot, containerNode, message);
     }
     return _xblockexpression;
-  }
-  
-  protected Object _parseStatement(final RobotStatusStatement statement, final ArrayNode containerNode) {
-    final DynamicRobot robot = statement.getRobot();
-    RobotStatus _status = statement.getStatus();
-    robot.setStatus(_status);
-    return null;
-  }
-  
-  protected Object _parseStatement(final TaskStatusStatement statement, final ArrayNode containerNode) {
-    final TaskExecution task = statement.getTask();
-    TaskExecutionStatus _status = statement.getStatus();
-    task.setStatus(_status);
-    return null;
   }
   
   protected Boolean _parseMessageTarget(final UniTarget target, final DynamicRobot senderRobot, final ArrayNode containerNode, final Message message) {
@@ -408,11 +475,7 @@ public class StatementParser {
   }
   
   public Object parseStatement(final Statement statement, final ArrayNode containerNode) {
-    if (statement instanceof RobotStatusStatement) {
-      return _parseStatement((RobotStatusStatement)statement, containerNode);
-    } else if (statement instanceof TaskStatusStatement) {
-      return _parseStatement((TaskStatusStatement)statement, containerNode);
-    } else if (statement instanceof ActionStatement) {
+    if (statement instanceof ActionStatement) {
       return _parseStatement((ActionStatement)statement, containerNode);
     } else if (statement instanceof CollaborationStatement) {
       return _parseStatement((CollaborationStatement)statement, containerNode);
@@ -431,17 +494,6 @@ public class StatementParser {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(statement, containerNode).toString());
-    }
-  }
-  
-  public boolean trueCondition(final Condition condition) {
-    if (condition instanceof RobotStatusCondition) {
-      return _trueCondition((RobotStatusCondition)condition);
-    } else if (condition instanceof TaskStatusCondition) {
-      return _trueCondition((TaskStatusCondition)condition);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(condition).toString());
     }
   }
   

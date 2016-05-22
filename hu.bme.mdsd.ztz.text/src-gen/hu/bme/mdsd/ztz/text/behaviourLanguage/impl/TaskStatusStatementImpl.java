@@ -4,7 +4,6 @@
 package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
-import hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.TaskStatusStatement;
@@ -25,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusStatementImpl#getTask <em>Task</em>}</li>
- *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.TaskStatusStatementImpl#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,26 +39,6 @@ public class TaskStatusStatementImpl extends StatusStatementImpl implements Task
    * @ordered
    */
   protected TaskExecution task;
-
-  /**
-   * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getStatus()
-   * @generated
-   * @ordered
-   */
-  protected static final TaskExecutionStatus STATUS_EDEFAULT = TaskExecutionStatus.READY;
-
-  /**
-   * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getStatus()
-   * @generated
-   * @ordered
-   */
-  protected TaskExecutionStatus status = STATUS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -131,29 +109,6 @@ public class TaskStatusStatementImpl extends StatusStatementImpl implements Task
    * <!-- end-user-doc -->
    * @generated
    */
-  public TaskExecutionStatus getStatus()
-  {
-    return status;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setStatus(TaskExecutionStatus newStatus)
-  {
-    TaskExecutionStatus oldStatus = status;
-    status = newStatus == null ? STATUS_EDEFAULT : newStatus;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BehaviourLanguagePackage.TASK_STATUS_STATEMENT__STATUS, oldStatus, status));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -162,8 +117,6 @@ public class TaskStatusStatementImpl extends StatusStatementImpl implements Task
       case BehaviourLanguagePackage.TASK_STATUS_STATEMENT__TASK:
         if (resolve) return getTask();
         return basicGetTask();
-      case BehaviourLanguagePackage.TASK_STATUS_STATEMENT__STATUS:
-        return getStatus();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -180,9 +133,6 @@ public class TaskStatusStatementImpl extends StatusStatementImpl implements Task
     {
       case BehaviourLanguagePackage.TASK_STATUS_STATEMENT__TASK:
         setTask((TaskExecution)newValue);
-        return;
-      case BehaviourLanguagePackage.TASK_STATUS_STATEMENT__STATUS:
-        setStatus((TaskExecutionStatus)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -201,9 +151,6 @@ public class TaskStatusStatementImpl extends StatusStatementImpl implements Task
       case BehaviourLanguagePackage.TASK_STATUS_STATEMENT__TASK:
         setTask((TaskExecution)null);
         return;
-      case BehaviourLanguagePackage.TASK_STATUS_STATEMENT__STATUS:
-        setStatus(STATUS_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -220,27 +167,8 @@ public class TaskStatusStatementImpl extends StatusStatementImpl implements Task
     {
       case BehaviourLanguagePackage.TASK_STATUS_STATEMENT__TASK:
         return task != null;
-      case BehaviourLanguagePackage.TASK_STATUS_STATEMENT__STATUS:
-        return status != STATUS_EDEFAULT;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (status: ");
-    result.append(status);
-    result.append(')');
-    return result.toString();
   }
 
 } //TaskStatusStatementImpl

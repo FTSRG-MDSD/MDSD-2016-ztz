@@ -662,7 +662,7 @@ ruleConditionalStatement returns [EObject current=null]
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getConditionalStatementRule());
 					}
-					set(
+					add(
 						$current,
 						"condition",
 						lv_condition_1_0,
@@ -671,20 +671,45 @@ ruleConditionalStatement returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2='then'
+		(
+			otherlv_2='or'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getConditionalStatementAccess().getOrKeyword_2_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getConditionalStatementAccess().getConditionConditionParserRuleCall_2_1_0());
+					}
+					lv_condition_3_0=ruleCondition
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getConditionalStatementRule());
+						}
+						add(
+							$current,
+							"condition",
+							lv_condition_3_0,
+							"hu.bme.mdsd.ztz.text.BehaviourLanguage.Condition");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		otherlv_4='then'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getConditionalStatementAccess().getThenKeyword_2());
+			newLeafNode(otherlv_4, grammarAccess.getConditionalStatementAccess().getThenKeyword_3());
 		}
-		otherlv_3='{'
+		otherlv_5='{'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getConditionalStatementAccess().getLeftCurlyBracketKeyword_3());
+			newLeafNode(otherlv_5, grammarAccess.getConditionalStatementAccess().getLeftCurlyBracketKeyword_4());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getConditionalStatementAccess().getStatementsStatementParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getConditionalStatementAccess().getStatementsStatementParserRuleCall_5_0());
 				}
-				lv_statements_4_0=ruleStatement
+				lv_statements_6_0=ruleStatement
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getConditionalStatementRule());
@@ -692,31 +717,31 @@ ruleConditionalStatement returns [EObject current=null]
 					add(
 						$current,
 						"statements",
-						lv_statements_4_0,
+						lv_statements_6_0,
 						"hu.bme.mdsd.ztz.text.BehaviourLanguage.Statement");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
-		otherlv_5='}'
+		otherlv_7='}'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getConditionalStatementAccess().getRightCurlyBracketKeyword_5());
+			newLeafNode(otherlv_7, grammarAccess.getConditionalStatementAccess().getRightCurlyBracketKeyword_6());
 		}
 		(
-			otherlv_6='else'
+			otherlv_8='else'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getConditionalStatementAccess().getElseKeyword_6_0());
+				newLeafNode(otherlv_8, grammarAccess.getConditionalStatementAccess().getElseKeyword_7_0());
 			}
-			otherlv_7='{'
+			otherlv_9='{'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getConditionalStatementAccess().getLeftCurlyBracketKeyword_6_1());
+				newLeafNode(otherlv_9, grammarAccess.getConditionalStatementAccess().getLeftCurlyBracketKeyword_7_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getConditionalStatementAccess().getOtherStatementsStatementParserRuleCall_6_2_0());
+						newCompositeNode(grammarAccess.getConditionalStatementAccess().getOtherStatementsStatementParserRuleCall_7_2_0());
 					}
-					lv_otherStatements_8_0=ruleStatement
+					lv_otherStatements_10_0=ruleStatement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getConditionalStatementRule());
@@ -724,15 +749,15 @@ ruleConditionalStatement returns [EObject current=null]
 						add(
 							$current,
 							"otherStatements",
-							lv_otherStatements_8_0,
+							lv_otherStatements_10_0,
 							"hu.bme.mdsd.ztz.text.BehaviourLanguage.Statement");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)+
-			otherlv_9='}'
+			otherlv_11='}'
 			{
-				newLeafNode(otherlv_9, grammarAccess.getConditionalStatementAccess().getRightCurlyBracketKeyword_6_3());
+				newLeafNode(otherlv_11, grammarAccess.getConditionalStatementAccess().getRightCurlyBracketKeyword_7_3());
 			}
 		)?
 	)
@@ -1669,35 +1694,278 @@ ruleCondition returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		{
-			newCompositeNode(grammarAccess.getConditionAccess().getTaskStatusConditionParserRuleCall_0());
-		}
-		this_TaskStatusCondition_0=ruleTaskStatusCondition
-		{
-			$current = $this_TaskStatusCondition_0.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getConditionAccess().getConditionAction_0_0(),
+						$current);
+				}
+			)
+			(
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getConditionRule());
+							}
+						}
+						otherlv_1=RULE_ID
+						{
+							newLeafNode(otherlv_1, grammarAccess.getConditionAccess().getLeftTaskTaskExecutionCrossReference_0_1_0_0());
+						}
+					)
+				)
+				otherlv_2='.'
+				{
+					newLeafNode(otherlv_2, grammarAccess.getConditionAccess().getFullStopKeyword_0_1_1());
+				}
+				otherlv_3='status'
+				{
+					newLeafNode(otherlv_3, grammarAccess.getConditionAccess().getStatusKeyword_0_1_2());
+				}
+				(
+					(
+						(
+							lv_compare_4_1='=='
+							{
+								newLeafNode(lv_compare_4_1, grammarAccess.getConditionAccess().getCompareEqualsSignEqualsSignKeyword_0_1_3_0_0());
+							}
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getConditionRule());
+								}
+								setWithLastConsumed($current, "compare", lv_compare_4_1, null);
+							}
+							    |
+							lv_compare_4_2='!='
+							{
+								newLeafNode(lv_compare_4_2, grammarAccess.getConditionAccess().getCompareExclamationMarkEqualsSignKeyword_0_1_3_0_1());
+							}
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getConditionRule());
+								}
+								setWithLastConsumed($current, "compare", lv_compare_4_2, null);
+							}
+						)
+					)
+				)
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getConditionAccess().getRightStatusTaskExecutionStatusEnumRuleCall_0_1_4_0());
+						}
+						lv_rightStatus_5_0=ruleTaskExecutionStatus
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getConditionRule());
+							}
+							set(
+								$current,
+								"rightStatus",
+								lv_rightStatus_5_0,
+								"hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskExecutionStatus");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)
+		)
 		    |
-		{
-			newCompositeNode(grammarAccess.getConditionAccess().getRobotStatusConditionParserRuleCall_1());
-		}
-		this_RobotStatusCondition_1=ruleRobotStatusCondition
-		{
-			$current = $this_RobotStatusCondition_1.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getConditionRule());
+						}
+					}
+					otherlv_6=RULE_ID
+					{
+						newLeafNode(otherlv_6, grammarAccess.getConditionAccess().getLeftRobotDynamicRobotCrossReference_1_0_0());
+					}
+				)
+			)
+			otherlv_7='.'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getConditionAccess().getFullStopKeyword_1_1());
+			}
+			otherlv_8='status'
+			{
+				newLeafNode(otherlv_8, grammarAccess.getConditionAccess().getStatusKeyword_1_2());
+			}
+			(
+				(
+					(
+						lv_compare_9_1='=='
+						{
+							newLeafNode(lv_compare_9_1, grammarAccess.getConditionAccess().getCompareEqualsSignEqualsSignKeyword_1_3_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getConditionRule());
+							}
+							setWithLastConsumed($current, "compare", lv_compare_9_1, null);
+						}
+						    |
+						lv_compare_9_2='!='
+						{
+							newLeafNode(lv_compare_9_2, grammarAccess.getConditionAccess().getCompareExclamationMarkEqualsSignKeyword_1_3_0_1());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getConditionRule());
+							}
+							setWithLastConsumed($current, "compare", lv_compare_9_2, null);
+						}
+					)
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getConditionAccess().getRightStatusRobotStatusEnumRuleCall_1_4_0());
+					}
+					lv_rightStatus_10_0=ruleRobotStatus
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getConditionRule());
+						}
+						set(
+							$current,
+							"rightStatus",
+							lv_rightStatus_10_0,
+							"hu.bme.mdsd.ztz.text.BehaviourLanguage.RobotStatus");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getConditionAccess().getLeftMeasureMeasureComparableParserRuleCall_2_0_0());
+					}
+					lv_leftMeasure_11_0=ruleMeasureComparable
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getConditionRule());
+						}
+						set(
+							$current,
+							"leftMeasure",
+							lv_leftMeasure_11_0,
+							"hu.bme.mdsd.ztz.text.BehaviourLanguage.MeasureComparable");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					(
+						lv_compare_12_1='>'
+						{
+							newLeafNode(lv_compare_12_1, grammarAccess.getConditionAccess().getCompareGreaterThanSignKeyword_2_1_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getConditionRule());
+							}
+							setWithLastConsumed($current, "compare", lv_compare_12_1, null);
+						}
+						    |
+						lv_compare_12_2='<'
+						{
+							newLeafNode(lv_compare_12_2, grammarAccess.getConditionAccess().getCompareLessThanSignKeyword_2_1_0_1());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getConditionRule());
+							}
+							setWithLastConsumed($current, "compare", lv_compare_12_2, null);
+						}
+						    |
+						lv_compare_12_3='>='
+						{
+							newLeafNode(lv_compare_12_3, grammarAccess.getConditionAccess().getCompareGreaterThanSignEqualsSignKeyword_2_1_0_2());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getConditionRule());
+							}
+							setWithLastConsumed($current, "compare", lv_compare_12_3, null);
+						}
+						    |
+						lv_compare_12_4='<='
+						{
+							newLeafNode(lv_compare_12_4, grammarAccess.getConditionAccess().getCompareLessThanSignEqualsSignKeyword_2_1_0_3());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getConditionRule());
+							}
+							setWithLastConsumed($current, "compare", lv_compare_12_4, null);
+						}
+						    |
+						lv_compare_12_5='=='
+						{
+							newLeafNode(lv_compare_12_5, grammarAccess.getConditionAccess().getCompareEqualsSignEqualsSignKeyword_2_1_0_4());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getConditionRule());
+							}
+							setWithLastConsumed($current, "compare", lv_compare_12_5, null);
+						}
+						    |
+						lv_compare_12_6='!='
+						{
+							newLeafNode(lv_compare_12_6, grammarAccess.getConditionAccess().getCompareExclamationMarkEqualsSignKeyword_2_1_0_5());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getConditionRule());
+							}
+							setWithLastConsumed($current, "compare", lv_compare_12_6, null);
+						}
+					)
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getConditionAccess().getRightMeasureMeasureComparableParserRuleCall_2_2_0());
+					}
+					lv_rightMeasure_13_0=ruleMeasureComparable
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getConditionRule());
+						}
+						set(
+							$current,
+							"rightMeasure",
+							lv_rightMeasure_13_0,
+							"hu.bme.mdsd.ztz.text.BehaviourLanguage.MeasureComparable");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
 	)
 ;
 
-// Entry rule entryRuleTaskStatusCondition
-entryRuleTaskStatusCondition returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTaskStatusConditionRule()); }
-	iv_ruleTaskStatusCondition=ruleTaskStatusCondition
-	{ $current=$iv_ruleTaskStatusCondition.current; }
+// Entry rule entryRuleMeasureComparable
+entryRuleMeasureComparable returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMeasureComparableRule()); }
+	iv_ruleMeasureComparable=ruleMeasureComparable
+	{ $current=$iv_ruleMeasureComparable.current; }
 	EOF;
 
-// Rule TaskStatusCondition
-ruleTaskStatusCondition returns [EObject current=null]
+// Rule MeasureComparable
+ruleMeasureComparable returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -1707,145 +1975,52 @@ ruleTaskStatusCondition returns [EObject current=null]
 	(
 		(
 			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getTaskStatusConditionRule());
-					}
-				}
-				otherlv_0=RULE_ID
-				{
-					newLeafNode(otherlv_0, grammarAccess.getTaskStatusConditionAccess().getTaskTaskExecutionCrossReference_0_0());
-				}
-			)
-		)
-		(
-			(
 				(
-					lv_equal_1_0='=='
-					{
-						newLeafNode(lv_equal_1_0, grammarAccess.getTaskStatusConditionAccess().getEqualEqualsSignEqualsSignKeyword_1_0_0());
-					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTaskStatusConditionRule());
+							$current = createModelElement(grammarAccess.getMeasureComparableRule());
 						}
-						setWithLastConsumed($current, "equal", true, "==");
+					}
+					otherlv_0=RULE_ID
+					{
+						newLeafNode(otherlv_0, grammarAccess.getMeasureComparableAccess().getContainerDynamicRobotCrossReference_0_0_0());
 					}
 				)
 			)
-			    |
+			otherlv_1='.'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getMeasureComparableAccess().getFullStopKeyword_0_1());
+			}
 			(
 				(
-					lv_notEqual_2_0='!='
-					{
-						newLeafNode(lv_notEqual_2_0, grammarAccess.getTaskStatusConditionAccess().getNotEqualExclamationMarkEqualsSignKeyword_1_1_0());
-					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTaskStatusConditionRule());
+							$current = createModelElement(grammarAccess.getMeasureComparableRule());
 						}
-						setWithLastConsumed($current, "notEqual", true, "!=");
+					}
+					otherlv_2=RULE_ID
+					{
+						newLeafNode(otherlv_2, grammarAccess.getMeasureComparableAccess().getMemberPropertyKeyCrossReference_0_2_0());
 					}
 				)
 			)
 		)
+		    |
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTaskStatusConditionAccess().getTaskStatusTaskExecutionStatusEnumRuleCall_2_0());
+					newCompositeNode(grammarAccess.getMeasureComparableAccess().getValuePropertyValueParserRuleCall_1_0());
 				}
-				lv_taskStatus_3_0=ruleTaskExecutionStatus
+				lv_value_3_0=rulePropertyValue
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTaskStatusConditionRule());
+						$current = createModelElementForParent(grammarAccess.getMeasureComparableRule());
 					}
 					set(
 						$current,
-						"taskStatus",
-						lv_taskStatus_3_0,
-						"hu.bme.mdsd.ztz.text.BehaviourLanguage.TaskExecutionStatus");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-	)
-;
-
-// Entry rule entryRuleRobotStatusCondition
-entryRuleRobotStatusCondition returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getRobotStatusConditionRule()); }
-	iv_ruleRobotStatusCondition=ruleRobotStatusCondition
-	{ $current=$iv_ruleRobotStatusCondition.current; }
-	EOF;
-
-// Rule RobotStatusCondition
-ruleRobotStatusCondition returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getRobotStatusConditionRule());
-					}
-				}
-				otherlv_0=RULE_ID
-				{
-					newLeafNode(otherlv_0, grammarAccess.getRobotStatusConditionAccess().getRobotDynamicRobotCrossReference_0_0());
-				}
-			)
-		)
-		(
-			(
-				(
-					lv_equal_1_0='=='
-					{
-						newLeafNode(lv_equal_1_0, grammarAccess.getRobotStatusConditionAccess().getEqualEqualsSignEqualsSignKeyword_1_0_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getRobotStatusConditionRule());
-						}
-						setWithLastConsumed($current, "equal", true, "==");
-					}
-				)
-			)
-			    |
-			(
-				(
-					lv_notEqual_2_0='!='
-					{
-						newLeafNode(lv_notEqual_2_0, grammarAccess.getRobotStatusConditionAccess().getNotEqualExclamationMarkEqualsSignKeyword_1_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getRobotStatusConditionRule());
-						}
-						setWithLastConsumed($current, "notEqual", true, "!=");
-					}
-				)
-			)
-		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getRobotStatusConditionAccess().getRobotStatusRobotStatusEnumRuleCall_2_0());
-				}
-				lv_robotStatus_3_0=ruleRobotStatus
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRobotStatusConditionRule());
-					}
-					set(
-						$current,
-						"robotStatus",
-						lv_robotStatus_3_0,
-						"hu.bme.mdsd.ztz.text.BehaviourLanguage.RobotStatus");
+						"value",
+						lv_value_3_0,
+						"hu.bme.mdsd.ztz.text.BehaviourLanguage.PropertyValue");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -3102,7 +3277,7 @@ ruleRobotStatus returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='Ready'
+			enumLiteral_0='RobotReady'
 			{
 				$current = grammarAccess.getRobotStatusAccess().getReadyEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_0, grammarAccess.getRobotStatusAccess().getReadyEnumLiteralDeclaration_0());
@@ -3110,7 +3285,7 @@ ruleRobotStatus returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_1='TurnedOff'
+			enumLiteral_1='RobotTurnedOff'
 			{
 				$current = grammarAccess.getRobotStatusAccess().getTurnedOffEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_1, grammarAccess.getRobotStatusAccess().getTurnedOffEnumLiteralDeclaration_1());
@@ -3118,7 +3293,7 @@ ruleRobotStatus returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_2='Waiting'
+			enumLiteral_2='RobotWaiting'
 			{
 				$current = grammarAccess.getRobotStatusAccess().getWaitingEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_2, grammarAccess.getRobotStatusAccess().getWaitingEnumLiteralDeclaration_2());
@@ -3126,7 +3301,7 @@ ruleRobotStatus returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_3='Executing'
+			enumLiteral_3='RobotExecuting'
 			{
 				$current = grammarAccess.getRobotStatusAccess().getExecutingEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_3, grammarAccess.getRobotStatusAccess().getExecutingEnumLiteralDeclaration_3());
@@ -3145,7 +3320,7 @@ ruleTaskExecutionStatus returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='Ready'
+			enumLiteral_0='TaskReady'
 			{
 				$current = grammarAccess.getTaskExecutionStatusAccess().getReadyEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_0, grammarAccess.getTaskExecutionStatusAccess().getReadyEnumLiteralDeclaration_0());
@@ -3153,7 +3328,7 @@ ruleTaskExecutionStatus returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_1='Finished'
+			enumLiteral_1='TaskFinished'
 			{
 				$current = grammarAccess.getTaskExecutionStatusAccess().getFinishedEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_1, grammarAccess.getTaskExecutionStatusAccess().getFinishedEnumLiteralDeclaration_1());
@@ -3161,7 +3336,7 @@ ruleTaskExecutionStatus returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_2='Suspended'
+			enumLiteral_2='TaskSuspended'
 			{
 				$current = grammarAccess.getTaskExecutionStatusAccess().getSuspendedEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_2, grammarAccess.getTaskExecutionStatusAccess().getSuspendedEnumLiteralDeclaration_2());
@@ -3169,7 +3344,7 @@ ruleTaskExecutionStatus returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_3='InProgress'
+			enumLiteral_3='TaskInProgress'
 			{
 				$current = grammarAccess.getTaskExecutionStatusAccess().getInProgressEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_3, grammarAccess.getTaskExecutionStatusAccess().getInProgressEnumLiteralDeclaration_3());
@@ -3177,7 +3352,7 @@ ruleTaskExecutionStatus returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_4='Waiting'
+			enumLiteral_4='TaskWaiting'
 			{
 				$current = grammarAccess.getTaskExecutionStatusAccess().getWaitingEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_4, grammarAccess.getTaskExecutionStatusAccess().getWaitingEnumLiteralDeclaration_4());
