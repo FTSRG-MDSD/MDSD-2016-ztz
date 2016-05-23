@@ -1,0 +1,57 @@
+import "rubbish.drone"
+
+Declaration {
+	DynamicRobots {
+		BobD : Bob2,
+		FrankD : Frank
+	}
+	Keys { Lat, Long }
+}
+
+action Move {Lat Long}
+action Bring {Lat Long}
+action MoveToTarget
+
+BobD know FrankD
+sync {
+	BobD do Move  {[Lat = "27.0"], [Long = "127.0"]} 
+	FrankD do Move {[Lat = "22.0"], [Long = "90.0"]}
+}
+BobD detect Tissue
+sync {
+	BobD detect Napkin
+	FrankD detect Bottle
+}
+sync {
+	BobD do MoveToTarget [Tissue]
+	FrankD do MoveToTarget [Bottle]
+}
+BobD do Bring {[Lat = "25.0"], [Long = "127.0"]} [Tissue]
+sync {
+	FrankD do Bring {[Lat = "25.0"], [Long = "127.0"]} [Bottle]
+	BobD do MoveToTarget [Napkin]
+}
+sync {
+	FrankD do Move {[Lat = "20.0"], [Long = "85.0"]}
+	BobD do Bring {[Lat = "25.0"], [Long = "127.0"]} [Napkin]
+}
+sync {
+	FrankD do Move {[Lat = "21.0"], [Long = "90.0"]}
+	BobD do Move {[Lat = "30.0"], [Long = "118.0"]}
+}
+sync {
+	FrankD do Move {[Lat = "20.0"], [Long = "92.0"]}
+	BobD detect Stub
+}
+sync {
+	FrankD do Move {[Lat = "25.0"], [Long = "127.0"]}
+	BobD do MoveToTarget [Stub]
+}
+BobD detect Box
+BobD send FrankD message {Objects (Box)}
+sync {
+	BobD do Bring {[Lat = "25.0"], [Long = "127.0"]} [Stub]
+	FrankD do MoveToTarget [Box]
+}
+FrankD do Bring {[Lat = "25.0"], [Long = "127.0"]} [Box]
+
