@@ -21,4 +21,8 @@ public class ErrorCodes {
   public final static String MISSING_ACTION_DECLARATION = "hu.bme.mdsd.ztz.text.errors.missing_action_declaration";
   
   public final static String MISSING_FOLDER = "hu.bme.mdsd.ztz.text.errors.missing_folder";
+  
+  public final static String SAME_MESSAGE_TARGET = "hu.bme.mdsd.ztz.text.errors.same_message_target";
+  
+  public final static String SAME_MESSAGE_TARGET_WITH_COLLABORATIONS = "hu.bme.mdsd.ztz.text.errors.same_message_target_with_collaborations";
 }

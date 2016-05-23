@@ -12,5 +12,7 @@ class ErrorCodes {
 	val public static NOT_IN_COLLABORATION_BROADCAST = "hu.bme.mdsd.ztz.text.errors.not_in_collaboration_broadcast"
 	val public static MISSING_ACTION_DECLARATION = "hu.bme.mdsd.ztz.text.errors.missing_action_declaration"
 	val public static MISSING_FOLDER = "hu.bme.mdsd.ztz.text.errors.missing_folder"
+	val public static SAME_MESSAGE_TARGET = "hu.bme.mdsd.ztz.text.errors.same_message_target"
+	val public static SAME_MESSAGE_TARGET_WITH_COLLABORATIONS = "hu.bme.mdsd.ztz.text.errors.same_message_target_with_collaborations"
 	
 }

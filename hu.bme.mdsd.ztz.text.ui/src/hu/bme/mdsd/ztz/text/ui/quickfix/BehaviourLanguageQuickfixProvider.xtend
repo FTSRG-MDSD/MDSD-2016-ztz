@@ -102,5 +102,15 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 				xtextDocument.replace(issue.offset, issue.length, issue.data.get(0))
 		]
 	}
+	
+	@Fix(ErrorCodes.SAME_MESSAGE_TARGET_WITH_COLLABORATIONS)
+	def fixSelfMessageTarget(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, "Change the target to " + issue.data.get(0), "", "") [
+			element, context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, issue.length, issue.data.get(0))
+		]
+	}	
+	
 
 }

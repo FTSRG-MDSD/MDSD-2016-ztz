@@ -120,4 +120,20 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
     };
     acceptor.accept(issue, _plus, "", "", _function);
   }
+  
+  @Fix(ErrorCodes.SAME_MESSAGE_TARGET_WITH_COLLABORATIONS)
+  public void fixSelfMessageTarget(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    String[] _data = issue.getData();
+    String _get = _data[0];
+    String _plus = ("Change the target to " + _get);
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final IXtextDocument xtextDocument = context.getXtextDocument();
+      Integer _offset = issue.getOffset();
+      Integer _length = issue.getLength();
+      String[] _data_1 = issue.getData();
+      String _get_1 = _data_1[0];
+      xtextDocument.replace((_offset).intValue(), (_length).intValue(), _get_1);
+    };
+    acceptor.accept(issue, _plus, "", "", _function);
+  }
 }
