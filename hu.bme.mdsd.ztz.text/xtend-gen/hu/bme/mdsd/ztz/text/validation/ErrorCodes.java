@@ -6,6 +6,8 @@ public class ErrorCodes {
   
   public final static String SAME_COLLABORATOR = "hu.bme.mdsd.ztz.text.errors.same_collaborator";
   
+  public final static String SAME_AND_ONLY_COLLABORATOR = "hu.bme.mdsd.ztz.text.errors.same_and_only_collaborator";
+  
   public final static String SAME_ROBOT_NAME = "hu.bme.mdsd.ztz.text.errors.same_robot_name";
   
   public final static String SAME_MESSAGE_NAME = "hu.bme.mdsd.ztz.text.errors.same_message_name";

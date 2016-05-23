@@ -19,6 +19,7 @@ import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
 
 /**
  * Custom quickfixes.
@@ -26,11 +27,6 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#quick-fixes
  */
 class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
-
-	@Fix(ErrorCodes.SAME_COLLABORATOR)
-	def fixSameCollaborator(Issue issue, IssueResolutionAcceptor acceptor) {
-		
-	}
 
 	@Fix(ErrorCodes.NOT_IN_COLLABORATION)
 	def fixMissingCollaboration(Issue issue, IssueResolutionAcceptor acceptor) {
@@ -86,6 +82,17 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 				
 				language.statements.add(0, newActionDeclaration)
 			
+		]
+	}
+	
+	@Fix(ErrorCodes.SAME_COLLABORATOR)
+	def fixSelfCollaboration(Issue issue, IssueResolutionAcceptor acceptor) {
+		val modificationContext = modificationContextFactory.createModificationContext(issue)
+
+		acceptor.accept(issue, "Change the collaborator to " + issue.data.get(0), "", "") [
+			element, context |
+				val xtextDocument = context.xtextDocument
+				xtextDocument.replace(issue.offset, issue.length, issue.data.get(0))
 		]
 	}
 

@@ -74,8 +74,19 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 	def checkSelfKnowing(CollaborationStatement statement) {
 		for (RobotCollaboration collab : statement.collaboration) {
 			if (statement.robot == collab.collaborator) {
-				error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.COLLABORATION_STATEMENT__ROBOT,
-					ErrorCodes.SAME_COLLABORATOR)
+				val robots = statement.eContainer.eAllContents.filter(DynamicRobot).toSet
+				if (robots.size > 1) {
+					for (DynamicRobot r : robots) {
+						if (r != statement.robot) {
+							error("Robots cannot know themselves", collab, BehaviourPackage.Literals.ROBOT_COLLABORATION__COLLABORATOR,
+								ErrorCodes.SAME_COLLABORATOR, r.name)
+							return
+						}
+					}
+				} else {
+					error("Robots cannot know themselves", collab, BehaviourPackage.Literals.ROBOT_COLLABORATION__COLLABORATOR,
+						ErrorCodes.SAME_AND_ONLY_COLLABORATOR)
+				}
 			}
 		}
 	}

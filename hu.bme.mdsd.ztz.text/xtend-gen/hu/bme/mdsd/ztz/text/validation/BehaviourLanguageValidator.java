@@ -55,6 +55,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * This class contains custom validation rules.
@@ -127,8 +128,27 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       DynamicRobot _collaborator = collab.getCollaborator();
       boolean _equals = Objects.equal(_robot, _collaborator);
       if (_equals) {
-        this.error("Robots cannot know themselves", BehaviourLanguagePackage.Literals.COLLABORATION_STATEMENT__ROBOT, 
-          ErrorCodes.SAME_COLLABORATOR);
+        EObject _eContainer = statement.eContainer();
+        TreeIterator<EObject> _eAllContents = _eContainer.eAllContents();
+        Iterator<DynamicRobot> _filter = Iterators.<DynamicRobot>filter(_eAllContents, DynamicRobot.class);
+        final Set<DynamicRobot> robots = IteratorExtensions.<DynamicRobot>toSet(_filter);
+        int _size = robots.size();
+        boolean _greaterThan = (_size > 1);
+        if (_greaterThan) {
+          for (final DynamicRobot r : robots) {
+            DynamicRobot _robot_1 = statement.getRobot();
+            boolean _notEquals = (!Objects.equal(r, _robot_1));
+            if (_notEquals) {
+              String _name = r.getName();
+              this.error("Robots cannot know themselves", collab, BehaviourPackage.Literals.ROBOT_COLLABORATION__COLLABORATOR, 
+                ErrorCodes.SAME_COLLABORATOR, _name);
+              return;
+            }
+          }
+        } else {
+          this.error("Robots cannot know themselves", collab, BehaviourPackage.Literals.ROBOT_COLLABORATION__COLLABORATOR, 
+            ErrorCodes.SAME_AND_ONLY_COLLABORATOR);
+        }
       }
     }
   }
