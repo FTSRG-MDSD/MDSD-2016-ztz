@@ -9,7 +9,6 @@ import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
-import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.drone.DronePackage;
@@ -191,42 +190,20 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
   }
   
   @Check
-  public void checkUniqueMessageNames(final Message message) {
-    Resource _eResource = message.eResource();
-    TreeIterator<EObject> _allContents = _eResource.getAllContents();
-    final Iterator<Message> messagesIterator = Iterators.<Message>filter(_allContents, Message.class);
-    while (messagesIterator.hasNext()) {
-      {
-        Message otherMessage = messagesIterator.next();
-        boolean _notEquals = (!Objects.equal(otherMessage, message));
-        if (_notEquals) {
-          String _name = otherMessage.getName();
-          String _name_1 = message.getName();
-          boolean _equals = _name.equals(_name_1);
-          if (_equals) {
-            this.error("Messages cannot have the same name", message, DronePackage.Literals.NAMED_ELEMENT__NAME, 
-              ErrorCodes.SAME_MESSAGE_NAME);
-          }
-        }
-      }
-    }
-  }
-  
-  @Check
   public void checkUniqueTaskExecutionNames(final TaskExecution taskExecution) {
     Resource _eResource = taskExecution.eResource();
     TreeIterator<EObject> _allContents = _eResource.getAllContents();
     final Iterator<TaskExecution> taskIterator = Iterators.<TaskExecution>filter(_allContents, TaskExecution.class);
     while (taskIterator.hasNext()) {
       {
-        TaskExecution otherMessage = taskIterator.next();
-        boolean _notEquals = (!Objects.equal(otherMessage, taskExecution));
+        TaskExecution otherTaskExecution = taskIterator.next();
+        boolean _notEquals = (!Objects.equal(otherTaskExecution, taskExecution));
         if (_notEquals) {
-          String _name = otherMessage.getName();
+          String _name = otherTaskExecution.getName();
           String _name_1 = taskExecution.getName();
           boolean _equals = _name.equals(_name_1);
           if (_equals) {
-            this.error("Messages cannot have the same name", taskExecution, 
+            this.error("Task executions cannot have the same name", taskExecution, 
               DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_TASK_EXECUTION_NAME);
           }
         }

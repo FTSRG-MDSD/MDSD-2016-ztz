@@ -116,29 +116,29 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		}
 	}
 
-	@Check
-	def checkUniqueMessageNames(Message message) {
-		val messagesIterator = message.eResource.allContents.filter(Message)
-		while (messagesIterator.hasNext) {
-			var otherMessage = messagesIterator.next()
-			if (otherMessage != message) {
-				if (otherMessage.name.equals(message.name)) {
-					error("Messages cannot have the same name", message, DronePackage.Literals.NAMED_ELEMENT__NAME,
-						ErrorCodes.SAME_MESSAGE_NAME)
-				}
-			}
-
-		}
-	}
+//	@Check
+//	def checkUniqueMessageNames(Message message) {
+//		val messagesIterator = message.eResource.allContents.filter(Message)
+//		while (messagesIterator.hasNext) {
+//			var otherMessage = messagesIterator.next()
+//			if (otherMessage != message) {
+//				if (otherMessage.name.equals(message.name)) {
+//					error("Messages cannot have the same name", message, DronePackage.Literals.NAMED_ELEMENT__NAME,
+//						ErrorCodes.SAME_MESSAGE_NAME)
+//				}
+//			}
+//
+//		}
+//	}
 
 	@Check
 	def checkUniqueTaskExecutionNames(TaskExecution taskExecution) {
 		val taskIterator = taskExecution.eResource.allContents.filter(TaskExecution)
 		while (taskIterator.hasNext) {
-			var otherMessage = taskIterator.next()
-			if (otherMessage != taskExecution) {
-				if (otherMessage.name.equals(taskExecution.name)) {
-					error("Messages cannot have the same name", taskExecution,
+			var otherTaskExecution = taskIterator.next()
+			if (otherTaskExecution != taskExecution) {
+				if (otherTaskExecution.name.equals(taskExecution.name)) {
+					error("Task executions cannot have the same name", taskExecution,
 						DronePackage.Literals.NAMED_ELEMENT__NAME, ErrorCodes.SAME_TASK_EXECUTION_NAME)
 				}
 			}
