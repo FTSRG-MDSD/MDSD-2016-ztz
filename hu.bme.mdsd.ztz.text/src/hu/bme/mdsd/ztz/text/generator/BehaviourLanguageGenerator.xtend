@@ -5,6 +5,7 @@ package hu.bme.mdsd.ztz.text.generator
 
 import com.fasterxml.jackson.databind.JsonNode
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import hu.bme.mdsd.ztz.text.manager.ResourceManager
 import hu.bme.mdsd.ztz.text.parser.StatementParser
@@ -33,10 +34,11 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 		if (containerIterator.hasNext) {
 			val statementParser = new StatementParser()
 			val jsonNode = statementParser.parseStatements(resource)
-	
 			generateBehaviour(resource, fsa)
 			
 			generateActions(resource, fsa, jsonNode)
+			
+			generateSimulation(resource, fsa)
 		}
 	}
 
@@ -76,6 +78,11 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 	
 	protected def generateActions(Resource resource, IFileSystemAccess2 fsa, JsonNode jsonNode) {
 		fsa.generateFile("drone_actions.json", jsonNode.toString)
+	}
+	
+	protected def generateSimulation(Resource resource, IFileSystemAccess2 fsa) {
+        val bl = resource.getContents().get(0) as BehaviourLanguage;
+        new DesmoJGenerator(bl, fsa).generateJavaFiles
 	}
 
 }
