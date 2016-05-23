@@ -623,14 +623,25 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Assignment cPropertiesAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
 		private final RuleCall cPropertiesPropertyParserRuleCall_2_2_1_0 = (RuleCall)cPropertiesAssignment_2_2_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftSquareBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cTargetsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cTargetsAreaObjectCrossReference_3_1_0 = (CrossReference)cTargetsAssignment_3_1.eContents().get(0);
+		private final RuleCall cTargetsAreaObjectIDTerminalRuleCall_3_1_0_1 = (RuleCall)cTargetsAreaObjectCrossReference_3_1_0.eContents().get(1);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cTargetsAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final CrossReference cTargetsAreaObjectCrossReference_3_2_1_0 = (CrossReference)cTargetsAssignment_3_2_1.eContents().get(0);
+		private final RuleCall cTargetsAreaObjectIDTerminalRuleCall_3_2_1_0_1 = (RuleCall)cTargetsAreaObjectCrossReference_3_2_1_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
 		
 		//ActionImplementation:
 		//	declaration=[ActionDeclarationStatement] ('(' currentTaskExecution=[TaskExecution] ')')? ('{' properties+=Property
-		//	("," properties+=Property)* '}')?;
+		//	("," properties+=Property)* '}')? ('[' targets+=[drone::AreaObject] (',' targets+=[drone::AreaObject])* ']')?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//declaration=[ActionDeclarationStatement] ('(' currentTaskExecution=[TaskExecution] ')')? ('{' properties+=Property (","
-		//properties+=Property)* '}')?
+		//properties+=Property)* '}')? ('[' targets+=[drone::AreaObject] (',' targets+=[drone::AreaObject])* ']')?
 		public Group getGroup() { return cGroup; }
 		
 		//declaration=[ActionDeclarationStatement]
@@ -686,6 +697,39 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_2_3() { return cRightCurlyBracketKeyword_2_3; }
+		
+		//('[' targets+=[drone::AreaObject] (',' targets+=[drone::AreaObject])* ']')?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_3_0() { return cLeftSquareBracketKeyword_3_0; }
+		
+		//targets+=[drone::AreaObject]
+		public Assignment getTargetsAssignment_3_1() { return cTargetsAssignment_3_1; }
+		
+		//[drone::AreaObject]
+		public CrossReference getTargetsAreaObjectCrossReference_3_1_0() { return cTargetsAreaObjectCrossReference_3_1_0; }
+		
+		//ID
+		public RuleCall getTargetsAreaObjectIDTerminalRuleCall_3_1_0_1() { return cTargetsAreaObjectIDTerminalRuleCall_3_1_0_1; }
+		
+		//(',' targets+=[drone::AreaObject])*
+		public Group getGroup_3_2() { return cGroup_3_2; }
+		
+		//','
+		public Keyword getCommaKeyword_3_2_0() { return cCommaKeyword_3_2_0; }
+		
+		//targets+=[drone::AreaObject]
+		public Assignment getTargetsAssignment_3_2_1() { return cTargetsAssignment_3_2_1; }
+		
+		//[drone::AreaObject]
+		public CrossReference getTargetsAreaObjectCrossReference_3_2_1_0() { return cTargetsAreaObjectCrossReference_3_2_1_0; }
+		
+		//ID
+		public RuleCall getTargetsAreaObjectIDTerminalRuleCall_3_2_1_0_1() { return cTargetsAreaObjectIDTerminalRuleCall_3_2_1_0_1; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_3_3() { return cRightSquareBracketKeyword_3_3; }
 	}
 	public class MessageStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "hu.bme.mdsd.ztz.text.BehaviourLanguage.MessageStatement");
@@ -2569,7 +2613,7 @@ public class BehaviourLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	//ActionImplementation:
 	//	declaration=[ActionDeclarationStatement] ('(' currentTaskExecution=[TaskExecution] ')')? ('{' properties+=Property
-	//	("," properties+=Property)* '}')?;
+	//	("," properties+=Property)* '}')? ('[' targets+=[drone::AreaObject] (',' targets+=[drone::AreaObject])* ']')?;
 	public ActionImplementationElements getActionImplementationAccess() {
 		return pActionImplementation;
 	}

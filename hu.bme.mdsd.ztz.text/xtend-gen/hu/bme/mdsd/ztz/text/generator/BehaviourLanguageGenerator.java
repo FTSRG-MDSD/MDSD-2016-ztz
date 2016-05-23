@@ -6,7 +6,9 @@ package hu.bme.mdsd.ztz.text.generator;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Import;
+import hu.bme.mdsd.ztz.text.generator.DesmoJGenerator;
 import hu.bme.mdsd.ztz.text.manager.ResourceManager;
 import hu.bme.mdsd.ztz.text.parser.StatementParser;
 import java.util.Iterator;
@@ -43,6 +45,7 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
       final JsonNode jsonNode = statementParser.parseStatements(resource);
       this.generateBehaviour(resource, fsa);
       this.generateActions(resource, fsa, jsonNode);
+      this.generateSimulation(resource, fsa);
     }
   }
   
@@ -112,5 +115,13 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
   protected void generateActions(final Resource resource, final IFileSystemAccess2 fsa, final JsonNode jsonNode) {
     String _string = jsonNode.toString();
     fsa.generateFile("drone_actions.json", _string);
+  }
+  
+  protected void generateSimulation(final Resource resource, final IFileSystemAccess2 fsa) {
+    EList<EObject> _contents = resource.getContents();
+    EObject _get = _contents.get(0);
+    final BehaviourLanguage bl = ((BehaviourLanguage) _get);
+    DesmoJGenerator _desmoJGenerator = new DesmoJGenerator(bl, fsa);
+    _desmoJGenerator.generateJavaFiles();
   }
 }

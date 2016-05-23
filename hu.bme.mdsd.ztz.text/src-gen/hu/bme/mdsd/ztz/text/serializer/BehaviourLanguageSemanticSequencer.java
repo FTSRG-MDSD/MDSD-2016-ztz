@@ -182,7 +182,12 @@ public class BehaviourLanguageSemanticSequencer extends AbstractDelegatingSemant
 	 *     ActionImplementation returns ActionImplementation
 	 *
 	 * Constraint:
-	 *     (declaration=[ActionDeclarationStatement|ID] currentTaskExecution=[TaskExecution|ID]? (properties+=Property properties+=Property*)?)
+	 *     (
+	 *         declaration=[ActionDeclarationStatement|ID] 
+	 *         currentTaskExecution=[TaskExecution|ID]? 
+	 *         (properties+=Property properties+=Property*)? 
+	 *         (targets+=[AreaObject|ID] targets+=[AreaObject|ID]*)?
+	 *     )
 	 */
 	protected void sequence_ActionImplementation(ISerializationContext context, ActionImplementation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

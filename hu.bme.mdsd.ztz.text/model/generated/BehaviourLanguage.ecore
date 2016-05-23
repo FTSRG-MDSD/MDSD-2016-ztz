@@ -45,6 +45,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/drone.ecore#//Property"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" unique="false"
+        upperBound="-1" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/drone.ecore#//AreaObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageStatement" eSuperTypes="#//AtomicStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="robot" eType="ecore:EClass platform:/resource/hu.bme.mdsd.ztz.model/model/behaviour.ecore#//DynamicRobot"/>

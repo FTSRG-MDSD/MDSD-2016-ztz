@@ -5,6 +5,7 @@ package hu.bme.mdsd.ztz.text.behaviourLanguage.impl;
 
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 
+import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.Property;
 
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -38,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionImplementationImpl#getDeclaration <em>Declaration</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionImplementationImpl#getCurrentTaskExecution <em>Current Task Execution</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionImplementationImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.ActionImplementationImpl#getTargets <em>Targets</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,6 +76,16 @@ public class ActionImplementationImpl extends MinimalEObjectImpl.Container imple
    * @ordered
    */
   protected EList<Property> properties;
+
+  /**
+   * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTargets()
+   * @generated
+   * @ordered
+   */
+  protected EList<AreaObject> targets;
 
   /**
    * <!-- begin-user-doc -->
@@ -200,6 +213,20 @@ public class ActionImplementationImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<AreaObject> getTargets()
+  {
+    if (targets == null)
+    {
+      targets = new EObjectResolvingEList<AreaObject>(AreaObject.class, this, BehaviourLanguagePackage.ACTION_IMPLEMENTATION__TARGETS);
+    }
+    return targets;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -229,6 +256,8 @@ public class ActionImplementationImpl extends MinimalEObjectImpl.Container imple
         return basicGetCurrentTaskExecution();
       case BehaviourLanguagePackage.ACTION_IMPLEMENTATION__PROPERTIES:
         return getProperties();
+      case BehaviourLanguagePackage.ACTION_IMPLEMENTATION__TARGETS:
+        return getTargets();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -254,6 +283,10 @@ public class ActionImplementationImpl extends MinimalEObjectImpl.Container imple
         getProperties().clear();
         getProperties().addAll((Collection<? extends Property>)newValue);
         return;
+      case BehaviourLanguagePackage.ACTION_IMPLEMENTATION__TARGETS:
+        getTargets().clear();
+        getTargets().addAll((Collection<? extends AreaObject>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -277,6 +310,9 @@ public class ActionImplementationImpl extends MinimalEObjectImpl.Container imple
       case BehaviourLanguagePackage.ACTION_IMPLEMENTATION__PROPERTIES:
         getProperties().clear();
         return;
+      case BehaviourLanguagePackage.ACTION_IMPLEMENTATION__TARGETS:
+        getTargets().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -297,6 +333,8 @@ public class ActionImplementationImpl extends MinimalEObjectImpl.Container imple
         return currentTaskExecution != null;
       case BehaviourLanguagePackage.ACTION_IMPLEMENTATION__PROPERTIES:
         return properties != null && !properties.isEmpty();
+      case BehaviourLanguagePackage.ACTION_IMPLEMENTATION__TARGETS:
+        return targets != null && !targets.isEmpty();
     }
     return super.eIsSet(featureID);
   }

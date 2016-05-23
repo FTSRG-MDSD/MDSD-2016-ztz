@@ -531,6 +531,16 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getActionImplementation_Targets()
+  {
+    return (EReference)actionImplementationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMessageStatement()
   {
     return messageStatementEClass;
@@ -979,6 +989,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     createEReference(actionImplementationEClass, ACTION_IMPLEMENTATION__DECLARATION);
     createEReference(actionImplementationEClass, ACTION_IMPLEMENTATION__CURRENT_TASK_EXECUTION);
     createEReference(actionImplementationEClass, ACTION_IMPLEMENTATION__PROPERTIES);
+    createEReference(actionImplementationEClass, ACTION_IMPLEMENTATION__TARGETS);
 
     messageStatementEClass = createEClass(MESSAGE_STATEMENT);
     createEReference(messageStatementEClass, MESSAGE_STATEMENT__ROBOT);
@@ -1118,6 +1129,7 @@ public class BehaviourLanguagePackageImpl extends EPackageImpl implements Behavi
     initEReference(getActionImplementation_Declaration(), this.getActionDeclarationStatement(), null, "declaration", null, 0, 1, ActionImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getActionImplementation_CurrentTaskExecution(), theBehaviourPackage.getTaskExecution(), null, "currentTaskExecution", null, 0, 1, ActionImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getActionImplementation_Properties(), theDronePackage.getProperty(), null, "properties", null, 0, -1, ActionImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionImplementation_Targets(), theDronePackage.getAreaObject(), null, "targets", null, 0, -1, ActionImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(messageStatementEClass, MessageStatement.class, "MessageStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMessageStatement_Robot(), theBehaviourPackage.getDynamicRobot(), null, "robot", null, 0, 1, MessageStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

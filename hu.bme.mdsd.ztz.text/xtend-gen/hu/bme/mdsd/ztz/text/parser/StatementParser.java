@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.base.Objects;
 import hu.bme.mdsd.ztz.model.behaviour.Action;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.BroadcastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.DetectedObject;
@@ -18,10 +19,15 @@ import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecutionStatus;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.DroneFactory;
 import hu.bme.mdsd.ztz.model.drone.MeasureDimension;
 import hu.bme.mdsd.ztz.model.drone.MeasureValue;
 import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyValue;
+import hu.bme.mdsd.ztz.model.drone.Robot;
+import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
+import hu.bme.mdsd.ztz.model.drone.Task;
+import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
@@ -252,10 +258,41 @@ public class StatementParser {
     String _name = _declaration.getName();
     action.setName(_name);
     TaskExecution _currentTaskExecution = actionImpl.getCurrentTaskExecution();
-    action.setCurrentTaskExecution(_currentTaskExecution);
+    boolean _equals = Objects.equal(_currentTaskExecution, null);
+    if (_equals) {
+      final Task task = DroneFactory.eINSTANCE.createTask();
+      Robot _robot = robot.getRobot();
+      EObject _eContainer = _robot.eContainer();
+      EList<EObject> _temporalElements = ((RobotMissionContainer) _eContainer).getTemporalElements();
+      _temporalElements.add(task);
+      final TaskExecution taskExecution = BehaviourFactory.eINSTANCE.createTaskExecution();
+      taskExecution.setTask(task);
+      actionImpl.setCurrentTaskExecution(taskExecution);
+      EObject _eContainer_1 = robot.eContainer();
+      EList<TaskExecution> _taskExecutions = ((BehaviourContainer) _eContainer_1).getTaskExecutions();
+      _taskExecutions.add(taskExecution);
+    }
+    TaskExecution _currentTaskExecution_1 = actionImpl.getCurrentTaskExecution();
+    action.setCurrentTaskExecution(_currentTaskExecution_1);
     EList<Property> _properties = action.getProperties();
     EList<Property> _properties_1 = actionImpl.getProperties();
     _properties.addAll(_properties_1);
+    TaskExecution _currentTaskExecution_2 = action.getCurrentTaskExecution();
+    Task _task = _currentTaskExecution_2.getTask();
+    TaskDescriptor _descriptor = _task.getDescriptor();
+    boolean _equals_1 = Objects.equal(_descriptor, null);
+    if (_equals_1) {
+      final TaskDescriptor descriptor = DroneFactory.eINSTANCE.createTaskDescriptor();
+      TaskExecution _currentTaskExecution_3 = action.getCurrentTaskExecution();
+      Task _task_1 = _currentTaskExecution_3.getTask();
+      _task_1.setDescriptor(descriptor);
+    }
+    TaskExecution _currentTaskExecution_4 = action.getCurrentTaskExecution();
+    Task _task_2 = _currentTaskExecution_4.getTask();
+    TaskDescriptor _descriptor_1 = _task_2.getDescriptor();
+    EList<AreaObject> _targets = _descriptor_1.getTargets();
+    EList<AreaObject> _targets_1 = actionImpl.getTargets();
+    _targets.addAll(_targets_1);
     EList<Action> _actions = robot.getActions();
     _actions.add(action);
     ObjectNode node = this.factory.objectNode();
@@ -268,8 +305,8 @@ public class StatementParser {
       EList<ActionImplementation> _moreactions_1 = statement.getMoreactions();
       for (final ActionImplementation otherAction : _moreactions_1) {
         {
-          TaskExecution _currentTaskExecution_1 = otherAction.getCurrentTaskExecution();
-          execution = _currentTaskExecution_1;
+          TaskExecution _currentTaskExecution_5 = otherAction.getCurrentTaskExecution();
+          execution = _currentTaskExecution_5;
           RobotUtil.addExecution(robot, execution);
         }
       }
@@ -281,8 +318,8 @@ public class StatementParser {
           ActionDeclarationStatement _declaration_1 = act.getDeclaration();
           String _name_1 = _declaration_1.getName();
           action.setName(_name_1);
-          TaskExecution _currentTaskExecution_1 = act.getCurrentTaskExecution();
-          action.setCurrentTaskExecution(_currentTaskExecution_1);
+          TaskExecution _currentTaskExecution_5 = act.getCurrentTaskExecution();
+          action.setCurrentTaskExecution(_currentTaskExecution_5);
           EList<Property> _properties_2 = action.getProperties();
           EList<Property> _properties_3 = act.getProperties();
           _properties_2.addAll(_properties_3);
@@ -290,8 +327,8 @@ public class StatementParser {
           node = _objectNode;
           this.jsonGenerator.newActionNode(action, robot, node);
           containerNode.add(node);
-          DynamicRobot _robot = statement.getRobot();
-          EList<Action> _actions_1 = _robot.getActions();
+          DynamicRobot _robot_1 = statement.getRobot();
+          EList<Action> _actions_1 = _robot_1.getActions();
           _actions_1.add(action);
         }
       }

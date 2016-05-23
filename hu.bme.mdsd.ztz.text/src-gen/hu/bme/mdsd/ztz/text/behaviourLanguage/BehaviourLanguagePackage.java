@@ -365,13 +365,22 @@ public interface BehaviourLanguagePackage extends EPackage
   int ACTION_IMPLEMENTATION__PROPERTIES = 2;
 
   /**
+   * The feature id for the '<em><b>Targets</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_IMPLEMENTATION__TARGETS = 3;
+
+  /**
    * The number of structural features of the '<em>Action Implementation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION_IMPLEMENTATION_FEATURE_COUNT = 3;
+  int ACTION_IMPLEMENTATION_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl <em>Message Statement</em>}' class.
@@ -1141,6 +1150,17 @@ public interface BehaviourLanguagePackage extends EPackage
   EReference getActionImplementation_Properties();
 
   /**
+   * Returns the meta object for the reference list '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getTargets <em>Targets</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Targets</em>'.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getTargets()
+   * @see #getActionImplementation()
+   * @generated
+   */
+  EReference getActionImplementation_Targets();
+
+  /**
    * Returns the meta object for class '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement <em>Message Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1795,6 +1815,14 @@ public interface BehaviourLanguagePackage extends EPackage
      * @generated
      */
     EReference ACTION_IMPLEMENTATION__PROPERTIES = eINSTANCE.getActionImplementation_Properties();
+
+    /**
+     * The meta object literal for the '<em><b>Targets</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION_IMPLEMENTATION__TARGETS = eINSTANCE.getActionImplementation_Targets();
 
     /**
      * The meta object literal for the '{@link hu.bme.mdsd.ztz.text.behaviourLanguage.impl.MessageStatementImpl <em>Message Statement</em>}' class.

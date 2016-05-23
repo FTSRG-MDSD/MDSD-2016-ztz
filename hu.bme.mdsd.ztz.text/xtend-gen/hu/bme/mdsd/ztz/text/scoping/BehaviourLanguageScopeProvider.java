@@ -369,6 +369,23 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
     return ((RobotMissionContainer) _get);
   }
   
+  protected IScope _scopeForContext(final ActionImplementation context, final EReference reference, final ResourceManager manager) {
+    boolean _and = false;
+    boolean _equals = Objects.equal(reference, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__TARGETS);
+    if (!_equals) {
+      _and = false;
+    } else {
+      boolean _notEquals = (!Objects.equal(manager, null));
+      _and = _notEquals;
+    }
+    if (_and) {
+      RobotMissionContainer _container = this.getContainer(manager);
+      List<AreaObject> _allContentsOfType = EcoreUtil2.<AreaObject>getAllContentsOfType(_container, AreaObject.class);
+      return Scopes.scopeFor(_allContentsOfType);
+    }
+    return super.getScope(context, reference);
+  }
+  
   public IScope scopeForContext(final EObject context, final EReference reference, final ResourceManager manager) {
     if (context instanceof DetectionStatement) {
       return _scopeForContext((DetectionStatement)context, reference, manager);
@@ -390,6 +407,8 @@ public class BehaviourLanguageScopeProvider extends AbstractBehaviourLanguageSco
       return _scopeForContext((CapabilityProperties)context, reference, manager);
     } else if (context instanceof Property) {
       return _scopeForContext((Property)context, reference, manager);
+    } else if (context instanceof ActionImplementation) {
+      return _scopeForContext((ActionImplementation)context, reference, manager);
     } else if (context instanceof MeasureComparable) {
       return _scopeForContext((MeasureComparable)context, reference, manager);
     } else if (context != null) {

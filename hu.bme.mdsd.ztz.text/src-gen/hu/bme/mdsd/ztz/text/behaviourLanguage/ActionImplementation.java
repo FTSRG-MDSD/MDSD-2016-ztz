@@ -5,6 +5,7 @@ package hu.bme.mdsd.ztz.text.behaviourLanguage;
 
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 
+import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.Property;
 
 import org.eclipse.emf.common.util.EList;
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getDeclaration <em>Declaration</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getCurrentTaskExecution <em>Current Task Execution</em>}</li>
  *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getProperties <em>Properties</em>}</li>
+ *   <li>{@link hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation#getTargets <em>Targets</em>}</li>
  * </ul>
  *
  * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getActionImplementation()
@@ -98,5 +100,21 @@ public interface ActionImplementation extends EObject
    * @generated
    */
   EList<Property> getProperties();
+
+  /**
+   * Returns the value of the '<em><b>Targets</b></em>' reference list.
+   * The list contents are of type {@link hu.bme.mdsd.ztz.model.drone.AreaObject}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Targets</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Targets</em>' reference list.
+   * @see hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage#getActionImplementation_Targets()
+   * @model
+   * @generated
+   */
+  EList<AreaObject> getTargets();
 
 } // ActionImplementation

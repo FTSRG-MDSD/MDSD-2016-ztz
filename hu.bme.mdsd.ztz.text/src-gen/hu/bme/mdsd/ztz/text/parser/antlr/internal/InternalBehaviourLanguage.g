@@ -1098,6 +1098,48 @@ ruleActionImplementation returns [EObject current=null]
 				newLeafNode(otherlv_8, grammarAccess.getActionImplementationAccess().getRightCurlyBracketKeyword_2_3());
 			}
 		)?
+		(
+			otherlv_9='['
+			{
+				newLeafNode(otherlv_9, grammarAccess.getActionImplementationAccess().getLeftSquareBracketKeyword_3_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getActionImplementationRule());
+						}
+					}
+					otherlv_10=RULE_ID
+					{
+						newLeafNode(otherlv_10, grammarAccess.getActionImplementationAccess().getTargetsAreaObjectCrossReference_3_1_0());
+					}
+				)
+			)
+			(
+				otherlv_11=','
+				{
+					newLeafNode(otherlv_11, grammarAccess.getActionImplementationAccess().getCommaKeyword_3_2_0());
+				}
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getActionImplementationRule());
+							}
+						}
+						otherlv_12=RULE_ID
+						{
+							newLeafNode(otherlv_12, grammarAccess.getActionImplementationAccess().getTargetsAreaObjectCrossReference_3_2_1_0());
+						}
+					)
+				)
+			)*
+			otherlv_13=']'
+			{
+				newLeafNode(otherlv_13, grammarAccess.getActionImplementationAccess().getRightSquareBracketKeyword_3_3());
+			}
+		)?
 	)
 ;
 

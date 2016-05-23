@@ -74,6 +74,8 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActionImplementationAccess().getGroup_1(), "rule__ActionImplementation__Group_1__0");
 					put(grammarAccess.getActionImplementationAccess().getGroup_2(), "rule__ActionImplementation__Group_2__0");
 					put(grammarAccess.getActionImplementationAccess().getGroup_2_2(), "rule__ActionImplementation__Group_2_2__0");
+					put(grammarAccess.getActionImplementationAccess().getGroup_3(), "rule__ActionImplementation__Group_3__0");
+					put(grammarAccess.getActionImplementationAccess().getGroup_3_2(), "rule__ActionImplementation__Group_3_2__0");
 					put(grammarAccess.getMessageStatementAccess().getGroup(), "rule__MessageStatement__Group__0");
 					put(grammarAccess.getCollaborationStatementAccess().getGroup(), "rule__CollaborationStatement__Group__0");
 					put(grammarAccess.getCollaborationStatementAccess().getGroup_3(), "rule__CollaborationStatement__Group_3__0");
@@ -150,6 +152,8 @@ public class BehaviourLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActionImplementationAccess().getCurrentTaskExecutionAssignment_1_1(), "rule__ActionImplementation__CurrentTaskExecutionAssignment_1_1");
 					put(grammarAccess.getActionImplementationAccess().getPropertiesAssignment_2_1(), "rule__ActionImplementation__PropertiesAssignment_2_1");
 					put(grammarAccess.getActionImplementationAccess().getPropertiesAssignment_2_2_1(), "rule__ActionImplementation__PropertiesAssignment_2_2_1");
+					put(grammarAccess.getActionImplementationAccess().getTargetsAssignment_3_1(), "rule__ActionImplementation__TargetsAssignment_3_1");
+					put(grammarAccess.getActionImplementationAccess().getTargetsAssignment_3_2_1(), "rule__ActionImplementation__TargetsAssignment_3_2_1");
 					put(grammarAccess.getMessageStatementAccess().getRobotAssignment_0(), "rule__MessageStatement__RobotAssignment_0");
 					put(grammarAccess.getMessageStatementAccess().getTargetAssignment_2(), "rule__MessageStatement__TargetAssignment_2");
 					put(grammarAccess.getMessageStatementAccess().getMessageAssignment_3(), "rule__MessageStatement__MessageAssignment_3");

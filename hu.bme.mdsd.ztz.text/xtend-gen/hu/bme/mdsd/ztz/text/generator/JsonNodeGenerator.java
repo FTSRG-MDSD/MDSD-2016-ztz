@@ -13,6 +13,7 @@ import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.MulticastCommunication;
 import hu.bme.mdsd.ztz.model.behaviour.RobotStatus;
+import hu.bme.mdsd.ztz.model.behaviour.TaskExecution;
 import hu.bme.mdsd.ztz.model.behaviour.UnicastCommunication;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
 import hu.bme.mdsd.ztz.model.drone.Capability;
@@ -26,8 +27,11 @@ import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.model.drone.PropertyValue;
 import hu.bme.mdsd.ztz.model.drone.Robot;
+import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
 import hu.bme.mdsd.ztz.model.drone.Size;
 import hu.bme.mdsd.ztz.model.drone.StringValue;
+import hu.bme.mdsd.ztz.model.drone.Task;
+import hu.bme.mdsd.ztz.model.drone.TaskDescriptor;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
@@ -35,6 +39,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
@@ -133,6 +138,47 @@ public class JsonNodeGenerator {
         ((ArrayNode) _get_2).add(robotsNode);
       }
     }
+    JsonNode _get = node.get("Robots");
+    boolean _isEmpty = IterableExtensions.isEmpty(((ArrayNode) _get));
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      ArrayNode _arrayNode_1 = this.factory.arrayNode();
+      node.set("Objects", _arrayNode_1);
+      TreeIterator<EObject> _allContents_1 = resource.getAllContents();
+      Iterator<DynamicRobot> _filter_1 = Iterators.<DynamicRobot>filter(_allContents_1, DynamicRobot.class);
+      DynamicRobot _next = _filter_1.next();
+      Robot _robot = _next.getRobot();
+      EObject _eContainer = _robot.eContainer();
+      final EList<AreaObject> areaObjects = ((RobotMissionContainer) _eContainer).getAreaObjects();
+      for (final AreaObject element : areaObjects) {
+        {
+          final ObjectNode areaObject = this.factory.objectNode();
+          String _name = element.getName();
+          areaObject.put("Name", _name);
+          ArrayNode _arrayNode_2 = this.factory.arrayNode();
+          areaObject.set("Positions", _arrayNode_2);
+          EList<Position> _positions = element.getPositions();
+          for (final Position position : _positions) {
+            EList<Coordinate> _coordinates = position.getCoordinates();
+            for (final Coordinate coordinate : _coordinates) {
+              {
+                final ObjectNode positionNode = this.factory.objectNode();
+                float _latitude = coordinate.getLatitude();
+                String _string = Float.valueOf(_latitude).toString();
+                positionNode.put("Lat", _string);
+                float _longitude = coordinate.getLongitude();
+                String _string_1 = Float.valueOf(_longitude).toString();
+                positionNode.put("Long", _string_1);
+                JsonNode _get_1 = areaObject.get("Positions");
+                ((ArrayNode) _get_1).add(positionNode);
+              }
+            }
+          }
+          JsonNode _get_1 = node.get("Objects");
+          ((ArrayNode) _get_1).add(areaObject);
+        }
+      }
+    }
     return node;
   }
   
@@ -205,6 +251,17 @@ public class JsonNodeGenerator {
       nestedNode.put("Robot", _name_1);
       EList<Property> _properties = action.getProperties();
       this.newPropertiesNode(nestedNode, _properties);
+      ArrayNode _arrayNode = this.factory.arrayNode();
+      nestedNode.set("Targets", _arrayNode);
+      TaskExecution _currentTaskExecution = action.getCurrentTaskExecution();
+      Task _task = _currentTaskExecution.getTask();
+      TaskDescriptor _descriptor = _task.getDescriptor();
+      EList<AreaObject> _targets = _descriptor.getTargets();
+      for (final AreaObject targets : _targets) {
+        JsonNode _get = nestedNode.get("Targets");
+        String _name_2 = targets.getName();
+        ((ArrayNode) _get).add(_name_2);
+      }
       _xblockexpression = node.set("Action", nestedNode);
     }
     return _xblockexpression;
@@ -214,13 +271,16 @@ public class JsonNodeGenerator {
     JsonNode _xblockexpression = null;
     {
       final ObjectNode nestedNode = this.factory.objectNode();
+      Robot _robot = robot.getRobot();
+      String _name = _robot.getName();
+      nestedNode.put("From", _name);
       Message _message = action.getMessage();
-      String _name = _message.getName();
-      nestedNode.put("Message", _name);
+      String _name_1 = _message.getName();
+      nestedNode.put("Message", _name_1);
       DynamicRobot _target = action.getTarget();
-      Robot _robot = _target.getRobot();
-      String _name_1 = _robot.getName();
-      nestedNode.put("Target", _name_1);
+      Robot _robot_1 = _target.getRobot();
+      String _name_2 = _robot_1.getName();
+      nestedNode.put("Target", _name_2);
       _xblockexpression = node.set("UnicastCommunication", nestedNode);
     }
     return _xblockexpression;
@@ -230,17 +290,20 @@ public class JsonNodeGenerator {
     JsonNode _xblockexpression = null;
     {
       final ObjectNode nestedNode = this.factory.objectNode();
+      Robot _robot = robot.getRobot();
+      String _name = _robot.getName();
+      nestedNode.put("From", _name);
       Message _message = action.getMessage();
-      String _name = _message.getName();
-      nestedNode.put("Message", _name);
+      String _name_1 = _message.getName();
+      nestedNode.put("Message", _name_1);
       ArrayNode _arrayNode = this.factory.arrayNode();
       nestedNode.set("Targets", _arrayNode);
       EList<DynamicRobot> _targets = action.getTargets();
       for (final DynamicRobot targetRobot : _targets) {
         JsonNode _get = nestedNode.get("Targets");
-        Robot _robot = targetRobot.getRobot();
-        String _name_1 = _robot.getName();
-        ((ArrayNode) _get).add(_name_1);
+        Robot _robot_1 = targetRobot.getRobot();
+        String _name_2 = _robot_1.getName();
+        ((ArrayNode) _get).add(_name_2);
       }
       _xblockexpression = node.set("MulticastCommunication", nestedNode);
     }
@@ -251,17 +314,20 @@ public class JsonNodeGenerator {
     JsonNode _xblockexpression = null;
     {
       final ObjectNode nestedNode = this.factory.objectNode();
+      Robot _robot = robot.getRobot();
+      String _name = _robot.getName();
+      nestedNode.put("From", _name);
       Message _message = action.getMessage();
-      String _name = _message.getName();
-      nestedNode.put("Message", _name);
+      String _name_1 = _message.getName();
+      nestedNode.put("Message", _name_1);
       ArrayNode _arrayNode = this.factory.arrayNode();
       nestedNode.set("Targets", _arrayNode);
       EList<DynamicRobot> _targets = action.getTargets();
       for (final DynamicRobot targetRobot : _targets) {
         JsonNode _get = nestedNode.get("Targets");
-        Robot _robot = targetRobot.getRobot();
-        String _name_1 = _robot.getName();
-        ((ArrayNode) _get).add(_name_1);
+        Robot _robot_1 = targetRobot.getRobot();
+        String _name_2 = _robot_1.getName();
+        ((ArrayNode) _get).add(_name_2);
       }
       _xblockexpression = node.set("BroadcastCommunication", nestedNode);
     }
@@ -277,7 +343,7 @@ public class JsonNodeGenerator {
       nestedNode.put("Robot", _name);
       AreaObject _object = detectedObject.getObject();
       String _name_1 = _object.getName();
-      nestedNode.put("DetectedObject", _name_1);
+      nestedNode.put("Target", _name_1);
       _xblockexpression = node.set("Detection", nestedNode);
     }
     return _xblockexpression;

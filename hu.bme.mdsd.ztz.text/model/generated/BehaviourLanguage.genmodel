@@ -46,6 +46,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ActionImplementation/declaration"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ActionImplementation/currentTaskExecution"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ActionImplementation/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//ActionImplementation/targets"/>
     </genClasses>
     <genClasses ecoreClass="BehaviourLanguage.ecore#//MessageStatement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BehaviourLanguage.ecore#//MessageStatement/robot"/>
