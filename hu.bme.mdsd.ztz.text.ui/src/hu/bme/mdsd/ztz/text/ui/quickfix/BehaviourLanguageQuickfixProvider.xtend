@@ -8,18 +8,17 @@ import org.eclipse.xtext.validation.Issue
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.ui.editor.quickfix.Fix
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes
-import hu.bme.mdsd.ztz.model.behaviour.Message
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
-import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
-import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
+import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
 
 /**
  * Custom quickfixes.
@@ -112,5 +111,42 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 		]
 	}	
 	
-
+	@Fix(ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC)
+	def fixSameRobotStatementsInSync(Issue issue, IssueResolutionAcceptor acceptor) {
+		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		
+		acceptor.accept(issue, "Move statement before the synchronous statement", "", "") [
+			element, context |
+				val synchStatement = element.eContainer as SynchronousStatement
+				synchStatement.statements.remove(element)
+				synchStatement.eContainer.addNewElement(synchStatement, element as Statement, false)
+		]
+		
+		acceptor.accept(issue, "Move statement after the synchronous statement", "", "") [
+			element, context |
+				val synchStatement = element.eContainer as SynchronousStatement
+				synchStatement.statements.remove(element)
+				synchStatement.eContainer.addNewElement(synchStatement, element as Statement, true)
+					
+		]
+	}
+	
+	def dispatch addNewElement(BehaviourLanguage container, SynchronousStatement sync, Statement statement, boolean after) {
+		var index = container.statements.indexOf(sync)
+		if (after) {
+			index++
+		}
+		
+		container.statements.add(index, statement)
+	}
+	
+	def dispatch addNewElement(ConditionalStatement container, SynchronousStatement sync, Statement statement, boolean after) {
+		var index = container.statements.indexOf(sync)
+		if (after) {
+			index++
+		}
+		
+		container.statements.add(index, statement)
+	}
+	
 }

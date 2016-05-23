@@ -6,7 +6,6 @@ package hu.bme.mdsd.ztz.text.validation
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourPackage
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
-import hu.bme.mdsd.ztz.model.behaviour.Message
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration
 import hu.bme.mdsd.ztz.model.behaviour.TaskExecution
 import hu.bme.mdsd.ztz.model.drone.DronePackage
@@ -33,7 +32,6 @@ import hu.bme.mdsd.ztz.text.manager.ResourceManager
 import java.util.HashMap
 import java.util.HashSet
 import java.util.Iterator
-import java.util.Map.Entry
 import org.eclipse.xtext.validation.Check
 import hu.bme.mdsd.ztz.text.util.RobotUtil
 
@@ -220,28 +218,34 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		val robotOccurrence = new HashMap<DynamicRobot, Integer>()
 		for (Statement statement : synchronousStatement.statements) {
 			findRobotOccurrence(statement, robotOccurrence)
-			for (Entry<DynamicRobot, Integer> entry : robotOccurrence.entrySet) {
-				if (entry.value > 1) {
-					error("A synchronous statement cannot contain more actions belonging to the same robot",
-						BehaviourLanguagePackage.Literals.SYNCHRONOUS_STATEMENT__STATEMENTS)
-				}
-			}
 		}
 	}
 
 	def dispatch findRobotOccurrence(ActionStatement statement, HashMap<DynamicRobot, Integer> robotOccurence) {
-		var int occurred = getOccurrence(robotOccurence, statement.robot)
-		robotOccurence.put(statement.robot, occurred)
+		if (robotOccurence.containsKey(statement.robot)) {
+			error("A synchronous statement cannot contain more actions belonging to the same robot", statement,  
+						BehaviourLanguagePackage.Literals.ACTION_STATEMENT__ROBOT, ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC)	
+		} else {
+			robotOccurence.put(statement.robot, 1)
+		}
 	}
 
 	def dispatch findRobotOccurrence(MessageStatement statement, HashMap<DynamicRobot, Integer> robotOccurence) {
-		var int occurred = getOccurrence(robotOccurence, statement.robot)
-		robotOccurence.put(statement.robot, occurred)
+		if (robotOccurence.containsKey(statement.robot)) {
+			error("A synchronous statement cannot contain more actions belonging to the same robot", statement,  
+						BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__ROBOT, ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC)	
+		} else {
+			robotOccurence.put(statement.robot, 1)
+		}
 	}
 
 	def dispatch findRobotOccurrence(DetectionStatement statement, HashMap<DynamicRobot, Integer> robotOccurence) {
-		var int occurred = getOccurrence(robotOccurence, statement.robot)
-		robotOccurence.put(statement.robot, occurred)
+		if (robotOccurence.containsKey(statement.robot)) {
+			error("A synchronous statement cannot contain more actions belonging to the same robot", statement,  
+						BehaviourLanguagePackage.Literals.DETECTION_STATEMENT__ROBOT, ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC)	
+		} else {
+			robotOccurence.put(statement.robot, 1)
+		}
 	}
 
 	def dispatch findRobotOccurrence(Statement statement, HashMap<DynamicRobot, Integer> robotOccurence) {

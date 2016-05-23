@@ -14,5 +14,6 @@ class ErrorCodes {
 	val public static MISSING_FOLDER = "hu.bme.mdsd.ztz.text.errors.missing_folder"
 	val public static SAME_MESSAGE_TARGET = "hu.bme.mdsd.ztz.text.errors.same_message_target"
 	val public static SAME_MESSAGE_TARGET_WITH_COLLABORATIONS = "hu.bme.mdsd.ztz.text.errors.same_message_target_with_collaborations"
+	val public static SAME_ROBOT_STATEMENTS_IN_SYNC = "hu.bme.mdsd.ztz.text.errors.same_robot_statements_in_sync"
 	
 }

@@ -45,7 +45,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -335,52 +334,50 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
     final HashMap<DynamicRobot, Integer> robotOccurrence = new HashMap<DynamicRobot, Integer>();
     EList<AtomicStatement> _statements = synchronousStatement.getStatements();
     for (final Statement statement : _statements) {
-      {
-        this.findRobotOccurrence(statement, robotOccurrence);
-        Set<Map.Entry<DynamicRobot, Integer>> _entrySet = robotOccurrence.entrySet();
-        for (final Map.Entry<DynamicRobot, Integer> entry : _entrySet) {
-          Integer _value = entry.getValue();
-          boolean _greaterThan = ((_value).intValue() > 1);
-          if (_greaterThan) {
-            this.error("A synchronous statement cannot contain more actions belonging to the same robot", 
-              BehaviourLanguagePackage.Literals.SYNCHRONOUS_STATEMENT__STATEMENTS);
-          }
-        }
-      }
+      this.findRobotOccurrence(statement, robotOccurrence);
     }
   }
   
   protected Integer _findRobotOccurrence(final ActionStatement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {
-    Integer _xblockexpression = null;
-    {
-      DynamicRobot _robot = statement.getRobot();
-      int occurred = this.getOccurrence(robotOccurence, _robot);
+    Integer _xifexpression = null;
+    DynamicRobot _robot = statement.getRobot();
+    boolean _containsKey = robotOccurence.containsKey(_robot);
+    if (_containsKey) {
+      this.error("A synchronous statement cannot contain more actions belonging to the same robot", statement, 
+        BehaviourLanguagePackage.Literals.ACTION_STATEMENT__ROBOT, ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC);
+    } else {
       DynamicRobot _robot_1 = statement.getRobot();
-      _xblockexpression = robotOccurence.put(_robot_1, Integer.valueOf(occurred));
+      _xifexpression = robotOccurence.put(_robot_1, Integer.valueOf(1));
     }
-    return _xblockexpression;
+    return _xifexpression;
   }
   
   protected Integer _findRobotOccurrence(final MessageStatement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {
-    Integer _xblockexpression = null;
-    {
-      DynamicRobot _robot = statement.getRobot();
-      int occurred = this.getOccurrence(robotOccurence, _robot);
+    Integer _xifexpression = null;
+    DynamicRobot _robot = statement.getRobot();
+    boolean _containsKey = robotOccurence.containsKey(_robot);
+    if (_containsKey) {
+      this.error("A synchronous statement cannot contain more actions belonging to the same robot", statement, 
+        BehaviourLanguagePackage.Literals.MESSAGE_STATEMENT__ROBOT, ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC);
+    } else {
       DynamicRobot _robot_1 = statement.getRobot();
-      _xblockexpression = robotOccurence.put(_robot_1, Integer.valueOf(occurred));
+      _xifexpression = robotOccurence.put(_robot_1, Integer.valueOf(1));
     }
-    return _xblockexpression;
+    return _xifexpression;
   }
   
   protected Integer _findRobotOccurrence(final DetectionStatement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {
-    Integer _xblockexpression = null;
-    {
-      DynamicRobot _robot = statement.getRobot();
-      int occurred = this.getOccurrence(robotOccurence, _robot);
+    Integer _xifexpression = null;
+    DynamicRobot _robot = statement.getRobot();
+    boolean _containsKey = robotOccurence.containsKey(_robot);
+    if (_containsKey) {
+      this.error("A synchronous statement cannot contain more actions belonging to the same robot", statement, 
+        BehaviourLanguagePackage.Literals.DETECTION_STATEMENT__ROBOT, ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC);
+    } else {
       DynamicRobot _robot_1 = statement.getRobot();
-      _xblockexpression = robotOccurence.put(_robot_1, Integer.valueOf(occurred));
+      _xifexpression = robotOccurence.put(_robot_1, Integer.valueOf(1));
     }
-    return _xblockexpression;
+    return _xifexpression;
   }
   
   protected Integer _findRobotOccurrence(final Statement statement, final HashMap<DynamicRobot, Integer> robotOccurence) {

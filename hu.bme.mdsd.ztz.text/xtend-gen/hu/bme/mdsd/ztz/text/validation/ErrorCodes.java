@@ -25,4 +25,6 @@ public class ErrorCodes {
   public final static String SAME_MESSAGE_TARGET = "hu.bme.mdsd.ztz.text.errors.same_message_target";
   
   public final static String SAME_MESSAGE_TARGET_WITH_COLLABORATIONS = "hu.bme.mdsd.ztz.text.errors.same_message_target_with_collaborations";
+  
+  public final static String SAME_ROBOT_STATEMENTS_IN_SYNC = "hu.bme.mdsd.ztz.text.errors.same_robot_statements_in_sync";
 }

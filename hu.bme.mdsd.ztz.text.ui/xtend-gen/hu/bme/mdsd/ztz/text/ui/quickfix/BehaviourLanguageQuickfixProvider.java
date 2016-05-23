@@ -10,13 +10,17 @@ import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
@@ -135,5 +139,62 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
       xtextDocument.replace((_offset).intValue(), (_length).intValue(), _get_1);
     };
     acceptor.accept(issue, _plus, "", "", _function);
+  }
+  
+  @Fix(ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC)
+  public void fixSameRobotStatementsInSync(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
+    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      EObject _eContainer = element.eContainer();
+      final SynchronousStatement synchStatement = ((SynchronousStatement) _eContainer);
+      EList<AtomicStatement> _statements = synchStatement.getStatements();
+      _statements.remove(element);
+      EObject _eContainer_1 = synchStatement.eContainer();
+      this.addNewElement(_eContainer_1, synchStatement, ((Statement) element), false);
+    };
+    acceptor.accept(issue, "Move statement before the synchronous statement", "", "", _function);
+    final ISemanticModification _function_1 = (EObject element, IModificationContext context) -> {
+      EObject _eContainer = element.eContainer();
+      final SynchronousStatement synchStatement = ((SynchronousStatement) _eContainer);
+      EList<AtomicStatement> _statements = synchStatement.getStatements();
+      _statements.remove(element);
+      EObject _eContainer_1 = synchStatement.eContainer();
+      this.addNewElement(_eContainer_1, synchStatement, ((Statement) element), true);
+    };
+    acceptor.accept(issue, "Move statement after the synchronous statement", "", "", _function_1);
+  }
+  
+  protected void _addNewElement(final BehaviourLanguage container, final SynchronousStatement sync, final Statement statement, final boolean after) {
+    EList<Statement> _statements = container.getStatements();
+    int index = _statements.indexOf(sync);
+    if (after) {
+      index++;
+    }
+    EList<Statement> _statements_1 = container.getStatements();
+    _statements_1.add(index, statement);
+  }
+  
+  protected void _addNewElement(final ConditionalStatement container, final SynchronousStatement sync, final Statement statement, final boolean after) {
+    EList<Statement> _statements = container.getStatements();
+    int index = _statements.indexOf(sync);
+    if (after) {
+      index++;
+    }
+    EList<Statement> _statements_1 = container.getStatements();
+    _statements_1.add(index, statement);
+  }
+  
+  public void addNewElement(final EObject container, final SynchronousStatement sync, final Statement statement, final boolean after) {
+    if (container instanceof ConditionalStatement) {
+      _addNewElement((ConditionalStatement)container, sync, statement, after);
+      return;
+    } else if (container instanceof BehaviourLanguage) {
+      _addNewElement((BehaviourLanguage)container, sync, statement, after);
+      return;
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(container, sync, statement, after).toString());
+    }
   }
 }
