@@ -20,16 +20,17 @@ Require-Bundle: hu.bme.mdsd.ztz.model,
  com.fasterxml.jackson.core.jackson-core;bundle-version="2.5.0",
  com.fasterxml.jackson.core.jackson-databind;bundle-version="2.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: hu.bme.mdsd.ztz.text.validation,
- hu.bme.mdsd.ztz.text.parser.antlr,
- hu.bme.mdsd.ztz.text,
- hu.bme.mdsd.ztz.text.services,
- hu.bme.mdsd.ztz.text.generator,
- hu.bme.mdsd.ztz.text.serializer,
- hu.bme.mdsd.ztz.text.formatting,
- hu.bme.mdsd.ztz.text.scoping,
- hu.bme.mdsd.ztz.text.parser.antlr.internal,
- hu.bme.mdsd.ztz.text.behaviourLanguage.util,
+Export-Package: hu.bme.mdsd.ztz.text,
  hu.bme.mdsd.ztz.text.behaviourLanguage,
- hu.bme.mdsd.ztz.text.behaviourLanguage.impl
+ hu.bme.mdsd.ztz.text.behaviourLanguage.impl,
+ hu.bme.mdsd.ztz.text.behaviourLanguage.util,
+ hu.bme.mdsd.ztz.text.formatting,
+ hu.bme.mdsd.ztz.text.generator,
+ hu.bme.mdsd.ztz.text.manager,
+ hu.bme.mdsd.ztz.text.parser.antlr,
+ hu.bme.mdsd.ztz.text.parser.antlr.internal,
+ hu.bme.mdsd.ztz.text.scoping,
+ hu.bme.mdsd.ztz.text.serializer,
+ hu.bme.mdsd.ztz.text.services,
+ hu.bme.mdsd.ztz.text.validation
 Import-Package: org.apache.log4j

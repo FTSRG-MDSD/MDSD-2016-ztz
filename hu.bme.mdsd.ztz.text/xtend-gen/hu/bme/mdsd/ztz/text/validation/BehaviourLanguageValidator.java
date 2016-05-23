@@ -83,7 +83,17 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
           final ResourceManager manager = ResourceManager.getInstance();
           Resource _xtrycatchfinallyexpression = null;
           try {
-            _xtrycatchfinallyexpression = manager.load(imp);
+            Resource _xblockexpression_1 = null;
+            {
+              boolean _folderExist = manager.folderExist(imp);
+              boolean _not = (!_folderExist);
+              if (_not) {
+                this.error("The imported file must be located in the model folder which does not exist", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, 
+                  ErrorCodes.MISSING_FOLDER);
+              }
+              _xblockexpression_1 = manager.load(imp);
+            }
+            _xtrycatchfinallyexpression = _xblockexpression_1;
           } catch (final Throwable _t) {
             if (_t instanceof Exception) {
               final Exception e = (Exception)_t;

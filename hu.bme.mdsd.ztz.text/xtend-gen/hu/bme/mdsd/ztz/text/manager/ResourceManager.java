@@ -110,6 +110,41 @@ public class ResourceManager {
     return _xifexpression;
   }
   
+  public boolean folderExist(final Import imp) {
+    String _importURI = imp.getImportURI();
+    boolean _equals = this.importedModelPath.equals(_importURI);
+    boolean _not = (!_equals);
+    if (_not) {
+      Resource _eResource = imp.eResource();
+      URI _uRI = _eResource.getURI();
+      final String platformString = _uRI.toPlatformString(true);
+      IWorkspace _workspace = ResourcesPlugin.getWorkspace();
+      IWorkspaceRoot _root = _workspace.getRoot();
+      Path _path = new Path(platformString);
+      final IFile myFile = _root.getFile(_path);
+      final IProject proj = myFile.getProject();
+      IWorkspace _workspace_1 = ResourcesPlugin.getWorkspace();
+      IWorkspaceRoot _root_1 = _workspace_1.getRoot();
+      IPath _fullPath = _root_1.getFullPath();
+      String _oSString = _fullPath.toOSString();
+      Path _path_1 = new Path(_oSString);
+      IPath _fullPath_1 = proj.getFullPath();
+      IPath _append = _path_1.append(_fullPath_1);
+      Path _path_2 = new Path("/model/");
+      String _oSString_1 = _path_2.toOSString();
+      final IPath modelPath = _append.append(_oSString_1);
+      IWorkspace _workspace_2 = ResourcesPlugin.getWorkspace();
+      IWorkspaceRoot _root_2 = _workspace_2.getRoot();
+      boolean _exists = _root_2.exists(modelPath);
+      if (_exists) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+  
   @Pure
   public String getImportedModelPath() {
     return this.importedModelPath;

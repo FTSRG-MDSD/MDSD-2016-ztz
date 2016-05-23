@@ -16,7 +16,6 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
-import org.eclipse.jface.text.Position
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguagePackage
@@ -89,6 +88,5 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 			
 		]
 	}
-
 
 }

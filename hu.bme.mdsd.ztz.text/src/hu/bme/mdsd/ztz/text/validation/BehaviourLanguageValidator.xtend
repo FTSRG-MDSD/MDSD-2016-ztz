@@ -52,6 +52,11 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		} else if (imp.importURI.endsWith(ResourceManager.instance.acceptedDomain)) {
 			val manager = ResourceManager.instance
 			try {
+				if (!manager.folderExist(imp)) {
+					error("The imported file must be located in the model folder which does not exist", BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, 
+						ErrorCodes.MISSING_FOLDER
+					)
+				}
 				manager.load(imp)
 			} catch (Exception e) {
 				error(e.message, BehaviourLanguagePackage.Literals.IMPORT__IMPORT_URI, ErrorCodes.INVALID_IMPORT)

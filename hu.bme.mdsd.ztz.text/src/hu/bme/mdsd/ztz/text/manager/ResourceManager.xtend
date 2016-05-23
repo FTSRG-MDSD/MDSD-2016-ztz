@@ -11,6 +11,8 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.Import
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
+import com.google.common.io.Files
+import java.io.File
 
 class ResourceManager {
 	
@@ -67,6 +69,24 @@ class ResourceManager {
 	    		append(imp.importURI)
 	    	load(URI.createPlatformResourceURI(modelPath.toOSString, true))
     	}
+	}
+	
+	def boolean folderExist(Import imp) {
+		if (!importedModelPath.equals(imp.importURI)){
+			val platformString = imp.eResource.URI.toPlatformString(true);
+	    	val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+	    	val proj = myFile.getProject();
+	    	val modelPath = new Path(ResourcesPlugin.getWorkspace().getRoot().fullPath.toOSString).
+	    		append(proj.fullPath).
+	    		append(new Path("/model/").toOSString)
+
+	    	if (ResourcesPlugin.getWorkspace().getRoot().exists(modelPath)) {
+	    		return true
+	    	} else {
+				return false
+	    	}
+	    }
+		return true
 	}
 	
 	
