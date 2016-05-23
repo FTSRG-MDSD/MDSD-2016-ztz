@@ -3,6 +3,7 @@
  */
 package hu.bme.mdsd.ztz.text.ui.quickfix;
 
+import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
@@ -15,9 +16,11 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
-import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
+import java.util.Iterator;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
@@ -28,6 +31,7 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Custom quickfixes.
@@ -46,18 +50,29 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
       final MessageStatement statement = ((MessageStatement) _eContainer);
       EObject _eContainer_1 = statement.eContainer();
       final BehaviourLanguage language = ((BehaviourLanguage) _eContainer_1);
-      if ((messageTarget instanceof UniTarget)) {
-        final CollaborationStatement newCollaborationStatement = BehaviourLanguageFactory.eINSTANCE.createCollaborationStatement();
-        DynamicRobot _robot = statement.getRobot();
-        newCollaborationStatement.setRobot(_robot);
-        final RobotCollaboration newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration();
-        DynamicRobot _target = ((UniTarget)messageTarget).getTarget();
-        newCollaboration.setCollaborator(_target);
-        EList<RobotCollaboration> _collaboration = newCollaborationStatement.getCollaboration();
-        _collaboration.add(newCollaboration);
-        EList<Statement> _statements = language.getStatements();
-        _statements.add(0, newCollaborationStatement);
+      Resource _eResource = messageTarget.eResource();
+      TreeIterator<EObject> _allContents = _eResource.getAllContents();
+      Iterator<DynamicRobot> _filter = Iterators.<DynamicRobot>filter(_allContents, DynamicRobot.class);
+      final Set<DynamicRobot> robots = IteratorExtensions.<DynamicRobot>toSet(_filter);
+      DynamicRobot target = null;
+      for (final DynamicRobot r : robots) {
+        String[] _data = issue.getData();
+        String _get = _data[0];
+        String _name = r.getName();
+        boolean _equals = _get.equals(_name);
+        if (_equals) {
+          target = r;
+        }
       }
+      final CollaborationStatement newCollaborationStatement = BehaviourLanguageFactory.eINSTANCE.createCollaborationStatement();
+      DynamicRobot _robot = statement.getRobot();
+      newCollaborationStatement.setRobot(_robot);
+      final RobotCollaboration newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration();
+      newCollaboration.setCollaborator(target);
+      EList<RobotCollaboration> _collaboration = newCollaborationStatement.getCollaboration();
+      _collaboration.add(newCollaboration);
+      EList<Statement> _statements = language.getStatements();
+      _statements.add(0, newCollaborationStatement);
     };
     acceptor.accept(issue, "Add new collaboration", "", "", _function);
   }

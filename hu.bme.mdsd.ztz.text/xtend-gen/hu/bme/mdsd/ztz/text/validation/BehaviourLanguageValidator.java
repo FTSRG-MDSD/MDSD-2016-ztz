@@ -223,18 +223,21 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       boolean _inCollaboration = this.inCollaboration(collabStatements, robot, _target);
       boolean _not = (!_inCollaboration);
       if (_not) {
+        DynamicRobot _target_1 = ((UniTarget)target).getTarget();
+        String _name = _target_1.getName();
         this.error("Target robot is not in collaboration with the sender robot", target, 
-          BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
+          BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION, _name);
       }
     } else {
       if ((target instanceof MultiTarget)) {
-        EList<DynamicRobot> _target_1 = ((MultiTarget)target).getTarget();
-        for (final DynamicRobot targetRobot : _target_1) {
+        EList<DynamicRobot> _target_2 = ((MultiTarget)target).getTarget();
+        for (final DynamicRobot targetRobot : _target_2) {
           boolean _inCollaboration_1 = this.inCollaboration(collabStatements, robot, targetRobot);
           boolean _not_1 = (!_inCollaboration_1);
           if (_not_1) {
+            String _name_1 = targetRobot.getName();
             this.error("Target robot is not in collaboration with the sender robot", target, 
-              BehaviourLanguagePackage.Literals.MULTI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
+              BehaviourLanguagePackage.Literals.MULTI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION, _name_1);
           }
         }
       } else {
@@ -243,7 +246,7 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
           boolean _not_2 = (!_hasCollaboration);
           if (_not_2) {
             this.error("The sender robot is not in collaboration with anyone", target, 
-              BehaviourLanguagePackage.Literals.ALL_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION);
+              BehaviourLanguagePackage.Literals.ALL_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION_BROADCAST);
           }
         }
       }

@@ -31,22 +31,32 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 	@Fix(ErrorCodes.NOT_IN_COLLABORATION)
 	def fixMissingCollaboration(Issue issue, IssueResolutionAcceptor acceptor) {
 		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		
 		acceptor.accept(issue, "Add new collaboration", "", "") [
 			element, context |
 				val messageTarget = element as MessageTarget
 				val statement = messageTarget.eContainer as MessageStatement			
 				val language = statement.eContainer as BehaviourLanguage
 				
-				if (messageTarget instanceof UniTarget) {
+				val robots = messageTarget.eResource.allContents.filter(DynamicRobot).toSet
+				var DynamicRobot target
+				for (DynamicRobot r : robots) {
+					if (issue.data.get(0).equals(r.name)) {
+						target = r
+					}
+				}
+				
+//				if (messageTarget instanceof UniTarget) {
 					val newCollaborationStatement = BehaviourLanguageFactory.eINSTANCE.createCollaborationStatement
 					newCollaborationStatement.robot = statement.robot
 					
 					val newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration
-					newCollaboration.collaborator = messageTarget.target
+//					newCollaboration.collaborator = messageTarget.target
+					newCollaboration.collaborator = target 
 					
 					newCollaborationStatement.collaboration.add(newCollaboration)
 					language.statements.add(0, newCollaborationStatement)
-				}
+//				}
 			
 		]
 	}

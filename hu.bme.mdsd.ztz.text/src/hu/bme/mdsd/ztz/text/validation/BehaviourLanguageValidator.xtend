@@ -154,19 +154,19 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		if (target instanceof UniTarget) {
 			if (!inCollaboration(collabStatements, robot, target.target)) {
 				error("Target robot is not in collaboration with the sender robot", target,
-					BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION)
+					BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION, target.target.name)
 			}
 		} else if (target instanceof MultiTarget) {
 			for (DynamicRobot targetRobot : target.target) {
 				if (!inCollaboration(collabStatements, robot, targetRobot)) {
 					error("Target robot is not in collaboration with the sender robot", target,
-						BehaviourLanguagePackage.Literals.MULTI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION)
+						BehaviourLanguagePackage.Literals.MULTI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION, targetRobot.name)
 				}
 			}
 		} else if (target instanceof AllTarget) {
 			if (!hasCollaboration(collabStatements, robot)) {
 				error("The sender robot is not in collaboration with anyone", target,
-					BehaviourLanguagePackage.Literals.ALL_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION)
+					BehaviourLanguagePackage.Literals.ALL_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION_BROADCAST)
 			}
 
 		}

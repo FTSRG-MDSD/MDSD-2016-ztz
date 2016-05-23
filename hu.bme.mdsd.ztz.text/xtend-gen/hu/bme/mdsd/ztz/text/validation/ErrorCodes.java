@@ -16,6 +16,8 @@ public class ErrorCodes {
   
   public final static String NOT_IN_COLLABORATION = "hu.bme.mdsd.ztz.text.errors.not_in_collaboration";
   
+  public final static String NOT_IN_COLLABORATION_BROADCAST = "hu.bme.mdsd.ztz.text.errors.not_in_collaboration_broadcast";
+  
   public final static String MISSING_ACTION_DECLARATION = "hu.bme.mdsd.ztz.text.errors.missing_action_declaration";
   
   public final static String MISSING_FOLDER = "hu.bme.mdsd.ztz.text.errors.missing_folder";
