@@ -46,17 +46,14 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 					}
 				}
 				
-//				if (messageTarget instanceof UniTarget) {
-					val newCollaborationStatement = BehaviourLanguageFactory.eINSTANCE.createCollaborationStatement
-					newCollaborationStatement.robot = statement.robot
+				val newCollaborationStatement = BehaviourLanguageFactory.eINSTANCE.createCollaborationStatement
+				newCollaborationStatement.robot = statement.robot
 					
-					val newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration
-//					newCollaboration.collaborator = messageTarget.target
-					newCollaboration.collaborator = target 
+				val newCollaboration = BehaviourFactory.eINSTANCE.createRobotCollaboration
+				newCollaboration.collaborator = target 
 					
-					newCollaborationStatement.collaboration.add(newCollaboration)
-					language.statements.add(0, newCollaborationStatement)
-//				}
+				newCollaborationStatement.collaboration.add(newCollaboration)
+				language.statements.add(0, newCollaborationStatement)
 			
 		]
 	}
