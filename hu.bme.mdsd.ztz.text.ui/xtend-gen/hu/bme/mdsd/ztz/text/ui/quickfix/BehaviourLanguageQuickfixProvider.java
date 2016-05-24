@@ -151,7 +151,7 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
       EList<AtomicStatement> _statements = synchStatement.getStatements();
       _statements.remove(element);
       EObject _eContainer_1 = synchStatement.eContainer();
-      this.addNewElement(_eContainer_1, synchStatement, ((Statement) element), false);
+      this.addNewStatement(_eContainer_1, synchStatement, ((Statement) element), false);
     };
     acceptor.accept(issue, "Move statement before the synchronous statement", "", "", _function);
     final ISemanticModification _function_1 = (EObject element, IModificationContext context) -> {
@@ -160,12 +160,12 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
       EList<AtomicStatement> _statements = synchStatement.getStatements();
       _statements.remove(element);
       EObject _eContainer_1 = synchStatement.eContainer();
-      this.addNewElement(_eContainer_1, synchStatement, ((Statement) element), true);
+      this.addNewStatement(_eContainer_1, synchStatement, ((Statement) element), true);
     };
     acceptor.accept(issue, "Move statement after the synchronous statement", "", "", _function_1);
   }
   
-  protected void _addNewElement(final BehaviourLanguage container, final SynchronousStatement sync, final Statement statement, final boolean after) {
+  protected void _addNewStatement(final BehaviourLanguage container, final SynchronousStatement sync, final Statement statement, final boolean after) {
     EList<Statement> _statements = container.getStatements();
     int index = _statements.indexOf(sync);
     if (after) {
@@ -175,7 +175,7 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
     _statements_1.add(index, statement);
   }
   
-  protected void _addNewElement(final ConditionalStatement container, final SynchronousStatement sync, final Statement statement, final boolean after) {
+  protected void _addNewStatement(final ConditionalStatement container, final SynchronousStatement sync, final Statement statement, final boolean after) {
     EList<Statement> _statements = container.getStatements();
     int index = _statements.indexOf(sync);
     if (after) {
@@ -185,12 +185,12 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
     _statements_1.add(index, statement);
   }
   
-  public void addNewElement(final EObject container, final SynchronousStatement sync, final Statement statement, final boolean after) {
+  public void addNewStatement(final EObject container, final SynchronousStatement sync, final Statement statement, final boolean after) {
     if (container instanceof ConditionalStatement) {
-      _addNewElement((ConditionalStatement)container, sync, statement, after);
+      _addNewStatement((ConditionalStatement)container, sync, statement, after);
       return;
     } else if (container instanceof BehaviourLanguage) {
-      _addNewElement((BehaviourLanguage)container, sync, statement, after);
+      _addNewStatement((BehaviourLanguage)container, sync, statement, after);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +

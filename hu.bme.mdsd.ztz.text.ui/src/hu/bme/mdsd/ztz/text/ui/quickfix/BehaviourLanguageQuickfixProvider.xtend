@@ -119,19 +119,19 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 			element, context |
 				val synchStatement = element.eContainer as SynchronousStatement
 				synchStatement.statements.remove(element)
-				synchStatement.eContainer.addNewElement(synchStatement, element as Statement, false)
+				synchStatement.eContainer.addNewStatement(synchStatement, element as Statement, false)
 		]
 		
 		acceptor.accept(issue, "Move statement after the synchronous statement", "", "") [
 			element, context |
 				val synchStatement = element.eContainer as SynchronousStatement
 				synchStatement.statements.remove(element)
-				synchStatement.eContainer.addNewElement(synchStatement, element as Statement, true)
+				synchStatement.eContainer.addNewStatement(synchStatement, element as Statement, true)
 					
 		]
 	}
 	
-	def dispatch addNewElement(BehaviourLanguage container, SynchronousStatement sync, Statement statement, boolean after) {
+	def dispatch addNewStatement(BehaviourLanguage container, SynchronousStatement sync, Statement statement, boolean after) {
 		var index = container.statements.indexOf(sync)
 		if (after) {
 			index++
@@ -140,7 +140,7 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 		container.statements.add(index, statement)
 	}
 	
-	def dispatch addNewElement(ConditionalStatement container, SynchronousStatement sync, Statement statement, boolean after) {
+	def dispatch addNewStatement(ConditionalStatement container, SynchronousStatement sync, Statement statement, boolean after) {
 		var index = container.statements.indexOf(sync)
 		if (after) {
 			index++
