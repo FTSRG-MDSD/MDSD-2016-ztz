@@ -427,6 +427,7 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
     if (_notEquals) {
       this.error("An action must have as many properties as its declaration has", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES, 
         ErrorCodes.FEWER_ACTION_PROPERTIES);
+      return;
     }
     final HashSet<PropertyKey> keys = new HashSet<PropertyKey>();
     EList<Property> _properties_2 = actionImplementation.getProperties();

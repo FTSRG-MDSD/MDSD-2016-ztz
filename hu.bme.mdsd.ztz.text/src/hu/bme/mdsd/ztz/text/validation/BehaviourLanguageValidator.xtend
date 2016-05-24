@@ -277,6 +277,7 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		if (actionImplementation.properties.size != actionImplementation.declaration.properties.size) {
 			error("An action must have as many properties as its declaration has", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES, 
 				ErrorCodes.FEWER_ACTION_PROPERTIES)
+				return
 		}
 		val keys = new HashSet<PropertyKey>()
 		for (Property property : actionImplementation.properties) {

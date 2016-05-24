@@ -192,40 +192,88 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
   }
   
   @Fix(ErrorCodes.FEWER_ACTION_PROPERTIES)
-  public void fixActionProperties(final Issue issue, final IssueResolutionAcceptor acceptor) {
+  public void fixMissingActionProperties(final Issue issue, final IssueResolutionAcceptor acceptor) {
     IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
     final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
       final ActionImplementation actionImp = ((ActionImplementation) element);
-      final Map<PropertyKey, Integer> keys = new HashMap<PropertyKey, Integer>();
-      EList<Property> _properties = actionImp.getProperties();
-      for (final Property property : _properties) {
-        PropertyKey _key = property.getKey();
-        keys.put(_key, Integer.valueOf(1));
-      }
-      final ArrayList<PropertyKey> newKeys = new ArrayList<PropertyKey>();
-      ActionDeclarationStatement _declaration = actionImp.getDeclaration();
-      EList<PropertyKey> _properties_1 = _declaration.getProperties();
-      for (final PropertyKey key : _properties_1) {
-        boolean _containsKey = keys.containsKey(key);
-        boolean _not = (!_containsKey);
-        if (_not) {
-          newKeys.add(key);
-        }
-      }
-      for (final PropertyKey key_1 : newKeys) {
-        {
-          Property property_1 = DroneFactory.eINSTANCE.createProperty();
-          property_1.setKey(key_1);
-          final StringValue propertyStringValue = DroneFactory.eINSTANCE.createStringValue();
-          propertyStringValue.setValue("");
-          property_1.setValue(propertyStringValue);
-          EList<Property> _properties_2 = actionImp.getProperties();
-          _properties_2.add(property_1);
-        }
-      }
+      this.changeActionProperties(actionImp, false);
     };
     acceptor.accept(issue, "Add the rest of the required properties", "", "", _function);
+    final ISemanticModification _function_1 = (EObject element, IModificationContext context) -> {
+      final ActionImplementation actionImp = ((ActionImplementation) element);
+      this.changeActionProperties(actionImp, true);
+    };
+    acceptor.accept(issue, "Add the rest of the required properties and remove the superfluous ones", "", "", _function_1);
+  }
+  
+  protected void changeActionProperties(final ActionImplementation actionImp, final boolean removeIncorrectProperties) {
+    final Map<PropertyKey, Integer> keys = this.getPropertyKeys(actionImp);
+    final ArrayList<PropertyKey> newKeys = this.getMissingKeys(actionImp, keys);
+    for (final PropertyKey key : newKeys) {
+      {
+        Property property = DroneFactory.eINSTANCE.createProperty();
+        property.setKey(key);
+        final StringValue propertyStringValue = DroneFactory.eINSTANCE.createStringValue();
+        propertyStringValue.setValue("");
+        property.setValue(propertyStringValue);
+        EList<Property> _properties = actionImp.getProperties();
+        _properties.add(property);
+      }
+    }
+    if (removeIncorrectProperties) {
+      final ArrayList<Property> incorrectProperties = new ArrayList<Property>();
+      EList<Property> _properties = actionImp.getProperties();
+      for (final Property property : _properties) {
+        ActionDeclarationStatement _declaration = actionImp.getDeclaration();
+        EList<PropertyKey> _properties_1 = _declaration.getProperties();
+        PropertyKey _key = property.getKey();
+        boolean _contains = _properties_1.contains(_key);
+        boolean _not = (!_contains);
+        if (_not) {
+          incorrectProperties.add(property);
+        }
+      }
+      for (final Property property_1 : incorrectProperties) {
+        EList<Property> _properties_2 = actionImp.getProperties();
+        _properties_2.remove(property_1);
+      }
+    }
+  }
+  
+  protected ArrayList<PropertyKey> getMissingKeys(final ActionImplementation actionImp, final Map<PropertyKey, Integer> keys) {
+    final ArrayList<PropertyKey> newKeys = new ArrayList<PropertyKey>();
+    ActionDeclarationStatement _declaration = actionImp.getDeclaration();
+    EList<PropertyKey> _properties = _declaration.getProperties();
+    for (final PropertyKey key : _properties) {
+      boolean _containsKey = keys.containsKey(key);
+      boolean _not = (!_containsKey);
+      if (_not) {
+        newKeys.add(key);
+      }
+    }
+    return newKeys;
+  }
+  
+  protected Map<PropertyKey, Integer> getPropertyKeys(final ActionImplementation actionImp) {
+    final Map<PropertyKey, Integer> keys = new HashMap<PropertyKey, Integer>();
+    EList<Property> _properties = actionImp.getProperties();
+    for (final Property property : _properties) {
+      PropertyKey _key = property.getKey();
+      keys.put(_key, Integer.valueOf(1));
+    }
+    return keys;
+  }
+  
+  @Fix(ErrorCodes.NOT_THE_SAME_ACTION_PROPERTIES)
+  public void fixIncorrectActionProperties(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
+    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final ActionImplementation actionImp = ((ActionImplementation) element);
+      this.changeActionProperties(actionImp, true);
+    };
+    acceptor.accept(issue, "Change the properties", "", "", _function);
   }
   
   public void addNewStatement(final EObject container, final SynchronousStatement sync, final Statement statement, final boolean after) {

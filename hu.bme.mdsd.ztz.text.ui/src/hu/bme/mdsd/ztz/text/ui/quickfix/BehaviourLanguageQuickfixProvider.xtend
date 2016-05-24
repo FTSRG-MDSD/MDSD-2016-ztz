@@ -3,28 +3,27 @@
  */
 package hu.bme.mdsd.ztz.text.ui.quickfix
 
-import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
-import org.eclipse.xtext.validation.Issue
-import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
-import org.eclipse.xtext.ui.editor.quickfix.Fix
-import hu.bme.mdsd.ztz.text.validation.ErrorCodes
-import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget
-import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
-import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
-import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
-import hu.bme.mdsd.ztz.model.drone.PropertyKey
-import java.util.List
-import java.util.Map
-import java.util.HashMap
-import java.util.ArrayList
 import hu.bme.mdsd.ztz.model.drone.DroneFactory
+import hu.bme.mdsd.ztz.model.drone.PropertyKey
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory
+import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget
+import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
+import hu.bme.mdsd.ztz.text.validation.ErrorCodes
+import java.util.ArrayList
+import java.util.HashMap
+import java.util.Map
+import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
+import org.eclipse.xtext.ui.editor.quickfix.Fix
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
+import org.eclipse.xtext.validation.Issue
 
 /**
  * Custom quickfixes.
@@ -156,34 +155,81 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 	}
 	
 	@Fix(ErrorCodes.FEWER_ACTION_PROPERTIES)
-	def fixActionProperties(Issue issue, IssueResolutionAcceptor acceptor) {
+	def fixMissingActionProperties(Issue issue, IssueResolutionAcceptor acceptor) {
 		val modificationContext = modificationContextFactory.createModificationContext(issue)
 
 		acceptor.accept(issue, "Add the rest of the required properties", "", "") [
 			element, context |
 				val actionImp = element as ActionImplementation
-				val Map<PropertyKey, Integer> keys = new HashMap<PropertyKey, Integer>()
-				 
-				for (hu.bme.mdsd.ztz.model.drone.Property property : actionImp.properties) {
-						keys.put(property.key, 1)
+				changeActionProperties(actionImp, false)
+		]
+		
+		acceptor.accept(issue, "Add the rest of the required properties and remove the superfluous ones", "", "") [
+			element, context |
+				val actionImp = element as ActionImplementation
+				changeActionProperties(actionImp, true)
+		]
+	}
+	
+	protected def changeActionProperties(ActionImplementation actionImp, boolean removeIncorrectProperties) {
+		val Map<PropertyKey, Integer> keys = getPropertyKeys(actionImp)
+		 
+		val newKeys = getMissingKeys(actionImp, keys)
+		
+		for(PropertyKey key : newKeys) {
+			var property = DroneFactory.eINSTANCE.createProperty
+			property.key = key
+			val propertyStringValue = DroneFactory.eINSTANCE.createStringValue
+			propertyStringValue.value = ""
+			property.value = propertyStringValue
+			
+			actionImp.properties.add(property)
+		}
+		
+		if (removeIncorrectProperties) {
+			val incorrectProperties = new ArrayList<hu.bme.mdsd.ztz.model.drone.Property>()
+			
+			for (hu.bme.mdsd.ztz.model.drone.Property property : actionImp.properties) {
+				if (!actionImp.declaration.properties.contains(property.key)) {
+					incorrectProperties.add(property)
 				}
-				
-				val newKeys = new ArrayList<PropertyKey>()
-				for(PropertyKey key : actionImp.declaration.properties) {
-					if (!keys.containsKey(key)) {
-						newKeys.add(key)
-					}
-				}
-				
-				for(PropertyKey key : newKeys) {
-					var property = DroneFactory.eINSTANCE.createProperty
-					property.key = key
-					val propertyStringValue = DroneFactory.eINSTANCE.createStringValue
-					propertyStringValue.value = ""
-					property.value = propertyStringValue
-					
-					actionImp.properties.add(property)
-				}
+			}
+			
+			for (hu.bme.mdsd.ztz.model.drone.Property property : incorrectProperties) {
+				actionImp.properties.remove(property)
+			}
+			
+		}
+	}
+	
+	protected def getMissingKeys(ActionImplementation actionImp, Map<PropertyKey, Integer> keys) {
+		val newKeys = new ArrayList<PropertyKey>()
+		for(PropertyKey key : actionImp.declaration.properties) {
+			if (!keys.containsKey(key)) {
+				newKeys.add(key)
+			}
+		}
+		return newKeys
+	}
+	
+	protected def getPropertyKeys(ActionImplementation actionImp) {
+		val Map<PropertyKey, Integer> keys = new HashMap<PropertyKey, Integer>()
+		for (hu.bme.mdsd.ztz.model.drone.Property property : actionImp.properties) {
+				keys.put(property.key, 1)
+		}
+		return keys
+	}
+	
+	
+	
+	@Fix(ErrorCodes.NOT_THE_SAME_ACTION_PROPERTIES)
+	def fixIncorrectActionProperties(Issue issue, IssueResolutionAcceptor acceptor) {
+		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		
+		acceptor.accept(issue, "Change the properties", "", "") [
+			element, context |
+				val actionImp = element as ActionImplementation
+				changeActionProperties(actionImp, true)
 		]
 	}
 	
