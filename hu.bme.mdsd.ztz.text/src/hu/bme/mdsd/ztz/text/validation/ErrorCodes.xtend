@@ -17,5 +17,6 @@ class ErrorCodes {
 	val public static SAME_ROBOT_STATEMENTS_IN_SYNC = "hu.bme.mdsd.ztz.text.errors.same_robot_statements_in_sync"
 	val public static FEWER_ACTION_PROPERTIES = "hu.bme.mdsd.ztz.text.errors.fewer_action_properties"
 	val public static NOT_THE_SAME_ACTION_PROPERTIES = "hu.bme.mdsd.ztz.text.errors.not_the_same_properties"
+	val public static MORE_DYNAMIC_INSTANCE_OF_ROBOT = "hu.bme.mdsd.ztz.text.errors.more_dynamic_instance_of_robot"
 	
 }

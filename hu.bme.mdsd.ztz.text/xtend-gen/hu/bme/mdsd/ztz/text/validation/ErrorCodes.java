@@ -31,4 +31,6 @@ public class ErrorCodes {
   public final static String FEWER_ACTION_PROPERTIES = "hu.bme.mdsd.ztz.text.errors.fewer_action_properties";
   
   public final static String NOT_THE_SAME_ACTION_PROPERTIES = "hu.bme.mdsd.ztz.text.errors.not_the_same_properties";
+  
+  public final static String MORE_DYNAMIC_INSTANCE_OF_ROBOT = "hu.bme.mdsd.ztz.text.errors.more_dynamic_instance_of_robot";
 }

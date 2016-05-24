@@ -4,6 +4,7 @@
 package hu.bme.mdsd.ztz.text.ui.quickfix;
 
 import com.google.common.collect.Iterators;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
@@ -274,6 +275,29 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
       this.changeActionProperties(actionImp, true);
     };
     acceptor.accept(issue, "Change the properties", "", "", _function);
+  }
+  
+  @Fix(ErrorCodes.MORE_DYNAMIC_INSTANCE_OF_ROBOT)
+  public void removeSameDynamicInstance(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
+    _modificationContextFactory.createModificationContext(issue);
+    String[] _data = issue.getData();
+    String _get = _data[0];
+    String _plus = ("Remove dynamic robot: " + _get);
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final DynamicRobot robot = ((DynamicRobot) element);
+      String[] _data_1 = issue.getData();
+      String _get_1 = _data_1[0];
+      String _name = robot.getName();
+      boolean _equals = _get_1.equals(_name);
+      if (_equals) {
+        EObject _eContainer = robot.eContainer();
+        final BehaviourContainer container = ((BehaviourContainer) _eContainer);
+        EList<DynamicRobot> _dynamicRobots = container.getDynamicRobots();
+        _dynamicRobots.remove(robot);
+      }
+    };
+    acceptor.accept(issue, _plus, "", "", _function);
   }
   
   public void addNewStatement(final EObject container, final SynchronousStatement sync, final Statement statement, final boolean after) {

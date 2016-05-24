@@ -182,7 +182,9 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
         Robot _robot_1 = dynamicRobot.getRobot();
         boolean _equals = Objects.equal(_robot, _robot_1);
         if (_equals) {
-          this.error("Cannot instantiate a robot with a dynamic robot more than once", dynamicRobot, BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT);
+          String _name = dynamicRobot.getName();
+          this.error("Cannot instantiate a robot with a dynamic robot more than once", dynamicRobot, BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT, 
+            ErrorCodes.MORE_DYNAMIC_INSTANCE_OF_ROBOT, _name);
         }
       }
     }

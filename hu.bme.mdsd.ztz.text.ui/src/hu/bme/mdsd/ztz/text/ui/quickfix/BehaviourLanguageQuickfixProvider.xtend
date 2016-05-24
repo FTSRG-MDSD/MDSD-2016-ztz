@@ -24,6 +24,7 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
 import org.eclipse.xtext.ui.editor.quickfix.Fix
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourContainer
 
 /**
  * Custom quickfixes.
@@ -230,6 +231,20 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 			element, context |
 				val actionImp = element as ActionImplementation
 				changeActionProperties(actionImp, true)
+		]
+	}
+	
+	@Fix(ErrorCodes.MORE_DYNAMIC_INSTANCE_OF_ROBOT)
+	def removeSameDynamicInstance(Issue issue, IssueResolutionAcceptor acceptor) {
+		modificationContextFactory.createModificationContext(issue)
+			
+		acceptor.accept(issue, "Remove dynamic robot: " + issue.data.get(0), "", "") [
+			element, context |
+				val robot = element as DynamicRobot
+				if (issue.data.get(0).equals(robot.name)) {
+					val container = robot.eContainer as BehaviourContainer
+					container.dynamicRobots.remove(robot)
+				}
 		]
 	}
 	

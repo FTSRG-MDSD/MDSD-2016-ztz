@@ -108,7 +108,8 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		for (DynamicRobot otherDynamicRobot : container.dynamicRobots) {
 			if (otherDynamicRobot != dynamicRobot) {
 				if (otherDynamicRobot.robot == dynamicRobot.robot) {
-					error("Cannot instantiate a robot with a dynamic robot more than once", dynamicRobot, BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT)
+					error("Cannot instantiate a robot with a dynamic robot more than once", dynamicRobot, BehaviourPackage.Literals.DYNAMIC_ROBOT__ROBOT, 
+						ErrorCodes.MORE_DYNAMIC_INSTANCE_OF_ROBOT, dynamicRobot.name)
 				}
 			}
 		}
