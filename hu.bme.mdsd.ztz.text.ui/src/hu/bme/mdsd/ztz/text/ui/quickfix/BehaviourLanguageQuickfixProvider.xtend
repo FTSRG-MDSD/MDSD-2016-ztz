@@ -34,7 +34,7 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 
 	@Fix(ErrorCodes.NOT_IN_COLLABORATION)
 	def fixMissingCollaboration(Issue issue, IssueResolutionAcceptor acceptor) {
-		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		modificationContextFactory.createModificationContext(issue)
 		
 		acceptor.accept(issue, "Add new collaboration", "", "") [
 			element, context |
@@ -77,7 +77,7 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 	
 	@Fix(ErrorCodes.MISSING_ACTION_DECLARATION)
 	def fixMissingActionDeclaration(Issue issue, IssueResolutionAcceptor acceptor) {
-		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		modificationContextFactory.createModificationContext(issue)
 		
 		acceptor.accept(issue, "Add new action", "", "") [
 			element, context |
@@ -98,7 +98,7 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 	
 	@Fix(ErrorCodes.SAME_COLLABORATOR)
 	def fixSelfCollaboration(Issue issue, IssueResolutionAcceptor acceptor) {
-		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		modificationContextFactory.createModificationContext(issue)
 
 		acceptor.accept(issue, "Change the collaborator to " + issue.data.get(0), "", "") [
 			element, context |
@@ -118,7 +118,7 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 	
 	@Fix(ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC)
 	def fixSameRobotStatementsInSync(Issue issue, IssueResolutionAcceptor acceptor) {
-		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		modificationContextFactory.createModificationContext(issue)
 		
 		acceptor.accept(issue, "Move statement before the synchronous statement", "", "") [
 			element, context |
@@ -156,7 +156,7 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 	
 	@Fix(ErrorCodes.FEWER_ACTION_PROPERTIES)
 	def fixMissingActionProperties(Issue issue, IssueResolutionAcceptor acceptor) {
-		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		modificationContextFactory.createModificationContext(issue)
 
 		acceptor.accept(issue, "Add the rest of the required properties", "", "") [
 			element, context |
@@ -224,7 +224,7 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 	
 	@Fix(ErrorCodes.NOT_THE_SAME_ACTION_PROPERTIES)
 	def fixIncorrectActionProperties(Issue issue, IssueResolutionAcceptor acceptor) {
-		val modificationContext = modificationContextFactory.createModificationContext(issue)
+		modificationContextFactory.createModificationContext(issue)
 		
 		acceptor.accept(issue, "Change the properties", "", "") [
 			element, context |

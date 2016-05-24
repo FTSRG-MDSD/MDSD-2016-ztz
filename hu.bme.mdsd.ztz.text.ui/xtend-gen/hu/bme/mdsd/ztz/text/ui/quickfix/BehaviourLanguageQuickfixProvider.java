@@ -53,7 +53,7 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
   @Fix(ErrorCodes.NOT_IN_COLLABORATION)
   public void fixMissingCollaboration(final Issue issue, final IssueResolutionAcceptor acceptor) {
     IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
-    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    _modificationContextFactory.createModificationContext(issue);
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
       final MessageTarget messageTarget = ((MessageTarget) element);
       EObject _eContainer = messageTarget.eContainer();
@@ -90,7 +90,7 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
   @Fix(ErrorCodes.MISSING_ACTION_DECLARATION)
   public void fixMissingActionDeclaration(final Issue issue, final IssueResolutionAcceptor acceptor) {
     IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
-    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    _modificationContextFactory.createModificationContext(issue);
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
       final ActionImplementation actionImp = ((ActionImplementation) element);
       final IXtextDocument document = context.getXtextDocument();
@@ -116,7 +116,7 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
   @Fix(ErrorCodes.SAME_COLLABORATOR)
   public void fixSelfCollaboration(final Issue issue, final IssueResolutionAcceptor acceptor) {
     IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
-    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    _modificationContextFactory.createModificationContext(issue);
     String[] _data = issue.getData();
     String _get = _data[0];
     String _plus = ("Change the collaborator to " + _get);
@@ -150,7 +150,7 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
   @Fix(ErrorCodes.SAME_ROBOT_STATEMENTS_IN_SYNC)
   public void fixSameRobotStatementsInSync(final Issue issue, final IssueResolutionAcceptor acceptor) {
     IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
-    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    _modificationContextFactory.createModificationContext(issue);
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
       EObject _eContainer = element.eContainer();
       final SynchronousStatement synchStatement = ((SynchronousStatement) _eContainer);
@@ -194,7 +194,7 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
   @Fix(ErrorCodes.FEWER_ACTION_PROPERTIES)
   public void fixMissingActionProperties(final Issue issue, final IssueResolutionAcceptor acceptor) {
     IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
-    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    _modificationContextFactory.createModificationContext(issue);
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
       final ActionImplementation actionImp = ((ActionImplementation) element);
       this.changeActionProperties(actionImp, false);
@@ -268,7 +268,7 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
   @Fix(ErrorCodes.NOT_THE_SAME_ACTION_PROPERTIES)
   public void fixIncorrectActionProperties(final Issue issue, final IssueResolutionAcceptor acceptor) {
     IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
-    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    _modificationContextFactory.createModificationContext(issue);
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
       final ActionImplementation actionImp = ((ActionImplementation) element);
       this.changeActionProperties(actionImp, true);
