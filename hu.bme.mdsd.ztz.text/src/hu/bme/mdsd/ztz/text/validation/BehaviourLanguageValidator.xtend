@@ -275,7 +275,8 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 	@Check
 	def checkPropertyKeysForActionImplementation(ActionImplementation actionImplementation) {
 		if (actionImplementation.properties.size != actionImplementation.declaration.properties.size) {
-			error("An action must have as many properties as its declaration has", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES)
+			error("An action must have as many properties as its declaration has", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES, 
+				ErrorCodes.FEWER_ACTION_PROPERTIES)
 		}
 		val keys = new HashSet<PropertyKey>()
 		for (Property property : actionImplementation.properties) {
@@ -283,7 +284,8 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		}
 		for (PropertyKey key : actionImplementation.declaration.properties)  {
 			if (!keys.contains(key)) {
-				error("An action must have the same properties as its declaration", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES)	
+				error("An action must have the same properties as its declaration", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES,
+					ErrorCodes.NOT_THE_SAME_ACTION_PROPERTIES)	
 			}
 		}
 	}

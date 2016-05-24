@@ -425,7 +425,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
     int _size_1 = _properties_1.size();
     boolean _notEquals = (_size != _size_1);
     if (_notEquals) {
-      this.error("An action must have as many properties as its declaration has", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES);
+      this.error("An action must have as many properties as its declaration has", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES, 
+        ErrorCodes.FEWER_ACTION_PROPERTIES);
     }
     final HashSet<PropertyKey> keys = new HashSet<PropertyKey>();
     EList<Property> _properties_2 = actionImplementation.getProperties();
@@ -439,7 +440,8 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
       boolean _contains = keys.contains(key);
       boolean _not = (!_contains);
       if (_not) {
-        this.error("An action must have the same properties as its declaration", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES);
+        this.error("An action must have the same properties as its declaration", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES, 
+          ErrorCodes.NOT_THE_SAME_ACTION_PROPERTIES);
       }
     }
   }
