@@ -285,7 +285,7 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 		for (PropertyKey key : actionImplementation.declaration.properties)  {
 			if (!keys.contains(key)) {
 				error("An action must have the same properties as its declaration", actionImplementation, BehaviourLanguagePackage.Literals.ACTION_IMPLEMENTATION__PROPERTIES,
-					ErrorCodes.NOT_THE_SAME_ACTION_PROPERTIES)	
+					ErrorCodes.NOT_THE_SAME_ACTION_PROPERTIES)
 			}
 		}
 	}

@@ -7,7 +7,10 @@ import com.google.common.collect.Iterators;
 import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
+import hu.bme.mdsd.ztz.model.drone.DroneFactory;
+import hu.bme.mdsd.ztz.model.drone.Property;
 import hu.bme.mdsd.ztz.model.drone.PropertyKey;
+import hu.bme.mdsd.ztz.model.drone.StringValue;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
@@ -20,8 +23,11 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement;
 import hu.bme.mdsd.ztz.text.validation.ErrorCodes;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -183,6 +189,43 @@ public class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
     }
     EList<Statement> _statements_1 = container.getStatements();
     _statements_1.add(index, statement);
+  }
+  
+  @Fix(ErrorCodes.FEWER_ACTION_PROPERTIES)
+  public void fixActionProperties(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    IssueModificationContext.Factory _modificationContextFactory = this.getModificationContextFactory();
+    final IModificationContext modificationContext = _modificationContextFactory.createModificationContext(issue);
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final ActionImplementation actionImp = ((ActionImplementation) element);
+      final Map<PropertyKey, Integer> keys = new HashMap<PropertyKey, Integer>();
+      EList<Property> _properties = actionImp.getProperties();
+      for (final Property property : _properties) {
+        PropertyKey _key = property.getKey();
+        keys.put(_key, Integer.valueOf(1));
+      }
+      final ArrayList<PropertyKey> newKeys = new ArrayList<PropertyKey>();
+      ActionDeclarationStatement _declaration = actionImp.getDeclaration();
+      EList<PropertyKey> _properties_1 = _declaration.getProperties();
+      for (final PropertyKey key : _properties_1) {
+        boolean _containsKey = keys.containsKey(key);
+        boolean _not = (!_containsKey);
+        if (_not) {
+          newKeys.add(key);
+        }
+      }
+      for (final PropertyKey key_1 : newKeys) {
+        {
+          Property property_1 = DroneFactory.eINSTANCE.createProperty();
+          property_1.setKey(key_1);
+          final StringValue propertyStringValue = DroneFactory.eINSTANCE.createStringValue();
+          propertyStringValue.setValue("");
+          property_1.setValue(propertyStringValue);
+          EList<Property> _properties_2 = actionImp.getProperties();
+          _properties_2.add(property_1);
+        }
+      }
+    };
+    acceptor.accept(issue, "Add the rest of the required properties", "", "", _function);
   }
   
   public void addNewStatement(final EObject container, final SynchronousStatement sync, final Statement statement, final boolean after) {

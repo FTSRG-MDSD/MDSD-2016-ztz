@@ -19,6 +19,12 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
+import hu.bme.mdsd.ztz.model.drone.PropertyKey
+import java.util.List
+import java.util.Map
+import java.util.HashMap
+import java.util.ArrayList
+import hu.bme.mdsd.ztz.model.drone.DroneFactory
 
 /**
  * Custom quickfixes.
@@ -147,6 +153,38 @@ class BehaviourLanguageQuickfixProvider extends DefaultQuickfixProvider {
 		}
 		
 		container.statements.add(index, statement)
+	}
+	
+	@Fix(ErrorCodes.FEWER_ACTION_PROPERTIES)
+	def fixActionProperties(Issue issue, IssueResolutionAcceptor acceptor) {
+		val modificationContext = modificationContextFactory.createModificationContext(issue)
+
+		acceptor.accept(issue, "Add the rest of the required properties", "", "") [
+			element, context |
+				val actionImp = element as ActionImplementation
+				val Map<PropertyKey, Integer> keys = new HashMap<PropertyKey, Integer>()
+				 
+				for (hu.bme.mdsd.ztz.model.drone.Property property : actionImp.properties) {
+						keys.put(property.key, 1)
+				}
+				
+				val newKeys = new ArrayList<PropertyKey>()
+				for(PropertyKey key : actionImp.declaration.properties) {
+					if (!keys.containsKey(key)) {
+						newKeys.add(key)
+					}
+				}
+				
+				for(PropertyKey key : newKeys) {
+					var property = DroneFactory.eINSTANCE.createProperty
+					property.key = key
+					val propertyStringValue = DroneFactory.eINSTANCE.createStringValue
+					propertyStringValue.value = ""
+					property.value = propertyStringValue
+					
+					actionImp.properties.add(property)
+				}
+		]
 	}
 	
 }
