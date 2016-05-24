@@ -154,12 +154,12 @@ class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidator {
 				val robots = target.eResource.allContents.filter(DynamicRobot).toSet
 				for (DynamicRobot r : robots) {
 					if (r != target.target && inCollaboration(collabStatements, robot, r)) {
-						error("The target robot is the same as the sender1", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, 
+						error("The target robot is the same as the sender", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, 
 							ErrorCodes.SAME_MESSAGE_TARGET_WITH_COLLABORATIONS, r.name)
 						return
 					}
 				}
-				error("The target robot is the same as the sender2", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.SAME_MESSAGE_TARGET)
+				error("The target robot is the same as the sender", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.SAME_MESSAGE_TARGET)
 			} else if (!inCollaboration(collabStatements, robot, target.target)) {
 				error("Target robot is not in collaboration with the sender robot", target,
 					BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.NOT_IN_COLLABORATION, target.target.name)

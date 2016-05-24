@@ -237,12 +237,12 @@ public class BehaviourLanguageValidator extends AbstractBehaviourLanguageValidat
           }
           if (_and) {
             String _name = r.getName();
-            this.error("The target robot is the same as the sender1", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, 
+            this.error("The target robot is the same as the sender", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, 
               ErrorCodes.SAME_MESSAGE_TARGET_WITH_COLLABORATIONS, _name);
             return;
           }
         }
-        this.error("The target robot is the same as the sender2", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.SAME_MESSAGE_TARGET);
+        this.error("The target robot is the same as the sender", target, BehaviourLanguagePackage.Literals.UNI_TARGET__TARGET, ErrorCodes.SAME_MESSAGE_TARGET);
       } else {
         DynamicRobot _target_2 = ((UniTarget)target).getTarget();
         boolean _inCollaboration_1 = this.inCollaboration(collabStatements, robot, _target_2);
