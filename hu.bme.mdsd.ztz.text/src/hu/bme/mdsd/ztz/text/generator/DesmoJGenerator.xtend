@@ -124,8 +124,8 @@ class DesmoJGenerator {
 	}
 	
 	def dispatch generateEventPosition(ActionStatement statement) {
-		val longitude = statement.action.properties.findFirst[prop | prop.key.name.equals("Lat")]
-		val latitude = statement.action.properties.findFirst[prop | prop.key.name.equals("Long")]
+		val longitude = statement.action.properties.findFirst[prop | prop.key.name.equals("Long")]
+		val latitude = statement.action.properties.findFirst[prop | prop.key.name.equals("Lat")]
 		if (longitude != null && longitude.value instanceof StringValue
 			&& latitude != null && latitude.value instanceof StringValue) {
 			return ", new Position("

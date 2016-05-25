@@ -129,7 +129,7 @@ public class ObjectDeliverySimulationModel extends Model {
 		robotBringTime = new ContDistNormal(this, "Bring time", 10*60, 5*60, true, false);
 		robotDetectTime = new ContDistUniform(this, "Detect time", 1*60, 5*60, true, false);
 		robotMoveTime = new ContDistUniform(this,"Move time",1*60,10*60,true,false);
-		objectResetTime = new ContDistUniform(this,"Reset time",1*60,10*60,true,false);
+		objectResetTime = new ContDistUniform(this,"Reset time",40*60,100*60,true,false);
 		robotSearchTime = new ContDistUniform(this,"Search time",1*60,100*60,true,false);
 		communicationTime = new ContDistUniform(this, "Communication time", 1*60, 10*60, true, false);
 				

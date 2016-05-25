@@ -1,42 +1,83 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      var socket = io();
-      $(function() {
-        $('form').submit(function(){
+<head>
+  <title>Robot Visualization - Socket</title>
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font: 13px Helvetica, Arial; }
+  form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+  form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+  form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+  #messages { list-style-type: none; margin: 0; padding: 0; }
+  #messages li { padding: 5px 10px; }
+  #messages li:nth-child(odd) { background: #eee; }
+  </style>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
+  <link href="css/map.css" rel="stylesheet" />
+
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="lib/jquery.easing.1.3.js"></script>
+  <script src="lib/markerAnimate.js"></script>
+  <script src="lib/SlidingMarker.js"></script>
+  <script>
+  SlidingMarker.initializeGlobally();
+  </script>
+  <script src="lib/markerwithlabel.terikon.js"></script>
+  <script src="lib/collections.min.js"></script>
+  <script src="lib/visualize.js"></script>
+
+  <script>
+  var socket = io();
+  $(function() {
+        /*$('form').submit(function(){
             socket.emit('chat message', $('#m').val());
             $('#m').val('');
             return false;
           });
           socket.on('chat message', function(msg){
             $('#messages').append($('<li>').text(msg));
-          });
-          socket.on('data', function (data) {
-            console.log(data.body);
-          });
-      });
-      
-    </script>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+          });*/
+  socket.on('data', function (data) {
+    duration = 1000;
+    if (handleSocket) {
+      queue.push(data.body);
+      if (eventTimer == null) {
+        eventTimer = setTimeout(eventTimerFun, duration);
+      }
+    }
+  });
+});
 
-  </body>
+  </script>
+</head>
+<body>
+  <div id="map_canvas"></div>
+
+  <div id="controls" class="control">
+    <div class="row">
+      <input class='file-upload-button' id="selectedFile" type="file" title=" " style="display: none;" />
+      <button id="incomingButton">Incoming Events</button>
+      <button id="loadButton" onclick="document.getElementById('selectedFile').click();" >Load...</button>
+      <button id="unloadButton">Unload</button>
+      <button id="backButton">Back</button>
+    </div>
+    <div class="row">
+      <label for="durationOption">Duration:</label>
+      <input type="number" id="durationOption" value="1000"><p\>
+    </div>
+    <div class="row">
+      <button id="nextButton">Next</button> 
+      <button id="autoButton">Auto</button>
+    </div>
+  </div>
+
+  <div id="log" class="control">
+  </div>
+  <div id="status" class="control">
+  </div>
+
+</body>
 </html>

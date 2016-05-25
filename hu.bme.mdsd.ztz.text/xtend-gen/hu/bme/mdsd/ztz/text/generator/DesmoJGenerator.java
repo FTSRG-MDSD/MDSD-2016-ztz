@@ -418,7 +418,7 @@ public class DesmoJGenerator {
     final Function1<Property, Boolean> _function = (Property prop) -> {
       PropertyKey _key = prop.getKey();
       String _name = _key.getName();
-      return Boolean.valueOf(_name.equals("Lat"));
+      return Boolean.valueOf(_name.equals("Long"));
     };
     final Property longitude = IterableExtensions.<Property>findFirst(_properties, _function);
     ActionImplementation _action_1 = statement.getAction();
@@ -426,7 +426,7 @@ public class DesmoJGenerator {
     final Function1<Property, Boolean> _function_1 = (Property prop) -> {
       PropertyKey _key = prop.getKey();
       String _name = _key.getName();
-      return Boolean.valueOf(_name.equals("Long"));
+      return Boolean.valueOf(_name.equals("Lat"));
     };
     final Property latitude = IterableExtensions.<Property>findFirst(_properties_1, _function_1);
     boolean _and = false;

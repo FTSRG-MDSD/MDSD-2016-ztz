@@ -23,17 +23,17 @@ public class DesmoSimulation extends ObjectDeliverySimulationModel {
 	public void init() {
 		super.init();
 
-		DynamicRobotEntity bobDEntity =
-			new DynamicRobotEntity(this, "BobD", false);
-		registeredEntities.put(bobDEntity.getSimpleName(), bobDEntity);
-
-		bobDEntity.setPosition(new Position(127.86, 25.0));
-
 		DynamicRobotEntity frankDEntity =
 			new DynamicRobotEntity(this, "FrankD", false);
 		registeredEntities.put(frankDEntity.getSimpleName(), frankDEntity);
 
 		frankDEntity.setPosition(new Position(127.86, 23.01));
+
+		DynamicRobotEntity bobDEntity =
+			new DynamicRobotEntity(this, "BobD", false);
+		registeredEntities.put(bobDEntity.getSimpleName(), bobDEntity);
+
+		bobDEntity.setPosition(new Position(127.86, 25.0));
 
 
 		ResettableAreaObjectEntity boxEntity = new ResettableAreaObjectEntity(this, "Box", false);
@@ -76,34 +76,36 @@ public class DesmoSimulation extends ObjectDeliverySimulationModel {
 		napkinEntity.setResetPosition(new Position(133.0, 25.0));
 		napkinEntity.setPosition(new Position(133.0, 25.0));
 
+		frankDEntity.initializeEvents(
+
+				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(90.0, 22.0))),
+				new StatementEntity(this, new DetectEvent(this, "Detect", true), "Bottle", false),
+				new StatementEntity(this, new MoveToTargetEvent(this, "MoveToTarget", true), "Bottle", false),
+				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(127.0, 25.0)), "Bottle", false),
+				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(85.0, 20.0))),
+				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(90.0, 21.0))),
+				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(92.0, 20.0))),
+				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(127.0, 25.0))),
+				new StatementEntity(this, new MessageEvent(this, "Message", true), "BobD", true),
+				new StatementEntity(this, new MoveToTargetEvent(this, "MoveToTarget", true), "Box", false),
+				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(127.0, 25.0)), "Box", false)
+		);
+
 		bobDEntity.initializeEvents(
 
-				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(27.0, 127.0))),
+				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(127.0, 27.0))),
 				new StatementEntity(this, new DetectEvent(this, "Detect", true), "Tissue", false),
 				new StatementEntity(this, new DetectEvent(this, "Detect", true), "Napkin", false),
 				new StatementEntity(this, new MoveToTargetEvent(this, "MoveToTarget", true), "Tissue", false),
-				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(25.0, 127.0)), "Tissue", false),
+				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(127.0, 25.0)), "Tissue", false),
 				new StatementEntity(this, new MoveToTargetEvent(this, "MoveToTarget", true), "Napkin", false),
-				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(25.0, 127.0)), "Napkin", false),
-				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(30.0, 118.0))),
+				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(127.0, 25.0)), "Napkin", false),
+				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(118.0, 30.0))),
 				new StatementEntity(this, new DetectEvent(this, "Detect", true), "Stub", false),
 				new StatementEntity(this, new MoveToTargetEvent(this, "MoveToTarget", true), "Stub", false),
 				new StatementEntity(this, new DetectEvent(this, "Detect", true), "Box", false),
-				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(25.0, 127.0)), "Stub", false)
-		);
-
-		frankDEntity.initializeEvents(
-
-				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(22.0, 90.0))),
-				new StatementEntity(this, new DetectEvent(this, "Detect", true), "Bottle", false),
-				new StatementEntity(this, new MoveToTargetEvent(this, "MoveToTarget", true), "Bottle", false),
-				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(25.0, 127.0)), "Bottle", false),
-				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(20.0, 85.0))),
-				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(21.0, 90.0))),
-				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(20.0, 92.0))),
-				new StatementEntity(this, new MoveEvent(this, "Move", true, new Position(25.0, 127.0))),
-				new StatementEntity(this, new MoveToTargetEvent(this, "MoveToTarget", true), "Box", false),
-				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(25.0, 127.0)), "Box", false)
+				new StatementEntity(this, new MessageEvent(this, "Message", true), "FrankD", true),
+				new StatementEntity(this, new BringEvent(this, "Bring", true, new Position(127.0, 25.0)), "Stub", false)
 		);
 	}
 }
