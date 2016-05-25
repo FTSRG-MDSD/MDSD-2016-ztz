@@ -4,13 +4,18 @@ import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot
 import hu.bme.mdsd.ztz.model.drone.AreaObject
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget
+import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage
+import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement
+import hu.bme.mdsd.ztz.text.behaviourLanguage.MultiTarget
 import hu.bme.mdsd.ztz.text.behaviourLanguage.Statement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.SynchronousStatement
 import hu.bme.mdsd.ztz.text.behaviourLanguage.UniTarget
+import hu.bme.mdsd.ztz.text.behaviourLanguage.impl.BehaviourLanguageFactoryImpl
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.HashSet
@@ -21,17 +26,19 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 
 class DesmoJGenerator {
 	private BehaviourLanguage bl
+	private BehaviourLanguageFactory blf
 	private IFileSystemAccess2 fsa
 
 	new(BehaviourLanguage bl, IFileSystemAccess2 fsa) {
 		this.bl = bl
 		this.fsa = fsa
+		blf = new BehaviourLanguageFactoryImpl
 		robots = new HashSet
 		statements = new HashMap
 	}
 
 	private Set<DynamicRobot> robots
-	private Map<DynamicRobot, List<Statement>> statements
+	private Map<DynamicRobot, List<AtomicStatement>> statements
 
 	def generateRobotEntity(DynamicRobot robot) '''
 	
@@ -48,25 +55,20 @@ class DesmoJGenerator {
 				availableObjects.add(«areaObject.name.toFirstLower»Entity);
 	'''
 
-	def generateStatement(ActionStatement statement) '''
-		new StatementEntity(this, new SearchEvent(this, "Hoo", true)),
-		new StatementEntity(this, new DetectEvent(this, "Detect", true), "Box", false),
-		new StatementEntity(this, new MoveEvent(this, "Move", true), "Box", false),
-		new StatementEntity(this, new BringEvent(this, "Bring", true), "Box", false)
-		);
-	'''
-
 	def generateAll() '''
 		«generateHeader»
+		«IF !robots.empty»
 		«FOR robot : robots»
 			«generateRobotEntity(robot)»
 		«ENDFOR»
+		
 		«FOR areaObject : (robots.get(0).robot.eContainer as RobotMissionContainer).areaObjects»
 			«generateAreaObjectEntity(areaObject)»
 		«ENDFOR»
 		«FOR robot : robots»
 			«generateStatements(robot)»
 		«ENDFOR»
+		«ENDIF»
 		«generateFooter»
 	'''
 	
@@ -75,22 +77,28 @@ class DesmoJGenerator {
 			«robot.name.toFirstLower»Entity.initializeEvents(
 	«FOR statement : statements.get(robot) SEPARATOR ","»
 	
-					new StatementEntity(this, new «statement.eventType»Event(this, "«statement.eventType»", true)«generateProperties(statement)»)«ENDFOR»
+					new StatementEntity(this, new «statement.eventType»Event(this, "«statement.eventType»", true)«generateProperties(robot, statement)»)«ENDFOR»
 			);
 	'''
 	
-	def generateProperties(Statement statement)'''
-	«IF statement instanceof ActionStatement && !(statement as ActionStatement).action.targets.empty»
-	, "«(statement as ActionStatement).action.targets.get(0).name»", false«ENDIF»«IF
-	statement instanceof MessageStatement && (statement as MessageStatement).target instanceof UniTarget
-	», "«((statement as MessageStatement).target as UniTarget).target.name»", true«ENDIF»«IF
-	statement instanceof DetectionStatement», "«(statement as DetectionStatement).object.name»", false«ENDIF»'''
+	def dispatch generateProperties(DynamicRobot robot, DetectionStatement statement)'''
+	, "«statement.object.name»", false'''
 	
-	def getEventType(Statement statement)
-	'''«IF
-	statement instanceof ActionStatement»«statement.action.declaration.name»«ENDIF»«IF
-	statement instanceof MessageStatement»Message«ENDIF»«IF
-	statement instanceof DetectionStatement»Detect«ENDIF»'''
+	def dispatch generateProperties(DynamicRobot robot, ActionStatement statement)'''
+	«IF !statement.action.targets.empty», "«statement.action.targets.get(0).name»", false«ENDIF»'''
+	
+	def dispatch generateProperties(DynamicRobot robot, MessageStatement statement)'''
+	«IF statement.target instanceof UniTarget»
+	, "«IF (statement.target as UniTarget).target.equals(robot)»«statement.robot.name»«ELSE»«(statement.target as UniTarget).target.name»«ENDIF»", true«ENDIF»'''
+	
+	def dispatch getEventType(ActionStatement statement)
+	'''«statement.action.declaration.name»'''
+	
+	def dispatch getEventType(MessageStatement statement)
+	'''Message'''
+	
+	def dispatch getEventType(DetectionStatement statement)
+	'''Detect'''
 
 	def generateFooter() '''
 			}
@@ -130,30 +138,66 @@ class DesmoJGenerator {
 
 	def void gatherData(List<Statement> statementList) {
 		for (statement : statementList) {
-			if (statement instanceof ConditionalStatement) {
-				gatherData((statement as ConditionalStatement).statements)
-				gatherData((statement as ConditionalStatement).otherStatements)
-			} else if (statement instanceof SynchronousStatement) {
-				gatherData((statement as SynchronousStatement).statements.filter(Statement).toList)
-			} else if (statement instanceof ActionStatement) {
-				val st = statement as ActionStatement
-				robots.add(st.robot)
-				addStatement(st.robot, st)
-			} else if (statement instanceof MessageStatement) {
-				val st = statement as MessageStatement
-				robots.add(st.robot)
-				addStatement(st.robot, st)
-			} else if (statement instanceof DetectionStatement) {
-				val st = statement as DetectionStatement
-				robots.add(st.robot)
-				addStatement(st.robot, st)
-			}
-
+			process(statement)
 		}
-
+	}
+	
+	def dispatch process(ActionStatement st) {
+		robots.add(st.robot)
+		addStatement(st.robot, st)
+	}
+	
+	def dispatch process(MessageStatement st) {
+		robots.add(st.robot)
+		if (st.target instanceof UniTarget) {
+			val targetRobot = (st.target as UniTarget).target
+			robots.add(targetRobot)
+			
+			addStatement(st.robot, st)
+			addStatement(targetRobot, st)
+		} else if (st.target instanceof MultiTarget) {
+			val targetRobots = (st.target as MultiTarget).target
+			partMultiTarget(st, targetRobots)
+		} else if (st.target instanceof AllTarget) {
+			val targetRobots = st.robot.collaborations.map[c | c.collaborator]
+			partMultiTarget(st, targetRobots)
+		}
+	}
+	
+	def dispatch process(DetectionStatement st) {
+		robots.add(st.robot)
+		addStatement(st.robot, st)
+	}
+	
+	def dispatch process(ConditionalStatement st) {
+		gatherData(st.statements)
+		gatherData(st.otherStatements)
+	}
+	
+	def dispatch process(SynchronousStatement st) {
+		gatherData(st.statements.filter(Statement).toList)
+	}
+	
+	def dispatch process(Statement st) {}
+	
+	def partMultiTarget(MessageStatement st, List<DynamicRobot> targetRobots) {
+		for (targetRobot : targetRobots) {
+			robots.add(targetRobot)
+			
+			val uniTarget = blf.createUniTarget
+			uniTarget.target = targetRobot
+			
+			val stCopy = blf.createMessageStatement
+			stCopy.message = st.message
+			stCopy.robot = st.robot
+			stCopy.target = uniTarget
+			
+			addStatement(stCopy.robot, stCopy)
+			addStatement(targetRobot, stCopy)
+		}
 	}
 
-	def addStatement(DynamicRobot robot, Statement statement) {
+	def addStatement(DynamicRobot robot, AtomicStatement statement) {
 		if (!statements.containsKey(robot)) {
 			statements.put(robot, new ArrayList)
 		}
