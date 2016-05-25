@@ -1,15 +1,20 @@
 package hu.bme.mdsd.ztz.model.simulation.objectdelivery.model;
-import desmoj.core.simulator.Model;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
+import desmoj.core.simulator.Model;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.DynamicRobotEntity;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.ResettableAreaObjectEntity;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.StatementEntity;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.BringEvent;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.DetectEvent;
-import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MoveEvent;
-import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.ResetObjectEvent;
-import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MoveToTargetEvent;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MessageEvent;
+import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MoveEvent;
+import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MoveToTargetEvent;
 
 public class DesmoSimulation extends ObjectDeliverySimulationModel {
 	
@@ -81,8 +86,12 @@ public class DesmoSimulation extends ObjectDeliverySimulationModel {
 				new StatementEntity(this, new MoveEvent(this, "Move", true)),
 				new StatementEntity(this, new MoveEvent(this, "Move", true)),
 				new StatementEntity(this, new MoveEvent(this, "Move", true)),
+				new StatementEntity(this, new MessageEvent(this, "Message", true), "BobD", true),
 				new StatementEntity(this, new MoveToTargetEvent(this, "MoveToTarget", true), "Box", false),
 				new StatementEntity(this, new BringEvent(this, "Bring", true), "Box", false)
 		);
+		
+		VisualizationUtil.sendStatus("{\"language\":\"test\", \"description\":\"thats a test\"}");
+		
 	}
 }

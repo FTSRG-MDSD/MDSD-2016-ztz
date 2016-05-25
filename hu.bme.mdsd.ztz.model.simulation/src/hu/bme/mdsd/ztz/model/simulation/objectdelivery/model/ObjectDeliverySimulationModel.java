@@ -11,13 +11,12 @@ import desmoj.core.simulator.EventAbstract;
 import desmoj.core.simulator.Model;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.DynamicRobotEntity;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.ResettableAreaObjectEntity;
-import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.StatementEntity;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.BringEvent;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.DetectEvent;
+import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MessageEvent;
+import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MoveEvent;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MoveToTargetEvent;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.ResetObjectEvent;
-import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MoveEvent;
-import hu.bme.mdsd.ztz.model.simulation.objectdelivery.events.MessageEvent;
 
 public class ObjectDeliverySimulationModel extends Model {
 	
@@ -119,31 +118,6 @@ public class ObjectDeliverySimulationModel extends Model {
 		objectResetTime = new ContDistUniform(this,"Reset time",1*60,10*60,true,false);
 		robotSearchTime = new ContDistUniform(this,"Search time",1*60,100*60,true,false);
 		communicationTime = new ContDistUniform(this, "Communication time", 1*60, 10*60, true, false);
-
-		
-//		
-//		DynamicRobotEntity entity = new DynamicRobotEntity(this, "Bob", false);
-//		DynamicRobotEntity entity2 = new DynamicRobotEntity(this, "Frank", false);
-//		
-//		ResettableAreaObjectEntity obj1 = new ResettableAreaObjectEntity(this, "Box", false);
-//		
-//		registeredEntities.put(entity.getSimpleName(), entity);
-//		registeredEntities.put(entity2.getSimpleName(), entity2);
-//		
-//		registeredObjects.put(obj1.getSimpleName(), obj1);
-//		availableObjects.add(obj1);
-//		
-//		entity.initializeEvents(
-//				new StatementEntity(this, new MoveEvent(this, "Hoo", true)),
-//				new StatementEntity(this, new DetectEvent(this, "Detect", true), "Box", false),
-//				new StatementEntity(this, new MoveToTargetEvent(this, "Move", true), "Box", false),
-//				new StatementEntity(this, new BringEvent(this, "Bring", true), "Box", false)
-//				);
-//		entity2.initializeEvents(
-//				new StatementEntity(this, new DetectEvent(this, "Search", true), "Box", false)
-//				);
-		
-		
 				
 	}
 
