@@ -1,12 +1,20 @@
 package hu.bme.mdsd.ztz.text.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import hu.bme.mdsd.ztz.model.behaviour.BehaviourFactory;
 import hu.bme.mdsd.ztz.model.behaviour.DynamicRobot;
 import hu.bme.mdsd.ztz.model.behaviour.Message;
 import hu.bme.mdsd.ztz.model.behaviour.RobotCollaboration;
 import hu.bme.mdsd.ztz.model.drone.AreaObject;
+import hu.bme.mdsd.ztz.model.drone.Coordinate;
+import hu.bme.mdsd.ztz.model.drone.Position;
+import hu.bme.mdsd.ztz.model.drone.Property;
+import hu.bme.mdsd.ztz.model.drone.PropertyKey;
+import hu.bme.mdsd.ztz.model.drone.PropertyValue;
 import hu.bme.mdsd.ztz.model.drone.Robot;
 import hu.bme.mdsd.ztz.model.drone.RobotMissionContainer;
+import hu.bme.mdsd.ztz.model.drone.StringValue;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionDeclarationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionImplementation;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ActionStatement;
@@ -14,6 +22,7 @@ import hu.bme.mdsd.ztz.text.behaviourLanguage.AllTarget;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.AtomicStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguage;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.BehaviourLanguageFactory;
+import hu.bme.mdsd.ztz.text.behaviourLanguage.CollaborationStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.ConditionalStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.DetectionStatement;
 import hu.bme.mdsd.ztz.text.behaviourLanguage.MessageStatement;
@@ -32,6 +41,7 @@ import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -49,7 +59,8 @@ public class DesmoJGenerator {
   private IFileSystemAccess2 fsa;
   
   public DesmoJGenerator(final BehaviourLanguage bl, final IFileSystemAccess2 fsa) {
-    this.bl = bl;
+    BehaviourLanguage _copy = EcoreUtil.<BehaviourLanguage>copy(bl);
+    this.bl = _copy;
     this.fsa = fsa;
     BehaviourLanguageFactoryImpl _behaviourLanguageFactoryImpl = new BehaviourLanguageFactoryImpl();
     this.blf = _behaviourLanguageFactoryImpl;
@@ -93,6 +104,41 @@ public class DesmoJGenerator {
     return _builder;
   }
   
+  public CharSequence generateRobotPosition(final DynamicRobot robot) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      Robot _robot = robot.getRobot();
+      Position _position = _robot.getPosition();
+      EList<Coordinate> _coordinates = _position.getCoordinates();
+      boolean _isEmpty = _coordinates.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _builder.newLine();
+        _builder.append("\t\t");
+        String _name = robot.getName();
+        String _firstLower = StringExtensions.toFirstLower(_name);
+        _builder.append(_firstLower, "\t\t");
+        _builder.append("Entity.setPosition(new Position(");
+        Robot _robot_1 = robot.getRobot();
+        Position _position_1 = _robot_1.getPosition();
+        EList<Coordinate> _coordinates_1 = _position_1.getCoordinates();
+        Coordinate _get = _coordinates_1.get(0);
+        float _longitude = _get.getLongitude();
+        _builder.append(_longitude, "\t\t");
+        _builder.append(", ");
+        Robot _robot_2 = robot.getRobot();
+        Position _position_2 = _robot_2.getPosition();
+        EList<Coordinate> _coordinates_2 = _position_2.getCoordinates();
+        Coordinate _get_1 = _coordinates_2.get(0);
+        float _latitude = _get_1.getLatitude();
+        _builder.append(_latitude, "\t\t");
+        _builder.append("));");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
   public CharSequence generateAreaObjectEntity(final AreaObject areaObject) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.newLine();
@@ -129,6 +175,70 @@ public class DesmoJGenerator {
     return _builder;
   }
   
+  public CharSequence generateAreaObjectPosition(final AreaObject areaObject) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      boolean _and = false;
+      EList<Position> _positions = areaObject.getPositions();
+      boolean _isEmpty = _positions.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (!_not) {
+        _and = false;
+      } else {
+        EList<Position> _positions_1 = areaObject.getPositions();
+        Position _get = _positions_1.get(0);
+        EList<Coordinate> _coordinates = _get.getCoordinates();
+        boolean _isEmpty_1 = _coordinates.isEmpty();
+        boolean _not_1 = (!_isEmpty_1);
+        _and = _not_1;
+      }
+      if (_and) {
+        _builder.newLine();
+        _builder.append("\t\t");
+        String _name = areaObject.getName();
+        String _firstLower = StringExtensions.toFirstLower(_name);
+        _builder.append(_firstLower, "\t\t");
+        _builder.append("Entity.setResetPosition(new Position(");
+        EList<Position> _positions_2 = areaObject.getPositions();
+        Position _get_1 = _positions_2.get(0);
+        EList<Coordinate> _coordinates_1 = _get_1.getCoordinates();
+        Coordinate _get_2 = _coordinates_1.get(0);
+        float _longitude = _get_2.getLongitude();
+        _builder.append(_longitude, "\t\t");
+        _builder.append(", ");
+        EList<Position> _positions_3 = areaObject.getPositions();
+        Position _get_3 = _positions_3.get(0);
+        EList<Coordinate> _coordinates_2 = _get_3.getCoordinates();
+        Coordinate _get_4 = _coordinates_2.get(0);
+        float _latitude = _get_4.getLatitude();
+        _builder.append(_latitude, "\t\t");
+        _builder.append("));");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        String _name_1 = areaObject.getName();
+        String _firstLower_1 = StringExtensions.toFirstLower(_name_1);
+        _builder.append(_firstLower_1, "\t\t");
+        _builder.append("Entity.setPosition(new Position(");
+        EList<Position> _positions_4 = areaObject.getPositions();
+        Position _get_5 = _positions_4.get(0);
+        EList<Coordinate> _coordinates_3 = _get_5.getCoordinates();
+        Coordinate _get_6 = _coordinates_3.get(0);
+        float _longitude_1 = _get_6.getLongitude();
+        _builder.append(_longitude_1, "\t\t");
+        _builder.append(", ");
+        EList<Position> _positions_5 = areaObject.getPositions();
+        Position _get_7 = _positions_5.get(0);
+        EList<Coordinate> _coordinates_4 = _get_7.getCoordinates();
+        Coordinate _get_8 = _coordinates_4.get(0);
+        float _latitude_1 = _get_8.getLatitude();
+        _builder.append(_latitude_1, "\t\t");
+        _builder.append("));");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
   public CharSequence generateAll() {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _generateHeader = this.generateHeader();
@@ -143,6 +253,9 @@ public class DesmoJGenerator {
             CharSequence _generateRobotEntity = this.generateRobotEntity(robot);
             _builder.append(_generateRobotEntity, "");
             _builder.newLineIfNotEmpty();
+            CharSequence _generateRobotPosition = this.generateRobotPosition(robot);
+            _builder.append(_generateRobotPosition, "");
+            _builder.newLineIfNotEmpty();
           }
         }
         _builder.newLine();
@@ -154,6 +267,9 @@ public class DesmoJGenerator {
           for(final AreaObject areaObject : _areaObjects) {
             CharSequence _generateAreaObjectEntity = this.generateAreaObjectEntity(areaObject);
             _builder.append(_generateAreaObjectEntity, "");
+            _builder.newLineIfNotEmpty();
+            CharSequence _generateAreaObjectPosition = this.generateAreaObjectPosition(areaObject);
+            _builder.append(_generateAreaObjectPosition, "");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -198,9 +314,12 @@ public class DesmoJGenerator {
         _builder.append("Event(this, \"");
         CharSequence _eventType_1 = this.getEventType(statement);
         _builder.append(_eventType_1, "\t\t\t\t");
-        _builder.append("\", true)");
-        CharSequence _generateProperties = this.generateProperties(robot, statement);
-        _builder.append(_generateProperties, "\t\t\t\t");
+        _builder.append("\", true");
+        String _generateEventPosition = this.generateEventPosition(statement);
+        _builder.append(_generateEventPosition, "\t\t\t\t");
+        _builder.append(")");
+        CharSequence _generateTarget = this.generateTarget(robot, statement);
+        _builder.append(_generateTarget, "\t\t\t\t");
         _builder.append(")");
       }
     }
@@ -211,7 +330,7 @@ public class DesmoJGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateProperties(final DynamicRobot robot, final DetectionStatement statement) {
+  protected CharSequence _generateTarget(final DynamicRobot robot, final DetectionStatement statement) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(", \"");
     AreaObject _object = statement.getObject();
@@ -221,7 +340,7 @@ public class DesmoJGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateProperties(final DynamicRobot robot, final ActionStatement statement) {
+  protected CharSequence _generateTarget(final DynamicRobot robot, final ActionStatement statement) {
     StringConcatenation _builder = new StringConcatenation();
     {
       ActionImplementation _action = statement.getAction();
@@ -241,7 +360,7 @@ public class DesmoJGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateProperties(final DynamicRobot robot, final MessageStatement statement) {
+  protected CharSequence _generateTarget(final DynamicRobot robot, final MessageStatement statement) {
     StringConcatenation _builder = new StringConcatenation();
     {
       MessageTarget _target = statement.getTarget();
@@ -289,6 +408,62 @@ public class DesmoJGenerator {
     return _builder;
   }
   
+  protected String _generateEventPosition(final Statement statement) {
+    return "";
+  }
+  
+  protected String _generateEventPosition(final ActionStatement statement) {
+    ActionImplementation _action = statement.getAction();
+    EList<Property> _properties = _action.getProperties();
+    final Function1<Property, Boolean> _function = (Property prop) -> {
+      PropertyKey _key = prop.getKey();
+      String _name = _key.getName();
+      return Boolean.valueOf(_name.equals("Lat"));
+    };
+    final Property longitude = IterableExtensions.<Property>findFirst(_properties, _function);
+    ActionImplementation _action_1 = statement.getAction();
+    EList<Property> _properties_1 = _action_1.getProperties();
+    final Function1<Property, Boolean> _function_1 = (Property prop) -> {
+      PropertyKey _key = prop.getKey();
+      String _name = _key.getName();
+      return Boolean.valueOf(_name.equals("Long"));
+    };
+    final Property latitude = IterableExtensions.<Property>findFirst(_properties_1, _function_1);
+    boolean _and = false;
+    boolean _and_1 = false;
+    boolean _and_2 = false;
+    boolean _notEquals = (!Objects.equal(longitude, null));
+    if (!_notEquals) {
+      _and_2 = false;
+    } else {
+      PropertyValue _value = longitude.getValue();
+      _and_2 = (_value instanceof StringValue);
+    }
+    if (!_and_2) {
+      _and_1 = false;
+    } else {
+      boolean _notEquals_1 = (!Objects.equal(latitude, null));
+      _and_1 = _notEquals_1;
+    }
+    if (!_and_1) {
+      _and = false;
+    } else {
+      PropertyValue _value_1 = latitude.getValue();
+      _and = (_value_1 instanceof StringValue);
+    }
+    if (_and) {
+      PropertyValue _value_2 = longitude.getValue();
+      String _value_3 = ((StringValue) _value_2).getValue();
+      String _plus = (", new Position(" + _value_3);
+      String _plus_1 = (_plus + ", ");
+      PropertyValue _value_4 = latitude.getValue();
+      String _value_5 = ((StringValue) _value_4).getValue();
+      String _plus_2 = (_plus_1 + _value_5);
+      return (_plus_2 + ")");
+    }
+    return null;
+  }
+  
   public CharSequence generateFooter() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("\t");
@@ -308,6 +483,8 @@ public class DesmoJGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.DynamicRobotEntity;");
+    _builder.newLine();
+    _builder.append("import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.Position;");
     _builder.newLine();
     _builder.append("import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.ResettableAreaObjectEntity;");
     _builder.newLine();
@@ -446,6 +623,25 @@ public class DesmoJGenerator {
     return null;
   }
   
+  protected Boolean _process(final CollaborationStatement st) {
+    DynamicRobot _robot = st.getRobot();
+    EList<RobotCollaboration> _collaborations = _robot.getCollaborations();
+    EList<RobotCollaboration> _collaboration = st.getCollaboration();
+    _collaborations.addAll(_collaboration);
+    EList<RobotCollaboration> _collaboration_1 = st.getCollaboration();
+    for (final RobotCollaboration collaboration : _collaboration_1) {
+      {
+        final RobotCollaboration oppositeColl = BehaviourFactory.eINSTANCE.createRobotCollaboration();
+        DynamicRobot _robot_1 = st.getRobot();
+        oppositeColl.setCollaborator(_robot_1);
+        DynamicRobot _collaborator = collaboration.getCollaborator();
+        EList<RobotCollaboration> _collaborations_1 = _collaborator.getCollaborations();
+        _collaborations_1.add(oppositeColl);
+      }
+    }
+    return null;
+  }
+  
   protected Boolean _process(final Statement st) {
     return null;
   }
@@ -484,13 +680,13 @@ public class DesmoJGenerator {
     return _xblockexpression;
   }
   
-  public CharSequence generateProperties(final DynamicRobot robot, final AtomicStatement statement) {
+  public CharSequence generateTarget(final DynamicRobot robot, final AtomicStatement statement) {
     if (statement instanceof ActionStatement) {
-      return _generateProperties(robot, (ActionStatement)statement);
+      return _generateTarget(robot, (ActionStatement)statement);
     } else if (statement instanceof DetectionStatement) {
-      return _generateProperties(robot, (DetectionStatement)statement);
+      return _generateTarget(robot, (DetectionStatement)statement);
     } else if (statement instanceof MessageStatement) {
-      return _generateProperties(robot, (MessageStatement)statement);
+      return _generateTarget(robot, (MessageStatement)statement);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(robot, statement).toString());
@@ -510,9 +706,22 @@ public class DesmoJGenerator {
     }
   }
   
+  public String generateEventPosition(final Statement statement) {
+    if (statement instanceof ActionStatement) {
+      return _generateEventPosition((ActionStatement)statement);
+    } else if (statement != null) {
+      return _generateEventPosition(statement);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(statement).toString());
+    }
+  }
+  
   public Boolean process(final Statement st) {
     if (st instanceof ActionStatement) {
       return _process((ActionStatement)st);
+    } else if (st instanceof CollaborationStatement) {
+      return _process((CollaborationStatement)st);
     } else if (st instanceof DetectionStatement) {
       return _process((DetectionStatement)st);
     } else if (st instanceof MessageStatement) {

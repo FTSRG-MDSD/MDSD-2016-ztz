@@ -16,9 +16,10 @@ import hu.bme.mdsd.ztz.model.simulation.objectdelivery.model.ObjectDeliverySimul
 
 public class DynamicRobotEntity extends RobotEntity {
 	
-	
 	protected ObjectDeliverySimulationModel owner;
 	private String name;
+	
+	private Position position;
 
 	public DynamicRobotEntity(Model owner, String name, boolean showInTrace) {
 		super(owner, name, showInTrace);
@@ -29,7 +30,6 @@ public class DynamicRobotEntity extends RobotEntity {
 	public String getSimpleName() {
 		return name;
 	}
-	
 	
 	protected Queue<StatementEntity> eventQueue;
 	
@@ -66,12 +66,19 @@ public class DynamicRobotEntity extends RobotEntity {
 		} else {
 			nextEvent();
 		}
-		
 	}
 	
 	public void initializeEvents(StatementEntity... events) {
 		eventQueue = new ArrayDeque<>();
 		for (int i=0;i<events.length;++i) eventQueue.add(events[i]);
+	}
+	
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+	
+	public Position getPosition() {
+		return position;
 	}
 
 }

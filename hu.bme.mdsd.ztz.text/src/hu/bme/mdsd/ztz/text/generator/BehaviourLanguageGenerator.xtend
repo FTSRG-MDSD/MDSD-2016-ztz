@@ -32,13 +32,14 @@ class BehaviourLanguageGenerator extends AbstractGenerator {
 
 		val Iterator<BehaviourContainer> containerIterator = resource.allContents.filter(typeof(BehaviourContainer))
 		if (containerIterator.hasNext) {
+			generateSimulation(resource, fsa)
+				
 			val statementParser = new StatementParser()
 			val jsonNode = statementParser.parseStatements(resource)
 			generateBehaviour(resource, fsa)
 			
 			generateActions(resource, fsa, jsonNode)
 			
-			generateSimulation(resource, fsa)
 		}
 	}
 

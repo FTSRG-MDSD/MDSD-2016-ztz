@@ -5,6 +5,7 @@ import desmoj.core.simulator.Model;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.DynamicRobotEntity;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.entities.ResettableAreaObjectEntity;
 import hu.bme.mdsd.ztz.model.simulation.objectdelivery.model.ObjectDeliverySimulationModel;
+import hu.bme.mdsd.ztz.model.simulation.objectdelivery.model.VisualizationUtil;
 
 public class MoveToTargetEvent extends EventOf2Entities<DynamicRobotEntity, ResettableAreaObjectEntity> {
 	
@@ -18,6 +19,7 @@ public class MoveToTargetEvent extends EventOf2Entities<DynamicRobotEntity, Rese
 
 	@Override
 	public void eventRoutine(DynamicRobotEntity who1, ResettableAreaObjectEntity who2) {
+		VisualizationUtil.sendEvent("MoveToTarget", who1, who2);
 		who1.nextEvent();
 	}
 

@@ -10,6 +10,9 @@ public class ResettableAreaObjectEntity extends AreaObjectEntity {
 	
 	private ObjectDeliverySimulationModel owner;
 	private String name;
+	
+	private Position resetPosition;
+	private Position position;
 
 	public ResettableAreaObjectEntity(Model owner, String name, boolean showInTrace) {
 		super(owner, name, showInTrace);
@@ -22,8 +25,20 @@ public class ResettableAreaObjectEntity extends AreaObjectEntity {
 	}
 	
 	public void reset() {
-		new ResetObjectEvent(getModel(), "Reset", true)
+		new ResetObjectEvent(getModel(), "Reset", true, resetPosition)
 		.schedule(this, new TimeSpan(owner.getObjectResetTime()));
+	}
+	
+	public void setResetPosition(Position position) {
+		this.resetPosition = position;
+	}
+	
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+	
+	public Position getPosition() {
+		return position;
 	}
 
 }

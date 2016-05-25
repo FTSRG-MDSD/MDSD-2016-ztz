@@ -100,8 +100,22 @@ public class ObjectDeliverySimulationModel extends Model {
 
 	@Override
 	public void doInitialSchedules() {
+		sendInitialStatus();
 		for (DynamicRobotEntity entity : registeredEntities.values()) {
 			entity.nextEvent();
+		}
+	}
+
+	private void sendInitialStatus() {
+		for (DynamicRobotEntity entity : registeredEntities.values()) {
+			if (entity.getPosition() != null) {
+				VisualizationUtil.sendPosition(entity);
+			}
+		}
+		for (ResettableAreaObjectEntity entity : registeredObjects.values()) {
+			if (entity.getPosition() != null) {
+				VisualizationUtil.sendPosition(entity);
+			}
 		}
 	}
 

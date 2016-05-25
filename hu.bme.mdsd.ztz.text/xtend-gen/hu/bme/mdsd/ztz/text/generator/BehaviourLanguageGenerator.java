@@ -41,11 +41,11 @@ public class BehaviourLanguageGenerator extends AbstractGenerator {
     final Iterator<BehaviourContainer> containerIterator = Iterators.<BehaviourContainer>filter(_allContents, BehaviourContainer.class);
     boolean _hasNext = containerIterator.hasNext();
     if (_hasNext) {
+      this.generateSimulation(resource, fsa);
       final StatementParser statementParser = new StatementParser();
       final JsonNode jsonNode = statementParser.parseStatements(resource);
       this.generateBehaviour(resource, fsa);
       this.generateActions(resource, fsa, jsonNode);
-      this.generateSimulation(resource, fsa);
     }
   }
   
